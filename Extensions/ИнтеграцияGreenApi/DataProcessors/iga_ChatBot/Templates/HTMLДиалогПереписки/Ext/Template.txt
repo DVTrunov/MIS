@@ -1,0 +1,536 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #e5ddd5;
+        margin: 0;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .chat-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .message {
+        max-width: 75%;
+        margin-bottom: 10px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        position: relative;
+        font-size: 14px;
+        line-height: 1.4;
+        word-wrap: break-word;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      .incoming {
+        align-self: flex-start;
+        background-color: #ffffff;
+        border-bottom-left-radius: 2px;
+      }
+
+      .outgoing {
+        align-self: flex-end;
+        background-color: #dcf8c6;
+        border-bottom-right-radius: 2px;
+      }
+
+      .message-text {
+        margin-bottom: 4px;
+      }
+
+      .message-time {
+        font-size: 11px;
+        color: #999;
+        text-align: right;
+        display: block;
+        margin-top: 4px;
+      }
+
+      /* Подпись оператора */
+      .message-operator {
+        font-size: 10px;
+        font-weight: bold;
+        color: #075e54;
+        margin-bottom: 2px;
+        display: block;
+      }
+
+      /* Блок цитирования внутри сообщения */
+      .quoted-block {
+        background-color: rgba(0, 0, 0, 0.05);
+        border-left: 4px solid #34b7f1;
+        padding: 5px 8px;
+        margin-bottom: 6px;
+        border-radius: 4px;
+        font-size: 12px;
+      }
+
+      .quoted-author {
+        font-weight: bold;
+        color: #34b7f1;
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      .quoted-text {
+        color: #4a4a4a;
+        display: block;
+      }
+
+      /* Кнопка "Ответить" (↩) */
+      .reply-btn {
+        display: none;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        cursor: pointer;
+        color: #34b7f1;
+        font-size: 18px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        line-height: 22px;
+        z-index: 10;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+      }
+
+      .message:hover .reply-btn {
+        display: block;
+      }
+
+      /* Панель превью цитаты внизу окна */
+      .quote-preview {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #f0f0f0;
+        border-top: 1px solid #ccc;
+        padding: 8px 15px;
+        align-items: center;
+        z-index: 1000;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .quote-preview-content {
+        flex-grow: 1;
+        border-left: 4px solid #34b7f1;
+        padding-left: 12px;
+        overflow: hidden;
+      }
+
+      .quote-preview-author {
+        font-weight: bold;
+        color: #34b7f1;
+        font-size: 12px;
+        display: block;
+      }
+
+      .quote-preview-text {
+        font-size: 13px;
+        color: #555;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+      }
+
+      .quote-preview-close {
+        cursor: pointer;
+        font-size: 24px;
+        color: #999;
+        margin-left: 15px;
+        line-height: 1;
+      }
+
+      #bottom-anchor {
+        height: 1px;
+        width: 100%;
+        visibility: hidden;
+      }
+
+      /* Контейнер для медиа-файлов */
+      .message-media {
+        margin-bottom: 8px;
+        position: relative;
+        border-radius: 6px;
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100px;
+        max-width: 250px;
+      }
+
+      /* Размытое превью (jpegThumbnail) */
+      .media-thumb {
+        width: 100%;
+        height: auto;
+        filter: blur(2px);
+        /* Размытие для статуса "Ожидает" */
+        opacity: 0.7;
+      }
+
+      /* Кнопка загрузки поверх превью */
+      .download-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-download {
+        background-color: #25D366;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: bold;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        font-size: 12px;
+      }
+
+      .btn-download:hover {
+        background-color: #128C7E;
+      }
+
+      .file-info {
+        font-size: 11px;
+        color: #fff;
+        margin-top: 5px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+        text-align: center;
+      }
+
+      /* Сообщение с контентом: фиксированная ширина */
+      .message.has-media {
+        width: 260px;
+        padding: 5px;
+      }
+
+      .message-media {
+        width: 100%;
+        height: 180px;
+        position: relative;
+        border-radius: 6px;
+        overflow: hidden;
+        background-color: #f0f0f0;
+        margin-bottom: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .media-thumb {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* ИСПРАВЛЕНО: растягиваем превью правильно */
+        filter: blur(1px);
+      }
+
+      /* Кнопка управления контентом */
+      .btn-media {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        background-color: rgba(37, 211, 102, 0.9);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 24px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        z-index: 5;
+      }
+
+      /* РАБОЧИЕ ИКОНКИ BASE64 */
+      .icon-play {
+        background-image: url('#АдресКартинкиПлей');
+      }
+
+      .icon-zoom {
+        background-image: url('#АдресКартинкиЛупа');
+      }
+
+      .icon-save {
+        background-image: url('#АдресКартинкиСкачать');
+      }
+
+      .file-info {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        font-size: 10px;
+        padding: 3px 0;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .message-text {
+        white-space: pre-wrap;
+      }
+
+      /* Стили для смайликов внутри текста сообщения */
+      img.emoji {
+        height: 1.2em;
+        width: 1.2em;
+        margin: 0 .05em 0 .1em;
+        vertical-align: -0.1em;
+      }
+
+      .history-load-container {
+		  display: flex;
+		  justify-content: center;
+		  width: 100%;
+		  margin-bottom: 15px;
+		  /* Запрещаем блоку сжиматься при переполнении flex-контейнера */
+		  flex-shrink: 0; 
+		}
+
+      .history-load-link {
+        background-color: #f0f2f5;
+        color: #0275d8;
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-size: 13px;
+        text-decoration: none;
+        font-weight: 500;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        transition: background-color 0.2s, color 0.2s;
+        cursor: pointer;
+      }
+
+      .history-load-link:hover {
+        background-color: #e1e4e8;
+        color: #014c87;
+      }
+
+      /* Скроем ссылку, если история полностью загружена (управляется из 1С) */
+      .history-load-container.hidden {
+        display: none !important;
+      }
+    </style>
+    
+  <script src='#СсылкаНаСкрипт'></script>
+    
+    <script>  
+    
+      function scrollToBottom() {
+        var anchor = document.getElementById('bottom-anchor');
+        if (anchor) {
+          anchor.scrollIntoView({
+            behavior: 'auto',
+            block: 'end'
+          });
+        }
+      }
+
+      function clearMessages() {
+        var container = document.querySelector('.chat-container');
+        if (!container) return;
+        
+        // Исправлено: удаляем только сами сообщения, оставляя якоря и кнопку загрузки истории
+        var messages = container.querySelectorAll('.message');
+        messages.forEach(function(msg) {
+            msg.remove();
+        });
+
+        if (typeof clearQuote === "function") {
+          clearQuote();
+        }
+        console.log("Чат очищен");
+      }
+
+      window.onload = function() {
+        setTimeout(scrollToBottom, 100);
+      };
+
+		function appendMessage(jsonMessage, prepend) {
+		  var data = JSON.parse(jsonMessage);
+		  var container = document.querySelector('.chat-container');
+		  var anchor = document.getElementById('bottom-anchor');
+		  var loadingBlock = document.getElementById('history-loading-block');
+		  if (!container || !anchor) return;
+
+		  // Кроссбраузерный доступ к корневому элементу, который реально скроллится
+		  var scrollElement = document.documentElement || document.body;
+		  var oldScrollHeight = 0;
+
+		  // --- 1. ФИКСАЦИЯ ВЫСОТЫ ДО ВСТАВКИ ---
+		  if (prepend === true) {
+		    oldScrollHeight = scrollElement.scrollHeight;
+		  }
+
+		  // --- 2. СОЗДАНИЕ HTML ---
+		  var msgDiv = document.createElement('div');
+		  msgDiv.id = 'msg_' + data.id;
+		  msgDiv.className = 'message ' + (data.isIncoming ? 'incoming' : 'outgoing');
+		  
+		  var html = '';
+		  if (data.isSystem) {
+		    msgDiv.className = 'system-message';
+		    html = data.text;
+		  } else {
+		    var cleanText = data.text ? data.text.replace(/'/g, "\\'").replace(/"/g, '&quot;') : "";
+		    var authorName = data.isIncoming ? 'Клиент' : 'Вы';
+		    
+		    html += '<div class="reply-btn" title="Ответить" onclick="setReply(\'' + data.id + '\', \'' + cleanText + '\', \'' + authorName + '\')">↩</div>';
+		    
+		    if (data.quoteText) {
+		      var displayQuote = data.quoteText;
+		      if (typeof twemoji !== 'undefined') {
+		        displayQuote = twemoji.parse(data.quoteText, { folder: '72x72', ext: '.png' });
+		      }
+		      html += '<div class="quoted-block">' +
+		                '<span class="quoted-author">' + (data.quoteAuthor ? data.quoteAuthor : '') + '</span>' +
+		                '<span class="quoted-text">' + displayQuote + '</span>' +
+		              '</div>';
+		    }
+		    
+	        // 3. Подпись оператора [cite: 304]
+	        if (!data.isIncoming && data.operatorName) {
+	            html += '<span class="message-operator">Вы (' + data.operatorName + '):</span>';
+	        }
+
+		    if (data.hasFile || data.type === 'image') {
+		      var iconClass = data.iconClass || 'icon-save';
+		      html += '<div class="message-media">';
+		      if (data.url) {
+		        html += '<img class="message-image" src="' + data.url + '" onclick="imageClicked(\'' + data.id + '\')" />';
+		      } else if (data.thumbnail) {
+		        html += '<img src="data:image/jpeg;base64,' + data.thumbnail + '" class="media-thumb" />';
+		      }
+		      html += '<button class="btn-media ' + iconClass + '" onclick="viewMedia(\'' + data.id + '\')"></button>';
+		      html += '</div>';
+		    }
+		    
+		    if (data.text) {
+		      var displayText = data.text;
+		      if (typeof twemoji !== 'undefined') {
+		        displayText = twemoji.parse(data.text, { folder: '72x72', ext: '.png' });
+		      }
+		      html += '<div class="message-text">' + displayText + '</div>';
+		    }
+		    html += '<span class="message-time">' + data.time + '</span>';
+		  }
+		  msgDiv.innerHTML = html;
+		  
+		  // --- 3. ВСТАВКА В ДОКУМЕНТ И СИНХРОННЫЙ СДВИГ ---
+		  if (prepend === true) {
+		    // Вставляем новое сообщение
+		    if (loadingBlock && loadingBlock.nextSibling) {
+		      container.insertBefore(msgDiv, loadingBlock.nextSibling);
+		    } else {
+		      container.insertBefore(msgDiv, container.firstChild);
+		    }
+		    
+		    // Принудительно заставляем браузер пересчитать высоту документа прямо сейчас
+		    var newScrollHeight = scrollElement.scrollHeight;
+		    var delta = newScrollHeight - oldScrollHeight;
+		    
+		    // Если страница реально выросла, крутим ползунок вниз ровно на эту разницу
+		    if (delta > 0) {
+		      window.scrollBy(0, delta);
+		    }
+		    
+		  } else {
+		    // Добавление новых сообщений вниз
+		    container.insertBefore(msgDiv, anchor);
+		    if (!data.isHistory) {
+		      setTimeout(scrollToBottom, 50);
+		    }
+		  }
+		}
+
+      function scrollEnd() {
+        setTimeout(scrollToBottom, 50);
+      }
+
+      function setReply(messageId, messageText, author) {
+        document.getElementById('quote-preview-author').innerText = author;
+        document.getElementById('quote-preview-text').innerText = messageText;
+        document.getElementById('quote-preview').style.display = 'flex';
+        document.querySelector('.chat-container').style.paddingBottom = "60px";
+        scrollToBottom();
+        document.title = "v8:setQuoteId:" + messageId;
+      }
+
+      function cancelQuote() {
+        clearQuote();
+        document.title = "v8:cancelQuote";
+      }
+
+      function clearQuote() {
+        document.getElementById('quote-preview').style.display = 'none';
+        document.querySelector('.chat-container').style.paddingBottom = "0px";
+      }
+
+      function viewMedia(messageId) {
+        document.title = "v8:viewMedia:" + messageId;
+      }
+
+      function requestMoreHistory() {
+        document.title = "v8:loadMoreHistory:" + Date.now();
+      }
+
+      function setHistoryButtonVisibility(visible) {
+        var block = document.getElementById('history-loading-block');
+        if (block) {
+          if (visible) {
+            block.classList.remove('hidden');
+          } else {
+            block.classList.add('hidden');
+          }
+        }
+      }
+
+    </script>
+  </head>
+  <body>
+    <div class='chat-container'>
+      <div id='history-loading-block' class='history-load-container'>
+        <a class='history-load-link' onclick='requestMoreHistory()'>Еще сообщения</a>
+      </div>
+      <div id='messages-anchor'></div>
+      <div id='bottom-anchor'></div>
+    </div>
+    
+    <div id='quote-preview' class='quote-preview'>
+      <div class='quote-preview-content'>
+        <span id='quote-preview-author' class='quote-preview-author'></span>
+        <span id='quote-preview-text' class='quote-preview-text'></span>
+      </div>
+      <div class='quote-preview-close' onclick='cancelQuote()'>×</div>
+    </div>
+  </body>
+</html>

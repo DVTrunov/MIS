@@ -1,14 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
 			<v8:content>Печать штрихкодов сотрудников и клиентов</v8:content>
 		</v8:item>
 	</Title>
-	<WindowOpeningMode>DontBlock</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
-	<Group>Vertical</Group>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
@@ -104,6 +102,7 @@
 				<CheckBoxField name="ТолькоСоШтрихкодами" id="70">
 					<DataPath>ТолькоСоШтрихкодами</DataPath>
 					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ТолькоСоШтрихкодамиКонтекстноеМеню" id="71"/>
 					<ExtendedTooltip name="ТолькоСоШтрихкодамиРасширеннаяПодсказка" id="80"/>
 				</CheckBoxField>
@@ -113,8 +112,6 @@
 			<Representation>Tree</Representation>
 			<Autofill>true</Autofill>
 			<HeightInTableRows>2</HeightInTableRows>
-			<RowSelectionMode>Cell</RowSelectionMode>
-			<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
 			<InitialTreeView>ExpandAllLevels</InitialTreeView>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
@@ -190,14 +187,11 @@
 			</ToolTip>
 			<Group>Vertical</Group>
 			<Behavior>Usual</Behavior>
-			<Representation>WeakSeparation</Representation>
 			<ExtendedTooltip name="ГруппаСтрокиДляЭтикетокРасширеннаяПодсказка" id="92"/>
 			<ChildItems>
 				<Table name="Товары" id="19">
 					<Representation>List</Representation>
 					<HeightInTableRows>8</HeightInTableRows>
-					<RowSelectionMode>Cell</RowSelectionMode>
-					<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
 					<AutoInsertNewRow>true</AutoInsertNewRow>
 					<EnableStartDrag>true</EnableStartDrag>
 					<EnableDrag>true</EnableDrag>
@@ -215,7 +209,6 @@
 								<Type>CommandBarButton</Type>
 								<DefaultButton>true</DefaultButton>
 								<CommandName>Form.Command.КомандаПечать</CommandName>
-								<ButtonImportance>Main</ButtonImportance>
 								<ExtendedTooltip name="ТоварыКнопкаПечатьРасширеннаяПодсказка" id="93"/>
 							</Button>
 							<Button name="ТоварыЗаполнить" id="38">
@@ -349,7 +342,7 @@
 							<DataPath>Товары.Печатать</DataPath>
 							<TitleLocation>None</TitleLocation>
 							<EditMode>EnterOnInput</EditMode>
-							<AutoEditMode>true</AutoEditMode>
+							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="ПечататьКонтекстноеМеню" id="62"/>
 							<ExtendedTooltip name="ПечататьРасширеннаяПодсказка" id="115"/>
 						</CheckBoxField>
@@ -357,7 +350,6 @@
 							<DataPath>Товары.Сотрудник_Ссылка</DataPath>
 							<Visible>false</Visible>
 							<EditMode>EnterOnInput</EditMode>
-							<AutoEditMode>true</AutoEditMode>
 							<ContextMenu name="ТоварыСотрудник_СсылкаКонтекстноеМеню" id="56"/>
 							<ExtendedTooltip name="ТоварыСотрудник_СсылкаРасширеннаяПодсказка" id="116"/>
 						</InputField>
@@ -376,7 +368,6 @@
 							<DataPath>Товары.Сотрудник_Штрихкод</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<EditMode>EnterOnInput</EditMode>
-							<AutoEditMode>true</AutoEditMode>
 							<ContextMenu name="ТоварыСотрудник_ШтрихкодКонтекстноеМеню" id="58"/>
 							<ExtendedTooltip name="ТоварыСотрудник_ШтрихкодРасширеннаяПодсказка" id="118"/>
 						</InputField>
@@ -389,7 +380,6 @@
 								</v8:item>
 							</Title>
 							<EditMode>EnterOnInput</EditMode>
-							<AutoEditMode>true</AutoEditMode>
 							<ContextMenu name="КоличествоЭкземпляровКонтекстноеМеню" id="35"/>
 							<ExtendedTooltip name="КоличествоЭкземпляровРасширеннаяПодсказка" id="119"/>
 						</InputField>

@@ -1,12 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
-	<WindowOpeningMode>DontBlock</WindowOpeningMode>
-	<Group>Vertical</Group>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
-	<Events>
-		<Event name="OnOpen">ПриОткрытии</Event>
-		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
-	</Events>
 	<ChildItems>
 		<UsualGroup name="СписокКомпоновщикНастроекПользовательскиеНастройки" id="1">
 			<Title>
@@ -17,17 +11,16 @@
 			</Title>
 			<VerticalStretch>false</VerticalStretch>
 			<Group>Vertical</Group>
-			<Representation>WeakSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="СписокКомпоновщикНастроекПользовательскиеНастройкиРасширеннаяПодсказка" id="2"/>
 		</UsualGroup>
 		<Table name="Список" id="3">
+			<Representation>List</Representation>
 			<CommandBarLocation>None</CommandBarLocation>
 			<DefaultItem>true</DefaultItem>
-			<RowSelectionMode>Cell</RowSelectionMode>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
 			<InitialTreeView>ExpandTopLevel</InitialTreeView>
 			<EnableStartDrag>true</EnableStartDrag>
-			<EnableDrag>true</EnableDrag>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
 			<AutoRefresh>false</AutoRefresh>
@@ -77,55 +70,40 @@
 			<ChildItems>
 				<LabelField name="Код" id="19">
 					<DataPath>Список.Code</DataPath>
+					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="КодКонтекстноеМеню" id="20"/>
 					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="21"/>
 				</LabelField>
 				<LabelField name="Наименование" id="16">
 					<DataPath>Список.Description</DataPath>
-					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="17"/>
 					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="18"/>
 				</LabelField>
-				<LabelField name="ПолноеНаименование" id="34">
-					<DataPath>~Список.ПолноеНаименование</DataPath>
-					<ContextMenu name="ПолноеНаименованиеКонтекстноеМеню" id="35"/>
-					<ExtendedTooltip name="ПолноеНаименованиеРасширеннаяПодсказка" id="36"/>
-				</LabelField>
-				<LabelField name="Филиал" id="25">
-					<DataPath>Список.Филиал</DataPath>
-					<ContextMenu name="ФилиалКонтекстноеМеню" id="26"/>
-					<ExtendedTooltip name="ФилиалРасширеннаяПодсказка" id="27"/>
-				</LabelField>
-				<LabelField name="Родитель" id="22">
-					<DataPath>Список.Parent</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Основная лицензия</v8:content>
-						</v8:item>
-					</Title>
-					<ContextMenu name="РодительКонтекстноеМеню" id="23"/>
-					<ExtendedTooltip name="РодительРасширеннаяПодсказка" id="24"/>
-				</LabelField>
-				<CheckBoxField name="ЭтоПриложение" id="37">
-					<DataPath>~Список.ЭтоПриложение</DataPath>
-					<ContextMenu name="ЭтоПриложениеКонтекстноеМеню" id="38"/>
-					<ExtendedTooltip name="ЭтоПриложениеРасширеннаяПодсказка" id="39"/>
-				</CheckBoxField>
-				<LabelField name="НомерЛицензии" id="28">
+				<InputField name="НомерЛицензии" id="22">
 					<DataPath>Список.НомерЛицензии</DataPath>
-					<ContextMenu name="НомерЛицензииКонтекстноеМеню" id="29"/>
-					<ExtendedTooltip name="НомерЛицензииРасширеннаяПодсказка" id="30"/>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="НомерЛицензииКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="НомерЛицензииРасширеннаяПодсказка" id="24"/>
+				</InputField>
+				<LabelField name="ДатаВыдачи" id="25">
+					<DataPath>Список.ДатаВыдачи</DataPath>
+					<ContextMenu name="ДатаВыдачиКонтекстноеМеню" id="26"/>
+					<ExtendedTooltip name="ДатаВыдачиРасширеннаяПодсказка" id="27"/>
 				</LabelField>
-				<LabelField name="ДействуетДо" id="40">
-					<DataPath>Список.ДействуетДо</DataPath>
-					<ContextMenu name="ДействуетДоКонтекстноеМеню" id="41"/>
-					<ExtendedTooltip name="ДействуетДоРасширеннаяПодсказка" id="42"/>
+				<LabelField name="Организация" id="28">
+					<DataPath>Список.Организация</DataPath>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="29"/>
+					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="30"/>
 				</LabelField>
-				<LabelField name="ВыдавшийЛецензиюОрган" id="31">
-					<DataPath>~Список.ВыдавшийЛецензиюОрган</DataPath>
-					<ContextMenu name="ВыдавшийЛецензиюОрганКонтекстноеМеню" id="32"/>
-					<ExtendedTooltip name="ВыдавшийЛецензиюОрганРасширеннаяПодсказка" id="33"/>
+				<LabelField name="ЛицензирующийОрган" id="31">
+					<DataPath>Список.ЛицензирующийОрган</DataPath>
+					<ContextMenu name="ЛицензирующийОрганКонтекстноеМеню" id="32"/>
+					<ExtendedTooltip name="ЛицензирующийОрганРасширеннаяПодсказка" id="33"/>
+				</LabelField>
+				<LabelField name="Состояние" id="34">
+					<DataPath>Список.Состояние</DataPath>
+					<ContextMenu name="СостояниеКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="СостояниеРасширеннаяПодсказка" id="36"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
@@ -150,6 +128,38 @@
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Состояние</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.омг_СостоянияМедицинскихЛицензий.Отозвана</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>ЦветТекста</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">#C5C5C5</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Состояние</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.омг_СостоянияМедицинскихЛицензий.Приостановлена</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>ЦветТекста</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">web:Salmon</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>

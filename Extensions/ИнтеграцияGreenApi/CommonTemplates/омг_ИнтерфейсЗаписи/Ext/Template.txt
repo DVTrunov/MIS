@@ -1,0 +1,272 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запись в клинику / Емханаға жазылу</title>
+    <style>
+    /* --- Стили для социальных кнопок --- */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap; /* Чтобы на очень узких экранах кнопки переносились */
+}
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    color: white !important;
+    font-weight: 600;
+    font-size: 14px;
+    transition: opacity 0.2s;
+    border: none;
+}
+.social-btn:hover {
+    opacity: 0.85;
+}
+.btn-inst {
+    /* Фирменный градиент Instagram */
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+.btn-2gis {
+    /* Фирменный цвет 2GIS */
+    background-color: #95C11F; 
+}
+.social-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #eef2f6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background-color: #1a426b;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        .lang-btn {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 5px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            background: white;
+            color: #1a426b;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            box-sizing: border-box;
+        }
+        h2 { margin-top: 0; font-size: 22px; }
+        .subtitle { margin-bottom: 20px; font-size: 16px; }
+        
+        .appointment-card {
+            display: flex;
+            background-color: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        .appointment-details { flex-grow: 1; padding: 20px; }
+        .appointment-title { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+        .appointment-info { color: #555; font-size: 14px; line-height: 1.5; }
+        .calendar-action {
+            background-color: #f1f3f5;
+            border-left: 1px solid #e0e0e0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            min-width: 150px;
+            text-align: center;
+            transition: background 0.2s;
+        }
+        .calendar-action:hover { background-color: #e2e6ea; }
+        .calendar-icon { font-size: 24px; margin-bottom: 5px; }
+        .calendar-text { font-size: 13px; color: #333; }
+        
+        .footer-info { margin-top: 30px; font-size: 15px; line-height: 1.6; }
+        .footer-info a { color: #1a426b; word-break: break-all; }
+        .warning-box {
+            background-color: #f1f3f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 15px;
+        }
+
+        /* --- Стили для переключения языков --- */
+        .lang-content { display: none; } /* Скрываем все блоки по умолчанию */
+        .lang-content.active-lang { display: block; } /* Показываем только активный */
+
+        @media (max-width: 600px) {
+            .container { margin: 10px; padding: 20px; }
+            .appointment-card { flex-direction: column; }
+            .calendar-action {
+                border-left: none;
+                border-top: 1px solid #e0e0e0;
+                padding: 15px;
+                flex-direction: row;
+                gap: 10px;
+            }
+            .calendar-icon { margin-bottom: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <button id="btn-kk" class="lang-btn active" onclick="switchLang('kk')">Қазақша</button>
+        <button id="btn-ru" class="lang-btn" onclick="switchLang('ru')">Русский</button>
+    </div>
+
+    <div class="container">
+        
+        <div id="content-ru" class="lang-content">
+            <h2>Список предстоящих записей в медицинском центре %НазваниеКлиники%!</h2>
+            <div class="subtitle">Ваши предстоящие приемы:</div>
+
+            %СписокУслугHTML_RU%
+
+            <div class="footer-info">
+     Ждем Вас по адресу: %АдресКлиникиRU%
+    
+    <div class="social-links">
+        <a href="%СсылкаИнстаграм%" target="_blank" class="social-btn btn-inst">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            Instagram
+        </a>
+
+        <a href="%Ссылка2GIS%" target="_blank" class="social-btn btn-2gis">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            2GIS
+        </a>
+    </div>
+</div>
+
+            <div class="warning-box">
+                Просим прийти за 10 минут до приёма, для регистрации.
+            </div>
+        </div>
+
+        <div id="content-kk" class="lang-content active-lang">
+            <h2>Сіз %НазваниеКлиники% медициналық орталығындағы алдағы қабылдаулар тізімі!</h2>
+            <div class="subtitle">Алдағы қабылдауларыңыз:</div>
+
+            %СписокУслугHTML_KK%
+
+            <div class="footer-info">
+     Біз сізді мына мекенжай бойынша күтеміз: %АдресКлиникиKK%
+    
+    <div class="social-links">
+        <a href="%СсылкаИнстаграм%" target="_blank" class="social-btn btn-inst">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+            Instagram
+        </a>
+
+        <a href="%Ссылка2GIS%" target="_blank" class="social-btn btn-2gis">
+            <svg class="social-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            2GIS
+        </a>
+    </div>
+</div>
+
+            <div class="warning-box">
+                Тіркелу үшін қабылдауға 10 минут бұрын келуіңізді сұраймыз.
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Функция переключения языков (остается без изменений)
+function switchLang(lang) {
+    document.getElementById('btn-ru').classList.remove('active');
+    document.getElementById('btn-kk').classList.remove('active');
+    document.getElementById('btn-' + lang).classList.add('active');
+
+    document.getElementById('content-ru').classList.remove('active-lang');
+    document.getElementById('content-kk').classList.remove('active-lang');
+    document.getElementById('content-' + lang).classList.add('active-lang');
+}
+
+// Умная функция добавления в календарь
+function addToCalendar(title, dateStr, timeStr, doctor, address) {
+    const dateParts = dateStr.split('.');
+    const timeParts = timeStr.split(':');
+    
+    // Формируем время начала
+    const startStr = `${dateParts[2]}${dateParts[1]}${dateParts[0]}T${timeParts[0]}${timeParts[1]}00`;
+    
+    // Прибавляем 30 минут для времени окончания
+    let endHour = parseInt(timeParts[0]);
+    let endMinute = parseInt(timeParts[1]) + 30;
+    if (endMinute >= 60) { endMinute -= 60; endHour += 1; }
+    const endStr = `${dateParts[2]}${dateParts[1]}${dateParts[0]}T${String(endHour).padStart(2, '0')}${String(endMinute).padStart(2, '0')}00`;
+
+    // Определяем, iPhone/iPad ли это
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+    if (isIOS) {
+        // Для iOS отдаем .ics (Safari откроет нативное окно добавления события)
+        const icsData = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//1C Clinic//RU\nBEGIN:VEVENT\nSUMMARY:${title}\nDESCRIPTION:Врач / Дәрігер: ${doctor}\nLOCATION:${address}\nDTSTART:${startStr}\nDTEND:${endStr}\nEND:VEVENT\nEND:VCALENDAR`;
+
+        const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.setAttribute('download', 'appointment.ics');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    } else {
+        // Для Android и ПК открываем ссылку Google Календаря
+        const details = encodeURIComponent("Врач / Дәрігер: " + doctor);
+        const loc = encodeURIComponent(address);
+        const text = encodeURIComponent(title);
+        
+        const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${text}&dates=${startStr}/${endStr}&details=${details}&location=${loc}`;
+        
+        window.open(googleCalUrl, '_blank');
+    }
+}
+    </script>
+</body>
+</html>

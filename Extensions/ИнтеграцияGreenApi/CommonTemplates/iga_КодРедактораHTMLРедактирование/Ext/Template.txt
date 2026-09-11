@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+		<html>
+		<head>
+		    <meta charset='utf-8'>
+		        <script src='{ПутьКСкрипутЭмодзи}'></script>
+		    <style>
+		        /* Базовые стили */
+		        html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #ffffff; font-family: 'Segoe UI', Arial, sans-serif; }
+		        .main-container { display: flex; flex-direction: column; height: 100%; box-sizing: border-box; }
+		        
+		        /* Стили Панели Инструментов (Toolbar) */
+		        .toolbar { display: flex; align-items: center; padding: 5px 10px; border-bottom: 1px solid #c0c0c0; background-color: #f3f3f3; flex-shrink: 0; }
+		        .toolbar-button { 
+		            background: none; border: 1px solid transparent; padding: 5px 8px; border-radius: 4px; 
+		            cursor: pointer; font-size: 20px; line-height: 1; transition: all 0.2s; outline: none; margin-right: 5px; color: #555;
+		        }
+		        .toolbar-button:hover { background-color: #e0e0e0; border-color: #b0b0b0; color: #000; }
+		        .toolbar-button.active { background-color: #d0d0d0; border-color: #a0a0a0; }
+		
+		        /* Стили Редактора */
+		        .editor-container { 
+		            flex: 1; padding: 10px; box-sizing: border-box; overflow: hidden; position: relative;
+		            display: flex; flex-direction: column; /* Добавили управление через Flexbox */
+		        }
+		        #editor { 
+		            width: 100%; flex: 1; /* Заменили height: 100% на flex: 1 */
+		            border: 1px solid #c0c0c0; border-radius: 4px; 
+		            padding: 10px; font-size: 16px; overflow-y: auto; outline: none; box-sizing: border-box;
+		            white-space: pre-wrap; word-wrap: break-word; background: #fff;
+		        }
+		        #editor:focus { border-color: #0078d7; box-shadow: 0 0 0 1px #0078d7; }
+		        
+		        /* Стили для картинок twemoji */
+		        img.emoji { height: 1.2em; width: 1.2em; margin: 0 .05em 0 .1em; vertical-align: -0.1em; }
+		
+		        /* Стили Панели Эмодзи (Picker) */
+		        .emoji-picker { 
+		            display: none; position: absolute; top: 10px; left: 10px; 
+		            width: 520px; /* БЫЛО 320px, СДЕЛАЛИ 420px для ширины */
+		            max-height: calc(100% - 20px); 
+		            background-color: white; border: 1px solid #b0b0b0; border-radius: 6px; 
+		            box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 100; overflow: hidden; flex-direction: column;
+		        }
+		        .emoji-picker.show { display: flex; }
+		        .emoji-picker-header { padding: 8px 12px; border-bottom: 1px solid #c0c0c0; font-size: 14px; color: #666; font-weight: bold; background-color: #f9f9f9; flex-shrink: 0;}
+		        
+		        /* Сделали 10 колонок (repeat(10...)) вместо 8, чтобы больше влезало */
+		        .emoji-picker-content { flex: 1; padding: 5px; overflow-y: auto; display: grid; grid-template-columns: repeat(10, 1fr); gap: 2px; }
+		        .picker-emoji-item { 
+		            display: flex; align-items: center; justify-content: center; font-size: 24px; 
+		            cursor: pointer; padding: 5px; border-radius: 4px; transition: background-color 0.2s; aspect-ratio: 1;
+		        }
+		        .picker-emoji-item:hover { background-color: #f0f0f0; }
+		    </style>
+		</head>
+		<body>
+		    <div class='main-container'>
+		        <div class='toolbar'>
+		            <button type='button' class='toolbar-button' id='btnPicker' title='Выбрать эмодзи'>&#x1F60A;</button>
+		        </div>
+		        <div class='editor-container'>
+		            <div id='editor' contenteditable='true'></div>
+		            
+		                        <div id='emojiPicker' class='emoji-picker'>
+		                <div class='emoji-picker-header'>Популярные эмодзи</div>
+		                <div class='emoji-picker-content' id='pickerContent'>
+		                                    </div>
+		            </div>
+		        </div>
+		    </div> 
+		    <script>
+		        var editor = document.getElementById('editor');
+		        var btnPicker = document.getElementById('btnPicker');
+		        var pickerPanel = document.getElementById('emojiPicker');
+		        var pickerContent = document.getElementById('pickerContent');
+		
+		
+		        // 1. Компактная база популярных эмодзи (для 100% автономности)
+		        // 1. Компактная база популярных эмодзи в виде HEX-кодов (безопасно для 1С)
+		    const emojiCodes = [
+		        '1F60A', '1F602', '2764', '1F44D', '1F4AF', '1F525', '2705', '1F552',
+		        '1F4CD', '1F4C5', '26A0', '1F4A1', '1F4DD', '1F4E9', '1F91D', '1F389',
+		        '1F914', '1F622', '1F62D', '1F631', '1F621', '1F64F', '2728', '1F31F',
+		        '1F4DE', '1F310', '1F680', '1F6D2', '1F4B0', '1F4CA', '1F4BB', '1F3E2',
+		        '1F604', '1F60D', '1F644', '1F60E', '1F620', '1F61E', '1F44B', '270B',
+		        '1F44F', '1F64C', '2615', '1F381', '1F511', '1F512', '2B50', '26A1'
+		    ];
+		
+		    // Превращаем коды обратно в настоящие эмодзи и заполняем панель
+		    emojiCodes.forEach(code => {
+		        // String.fromCodePoint переводит код, например '1F60A', в 
+		        let emojiChar = String.fromCodePoint(parseInt(code, 16));
+		        
+		        let span = document.createElement('span');
+		        span.className = 'picker-emoji-item';
+		        span.innerText = emojiChar;
+		        span.onclick = function() { insertEmojiAtCaret(emojiChar); };
+		        pickerContent.appendChild(span);
+		    });
+		
+		    // Обрабатываем панель, чтобы текст стал картинками twemoji
+		    twemoji.parse(pickerContent);
+		
+		    // ДОБАВЛЯЕМ ЭТУ СТРОЧКУ, чтобы эмодзи на самой кнопке тоже стал красивой картинкой
+		    twemoji.parse(btnPicker);
+		
+		        // 3. Логика открытия/закрытия панели
+		        btnPicker.addEventListener('click', function(e) {
+		            e.stopPropagation(); // Не даем событию уйти на body
+		            pickerPanel.classList.toggle('show');
+		            btnPicker.classList.toggle('active');
+		        });
+		
+		        // Закрываем панель при клике мимо неё
+		        document.addEventListener('click', function() {
+		            pickerPanel.classList.remove('show');
+		            btnPicker.classList.remove('active');
+		        });
+		        pickerPanel.addEventListener('click', e => e.stopPropagation()); // Не закрывать, если кликнули внутри панели
+		
+		          // 4. Главная функция вставки эмодзи (исправленная для Ctrl+Z)
+		        function insertEmojiAtCaret(emojiText) {
+		            editor.focus();
+		            
+		            // 1. Превращаем юникод-смайлик в готовый HTML-тег <img> ЕЩЕ ДО вставки
+		            var imgHTML = twemoji.parse(emojiText);
+		            
+		            // 2. Вставляем сразу картинку системной командой браузера. 
+		            // Теперь браузер знает, что вставил картинку, и Ctrl+Z отработает идеально!
+		            document.execCommand('insertHTML', false, imgHTML);
+		            
+		            // Закрываем панель
+		            pickerPanel.classList.remove('show');
+		            btnPicker.classList.remove('active');
+		        }
+		
+		
+		
+		        // === 5. Стандартная механика редактора (оставляем без изменений) ===
+		        editor.addEventListener('input', function() {
+		            var selection = window.getSelection();
+		            if (!selection.rangeCount) return;
+		            
+		            var range = selection.getRangeAt(0);
+		            var marker = document.createElement('span');
+		            marker.id = 'caret-marker';
+		            range.insertNode(marker);
+		
+		            twemoji.parse(editor);
+		
+		            var restoredMarker = document.getElementById('caret-marker');
+		            if (restoredMarker) {
+		                var newRange = document.createRange();
+		                newRange.setStartAfter(restoredMarker);
+		                newRange.collapse(true);
+		                selection.removeAllRanges();
+		                selection.addRange(newRange);
+		               restoredMarker.parentNode.removeChild(restoredMarker);
+		            }
+		        });
+		
+		        // 4. Функция получения чистого текста (исправленная для идеальных переносов строк)
+        function getText() {
+            var clone = editor.cloneNode(true);
+            
+            // 1. Пробегаемся по всем картинкам-смайликам и возвращаем им текстовый юникод
+            var images = clone.getElementsByTagName('img');
+            while(images.length > 0) {
+                var img = images[0];
+                if (img.className === 'emoji') {
+                    img.parentNode.replaceChild(document.createTextNode(img.alt), img);
+                } else {
+                    // Если затесалась какая-то посторонняя картинка - удаляем
+                    img.parentNode.removeChild(img);
+                }
+            }
+            
+            // 2. ХИТРЫЙ ТРЮК: Чтобы браузер правильно посчитал все переносы строк (div, br),
+            // элемент должен физически находиться в DOM-дереве документа.
+            // Делаем его невидимым и закидываем за край экрана.
+            clone.style.position = 'absolute';
+            clone.style.left = '-9999px';
+            clone.style.whiteSpace = 'pre-wrap'; // Важно для сохранения форматирования
+            document.body.appendChild(clone);
+            
+            // 3. Забираем идеальный текст, сгенерированный самим движком браузера
+            var text = clone.innerText || clone.textContent || '';
+            
+            // 4. Убираем за собой мусор (удаляем невидимый элемент)
+            document.body.removeChild(clone);
+            
+            // 5. В некоторых версиях WebKit в конце может появиться лишний перенос, отрезаем его
+            if (text.endsWith('\n')) {
+                text = text.slice(0, -1);
+            }
+            
+            return text;
+        }
+		
+		        function setText(text) {
+		            var formattedText = text.replace(/(?:\r\n|\r|\n)/g, '<br>');
+		            editor.innerHTML = formattedText;
+		            twemoji.parse(editor);
+		        }
+		        // =================================================================
+		        
+		    // Функция для вставки произвольного текста в позицию каретки
+        function insertTextAtCaret(text) {
+            if (!text) return;
+            
+            // Возвращаем фокус в редактор (переменная editor уже объявлена у вас ранее)
+            editor.focus();
+            
+            // Заменяем переносы строк на теги <br>, чтобы они корректно перенеслись в HTML
+            var formattedText = text.replace(/(?:\r\n|\r|\n)/g, '<br>');
+            
+            // Прогоняем текст через парсер twemoji на случай, если во вставляемом тексте есть смайлики
+            var htmlToInsert = twemoji.parse(formattedText);
+            
+            // Вставляем готовый HTML системной командой. 
+            // Это вставит текст ровно в позицию курсора и корректно запишет действие в историю для Ctrl+Z
+            document.execCommand('insertHTML', false, htmlToInsert);
+        }
+		    </script>
+		</body>
+		</html>

@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
-	<WindowOpeningMode>LockOwner</WindowOpeningMode>
-	<Group>Vertical</Group>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
@@ -33,14 +32,12 @@
 				<InputField name="Наименование" id="3">
 					<DataPath>Объект.Description</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<AutoEditMode>true</AutoEditMode>
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
 					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="21"/>
 				</InputField>
 				<InputField name="Код" id="1">
 					<DataPath>Объект.Code</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<AutoEditMode>true</AutoEditMode>
 					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="22"/>
 				</InputField>
@@ -49,7 +46,6 @@
 		<InputField name="Подразделение" id="5">
 			<DataPath>Объект.Подразделение</DataPath>
 			<EditMode>EnterOnInput</EditMode>
-			<AutoEditMode>true</AutoEditMode>
 			<ChoiceButton>true</ChoiceButton>
 			<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
 			<ContextMenu name="ПодразделениеКонтекстноеМеню" id="6"/>
@@ -64,6 +60,7 @@
 		</InputField>
 		<InputField name="Специализация" id="34">
 			<DataPath>Объект.Специализация</DataPath>
+			<Visible>false</Visible>
 			<ChoiceButton>true</ChoiceButton>
 			<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
 			<ContextMenu name="СпециализацияКонтекстноеМеню" id="35"/>
@@ -82,7 +79,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Вид кабинета / модель оборудования</v8:content>
+							<v8:content>Вид кабинета</v8:content>
 						</v8:item>
 					</Title>
 					<ChoiceButton>true</ChoiceButton>
@@ -91,6 +88,12 @@
 					<OpenButton>false</OpenButton>
 					<ContextMenu name="МодельКонтекстноеМеню" id="10"/>
 					<ExtendedTooltip name="МодельРасширеннаяПодсказка" id="26"/>
+				</InputField>
+				<InputField name="КатегорияПомещения" id="37">
+					<DataPath>Объект.КатегорияПомещения</DataPath>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="КатегорияПомещенияКонтекстноеМеню" id="38"/>
+					<ExtendedTooltip name="КатегорияПомещенияРасширеннаяПодсказка" id="39"/>
 				</InputField>
 				<UsualGroup name="ГруппаОсновнойСпособЗаполения" id="14">
 					<Group>Horizontal</Group>
@@ -114,6 +117,7 @@
 									<v8:content>Наследовать от подразделения</v8:content>
 								</v8:item>
 							</Title>
+							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="НаследоватьОтГруппыКонтекстноеМеню" id="18"/>
 							<ExtendedTooltip name="НаследоватьОтГруппыРасширеннаяПодсказка" id="29"/>
 							<Events>
@@ -124,11 +128,137 @@
 				</UsualGroup>
 				<CheckBoxField name="УчаствуетВКалендарномПланировании" id="7">
 					<DataPath>Объект.УчаствуетВКалендарномПланировании</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="УчаствуетВКалендарномПланированииКонтекстноеМеню" id="8"/>
 					<ExtendedTooltip name="УчаствуетВКалендарномПланированииРасширеннаяПодсказка" id="30"/>
 				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
+		<Pages name="Группа1" id="78">
+			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="79"/>
+			<ChildItems>
+				<Page name="Группа2" id="80">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Специализации</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="81"/>
+					<ChildItems>
+						<Table name="омг_Специализации" id="59">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.омг_Специализации</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="омг_СпециализацииКонтекстноеМеню" id="60"/>
+							<AutoCommandBar name="омг_СпециализацииКоманднаяПанель" id="61"/>
+							<ExtendedTooltip name="омг_СпециализацииРасширеннаяПодсказка" id="62"/>
+							<SearchStringAddition name="омг_СпециализацииСтрокаПоиска" id="63">
+								<AdditionSource>
+									<Item>омг_Специализации</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="омг_СпециализацииСтрокаПоискаКонтекстноеМеню" id="64"/>
+								<ExtendedTooltip name="омг_СпециализацииСтрокаПоискаРасширеннаяПодсказка" id="65"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="омг_СпециализацииСостояниеПросмотра" id="66">
+								<AdditionSource>
+									<Item>омг_Специализации</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="омг_СпециализацииСостояниеПросмотраКонтекстноеМеню" id="67"/>
+								<ExtendedTooltip name="омг_СпециализацииСостояниеПросмотраРасширеннаяПодсказка" id="68"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="омг_СпециализацииУправлениеПоиском" id="69">
+								<AdditionSource>
+									<Item>омг_Специализации</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="омг_СпециализацииУправлениеПоискомКонтекстноеМеню" id="70"/>
+								<ExtendedTooltip name="омг_СпециализацииУправлениеПоискомРасширеннаяПодсказка" id="71"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="омг_СпециализацииНомерСтроки" id="72">
+									<DataPath>Объект.омг_Специализации.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="омг_СпециализацииНомерСтрокиКонтекстноеМеню" id="73"/>
+									<ExtendedTooltip name="омг_СпециализацииНомерСтрокиРасширеннаяПодсказка" id="74"/>
+								</LabelField>
+								<InputField name="омг_СпециализацииСпециализация" id="75">
+									<DataPath>Объект.омг_Специализации.Специализация</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="омг_СпециализацииСпециализацияКонтекстноеМеню" id="76"/>
+									<ExtendedTooltip name="омг_СпециализацииСпециализацияРасширеннаяПодсказка" id="77"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="Группа3" id="82">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оборудование</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="83"/>
+					<ChildItems>
+						<Table name="омг_Оборудование" id="40">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.омг_Оборудование</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="омг_ОборудованиеКонтекстноеМеню" id="41"/>
+							<AutoCommandBar name="омг_ОборудованиеКоманднаяПанель" id="42"/>
+							<ExtendedTooltip name="омг_ОборудованиеРасширеннаяПодсказка" id="43"/>
+							<SearchStringAddition name="омг_ОборудованиеСтрокаПоиска" id="44">
+								<AdditionSource>
+									<Item>омг_Оборудование</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="омг_ОборудованиеСтрокаПоискаКонтекстноеМеню" id="45"/>
+								<ExtendedTooltip name="омг_ОборудованиеСтрокаПоискаРасширеннаяПодсказка" id="46"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="омг_ОборудованиеСостояниеПросмотра" id="47">
+								<AdditionSource>
+									<Item>омг_Оборудование</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="омг_ОборудованиеСостояниеПросмотраКонтекстноеМеню" id="48"/>
+								<ExtendedTooltip name="омг_ОборудованиеСостояниеПросмотраРасширеннаяПодсказка" id="49"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="омг_ОборудованиеУправлениеПоиском" id="50">
+								<AdditionSource>
+									<Item>омг_Оборудование</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="омг_ОборудованиеУправлениеПоискомКонтекстноеМеню" id="51"/>
+								<ExtendedTooltip name="омг_ОборудованиеУправлениеПоискомРасширеннаяПодсказка" id="52"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="омг_ОборудованиеНомерСтроки" id="53">
+									<DataPath>Объект.омг_Оборудование.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="омг_ОборудованиеНомерСтрокиКонтекстноеМеню" id="54"/>
+									<ExtendedTooltip name="омг_ОборудованиеНомерСтрокиРасширеннаяПодсказка" id="55"/>
+								</LabelField>
+								<InputField name="омг_ОборудованиеОборудование" id="56">
+									<DataPath>Объект.омг_Оборудование.Оборудование</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+									<ContextMenu name="омг_ОборудованиеОборудованиеКонтекстноеМеню" id="57"/>
+									<ExtendedTooltip name="омг_ОборудованиеОборудованиеРасширеннаяПодсказка" id="58"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">

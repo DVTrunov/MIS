@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЛимитЧатов</dataPath>
+			<field>ЛимитЧатов</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Оператор</dataPath>
+			<field>Оператор</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоОтказов</dataPath>
+			<field>КоличествоОтказов</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество отказов</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Подразделение</dataPath>
+			<field>Подразделение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоЧатовНаОператоре</dataPath>
+			<field>КоличествоЧатовНаОператоре</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество чатов на операторе</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоОбработанных</dataPath>
+			<field>КоличествоОбработанных</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество обработанных</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	iga_НастройкиОператоров.Оператор КАК Оператор,
+	iga_НастройкиОператоров.ЛимитЧатов КАК ЛимитЧатов,
+	iga_НастройкиОператоров.Подразделение КАК Подразделение,
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ iga_ОчередьРаспределения.Чат) КАК КоличествоЧатовНаОператоре
+ПОМЕСТИТЬ ВТ_Операторы
+ИЗ
+	РегистрСведений.iga_НастройкиОператоров КАК iga_НастройкиОператоров
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.iga_ОчередьРаспределения КАК iga_ОчередьРаспределения
+		ПО iga_НастройкиОператоров.Оператор = iga_ОчередьРаспределения.Оператор
+			И (НЕ iga_ОчередьРаспределения.Статус = &amp;СтатусЗавершен)
+ГДЕ
+	iga_НастройкиОператоров.Статус = &amp;СтатусОнлайн
+	И iga_НастройкиОператоров.ПриниматьНовыеЧаты
+	И iga_НастройкиОператоров.ПростойОператор
+
+СГРУППИРОВАТЬ ПО
+	iga_НастройкиОператоров.Оператор,
+	iga_НастройкиОператоров.Подразделение,
+	iga_НастройкиОператоров.ЛимитЧатов
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ_Операторы.Оператор КАК Оператор,
+	ВТ_Операторы.ЛимитЧатов КАК ЛимитЧатов,
+	ВТ_Операторы.Подразделение КАК Подразделение,
+	ВТ_Операторы.КоличествоЧатовНаОператоре КАК КоличествоЧатовНаОператоре,
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ iga_ИсторияОтказовЧатов.Дата) КАК КоличествоОтказов,
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ iga_ОчередьРаспределения.Чат) КАК КоличествоОбработанных
+ИЗ
+	ВТ_Операторы КАК ВТ_Операторы
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.iga_ИсторияОтказовЧатов КАК iga_ИсторияОтказовЧатов
+		ПО ВТ_Операторы.Оператор = iga_ИсторияОтказовЧатов.Оператор
+			И (iga_ИсторияОтказовЧатов.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания)
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.iga_ОчередьРаспределения КАК iga_ОчередьРаспределения
+		ПО ВТ_Операторы.Оператор = iga_ОчередьРаспределения.Оператор
+			И (iga_ОчередьРаспределения.Статус = &amp;СтатусЗавершен)
+			И (iga_ОчередьРаспределения.ДатаПоступления МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания)
+
+СГРУППИРОВАТЬ ПО
+	ВТ_Операторы.Подразделение,
+	ВТ_Операторы.ЛимитЧатов,
+	ВТ_Операторы.КоличествоЧатовНаОператоре,
+	ВТ_Операторы.Оператор</query>
+	</dataSet>
+	<parameter>
+		<name>ДатаНачала</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата начала</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>НАЧАЛОПЕРИОДА(ТекущаяДата(), "ДЕНЬ")</expression>
+	</parameter>
+	<parameter>
+		<name>ДатаОкончания</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата окончания</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>КОНЕЦПЕРИОДА(ТекущаяДата(), "ДЕНЬ")</expression>
+	</parameter>
+	<parameter>
+		<name>СтатусЗавершен</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Статус завершен</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.iga_СтатусыОчереди</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.iga_СтатусыОчереди.Завершен</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>СтатусОнлайн</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Статус онлайн</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.iga_СтатусыОператоров</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.iga_СтатусыОператоров.Онлайн</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Анализатор</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Оператор</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Подразделение</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ЛимитЧатов</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоЧатовНаОператоре</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоОтказов</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоОбработанных</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>СтатусЗавершен</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>СтатусОнлайн</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

@@ -1,7 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
-	<WindowOpeningMode>DontBlock</WindowOpeningMode>
-	<Group>Vertical</Group>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
@@ -14,7 +12,7 @@
 			<Representation>List</Representation>
 			<CommandBarLocation>None</CommandBarLocation>
 			<DefaultItem>true</DefaultItem>
-			<RowSelectionMode>Cell</RowSelectionMode>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
 			<InitialTreeView>ExpandTopLevel</InitialTreeView>
 			<EnableStartDrag>true</EnableStartDrag>
 			<FileDragMode>AsFile</FileDragMode>
@@ -68,13 +66,13 @@
 			</SearchControlAddition>
 			<ChildItems>
 				<LabelField name="Дата" id="4">
-					<DataPath>Список.Date</DataPath>
+					<DataPath>Список.Дата</DataPath>
 					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
 					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="42"/>
 				</LabelField>
 				<LabelField name="Номер" id="6">
-					<DataPath>Список.Number</DataPath>
+					<DataPath>Список.Номер</DataPath>
 					<ContextMenu name="НомерКонтекстноеМеню" id="7"/>
 					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="43"/>
 				</LabelField>
@@ -82,6 +80,30 @@
 					<DataPath>Список.СуммаДокумента</DataPath>
 					<ContextMenu name="СуммаДокументаКонтекстноеМеню" id="11"/>
 					<ExtendedTooltip name="СуммаДокументаРасширеннаяПодсказка" id="46"/>
+				</LabelField>
+				<InputField name="Оплачено" id="57">
+					<DataPath>Список.Оплачено</DataPath>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>БЛ=; БИ=Да</v8:content>
+						</v8:item>
+					</Format>
+					<EditFormat>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>БЛ=; БИ=Да</v8:content>
+						</v8:item>
+					</EditFormat>
+					<TextColor>web:ForestGreen</TextColor>
+					<ContextMenu name="ОплаченоКонтекстноеМеню" id="58"/>
+					<ExtendedTooltip name="ОплаченоРасширеннаяПодсказка" id="59"/>
+				</InputField>
+				<LabelField name="InvoiceId" id="60">
+					<DataPath>Список.InvoiceId</DataPath>
+					<ContextMenu name="InvoiceIdКонтекстноеМеню" id="61"/>
+					<ExtendedTooltip name="InvoiceIdРасширеннаяПодсказка" id="62"/>
 				</LabelField>
 				<LabelField name="Клиент" id="51">
 					<DataPath>Список.Клиент</DataPath>
@@ -101,6 +123,7 @@
 							<v8:content>Чек пробит</v8:content>
 						</v8:item>
 					</Title>
+					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="НомерЧекаККМКонтекстноеМеню" id="27"/>
 					<ExtendedTooltip name="НомерЧекаККМРасширеннаяПодсказка" id="48"/>
 				</CheckBoxField>
@@ -127,8 +150,263 @@
 				<Field>Список.Коррекция</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ДокументОплатаПлатежнойКартой.Ссылка КАК Ссылка,
+	ДокументОплатаПлатежнойКартой.ПометкаУдаления КАК ПометкаУдаления,
+	ДокументОплатаПлатежнойКартой.Номер КАК Номер,
+	ДокументОплатаПлатежнойКартой.Дата КАК Дата,
+	ДокументОплатаПлатежнойКартой.Проведен КАК Проведен,
+	ДокументОплатаПлатежнойКартой.Клиент КАК Клиент,
+	ДокументОплатаПлатежнойКартой.СуммаДокумента КАК СуммаДокумента,
+	ДокументОплатаПлатежнойКартой.Ответственный КАК Ответственный,
+	ДокументОплатаПлатежнойКартой.Филиал КАК Филиал,
+	ДокументОплатаПлатежнойКартой.СтатьяДвиженияДенежныхСредств КАК СтатьяДвиженияДенежныхСредств,
+	ДокументОплатаПлатежнойКартой.НомерЧекаККМ КАК НомерЧекаККМ,
+	ДокументОплатаПлатежнойКартой.НомерЧекаЭТ КАК НомерЧекаЭТ,
+	ДокументОплатаПлатежнойКартой.ПринятоОт КАК ПринятоОт,
+	ДокументОплатаПлатежнойКартой.Основание КАК Основание,
+	ДокументОплатаПлатежнойКартой.Комментарий КАК Комментарий,
+	ДокументОплатаПлатежнойКартой.Сделка КАК Сделка,
+	ДокументОплатаПлатежнойКартой.ЭквайринговыйТерминал КАК ЭквайринговыйТерминал,
+	ДокументОплатаПлатежнойКартой.ТелефонЧек КАК ТелефонЧек,
+	ДокументОплатаПлатежнойКартой.АдресEmailЧек КАК АдресEmailЧек,
+	ДокументОплатаПлатежнойКартой.ДокументОснование КАК ДокументОснование,
+	ДокументОплатаПлатежнойКартой.ДатаПечатиЧека КАК ДатаПечатиЧека,
+	ДокументОплатаПлатежнойКартой.ФискальноеУстройство КАК ФискальноеУстройство,
+	ДокументОплатаПлатежнойКартой.СпособРасчетаЧекаККМ КАК СпособРасчетаЧекаККМ,
+	ДокументОплатаПлатежнойКартой.СсылочныйНомер КАК СсылочныйНомер,
+	ДокументОплатаПлатежнойКартой.НомерКарты КАК НомерКарты,
+	ДокументОплатаПлатежнойКартой.ПринятоОтИНН КАК ПринятоОтИНН,
+	ДокументОплатаПлатежнойКартой.НеприменениеККТ КАК НеприменениеККТ,
+	ДокументОплатаПлатежнойКартой.ТипКоррекции КАК ТипКоррекции,
+	ДокументОплатаПлатежнойКартой.ОписаниеКоррекции КАК ОписаниеКоррекции,
+	ДокументОплатаПлатежнойКартой.ДатаКоррекции КАК ДатаКоррекции,
+	ДокументОплатаПлатежнойКартой.НомерПредписания КАК НомерПредписания,
+	ДокументОплатаПлатежнойКартой.ДополнительныйРеквизит КАК ДополнительныйРеквизит,
+	ДокументОплатаПлатежнойКартой.Коррекция КАК Коррекция,
+	ДокументОплатаПлатежнойКартой.НомераЧековСторно КАК НомераЧековСторно,
+	ДокументОплатаПлатежнойКартой.ПринятоОтАдрес КАК ПринятоОтАдрес,
+	ДокументОплатаПлатежнойКартой.ОперационныйРеквизит КАК ОперационныйРеквизит,
+	ДокументОплатаПлатежнойКартой.омг_ИспользуемыйТерминал КАК омг_ИспользуемыйТерминал,
+	ДокументОплатаПлатежнойКартой.омг_НомерТранзакцииТерминала КАК омг_НомерТранзакцииТерминала,
+	ДокументОплатаПлатежнойКартой.Организация КАК Организация,
+	ДокументОплатаПлатежнойКартой.омг_ВидОплаты КАК омг_ВидОплаты,
+	ДокументОплатаПлатежнойКартой.ИспользоватьУчетаПоЗаявкам КАК ИспользоватьУчетаПоЗаявкам,
+	ВЫБОР
+		КОГДА ВложенныйЗапрос.РегистраторЗаписи ЕСТЬ NULL
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ ИСТИНА
+	КОНЕЦ КАК Оплачено,
+	ВложенныйЗапрос.РегистраторЗаписи КАК РегистраторЗаписи,
+	ВложенныйЗапрос.ОплатаПринятаБыла КАК ОплатаПринятаБыла,
+	ВложенныйЗапрос.InvoiceId КАК InvoiceId
+ИЗ
+	Документ.ОплатаПлатежнойКартой КАК ДокументОплатаПлатежнойКартой
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			омг_Предоплаты.РегистраторЗаписи КАК РегистраторЗаписи,
+			омг_Предоплаты.ОплатаПринятаБыла КАК ОплатаПринятаБыла,
+			омг_Предоплаты.InvoiceId КАК InvoiceId
+		ИЗ
+			РегистрСведений.омг_Предоплаты КАК омг_Предоплаты
+		ГДЕ
+			омг_Предоплаты.ОплатаПринятаБыла) КАК ВложенныйЗапрос
+		ПО ДокументОплатаПлатежнойКартой.Ссылка = ВложенныйЗапрос.РегистраторЗаписи</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_НомерТранзакцииТерминала</dcssch:dataPath>
+					<dcssch:field>омг_НомерТранзакцииТерминала</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ответственный</dcssch:dataPath>
+					<dcssch:field>Ответственный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номер</dcssch:dataPath>
+					<dcssch:field>Номер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СуммаДокумента</dcssch:dataPath>
+					<dcssch:field>СуммаДокумента</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Проведен</dcssch:dataPath>
+					<dcssch:field>Проведен</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Филиал</dcssch:dataPath>
+					<dcssch:field>Филиал</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СтатьяДвиженияДенежныхСредств</dcssch:dataPath>
+					<dcssch:field>СтатьяДвиженияДенежныхСредств</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Дата</dcssch:dataPath>
+					<dcssch:field>Дата</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаПечатиЧека</dcssch:dataPath>
+					<dcssch:field>ДатаПечатиЧека</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Клиент</dcssch:dataPath>
+					<dcssch:field>Клиент</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Организация</dcssch:dataPath>
+					<dcssch:field>Организация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерЧекаККМ</dcssch:dataPath>
+					<dcssch:field>НомерЧекаККМ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерЧекаЭТ</dcssch:dataPath>
+					<dcssch:field>НомерЧекаЭТ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерКарты</dcssch:dataPath>
+					<dcssch:field>НомерКарты</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПринятоОт</dcssch:dataPath>
+					<dcssch:field>ПринятоОт</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Основание</dcssch:dataPath>
+					<dcssch:field>Основание</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Комментарий</dcssch:dataPath>
+					<dcssch:field>Комментарий</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Сделка</dcssch:dataPath>
+					<dcssch:field>Сделка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЭквайринговыйТерминал</dcssch:dataPath>
+					<dcssch:field>ЭквайринговыйТерминал</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДополнительныйРеквизит</dcssch:dataPath>
+					<dcssch:field>ДополнительныйРеквизит</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТелефонЧек</dcssch:dataPath>
+					<dcssch:field>ТелефонЧек</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>АдресEmailЧек</dcssch:dataPath>
+					<dcssch:field>АдресEmailЧек</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДокументОснование</dcssch:dataPath>
+					<dcssch:field>ДокументОснование</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ФискальноеУстройство</dcssch:dataPath>
+					<dcssch:field>ФискальноеУстройство</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СпособРасчетаЧекаККМ</dcssch:dataPath>
+					<dcssch:field>СпособРасчетаЧекаККМ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СсылочныйНомер</dcssch:dataPath>
+					<dcssch:field>СсылочныйНомер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПринятоОтАдрес</dcssch:dataPath>
+					<dcssch:field>ПринятоОтАдрес</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПринятоОтИНН</dcssch:dataPath>
+					<dcssch:field>ПринятоОтИНН</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерПредписания</dcssch:dataPath>
+					<dcssch:field>НомерПредписания</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НеприменениеККТ</dcssch:dataPath>
+					<dcssch:field>НеприменениеККТ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТипКоррекции</dcssch:dataPath>
+					<dcssch:field>ТипКоррекции</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОписаниеКоррекции</dcssch:dataPath>
+					<dcssch:field>ОписаниеКоррекции</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ИспользуемыйТерминал</dcssch:dataPath>
+					<dcssch:field>омг_ИспользуемыйТерминал</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаКоррекции</dcssch:dataPath>
+					<dcssch:field>ДатаКоррекции</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Коррекция</dcssch:dataPath>
+					<dcssch:field>Коррекция</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомераЧековСторно</dcssch:dataPath>
+					<dcssch:field>НомераЧековСторно</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОперационныйРеквизит</dcssch:dataPath>
+					<dcssch:field>ОперационныйРеквизит</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ВидОплаты</dcssch:dataPath>
+					<dcssch:field>омг_ВидОплаты</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИспользоватьУчетаПоЗаявкам</dcssch:dataPath>
+					<dcssch:field>ИспользоватьУчетаПоЗаявкам</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldNestedDataSet">
+					<dcssch:dataPath>КредитныеДанные</dcssch:dataPath>
+					<dcssch:field>КредитныеДанные</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МоментВремени</dcssch:dataPath>
+					<dcssch:field>МоментВремени</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОплатаПринятаБыла</dcssch:dataPath>
+					<dcssch:field>ОплатаПринятаБыла</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>InvoiceId</dcssch:dataPath>
+					<dcssch:field>InvoiceId</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>РегистраторЗаписи</dcssch:dataPath>
+					<dcssch:field>РегистраторЗаписи</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Оплачено</dcssch:dataPath>
+					<dcssch:field>Оплачено</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оплачено</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
 				<MainTable>Document.ОплатаПлатежнойКартой</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -148,6 +426,33 @@
 				</ListSettings>
 			</Settings>
 		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>Оплачено</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Список.Оплачено</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>✔</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
 	</Attributes>
 	<CommandInterface>
 		<CommandBar>

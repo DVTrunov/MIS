@@ -1,0 +1,58 @@
+﻿ <!DOCTYPE html>
+		<html>
+		<head>
+		    <meta charset='utf-8'>
+		    <script src='{ПутьКСкрипутЭмодзи}'></script>
+		    <style>
+		        /* Базовые стили */
+		        html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #ffffff; font-family: 'Segoe UI', Arial, sans-serif; }
+		        .container { padding: 10px; height: 100%; box-sizing: border-box; }
+		        
+		        /* Стили окна просмотра (без рамок фокуса, так как редактировать нельзя) */
+		        #viewer { 
+		            width: 100%; height: 100%; 
+		            /* Можно убрать рамку (border: none;), если хочешь, чтобы текст сливался с фоном 1С */
+		            border: 1px solid #c0c0c0; border-radius: 4px; 
+		            padding: 10px; font-size: 16px; overflow-y: auto; box-sizing: border-box;
+		            white-space: pre-wrap; word-wrap: break-word; 
+		            background-color: #fafafa; /* Слегка сероватый фон подскажет пользователю, что поле только для чтения */
+		            color: #333;
+		        }
+		        
+		        /* Стили для картинок twemoji */
+		        img.emoji { height: 1.2em; width: 1.2em; margin: 0 .05em 0 .1em; vertical-align: -0.1em; }
+		    </style>
+		</head>
+		<body>
+		    <div class='container'>
+		        <!-- Блок без contenteditable - текст нельзя изменить -->
+		        <div id='viewer'></div>
+		    </div>
+		    
+		    <script>
+		        var viewer = document.getElementById('viewer');
+		
+		        // Единственная необходимая функция - прием текста из 1С
+        function setText(text) {
+            if (!text) {
+                viewer.innerHTML = ''; 
+                return; 
+            } 
+            
+            // Заменяем переносы строк 1С на HTML-переносы 
+            var formattedText = text.replace(/(?:\r\n|\r|\n)/g, '<br>'); 
+            
+            // --- НОВАЯ ЛОГИКА: Форматирование жирного текста (WhatsApp style) ---
+            // Регулярное выражение /\*(.*?)\*/g ищет текст между звездочками
+            // $1 подставляет найденный текст внутрь тега <strong>
+            formattedText = formattedText.replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+            // ------------------------------------------------------------------
+            
+            viewer.innerHTML = formattedText;
+            
+            // Натравливаем парсер, чтобы он нашел юникод-смайлы и превратил их в картинки 
+            twemoji.parse(viewer); 
+        } 
+		    </script>
+		</body>
+		</html>

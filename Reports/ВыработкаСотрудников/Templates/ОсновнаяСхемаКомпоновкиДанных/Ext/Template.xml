@@ -209,6 +209,9 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>омг_РольПерсонала</dataPath>
 			<field>омг_РольПерсонала</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>омг_СуммаБезНДСОборот</dataPath>
@@ -220,29 +223,25 @@
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	ВыработкаСотрудниковОбороты.Сотрудник,
-	ВыработкаСотрудниковОбороты.Номенклатура,
-	ВыработкаСотрудниковОбороты.ХарактеристикаНоменклатуры,
-	ВыработкаСотрудниковОбороты.Номенклатура.КатегорияВыработки,
+	ВыработкаСотрудниковОбороты.Сотрудник КАК Сотрудник,
+	ВыработкаСотрудниковОбороты.Номенклатура КАК Номенклатура,
+	ВыработкаСотрудниковОбороты.ХарактеристикаНоменклатуры КАК ХарактеристикаНоменклатуры,
+	ВыработкаСотрудниковОбороты.Номенклатура.КатегорияВыработки КАК НоменклатураКатегорияВыработки,
 	ВыработкаСотрудниковОбороты.СуммаОборот КАК Сумма,
 	ВыработкаСотрудниковОбороты.СуммаБезСкидокОборот КАК СуммаБезСкидок,
-	////////////////////////////////////////////
-	// ОМГ +
 	ВыработкаСотрудниковОбороты.омг_СуммаБезНДСОборот КАК омг_СуммаБезНДСОборот,
-	// ОМГ - 
-	////////////////////////////////////////////
 	ВыработкаСотрудниковОбороты.КоличествоОборот КАК Количество,
 	ВыработкаСотрудниковОбороты.ПродолжительностьОборот КАК Продолжительность,
 	ВыработкаСотрудниковОбороты.ПродолжительностьОборот КАК ПродолжительностьЧасыМинуты,
-	ВыработкаСотрудниковОбороты.Регистратор,
+	ВыработкаСотрудниковОбороты.Регистратор КАК Регистратор,
 	ДОБАВИТЬКДАТЕ(ДОБАВИТЬКДАТЕ(ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0), ЧАС, ЧАС(ВыработкаСотрудниковОбороты.ПериодСекунда)), МИНУТА, МИНУТА(ВыработкаСотрудниковОбороты.ПериодСекунда)) КАК ПериодВремя,
-	ВыработкаСотрудниковОбороты.ПериодСекунда,
-	ВыработкаСотрудниковОбороты.ПериодДень,
-	ВыработкаСотрудниковОбороты.ПериодМесяц,
-	ВыработкаСотрудниковОбороты.ПериодКвартал,
-	ВыработкаСотрудниковОбороты.ПериодГод,
-	ВыработкаСотрудниковОбороты.ТрудоваяРоль,
-	ВыработкаСотрудниковОбороты.Филиал,
+	ВыработкаСотрудниковОбороты.ПериодСекунда КАК ПериодСекунда,
+	ВыработкаСотрудниковОбороты.ПериодДень КАК ПериодДень,
+	ВыработкаСотрудниковОбороты.ПериодМесяц КАК ПериодМесяц,
+	ВыработкаСотрудниковОбороты.ПериодКвартал КАК ПериодКвартал,
+	ВыработкаСотрудниковОбороты.ПериодГод КАК ПериодГод,
+	ВыработкаСотрудниковОбороты.ТрудоваяРоль КАК ТрудоваяРоль,
+	ВыработкаСотрудниковОбороты.Филиал КАК Филиал,
 	ВЫБОР
 		КОГДА ВыработкаСотрудниковОбороты.Номенклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Услуга)
 			ТОГДА ВЫБОР
@@ -252,7 +251,8 @@
 				КОНЕЦ * ВыработкаСотрудниковОбороты.КоличествоОборот
 		ИНАЧЕ 0
 	КОНЕЦ КАК ПродолжительностьНормативная,
-	ВыработкаСотрудниковОбороты.ТипВыработки
+	ВыработкаСотрудниковОбороты.ТипВыработки КАК ТипВыработки,
+	ВыработкаСотрудниковОбороты.омг_РольПерсонала КАК омг_РольПерсонала
 ИЗ
 	РегистрНакопления.ВыработкаСотрудников.Обороты(, , АВТО, ) КАК ВыработкаСотрудниковОбороты
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ОсновныеУслугиСотрудников КАК ОсновныеУслугиСотрудников
@@ -378,7 +378,7 @@
 				<v8:content>Выработка по сотрудникам и номенклатуре</v8:content>
 			</v8:item>
 		</dcsset:presentation>
-		<dcsset:settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Сумма</dcsset:field>
@@ -517,7 +517,7 @@
 				<v8:content>Доля в сумме выработки</v8:content>
 			</v8:item>
 		</dcsset:presentation>
-		<dcsset:settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Сумма</dcsset:field>
@@ -595,7 +595,7 @@
 				<v8:content>Помесячнная выработка</v8:content>
 			</v8:item>
 		</dcsset:presentation>
-		<dcsset:settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Номенклатура</dcsset:field>
@@ -715,7 +715,7 @@
 				<v8:content>По дополнительным формам участия</v8:content>
 			</v8:item>
 		</dcsset:presentation>
-		<dcsset:settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Количество</dcsset:field>

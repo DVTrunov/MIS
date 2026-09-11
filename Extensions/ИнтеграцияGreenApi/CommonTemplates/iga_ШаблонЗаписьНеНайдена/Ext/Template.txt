@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ошибка / Қате</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #eef2f6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .header {
+            background-color: #1a426b;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+        .lang-btn {
+            background: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 5px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            background: white;
+            color: #1a426b;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 40px 30px;
+            box-sizing: border-box;
+            text-align: center; /* Выравниваем текст по центру для страницы ошибки */
+        }
+        
+        /* Стили для иконки ошибки */
+        .error-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        h2 { margin-top: 0; font-size: 24px; color: #1a426b; }
+        .description { margin-bottom: 30px; font-size: 16px; color: #555; line-height: 1.6; }
+        
+        /* Кнопка связи с клиникой */
+        .contact-btn {
+            display: inline-block;
+            background-color: #25D366; /* Цвет WhatsApp */
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: opacity 0.2s;
+        }
+        .contact-btn:hover { opacity: 0.85; }
+
+        /* --- Стили для переключения языков --- */
+        .lang-content { display: none; }
+        .lang-content.active-lang { display: block; }
+
+        @media (max-width: 600px) {
+            .container { margin: 20px 10px; padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <button id="btn-kk" class="lang-btn active" onclick="switchLang('kk')">Қазақша</button>
+        <button id="btn-ru" class="lang-btn" onclick="switchLang('ru')">Русский</button>
+    </div>
+
+    <div class="container">
+        <div class="error-icon">️♂️</div>
+        
+        <div id="content-ru" class="lang-content">
+            <h2>Запись не найдена</h2>
+            <div class="description">
+                К сожалению, мы не смогли найти информацию по этой ссылке.<br>
+                Возможно, запись была отменена, ссылка устарела, либо в ней допущена ошибка.
+            </div>
+            <a href="%СсылкаWhatsApp%" class="contact-btn">Связаться с регистратурой</a>
+        </div>
+
+        <div id="content-kk" class="lang-content active-lang">
+            <h2>Жазба табылмады</h2>
+            <div class="description">
+                Өкінішке орай, бұл сілтеме бойынша ақпарат таба алмадық.<br>
+                Мүмкін, жазба тоқтатылған, сілтеме ескірген немесе онда қате бар шығар.
+            </div>
+            <a href="%СсылкаWhatsApp%" class="contact-btn">Тіркеу орнымен байланысу</a>
+        </div>
+
+    </div>
+
+    <script>
+        // Функция переключения языков
+        function switchLang(lang) {
+            document.getElementById('btn-ru').classList.remove('active');
+            document.getElementById('btn-kk').classList.remove('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+
+            document.getElementById('content-ru').classList.remove('active-lang');
+            document.getElementById('content-kk').classList.remove('active-lang');
+            document.getElementById('content-' + lang).classList.add('active-lang');
+        }
+    </script>
+</body>
+</html>

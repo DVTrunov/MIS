@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подтверждение записи / Жазбаны растау</title>
+    <style>
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #eef2f6; margin: 0; padding: 0; color: #333; }
+        .header { background-color: #1a426b; padding: 15px 20px; display: flex; justify-content: flex-end; gap: 10px; }
+        .lang-btn { background: transparent; color: white; border: 1px solid white; padding: 5px 15px; border-radius: 4px; cursor: pointer; font-size: 14px; }
+        .lang-btn.active { background: white; color: #1a426b; }
+        .container { max-width: 800px; margin: 20px auto; background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); padding: 30px; box-sizing: border-box; }
+        h2 { margin-top: 0; font-size: 22px; color: #1a426b; }
+        .subtitle { margin-bottom: 20px; font-size: 16px; }
+        
+        .appointment-card { display: flex; background-color: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 15px; overflow: hidden; }
+        .appointment-details { flex-grow: 1; padding: 20px; }
+        .appointment-title { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+        .appointment-info { color: #555; font-size: 14px; line-height: 1.5; }
+        
+        /* --- Новые стили для кнопок действий --- */
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 15px;
+            border-left: 1px solid #e0e0e0;
+            background-color: #f1f3f5;
+            gap: 10px;
+            min-width: 160px;
+        }
+        .btn-action {
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            font-size: 14px;
+            transition: all 0.2s;
+            border: none;
+        }
+        .btn-confirm { background-color: #25D366; color: white; }
+        .btn-confirm:hover { background-color: #20b858; }
+        .btn-cancel { background-color: transparent; border: 1px solid #dc3545; color: #dc3545; }
+        .btn-cancel:hover { background-color: #dc3545; color: white; }
+		.btn-reschedule { background-color: #007bff; color: white; }
+		.btn-reschedule:hover { background-color: #0056b3; }
+
+        .btn-action:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .footer-info { margin-top: 30px; font-size: 15px; line-height: 1.6; }
+        .lang-content { display: none; }
+        .lang-content.active-lang { display: block; }
+
+        @media (max-width: 600px) {
+            .container { margin: 10px; padding: 20px; }
+            .appointment-card { flex-direction: column; }
+            .action-buttons { border-left: none; border-top: 1px solid #e0e0e0; flex-direction: row; }
+            .btn-action { flex: 1; }
+        }
+        /* --- Стили для статусов вместо кнопок --- */
+		.status-msg {
+		    padding: 15px;
+		    font-weight: bold;
+		    text-align: center;
+		    border-left: 1px solid #e0e0e0;
+		    background-color: #f1f3f5;
+		    min-width: 160px;
+		    display: flex;
+		    align-items: center;
+		    justify-content: center;
+		}
+		.status-msg.success { color: #25D366; }
+		.status-msg.cancel { color: #dc3545; }
+		/* Добавить к существующим статусам */
+		.status-msg.reschedule { color: #007bff; }        
+
+		@media (max-width: 600px) {
+		    .status-msg { border-left: none; border-top: 1px solid #e0e0e0; }
+		}
+		/* --- Стили для кастомного модального окна --- */
+		.modal-overlay {
+		    display: none; /* Скрыто по умолчанию */
+		    position: fixed;
+		    top: 0; left: 0; width: 100%; height: 100%;
+		    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+		    z-index: 1000; /* Поверх всего */
+		    justify-content: center;
+		    align-items: center;
+		    opacity: 0;
+		    transition: opacity 0.3s ease;
+		}
+		.modal-overlay.show {
+		    opacity: 1;
+		}
+		.modal-box {
+		    background: white;
+		    padding: 25px;
+		    border-radius: 12px;
+		    max-width: 90%;
+		    width: 320px;
+		    text-align: center;
+		    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+		    transform: translateY(-20px);
+		    transition: transform 0.3s ease;
+		}
+		.modal-overlay.show .modal-box {
+		    transform: translateY(0);
+		}
+		.modal-text {
+		    font-size: 16px;
+		    margin-bottom: 25px;
+		    color: #333;
+		    line-height: 1.4;
+		}
+		.modal-buttons {
+		    display: flex;
+		    gap: 10px;
+		}
+		.btn-modal {
+		    flex: 1;
+		    padding: 12px;
+		    border-radius: 8px;
+		    font-weight: bold;
+		    cursor: pointer;
+		    border: none;
+		    font-size: 15px;
+		}
+		.btn-modal-yes { background-color: #25D366; color: white; }
+		.btn-modal-no { background-color: #f1f3f5; color: #333; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <button id="btn-kk" class="lang-btn active" onclick="switchLang('kk')">Қазақша</button>
+        <button id="btn-ru" class="lang-btn" onclick="switchLang('ru')">Русский</button>
+    </div>
+
+    <div class="container">
+        
+        <div id="content-ru" class="lang-content">
+            <h2>Подтвердите, пожалуйста, запись</h2>
+            <div class="subtitle">Ожидают подтверждения:</div>
+            %СписокУслугHTML_RU%
+            <div class="footer-info"> Адрес: %АдресКлиникиRU%</div>
+        </div>
+
+        <div id="content-kk" class="lang-content active-lang">
+            <h2>Жазбаңызды растауыңызды сұраймыз</h2>
+            <div class="subtitle">Растауды күтуде:</div>
+            %СписокУслугHTML_KK%
+            <div class="footer-info"> Мекенжай: %АдресКлиникиKK%</div>
+        </div>
+
+    </div>
+
+    <script>
+        // Функция переключения языков остается без изменений
+		function switchLang(lang) {
+		    document.getElementById('btn-ru').classList.remove('active');
+		    document.getElementById('btn-kk').classList.remove('active');
+		    document.getElementById('btn-' + lang).classList.add('active');
+		    document.getElementById('content-ru').classList.remove('active-lang');
+		    document.getElementById('content-kk').classList.remove('active-lang');
+		    document.getElementById('content-' + lang).classList.add('active-lang');
+		}
+
+		// Глобальная переменная для хранения данных клика
+		let pendingAction = null;
+
+		// 1. Функция, которая вызывается по клику на кнопку в карточке
+		function sendDecision(btnElement, method, id, num, promptText) {
+		    // Сохраняем все данные, чтобы использовать их после подтверждения
+		    pendingAction = { btnElement, method, id, num };
+		    
+		    // Подставляем текст из 1С в модальное окно
+		    document.getElementById('modal-text').innerText = promptText;
+		    
+		    // Показываем окно с анимацией
+		    let modal = document.getElementById('custom-modal');
+		    modal.style.display = 'flex';
+		    // Небольшая задержка для срабатывания CSS-анимации
+		    setTimeout(() => modal.classList.add('show'), 10);
+		}
+
+		// 2. Функция отмены (скрывает окно)
+		function closeModal() {
+		    let modal = document.getElementById('custom-modal');
+		    modal.classList.remove('show');
+		    setTimeout(() => { 
+		        modal.style.display = 'none'; 
+		        pendingAction = null; 
+		    }, 300); // 300мс - время анимации
+		}
+
+		// 3. Функция, которая делает реальный запрос в 1С (вызывается из модального окна)
+		async function executeDecision() {
+		    // Скрываем окно
+		    closeModal();
+		    
+		    // Если данных нет, выходим
+		    if (!pendingAction) return;
+
+		    let { btnElement, method, id, num } = pendingAction;
+
+		    let actionsRu = document.getElementById('actions-ru-' + num);
+		    let actionsKk = document.getElementById('actions-kk-' + num);
+		    
+		    if (actionsRu) actionsRu.querySelectorAll('.btn-action').forEach(b => b.disabled = true);
+		    if (actionsKk) actionsKk.querySelectorAll('.btn-action').forEach(b => b.disabled = true);
+		    
+		    let originalText = btnElement.innerText;
+		    btnElement.innerText = "⏳...";
+
+		    try {
+		        // !!! НЕ ЗАБУДЬТЕ УКАЗАТЬ ИМЯ ВАШЕЙ БАЗЫ В URL !!!
+		        let response = await fetch('/ИмяВашейБазы/hs/api/appointments', {
+		            method: 'POST',
+		            headers: { 'Content-Type': 'application/json' },
+		            body: JSON.stringify({ metod: method, id: id, num: num })
+		        });
+
+		        if (response.ok) {
+		            if (actionsRu) actionsRu.style.display = 'none';
+		            if (actionsKk) actionsKk.style.display = 'none';
+		            
+		            if (method === 'confirm') {
+		                document.getElementById('status-success-ru-' + num).style.display = 'flex';
+		                document.getElementById('status-success-kk-' + num).style.display = 'flex';
+		            } else if (method === 'cancel') {
+		                document.getElementById('status-cancel-ru-' + num).style.display = 'flex';
+		                document.getElementById('status-cancel-kk-' + num).style.display = 'flex';
+		            } else if (method === 'reschedule') {
+		                document.getElementById('status-reschedule-ru-' + num).style.display = 'flex';
+		                document.getElementById('status-reschedule-kk-' + num).style.display = 'flex';
+		            }
+		        } else {
+		            alert("Ошибка на сервере"); // Это оставим, системный алерт для ошибки не так страшен
+		            btnElement.innerText = originalText;
+		            if (actionsRu) actionsRu.querySelectorAll('.btn-action').forEach(b => b.disabled = false);
+		            if (actionsKk) actionsKk.querySelectorAll('.btn-action').forEach(b => b.disabled = false);
+		        }
+		    } catch (error) {
+		        alert("Ошибка соединения. Проверьте интернет.");
+		        btnElement.innerText = originalText;
+		        if (actionsRu) actionsRu.querySelectorAll('.btn-action').forEach(b => b.disabled = false);
+		        if (actionsKk) actionsKk.querySelectorAll('.btn-action').forEach(b => b.disabled = false);
+		    }
+		}
+    </script>
+    <!-- Кастомное модальное окно -->
+	<div id="custom-modal" class="modal-overlay">
+	    <div class="modal-box">
+	        <div id="modal-text" class="modal-text">Вы уверены?</div>
+	        <div class="modal-buttons">
+	            <!-- Сделали текст кнопок двуязычным, чтобы не усложнять JS -->
+	            <button class="btn-modal btn-modal-no" onclick="closeModal()">Отмена / Жоқ</button>
+	            <button class="btn-modal btn-modal-yes" onclick="executeDecision()">Да / Иә</button>
+	        </div>
+	    </div>
+	</div>
+</body>
+</html>

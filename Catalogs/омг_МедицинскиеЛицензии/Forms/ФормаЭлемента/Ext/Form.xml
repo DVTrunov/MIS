@@ -1,288 +1,104 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
-	<WindowOpeningMode>LockOwner</WindowOpeningMode>
-	<Group>Vertical</Group>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
-		<Event name="OnOpen">ПриОткрытии</Event>
-		<Event name="BeforeWrite">ПередЗаписью</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
 		<InputField name="Код" id="1">
 			<DataPath>Объект.Code</DataPath>
+			<Visible>false</Visible>
 			<EditMode>EnterOnInput</EditMode>
-			<AutoEditMode>true</AutoEditMode>
 			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
 			<ContextMenu name="КодКонтекстноеМеню" id="2"/>
 			<ExtendedTooltip name="КодРасширеннаяПодсказка" id="3"/>
 		</InputField>
-		<UsualGroup name="Общая" id="42">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Общая</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Общая</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>AlwaysHorizontal</Group>
-			<Representation>WeakSeparation</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ОбщаяРасширеннаяПодсказка" id="43"/>
-			<ChildItems>
-				<UsualGroup name="ГруппаФилиалМЦ" id="38">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа филиал МЦ</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа филиал МЦ</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>HorizontalIfPossible</Group>
-					<Representation>WeakSeparation</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаФилиалМЦРасширеннаяПодсказка" id="39"/>
-					<ChildItems>
-						<InputField name="Филиал" id="22">
-							<DataPath>Объект.Филиал</DataPath>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="ФилиалКонтекстноеМеню" id="23"/>
-							<ExtendedTooltip name="ФилиалРасширеннаяПодсказка" id="24"/>
-						</InputField>
-						<InputField name="МедицинскийЦентр" id="32">
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ChoiceParameterLinks>
-								<xr:Link>
-									<xr:Name>Отбор.Организация</xr:Name>
-									<xr:DataPath xsi:type="xs:string">Объект.Филиал</xr:DataPath>
-									<xr:ValueChange>DontChange</xr:ValueChange>
-								</xr:Link>
-							</ChoiceParameterLinks>
-							<ContextMenu name="МедицинскийЦентрКонтекстноеМеню" id="33"/>
-							<ExtendedTooltip name="МедицинскийЦентрРасширеннаяПодсказка" id="34"/>
-							<Events>
-								<Event name="OnChange">МедицинскийЦентрПриИзменении</Event>
-							</Events>
-						</InputField>
-						<InputField name="Наименование" id="4">
-							<DataPath>Объект.Description</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<AutoEditMode>true</AutoEditMode>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
-							<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
-						</InputField>
-						<InputField name="ДатаВыдачиЛицензии" id="78">
-							<DataPath>Объект.ДатаВыдачиЛицензии</DataPath>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="ДатаВыдачиЛицензииКонтекстноеМеню" id="79"/>
-							<ExtendedTooltip name="ДатаВыдачиЛицензииРасширеннаяПодсказка" id="80"/>
-						</InputField>
-					</ChildItems>
-				</UsualGroup>
-				<UsualGroup name="ГруппаЛицензии" id="40">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа лицензии</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа лицензии</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>HorizontalIfPossible</Group>
-					<Representation>WeakSeparation</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаЛицензииРасширеннаяПодсказка" id="41"/>
-					<ChildItems>
-						<InputField name="НомерЛицензии" id="19">
-							<DataPath>Объект.НомерЛицензии</DataPath>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="НомерЛицензииКонтекстноеМеню" id="20"/>
-							<ExtendedTooltip name="НомерЛицензииРасширеннаяПодсказка" id="21"/>
-						</InputField>
-						<UsualGroup name="ГруппаНомерИСрок" id="30">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа номер и срок</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа номер и срок</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>AlwaysHorizontal</Group>
-							<Representation>WeakSeparation</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаНомерИСрокРасширеннаяПодсказка" id="31"/>
-							<ChildItems>
-								<InputField name="ДействуетДо" id="27">
-									<DataPath>Объект.ДействуетДо</DataPath>
-									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-									<ContextMenu name="ДействуетДоКонтекстноеМеню" id="28"/>
-									<ExtendedTooltip name="ДействуетДоРасширеннаяПодсказка" id="29"/>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
-						<InputField name="ЛицензируемыйВидДеятельности" id="35">
-							<DataPath>Объект.ЛицензируемыйВидДеятельности</DataPath>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="ЛицензируемыйВидДеятельностиКонтекстноеМеню" id="36"/>
-							<ExtendedTooltip name="ЛицензируемыйВидДеятельностиРасширеннаяПодсказка" id="37"/>
-						</InputField>
-					</ChildItems>
-				</UsualGroup>
-			</ChildItems>
-		</UsualGroup>
-		<UsualGroup name="ГруппаТБ" id="81">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Список приложений</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа ТБ</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>HorizontalIfPossible</Group>
-			<Representation>WeakSeparation</Representation>
-			<ExtendedTooltip name="ГруппаТБРасширеннаяПодсказка" id="82"/>
-			<ChildItems>
-				<Table name="СписокПриложений" id="44">
-					<RowSelectionMode>Cell</RowSelectionMode>
-					<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
-					<AutoInsertNewRow>true</AutoInsertNewRow>
-					<EnableStartDrag>true</EnableStartDrag>
-					<EnableDrag>true</EnableDrag>
-					<DataPath>Объект.СписокПриложений</DataPath>
-					<RowFilter xsi:nil="true"/>
-					<ContextMenu name="СписокПриложенийКонтекстноеМеню" id="45"/>
-					<AutoCommandBar name="СписокПриложенийКоманднаяПанель" id="46"/>
-					<ExtendedTooltip name="СписокПриложенийРасширеннаяПодсказка" id="47"/>
-					<SearchStringAddition name="СписокПриложенийСтрокаПоиска" id="48">
-						<AdditionSource>
-							<Item>СписокПриложений</Item>
-							<Type>SearchStringRepresentation</Type>
-						</AdditionSource>
-						<ContextMenu name="СписокПриложенийСтрокаПоискаКонтекстноеМеню" id="49"/>
-						<ExtendedTooltip name="СписокПриложенийСтрокаПоискаРасширеннаяПодсказка" id="50"/>
-					</SearchStringAddition>
-					<ViewStatusAddition name="СписокПриложенийСостояниеПросмотра" id="51">
-						<AdditionSource>
-							<Item>СписокПриложений</Item>
-							<Type>ViewStatusRepresentation</Type>
-						</AdditionSource>
-						<ContextMenu name="СписокПриложенийСостояниеПросмотраКонтекстноеМеню" id="52"/>
-						<ExtendedTooltip name="СписокПриложенийСостояниеПросмотраРасширеннаяПодсказка" id="53"/>
-					</ViewStatusAddition>
-					<SearchControlAddition name="СписокПриложенийУправлениеПоиском" id="54">
-						<AdditionSource>
-							<Item>СписокПриложений</Item>
-							<Type>SearchControl</Type>
-						</AdditionSource>
-						<ContextMenu name="СписокПриложенийУправлениеПоискомКонтекстноеМеню" id="55"/>
-						<ExtendedTooltip name="СписокПриложенийУправлениеПоискомРасширеннаяПодсказка" id="56"/>
-					</SearchControlAddition>
-					<Events>
-						<Event name="OnStartEdit">СписокПриложенийПриНачалеРедактирования</Event>
-					</Events>
-					<ChildItems>
-						<LabelField name="СписокПриложенийНомерСтроки" id="57">
-							<DataPath>Объект.СписокПриложений.LineNumber</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<AutoEditMode>true</AutoEditMode>
-							<ContextMenu name="СписокПриложенийНомерСтрокиКонтекстноеМеню" id="58"/>
-							<ExtendedTooltip name="СписокПриложенийНомерСтрокиРасширеннаяПодсказка" id="59"/>
-						</LabelField>
-						<InputField name="СписокПриложенийНомерЛицензии" id="60">
-							<DataPath>Объект.СписокПриложений.НомерЛицензии</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<AutoEditMode>true</AutoEditMode>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="СписокПриложенийНомерЛицензииКонтекстноеМеню" id="61"/>
-							<ExtendedTooltip name="СписокПриложенийНомерЛицензииРасширеннаяПодсказка" id="62"/>
-						</InputField>
-						<InputField name="СписокПриложенийДатаВыдачиЛицензии" id="63">
-							<DataPath>Объект.СписокПриложений.ДатаВыдачиЛицензии</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<AutoEditMode>true</AutoEditMode>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="СписокПриложенийДатаВыдачиЛицензииКонтекстноеМеню" id="64"/>
-							<ExtendedTooltip name="СписокПриложенийДатаВыдачиЛицензииРасширеннаяПодсказка" id="65"/>
-						</InputField>
-						<InputField name="СписокПриложенийМедицинскийЦентр" id="66">
-							<DataPath>Объект.СписокПриложений.МедицинскийЦентр</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<AutoEditMode>true</AutoEditMode>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ChoiceParameterLinks>
-								<xr:Link>
-									<xr:Name>Отбор.Организация</xr:Name>
-									<xr:DataPath xsi:type="xs:string">Объект.Филиал</xr:DataPath>
-									<xr:ValueChange>DontChange</xr:ValueChange>
-								</xr:Link>
-							</ChoiceParameterLinks>
-							<ContextMenu name="СписокПриложенийМедицинскийЦентрКонтекстноеМеню" id="67"/>
-							<ExtendedTooltip name="СписокПриложенийМедицинскийЦентрРасширеннаяПодсказка" id="68"/>
-							<Events>
-								<Event name="OnChange">СписокПриложенийМедицинскийЦентрПриИзменении</Event>
-							</Events>
-						</InputField>
-						<InputField name="СписокПриложенийЛицензируемыйВидДеятельности" id="69">
-							<DataPath>Объект.СписокПриложений.ЛицензируемыйВидДеятельности</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<AutoEditMode>true</AutoEditMode>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="СписокПриложенийЛицензируемыйВидДеятельностиКонтекстноеМеню" id="70"/>
-							<ExtendedTooltip name="СписокПриложенийЛицензируемыйВидДеятельностиРасширеннаяПодсказка" id="71"/>
-						</InputField>
-						<InputField name="СписокПриложенийДействуетДо" id="72">
-							<DataPath>Объект.СписокПриложений.ДействуетДо</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<AutoEditMode>true</AutoEditMode>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="СписокПриложенийДействуетДоКонтекстноеМеню" id="73"/>
-							<ExtendedTooltip name="СписокПриложенийДействуетДоРасширеннаяПодсказка" id="74"/>
-						</InputField>
-						<InputField name="СписокПриложенийАдресПроизводственнойБазы" id="75">
-							<DataPath>Объект.СписокПриложений.АдресПроизводственнойБазы</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<AutoEditMode>true</AutoEditMode>
-							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-							<ContextMenu name="СписокПриложенийАдресПроизводственнойБазыКонтекстноеМеню" id="76"/>
-							<ExtendedTooltip name="СписокПриложенийАдресПроизводственнойБазыРасширеннаяПодсказка" id="77"/>
-						</InputField>
-					</ChildItems>
-				</Table>
-			</ChildItems>
-		</UsualGroup>
-		<InputField name="ВыдавшийЛицензиюОрган" id="16">
-			<DataPath>Объект.ВыдавшийЛицензиюОрган</DataPath>
-			<HorizontalStretch>true</HorizontalStretch>
-			<MultiLine>true</MultiLine>
+		<InputField name="Наименование" id="4">
+			<DataPath>Объект.Description</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<EditMode>EnterOnInput</EditMode>
 			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
-			<ContextMenu name="ВыдавшийЛицензиюОрганКонтекстноеМеню" id="17"/>
-			<ExtendedTooltip name="ВыдавшийЛицензиюОрганРасширеннаяПодсказка" id="18"/>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<InputField name="НомерЛицензии" id="7">
+			<DataPath>Объект.НомерЛицензии</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="НомерЛицензииКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="НомерЛицензииРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<InputField name="ДатаВыдачи" id="10">
+			<DataPath>Объект.ДатаВыдачи</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="ДатаВыдачиКонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="ДатаВыдачиРасширеннаяПодсказка" id="12"/>
+		</InputField>
+		<InputField name="Организация" id="13">
+			<DataPath>Объект.Организация</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="ОрганизацияКонтекстноеМеню" id="14"/>
+			<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="15"/>
+		</InputField>
+		<InputField name="ЛицензирующийОрган" id="16">
+			<DataPath>Объект.ЛицензирующийОрган</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="ЛицензирующийОрганКонтекстноеМеню" id="17"/>
+			<ExtendedTooltip name="ЛицензирующийОрганРасширеннаяПодсказка" id="18"/>
+		</InputField>
+		<UsualGroup name="ГруппаСрок" id="31">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа срок</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа срок</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСрокРасширеннаяПодсказка" id="32"/>
+			<ChildItems>
+				<CheckBoxField name="Бессрочная" id="19">
+					<DataPath>Объект.Бессрочная</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="БессрочнаяКонтекстноеМеню" id="20"/>
+					<ExtendedTooltip name="БессрочнаяРасширеннаяПодсказка" id="21"/>
+					<Events>
+						<Event name="OnChange">БессрочнаяПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<InputField name="ДатаОкончания" id="22">
+					<DataPath>Объект.ДатаОкончания</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ДатаОкончанияКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="ДатаОкончанияРасширеннаяПодсказка" id="24"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Состояние" id="25">
+			<DataPath>Объект.Состояние</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="СостояниеКонтекстноеМеню" id="26"/>
+			<ExtendedTooltip name="СостояниеРасширеннаяПодсказка" id="27"/>
+		</InputField>
+		<InputField name="Комментарий" id="28">
+			<DataPath>Объект.Комментарий</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="29"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="30"/>
 		</InputField>
 	</ChildItems>
 	<Attributes>

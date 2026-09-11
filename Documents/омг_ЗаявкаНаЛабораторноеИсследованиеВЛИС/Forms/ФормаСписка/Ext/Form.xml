@@ -1,7 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
-	<WindowOpeningMode>DontBlock</WindowOpeningMode>
-	<Group>Vertical</Group>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
 			<Button name="ФормаНайтиПоШтрихкоду" id="49">
@@ -14,6 +12,7 @@
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="ExternalEvent">ВнешнееСобытие</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="СписокКомпоновщикНастроекПользовательскиеНастройки" id="1">
@@ -25,19 +24,18 @@
 			</Title>
 			<VerticalStretch>false</VerticalStretch>
 			<Group>Vertical</Group>
-			<Representation>WeakSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="СписокКомпоновщикНастроекПользовательскиеНастройкиРасширеннаяПодсказка" id="2"/>
 		</UsualGroup>
 		<Table name="Список" id="3">
 			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
 			<DefaultItem>true</DefaultItem>
-			<RowSelectionMode>Cell</RowSelectionMode>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
 			<InitialTreeView>ExpandTopLevel</InitialTreeView>
 			<EnableStartDrag>true</EnableStartDrag>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
-			<ShowCommandBar>auto</ShowCommandBar>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -54,7 +52,9 @@
 			<UserSettingsGroup>СписокКомпоновщикНастроекПользовательскиеНастройки</UserSettingsGroup>
 			<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
 			<ContextMenu name="СписокКонтекстноеМеню" id="4"/>
-			<AutoCommandBar name="СписокКоманднаяПанель" id="5"/>
+			<AutoCommandBar name="СписокКоманднаяПанель" id="5">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
 			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="6"/>
 			<SearchStringAddition name="СписокСтрокаПоиска" id="7">
 				<AdditionSource>
@@ -112,6 +112,7 @@
 				</InputField>
 				<CheckBoxField name="Выполнена" id="54">
 					<DataPath>Список.Выполнена</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ВыполненаКонтекстноеМеню" id="55"/>
 					<ExtendedTooltip name="ВыполненаРасширеннаяПодсказка" id="56"/>
 				</CheckBoxField>
@@ -150,12 +151,6 @@
 					<ContextMenu name="СсылкаКонтекстноеМеню" id="52"/>
 					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="53"/>
 				</LabelField>
-				<CheckBoxField name="ЕстьОшибка" id="95">
-					<DataPath>Список.ЕстьОшибка</DataPath>
-					<Visible>false</Visible>
-					<ContextMenu name="ЕстьОшибкаКонтекстноеМеню" id="96"/>
-					<ExtendedTooltip name="ЕстьОшибкаРасширеннаяПодсказка" id="97"/>
-				</CheckBoxField>
 			</ChildItems>
 		</Table>
 	</ChildItems>
@@ -165,12 +160,9 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
-			<UseAlways>
-				<Field>Список.ЕстьОшибка</Field>
-			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
+				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	Документомг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Ссылка КАК Ссылка,
 	Документомг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.ПометкаУдаления КАК ПометкаУдаления,
@@ -318,20 +310,11 @@
 		Детали КАК Детали
 	) КАК Журнал,
 	Документомг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.МоментВремени КАК МоментВремени,
-	НЕ омг_РезультатыОбменаССервисами.Документ ЕСТЬ NULL КАК ПроблемаСоСтатусом,
-	НЕ ОшибкиВРегистре.Заявка ЕСТЬ NULL КАК ЕстьОшибка
-	ИЗ
+	НЕ омг_РезультатыОбменаССервисами.Документ ЕСТЬ NULL КАК ПроблемаСоСтатусом
+ИЗ
 	Документ.омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС КАК Документомг_ЗаявкаНаЛабораторноеИсследованиеВЛИС
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.омг_РезультатыОбменаССервисами КАК омг_РезультатыОбменаССервисами
-		ПО (омг_РезультатыОбменаССервисами.Документ = Документомг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Ссылка)
-        
-ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ РАЗЛИЧНЫЕ
-		омг_ОшибкиОтправкиЗаявокЛИС.Заявка КАК Заявка
-	ИЗ
-		РегистрСведений.омг_ОшибкиОтправкиЗаявокЛИС КАК омг_ОшибкиОтправкиЗаявокЛИС
-    // ГДЕ омг_ОшибкиОтправкиЗаявокЛИС.Архивная = ЛОЖЬ // (если нужно отсекать архивные)
-	) КАК ОшибкиВРегистре
-	ПО Документомг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Ссылка = ОшибкиВРегистре.Заявка</QueryText>
+		ПО омг_РезультатыОбменаССервисами.Документ = Документомг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Ссылка</QueryText>
 				<Field xsi:type="dcssch:DataSetFieldField">
 					<dcssch:dataPath>Чеки.Ссылка</dcssch:dataPath>
 					<dcssch:field>Чеки.Ссылка</dcssch:field>
@@ -886,24 +869,6 @@
 						</v8:item>
 					</dcssch:title>
 				</Field>
-				<Field xsi:type="dcssch:DataSetFieldField">
-					<dcssch:dataPath>ИсходнаяЗаявка</dcssch:dataPath>
-					<dcssch:field>ИсходнаяЗаявка</dcssch:field>
-				</Field>
-				<Field xsi:type="dcssch:DataSetFieldField">
-					<dcssch:dataPath>ЕстьОшибка</dcssch:dataPath>
-					<dcssch:field>ЕстьОшибка</dcssch:field>
-					<dcssch:title xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Есть ошибка</v8:content>
-						</v8:item>
-					</dcssch:title>
-				</Field>
-				<Field xsi:type="dcssch:DataSetFieldField">
-					<dcssch:dataPath>Заявка</dcssch:dataPath>
-					<dcssch:field>Заявка</dcssch:field>
-				</Field>
 				<MainTable>Document.омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -923,62 +888,6 @@
 				</ListSettings>
 			</Settings>
 		</Attribute>
-		<ConditionalAppearance>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>Список</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Список.Статус</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.омг_СтатусыЗаякиНаЛабИсследованиеВЛИС.ОтклоненоЛИС</dcsset:right>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Список.ЕстьОшибка</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ЦветФона</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">style:NegativeTextColor</dcscor:value>
-					</dcscor:item>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ЦветТекста</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">style:FieldSelectedTextColor</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>Список</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Список.ЕстьОшибка</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Список.Статус</dcsset:left>
-						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
-						<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.омг_СтатусыЗаякиНаЛабИсследованиеВЛИС.ОтклоненоЛИС</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ЦветФона</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">web:Yellow</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
 		<Command name="НайтиПоШтрихкоду" id="1">

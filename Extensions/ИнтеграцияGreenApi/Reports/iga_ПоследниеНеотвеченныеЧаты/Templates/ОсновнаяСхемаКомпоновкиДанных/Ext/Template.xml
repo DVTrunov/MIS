@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Чат</dataPath>
+			<field>Чат</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаПоследнегоСообщения</dataPath>
+			<field>ДатаПоследнегоСообщения</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата последнего сообщения</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаПоследнегоОтвета</dataPath>
+			<field>ДатаПоследнегоОтвета</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата последнего ответа</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	iga_ОчередьРаспределения.Чат КАК Чат
+ПОМЕСТИТЬ ВТ_АктиныеЧаты
+ИЗ
+	РегистрСведений.iga_ОчередьРаспределения КАК iga_ОчередьРаспределения
+ГДЕ
+	НЕ iga_ОчередьРаспределения.Статус = &amp;СтатусЗавершен
+	И НЕ iga_ОчередьРаспределения.Статус = &amp;СтатусВнеОчереди
+	И iga_ОчередьРаспределения.Оператор = &amp;ПустойОператор
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВложенныйЗапрос.Чат КАК Чат,
+	ВложенныйЗапрос.ДатаПоследнегоСообщения КАК ДатаПоследнегоСообщения,
+	ВложенныйЗапрос.ДатаПоследнегоОтвета КАК ДатаПоследнегоОтвета
+ИЗ
+	(ВЫБРАТЬ
+		ВТ_АктиныеЧаты.Чат КАК Чат,
+		МАКСИМУМ(iga_ИсторияСообщений.ДатаСообщения) КАК ДатаПоследнегоСообщения,
+		МАКСИМУМ(iga_ИсторияСообщений1.ДатаСообщения) КАК ДатаПоследнегоОтвета
+	ИЗ
+		ВТ_АктиныеЧаты КАК ВТ_АктиныеЧаты
+			ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.iga_ИсторияСообщений КАК iga_ИсторияСообщений
+			ПО ВТ_АктиныеЧаты.Чат = iga_ИсторияСообщений.Чат
+			ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.iga_ИсторияСообщений КАК iga_ИсторияСообщений1
+			ПО ВТ_АктиныеЧаты.Чат = iga_ИсторияСообщений1.Чат
+				И (НЕ iga_ИсторияСообщений1.ЭтоВходящее)
+	
+	СГРУППИРОВАТЬ ПО
+		ВТ_АктиныеЧаты.Чат) КАК ВложенныйЗапрос
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.iga_ИсторияСообщений КАК iga_ИсторияСообщений
+		ПО ВложенныйЗапрос.Чат = iga_ИсторияСообщений.Чат
+			И ВложенныйЗапрос.ДатаПоследнегоСообщения = iga_ИсторияСообщений.ДатаСообщения
+ГДЕ
+	iga_ИсторияСообщений.ЭтоВходящее
+	И РАЗНОСТЬДАТ(ВложенныйЗапрос.ДатаПоследнегоСообщения, &amp;ТекущаяДата, ЧАС) &gt; 2</query>
+	</dataSet>
+	<parameter>
+		<name>ПустойОператор</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Пустой оператор</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Пользователи</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.Пользователи.ПустаяСсылка</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>СтатусВнеОчереди</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Статус вне очереди</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.iga_СтатусыОчереди</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.iga_СтатусыОчереди.ВнеОчереди</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>СтатусЗавершен</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Статус завершен</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.iga_СтатусыОчереди</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.iga_СтатусыОчереди.Завершен</value>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ТекущаяДата</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Текущая дата</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>ТекущаяДата()</expression>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Чат</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДатаПоследнегоСообщения</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДатаПоследнегоОтвета</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>
