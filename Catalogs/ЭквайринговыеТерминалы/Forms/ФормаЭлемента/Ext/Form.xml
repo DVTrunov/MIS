@@ -1,0 +1,895 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="20">
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="22"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаНаименованиеКод" id="82">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа наименование код</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа наименование код</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>HorizontalIfPossible</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНаименованиеКодРасширеннаяПодсказка" id="83"/>
+					<ChildItems>
+						<InputField name="Наименование" id="4">
+							<DataPath>Объект.Description</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<Width>32</Width>
+							<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
+							<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="23"/>
+						</InputField>
+						<InputField name="Код" id="1">
+							<DataPath>Объект.Code</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<Width>8</Width>
+							<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="КодРасширеннаяПодсказка" id="24"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="Касса" id="18">
+					<DataPath>Объект.Касса</DataPath>
+					<ChoiceButton>true</ChoiceButton>
+					<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+					<ClearButton>true</ClearButton>
+					<ContextMenu name="КассаКонтекстноеМеню" id="19"/>
+					<ExtendedTooltip name="КассаРасширеннаяПодсказка" id="26"/>
+				</InputField>
+				<UsualGroup name="ГруппаКонтрагент" id="21">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Договор с поставщиком услуг эквайринга или платежной системы</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="ГруппаКонтрагентРасширеннаяПодсказка" id="28"/>
+					<ChildItems>
+						<InputField name="Контрагент" id="10">
+							<DataPath>Объект.Контрагент</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Также служит для поиска Вида оплаты при выгрузке в 1С:Бухгалтерию предприятия по совпадению контрагента и договора</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ChoiceButton>true</ChoiceButton>
+							<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+							<ContextMenu name="КонтрагентКонтекстноеМеню" id="11"/>
+							<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="29"/>
+						</InputField>
+						<InputField name="Договор" id="7">
+							<DataPath>Объект.Договор</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ДоговорКонтекстноеМеню" id="8"/>
+							<ExtendedTooltip name="ДоговорРасширеннаяПодсказка" id="30"/>
+						</InputField>
+						<LabelField name="ДоговорОрганизация" id="107">
+							<DataPath>Объект.Договор.Организация</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Организация договора</v8:content>
+								</v8:item>
+							</Title>
+							<TitleHeight>2</TitleHeight>
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<ContextMenu name="ДоговорОрганизацияКонтекстноеМеню" id="108"/>
+							<ExtendedTooltip name="ДоговорОрганизацияРасширеннаяПодсказка" id="109"/>
+						</LabelField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаСтраницыНастроекЗаголовок" id="84">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип безналичной оплаты</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>StrongSeparation</Representation>
+			<ExtendedTooltip name="ГруппаСтраницыНастроекЗаголовокРасширеннаяПодсказка" id="85"/>
+			<ChildItems>
+				<RadioButtonField name="Тип" id="70">
+					<DataPath>Объект.Тип</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип оплаты</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Left</TitleLocation>
+					<RadioButtonType>RadioButtons</RadioButtonType>
+					<ColumnsCount>2</ColumnsCount>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ТипыСпособовОплат.EnumValue.Эквайринг</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ТипыСпособовОплат.EnumValue.СБП</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ТипыСпособовОплат.EnumValue.СертификатНСПК</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ТипыСпособовОплат.EnumValue.Прочее</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ТипКонтекстноеМеню" id="71"/>
+					<ExtendedTooltip name="ТипРасширеннаяПодсказка" id="72"/>
+					<Events>
+						<Event name="OnChange">ТипПриИзменении</Event>
+					</Events>
+				</RadioButtonField>
+				<Pages name="СтраницыПоТипу" id="73">
+					<EnableContentChange>true</EnableContentChange>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки вида оплаты</v8:content>
+						</v8:item>
+					</Title>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="СтраницыПоТипуРасширеннаяПодсказка" id="74"/>
+					<ChildItems>
+						<Page name="СтраницаНастройкиЭТ" id="34">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки терминала</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<ScrollOnCompress>false</ScrollOnCompress>
+							<ExtendedTooltip name="СтраницаНастройкиЭТРасширеннаяПодсказка" id="35"/>
+							<ChildItems>
+								<UsualGroup name="ПараметрыЭТ" id="102">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Параметры эквайрингового терминала</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Параметры ЭТ</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ExtendedTooltip name="ПараметрыЭТРасширеннаяПодсказка" id="103"/>
+									<ChildItems>
+										<UsualGroup name="ГруппаНастроекАвтономногоЭТ" id="46">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа настроек автономного ЭТ</v8:content>
+												</v8:item>
+											</Title>
+											<Group>HorizontalIfPossible</Group>
+											<Behavior>Usual</Behavior>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаНастроекАвтономногоЭТРасширеннаяПодсказка" id="47"/>
+											<ChildItems>
+												<CheckBoxField name="ИспользоватьЭТАвтономно" id="13">
+													<DataPath>Объект.ИспользоватьЭТАвтономно</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Автономный терминал</v8:content>
+														</v8:item>
+													</Title>
+													<TitleLocation>Right</TitleLocation>
+													<EditMode>EnterOnInput</EditMode>
+													<AutoEditMode>true</AutoEditMode>
+													<ContextMenu name="ИспользоватьЭТАвтономноКонтекстноеМеню" id="14"/>
+													<ExtendedTooltip name="ИспользоватьЭТАвтономноРасширеннаяПодсказка" id="25"/>
+													<Events>
+														<Event name="OnChange">ИспользоватьЭТАвтономноПриИзменении</Event>
+													</Events>
+												</CheckBoxField>
+												<CheckBoxField name="ЗапрашиватьПодтверждениеОплатыАвтономногоЭТ" id="48">
+													<DataPath>Объект.ЗапрашиватьПодтверждениеОплатыАвтономногоЭТ</DataPath>
+													<TitleLocation>Right</TitleLocation>
+													<ToolTipRepresentation>Button</ToolTipRepresentation>
+													<ContextMenu name="ЗапрашиватьПодтверждениеОплатыАвтономногоЭТКонтекстноеМеню" id="49"/>
+													<ExtendedTooltip name="ЗапрашиватьПодтверждениеОплатыАвтономногоЭТРасширеннаяПодсказка" id="50"/>
+												</CheckBoxField>
+											</ChildItems>
+										</UsualGroup>
+										<CheckBoxField name="НеОповещатьОбОтсутствииНомераСлипЧека" id="31">
+											<DataPath>Объект.НеОповещатьОбОтсутствииНомераСлипЧека</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<ContextMenu name="НеОповещатьОбОтсутствииНомераСлипЧекаКонтекстноеМеню" id="32"/>
+											<ExtendedTooltip name="НеОповещатьОбОтсутствииНомераСлипЧекаРасширеннаяПодсказка" id="33"/>
+										</CheckBoxField>
+										<UsualGroup name="ГруппаПодключаемоеОбоудование" id="36">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Подключаемое оборудование терминала</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа подключаемое обоудование</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>HorizontalIfPossible</Group>
+											<Behavior>Usual</Behavior>
+											<Representation>None</Representation>
+											<ChildItemsWidth>LeftWidest</ChildItemsWidth>
+											<ExtendedTooltip name="ГруппаПодключаемоеОбоудованиеРасширеннаяПодсказка" id="37"/>
+											<ChildItems>
+												<Table name="Оборудование" id="51">
+													<HeightInTableRows>4</HeightInTableRows>
+													<RowSelectionMode>Cell</RowSelectionMode>
+													<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+													<AutoInsertNewRow>true</AutoInsertNewRow>
+													<EnableStartDrag>true</EnableStartDrag>
+													<EnableDrag>true</EnableDrag>
+													<DataPath>Объект.Оборудование</DataPath>
+													<SearchStringLocation>None</SearchStringLocation>
+													<ViewStatusLocation>None</ViewStatusLocation>
+													<SearchControlLocation>None</SearchControlLocation>
+													<RowFilter xsi:nil="true"/>
+													<ContextMenu name="ОборудованиеКонтекстноеМеню" id="52"/>
+													<AutoCommandBar name="ОборудованиеКоманднаяПанель" id="53"/>
+													<ExtendedTooltip name="ОборудованиеРасширеннаяПодсказка" id="54"/>
+													<SearchStringAddition name="ОборудованиеСтрокаПоиска" id="55">
+														<AdditionSource>
+															<Item>Оборудование</Item>
+															<Type>SearchStringRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="ОборудованиеСтрокаПоискаКонтекстноеМеню" id="56"/>
+														<ExtendedTooltip name="ОборудованиеСтрокаПоискаРасширеннаяПодсказка" id="57"/>
+													</SearchStringAddition>
+													<ViewStatusAddition name="ОборудованиеСостояниеПросмотра" id="58">
+														<AdditionSource>
+															<Item>Оборудование</Item>
+															<Type>ViewStatusRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="ОборудованиеСостояниеПросмотраКонтекстноеМеню" id="59"/>
+														<ExtendedTooltip name="ОборудованиеСостояниеПросмотраРасширеннаяПодсказка" id="60"/>
+													</ViewStatusAddition>
+													<SearchControlAddition name="ОборудованиеУправлениеПоиском" id="61">
+														<AdditionSource>
+															<Item>Оборудование</Item>
+															<Type>SearchControl</Type>
+														</AdditionSource>
+														<ContextMenu name="ОборудованиеУправлениеПоискомКонтекстноеМеню" id="62"/>
+														<ExtendedTooltip name="ОборудованиеУправлениеПоискомРасширеннаяПодсказка" id="63"/>
+													</SearchControlAddition>
+													<ChildItems>
+														<LabelField name="ОборудованиеНомерСтроки" id="64">
+															<DataPath>Объект.Оборудование.LineNumber</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<AutoEditMode>true</AutoEditMode>
+															<Width>1</Width>
+															<ContextMenu name="ОборудованиеНомерСтрокиКонтекстноеМеню" id="65"/>
+															<ExtendedTooltip name="ОборудованиеНомерСтрокиРасширеннаяПодсказка" id="66"/>
+														</LabelField>
+														<InputField name="ОборудованиеПодключаемоеОборудование" id="67">
+															<DataPath>Объект.Оборудование.ПодключаемоеОборудование</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<AutoEditMode>true</AutoEditMode>
+															<ContextMenu name="ОборудованиеПодключаемоеОборудованиеКонтекстноеМеню" id="68"/>
+															<ExtendedTooltip name="ОборудованиеПодключаемоеОборудованиеРасширеннаяПодсказка" id="69"/>
+														</InputField>
+													</ChildItems>
+												</Table>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+						<Page name="СтраницаНастройкиСБП" id="41">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Система быстрых платежей</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<ScrollOnCompress>false</ScrollOnCompress>
+							<ExtendedTooltip name="СтраницаНастройкиСБПРасширеннаяПодсказка" id="42"/>
+							<ChildItems>
+								<UsualGroup name="ПараметрыСБП" id="100">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Параметры подключения к системе быстрых платежей</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Параметры СБП</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>HorizontalIfPossible</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ExtendedTooltip name="ПараметрыСБПРасширеннаяПодсказка" id="101"/>
+									<ChildItems>
+										<CheckBoxField name="ТорговаяТочкаСБП" id="43">
+											<DataPath>Объект.ТорговаяТочкаСБП</DataPath>
+											<TitleHeight>1</TitleHeight>
+											<ContextMenu name="ТорговаяТочкаСБПКонтекстноеМеню" id="44"/>
+											<ExtendedTooltip name="ТорговаяТочкаСБПРасширеннаяПодсказка" id="45"/>
+										</CheckBoxField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаКассоваяСсылкаСБП" id="110">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Кассовая ссылка СБП (для распечатки фиксированного QR-кода оплат)</v8:content>
+										</v8:item>
+									</Title>
+									<TitleFont ref="style:NormalTextFont" height="10" kind="StyleItem" scale="100"/>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<ControlRepresentation>Button</ControlRepresentation>
+									<Representation>WeakSeparation</Representation>
+									<ExtendedTooltip name="ГруппаКассоваяСсылкаСБПРасширеннаяПодсказка" id="111"/>
+									<ChildItems>
+										<InputField name="ИдентификаторОплаты" id="112">
+											<DataPath>Объект.ИдентификаторОплатыСБП</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Заполняется автоматически при создании ссылки</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
+											<ContextMenu name="ИдентификаторОплатыКонтекстноеМеню" id="113"/>
+											<ExtendedTooltip name="ИдентификаторОплатыРасширеннаяПодсказка" id="114"/>
+										</InputField>
+										<InputField name="КассоваяСсылка" id="115">
+											<DataPath>Объект.КассоваяСсылкаСБП</DataPath>
+											<ReadOnly>true</ReadOnly>
+											<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
+											<ContextMenu name="КассоваяСсылкаКонтекстноеМеню" id="116"/>
+											<ExtendedTooltip name="КассоваяСсылкаРасширеннаяПодсказка" id="117">
+												<Title formatted="true">
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>&lt;link open:Description&gt;Изображение QR-кода&lt;/&gt; необходимо разместить в прикассовой зоне. Для повышения удобства оплаты, на кассовом QR-коде можно &lt;link open:InstructionNFC&gt;разместить NFC метку&lt;/&gt;.</v8:content>
+													</v8:item>
+												</Title>
+												<Events>
+													<Event name="URLProcessing">КассоваяСсылкаРасширеннаяПодсказкаОбработкаНавигационнойСсылки</Event>
+												</Events>
+											</ExtendedTooltip>
+										</InputField>
+										<Pages name="ГруппаСтраницы" id="118">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа страницы</v8:content>
+												</v8:item>
+											</Title>
+											<PagesRepresentation>None</PagesRepresentation>
+											<ExtendedTooltip name="ГруппаСтраницыРасширеннаяПодсказка" id="119"/>
+											<ChildItems>
+												<Page name="ГруппаНастройкиКассовойСсылки" id="120">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа настройки кассовой ссылки</v8:content>
+														</v8:item>
+													</Title>
+													<Group>HorizontalIfPossible</Group>
+													<ScrollOnCompress>false</ScrollOnCompress>
+													<ExtendedTooltip name="ГруппаНастройкиКассовойСсылкиРасширеннаяПодсказка" id="121"/>
+													<ChildItems>
+														<LabelDecoration name="ДекорацияСдвиг" id="122">
+															<Width>14</Width>
+															<ContextMenu name="ДекорацияСдвигКонтекстноеМеню" id="123"/>
+															<ExtendedTooltip name="ДекорацияСдвигРасширеннаяПодсказка" id="124"/>
+														</LabelDecoration>
+														<Button name="СоздатьСсылку" id="125">
+															<Type>UsualButton</Type>
+															<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+															<CommandName>Form.Command.СоздатьСсылку</CommandName>
+															<ExtendedTooltip name="СоздатьСсылкуРасширеннаяПодсказка" id="126"/>
+														</Button>
+														<Button name="ПодключитьКассовуюСсылку" id="127">
+															<Type>UsualButton</Type>
+															<CommandName>Form.Command.ПодключитьКассовуюСсылку</CommandName>
+															<ExtendedTooltip name="ПодключитьКассовуюСсылкуРасширеннаяПодсказка" id="128"/>
+														</Button>
+														<Button name="ПечатьКассовойСсылки" id="141">
+															<Type>UsualButton</Type>
+															<CommandName>Form.Command.ПечатьКассовойСсылки</CommandName>
+															<ExtendedTooltip name="ПечатьКассовойСсылкиРасширеннаяПодсказка" id="142"/>
+														</Button>
+														<Button name="СсылкаДляNFC" id="129">
+															<Type>UsualButton</Type>
+															<CommandName>Form.Command.ПреобразоватьСсылкуДляNFC</CommandName>
+															<ExtendedTooltip name="СсылкаДляNFCРасширеннаяПодсказка" id="130"/>
+														</Button>
+													</ChildItems>
+												</Page>
+												<Page name="ГруппаСообщениеПользователю" id="131">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа настройки кассовых ссылок</v8:content>
+														</v8:item>
+													</Title>
+													<Group>HorizontalIfPossible</Group>
+													<ScrollOnCompress>false</ScrollOnCompress>
+													<ExtendedTooltip name="ГруппаСообщениеПользователюРасширеннаяПодсказка" id="132"/>
+													<ChildItems>
+														<LabelDecoration name="ДекорацияСообщение" id="133">
+															<AutoMaxWidth>false</AutoMaxWidth>
+															<MaxWidth>60</MaxWidth>
+															<GroupVerticalAlign>Center</GroupVerticalAlign>
+															<ContextMenu name="ДекорацияСообщениеКонтекстноеМеню" id="134"/>
+															<ExtendedTooltip name="ДекорацияСообщениеРасширеннаяПодсказка" id="135"/>
+														</LabelDecoration>
+													</ChildItems>
+												</Page>
+												<Page name="ГруппаПодключениеСБП" id="136">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Подключение СБП</v8:content>
+														</v8:item>
+													</Title>
+													<Group>HorizontalIfPossible</Group>
+													<ScrollOnCompress>false</ScrollOnCompress>
+													<ExtendedTooltip name="ГруппаПодключениеСБПРасширеннаяПодсказка" id="137"/>
+													<ChildItems>
+														<LabelDecoration name="ДекорацияНастройкаНеНайдена" id="138">
+															<AutoMaxWidth>false</AutoMaxWidth>
+															<MaxWidth>60</MaxWidth>
+															<Title formatted="true">
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Не найдена настройка подключения к Системе быстрых платежей. Для работы с кассовыми ссылками необходимо &lt;link action:connectSBP&gt;создать настройку&lt;/&gt;.</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="ДекорацияНастройкаНеНайденаКонтекстноеМеню" id="139"/>
+															<ExtendedTooltip name="ДекорацияНастройкаНеНайденаРасширеннаяПодсказка" id="140"/>
+															<Events>
+																<Event name="URLProcessing">ДекорацияНастройкаНеНайденаОбработкаНавигационнойСсылки</Event>
+															</Events>
+														</LabelDecoration>
+													</ChildItems>
+												</Page>
+											</ChildItems>
+										</Pages>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+						<Page name="СтраницаНастройкиНСПК" id="75">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки сертификатов НСПК</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<ScrollOnCompress>false</ScrollOnCompress>
+							<ExtendedTooltip name="СтраницаНастройкиНСПКРасширеннаяПодсказка" id="76"/>
+							<ChildItems>
+								<InputField name="ЭквайрингНСПК" id="104">
+									<DataPath>Объект.ЭквайрингНСПК</DataPath>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<MarkRequiredComplete>true</MarkRequiredComplete>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+									<AutoMarkIncomplete>true</AutoMarkIncomplete>
+									<ContextMenu name="ЭквайрингНСПККонтекстноеМеню" id="105"/>
+									<ExtendedTooltip name="ЭквайрингНСПКРасширеннаяПодсказка" id="106"/>
+									<Events>
+										<Event name="StartChoice">ЭквайрингНСПКНачалоВыбора</Event>
+									</Events>
+								</InputField>
+								<UsualGroup name="ПараметрыНСПК" id="86">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Параметры подключения с сервису НСПК</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ExtendedTooltip name="ПараметрыНСПКРасширеннаяПодсказка" id="87">
+										<AutoMaxWidth>false</AutoMaxWidth>
+									</ExtendedTooltip>
+									<ChildItems>
+										<InputField name="КлючОрганизацииНСПК" id="88">
+											<DataPath>Объект.КлючОрганизацииНСПК</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Ключ организации</v8:content>
+												</v8:item>
+											</Title>
+											<InputHint>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>API KEY</v8:content>
+												</v8:item>
+											</InputHint>
+											<ContextMenu name="КлючОрганизацииНСПККонтекстноеМеню" id="89"/>
+											<ExtendedTooltip name="КлючОрганизацииНСПКРасширеннаяПодсказка" id="90"/>
+										</InputField>
+										<InputField name="ИдентификаторНСПК" id="91">
+											<DataPath>Объект.ИдентификаторНСПК</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Код кассы</v8:content>
+												</v8:item>
+											</Title>
+											<InputHint>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>CashboxID</v8:content>
+												</v8:item>
+											</InputHint>
+											<ContextMenu name="ИдентификаторНСПККонтекстноеМеню" id="92"/>
+											<ExtendedTooltip name="ИдентификаторНСПКРасширеннаяПодсказка" id="93"/>
+										</InputField>
+										<InputField name="КлючКассыНСПК" id="94">
+											<DataPath>Объект.КлючКассыНСПК</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Ключ кассы</v8:content>
+												</v8:item>
+											</Title>
+											<InputHint>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>MAC KEY</v8:content>
+												</v8:item>
+											</InputHint>
+											<ContextMenu name="КлючКассыНСПККонтекстноеМеню" id="95"/>
+											<ExtendedTooltip name="КлючКассыНСПКРасширеннаяПодсказка" id="96"/>
+										</InputField>
+										<CheckBoxField name="ПроверятьКорневыеСертификатыНСПК" id="97">
+											<DataPath>6</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Проверять корневые сертификаты</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+											<ContextMenu name="ПроверятьКорневыеСертификатыНСПККонтекстноеМеню" id="98"/>
+											<ExtendedTooltip name="ПроверятьКорневыеСертификатыНСПКРасширеннаяПодсказка" id="99">
+												<Title formatted="true">
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Для соединения с ФЭС НСПК по адресу сервиса &lt;link https://api1.fes.nspk.ru&gt;https://api1.fes.nspk.ru&lt;/&gt; необходимо 
+установить корневые сертификаты Национального удостоверяющего центра 
+в хранилище доверенных корневых сертификатов ОС.
+Сертификаты доступны для скачивания по ссылке &lt;link https://www.gosuslugi.ru/tls&gt;https://www.gosuslugi.ru/tls&lt;/&gt;.</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+											<Events>
+												<Event name="OnChange">ПроверятьКорневыеСертификатыНСПКПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</Page>
+						<Page name="СтраницаНастройкиПрочее" id="77">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страница настройки прочее</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<ScrollOnCompress>false</ScrollOnCompress>
+							<ExtendedTooltip name="СтраницаНастройкиПрочееРасширеннаяПодсказка" id="78"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияПрочийТипПояснение" id="79">
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<TextColor>style:ПоясняющийТекст</TextColor>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Прочая платежная система или иной способ безналичной оплаты</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ДекорацияПрочийТипПояснениеКонтекстноеМеню" id="80"/>
+									<ExtendedTooltip name="ДекорацияПрочийТипПояснениеРасширеннаяПодсказка" id="81"/>
+								</LabelDecoration>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаИнтеграцияТерминала" id="143">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Интеграция с терминалами</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа интеграция терминала</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>StrongSeparation</Representation>
+			<ExtendedTooltip name="ГруппаИнтеграцияТерминалаРасширеннаяПодсказка" id="144"/>
+			<ChildItems>
+				<CheckBoxField name="ИнтеграцияОплатаНаТерминал" id="145">
+					<DataPath>Объект.омг_ИнтеграцияОплатаНаТерминал</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<ContextMenu name="ИнтеграцияОплатаНаТерминалКонтекстноеМеню" id="146"/>
+					<ExtendedTooltip name="ИнтеграцияОплатаНаТерминалРасширеннаяПодсказка" id="147"/>
+					<Events>
+						<Event name="OnChange">ИОТ_ИнтеграцияKaspiПриИзмененииВместо</Event>
+					</Events>
+				</CheckBoxField>
+				<UsualGroup name="ГруппаНастройкиТерминала" id="148">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа настройки терминала</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа настройки терминала</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНастройкиТерминалаРасширеннаяПодсказка" id="149"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаТерминал" id="150">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа терминал</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа терминал</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>HorizontalIfPossible</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаТерминалРасширеннаяПодсказка" id="151"/>
+							<ChildItems>
+								<InputField name="ИспользуемыйТерминал" id="152">
+									<DataPath>Объект.омг_ИспользуемыйТерминал</DataPath>
+									<ListChoiceMode>true</ListChoiceMode>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.омг_ВидыТерминалов.EnumValue.Kaspi</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.омг_ВидыТерминалов.EnumValue.Halyk</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="ИспользуемыйТерминалКонтекстноеМеню" id="153"/>
+									<ExtendedTooltip name="ИспользуемыйТерминалРасширеннаяПодсказка" id="154"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаАдресПорт" id="155">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа адрес порт</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа адрес порт</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>HorizontalIfPossible</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаАдресПортРасширеннаяПодсказка" id="156"/>
+							<ChildItems>
+								<InputField name="АдресТерминала" id="157">
+									<DataPath>Объект.омг_АдресТерминала</DataPath>
+									<ContextMenu name="АдресТерминалаКонтекстноеМеню" id="158"/>
+									<ExtendedTooltip name="АдресТерминалаРасширеннаяПодсказка" id="159"/>
+								</InputField>
+								<InputField name="ПортТерминала" id="160">
+									<DataPath>Объект.омг_ПортТерминала</DataPath>
+									<ContextMenu name="ПортТерминалаКонтекстноеМеню" id="161"/>
+									<ExtendedTooltip name="ПортТерминалаРасширеннаяПодсказка" id="162"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ЭквайринговыеТерминалы</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="СоздатьСсылку" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать кассовую ссылку</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СоздатьСсылку</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ПодключитьКассовуюСсылку" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подключить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подключить существующую кассовую ссылку</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодключитьКассовуюСсылку</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ПреобразоватьСсылкуДляNFC" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Преобразовать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Преобразовать ссылку для NFC</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПреобразоватьСсылкуДляNFC</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ПечатьКассовойСсылки" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Печать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Печать кассовой ссылки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Print</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПечатьКассовойСсылки</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

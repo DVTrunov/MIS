@@ -1,0 +1,43 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="urn:f88" elementFormQualified="true" attributeFormQualified="false">
+	<property xmlns:d2p1="urn:f88" name="AuthorityDoc" type="d2p1:AuthorityDoc"/>
+	<property xmlns:d2p1="urn:f88" name="IdentityDoc" type="d2p1:IdentityDoc"/>
+	<property name="Ogrn"/>
+	<valueType name="oid" base="xs:string" variety="Atomic">
+		<pattern>[0-2](\.(0|[1-9][0-9]*))*</pattern>
+	</valueType>
+	<valueType name="ruid" base="xs:string" variety="Atomic">
+		<pattern>[A-Za-z][A-Za-z0-9\-]*</pattern>
+	</valueType>
+	<valueType name="uid" variety="Union" memberTypes="{urn:f88}oid {urn:f88}ruid {urn:f88}uuid"/>
+	<valueType name="uuid" base="xs:string" variety="Atomic">
+		<pattern>[0-9a-zA-Z]{8}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{12}</pattern>
+	</valueType>
+	<objectType name="AuthorityDoc">
+		<property name="IdentityCardTypeId" type="xs:anyType"/>
+		<property name="Series" type="xs:anyType"/>
+		<property name="Number" type="xs:anyType"/>
+		<property name="IssueOrgName" type="xs:anyType"/>
+		<property name="IssueDate" type="xs:anyType"/>
+	</objectType>
+	<objectType name="IdentityCardTypeId">
+		<property name="code" lowerBound="0" form="Attribute"/>
+		<property xmlns:d3p1="urn:f88" name="codeSystem" type="d3p1:uid" lowerBound="0" form="Attribute"/>
+		<property name="codeSystemVersion" lowerBound="0" form="Attribute"/>
+		<property name="codeSystemName" type="xs:string" lowerBound="0" form="Attribute"/>
+		<property name="displayName" type="xs:string" lowerBound="0" form="Attribute"/>
+	</objectType>
+	<objectType name="IdentityDoc">
+		<property name="IdentityCardTypeId" type="xs:anyType"/>
+		<property name="Series" type="xs:anyType"/>
+		<property name="Number" type="xs:anyType"/>
+		<property name="IssueOrgName" type="xs:anyType"/>
+		<property name="IssueOrgCode" type="xs:anyType"/>
+		<property name="IssueDate" type="xs:anyType"/>
+	</objectType>
+	<objectType name="IssueDate"/>
+	<objectType name="IssueOrgCode"/>
+	<objectType name="IssueOrgName"/>
+	<objectType name="Number"/>
+	<objectType name="Ogrn"/>
+	<objectType name="Series"/>
+</package>

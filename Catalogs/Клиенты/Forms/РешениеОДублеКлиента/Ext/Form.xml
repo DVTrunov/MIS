@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаВерхИнфо" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа верх инфо</v8:content>
+				</v8:item>
+			</Title>
+			<Group>HorizontalIfPossible</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаВерхИнфоРасширеннаяПодсказка" id="27"/>
+			<ChildItems>
+				<LabelDecoration name="ДекорацияИнфо" id="6">
+					<Height>2</Height>
+					<TextColor>style:FieldSelectionBackColor</TextColor>
+					<Font height="10" kind="AutoFont"/>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>В базе имеются клиенты с совпадающим набором ключевых реквизитов</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДекорацияИнфоКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="ДекорацияИнфоРасширеннаяПодсказка" id="11"/>
+				</LabelDecoration>
+				<CommandBar name="КоманднаяПанельФормы" id="28">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Командная панель формы</v8:content>
+						</v8:item>
+					</Title>
+					<CommandSource>Form</CommandSource>
+					<ExtendedTooltip name="КоманднаяПанельФормыРасширеннаяПодсказка" id="29"/>
+					<ChildItems>
+						<Button name="ФормаСправка" id="30">
+							<Type>CommandBarButton</Type>
+							<Visible>false</Visible>
+							<CommandName>Form.StandardCommand.Help</CommandName>
+							<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="31"/>
+						</Button>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<Button name="КомандаОтмена" id="8">
+			<Type>UsualButton</Type>
+			<Representation>PictureAndText</Representation>
+			<Width>46</Width>
+			<Height>2</Height>
+			<CommandName>Form.Command.КомандаОтмена</CommandName>
+			<Font ref="style:ШрифтКрупнойНадписи" kind="StyleItem"/>
+			<Picture>
+				<xr:Ref>StdPicture.Back</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вернуться к форме добавления нового клиента</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedTooltip name="КомандаОтменаРасширеннаяПодсказка" id="23"/>
+		</Button>
+		<Button name="КомандаПродолжитьЗапись" id="9">
+			<Type>UsualButton</Type>
+			<Width>46</Width>
+			<Height>2</Height>
+			<CommandName>Form.Command.КомандаПродолжитьЗапись</CommandName>
+			<Font ref="style:ШрифтКрупнойНадписи" kind="StyleItem"/>
+			<ExtendedTooltip name="КомандаПродолжитьЗаписьРасширеннаяПодсказка" id="24"/>
+		</Button>
+		<Button name="КомандаПрерватьЗапись" id="10">
+			<Type>UsualButton</Type>
+			<Width>46</Width>
+			<Height>2</Height>
+			<CommandName>Form.Command.КомандаПрерватьЗапись</CommandName>
+			<Font ref="style:ШрифтКрупнойНадписи" kind="StyleItem"/>
+			<ExtendedTooltip name="КомандаПрерватьЗаписьРасширеннаяПодсказка" id="25"/>
+		</Button>
+		<Table name="ДублиКлиента" id="1">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<Header>false</Header>
+			<HorizontalLinesBWA>false</HorizontalLinesBWA>
+			<VerticalLinesBWA>false</VerticalLinesBWA>
+			<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>ДублиКлиента</DataPath>
+			<RowPictureDataPath>ДублиКлиента.Picture</RowPictureDataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<ContextMenu name="ДублиКлиентаКонтекстноеМеню" id="2"/>
+			<AutoCommandBar name="ДублиКлиентаКоманднаяПанель" id="3">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ДублиКлиентаРасширеннаяПодсказка" id="12"/>
+			<SearchStringAddition name="ДублиКлиентаСтрокаПоиска" id="13">
+				<AdditionSource>
+					<Item>ДублиКлиента</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДублиКлиентаСтрокаПоискаКонтекстноеМеню" id="14"/>
+				<ExtendedTooltip name="ДублиКлиентаСтрокаПоискаРасширеннаяПодсказка" id="15"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ДублиКлиентаСостояниеПросмотра" id="16">
+				<AdditionSource>
+					<Item>ДублиКлиента</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДублиКлиентаСостояниеПросмотраКонтекстноеМеню" id="17"/>
+				<ExtendedTooltip name="ДублиКлиентаСостояниеПросмотраРасширеннаяПодсказка" id="18"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ДублиКлиентаУправлениеПоиском" id="19">
+				<AdditionSource>
+					<Item>ДублиКлиента</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ДублиКлиентаУправлениеПоискомКонтекстноеМеню" id="20"/>
+				<ExtendedTooltip name="ДублиКлиентаУправлениеПоискомРасширеннаяПодсказка" id="21"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="ДублиКлиентаЗначение" id="4">
+					<DataPath>ДублиКлиента.Value</DataPath>
+					<ChoiceButton>false</ChoiceButton>
+					<OpenButton>true</OpenButton>
+					<TextEdit>false</TextEdit>
+					<ContextMenu name="ДублиКлиентаЗначениеКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ДублиКлиентаЗначениеРасширеннаяПодсказка" id="22"/>
+					<Events>
+						<Event name="StartChoice">ДублиКлиентаЗначениеНачалоВыбора</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ДублиКлиента" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дубли клиента</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="КомандаОтмена" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отмена</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отмена</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаОтмена</Action>
+		</Command>
+		<Command name="КомандаПродолжитьЗапись" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продолжить запись нового клиента (дублей нет)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продолжить запись</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.EndEdit</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаПродолжитьЗапись</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="КомандаПрерватьЗапись" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить запись нового клиента (дубль)</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>CommonPicture.Ошибка32</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаПрерватьЗапись</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="ДублиКлиента">
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

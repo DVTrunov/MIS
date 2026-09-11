@@ -1,0 +1,1299 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ОтметкаИсполнения" id="98">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ОтметкаИсполнения</CommandName>
+				<ExtendedTooltip name="ОтметкаИсполненияРасширеннаяПодсказка" id="114"/>
+			</Button>
+			<Button name="СнятьОтметкуИсполнения" id="99">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СнятьОтметкуИсполнения</CommandName>
+				<ExtendedTooltip name="СнятьОтметкуИсполненияРасширеннаяПодсказка" id="115"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Table name="Список" id="1">
+			<Representation>List</Representation>
+			<CommandBarLocation>None</CommandBarLocation>
+			<DefaultItem>true</DefaultItem>
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<InitialTreeView>ExpandTopLevel</InitialTreeView>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Список</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+			<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
+			<AutoCommandBar name="СписокКоманднаяПанель" id="3">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="СписокExtendedTooltip" id="117"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="177">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="178"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="179"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="180">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="181"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="182"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокУправлениеПоиском" id="183">
+				<AdditionSource>
+					<Item>Список</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="184"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="185"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
+				<Event name="BeforeDeleteRow">СписокПередУдалением</Event>
+			</Events>
+			<ChildItems>
+				<ColumnGroup name="ГруппаВыполнена" id="104">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа выполнена</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа выполнена</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="ГруппаВыполненаExtendedTooltip" id="118"/>
+					<ChildItems>
+						<CheckBoxField name="Выполнена" id="102">
+							<DataPath>Список.Выполнена</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="ВыполненаКонтекстноеМеню" id="103"/>
+							<ExtendedTooltip name="ВыполненаExtendedTooltip" id="119"/>
+						</CheckBoxField>
+						<LabelField name="ДатаВыполнения" id="100">
+							<DataPath>Список.ДатаВыполнения</DataPath>
+							<Format>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ДФ='дд.ММ.гггг ЧЧ:мм'</v8:content>
+								</v8:item>
+							</Format>
+							<ContextMenu name="ДатаВыполненияКонтекстноеМеню" id="101"/>
+							<ExtendedTooltip name="ДатаВыполненияExtendedTooltip" id="120"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ГруппаСтатус" id="108">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа статус</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа статус</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаСтатусExtendedTooltip" id="121"/>
+					<ChildItems>
+						<LabelField name="СтатусWorkList" id="105">
+							<DataPath>Список.СтатусИсследования</DataPath>
+							<ContextMenu name="СтатусWorkListКонтекстноеМеню" id="106"/>
+							<ExtendedTooltip name="СтатусWorkListРасширеннаяПодсказка" id="122"/>
+						</LabelField>
+						<LabelField name="ТипЗаписи" id="109">
+							<DataPath>Список.ТипЗаписи</DataPath>
+							<Width>6</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ТипЗаписиКонтекстноеМеню" id="110"/>
+							<ExtendedTooltip name="ТипЗаписиExtendedTooltip" id="123"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ГруппаТипИсследования" id="95">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа тип исследования</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа тип исследования</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаТипИсследованияExtendedTooltip" id="124"/>
+					<ChildItems>
+						<LabelField name="Modality" id="16">
+							<DataPath>Список.Modality</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<Width>4</Width>
+							<ContextMenu name="ModalityКонтекстноеМеню" id="17"/>
+							<ExtendedTooltip name="ModalityExtendedTooltip" id="125"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ГруппаКарта" id="60">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа карта</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа карта</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаКартаExtendedTooltip" id="126"/>
+					<ChildItems>
+						<LabelField name="PatientId" id="18">
+							<DataPath>Список.PatientId</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Patient Id</v8:content>
+								</v8:item>
+							</Title>
+							<Width>10</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="PatientIdКонтекстноеМеню" id="19"/>
+							<ExtendedTooltip name="PatientIdExtendedTooltip" id="127"/>
+						</LabelField>
+						<LabelField name="МедицинскаяКарта" id="54">
+							<DataPath>Список.МедицинскаяКарта</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<ContextMenu name="МедицинскаяКартаКонтекстноеМеню" id="55"/>
+							<ExtendedTooltip name="МедицинскаяКартаExtendedTooltip" id="128"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ГруппаИмя" id="62">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа имя</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа имя</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаИмяExtendedTooltip" id="129"/>
+					<ChildItems>
+						<LabelField name="PatientName" id="20">
+							<DataPath>Список.PatientName</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Patient Name</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="PatientNameКонтекстноеМеню" id="21"/>
+							<ExtendedTooltip name="PatientNameExtendedTooltip" id="130"/>
+						</LabelField>
+						<ColumnGroup name="ГруппаФИО" id="69">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа ФИО</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа ФИО</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="ГруппаФИОExtendedTooltip" id="131"/>
+							<ChildItems>
+								<LabelField name="Фамилия" id="65">
+									<DataPath>Список.Фамилия</DataPath>
+									<Width>10</Width>
+									<ContextMenu name="ФамилияКонтекстноеМеню" id="66"/>
+									<ExtendedTooltip name="ФамилияExtendedTooltip" id="132"/>
+								</LabelField>
+								<LabelField name="ИмяПациента" id="63">
+									<DataPath>Список.ИмяПациента</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Имя</v8:content>
+										</v8:item>
+									</Title>
+									<Width>10</Width>
+									<ContextMenu name="ИмяПациентаКонтекстноеМеню" id="64"/>
+									<ExtendedTooltip name="ИмяПациентаExtendedTooltip" id="133"/>
+								</LabelField>
+								<LabelField name="Отчество" id="67">
+									<DataPath>Список.Отчество</DataPath>
+									<Width>10</Width>
+									<ContextMenu name="ОтчествоКонтекстноеМеню" id="68"/>
+									<ExtendedTooltip name="ОтчествоExtendedTooltip" id="134"/>
+								</LabelField>
+							</ChildItems>
+						</ColumnGroup>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ГруппаДатаРождения" id="70">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа дата рождения</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа дата рождения</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаДатаРожденияExtendedTooltip" id="135"/>
+					<ChildItems>
+						<LabelField name="BirthDay" id="10">
+							<DataPath>Список.BirthDay</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Birth Day</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="BirthDayКонтекстноеМеню" id="11"/>
+							<ExtendedTooltip name="BirthDayExtendedTooltip" id="136"/>
+						</LabelField>
+						<LabelField name="ДатаРождения" id="71">
+							<DataPath>Список.ДатаРождения</DataPath>
+							<Width>15</Width>
+							<ContextMenu name="ДатаРожденияКонтекстноеМеню" id="72"/>
+							<ExtendedTooltip name="ДатаРожденияExtendedTooltip" id="137"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ГруппаПол" id="73">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа пол</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа пол</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаПолExtendedTooltip" id="138"/>
+					<ChildItems>
+						<LabelField name="Sex" id="50">
+							<DataPath>Список.Sex</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Sex</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="SexКонтекстноеМеню" id="51"/>
+							<ExtendedTooltip name="SexExtendedTooltip" id="139"/>
+						</LabelField>
+						<LabelField name="Пол" id="74">
+							<DataPath>Список.Пол</DataPath>
+							<Width>4</Width>
+							<ContextMenu name="ПолКонтекстноеМеню" id="75"/>
+							<ExtendedTooltip name="ПолExtendedTooltip" id="140"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ГруппаПростаяУслуга" id="85">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа простая услуга</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа простая услуга</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаПростаяУслугаExtendedTooltip" id="141"/>
+					<ChildItems>
+						<LabelField name="ScheduledProcedureStepDescription" id="36">
+							<DataPath>Список.ScheduledProcedureStepDescription</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Scheduled Procedure Step Description</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ScheduledProcedureStepDescriptionКонтекстноеМеню" id="37"/>
+							<ExtendedTooltip name="ScheduledProcedureStepDescriptionExtendedTooltip" id="142"/>
+						</LabelField>
+						<LabelField name="НаименованиеУслуги" id="86">
+							<DataPath>Список.НаименованиеУслуги</DataPath>
+							<Width>20</Width>
+							<ContextMenu name="НаименованиеУслугиКонтекстноеМеню" id="87"/>
+							<ExtendedTooltip name="НаименованиеУслугиExtendedTooltip" id="143"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ГруппаЗапланированноеВремя" id="91">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа запланированное время</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа запланированное время</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаЗапланированноеВремяExtendedTooltip" id="144"/>
+					<ChildItems>
+						<ColumnGroup name="ГруппаDateTime" id="92">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа date time</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа date time</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="ГруппаDateTimeExtendedTooltip" id="145"/>
+							<ChildItems>
+								<LabelField name="ScheduledProcedureStepStartDate" id="42">
+									<DataPath>Список.ScheduledProcedureStepStartDate</DataPath>
+									<DefaultItem>true</DefaultItem>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Start Date</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ScheduledProcedureStepStartDateКонтекстноеМеню" id="43"/>
+									<ExtendedTooltip name="ScheduledProcedureStepStartDateExtendedTooltip" id="146"/>
+								</LabelField>
+								<LabelField name="ScheduledProcedureStepStartTime" id="44">
+									<DataPath>Список.ScheduledProcedureStepStartTime</DataPath>
+									<DefaultItem>true</DefaultItem>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Start Time</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ScheduledProcedureStepStartTimeКонтекстноеМеню" id="45"/>
+									<ExtendedTooltip name="ScheduledProcedureStepStartTimeExtendedTooltip" id="147"/>
+								</LabelField>
+							</ChildItems>
+						</ColumnGroup>
+						<LabelField name="ЗапланированноеВремя" id="93">
+							<DataPath>Список.ЗапланированноеВремя</DataPath>
+							<Width>15</Width>
+							<ContextMenu name="ЗапланированноеВремяКонтекстноеМеню" id="94"/>
+							<ExtendedTooltip name="ЗапланированноеВремяExtendedTooltip" id="148"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ГруппаСложнаяУслуга" id="76">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа сложная услуга</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа сложная услуга</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаСложнаяУслугаExtendedTooltip" id="149"/>
+					<ChildItems>
+						<LabelField name="RequestedProcedureDescription" id="26">
+							<DataPath>Список.RequestedProcedureDescription</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Requested Procedure Description</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="RequestedProcedureDescriptionКонтекстноеМеню" id="27"/>
+							<ExtendedTooltip name="RequestedProcedureDescriptionExtendedTooltip" id="150"/>
+						</LabelField>
+						<LabelField name="НаименованиеСложнойУслуги" id="77">
+							<DataPath>Список.НаименованиеСложнойУслуги</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>МЭ услуга</v8:content>
+								</v8:item>
+							</Title>
+							<Width>20</Width>
+							<ContextMenu name="НаименованиеСложнойУслугиКонтекстноеМеню" id="78"/>
+							<ExtendedTooltip name="НаименованиеСложнойУслугиExtendedTooltip" id="151"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ГруппаНазначившийВрач" id="79">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа назначивший врач</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа назначивший врач</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаНазначившийВрачExtendedTooltip" id="152"/>
+					<ChildItems>
+						<LabelField name="RequestingPhysician" id="32">
+							<DataPath>Список.RequestingPhysician</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Requesting Physician</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="RequestingPhysicianКонтекстноеМеню" id="33"/>
+							<ExtendedTooltip name="RequestingPhysicianExtendedTooltip" id="153"/>
+						</LabelField>
+						<LabelField name="НазначившийВрач" id="80">
+							<DataPath>Список.НазначившийВрач</DataPath>
+							<Width>15</Width>
+							<ContextMenu name="НазначившийВрачКонтекстноеМеню" id="81"/>
+							<ExtendedTooltip name="НазначившийВрачExtendedTooltip" id="154"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ГруппаИсполнитель" id="82">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа исполнитель</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа исполнитель</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаИсполнительExtendedTooltip" id="155"/>
+					<ChildItems>
+						<LabelField name="ScheduledPerformingPhysiciansName" id="34">
+							<DataPath>Список.ScheduledPerformingPhysiciansName</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Scheduled Performing Physicians Name</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ScheduledPerformingPhysiciansNameКонтекстноеМеню" id="35"/>
+							<ExtendedTooltip name="ScheduledPerformingPhysiciansNameExtendedTooltip" id="156"/>
+						</LabelField>
+						<LabelField name="Исполнитель" id="83">
+							<DataPath>Список.Исполнитель</DataPath>
+							<Width>15</Width>
+							<ContextMenu name="ИсполнительКонтекстноеМеню" id="84"/>
+							<ExtendedTooltip name="ИсполнительExtendedTooltip" id="157"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<ColumnGroup name="ГруппаКабинет" id="88">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа кабинет</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа кабинет</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаКабинетExtendedTooltip" id="158"/>
+					<ChildItems>
+						<LabelField name="ScheduledProcedureStepLocation" id="40">
+							<DataPath>Список.ScheduledProcedureStepLocation</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Scheduled Procedure Step Location</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ScheduledProcedureStepLocationКонтекстноеМеню" id="41"/>
+							<ExtendedTooltip name="ScheduledProcedureStepLocationExtendedTooltip" id="159"/>
+						</LabelField>
+						<LabelField name="Кабинет" id="89">
+							<DataPath>Список.Кабинет</DataPath>
+							<Width>10</Width>
+							<ContextMenu name="КабинетКонтекстноеМеню" id="90"/>
+							<ExtendedTooltip name="КабинетExtendedTooltip" id="160"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<LabelField name="CommentsOnScheduledProcedureStep" id="12">
+					<DataPath>Список.CommentsOnScheduledProcedureStep</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Comments On Scheduled Procedure Step</v8:content>
+						</v8:item>
+					</Title>
+					<Width>15</Width>
+					<ContextMenu name="CommentsOnScheduledProcedureStepКонтекстноеМеню" id="13"/>
+					<ExtendedTooltip name="CommentsOnScheduledProcedureStepExtendedTooltip" id="161"/>
+				</LabelField>
+				<LabelField name="Allergies" id="8">
+					<DataPath>Список.Allergies</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Allergies</v8:content>
+						</v8:item>
+					</Title>
+					<Width>10</Width>
+					<ContextMenu name="AllergiesКонтекстноеМеню" id="9"/>
+					<ExtendedTooltip name="AllergiesExtendedTooltip" id="162"/>
+				</LabelField>
+				<LabelField name="MedicalAlerts" id="14">
+					<DataPath>Список.MedicalAlerts</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Medical Alerts</v8:content>
+						</v8:item>
+					</Title>
+					<Width>10</Width>
+					<ContextMenu name="MedicalAlertsКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="MedicalAlertsExtendedTooltip" id="163"/>
+				</LabelField>
+				<LabelField name="PreMedication" id="22">
+					<DataPath>Список.PreMedication</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Pre Medication</v8:content>
+						</v8:item>
+					</Title>
+					<Width>10</Width>
+					<ContextMenu name="PreMedicationКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="PreMedicationExtendedTooltip" id="164"/>
+				</LabelField>
+				<LabelField name="RequestedContrastAgent" id="24">
+					<DataPath>Список.RequestedContrastAgent</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Requested Contrast Agent</v8:content>
+						</v8:item>
+					</Title>
+					<Width>10</Width>
+					<ContextMenu name="RequestedContrastAgentКонтекстноеМеню" id="25"/>
+					<ExtendedTooltip name="RequestedContrastAgentExtendedTooltip" id="165"/>
+				</LabelField>
+				<LabelField name="AccessionNumber" id="6">
+					<DataPath>Список.AccessionNumber</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Accession Number</v8:content>
+						</v8:item>
+					</Title>
+					<Width>8</Width>
+					<ContextMenu name="AccessionNumberКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="AccessionNumberExtendedTooltip" id="166"/>
+				</LabelField>
+				<LabelField name="RequestedProcedureID" id="28">
+					<DataPath>Список.RequestedProcedureID</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Requested Procedure ID</v8:content>
+						</v8:item>
+					</Title>
+					<Width>20</Width>
+					<ContextMenu name="RequestedProcedureIDКонтекстноеМеню" id="29"/>
+					<ExtendedTooltip name="RequestedProcedureIDExtendedTooltip" id="167"/>
+				</LabelField>
+				<LabelField name="ScheduledProcedureStepID" id="38">
+					<DataPath>Список.ScheduledProcedureStepID</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Scheduled Procedure Step ID</v8:content>
+						</v8:item>
+					</Title>
+					<Width>20</Width>
+					<ContextMenu name="ScheduledProcedureStepIDКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="ScheduledProcedureStepIDExtendedTooltip" id="168"/>
+				</LabelField>
+				<LabelField name="RequestedProcedurePriority" id="30">
+					<DataPath>Список.RequestedProcedurePriority</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Requested Procedure Priority</v8:content>
+						</v8:item>
+					</Title>
+					<Width>4</Width>
+					<ContextMenu name="RequestedProcedurePriorityКонтекстноеМеню" id="31"/>
+					<ExtendedTooltip name="RequestedProcedurePriorityExtendedTooltip" id="169"/>
+				</LabelField>
+				<LabelField name="ScheduledStationAETitle" id="46">
+					<DataPath>Список.ScheduledStationAETitle</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Scheduled Station AETitle</v8:content>
+						</v8:item>
+					</Title>
+					<Width>8</Width>
+					<ContextMenu name="ScheduledStationAETitleКонтекстноеМеню" id="47"/>
+					<ExtendedTooltip name="ScheduledStationAETitleExtendedTooltip" id="170"/>
+				</LabelField>
+				<LabelField name="ScheduledStationName" id="48">
+					<DataPath>Список.ScheduledStationName</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Scheduled Station Name</v8:content>
+						</v8:item>
+					</Title>
+					<Width>8</Width>
+					<ContextMenu name="ScheduledStationNameКонтекстноеМеню" id="49"/>
+					<ExtendedTooltip name="ScheduledStationNameExtendedTooltip" id="171"/>
+				</LabelField>
+				<LabelField name="StudyInstanceUID" id="52">
+					<DataPath>Список.StudyInstanceUID</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Study Instance UID</v8:content>
+						</v8:item>
+					</Title>
+					<Width>20</Width>
+					<ContextMenu name="StudyInstanceUIDКонтекстноеМеню" id="53"/>
+					<ExtendedTooltip name="StudyInstanceUIDExtendedTooltip" id="172"/>
+				</LabelField>
+				<ColumnGroup name="ГруппаФайл" id="113">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа файл</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа файл</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="ГруппаФайлExtendedTooltip" id="173"/>
+					<ChildItems>
+						<CheckBoxField name="СозданФайл" id="111">
+							<DataPath>Список.СозданФайл</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="СозданФайлКонтекстноеМеню" id="112"/>
+							<ExtendedTooltip name="СозданФайлExtendedTooltip" id="174"/>
+						</CheckBoxField>
+						<LabelField name="ИмяФайла" id="58">
+							<DataPath>Список.ИмяФайла</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<Width>20</Width>
+							<ContextMenu name="ИмяФайлаКонтекстноеМеню" id="59"/>
+							<ExtendedTooltip name="ИмяФайлаExtendedTooltip" id="175"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
+				<LabelField name="Ответственный" id="56">
+					<DataPath>Список.Ответственный</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<ContextMenu name="ОтветственныйКонтекстноеМеню" id="57"/>
+					<ExtendedTooltip name="ОтветственныйExtendedTooltip" id="176"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Список" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.AccessionNumber</Field>
+				<Field>Список.Allergies</Field>
+				<Field>Список.BirthDay</Field>
+				<Field>Список.CommentsOnScheduledProcedureStep</Field>
+				<Field>Список.MedicalAlerts</Field>
+				<Field>Список.Modality</Field>
+				<Field>Список.PatientId</Field>
+				<Field>Список.PatientName</Field>
+				<Field>Список.PreMedication</Field>
+				<Field>Список.RequestedContrastAgent</Field>
+				<Field>Список.RequestedProcedureDescription</Field>
+				<Field>Список.RequestedProcedureID</Field>
+				<Field>Список.RequestedProcedurePriority</Field>
+				<Field>Список.RequestingPhysician</Field>
+				<Field>Список.ScheduledPerformingPhysiciansName</Field>
+				<Field>Список.ScheduledProcedureStepDescription</Field>
+				<Field>Список.ScheduledProcedureStepID</Field>
+				<Field>Список.ScheduledProcedureStepLocation</Field>
+				<Field>Список.ScheduledProcedureStepStartDate</Field>
+				<Field>Список.ScheduledProcedureStepStartTime</Field>
+				<Field>Список.ScheduledStationAETitle</Field>
+				<Field>Список.ScheduledStationName</Field>
+				<Field>Список.Sex</Field>
+				<Field>Список.StudyInstanceUID</Field>
+				<Field>Список.ИмяФайла</Field>
+				<Field>Список.КлючСтрокиСоставаУслуги</Field>
+				<Field>Список.МедицинскаяКарта</Field>
+				<Field>Список.Ответственный</Field>
+				<Field>Список.УникальныйИдентификаторУслуги</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	РегистрСведенийDicomWorkLists.УникальныйИдентификаторУслуги,
+	РегистрСведенийDicomWorkLists.КлючСтрокиСоставаУслуги,
+	РегистрСведенийDicomWorkLists.AccessionNumber,
+	РегистрСведенийDicomWorkLists.Allergies,
+	РегистрСведенийDicomWorkLists.BirthDay,
+	"                                                                                " КАК ДатаРождения,
+	РегистрСведенийDicomWorkLists.CommentsOnScheduledProcedureStep,
+	РегистрСведенийDicomWorkLists.MedicalAlerts,
+	РегистрСведенийDicomWorkLists.Modality,
+	"                                                                                " КАК ТипИсследования,
+	РегистрСведенийDicomWorkLists.PatientId,
+	РегистрСведенийDicomWorkLists.PatientName,
+	"                                                                                " КАК Фамилия,
+	"                                                                                " КАК ИмяПациента,
+	"                                                                                " КАК Отчество,
+	РегистрСведенийDicomWorkLists.PreMedication,
+	РегистрСведенийDicomWorkLists.RequestedContrastAgent,
+	РегистрСведенийDicomWorkLists.RequestedProcedureDescription,
+	"                                                                                " КАК НаименованиеСложнойУслуги,
+	РегистрСведенийDicomWorkLists.RequestedProcedureID,
+	РегистрСведенийDicomWorkLists.RequestedProcedurePriority,
+	РегистрСведенийDicomWorkLists.RequestingPhysician,
+	"                                                                                " КАК НазначившийВрач,
+	РегистрСведенийDicomWorkLists.ScheduledPerformingPhysiciansName,
+	"                                                                                " КАК Исполнитель,
+	РегистрСведенийDicomWorkLists.ScheduledProcedureStepDescription,
+	"                                                                                " КАК НаименованиеУслуги,
+	РегистрСведенийDicomWorkLists.ScheduledProcedureStepID,
+	РегистрСведенийDicomWorkLists.ScheduledProcedureStepLocation,
+	"                                                                                " КАК Кабинет,
+	РегистрСведенийDicomWorkLists.ScheduledProcedureStepStartDate,
+	РегистрСведенийDicomWorkLists.ScheduledProcedureStepStartTime,
+	"                                                                                " КАК ЗапланированноеВремя,
+	РегистрСведенийDicomWorkLists.ScheduledStationAETitle,
+	РегистрСведенийDicomWorkLists.ScheduledStationName,
+	РегистрСведенийDicomWorkLists.Sex,
+	"                                                                                " КАК Пол,
+	РегистрСведенийDicomWorkLists.StudyInstanceUID,
+	"                                                                                " КАК МедицинскаяКарта,
+	РегистрСведенийDicomWorkLists.Ответственный,
+	РегистрСведенийDicomWorkLists.ИмяФайла,
+	РегистрСведенийDicomWorkLists.ДатаВыполнения,
+	РегистрСведенийDicomWorkLists.Выполнена,
+	РегистрСведенийDicomWorkLists.СтатусИсследования,
+	"                                                                                " КАК ТипЗаписи,
+	РегистрСведенийDicomWorkLists.СозданФайл
+ИЗ
+	РегистрСведений.DicomWorkLists КАК РегистрСведенийDicomWorkLists</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ScheduledProcedureStepLocation</dcssch:dataPath>
+					<dcssch:field>ScheduledProcedureStepLocation</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ScheduledProcedureStepSequence</dcssch:dataPath>
+					<dcssch:field>ScheduledProcedureStepSequence</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>CommentsOnScheduledProcedureStep</dcssch:dataPath>
+					<dcssch:field>CommentsOnScheduledProcedureStep</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>AccessionNumber</dcssch:dataPath>
+					<dcssch:field>AccessionNumber</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДобавленоПоЗапросу</dcssch:dataPath>
+					<dcssch:field>ДобавленоПоЗапросу</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>УникальныйИдентификаторУслуги</dcssch:dataPath>
+					<dcssch:field>УникальныйИдентификаторУслуги</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КлючСтрокиСоставаУслуги</dcssch:dataPath>
+					<dcssch:field>КлючСтрокиСоставаУслуги</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИмяПациента</dcssch:dataPath>
+					<dcssch:field>ИмяПациента</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя пациента</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Allergies</dcssch:dataPath>
+					<dcssch:field>Allergies</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаРождения</dcssch:dataPath>
+					<dcssch:field>ДатаРождения</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата рождения</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СтатусИсследования</dcssch:dataPath>
+					<dcssch:field>СтатусИсследования</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТипИсследования</dcssch:dataPath>
+					<dcssch:field>ТипИсследования</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип исследования</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>BirthDay</dcssch:dataPath>
+					<dcssch:field>BirthDay</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>MedicalAlerts</dcssch:dataPath>
+					<dcssch:field>MedicalAlerts</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Modality</dcssch:dataPath>
+					<dcssch:field>Modality</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>УникальныйИдентификаторИсследования</dcssch:dataPath>
+					<dcssch:field>УникальныйИдентификаторИсследования</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>PatientId</dcssch:dataPath>
+					<dcssch:field>PatientId</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Оборудование</dcssch:dataPath>
+					<dcssch:field>Оборудование</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>PatientName</dcssch:dataPath>
+					<dcssch:field>PatientName</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ScheduledProcedureStepStartDate</dcssch:dataPath>
+					<dcssch:field>ScheduledProcedureStepStartDate</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Фамилия</dcssch:dataPath>
+					<dcssch:field>Фамилия</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ScheduledProcedureStepID</dcssch:dataPath>
+					<dcssch:field>ScheduledProcedureStepID</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Отчество</dcssch:dataPath>
+					<dcssch:field>Отчество</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отчество</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>PreMedication</dcssch:dataPath>
+					<dcssch:field>PreMedication</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>RequestedContrastAgent</dcssch:dataPath>
+					<dcssch:field>RequestedContrastAgent</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>RequestedProcedureDescription</dcssch:dataPath>
+					<dcssch:field>RequestedProcedureDescription</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаименованиеСложнойУслуги</dcssch:dataPath>
+					<dcssch:field>НаименованиеСложнойУслуги</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование сложной услуги</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ScheduledStationName</dcssch:dataPath>
+					<dcssch:field>ScheduledStationName</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Исполнитель</dcssch:dataPath>
+					<dcssch:field>Исполнитель</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Исполнитель</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>RequestedProcedureID</dcssch:dataPath>
+					<dcssch:field>RequestedProcedureID</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>RequestedProcedurePriority</dcssch:dataPath>
+					<dcssch:field>RequestedProcedurePriority</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>RequestingPhysician</dcssch:dataPath>
+					<dcssch:field>RequestingPhysician</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НазначившийВрач</dcssch:dataPath>
+					<dcssch:field>НазначившийВрач</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Назначивший врач</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МедицинскаяКарта</dcssch:dataPath>
+					<dcssch:field>МедицинскаяКарта</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Медицинская карта</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ScheduledPerformingPhysiciansName</dcssch:dataPath>
+					<dcssch:field>ScheduledPerformingPhysiciansName</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ScheduledProcedureStepDescription</dcssch:dataPath>
+					<dcssch:field>ScheduledProcedureStepDescription</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаименованиеУслуги</dcssch:dataPath>
+					<dcssch:field>НаименованиеУслуги</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование услуги</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Кабинет</dcssch:dataPath>
+					<dcssch:field>Кабинет</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кабинет</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ScheduledStationAETitle</dcssch:dataPath>
+					<dcssch:field>ScheduledStationAETitle</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ScheduledProcedureStepStartTime</dcssch:dataPath>
+					<dcssch:field>ScheduledProcedureStepStartTime</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЗапланированноеВремя</dcssch:dataPath>
+					<dcssch:field>ЗапланированноеВремя</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Запланированное время</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>StudyInstanceUID</dcssch:dataPath>
+					<dcssch:field>StudyInstanceUID</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Sex</dcssch:dataPath>
+					<dcssch:field>Sex</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Пол</dcssch:dataPath>
+					<dcssch:field>Пол</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пол</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ответственный</dcssch:dataPath>
+					<dcssch:field>Ответственный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИмяФайла</dcssch:dataPath>
+					<dcssch:field>ИмяФайла</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаВыполнения</dcssch:dataPath>
+					<dcssch:field>ДатаВыполнения</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Выполнена</dcssch:dataPath>
+					<dcssch:field>Выполнена</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТипЗаписи</dcssch:dataPath>
+					<dcssch:field>ТипЗаписи</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип записи</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СозданФайл</dcssch:dataPath>
+					<dcssch:field>СозданФайл</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Прием</dcssch:dataPath>
+					<dcssch:field>Прием</dcssch:field>
+				</Field>
+				<MainTable>InformationRegister.DicomWorkLists</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">УникальныйИдентификаторУслуги</dcsset:left>
+									<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>ЦветФона</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">style:ФонВыделенияЦвет</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>ТипЗаписи</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">УникальныйИдентификаторУслуги</dcsset:left>
+									<dcsset:comparisonType>Filled</dcsset:comparisonType>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Текст</dcscor:parameter>
+									<dcscor:value xsi:type="xs:string">Услуга</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>ТипЗаписи</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">УникальныйИдентификаторУслуги</dcsset:left>
+									<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Текст</dcscor:parameter>
+									<dcscor:value xsi:type="xs:string">Добавлена вручную</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="РольДоступнаПолныеПрава" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Роль доступна полные права</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОтметкаИсполнения" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исполнено</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пометить как выполненное</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F6</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.ExecuteTask</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОтметкаИсполнения</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СнятьОтметкуИсполнения" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Не исполнено</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять пометку об исполнении</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>F12</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.MarkToDelete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СнятьОтметкуИсполнения</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

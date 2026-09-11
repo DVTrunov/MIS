@@ -1,0 +1,510 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<Group>Vertical</Group>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeLoadDataFromSettingsAtServer">ПередЗагрузкойДанныхИзНастроекНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаОтбор" id="55">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа отбор</v8:content>
+				</v8:item>
+			</Title>
+			<Group>HorizontalIfPossible</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОтборРасширеннаяПодсказка" id="56"/>
+			<ChildItems>
+				<InputField name="Организация" id="41">
+					<DataPath>Организация</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ChoiceParameters>
+						<app:item name="Отбор.СобственнаяОрганизация">
+							<app:value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xs:boolean">true</Value>
+							</app:value>
+						</app:item>
+					</ChoiceParameters>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="42"/>
+					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="43"/>
+				</InputField>
+				<InputField name="МестоДеятельности" id="44">
+					<DataPath>МестоДеятельности</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.Организация</xr:Name>
+							<xr:DataPath xsi:type="xs:string">Организация</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
+					<ChoiceParameters>
+						<app:item name="Отбор.ВестиУчетВЭтойИБ">
+							<app:value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xs:boolean">true</Value>
+							</app:value>
+						</app:item>
+					</ChoiceParameters>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Место деятельности</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="МестоДеятельностиКонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="МестоДеятельностиРасширеннаяПодсказка" id="46"/>
+				</InputField>
+				<InputField name="Период" id="70">
+					<DataPath>Период</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="ПериодКонтекстноеМеню" id="71"/>
+					<ExtendedTooltip name="ПериодРасширеннаяПодсказка" id="72"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ОтборИПолучениеИнформацииОбУпаковках" id="89">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отбор и получение информации об упаковках</v8:content>
+				</v8:item>
+			</Title>
+			<Group>HorizontalIfPossible</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ОтборИПолучениеИнформацииОбУпаковкахРасширеннаяПодсказка" id="90"/>
+			<ChildItems>
+				<InputField name="ДальнейшееДействиеОтбор" id="47">
+					<DataPath>ДальнейшееДействиеОтбор</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подсказка отображается для каждого выбранного действия.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<ClearButton>true</ClearButton>
+					<ListChoiceMode>true</ListChoiceMode>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дальнейшее действие</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="ДальнейшееДействиеОтборКонтекстноеМеню" id="48"/>
+					<ExtendedTooltip name="ДальнейшееДействиеОтборРасширеннаяПодсказка" id="49"/>
+					<Events>
+						<Event name="OnChange">ДальнейшееДействиеОтборПриИзменении</Event>
+					</Events>
+				</InputField>
+				<Button name="ВыполнитьПолучениеИнформацииОбУпаковках" id="76">
+					<Type>Hyperlink</Type>
+					<CommandName>Form.Command.ВыполнитьПолучениеИнформацииОбУпаковках</CommandName>
+					<ExtendedTooltip name="ВыполнитьПолучениеИнформацииОбУпаковкахРасширеннаяПодсказка" id="77"/>
+				</Button>
+				<Button name="ВыполнитьОтменуПолученияИнформацииОбУпаковках" id="87">
+					<Type>Hyperlink</Type>
+					<Visible>false</Visible>
+					<CommandName>Form.Command.ВыполнитьОтменуПолученияИнформацииОбУпаковках</CommandName>
+					<ExtendedTooltip name="ВыполнитьОтменуПолученияИнформацииОбУпаковкахРасширеннаяПодсказка" id="88"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="РеестрВыбытия" id="1">
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Объект.РеестрВыбытия</DataPath>
+			<CommandSet>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>Delete</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+				<ExcludedCommand>MoveDown</ExcludedCommand>
+				<ExcludedCommand>MoveUp</ExcludedCommand>
+				<ExcludedCommand>ShowRowRearrangement</ExcludedCommand>
+				<ExcludedCommand>SortListAsc</ExcludedCommand>
+				<ExcludedCommand>SortListDesc</ExcludedCommand>
+			</CommandSet>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="РеестрВыбытияКонтекстноеМеню" id="2"/>
+			<AutoCommandBar name="РеестрВыбытияКоманднаяПанель" id="3">
+				<ChildItems>
+					<Button name="ПерезаполнитьРеестрВыбытия" id="59">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ПерезаполнитьРеестрВыбытия</CommandName>
+						<ExtendedTooltip name="ПерезаполнитьРеестрВыбытияРасширеннаяПодсказка" id="60"/>
+					</Button>
+					<Button name="РеестрВыбытияУстановитьПометку" id="83">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.УстановитьПометку</CommandName>
+						<ExtendedTooltip name="РеестрВыбытияУстановитьПометкуРасширеннаяПодсказка" id="84"/>
+					</Button>
+					<Button name="РеестрВыбытияСнятьПометку" id="85">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.СнятьПометку</CommandName>
+						<ExtendedTooltip name="РеестрВыбытияСнятьПометкуРасширеннаяПодсказка" id="86"/>
+					</Button>
+					<Button name="ВыполнитьВыбытие" id="57">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ВыполнитьВыбытие</CommandName>
+						<ExtendedTooltip name="ВыполнитьВыбытиеРасширеннаяПодсказка" id="58"/>
+					</Button>
+					<Button name="РеестрВыбытияСправка" id="78">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.Help</CommandName>
+						<LocationInCommandBar>InCommandBarAndInAdditionalSubmenu</LocationInCommandBar>
+						<ExtendedTooltip name="РеестрВыбытияСправкаРасширеннаяПодсказка" id="79"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="РеестрВыбытияРасширеннаяПодсказка" id="4"/>
+			<SearchStringAddition name="РеестрВыбытияСтрокаПоиска" id="5">
+				<AdditionSource>
+					<Item>РеестрВыбытия</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="РеестрВыбытияСтрокаПоискаКонтекстноеМеню" id="6"/>
+				<ExtendedTooltip name="РеестрВыбытияСтрокаПоискаРасширеннаяПодсказка" id="7"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="РеестрВыбытияСостояниеПросмотра" id="8">
+				<AdditionSource>
+					<Item>РеестрВыбытия</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="РеестрВыбытияСостояниеПросмотраКонтекстноеМеню" id="9"/>
+				<ExtendedTooltip name="РеестрВыбытияСостояниеПросмотраРасширеннаяПодсказка" id="10"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="РеестрВыбытияУправлениеПоиском" id="11">
+				<AdditionSource>
+					<Item>РеестрВыбытия</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="РеестрВыбытияУправлениеПоискомКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="РеестрВыбытияУправлениеПоискомРасширеннаяПодсказка" id="13"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">РеестрВыбытияВыбор</Event>
+				<Event name="BeforeAddRow">РеестрВыбытияПередНачаломДобавления</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="РеестрВыбытияНомерСтроки" id="14">
+					<DataPath>Объект.РеестрВыбытия.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="РеестрВыбытияНомерСтрокиКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="РеестрВыбытияНомерСтрокиРасширеннаяПодсказка" id="16"/>
+				</LabelField>
+				<CheckBoxField name="РеестрВыбытияПометка" id="80">
+					<DataPath>Объект.РеестрВыбытия.Пометка</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="РеестрВыбытияПометкаКонтекстноеМеню" id="81"/>
+					<ExtendedTooltip name="РеестрВыбытияПометкаРасширеннаяПодсказка" id="82"/>
+				</CheckBoxField>
+				<InputField name="РеестрВыбытияДальнейшееДействиеПредставление" id="67">
+					<DataPath>Объект.РеестрВыбытия.ДальнейшееДействиеПредставление</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ContextMenu name="РеестрВыбытияДальнейшееДействиеПредставлениеКонтекстноеМеню" id="68"/>
+					<ExtendedTooltip name="РеестрВыбытияДальнейшееДействиеПредставлениеРасширеннаяПодсказка" id="69"/>
+				</InputField>
+				<InputField name="РеестрВыбытияНомерУпаковки" id="17">
+					<DataPath>Объект.РеестрВыбытия.НомерУпаковки</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="РеестрВыбытияНомерУпаковкиКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="РеестрВыбытияНомерУпаковкиРасширеннаяПодсказка" id="19"/>
+				</InputField>
+				<InputField name="РеестрВыбытияМестоДеятельности" id="23">
+					<DataPath>Объект.РеестрВыбытия.МестоДеятельности</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="РеестрВыбытияМестоДеятельностиКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="РеестрВыбытияМестоДеятельностиРасширеннаяПодсказка" id="25"/>
+				</InputField>
+				<InputField name="РеестрВыбытияСтатусВыбытия" id="61">
+					<DataPath>Объект.РеестрВыбытия.СтатусВыбытия</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="РеестрВыбытияСтатусВыбытияКонтекстноеМеню" id="62"/>
+					<ExtendedTooltip name="РеестрВыбытияСтатусВыбытияРасширеннаяПодсказка" id="63"/>
+				</InputField>
+				<InputField name="РеестрВыбытияДатаСтатуса" id="64">
+					<DataPath>Объект.РеестрВыбытия.ДатаСтатуса</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="РеестрВыбытияДатаСтатусаКонтекстноеМеню" id="65"/>
+					<ExtendedTooltip name="РеестрВыбытияДатаСтатусаРасширеннаяПодсказка" id="66"/>
+				</InputField>
+				<InputField name="РеестрВыбытияДокументРезерва" id="26">
+					<DataPath>Объект.РеестрВыбытия.ДокументРезерва</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="РеестрВыбытияДокументРезерваКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="РеестрВыбытияДокументРезерваРасширеннаяПодсказка" id="28"/>
+				</InputField>
+				<InputField name="РеестрВыбытияДоляУпаковки" id="73">
+					<DataPath>Объект.РеестрВыбытия.ДоляУпаковки</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="РеестрВыбытияДоляУпаковкиКонтекстноеМеню" id="74"/>
+					<ExtendedTooltip name="РеестрВыбытияДоляУпаковкиРасширеннаяПодсказка" id="75"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.РеестрВыбытияМДЛП</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<Columns>
+				<AdditionalColumns table="Объект.РеестрВыбытия">
+					<Column name="ДальнейшееДействиеПредставление" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Дальнейшее действие</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>200</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="Пометка" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Пометка</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="Организация" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ОрганизацииМДЛП</v8:Type>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+			<Save>
+				<Field>Организация</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="МестоДеятельности" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Место деятельности</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.МестаДеятельностиМДЛП</v8:Type>
+			</Type>
+			<Save>
+				<Field>МестоДеятельности</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ДальнейшееДействиеОтбор" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дальнейшее действие</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>200</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Период" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:StandardPeriod</v8:Type>
+			</Type>
+			<Save>
+				<Field>Период</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ИдентификаторЗаданияПолученияИнформацииОбУпаковках" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор задания получения информации об упаковках</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ВыполнитьВыбытие" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить выбытие</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ВыполнитьВыбытие</Action>
+		</Command>
+		<Command name="ПерезаполнитьРеестрВыбытия" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перезаполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перезаполнить реестр выбытия</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПерезаполнитьРеестрВыбытия</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ВыполнитьПолучениеИнформацииОбУпаковках" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Получить информацию об упаковках</v8:content>
+				</v8:item>
+			</Title>
+			<Action>ВыполнитьПолучениеИнформацииОбУпаковках</Action>
+		</Command>
+		<Command name="УстановитьПометку" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить пометку</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить пометку</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УстановитьПометку</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="СнятьПометку" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять пометку</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Снять пометку</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СнятьПометку</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="ВыполнитьОтменуПолученияИнформацииОбУпаковках" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить получение информации об упаковках</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>CommonPicture.ДлительнаяОперация16</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ВыполнитьОтменуПолученияИнформацииОбУпаковках</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Организация">
+			<Type>
+				<v8:Type>cfg:CatalogRef.ОрганизацииМДЛП</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="МестоДеятельности">
+			<Type>
+				<v8:Type>cfg:CatalogRef.МестаДеятельностиМДЛП</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

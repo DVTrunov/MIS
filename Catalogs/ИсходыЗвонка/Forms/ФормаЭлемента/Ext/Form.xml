@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Код" id="1">
+			<DataPath>Объект.Code</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="КодРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<InputField name="Наименование" id="4">
+			<DataPath>Объект.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<UsualGroup name="ГруппаФлажки" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа флажки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа флажки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>WeakSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ThroughAlign>DontUse</ThroughAlign>
+			<ExtendedTooltip name="ГруппаФлажкиРасширеннаяПодсказка" id="17"/>
+			<ChildItems>
+				<CheckBoxField name="ОбщениеСостоялось" id="13">
+					<DataPath>Объект.ОбщениеСостоялось</DataPath>
+					<ContextMenu name="ОбщениеСостоялосьКонтекстноеМеню" id="14"/>
+					<ExtendedTooltip name="ОбщениеСостоялосьРасширеннаяПодсказка" id="15"/>
+				</CheckBoxField>
+				<CheckBoxField name="СоздаватьЛистОжидания" id="10">
+					<DataPath>Объект.СоздаватьЛистОжидания</DataPath>
+					<ContextMenu name="СоздаватьЛистОжиданияКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="СоздаватьЛистОжиданияРасширеннаяПодсказка" id="12"/>
+					<Events>
+						<Event name="OnChange">СоздаватьЛистОжиданияПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<CheckBoxField name="НеСоздаватьЛид" id="34">
+					<DataPath>Объект.НеСоздаватьЛид</DataPath>
+					<ContextMenu name="НеСоздаватьЛидКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="НеСоздаватьЛидРасширеннаяПодсказка" id="36"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ТипыЗвонковПоИсходам" id="18">
+			<TitleLocation>Top</TitleLocation>
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<EnableStartDrag>true</EnableStartDrag>
+			<DataPath>ТипыЗвонковПоИсходам</DataPath>
+			<RowPictureDataPath>ТипыЗвонковПоИсходам.DefaultPicture</RowPictureDataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Типы звонков</v8:content>
+				</v8:item>
+			</Title>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+			<ContextMenu name="ТипыЗвонковПоИсходамКонтекстноеМеню" id="19"/>
+			<AutoCommandBar name="ТипыЗвонковПоИсходамКоманднаяПанель" id="20"/>
+			<ExtendedTooltip name="ТипыЗвонковПоИсходамРасширеннаяПодсказка" id="21"/>
+			<SearchStringAddition name="ТипыЗвонковПоИсходамСтрокаПоиска" id="22">
+				<AdditionSource>
+					<Item>ТипыЗвонковПоИсходам</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТипыЗвонковПоИсходамСтрокаПоискаКонтекстноеМеню" id="23"/>
+				<ExtendedTooltip name="ТипыЗвонковПоИсходамСтрокаПоискаРасширеннаяПодсказка" id="24"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ТипыЗвонковПоИсходамСостояниеПросмотра" id="25">
+				<AdditionSource>
+					<Item>ТипыЗвонковПоИсходам</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТипыЗвонковПоИсходамСостояниеПросмотраКонтекстноеМеню" id="26"/>
+				<ExtendedTooltip name="ТипыЗвонковПоИсходамСостояниеПросмотраРасширеннаяПодсказка" id="27"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ТипыЗвонковПоИсходамУправлениеПоиском" id="28">
+				<AdditionSource>
+					<Item>ТипыЗвонковПоИсходам</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ТипыЗвонковПоИсходамУправлениеПоискомКонтекстноеМеню" id="29"/>
+				<ExtendedTooltip name="ТипыЗвонковПоИсходамУправлениеПоискомРасширеннаяПодсказка" id="30"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">ТипыЗвонковПоИсходамПередНачаломДобавления</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="ТипыЗвонковПоИсходамТипЗвонка" id="31">
+					<DataPath>ТипыЗвонковПоИсходам.ТипЗвонка</DataPath>
+					<ContextMenu name="ТипыЗвонковПоИсходамТипЗвонкаКонтекстноеМеню" id="32"/>
+					<ExtendedTooltip name="ТипыЗвонковПоИсходамТипЗвонкаРасширеннаяПодсказка" id="33"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ИсходыЗвонка</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ТипыЗвонковПоИсходам" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Типы звонков по исходам</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>InformationRegister.ИсходыТиповЗвонковДопустимые</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+	</Attributes>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>InformationRegister.ИсходыТиповЗвонковДопустимые.StandardCommand.OpenByValue.ИсходЗвонка</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

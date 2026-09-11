@@ -1,0 +1,619 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>Close</ExcludedCommand>
+		<ExcludedCommand>CustomizeForm</ExcludedCommand>
+		<ExcludedCommand>Help</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="омг_Филиалы" id="258">
+			<DataPath>омг_Филиалы</DataPath>
+			<ChoiceButton>true</ChoiceButton>
+			<ClearButton>true</ClearButton>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="омг_ФилиалыКонтекстноеМеню" id="259"/>
+			<ExtendedTooltip name="омг_ФилиалыРасширеннаяПодсказка" id="260"/>
+			<Events>
+				<Event name="OnChange">омг_ФилиалыПриИзменении</Event>
+				<Event name="StartChoice">омг_ФилиалыНачалоВыбора</Event>
+				<Event name="ChoiceProcessing">омг_ФилиалыОбработкаВыбора</Event>
+			</Events>
+		</InputField>
+		<InputField name="омг_Отделения" id="261">
+			<DataPath>омг_Отделения</DataPath>
+			<ChoiceButton>true</ChoiceButton>
+			<ClearButton>true</ClearButton>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="омг_ОтделенияКонтекстноеМеню" id="262"/>
+			<ExtendedTooltip name="омг_ОтделенияРасширеннаяПодсказка" id="263"/>
+			<Events>
+				<Event name="OnChange">омг_ОтделенияПриИзменении</Event>
+				<Event name="StartChoice">омг_ОтделенияНачалоВыбора</Event>
+				<Event name="ChoiceProcessing">омг_ОтделенияОбработкаВыбора</Event>
+			</Events>
+		</InputField>
+		<Table name="ПациентыВСтационаре" id="177">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>ПациентыВСтационаре</DataPath>
+			<CommandSet>
+				<ExcludedCommand>Change</ExcludedCommand>
+			</CommandSet>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ПациентыВСтационареКонтекстноеМеню" id="178"/>
+			<AutoCommandBar name="ПациентыВСтационареКоманднаяПанель" id="179">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ПациентыВСтационареОбновитьТекущихКлиентовСтационара" id="211">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ОбновитьТекущихКлиентовСтационара</CommandName>
+						<ExtendedTooltip name="ПациентыВСтационареОбновитьТекущихКлиентовСтационараРасширеннаяПодсказка" id="212"/>
+					</Button>
+					<Popup name="СоздатьДокументПодменю" id="222">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Медицинский документ</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Создать документ подменю</v8:content>
+							</v8:item>
+						</ToolTip>
+						<Picture>
+							<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="СоздатьДокументПодменюРасширеннаяПодсказка" id="223"/>
+					</Popup>
+					<Popup name="РаботаСРежимомПациента" id="238">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Режим пациента</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Работа с режимом пациента</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="РаботаСРежимомПациентаРасширеннаяПодсказка" id="239"/>
+						<ChildItems>
+							<Button name="ПациентыВСтационареИзменениеРежима" id="236">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ИзменениеРежима</CommandName>
+								<ExtendedTooltip name="ПациентыВСтационареИзменениеРежимаРасширеннаяПодсказка" id="237"/>
+							</Button>
+							<Button name="ПациентыВСтационареПросмотрРежимов" id="234">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ОткрытьИсториюРежимов</CommandName>
+								<ExtendedTooltip name="ПациентыВСтационареПросмотрРежимовРасширеннаяПодсказка" id="235"/>
+							</Button>
+						</ChildItems>
+					</Popup>
+					<Button name="ПациентыВСтационареИсторияПребыванияПациента" id="216">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ИсторияПребыванияПациента</CommandName>
+						<ExtendedTooltip name="ПациентыВСтационареИсторияПребыванияПациентаРасширеннаяПодсказка" id="217"/>
+					</Button>
+					<Button name="ПациентыВСтационареОткрытьЭМК" id="220">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<CommandName>Form.Command.ПросмотрЭМК</CommandName>
+						<Picture>
+							<xr:Ref>CommonPicture.СостояниеПользователя04</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="ПациентыВСтационареОткрытьЭМКРасширеннаяПодсказка" id="221"/>
+					</Button>
+					<Button name="ПациентыВСтационареОткрытьТемпературныйЛист" id="218">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<CommandName>Form.Command.ОткрытьТемпературныйЛист</CommandName>
+						<Picture>
+							<xr:Ref>StdPicture.Chart</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="ПациентыВСтационареОткрытьТемпературныйЛистРасширеннаяПодсказка" id="219"/>
+					</Button>
+					<Button name="ОткрытьЛистНазначений" id="232">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<CommandName>Form.Command.ОткрытьЛистНазначений</CommandName>
+						<Picture>
+							<xr:Ref>StdPicture.Document</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="ОткрытьЛистНазначенийРасширеннаяПодсказка" id="233"/>
+					</Button>
+					<Button name="ПациентыВСтационареЖурналТрансфузий" id="246">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ЖурналТрансфузий</CommandName>
+						<ExtendedTooltip name="ПациентыВСтационареЖурналТрансфузийРасширеннаяПодсказка" id="247"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ПациентыВСтационареРасширеннаяПодсказка" id="180"/>
+			<SearchStringAddition name="ПациентыВСтационареСтрокаПоиска" id="181">
+				<AdditionSource>
+					<Item>ПациентыВСтационаре</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПациентыВСтационареСтрокаПоискаКонтекстноеМеню" id="182"/>
+				<ExtendedTooltip name="ПациентыВСтационареСтрокаПоискаРасширеннаяПодсказка" id="183"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ПациентыВСтационареСостояниеПросмотра" id="184">
+				<AdditionSource>
+					<Item>ПациентыВСтационаре</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПациентыВСтационареСостояниеПросмотраКонтекстноеМеню" id="185"/>
+				<ExtendedTooltip name="ПациентыВСтационареСостояниеПросмотраРасширеннаяПодсказка" id="186"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ПациентыВСтационареУправлениеПоиском" id="187">
+				<AdditionSource>
+					<Item>ПациентыВСтационаре</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ПациентыВСтационареУправлениеПоискомКонтекстноеМеню" id="188"/>
+				<ExtendedTooltip name="ПациентыВСтационареУправлениеПоискомРасширеннаяПодсказка" id="189"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ПациентыВСтационареВыбор</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ПациентыВСтационареКлиент" id="190">
+					<DataPath>ПациентыВСтационаре.Клиент</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ПациентыВСтационареКлиентКонтекстноеМеню" id="191"/>
+					<ExtendedTooltip name="ПациентыВСтационареКлиентРасширеннаяПодсказка" id="192"/>
+				</InputField>
+				<InputField name="ПациентыВСтационареДатаПоступления" id="193">
+					<DataPath>ПациентыВСтационаре.ДатаПоступления</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ='дд.ММ.гггг ЧЧ.мм'</v8:content>
+						</v8:item>
+					</Format>
+					<EditFormat>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ='дд.ММ.гггг ЧЧ.мм'</v8:content>
+						</v8:item>
+					</EditFormat>
+					<ContextMenu name="ПациентыВСтационареДатаПоступленияКонтекстноеМеню" id="194"/>
+					<ExtendedTooltip name="ПациентыВСтационареДатаПоступленияРасширеннаяПодсказка" id="195"/>
+				</InputField>
+				<ColumnGroup name="ПациентыВСтационареГруппа1" id="251">
+					<ExtendedTooltip name="ПациентыВСтационареГруппа1РасширеннаяПодсказка" id="252"/>
+					<ChildItems>
+						<InputField name="ПациентыВСтационареомг_ОтделениеФилиал" id="255">
+							<DataPath>ПациентыВСтационаре.омг_Отделение.Филиал</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="ПациентыВСтационареомг_ОтделениеФилиалКонтекстноеМеню" id="256"/>
+							<ExtendedTooltip name="ПациентыВСтационареомг_ОтделениеФилиалРасширеннаяПодсказка" id="257"/>
+						</InputField>
+						<InputField name="ПациентыВСтационареомг_Отделение" id="248">
+							<DataPath>ПациентыВСтационаре.омг_Отделение</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="ПациентыВСтационареомг_ОтделениеКонтекстноеМеню" id="249"/>
+							<ExtendedTooltip name="ПациентыВСтационареомг_ОтделениеРасширеннаяПодсказка" id="250"/>
+						</InputField>
+						<ColumnGroup name="ПациентыВСтационареГруппа2" id="253">
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="ПациентыВСтационареГруппа2РасширеннаяПодсказка" id="254"/>
+							<ChildItems>
+								<InputField name="ПациентыВСтационареПалата" id="196">
+									<DataPath>ПациентыВСтационаре.Палата</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ПациентыВСтационареПалатаКонтекстноеМеню" id="197"/>
+									<ExtendedTooltip name="ПациентыВСтационареПалатаРасширеннаяПодсказка" id="198"/>
+								</InputField>
+								<InputField name="ПациентыВСтационареКойкоМесто" id="199">
+									<DataPath>ПациентыВСтационаре.КойкоМесто</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ПациентыВСтационареКойкоМестоКонтекстноеМеню" id="200"/>
+									<ExtendedTooltip name="ПациентыВСтационареКойкоМестоРасширеннаяПодсказка" id="201"/>
+								</InputField>
+							</ChildItems>
+						</ColumnGroup>
+					</ChildItems>
+				</ColumnGroup>
+				<InputField name="ПациентыВСтационареПервичныйПрием" id="243">
+					<DataPath>ПациентыВСтационаре.ПервичныйПрием</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ПациентыВСтационареПервичныйПриемКонтекстноеМеню" id="244"/>
+					<ExtendedTooltip name="ПациентыВСтационареПервичныйПриемРасширеннаяПодсказка" id="245"/>
+				</InputField>
+				<InputField name="ПациентыВСтационареМедицинскаяКарта" id="240">
+					<DataPath>ПациентыВСтационаре.МедицинскаяКарта</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ПациентыВСтационареМедицинскаяКартаКонтекстноеМеню" id="241"/>
+					<ExtendedTooltip name="ПациентыВСтационареМедицинскаяКартаРасширеннаяПодсказка" id="242"/>
+				</InputField>
+				<InputField name="ПациентыВСтационареДатаПоследнегоИзменения" id="208">
+					<DataPath>ПациентыВСтационаре.ДатаПоследнегоИзменения</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ='дд.ММ.гггг ЧЧ.мм'</v8:content>
+						</v8:item>
+					</Format>
+					<EditFormat>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ='дд.ММ.гггг ЧЧ.мм'</v8:content>
+						</v8:item>
+					</EditFormat>
+					<ContextMenu name="ПациентыВСтационареДатаПоследнегоИзмененияКонтекстноеМеню" id="209"/>
+					<ExtendedTooltip name="ПациентыВСтационареДатаПоследнегоИзмененияРасширеннаяПодсказка" id="210"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ПациентыВСтационаре" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пациенты в стационаре</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Клиент" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пациент</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Клиенты</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДатаПоступления" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата поступления</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Палата" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Палата</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Палаты</v8:Type>
+					</Type>
+				</Column>
+				<Column name="КойкоМесто" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Койкоместо</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.КойкоМеста</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДокументПоступления" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ поступления</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.УстановкаУсловийПребывания</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДокументИзмененияРазмещения" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ последнего изменения размещения</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.УстановкаУсловийПребывания</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДатаПоследнегоИзменения" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Последнее изменение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДокументОбращения" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ обращения</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.ОбращениеВСтационар</v8:Type>
+					</Type>
+				</Column>
+				<Column name="МедицинскаяКарта" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Медицинская карта</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.МедицинскиеКарты</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ПервичныйПрием" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Первичный прием</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.Прием</v8:Type>
+					</Type>
+				</Column>
+				<Column name="омг_Отделение" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отделение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Подразделения</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="СоответствиеШаблоновМД" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Соответствие шаблонов МД</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="омг_Филиалы" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Филиалы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Save>
+				<Field>омг_Филиалы</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="омг_Отделения" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отделения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Save>
+				<Field>омг_Отделения</Field>
+			</Save>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОбновитьТекущихКлиентовСтационара" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить список</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить список текущих пациентов в стационаре</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОбновитьСписокТекущихПациентовСтационара</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ИсторияПребыванияПациента" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История пребывания</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История пребывания пациента</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DocumentJournal</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ИсторияПребыванияПациента</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОткрытьТемпературныйЛист" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Температурный лист</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть температурный лист</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьТемпературныйЛист</Action>
+		</Command>
+		<Command name="ПросмотрЭМК" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История болезни</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Просмотр ЭМК</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаПросмотрЭМК</Action>
+		</Command>
+		<Command name="ОткрытьЛистНазначений" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Лист назначений</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть лист назначений</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ДокументКрасный</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьЛистНазначений</Action>
+		</Command>
+		<Command name="ИзменениеРежима" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменение режима</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменение режима</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ИзменениеРежима</Action>
+		</Command>
+		<Command name="ОткрытьИсториюРежимов" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История изменения режимов</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть историю режимов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьИсториюРежимов</Action>
+		</Command>
+		<Command name="ЖурналТрансфузий" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Журнал трансфузий</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Журнал трансфузий</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ДокументКрасный</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЖурналТрансфузий</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

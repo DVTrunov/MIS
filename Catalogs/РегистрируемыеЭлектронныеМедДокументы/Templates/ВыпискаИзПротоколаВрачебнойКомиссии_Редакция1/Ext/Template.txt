@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Выписка из протокола врачебной комиссии (CDA) Редакция 1" xmlns:identity="urn:hl7-ru:identity" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fias="urn:hl7-ru:fias" xmlns:address="urn:hl7-ru:address">
+	<bitDiagnosis УсловиеИспользования="*Ложь">
+		<nodeDiagnosisStructure Множественное="*Истина" ГруппирующееПоле="Диагноз">
+			<nodeDiagnosis type="Диагноз"					localid="Диагноз"/>
+			<nodeDiagnosis type="ВидНозологическойЕдиницы"	localid="ВидНозологическойЕдиницы"/>
+		</nodeDiagnosisStructure>
+	</bitDiagnosis>
+	<!-- R [1..1] СЕКЦИЯ: "Сведения о документе" -->
+	<component>
+		<!-- R [1..1] -->
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="DOCINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Название секции -->
+			<title>Сведения о документе</title>
+			<!-- R [1..1] Текстовое наполнение секции -->
+			<text>
+				<table>
+					<caption>Сведения о решении врачебной комиссии</caption>
+					<tbody>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 12173)</content>
+							</td>
+							<td>
+								<content>%РешениеВрачебнойКомиссии</content>
+							</td>
+						</tr>
+						<tr УсловиеИспользования="%ВрачебнаяКомиссияСМП" Обязательное="*Ложь">
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 12140)</content>
+							</td>
+							<td>
+								<content>%ПричинаОтказаОтГоспитализации</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 6080)</content>
+							</td>
+							<td>
+								<content>%НомерВрачебнойКомиссии</content>
+							</td>
+						</tr>
+						<tr УсловиеИспользования="%ВрачебнаяКомиссияЛН" Обязательное="*Ложь">
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 6081)</content>
+							</td>
+							<td>
+								<content>%ВыявленоПриЭкспертизе</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..1] Сведения о решении врачебной комиссии -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="12173" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Решение врачебной комиссии (текст) -->
+					<value xsi:type="ST" localid="РешениеВрачебнойКомиссии">%РешениеВрачебнойКомиссии</value>
+					<!-- [0..1] Решение врачебной комиссии о госпитализации пациента -->
+					<entryRelationship УсловиеИспользования="%ВрачебнаяКомиссияСМП" Обязательное="*Ложь" typeCode="COMP">
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="6079" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] Решение врачебной комиссии о госпитализации пациента -->
+							<value xsi:type="CD" localid="РешениеОГоспитализации" localidСиноним="Решение врачебной комиссии о госпитализации пациента" code="#code" codeSystem="1.2.643.5.1.13.13.11.1512" codeSystemName="#codesystemname" codeSystemVersion="#version" displayName="#name"/>
+						</observation>
+					</entryRelationship>
+					<!-- [0..1] Причина отказа от госпитализации -->
+					<entryRelationship УсловиеИспользования="%ВрачебнаяКомиссияСМП" Обязательное="*Ложь" typeCode="COMP">
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="12140" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] Причина отказа от госпитализации -->
+							<value xsi:type="CD" localid="ПричинаОтказаОтГоспитализации" localidСиноним="Причина отказа от госпитализации" code="#code" codeSystem="1.2.643.5.1.13.13.11.1497" codeSystemName="#codesystemname" codeSystemVersion="#version" displayName="#name"/>
+						</observation>
+					</entryRelationship>
+				</observation>
+			</entry>
+			<!-- R [1..1] Номер протокола врачебной комиссии -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="6080" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Номер протокола врачебной комиссии -->
+					<value xsi:type="ST" localid="НомерВрачебнойКомиссии">%НомерВрачебнойКомиссии</value>
+				</observation>
+			</entry>
+			<!-- [0..2] Сведения о социальной группе -->
+			<entry Обязательное="*Ложь">
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="12045" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Социальная группа -->
+					<value xsi:type="CD" localid="СоциальнаяГруппа" localidСиноним="Социальная группа" code="#code" codeSystem="1.2.643.5.1.13.13.11.1038" codeSystemName="#codesystemname" codeSystemVersion="#version" displayName="#name"/>
+				</observation>
+			</entry>
+			<entry Обязательное="*Ложь">
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="12045" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Социальная группа -->
+					<value xsi:type="CD" localid="СоциальнаяГруппа_2" localidСиноним="Социальная группа (доп.)" code="#code" codeSystem="1.2.643.5.1.13.13.11.1038" codeSystemName="#codesystemname" codeSystemVersion="#version" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- [0..1] Выявлено при экспертизе -->
+			<entry УсловиеИспользования="%ВрачебнаяКомиссияЛН" Обязательное="*Ложь">
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="6081" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Выявлено при экспертизе -->
+					<value xsi:type="ST" localid="ВыявленоПриЭкспертизе">%ВыявленоПриЭкспертизе</value>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: "Диагнозы" -->
+	<component ВозможноЗаполнениеИзТаблицыДиагнозов="true">
+		<!-- R [1..1] -->
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="DGN" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Название секции -->
+			<title>Диагноз</title>
+			<!-- R [1..1] Текстовое наполнение секции -->
+			<text>
+				<table>
+					<thead>
+						<tr>
+							<th>Вид нозологической единицы диагноза</th>
+							<th>Клинический диагноз</th>
+							<th>Шифр МКБ-10</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<content>%ВидНозологическойЕдиницы</content>
+							</td>
+							<td>
+								<content>%Диагноз</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%Диагноз,,,"code")</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..*] Диагноз -->
+			<entry localid="Диагноз" Множественное="*Истина">
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Кодирование вида нозологической единицы диагноза -->
+					<code localid="ВидНозологическойЕдиницы" code="#code" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Шифр МКБ -->
+					<value xsi:type="CD" localid="Диагноз" localidСиноним="Диагноз" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: "Специализированная медицинская помощь" -->
+	<component УсловиеИспользования="%ВрачебнаяКомиссияСМП" Обязательное="*Ложь">
+		<!-- R [1..1] -->
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="SPECMEDCARE" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Название секции -->
+			<title>Специализированная медицинская помощь</title>
+			<!-- R [1..1] Текстовое наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 12129)</content>
+							</td>
+							<td>
+								<content>%КодСМП</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 12143)</content>
+							</td>
+							<td>
+								<content>%НомерЭтапаТалона</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 12139)</content>
+							</td>
+							<td>
+								<content>*Формат(%ДатаУведомления, "ДФ=ггггММдд")</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Способ уведомления направляющей медицинской организации</content>
+							</td>
+							<td>
+								<content>%СпособУведомленияНаправляющейМО</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..1] Код и наименования вида СМП -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="12129" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Код наименования СМП -->
+					<value xsi:type="CD" localid="КодСМП" localidСиноним="Код наименования СМП" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.706" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Сведения об этапе специализированной медицинской помощи -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="12143" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Номер этапа талона на оказание специализированной медицинской помощи -->
+					<value xsi:type="CD" localid="НомерЭтапаТалона" localidСиноним="Номер этапа талона на оказание специализированной медицинской помощи" ДопустимыеЗначения="3;5;6" code="#code" codeSystem="1.2.643.5.1.13.13.11.1554" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Уведомление направляющей медицинской организации о принятом решении -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="12139" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Дата уведомления направляющей медицинской организации -->
+					<effectiveTime ТипДанных="Дата" localid="ДатаУведомления" value='*ДатаСоСмещением(%ДатаУведомления, "ДФ=ггггММддЧЧмм")'/>
+					<!-- R [1..1] Способ уведомления направляющей медицинской организации -->
+					<value xsi:type="CD" localid="СпособУведомленияНаправляющейМО" localidСиноним="Способ уведомления направляющей медицинской организации" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.719" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+		</section>
+	</component>
+</Items>

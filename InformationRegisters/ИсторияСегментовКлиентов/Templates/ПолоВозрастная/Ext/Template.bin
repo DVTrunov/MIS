@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ФайлОбмена ВерсияФормата="2.0" ДатаВыгрузки="2020-01-13T20:47:18" НачалоПериодаВыгрузки="2009-01-01T00:00:00" ОкончаниеПериодаВыгрузки="0001-01-01T00:00:00" ИмяКонфигурацииИсточника="БИТУправлениеМедицинскимЦентром" ИмяКонфигурацииПриемника="БИТУправлениеМедицинскимЦентром" ИдПравилКонвертации="83c39bcc-a1dc-493b-a316-87329062ef32" Комментарий="">
+<ПравилаОбмена>
+	<ВерсияФормата>2.01</ВерсияФормата>
+	<Ид>83c39bcc-a1dc-493b-a316-87329062ef32</Ид>
+	<Наименование>Виды сегментации (для встроенных)</Наименование>
+	<ДатаВремяСоздания>2020-01-13T20:44:03</ДатаВремяСоздания>
+	<Источник>БИТУправлениеМедицинскимЦентром</Источник>
+	<Приемник>БИТУправлениеМедицинскимЦентром</Приемник>
+	<ПередЗагрузкойДанных>УИД = Новый УникальныйИдентификатор();
+НоваяСсылка = Справочники.ВидыСегментации.ПолучитьСсылку(УИД);
+Параметры.ВидСегментацииЗагруженный = НоваяСсылка;</ПередЗагрузкойДанных>
+	<Параметры>
+		<Параметр Имя="ВидСегментацииЗагруженный" Наименование="Вид сегментации загруженный" ИспользуетсяПриЗагрузке="true"/>
+	</Параметры>
+	<Обработки/>
+	<ПравилаКонвертацииОбъектов>
+		<Правило>
+			<Код>СегментационныеРегистраторы</Код>
+			<Источник>ПеречислениеСсылка.СегментационныеРегистраторы</Источник>
+			<Приемник>ПеречислениеСсылка.СегментационныеРегистраторы</Приемник>
+		</Правило>
+		<Правило>
+			<Код>ВидыСегментации</Код>
+			<ПослеЗагрузки>Объект.УстановитьСсылкуНового(Параметры.ВидСегментацииЗагруженный);
+Объект.Записать();
+
+СООБЩИТЬ("1");
+СООБЩИТЬ(Объект.Ссылка);
+СООБЩИТЬ(Параметры.ВидСегментацииЗагруженный);
+СООБЩИТЬ(ТипЗнч(Параметры.ВидСегментацииЗагруженный));</ПослеЗагрузки>
+			<НеЗамещать>true</НеЗамещать>
+			<ГенерироватьНовыйНомерИлиКодЕслиНеУказан>true</ГенерироватьНовыйНомерИлиКодЕслиНеУказан>
+			<Источник>СправочникСсылка.ВидыСегментации</Источник>
+			<Приемник>СправочникСсылка.ВидыСегментации</Приемник>
+		</Правило>
+		<Правило>
+			<Код>Сегменты</Код>
+			<ПослеЗагрузки>Объект.Владелец = Параметры.ВидСегментацииЗагруженный;
+Объект.Записать();</ПослеЗагрузки>
+			<НеЗамещать>true</НеЗамещать>
+			<ГенерироватьНовыйНомерИлиКодЕслиНеУказан>true</ГенерироватьНовыйНомерИлиКодЕслиНеУказан>
+			<Источник>СправочникСсылка.Сегменты</Источник>
+			<Приемник>СправочникСсылка.Сегменты</Приемник>
+		</Правило>
+		<Правило>
+			<Код>СегментационныеСвязиДанных</Код>
+			<ПослеЗагрузки>СООБЩИТЬ("2");
+СООБЩИТЬ(Параметры.ВидСегментацииЗагруженный);
+
+Объект.ВидСегментации = Параметры.ВидСегментацииЗагруженный;</ПослеЗагрузки>
+			<Источник>РегистрСведенийЗапись.СегментационныеСвязиДанных</Источник>
+			<Приемник>РегистрСведенийЗапись.СегментационныеСвязиДанных</Приемник>
+		</Правило>
+	</ПравилаКонвертацииОбъектов>
+	<ПравилаОчисткиДанных/>
+	<Алгоритмы/>
+	<Запросы/>
+</ПравилаОбмена>
+<Объект Нпп="2" Тип="СправочникСсылка.Сегменты" ИмяПравила="Сегменты" НеЗамещать="true"><Ссылка Нпп="2"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>До 16 лет</Значение>
+	</Свойство>
+</Ссылка>
+</Объект>
+<Объект Нпп="3" Тип="СправочникСсылка.Сегменты" ИмяПравила="Сегменты" НеЗамещать="true"><Ссылка Нпп="3"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Женщины от 16 до 55 лет</Значение>
+	</Свойство>
+</Ссылка>
+</Объект>
+<Объект Нпп="4" Тип="СправочникСсылка.Сегменты" ИмяПравила="Сегменты" НеЗамещать="true"><Ссылка Нпп="4"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Мужчины от 16 до 55 лет</Значение>
+	</Свойство>
+</Ссылка>
+</Объект>
+<Объект Нпп="5" Тип="СправочникСсылка.Сегменты" ИмяПравила="Сегменты" НеЗамещать="true"><Ссылка Нпп="5"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Женщины старше 55 лет</Значение>
+	</Свойство>
+</Ссылка>
+</Объект>
+<Объект Нпп="6" Тип="СправочникСсылка.Сегменты" ИмяПравила="Сегменты" НеЗамещать="true"><Ссылка Нпп="6"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Мужчины старше 55 лет</Значение>
+	</Свойство>
+</Ссылка>
+</Объект>
+<Объект Нпп="1" Тип="СправочникСсылка.ВидыСегментации" ИмяПравила="ВидыСегментации" НеЗамещать="true">
+	<Свойство Имя="АлгоритмФормированияТаблицыПолейОтбора" Тип="Строка">
+		<Пусто/>
+	</Свойство><Свойство Имя="ЗначениеПоУмолчанию" Тип="СправочникСсылка.Сегменты">
+	<Пусто/>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Половозрастная группа</Значение>
+	</Свойство>
+	<Свойство Имя="ПерерассчитыватьПриИзмененииДанных" Тип="Булево">
+		<Значение>false</Значение>
+	</Свойство>
+	<Свойство Имя="ПерерассчитыватьРегламентнымЗаданием" Тип="Булево">
+		<Значение>true</Значение>
+	</Свойство>
+	<Свойство Имя="ПерерассчитыватьРегламентнымЗаданиемТолькоПриИзмененииДанных" Тип="Булево">
+		<Значение>false</Значение>
+	</Свойство>
+	<Свойство Имя="ПометкаУдаления" Тип="Булево">
+		<Значение>false</Значение>
+	</Свойство>
+	<Свойство Имя="ХранитьИсториюСегментов" Тип="Булево">
+		<Значение>false</Значение>
+	</Свойство><ТабличнаяЧасть Имя="ПравилаСегментации">
+	<Запись>
+		<Свойство Имя="Комментарий" Тип="Строка">
+			<Пусто/>
+		</Свойство><Свойство Имя="Отбор" Тип="ХранилищеЗначения">
+	<Значение>AQE1AAAAAAAAAO+7v3siIyIsM2M3MmZmNTYtN2UwNC00Mzg1LWJjMDMtOTJkNGJk
+NmMzNTFjLA0KezB9DQp9AAAAALkFAAAAAAAA77u/PD94bWwgdmVyc2lvbj0iMS4w
+IiBlbmNvZGluZz0iVVRGLTgiPz4NCjxTZXR0aW5ncyB4bWxucz0iaHR0cDovL3Y4
+LjFjLnJ1LzguMS9kYXRhLWNvbXBvc2l0aW9uLXN5c3RlbS9zZXR0aW5ncyIgeG1s
+bnM6ZGNzY29yPSJodHRwOi8vdjguMWMucnUvOC4xL2RhdGEtY29tcG9zaXRpb24t
+c3lzdGVtL2NvcmUiIHhtbG5zOnN0eWxlPSJodHRwOi8vdjguMWMucnUvOC4xL2Rh
+dGEvdWkvc3R5bGUiIHhtbG5zOnN5cz0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRh
+L3VpL2ZvbnRzL3N5c3RlbSIgeG1sbnM6djg9Imh0dHA6Ly92OC4xYy5ydS84LjEv
+ZGF0YS9jb3JlIiB4bWxuczp2OHVpPSJodHRwOi8vdjguMWMucnUvOC4xL2RhdGEv
+dWkiIHhtbG5zOndlYj0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRhL3VpL2NvbG9y
+cy93ZWIiIHhtbG5zOndpbj0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRhL3VpL2Nv
+bG9ycy93aW5kb3dzIiB4bWxuczp4cz0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9Y
+TUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxT
+Y2hlbWEtaW5zdGFuY2UiPg0KCTxzZWxlY3Rpb24+DQoJCTxpdGVtIHhzaTp0eXBl
+PSJTZWxlY3RlZEl0ZW1GaWVsZCI+DQoJCQk8ZmllbGQ+0JrQu9C40LXQvdGCPC9m
+aWVsZD4NCgkJPC9pdGVtPg0KCTwvc2VsZWN0aW9uPg0KCTxmaWx0ZXI+DQoJCTxp
+dGVtIHhzaTp0eXBlPSJGaWx0ZXJJdGVtQ29tcGFyaXNvbiI+DQoJCQk8bGVmdCB4
+c2k6dHlwZT0iZGNzY29yOkZpZWxkIj7QktC+0LfRgNCw0YHRgjwvbGVmdD4NCgkJ
+CTxjb21wYXJpc29uVHlwZT5MZXNzPC9jb21wYXJpc29uVHlwZT4NCgkJCTxyaWdo
+dCB4c2k6dHlwZT0ieHM6ZGVjaW1hbCI+MTY8L3JpZ2h0Pg0KCQk8L2l0ZW0+DQoJ
+PC9maWx0ZXI+DQoJPGl0ZW0geHNpOnR5cGU9IlN0cnVjdHVyZUl0ZW1Hcm91cCI+
+DQoJCTxncm91cEl0ZW1zPg0KCQkJPGl0ZW0geHNpOnR5cGU9Ikdyb3VwSXRlbUZp
+ZWxkIj4NCgkJCQk8ZmllbGQ+0JrQu9C40LXQvdGCPC9maWVsZD4NCgkJCQk8Z3Jv
+dXBUeXBlPkl0ZW1zPC9ncm91cFR5cGU+DQoJCQkJPHBlcmlvZEFkZGl0aW9uVHlw
+ZT5Ob25lPC9wZXJpb2RBZGRpdGlvblR5cGU+DQoJCQkJPHBlcmlvZEFkZGl0aW9u
+QmVnaW4geHNpOnR5cGU9InhzOmRhdGVUaW1lIj4wMDAxLTAxLTAxVDAwOjAwOjAw
+PC9wZXJpb2RBZGRpdGlvbkJlZ2luPg0KCQkJCTxwZXJpb2RBZGRpdGlvbkVuZCB4
+c2k6dHlwZT0ieHM6ZGF0ZVRpbWUiPjAwMDEtMDEtMDFUMDA6MDA6MDA8L3Blcmlv
+ZEFkZGl0aW9uRW5kPg0KCQkJPC9pdGVtPg0KCQk8L2dyb3VwSXRlbXM+DQoJCTxv
+cmRlcj4NCgkJCTxpdGVtIHhzaTp0eXBlPSJPcmRlckl0ZW1BdXRvIi8+DQoJCTwv
+b3JkZXI+DQoJCTxzZWxlY3Rpb24+DQoJCQk8aXRlbSB4c2k6dHlwZT0iU2VsZWN0
+ZWRJdGVtQXV0byIvPg0KCQk8L3NlbGVjdGlvbj4NCgk8L2l0ZW0+DQo8L1NldHRp
+bmdzPg==</Значение>
+</Свойство>
+		<Свойство Имя="ПредставлениеОтбора" Тип="Строка">
+			<Значение>Возраст Меньше "16"</Значение>
+		</Свойство><Свойство Имя="Сегмент" Тип="СправочникСсылка.Сегменты"><Ссылка Нпп="2"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>До 16 лет</Значение>
+	</Свойство>
+</Ссылка>
+</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Комментарий" Тип="Строка">
+			<Пусто/>
+		</Свойство><Свойство Имя="Отбор" Тип="ХранилищеЗначения">
+	<Значение>AQE1AAAAAAAAAO+7v3siIyIsM2M3MmZmNTYtN2UwNC00Mzg1LWJjMDMtOTJkNGJk
+NmMzNTFjLA0KezB9DQp9AAAAANoIAAAAAAAA77u/PD94bWwgdmVyc2lvbj0iMS4w
+IiBlbmNvZGluZz0iVVRGLTgiPz4NCjxTZXR0aW5ncyB4bWxucz0iaHR0cDovL3Y4
+LjFjLnJ1LzguMS9kYXRhLWNvbXBvc2l0aW9uLXN5c3RlbS9zZXR0aW5ncyIgeG1s
+bnM6ZGNzY29yPSJodHRwOi8vdjguMWMucnUvOC4xL2RhdGEtY29tcG9zaXRpb24t
+c3lzdGVtL2NvcmUiIHhtbG5zOnN0eWxlPSJodHRwOi8vdjguMWMucnUvOC4xL2Rh
+dGEvdWkvc3R5bGUiIHhtbG5zOnN5cz0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRh
+L3VpL2ZvbnRzL3N5c3RlbSIgeG1sbnM6djg9Imh0dHA6Ly92OC4xYy5ydS84LjEv
+ZGF0YS9jb3JlIiB4bWxuczp2OHVpPSJodHRwOi8vdjguMWMucnUvOC4xL2RhdGEv
+dWkiIHhtbG5zOndlYj0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRhL3VpL2NvbG9y
+cy93ZWIiIHhtbG5zOndpbj0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRhL3VpL2Nv
+bG9ycy93aW5kb3dzIiB4bWxuczp4cz0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9Y
+TUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxT
+Y2hlbWEtaW5zdGFuY2UiPg0KCTxzZWxlY3Rpb24+DQoJCTxpdGVtIHhzaTp0eXBl
+PSJTZWxlY3RlZEl0ZW1GaWVsZCI+DQoJCQk8ZmllbGQ+0JrQu9C40LXQvdGCPC9m
+aWVsZD4NCgkJPC9pdGVtPg0KCTwvc2VsZWN0aW9uPg0KCTxmaWx0ZXI+DQoJCTxp
+dGVtIHhzaTp0eXBlPSJGaWx0ZXJJdGVtQ29tcGFyaXNvbiI+DQoJCQk8bGVmdCB4
+c2k6dHlwZT0iZGNzY29yOkZpZWxkIj7QktC+0LfRgNCw0YHRgjwvbGVmdD4NCgkJ
+CTxjb21wYXJpc29uVHlwZT5HcmVhdGVyT3JFcXVhbDwvY29tcGFyaXNvblR5cGU+
+DQoJCQk8cmlnaHQgeHNpOnR5cGU9InhzOmRlY2ltYWwiPjE2PC9yaWdodD4NCgkJ
+PC9pdGVtPg0KCQk8aXRlbSB4c2k6dHlwZT0iRmlsdGVySXRlbUNvbXBhcmlzb24i
+Pg0KCQkJPGxlZnQgeHNpOnR5cGU9ImRjc2NvcjpGaWVsZCI+0JLQvtC30YDQsNGB
+0YI8L2xlZnQ+DQoJCQk8Y29tcGFyaXNvblR5cGU+TGVzc09yRXF1YWw8L2NvbXBh
+cmlzb25UeXBlPg0KCQkJPHJpZ2h0IHhzaTp0eXBlPSJ4czpkZWNpbWFsIj41NTwv
+cmlnaHQ+DQoJCTwvaXRlbT4NCgkJPGl0ZW0geHNpOnR5cGU9IkZpbHRlckl0ZW1D
+b21wYXJpc29uIj4NCgkJCTxsZWZ0IHhzaTp0eXBlPSJkY3Njb3I6RmllbGQiPtCa
+0LvQuNC10L3Rgi7Qn9C+0Ls8L2xlZnQ+DQoJCQk8Y29tcGFyaXNvblR5cGU+RXF1
+YWw8L2NvbXBhcmlzb25UeXBlPg0KCQkJPHJpZ2h0IHhtbG5zOmQ0cDE9Imh0dHA6
+Ly92OC4xYy5ydS84LjEvZGF0YS9lbnRlcnByaXNlL2N1cnJlbnQtY29uZmlnIiB4
+c2k6dHlwZT0iZDRwMTpFbnVtUmVmLtCf0L7Qu9Ck0LjQt9C40YfQtdGB0LrQuNGF
+0JvQuNGGIj7QltC10L3RgdC60LjQuTwvcmlnaHQ+DQoJCTwvaXRlbT4NCgk8L2Zp
+bHRlcj4NCgk8ZGF0YVBhcmFtZXRlcnM+DQoJCTxkY3Njb3I6aXRlbSB4c2k6dHlw
+ZT0iU2V0dGluZ3NQYXJhbWV0ZXJWYWx1ZSI+DQoJCQk8ZGNzY29yOnVzZT5mYWxz
+ZTwvZGNzY29yOnVzZT4NCgkJCTxkY3Njb3I6cGFyYW1ldGVyPtCf0YDQvtCy0LXQ
+tNC10L08L2Rjc2NvcjpwYXJhbWV0ZXI+DQoJCQk8ZGNzY29yOnZhbHVlIHhzaTp0
+eXBlPSJ4czpkYXRlVGltZSI+MDAwMS0wMS0wMVQwMDowMDowMDwvZGNzY29yOnZh
+bHVlPg0KCQk8L2Rjc2NvcjppdGVtPg0KCTwvZGF0YVBhcmFtZXRlcnM+DQoJPGl0
+ZW0geHNpOnR5cGU9IlN0cnVjdHVyZUl0ZW1Hcm91cCI+DQoJCTxncm91cEl0ZW1z
+Pg0KCQkJPGl0ZW0geHNpOnR5cGU9Ikdyb3VwSXRlbUZpZWxkIj4NCgkJCQk8Zmll
+bGQ+0JrQu9C40LXQvdGCPC9maWVsZD4NCgkJCQk8Z3JvdXBUeXBlPkl0ZW1zPC9n
+cm91cFR5cGU+DQoJCQkJPHBlcmlvZEFkZGl0aW9uVHlwZT5Ob25lPC9wZXJpb2RB
+ZGRpdGlvblR5cGU+DQoJCQkJPHBlcmlvZEFkZGl0aW9uQmVnaW4geHNpOnR5cGU9
+InhzOmRhdGVUaW1lIj4wMDAxLTAxLTAxVDAwOjAwOjAwPC9wZXJpb2RBZGRpdGlv
+bkJlZ2luPg0KCQkJCTxwZXJpb2RBZGRpdGlvbkVuZCB4c2k6dHlwZT0ieHM6ZGF0
+ZVRpbWUiPjAwMDEtMDEtMDFUMDA6MDA6MDA8L3BlcmlvZEFkZGl0aW9uRW5kPg0K
+CQkJPC9pdGVtPg0KCQk8L2dyb3VwSXRlbXM+DQoJCTxvcmRlcj4NCgkJCTxpdGVt
+IHhzaTp0eXBlPSJPcmRlckl0ZW1BdXRvIi8+DQoJCTwvb3JkZXI+DQoJCTxzZWxl
+Y3Rpb24+DQoJCQk8aXRlbSB4c2k6dHlwZT0iU2VsZWN0ZWRJdGVtQXV0byIvPg0K
+CQk8L3NlbGVjdGlvbj4NCgk8L2l0ZW0+DQo8L1NldHRpbmdzPg==</Значение>
+</Свойство>
+		<Свойство Имя="ПредставлениеОтбора" Тип="Строка">
+			<Значение>Возраст Больше или равно "16" И Возраст Меньше или равно "55" И Клиент.Пол Равно "Женский"</Значение>
+		</Свойство><Свойство Имя="Сегмент" Тип="СправочникСсылка.Сегменты"><Ссылка Нпп="3"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Женщины от 16 до 55 лет</Значение>
+	</Свойство>
+</Ссылка>
+</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Комментарий" Тип="Строка">
+			<Пусто/>
+		</Свойство><Свойство Имя="Отбор" Тип="ХранилищеЗначения">
+	<Значение>AQE1AAAAAAAAAO+7v3siIyIsM2M3MmZmNTYtN2UwNC00Mzg1LWJjMDMtOTJkNGJk
+NmMzNTFjLA0KezB9DQp9AAAAANoIAAAAAAAA77u/PD94bWwgdmVyc2lvbj0iMS4w
+IiBlbmNvZGluZz0iVVRGLTgiPz4NCjxTZXR0aW5ncyB4bWxucz0iaHR0cDovL3Y4
+LjFjLnJ1LzguMS9kYXRhLWNvbXBvc2l0aW9uLXN5c3RlbS9zZXR0aW5ncyIgeG1s
+bnM6ZGNzY29yPSJodHRwOi8vdjguMWMucnUvOC4xL2RhdGEtY29tcG9zaXRpb24t
+c3lzdGVtL2NvcmUiIHhtbG5zOnN0eWxlPSJodHRwOi8vdjguMWMucnUvOC4xL2Rh
+dGEvdWkvc3R5bGUiIHhtbG5zOnN5cz0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRh
+L3VpL2ZvbnRzL3N5c3RlbSIgeG1sbnM6djg9Imh0dHA6Ly92OC4xYy5ydS84LjEv
+ZGF0YS9jb3JlIiB4bWxuczp2OHVpPSJodHRwOi8vdjguMWMucnUvOC4xL2RhdGEv
+dWkiIHhtbG5zOndlYj0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRhL3VpL2NvbG9y
+cy93ZWIiIHhtbG5zOndpbj0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRhL3VpL2Nv
+bG9ycy93aW5kb3dzIiB4bWxuczp4cz0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9Y
+TUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxT
+Y2hlbWEtaW5zdGFuY2UiPg0KCTxzZWxlY3Rpb24+DQoJCTxpdGVtIHhzaTp0eXBl
+PSJTZWxlY3RlZEl0ZW1GaWVsZCI+DQoJCQk8ZmllbGQ+0JrQu9C40LXQvdGCPC9m
+aWVsZD4NCgkJPC9pdGVtPg0KCTwvc2VsZWN0aW9uPg0KCTxmaWx0ZXI+DQoJCTxp
+dGVtIHhzaTp0eXBlPSJGaWx0ZXJJdGVtQ29tcGFyaXNvbiI+DQoJCQk8bGVmdCB4
+c2k6dHlwZT0iZGNzY29yOkZpZWxkIj7QktC+0LfRgNCw0YHRgjwvbGVmdD4NCgkJ
+CTxjb21wYXJpc29uVHlwZT5HcmVhdGVyT3JFcXVhbDwvY29tcGFyaXNvblR5cGU+
+DQoJCQk8cmlnaHQgeHNpOnR5cGU9InhzOmRlY2ltYWwiPjE2PC9yaWdodD4NCgkJ
+PC9pdGVtPg0KCQk8aXRlbSB4c2k6dHlwZT0iRmlsdGVySXRlbUNvbXBhcmlzb24i
+Pg0KCQkJPGxlZnQgeHNpOnR5cGU9ImRjc2NvcjpGaWVsZCI+0JLQvtC30YDQsNGB
+0YI8L2xlZnQ+DQoJCQk8Y29tcGFyaXNvblR5cGU+TGVzc09yRXF1YWw8L2NvbXBh
+cmlzb25UeXBlPg0KCQkJPHJpZ2h0IHhzaTp0eXBlPSJ4czpkZWNpbWFsIj41NTwv
+cmlnaHQ+DQoJCTwvaXRlbT4NCgkJPGl0ZW0geHNpOnR5cGU9IkZpbHRlckl0ZW1D
+b21wYXJpc29uIj4NCgkJCTxsZWZ0IHhzaTp0eXBlPSJkY3Njb3I6RmllbGQiPtCa
+0LvQuNC10L3Rgi7Qn9C+0Ls8L2xlZnQ+DQoJCQk8Y29tcGFyaXNvblR5cGU+RXF1
+YWw8L2NvbXBhcmlzb25UeXBlPg0KCQkJPHJpZ2h0IHhtbG5zOmQ0cDE9Imh0dHA6
+Ly92OC4xYy5ydS84LjEvZGF0YS9lbnRlcnByaXNlL2N1cnJlbnQtY29uZmlnIiB4
+c2k6dHlwZT0iZDRwMTpFbnVtUmVmLtCf0L7Qu9Ck0LjQt9C40YfQtdGB0LrQuNGF
+0JvQuNGGIj7QnNGD0LbRgdC60L7QuTwvcmlnaHQ+DQoJCTwvaXRlbT4NCgk8L2Zp
+bHRlcj4NCgk8ZGF0YVBhcmFtZXRlcnM+DQoJCTxkY3Njb3I6aXRlbSB4c2k6dHlw
+ZT0iU2V0dGluZ3NQYXJhbWV0ZXJWYWx1ZSI+DQoJCQk8ZGNzY29yOnVzZT5mYWxz
+ZTwvZGNzY29yOnVzZT4NCgkJCTxkY3Njb3I6cGFyYW1ldGVyPtCf0YDQvtCy0LXQ
+tNC10L08L2Rjc2NvcjpwYXJhbWV0ZXI+DQoJCQk8ZGNzY29yOnZhbHVlIHhzaTp0
+eXBlPSJ4czpkYXRlVGltZSI+MDAwMS0wMS0wMVQwMDowMDowMDwvZGNzY29yOnZh
+bHVlPg0KCQk8L2Rjc2NvcjppdGVtPg0KCTwvZGF0YVBhcmFtZXRlcnM+DQoJPGl0
+ZW0geHNpOnR5cGU9IlN0cnVjdHVyZUl0ZW1Hcm91cCI+DQoJCTxncm91cEl0ZW1z
+Pg0KCQkJPGl0ZW0geHNpOnR5cGU9Ikdyb3VwSXRlbUZpZWxkIj4NCgkJCQk8Zmll
+bGQ+0JrQu9C40LXQvdGCPC9maWVsZD4NCgkJCQk8Z3JvdXBUeXBlPkl0ZW1zPC9n
+cm91cFR5cGU+DQoJCQkJPHBlcmlvZEFkZGl0aW9uVHlwZT5Ob25lPC9wZXJpb2RB
+ZGRpdGlvblR5cGU+DQoJCQkJPHBlcmlvZEFkZGl0aW9uQmVnaW4geHNpOnR5cGU9
+InhzOmRhdGVUaW1lIj4wMDAxLTAxLTAxVDAwOjAwOjAwPC9wZXJpb2RBZGRpdGlv
+bkJlZ2luPg0KCQkJCTxwZXJpb2RBZGRpdGlvbkVuZCB4c2k6dHlwZT0ieHM6ZGF0
+ZVRpbWUiPjAwMDEtMDEtMDFUMDA6MDA6MDA8L3BlcmlvZEFkZGl0aW9uRW5kPg0K
+CQkJPC9pdGVtPg0KCQk8L2dyb3VwSXRlbXM+DQoJCTxvcmRlcj4NCgkJCTxpdGVt
+IHhzaTp0eXBlPSJPcmRlckl0ZW1BdXRvIi8+DQoJCTwvb3JkZXI+DQoJCTxzZWxl
+Y3Rpb24+DQoJCQk8aXRlbSB4c2k6dHlwZT0iU2VsZWN0ZWRJdGVtQXV0byIvPg0K
+CQk8L3NlbGVjdGlvbj4NCgk8L2l0ZW0+DQo8L1NldHRpbmdzPg==</Значение>
+</Свойство>
+		<Свойство Имя="ПредставлениеОтбора" Тип="Строка">
+			<Значение>Возраст Больше или равно "16" И Возраст Меньше или равно "55" И Клиент.Пол Равно "Мужской"</Значение>
+		</Свойство><Свойство Имя="Сегмент" Тип="СправочникСсылка.Сегменты"><Ссылка Нпп="4"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Мужчины от 16 до 55 лет</Значение>
+	</Свойство>
+</Ссылка>
+</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Комментарий" Тип="Строка">
+			<Пусто/>
+		</Свойство><Свойство Имя="Отбор" Тип="ХранилищеЗначения">
+	<Значение>AQE1AAAAAAAAAO+7v3siIyIsM2M3MmZmNTYtN2UwNC00Mzg1LWJjMDMtOTJkNGJk
+NmMzNTFjLA0KezB9DQp9AAAAABAIAAAAAAAA77u/PD94bWwgdmVyc2lvbj0iMS4w
+IiBlbmNvZGluZz0iVVRGLTgiPz4NCjxTZXR0aW5ncyB4bWxucz0iaHR0cDovL3Y4
+LjFjLnJ1LzguMS9kYXRhLWNvbXBvc2l0aW9uLXN5c3RlbS9zZXR0aW5ncyIgeG1s
+bnM6ZGNzY29yPSJodHRwOi8vdjguMWMucnUvOC4xL2RhdGEtY29tcG9zaXRpb24t
+c3lzdGVtL2NvcmUiIHhtbG5zOnN0eWxlPSJodHRwOi8vdjguMWMucnUvOC4xL2Rh
+dGEvdWkvc3R5bGUiIHhtbG5zOnN5cz0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRh
+L3VpL2ZvbnRzL3N5c3RlbSIgeG1sbnM6djg9Imh0dHA6Ly92OC4xYy5ydS84LjEv
+ZGF0YS9jb3JlIiB4bWxuczp2OHVpPSJodHRwOi8vdjguMWMucnUvOC4xL2RhdGEv
+dWkiIHhtbG5zOndlYj0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRhL3VpL2NvbG9y
+cy93ZWIiIHhtbG5zOndpbj0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRhL3VpL2Nv
+bG9ycy93aW5kb3dzIiB4bWxuczp4cz0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9Y
+TUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxT
+Y2hlbWEtaW5zdGFuY2UiPg0KCTxzZWxlY3Rpb24+DQoJCTxpdGVtIHhzaTp0eXBl
+PSJTZWxlY3RlZEl0ZW1GaWVsZCI+DQoJCQk8ZmllbGQ+0JrQu9C40LXQvdGCPC9m
+aWVsZD4NCgkJPC9pdGVtPg0KCTwvc2VsZWN0aW9uPg0KCTxmaWx0ZXI+DQoJCTxp
+dGVtIHhzaTp0eXBlPSJGaWx0ZXJJdGVtQ29tcGFyaXNvbiI+DQoJCQk8bGVmdCB4
+c2k6dHlwZT0iZGNzY29yOkZpZWxkIj7QktC+0LfRgNCw0YHRgjwvbGVmdD4NCgkJ
+CTxjb21wYXJpc29uVHlwZT5HcmVhdGVyT3JFcXVhbDwvY29tcGFyaXNvblR5cGU+
+DQoJCQk8cmlnaHQgeHNpOnR5cGU9InhzOmRlY2ltYWwiPjU1PC9yaWdodD4NCgkJ
+PC9pdGVtPg0KCQk8aXRlbSB4c2k6dHlwZT0iRmlsdGVySXRlbUNvbXBhcmlzb24i
+Pg0KCQkJPGxlZnQgeHNpOnR5cGU9ImRjc2NvcjpGaWVsZCI+0JrQu9C40LXQvdGC
+LtCf0L7QuzwvbGVmdD4NCgkJCTxjb21wYXJpc29uVHlwZT5FcXVhbDwvY29tcGFy
+aXNvblR5cGU+DQoJCQk8cmlnaHQgeG1sbnM6ZDRwMT0iaHR0cDovL3Y4LjFjLnJ1
+LzguMS9kYXRhL2VudGVycHJpc2UvY3VycmVudC1jb25maWciIHhzaTp0eXBlPSJk
+NHAxOkVudW1SZWYu0J/QvtC70KTQuNC30LjRh9C10YHQutC40YXQm9C40YYiPtCW
+0LXQvdGB0LrQuNC5PC9yaWdodD4NCgkJPC9pdGVtPg0KCTwvZmlsdGVyPg0KCTxk
+YXRhUGFyYW1ldGVycz4NCgkJPGRjc2NvcjppdGVtIHhzaTp0eXBlPSJTZXR0aW5n
+c1BhcmFtZXRlclZhbHVlIj4NCgkJCTxkY3Njb3I6dXNlPmZhbHNlPC9kY3Njb3I6
+dXNlPg0KCQkJPGRjc2NvcjpwYXJhbWV0ZXI+0J/RgNC+0LLQtdC00LXQvTwvZGNz
+Y29yOnBhcmFtZXRlcj4NCgkJCTxkY3Njb3I6dmFsdWUgeHNpOnR5cGU9InhzOmRh
+dGVUaW1lIj4wMDAxLTAxLTAxVDAwOjAwOjAwPC9kY3Njb3I6dmFsdWU+DQoJCTwv
+ZGNzY29yOml0ZW0+DQoJPC9kYXRhUGFyYW1ldGVycz4NCgk8aXRlbSB4c2k6dHlw
+ZT0iU3RydWN0dXJlSXRlbUdyb3VwIj4NCgkJPGdyb3VwSXRlbXM+DQoJCQk8aXRl
+bSB4c2k6dHlwZT0iR3JvdXBJdGVtRmllbGQiPg0KCQkJCTxmaWVsZD7QmtC70LjQ
+tdC90YI8L2ZpZWxkPg0KCQkJCTxncm91cFR5cGU+SXRlbXM8L2dyb3VwVHlwZT4N
+CgkJCQk8cGVyaW9kQWRkaXRpb25UeXBlPk5vbmU8L3BlcmlvZEFkZGl0aW9uVHlw
+ZT4NCgkJCQk8cGVyaW9kQWRkaXRpb25CZWdpbiB4c2k6dHlwZT0ieHM6ZGF0ZVRp
+bWUiPjAwMDEtMDEtMDFUMDA6MDA6MDA8L3BlcmlvZEFkZGl0aW9uQmVnaW4+DQoJ
+CQkJPHBlcmlvZEFkZGl0aW9uRW5kIHhzaTp0eXBlPSJ4czpkYXRlVGltZSI+MDAw
+MS0wMS0wMVQwMDowMDowMDwvcGVyaW9kQWRkaXRpb25FbmQ+DQoJCQk8L2l0ZW0+
+DQoJCTwvZ3JvdXBJdGVtcz4NCgkJPG9yZGVyPg0KCQkJPGl0ZW0geHNpOnR5cGU9
+Ik9yZGVySXRlbUF1dG8iLz4NCgkJPC9vcmRlcj4NCgkJPHNlbGVjdGlvbj4NCgkJ
+CTxpdGVtIHhzaTp0eXBlPSJTZWxlY3RlZEl0ZW1BdXRvIi8+DQoJCTwvc2VsZWN0
+aW9uPg0KCTwvaXRlbT4NCjwvU2V0dGluZ3M+</Значение>
+</Свойство>
+		<Свойство Имя="ПредставлениеОтбора" Тип="Строка">
+			<Значение>Возраст Больше или равно "55" И Клиент.Пол Равно "Женский"</Значение>
+		</Свойство><Свойство Имя="Сегмент" Тип="СправочникСсылка.Сегменты"><Ссылка Нпп="5"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Женщины старше 55 лет</Значение>
+	</Свойство>
+</Ссылка>
+</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Комментарий" Тип="Строка">
+			<Пусто/>
+		</Свойство><Свойство Имя="Отбор" Тип="ХранилищеЗначения">
+	<Значение>AQE1AAAAAAAAAO+7v3siIyIsM2M3MmZmNTYtN2UwNC00Mzg1LWJjMDMtOTJkNGJk
+NmMzNTFjLA0KezB9DQp9AAAAAPsGAAAAAAAA77u/PD94bWwgdmVyc2lvbj0iMS4w
+IiBlbmNvZGluZz0iVVRGLTgiPz4NCjxTZXR0aW5ncyB4bWxucz0iaHR0cDovL3Y4
+LjFjLnJ1LzguMS9kYXRhLWNvbXBvc2l0aW9uLXN5c3RlbS9zZXR0aW5ncyIgeG1s
+bnM6ZGNzY29yPSJodHRwOi8vdjguMWMucnUvOC4xL2RhdGEtY29tcG9zaXRpb24t
+c3lzdGVtL2NvcmUiIHhtbG5zOnN0eWxlPSJodHRwOi8vdjguMWMucnUvOC4xL2Rh
+dGEvdWkvc3R5bGUiIHhtbG5zOnN5cz0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRh
+L3VpL2ZvbnRzL3N5c3RlbSIgeG1sbnM6djg9Imh0dHA6Ly92OC4xYy5ydS84LjEv
+ZGF0YS9jb3JlIiB4bWxuczp2OHVpPSJodHRwOi8vdjguMWMucnUvOC4xL2RhdGEv
+dWkiIHhtbG5zOndlYj0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRhL3VpL2NvbG9y
+cy93ZWIiIHhtbG5zOndpbj0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRhL3VpL2Nv
+bG9ycy93aW5kb3dzIiB4bWxuczp4cz0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9Y
+TUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxT
+Y2hlbWEtaW5zdGFuY2UiPg0KCTxzZWxlY3Rpb24+DQoJCTxpdGVtIHhzaTp0eXBl
+PSJTZWxlY3RlZEl0ZW1GaWVsZCI+DQoJCQk8ZmllbGQ+0JrQu9C40LXQvdGCPC9m
+aWVsZD4NCgkJPC9pdGVtPg0KCTwvc2VsZWN0aW9uPg0KCTxmaWx0ZXI+DQoJCTxp
+dGVtIHhzaTp0eXBlPSJGaWx0ZXJJdGVtQ29tcGFyaXNvbiI+DQoJCQk8bGVmdCB4
+c2k6dHlwZT0iZGNzY29yOkZpZWxkIj7QktC+0LfRgNCw0YHRgjwvbGVmdD4NCgkJ
+CTxjb21wYXJpc29uVHlwZT5HcmVhdGVyT3JFcXVhbDwvY29tcGFyaXNvblR5cGU+
+DQoJCQk8cmlnaHQgeHNpOnR5cGU9InhzOmRlY2ltYWwiPjU1PC9yaWdodD4NCgkJ
+PC9pdGVtPg0KCQk8aXRlbSB4c2k6dHlwZT0iRmlsdGVySXRlbUNvbXBhcmlzb24i
+Pg0KCQkJPGxlZnQgeHNpOnR5cGU9ImRjc2NvcjpGaWVsZCI+0JrQu9C40LXQvdGC
+LtCf0L7QuzwvbGVmdD4NCgkJCTxjb21wYXJpc29uVHlwZT5FcXVhbDwvY29tcGFy
+aXNvblR5cGU+DQoJCQk8cmlnaHQgeG1sbnM6ZDRwMT0iaHR0cDovL3Y4LjFjLnJ1
+LzguMS9kYXRhL2VudGVycHJpc2UvY3VycmVudC1jb25maWciIHhzaTp0eXBlPSJk
+NHAxOkVudW1SZWYu0J/QvtC70KTQuNC30LjRh9C10YHQutC40YXQm9C40YYiPtCc
+0YPQttGB0LrQvtC5PC9yaWdodD4NCgkJPC9pdGVtPg0KCTwvZmlsdGVyPg0KCTxp
+dGVtIHhzaTp0eXBlPSJTdHJ1Y3R1cmVJdGVtR3JvdXAiPg0KCQk8Z3JvdXBJdGVt
+cz4NCgkJCTxpdGVtIHhzaTp0eXBlPSJHcm91cEl0ZW1GaWVsZCI+DQoJCQkJPGZp
+ZWxkPtCa0LvQuNC10L3RgjwvZmllbGQ+DQoJCQkJPGdyb3VwVHlwZT5JdGVtczwv
+Z3JvdXBUeXBlPg0KCQkJCTxwZXJpb2RBZGRpdGlvblR5cGU+Tm9uZTwvcGVyaW9k
+QWRkaXRpb25UeXBlPg0KCQkJCTxwZXJpb2RBZGRpdGlvbkJlZ2luIHhzaTp0eXBl
+PSJ4czpkYXRlVGltZSI+MDAwMS0wMS0wMVQwMDowMDowMDwvcGVyaW9kQWRkaXRp
+b25CZWdpbj4NCgkJCQk8cGVyaW9kQWRkaXRpb25FbmQgeHNpOnR5cGU9InhzOmRh
+dGVUaW1lIj4wMDAxLTAxLTAxVDAwOjAwOjAwPC9wZXJpb2RBZGRpdGlvbkVuZD4N
+CgkJCTwvaXRlbT4NCgkJPC9ncm91cEl0ZW1zPg0KCQk8b3JkZXI+DQoJCQk8aXRl
+bSB4c2k6dHlwZT0iT3JkZXJJdGVtQXV0byIvPg0KCQk8L29yZGVyPg0KCQk8c2Vs
+ZWN0aW9uPg0KCQkJPGl0ZW0geHNpOnR5cGU9IlNlbGVjdGVkSXRlbUF1dG8iLz4N
+CgkJPC9zZWxlY3Rpb24+DQoJPC9pdGVtPg0KPC9TZXR0aW5ncz4=</Значение>
+</Свойство>
+		<Свойство Имя="ПредставлениеОтбора" Тип="Строка">
+			<Значение>Возраст Больше или равно "55" И Клиент.Пол Равно "Мужской"</Значение>
+		</Свойство><Свойство Имя="Сегмент" Тип="СправочникСсылка.Сегменты"><Ссылка Нпп="6"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Мужчины старше 55 лет</Значение>
+	</Свойство>
+</Ссылка>
+</Свойство>
+	</Запись>
+</ТабличнаяЧасть>
+</Объект>
+</ФайлОбмена>

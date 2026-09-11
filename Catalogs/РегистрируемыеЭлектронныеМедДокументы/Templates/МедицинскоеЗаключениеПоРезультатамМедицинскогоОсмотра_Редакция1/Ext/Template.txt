@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Медицинское заключение по результатам предварительного (периодического) медицинского осмотра (обследования) (CDA) Редакция 1" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fias="urn:hl7-ru:fias" xmlns:address="urn:hl7-ru:address">
+	<bitLocalId УсловиеИспользования="*Ложь">
+		<!-- Для возможности формирования СЭМД из шаблона -->
+		<nodeLocalId ТипДанных="ДокументСсылка.ДоговорСКлиентом" localid="ДоговорСКлиентом" localidСиноним="Договор с клиентом" Обязательное="*Ложь"/>
+	</bitLocalId>
+	<!-- R [1..1] СЕКЦИЯ: СВЕДЕНИЯ О ДОКУМЕНТЕ (ОБЩИЕ СВЕДЕНИЯ)-->
+	<component>
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="DOCINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>Сведения о документе</title>
+			<!-- R [1..1] наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<content>Наименование места работы</content>
+							</td>
+							<td>
+								<content>%НаименованиеРаботодателя</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Наименование структурного подразделения (цех, участок)</content>
+							</td>
+							<td>
+								<content>%СтруктурноеПодразделение</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Профессия (должность)</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%Должность)</content>
+							</td>
+						</tr>
+						<tr localid="ПрофессиональнаяВредность" Обязательное="*%Заключение.УИДЕГИСЗ=31">
+							<td>
+								<content>Сведения о вредных производственных факторах</content>
+							</td>
+							<td>
+								<list>
+									<item localid="ПрофессиональнаяВредность" Множественное="*Истина">%ПрофессиональнаяВредность.НаименованиеПолное</item>
+								</list>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Заключение</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%Заключение)</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Группа здоровья</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%ГруппаЗдоровья)</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..1] Наименование места работы -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="4073" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- R [1..1] -->
+					<performer>
+						<!-- R [1..1] -->
+						<assignedEntity>
+							<!-- [1..1] -->
+							<id nullFlavor="NI"/>
+							<!-- R [1..1] -->
+							<representedOrganization classCode="ORG">
+								<!-- [1..1] Идентификатор организации -->
+								<id nullFlavor="NI"/>
+								<!-- R [1..1] Наименование организации -->
+								<name ТипДанных="Строка" localid="НаименованиеРаботодателя">%НаименованиеРаботодателя</name>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+				</observation>
+			</entry>
+			<!-- [0..1] Наименование структурного подразделения (цех, участок) -->
+			<entry Обязательное="*Ложь">
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="8006" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- R [1..1] Наименование структурного подразделения -->
+					<value xsi:type="ST" localid="СтруктурноеПодразделение">%СтруктурноеПодразделение</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Профессия (должность) -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="4074" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- R [1..1] Должность -->
+					<value xsi:type="CD" localid="Должность" codeSystem="1.2.643.5.1.13.13.99.2.855" codeSystemName="#codesystemname" code="#code" codeSystemVersion="#version" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- [0..*]/R [1..*] Сведения о вредных производственных факторах -->
+			<entry localid="ПрофессиональнаяВредность" Множественное="*Истина" Обязательное="*%Заключение.УИДЕГИСЗ=31" УсловиеОбязательное="*%Заключение.УИДЕГИСЗ=31">
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="813" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- R [1..1] Вредный производственный фактор -->
+					<value xsi:type="CD" localid="ПрофессиональнаяВредность" code="#code" codeSystem="1.2.643.5.1.13.13.11.1060" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Заключение -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="837" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- R [1..1] Заключение -->
+					<value xsi:type="CD" localid="Заключение" ДопустимыеЗначения="31;32" codeSystem="1.2.643.5.1.13.13.99.2.725" codeSystemName="#codesystemname" code="#code" codeSystemVersion="#version" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- [0..1] Комментарий -->
+			<entry Обязательное="*Ложь">
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="10000" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- R [1..1] Комментарий -->
+					<value xsi:type="ST" localid="Комментарий">%Комментарий</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Группа здоровья -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="6020" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- R [1..1] Группа здоровья -->
+					<value xsi:type="CD" localid="ГруппаЗдоровья" codeSystem="1.2.643.5.1.13.13.99.2.766" codeSystemName="#codesystemname" code="#code" codeSystemVersion="#version" displayName="#name"/>
+				</observation>
+			</entry>
+		</section>
+	</component>
+</Items>

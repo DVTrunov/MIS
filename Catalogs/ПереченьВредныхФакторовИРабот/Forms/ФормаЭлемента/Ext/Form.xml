@@ -1,0 +1,692 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаНаименованиеКод" id="50">
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНаименованиеКодРасширеннаяПодсказка" id="97"/>
+			<ChildItems>
+				<InputField name="Наименование" id="3">
+					<DataPath>Объект.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="98"/>
+				</InputField>
+				<InputField name="Код" id="1">
+					<DataPath>Объект.Code</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>10</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<MaxWidth>10</MaxWidth>
+					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="99"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="НаименованиеПолное" id="5">
+			<DataPath>Объект.НаименованиеПолное</DataPath>
+			<TitleLocation>Left</TitleLocation>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<MultiLine>true</MultiLine>
+			<ContextMenu name="НаименованиеПолноеКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="НаименованиеПолноеРасширеннаяПодсказка" id="100"/>
+		</InputField>
+		<InputField name="ПериодичностьОсмотров" id="52">
+			<DataPath>Объект.ПериодичностьОсмотров</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Периодичность м/о</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ContextMenu name="ПериодичностьОсмотровКонтекстноеМеню" id="53"/>
+			<ExtendedTooltip name="ПериодичностьОсмотровРасширеннаяПодсказка" id="101"/>
+		</InputField>
+		<UsualGroup name="ГруппаНомерПриказ" id="51">
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ThroughAlign>Use</ThroughAlign>
+			<ExtendedTooltip name="ГруппаНомерПриказРасширеннаяПодсказка" id="102"/>
+			<ChildItems>
+				<InputField name="Приказ" id="171">
+					<DataPath>Объект.Приказ</DataPath>
+					<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+					<ContextMenu name="ПриказКонтекстноеМеню" id="172"/>
+					<ExtendedTooltip name="ПриказРасширеннаяПодсказка" id="173"/>
+					<Events>
+						<Event name="OnChange">ПриказПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ШаблонОсмотраСправки" id="180">
+					<DataPath>Объект.ШаблонОсмотраСправки</DataPath>
+					<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+					<ContextMenu name="ШаблонОсмотраСправкиКонтекстноеМеню" id="181"/>
+					<ExtendedTooltip name="ШаблонОсмотраСправкиРасширеннаяПодсказка" id="182"/>
+				</InputField>
+				<InputField name="ВидПеречняДляМедОсмотра" id="7">
+					<DataPath>Объект.ВидПеречняДляМедОсмотра</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ВидПеречняДляМедОсмотраКонтекстноеМеню" id="8"/>
+					<ExtendedTooltip name="ВидПеречняДляМедОсмотраРасширеннаяПодсказка" id="103"/>
+				</InputField>
+				<InputField name="НомерПП" id="9">
+					<DataPath>Объект.НомерПП</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>№ п/п</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>10</Width>
+					<ContextMenu name="НомерППКонтекстноеМеню" id="10"/>
+					<ExtendedTooltip name="НомерППРасширеннаяПодсказка" id="104"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Страницы" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="106"/>
+			<ChildItems>
+				<Page name="ГруппаВрачи" id="22">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Врачи</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<TitleDataPath>Объект.Врачи.RowsCount</TitleDataPath>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ГруппаВрачиРасширеннаяПодсказка" id="107"/>
+					<ChildItems>
+						<InputField name="ВрачиСтрока" id="11">
+							<DataPath>Объект.ВрачиСтрока</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Height>4</Height>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="ВрачиСтрокаКонтекстноеМеню" id="12"/>
+							<ExtendedTooltip name="ВрачиСтрокаРасширеннаяПодсказка" id="108"/>
+						</InputField>
+						<Table name="Врачи" id="23">
+							<Representation>List</Representation>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.Врачи</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ВрачиКонтекстноеМеню" id="24"/>
+							<AutoCommandBar name="ВрачиКоманднаяПанель" id="25"/>
+							<ExtendedTooltip name="ВрачиРасширеннаяПодсказка" id="109"/>
+							<SearchStringAddition name="ВрачиСтрокаПоиска" id="110">
+								<AdditionSource>
+									<Item>Врачи</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ВрачиСтрокаПоискаКонтекстноеМеню" id="111"/>
+								<ExtendedTooltip name="ВрачиСтрокаПоискаРасширеннаяПодсказка" id="112"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ВрачиСостояниеПросмотра" id="113">
+								<AdditionSource>
+									<Item>Врачи</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ВрачиСостояниеПросмотраКонтекстноеМеню" id="114"/>
+								<ExtendedTooltip name="ВрачиСостояниеПросмотраРасширеннаяПодсказка" id="115"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ВрачиУправлениеПоиском" id="116">
+								<AdditionSource>
+									<Item>Врачи</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ВрачиУправлениеПоискомКонтекстноеМеню" id="117"/>
+								<ExtendedTooltip name="ВрачиУправлениеПоискомРасширеннаяПодсказка" id="118"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ВрачиНомерСтроки" id="26">
+									<DataPath>Объект.Врачи.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<Width>2</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ВрачиНомерСтрокиКонтекстноеМеню" id="27"/>
+									<ExtendedTooltip name="ВрачиНомерСтрокиРасширеннаяПодсказка" id="119"/>
+								</LabelField>
+								<InputField name="ВрачиВрач" id="28">
+									<DataPath>Объект.Врачи.Врач</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+									<ContextMenu name="ВрачиВрачКонтекстноеМеню" id="29"/>
+									<ExtendedTooltip name="ВрачиВрачРасширеннаяПодсказка" id="120"/>
+								</InputField>
+								<InputField name="ВрачиОграничение" id="174">
+									<DataPath>Объект.Врачи.Ограничение</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ВрачиОграничениеКонтекстноеМеню" id="175"/>
+									<ExtendedTooltip name="ВрачиОграничениеРасширеннаяПодсказка" id="176"/>
+								</InputField>
+								<CheckBoxField name="ВрачиПоРекомендации" id="30">
+									<DataPath>Объект.Врачи.ПоРекомендации</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ВрачиПоРекомендацииКонтекстноеМеню" id="31"/>
+									<ExtendedTooltip name="ВрачиПоРекомендацииРасширеннаяПодсказка" id="121"/>
+								</CheckBoxField>
+								<InputField name="ВрачиТипМедосмотра" id="93">
+									<DataPath>Объект.Врачи.ТипМедосмотра</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<Width>12</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ClearButton>true</ClearButton>
+									<ContextMenu name="ВрачиТипМедосмотраКонтекстноеМеню" id="94"/>
+									<ExtendedTooltip name="ВрачиТипМедосмотраРасширеннаяПодсказка" id="122"/>
+								</InputField>
+								<CheckBoxField name="ВрачиНеУчитыватьПриРасчетеЦены" id="183">
+									<DataPath>Объект.Врачи.НеУчитыватьПриРасчетеЦены</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ВрачиНеУчитыватьПриРасчетеЦеныКонтекстноеМеню" id="184"/>
+									<ExtendedTooltip name="ВрачиНеУчитыватьПриРасчетеЦеныРасширеннаяПодсказка" id="185"/>
+								</CheckBoxField>
+								<CheckBoxField name="ВрачиНеТребуетОтметкиВыполнения" id="186">
+									<DataPath>Объект.Врачи.НеТребуетОтметкиВыполнения</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ВрачиНеТребуетОтметкиВыполненияКонтекстноеМеню" id="187"/>
+									<ExtendedTooltip name="ВрачиНеТребуетОтметкиВыполненияРасширеннаяПодсказка" id="188"/>
+								</CheckBoxField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаЛабораторныеИФункциональныеИсследования" id="32">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Лабораторные и функциональные исследования</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<TitleDataPath>Объект.ЛабораторныеИФункциональныеИсследования.RowsCount</TitleDataPath>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ГруппаЛабораторныеИФункциональныеИсследованияРасширеннаяПодсказка" id="123"/>
+					<ChildItems>
+						<InputField name="ЛабораторныеИФункциональныеИсследованияСтрока" id="13">
+							<DataPath>Объект.ЛабораторныеИФункциональныеИсследованияСтрока</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Height>4</Height>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="ЛабораторныеИФункциональныеИсследованияСтрокаКонтекстноеМеню" id="14"/>
+							<ExtendedTooltip name="ЛабораторныеИФункциональныеИсследованияСтрокаРасширеннаяПодсказка" id="124"/>
+						</InputField>
+						<Table name="ЛабораторныеИФункциональныеИсследования" id="33">
+							<Representation>List</Representation>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.ЛабораторныеИФункциональныеИсследования</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ЛабораторныеИФункциональныеИсследованияКонтекстноеМеню" id="34"/>
+							<AutoCommandBar name="ЛабораторныеИФункциональныеИсследованияКоманднаяПанель" id="35"/>
+							<ExtendedTooltip name="ЛабораторныеИФункциональныеИсследованияРасширеннаяПодсказка" id="125"/>
+							<SearchStringAddition name="ЛабораторныеИФункциональныеИсследованияСтрокаПоиска" id="126">
+								<AdditionSource>
+									<Item>ЛабораторныеИФункциональныеИсследования</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ЛабораторныеИФункциональныеИсследованияСтрокаПоискаКонтекстноеМеню" id="127"/>
+								<ExtendedTooltip name="ЛабораторныеИФункциональныеИсследованияСтрокаПоискаРасширеннаяПодсказка" id="128"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ЛабораторныеИФункциональныеИсследованияСостояниеПросмотра" id="129">
+								<AdditionSource>
+									<Item>ЛабораторныеИФункциональныеИсследования</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ЛабораторныеИФункциональныеИсследованияСостояниеПросмотраКонтекстноеМеню" id="130"/>
+								<ExtendedTooltip name="ЛабораторныеИФункциональныеИсследованияСостояниеПросмотраРасширеннаяПодсказка" id="131"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ЛабораторныеИФункциональныеИсследованияУправлениеПоиском" id="132">
+								<AdditionSource>
+									<Item>ЛабораторныеИФункциональныеИсследования</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ЛабораторныеИФункциональныеИсследованияУправлениеПоискомКонтекстноеМеню" id="133"/>
+								<ExtendedTooltip name="ЛабораторныеИФункциональныеИсследованияУправлениеПоискомРасширеннаяПодсказка" id="134"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ЛабораторныеИФункциональныеИсследованияНомерСтроки" id="36">
+									<DataPath>Объект.ЛабораторныеИФункциональныеИсследования.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<Width>2</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ЛабораторныеИФункциональныеИсследованияНомерСтрокиКонтекстноеМеню" id="37"/>
+									<ExtendedTooltip name="ЛабораторныеИФункциональныеИсследованияНомерСтрокиРасширеннаяПодсказка" id="135"/>
+								</LabelField>
+								<InputField name="ЛабораторныеИФункциональныеИсследованияИсследование" id="38">
+									<DataPath>Объект.ЛабораторныеИФункциональныеИсследования.Исследование</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+									<ContextMenu name="ЛабораторныеИФункциональныеИсследованияИсследованиеКонтекстноеМеню" id="39"/>
+									<ExtendedTooltip name="ЛабораторныеИФункциональныеИсследованияИсследованиеРасширеннаяПодсказка" id="136"/>
+								</InputField>
+								<InputField name="ЛабораторныеИФункциональныеИсследованияОграничение" id="177">
+									<DataPath>Объект.ЛабораторныеИФункциональныеИсследования.Ограничение</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ЛабораторныеИФункциональныеИсследованияОграничениеКонтекстноеМеню" id="178"/>
+									<ExtendedTooltip name="ЛабораторныеИФункциональныеИсследованияОграничениеРасширеннаяПодсказка" id="179"/>
+								</InputField>
+								<CheckBoxField name="ЛабораторныеИФункциональныеИсследованияПоРекомендации" id="40">
+									<DataPath>Объект.ЛабораторныеИФункциональныеИсследования.ПоРекомендации</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ЛабораторныеИФункциональныеИсследованияПоРекомендацииКонтекстноеМеню" id="41"/>
+									<ExtendedTooltip name="ЛабораторныеИФункциональныеИсследованияПоРекомендацииРасширеннаяПодсказка" id="137"/>
+								</CheckBoxField>
+								<InputField name="ЛабораторныеИФункциональныеИсследованияТипМедосмотра" id="95">
+									<DataPath>Объект.ЛабораторныеИФункциональныеИсследования.ТипМедосмотра</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<Width>12</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ClearButton>true</ClearButton>
+									<ContextMenu name="ЛабораторныеИФункциональныеИсследованияТипМедосмотраКонтекстноеМеню" id="96"/>
+									<ExtendedTooltip name="ЛабораторныеИФункциональныеИсследованияТипМедосмотраРасширеннаяПодсказка" id="138"/>
+								</InputField>
+								<CheckBoxField name="ЛабораторныеИФункциональныеИсследованияНеУчитыватьПриРасчетеЦены" id="189">
+									<DataPath>Объект.ЛабораторныеИФункциональныеИсследования.НеУчитыватьПриРасчетеЦены</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ЛабораторныеИФункциональныеИсследованияНеУчитыватьПриРасчетеЦеныКонтекстноеМеню" id="190"/>
+									<ExtendedTooltip name="ЛабораторныеИФункциональныеИсследованияНеУчитыватьПриРасчетеЦеныРасширеннаяПодсказка" id="191"/>
+								</CheckBoxField>
+								<CheckBoxField name="ЛабораторныеИФункциональныеИсследованияНеТребуетОтметкиВыполнения" id="192">
+									<DataPath>Объект.ЛабораторныеИФункциональныеИсследования.НеТребуетОтметкиВыполнения</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ЛабораторныеИФункциональныеИсследованияНеТребуетОтметкиВыполненияКонтекстноеМеню" id="193"/>
+									<ExtendedTooltip name="ЛабораторныеИФункциональныеИсследованияНеТребуетОтметкиВыполненияРасширеннаяПодсказка" id="194"/>
+								</CheckBoxField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаМедицинскиеПротивопоказания" id="42">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Противопоказания</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<TitleDataPath>Объект.МедицинскиеПротивопоказания.RowsCount</TitleDataPath>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ГруппаМедицинскиеПротивопоказанияРасширеннаяПодсказка" id="139"/>
+					<ChildItems>
+						<InputField name="МедицинскиеПротивопоказанияСтрока" id="15">
+							<DataPath>Объект.МедицинскиеПротивопоказанияСтрока</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<Height>4</Height>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="МедицинскиеПротивопоказанияСтрокаКонтекстноеМеню" id="16"/>
+							<ExtendedTooltip name="МедицинскиеПротивопоказанияСтрокаРасширеннаяПодсказка" id="140"/>
+						</InputField>
+						<Table name="МедицинскиеПротивопоказания" id="43">
+							<Representation>List</Representation>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.МедицинскиеПротивопоказания</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="МедицинскиеПротивопоказанияКонтекстноеМеню" id="44"/>
+							<AutoCommandBar name="МедицинскиеПротивопоказанияКоманднаяПанель" id="45"/>
+							<ExtendedTooltip name="МедицинскиеПротивопоказанияРасширеннаяПодсказка" id="141"/>
+							<SearchStringAddition name="МедицинскиеПротивопоказанияСтрокаПоиска" id="142">
+								<AdditionSource>
+									<Item>МедицинскиеПротивопоказания</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="МедицинскиеПротивопоказанияСтрокаПоискаКонтекстноеМеню" id="143"/>
+								<ExtendedTooltip name="МедицинскиеПротивопоказанияСтрокаПоискаРасширеннаяПодсказка" id="144"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="МедицинскиеПротивопоказанияСостояниеПросмотра" id="145">
+								<AdditionSource>
+									<Item>МедицинскиеПротивопоказания</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="МедицинскиеПротивопоказанияСостояниеПросмотраКонтекстноеМеню" id="146"/>
+								<ExtendedTooltip name="МедицинскиеПротивопоказанияСостояниеПросмотраРасширеннаяПодсказка" id="147"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="МедицинскиеПротивопоказанияУправлениеПоиском" id="148">
+								<AdditionSource>
+									<Item>МедицинскиеПротивопоказания</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="МедицинскиеПротивопоказанияУправлениеПоискомКонтекстноеМеню" id="149"/>
+								<ExtendedTooltip name="МедицинскиеПротивопоказанияУправлениеПоискомРасширеннаяПодсказка" id="150"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="МедицинскиеПротивопоказанияНомерСтроки" id="46">
+									<DataPath>Объект.МедицинскиеПротивопоказания.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<Width>2</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="МедицинскиеПротивопоказанияНомерСтрокиКонтекстноеМеню" id="47"/>
+									<ExtendedTooltip name="МедицинскиеПротивопоказанияНомерСтрокиРасширеннаяПодсказка" id="151"/>
+								</LabelField>
+								<InputField name="МедицинскиеПротивопоказанияПротивопоказание" id="48">
+									<DataPath>Объект.МедицинскиеПротивопоказания.Противопоказание</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+									<ContextMenu name="МедицинскиеПротивопоказанияПротивопоказаниеКонтекстноеМеню" id="49"/>
+									<ExtendedTooltip name="МедицинскиеПротивопоказанияПротивопоказаниеРасширеннаяПодсказка" id="152"/>
+								</InputField>
+								<InputField name="МедицинскиеПротивопоказанияТипМедосмотра" id="81">
+									<DataPath>Объект.МедицинскиеПротивопоказания.ТипМедосмотра</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<Width>12</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ClearButton>true</ClearButton>
+									<ContextMenu name="МедицинскиеПротивопоказанияТипМедосмотраКонтекстноеМеню" id="82"/>
+									<ExtendedTooltip name="МедицинскиеПротивопоказанияТипМедосмотраРасширеннаяПодсказка" id="153"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаВредныеВещества" id="83">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группы веществ</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вредные вещества</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<TitleDataPath>Объект.ГруппыВредныхВеществ.RowsCount</TitleDataPath>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ГруппаВредныеВеществаРасширеннаяПодсказка" id="154"/>
+					<ChildItems>
+						<Table name="ГруппыВредныхВеществ" id="86">
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.ГруппыВредныхВеществ</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ГруппыВредныхВеществКонтекстноеМеню" id="87"/>
+							<AutoCommandBar name="ГруппыВредныхВеществКоманднаяПанель" id="88"/>
+							<ExtendedTooltip name="ГруппыВредныхВеществРасширеннаяПодсказка" id="156"/>
+							<SearchStringAddition name="ГруппыВредныхВеществСтрокаПоиска" id="157">
+								<AdditionSource>
+									<Item>ГруппыВредныхВеществ</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ГруппыВредныхВеществСтрокаПоискаКонтекстноеМеню" id="158"/>
+								<ExtendedTooltip name="ГруппыВредныхВеществСтрокаПоискаРасширеннаяПодсказка" id="159"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ГруппыВредныхВеществСостояниеПросмотра" id="160">
+								<AdditionSource>
+									<Item>ГруппыВредныхВеществ</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ГруппыВредныхВеществСостояниеПросмотраКонтекстноеМеню" id="161"/>
+								<ExtendedTooltip name="ГруппыВредныхВеществСостояниеПросмотраРасширеннаяПодсказка" id="162"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ГруппыВредныхВеществУправлениеПоиском" id="163">
+								<AdditionSource>
+									<Item>ГруппыВредныхВеществ</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ГруппыВредныхВеществУправлениеПоискомКонтекстноеМеню" id="164"/>
+								<ExtendedTooltip name="ГруппыВредныхВеществУправлениеПоискомРасширеннаяПодсказка" id="165"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ГруппыВредныхВеществНомерСтроки" id="89">
+									<DataPath>Объект.ГруппыВредныхВеществ.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<Width>2</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ГруппыВредныхВеществНомерСтрокиКонтекстноеМеню" id="90"/>
+									<ExtendedTooltip name="ГруппыВредныхВеществНомерСтрокиРасширеннаяПодсказка" id="166"/>
+								</LabelField>
+								<InputField name="ГруппыВредныхВеществГруппаВредныхВеществ" id="91">
+									<DataPath>Объект.ГруппыВредныхВеществ.ГруппаВредныхВеществ</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ГруппыВредныхВеществГруппаВредныхВеществКонтекстноеМеню" id="92"/>
+									<ExtendedTooltip name="ГруппыВредныхВеществГруппаВредныхВеществРасширеннаяПодсказка" id="167"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ПереченьВредныхФакторовИРабот</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="НоменклатураДляОповещения" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура для оповещения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВредныйФакторСправки" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вредный фактор справки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ВрачиТипМедосмотра</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.Врачи.ТипМедосмотра</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ПоясняющийТекст</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Шрифт</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="true" underline="false" strikeout="false" kind="WindowsFont"/>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Любой</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ЛабораторныеИФункциональныеИсследованияТипМедосмотра</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ЛабораторныеИФункциональныеИсследования.ТипМедосмотра</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ПоясняющийТекст</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Шрифт</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="true" underline="false" strikeout="false" kind="WindowsFont"/>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Любой</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>МедицинскиеПротивопоказанияТипМедосмотра</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.МедицинскиеПротивопоказания.ТипМедосмотра</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ПоясняющийТекст</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Шрифт</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="true" underline="false" strikeout="false" kind="WindowsFont"/>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Любой</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>0:f24f6102-ae7c-4121-b1da-b749fc67565f</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

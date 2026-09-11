@@ -1,0 +1,1151 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Медсестра</dataPath>
+			<field>Медсестра</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Статус</dataPath>
+			<field>Статус</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДокументОснование</dataPath>
+			<field>ДокументОснование</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Пациент</dataPath>
+			<field>Пациент</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Филиал</dataPath>
+			<field>Филиал</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаДокумента</dataPath>
+			<field>СуммаДокумента</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Сумма</dataPath>
+			<field>Сумма</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Заявка</dataPath>
+			<field>Заявка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заявка</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Возвраст</dataPath>
+			<field>Возвраст</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Возвраст</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаНДС</dataPath>
+			<field>СуммаНДС</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма НДС</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаСкидки</dataPath>
+			<field>СуммаСкидки</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаБезСкидки</dataPath>
+			<field>СуммаБезСкидки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма без скидки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаБезНДС</dataPath>
+			<field>СуммаБезНДС</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма без НДС</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЭтоУслугиЛИС</dataPath>
+			<field>ЭтоУслугиЛИС</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это услуги ЛИС</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Набор</dataPath>
+			<field>Набор</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>омг_НаборЛИС</dataPath>
+			<field>омг_НаборЛИС</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Ссылка КАК Ссылка,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Статус КАК Статус,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Дата КАК Дата,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Пациент КАК Пациент,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Медсестра КАК Медсестра,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Филиал КАК Филиал,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.СуммаДокумента КАК СуммаДокумента,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.ДокументОснование КАК ДокументОснование,
+	РАЗНОСТЬДАТ(омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Пациент.ДатаРождения, &amp;ТекущаяДата, ГОД) КАК Лет
+ПОМЕСТИТЬ ВТ_Заявки
+ИЗ
+	Документ.омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС КАК омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС
+ГДЕ
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Ссылка КАК Заявка,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Статус КАК Статус,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Пациент КАК Пациент,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Медсестра КАК Медсестра,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Филиал КАК Филиал,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.СуммаДокумента КАК СуммаДокумента,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.ДокументОснование КАК ДокументОснование,
+	ОказаниеУслугРаботы.Номенклатура КАК Номенклатура,
+	ОказаниеУслугРаботы.Сумма КАК Сумма,
+	ВЫБОР
+		КОГДА омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Лет &gt;= 3
+			ТОГДА "Старше 3-х лет"
+		ИНАЧЕ "Младше 3-х лет"
+	КОНЕЦ КАК Возвраст,
+	ОказаниеУслугРаботы.СуммаСкидки КАК СуммаСкидки,
+	ОказаниеУслугРаботы.СуммаБезСкидки КАК СуммаБезСкидки,
+	ОказаниеУслугРаботы.СуммаНДС КАК СуммаНДС,
+	ОказаниеУслугРаботы.СуммаБезНДС КАК СуммаБезНДС,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Филиал.Организация КАК Организация,
+	ИСТИНА КАК ЭтоУслугиЛИС
+ИЗ
+	ВТ_Заявки КАК омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСАнализыПоКонтейнерам.Ссылка КАК Ссылка,
+			омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСАнализыПоКонтейнерам.Номенклатура КАК Номенклатура,
+			ВЫБОР
+				КОГДА омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСАнализыПоКонтейнерам.Набор = омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСАнализыПоКонтейнерам.Номенклатура
+					ТОГДА ЗНАЧЕНИЕ(Справочник.Номенклатура.ПУстаяСсылка)
+				ИНАЧЕ омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСАнализыПоКонтейнерам.Набор
+			КОНЕЦ КАК Набор
+		ИЗ
+			ВТ_Заявки КАК ВТ_Заявки
+				ЛЕВОЕ СОЕДИНЕНИЕ Документ.омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.АнализыПоКонтейнерам КАК омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСАнализыПоКонтейнерам
+				ПО ВТ_Заявки.Ссылка = омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСАнализыПоКонтейнерам.Ссылка
+		
+		СГРУППИРОВАТЬ ПО
+			омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСАнализыПоКонтейнерам.Номенклатура,
+			омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСАнализыПоКонтейнерам.Ссылка,
+			ВЫБОР
+				КОГДА омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСАнализыПоКонтейнерам.Набор = омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСАнализыПоКонтейнерам.Номенклатура
+					ТОГДА ЗНАЧЕНИЕ(Справочник.Номенклатура.ПУстаяСсылка)
+				ИНАЧЕ омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСАнализыПоКонтейнерам.Набор
+			КОНЕЦ) КАК омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСАнализыПоКонтейнерам
+			ВНУТРЕННЕЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+				ОказаниеУслугРаботы.Номенклатура КАК Номенклатура,
+				СУММА(ОказаниеУслугРаботы.Сумма) КАК Сумма,
+				ВТ_Заявки.Ссылка КАК Заявка,
+				СУММА(ОказаниеУслугРаботы.СуммаСкидки) КАК СуммаСкидки,
+				СУММА(ОказаниеУслугРаботы.Сумма + ОказаниеУслугРаботы.СуммаСкидки) КАК СуммаБезСкидки,
+				СУММА(ОказаниеУслугРаботы.Омг_СуммаНДС) КАК СуммаНДС,
+				СУММА(ОказаниеУслугРаботы.Сумма - ОказаниеУслугРаботы.Омг_СуммаНДС) КАК СуммаБезНДС,
+				ОказаниеУслугРаботы.омг_НаборЛИС КАК омг_НаборЛИС
+			ИЗ
+				ВТ_Заявки КАК ВТ_Заявки
+					ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ОказаниеУслуг.Работы КАК ОказаниеУслугРаботы
+					ПО ВТ_Заявки.ДокументОснование = ОказаниеУслугРаботы.Ссылка
+			
+			СГРУППИРОВАТЬ ПО
+				ОказаниеУслугРаботы.Номенклатура,
+				ВТ_Заявки.Ссылка,
+				ОказаниеУслугРаботы.омг_НаборЛИС) КАК ОказаниеУслугРаботы
+			ПО омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСАнализыПоКонтейнерам.Номенклатура = ОказаниеУслугРаботы.Номенклатура
+				И (ОказаниеУслугРаботы.Заявка = омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСАнализыПоКонтейнерам.Ссылка)
+				И омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСАнализыПоКонтейнерам.Набор = ОказаниеУслугРаботы.омг_НаборЛИС
+		ПО омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Ссылка = омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСАнализыПоКонтейнерам.Ссылка
+ГДЕ
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Ссылка,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Статус,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Пациент,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Медсестра,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Филиал,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.СуммаДокумента,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.ДокументОснование,
+	ОказаниеУслугРаботы.Номенклатура,
+	ОказаниеУслугРаботы.Сумма,
+	ВЫБОР
+		КОГДА омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Лет &gt;= 3
+			ТОГДА "Старше 3-х лет"
+		ИНАЧЕ "Младше 3-х лет"
+	КОНЕЦ,
+	ОказаниеУслугРаботы.СуммаСкидки,
+	ОказаниеУслугРаботы.СуммаБезСкидки,
+	ОказаниеУслугРаботы.СуммаНДС,
+	ОказаниеУслугРаботы.СуммаБезНДС,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Филиал.Организация,
+	ЛОЖЬ
+ИЗ
+	ВТ_Заявки КАК омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ОказаниеУслугРаботы.Номенклатура КАК Номенклатура,
+			СУММА(ОказаниеУслугРаботы.Сумма) КАК Сумма,
+			ВТ_Заявки.Ссылка КАК Заявка,
+			СУММА(ОказаниеУслугРаботы.Сумма + ОказаниеУслугРаботы.СуммаСкидки) КАК СуммаБезСкидки,
+			СУММА(ОказаниеУслугРаботы.Омг_СуммаНДС) КАК СуммаНДС,
+			СУММА(ОказаниеУслугРаботы.СуммаСкидки) КАК СуммаСкидки,
+			СУММА(ОказаниеУслугРаботы.Сумма - ОказаниеУслугРаботы.Омг_СуммаНДС) КАК СуммаБезНДС
+		ИЗ
+			ВТ_Заявки КАК ВТ_Заявки
+				ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ОказаниеУслуг.Работы КАК ОказаниеУслугРаботы
+				ПО ВТ_Заявки.ДокументОснование = ОказаниеУслугРаботы.Ссылка
+		
+		СГРУППИРОВАТЬ ПО
+			ОказаниеУслугРаботы.Номенклатура,
+			ВТ_Заявки.Ссылка) КАК ОказаниеУслугРаботы
+		ПО омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Ссылка = ОказаниеУслугРаботы.Заявка
+			И (НЕ ОказаниеУслугРаботы.Номенклатура В ИЕРАРХИИ
+					(ВЫБРАТЬ
+						омг_НастройкиИнтеграцииСЛИС.ГруппаНоменклатуры КАК ГруппаНоменклатуры
+					ИЗ
+						РегистрСведений.омг_НастройкиИнтеграцииСЛИС КАК омг_НастройкиИнтеграцииСЛИС))
+ГДЕ
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода</query>
+	</dataSet>
+	<totalField>
+		<dataPath>Сумма</dataPath>
+		<expression>Сумма(Сумма)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаБезСкидки</dataPath>
+		<expression>Сумма(СуммаБезСкидки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаДокумента</dataPath>
+		<expression>Сумма(СуммаДокумента)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаНДС</dataPath>
+		<expression>Сумма(СуммаНДС)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаСкидки</dataPath>
+		<expression>Сумма(СуммаСкидки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаБезНДС</dataPath>
+		<expression>Сумма(СуммаБезНДС)</expression>
+	</totalField>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">2100-12-31T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;СтандартныйПериод.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">1900-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;СтандартныйПериод.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>СтандартныйПериод</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ТекущаяДата</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Текущая дата</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>ТекущаяДата()</expression>
+	</parameter>
+	<nestedSchema>
+		<name>ПрочиеУслуги</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Прочие услуги</v8:content>
+			</v8:item>
+		</title>
+		<schema>
+			<dataSource>
+				<name>ИсточникДанных1</name>
+				<dataSourceType>Local</dataSourceType>
+			</dataSource>
+			<dataSet xsi:type="DataSetQuery">
+				<name>НаборДанных1</name>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Медсестра</dataPath>
+					<field>Медсестра</field>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Статус</dataPath>
+					<field>Статус</field>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>ДокументОснование</dataPath>
+					<field>ДокументОснование</field>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Пациент</dataPath>
+					<field>Пациент</field>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Филиал</dataPath>
+					<field>Филиал</field>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>СуммаДокумента</dataPath>
+					<field>СуммаДокумента</field>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Номенклатура</dataPath>
+					<field>Номенклатура</field>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Сумма</dataPath>
+					<field>Сумма</field>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Заявка</dataPath>
+					<field>Заявка</field>
+					<title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заявка</v8:content>
+						</v8:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Возвраст</dataPath>
+					<field>Возвраст</field>
+					<title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Возвраст</v8:content>
+						</v8:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>СуммаНДС</dataPath>
+					<field>СуммаНДС</field>
+					<title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма НДС</v8:content>
+						</v8:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>СуммаБезСкидки</dataPath>
+					<field>СуммаБезСкидки</field>
+					<title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма без скидки</v8:content>
+						</v8:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>СуммаСкидки</dataPath>
+					<field>СуммаСкидки</field>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>СуммаБезНДС</dataPath>
+					<field>СуммаБезНДС</field>
+					<title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма без НДС</v8:content>
+						</v8:item>
+					</title>
+				</field>
+				<field xsi:type="DataSetFieldField">
+					<dataPath>Организация</dataPath>
+					<field>Организация</field>
+					<title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Организация</v8:content>
+						</v8:item>
+					</title>
+				</field>
+				<dataSource>ИсточникДанных1</dataSource>
+				<query>ВЫБРАТЬ
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Ссылка КАК Ссылка,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Статус КАК Статус,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Дата КАК Дата,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Пациент КАК Пациент,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Медсестра КАК Медсестра,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Филиал КАК Филиал,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.СуммаДокумента КАК СуммаДокумента,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.ДокументОснование КАК ДокументОснование,
+	РАЗНОСТЬДАТ(омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Пациент.ДатаРождения, &amp;ТекущаяДата, ГОД) КАК Лет
+ПОМЕСТИТЬ ВТ_Заявки
+ИЗ
+	Документ.омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС КАК омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС
+ГДЕ
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Ссылка КАК Заявка,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Статус КАК Статус,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Пациент КАК Пациент,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Медсестра КАК Медсестра,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Филиал КАК Филиал,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.СуммаДокумента КАК СуммаДокумента,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.ДокументОснование КАК ДокументОснование,
+	ОказаниеУслугРаботы.Номенклатура КАК Номенклатура,
+	ОказаниеУслугРаботы.Сумма КАК Сумма,
+	ВЫБОР
+		КОГДА омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Лет &gt;= 3
+			ТОГДА "Старше 3-х лет"
+		ИНАЧЕ "Младше 3-х лет"
+	КОНЕЦ КАК Возвраст,
+	ОказаниеУслугРаботы.СуммаБезСкидки КАК СуммаБезСкидки,
+	ОказаниеУслугРаботы.СуммаНДС КАК СуммаНДС,
+	ОказаниеУслугРаботы.СуммаСкидки КАК СуммаСкидки,
+	ОказаниеУслугРаботы.СуммаБезНДС КАК СуммаБезНДС,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Филиал.Организация КАК Организация
+ИЗ
+	ВТ_Заявки КАК омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ОказаниеУслугРаботы.Номенклатура КАК Номенклатура,
+			СУММА(ОказаниеУслугРаботы.Сумма) КАК Сумма,
+			ВТ_Заявки.Ссылка КАК Заявка,
+			СУММА(ОказаниеУслугРаботы.Сумма + ОказаниеУслугРаботы.СуммаСкидки) КАК СуммаБезСкидки,
+			СУММА(ОказаниеУслугРаботы.Омг_СуммаНДС) КАК СуммаНДС,
+			СУММА(ОказаниеУслугРаботы.СуммаСкидки) КАК СуммаСкидки,
+			СУММА(ОказаниеУслугРаботы.Сумма - ОказаниеУслугРаботы.Омг_СуммаНДС) КАК СуммаБезНДС
+		ИЗ
+			ВТ_Заявки КАК ВТ_Заявки
+				ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ОказаниеУслуг.Работы КАК ОказаниеУслугРаботы
+				ПО ВТ_Заявки.ДокументОснование = ОказаниеУслугРаботы.Ссылка
+		
+		СГРУППИРОВАТЬ ПО
+			ОказаниеУслугРаботы.Номенклатура,
+			ВТ_Заявки.Ссылка) КАК ОказаниеУслугРаботы
+		ПО омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Ссылка = ОказаниеУслугРаботы.Заявка
+			И (НЕ ОказаниеУслугРаботы.Номенклатура В ИЕРАРХИИ
+					(ВЫБРАТЬ
+						омг_НастройкиИнтеграцииСЛИС.ГруппаНоменклатуры КАК ГруппаНоменклатуры
+					ИЗ
+						РегистрСведений.омг_НастройкиИнтеграцииСЛИС КАК омг_НастройкиИнтеграцииСЛИС))
+ГДЕ
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода</query>
+			</dataSet>
+			<totalField>
+				<dataPath>Сумма</dataPath>
+				<expression>Сумма(Сумма)</expression>
+			</totalField>
+			<totalField>
+				<dataPath>СуммаБезСкидки</dataPath>
+				<expression>Сумма(СуммаБезСкидки)</expression>
+			</totalField>
+			<totalField>
+				<dataPath>СуммаДокумента</dataPath>
+				<expression>Сумма(СуммаДокумента)</expression>
+			</totalField>
+			<totalField>
+				<dataPath>СуммаНДС</dataPath>
+				<expression>Сумма(СуммаНДС)</expression>
+			</totalField>
+			<totalField>
+				<dataPath>СуммаСкидки</dataPath>
+				<expression>Сумма(СуммаСкидки)</expression>
+			</totalField>
+			<totalField>
+				<dataPath>СуммаБезНДС</dataPath>
+				<expression>Сумма(СуммаБезНДС)</expression>
+			</totalField>
+			<parameter>
+				<name>КонецПериода</name>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Конец периода</v8:content>
+					</v8:item>
+				</title>
+				<valueType>
+					<v8:Type>xs:dateTime</v8:Type>
+					<v8:DateQualifiers>
+						<v8:DateFractions>DateTime</v8:DateFractions>
+					</v8:DateQualifiers>
+				</valueType>
+				<value xsi:type="xs:dateTime">2100-12-31T00:00:00</value>
+				<useRestriction>true</useRestriction>
+				<expression>&amp;СтандартныйПериод.ДатаОкончания</expression>
+			</parameter>
+			<parameter>
+				<name>НачалоПериода</name>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Начало периода</v8:content>
+					</v8:item>
+				</title>
+				<valueType>
+					<v8:Type>xs:dateTime</v8:Type>
+					<v8:DateQualifiers>
+						<v8:DateFractions>DateTime</v8:DateFractions>
+					</v8:DateQualifiers>
+				</valueType>
+				<value xsi:type="xs:dateTime">1900-01-01T00:00:00</value>
+				<useRestriction>true</useRestriction>
+				<expression>&amp;СтандартныйПериод.ДатаНачала</expression>
+			</parameter>
+			<parameter>
+				<name>СтандартныйПериод</name>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Период</v8:content>
+					</v8:item>
+				</title>
+				<valueType>
+					<v8:Type>v8:StandardPeriod</v8:Type>
+				</valueType>
+				<value xsi:type="v8:StandardPeriod">
+					<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+					<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+					<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+				</value>
+				<useRestriction>false</useRestriction>
+			</parameter>
+			<parameter>
+				<name>ТекущаяДата</name>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Текущая дата</v8:content>
+					</v8:item>
+				</title>
+				<valueType>
+					<v8:Type>xs:dateTime</v8:Type>
+					<v8:DateQualifiers>
+						<v8:DateFractions>DateTime</v8:DateFractions>
+					</v8:DateQualifiers>
+				</valueType>
+				<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+				<useRestriction>true</useRestriction>
+				<expression>ТекущаяДата()</expression>
+			</parameter>
+			<nestedSchema>
+				<name>ПрочиеУслуги</name>
+				<title xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Прочие услуги</v8:content>
+					</v8:item>
+				</title>
+				<schema>
+					<settingsVariant>
+						<dcsset:name>Основной</dcsset:name>
+						<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+						<dcsset:settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows"/>
+					</settingsVariant>
+				</schema>
+				<settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows"/>
+			</nestedSchema>
+			<settingsVariant>
+				<dcsset:name>омг_ОтчетПоМедсестрамПЗБ</dcsset:name>
+				<dcsset:presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Отчет по медсестрам ПЗБ</v8:content>
+					</v8:item>
+				</dcsset:presentation>
+				<dcsset:settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Сумма</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>СуммаБезСкидки</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>СуммаНДС</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>СуммаСкидки</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>СуммаБезНДС</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter>
+						<dcsset:userSettingID>b7932615-2841-4fb4-a2f1-8d62c6e444a9</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:dataParameters>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>СтандартныйПериод</dcscor:parameter>
+							<dcscor:value xsi:type="v8:StandardPeriod">
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Today</v8:variant>
+							</dcscor:value>
+							<dcsset:userSettingID>c51161a5-6550-4114-8ca0-46c9ed28fbca</dcsset:userSettingID>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:use>false</dcscor:use>
+							<dcscor:parameter>ТекущаяДата</dcscor:parameter>
+							<dcscor:value xsi:type="v8:StandardBeginningDate">
+								<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
+							</dcscor:value>
+						</dcscor:item>
+					</dcsset:dataParameters>
+					<dcsset:order>
+						<dcsset:userSettingID>f9fc478b-6ad3-4bd2-80db-eede4da24d93</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:outputParameters>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>МакетОформления</dcscor:parameter>
+							<dcscor:value xsi:type="xs:string">Античный</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:use>false</dcscor:use>
+							<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+							<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">BeginAndEnd</dcscor:value>
+						</dcscor:item>
+					</dcsset:outputParameters>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Организация</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+						<dcsset:item xsi:type="dcsset:StructureItemGroup">
+							<dcsset:groupItems>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>Филиал</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+							</dcsset:groupItems>
+							<dcsset:order>
+								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							</dcsset:order>
+							<dcsset:selection>
+								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							</dcsset:selection>
+							<dcsset:item xsi:type="dcsset:StructureItemGroup">
+								<dcsset:groupItems>
+									<dcsset:item xsi:type="dcsset:GroupItemField">
+										<dcsset:field>Медсестра</dcsset:field>
+										<dcsset:groupType>Items</dcsset:groupType>
+										<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+										<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+										<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+									</dcsset:item>
+								</dcsset:groupItems>
+								<dcsset:order>
+									<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+								</dcsset:order>
+								<dcsset:selection>
+									<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+								</dcsset:selection>
+								<dcsset:item xsi:type="dcsset:StructureItemGroup">
+									<dcsset:groupItems>
+										<dcsset:item xsi:type="dcsset:GroupItemField">
+											<dcsset:field>Возвраст</dcsset:field>
+											<dcsset:groupType>Items</dcsset:groupType>
+											<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+											<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+											<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+										</dcsset:item>
+									</dcsset:groupItems>
+									<dcsset:order>
+										<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+									</dcsset:order>
+									<dcsset:selection>
+										<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+									</dcsset:selection>
+									<dcsset:item xsi:type="dcsset:StructureItemGroup">
+										<dcsset:groupItems>
+											<dcsset:item xsi:type="dcsset:GroupItemField">
+												<dcsset:field>Заявка</dcsset:field>
+												<dcsset:groupType>Items</dcsset:groupType>
+												<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+												<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+												<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+											</dcsset:item>
+											<dcsset:item xsi:type="dcsset:GroupItemField">
+												<dcsset:field>Пациент</dcsset:field>
+												<dcsset:groupType>Items</dcsset:groupType>
+												<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+												<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+												<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+											</dcsset:item>
+											<dcsset:item xsi:type="dcsset:GroupItemField">
+												<dcsset:field>Номенклатура</dcsset:field>
+												<dcsset:groupType>Items</dcsset:groupType>
+												<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+												<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+												<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+											</dcsset:item>
+										</dcsset:groupItems>
+										<dcsset:order>
+											<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+										</dcsset:order>
+										<dcsset:selection>
+											<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+										</dcsset:selection>
+									</dcsset:item>
+								</dcsset:item>
+							</dcsset:item>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:settings>
+			</settingsVariant>
+		</schema>
+		<settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>СтандартныйПериод</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:Field">ОбъектНастройкиВладелец.ПараметрыДанных.СтандартныйПериод</dcscor:value>
+				</dcscor:item>
+			</dcsset:dataParameters>
+		</settings>
+	</nestedSchema>
+	<settingsVariant>
+		<dcsset:name>омг_ОтчетПоМедсестрамПЗБ</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Отчет по медсестрам ПЗБ</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Сумма</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаНДС</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаБезНДС</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">Организация</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>f249db3f-71a1-4005-b32a-1bf1b1bbafa9</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">Филиал</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>9fd27560-a9ce-41d2-a0d3-022688825f2b</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">Медсестра</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>697aa879-721e-4ac3-b92e-0f25a4514814</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:userSettingID>6d0f0c01-c7b2-477c-8591-c413f4693618</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>СтандартныйПериод</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Today</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>c51161a5-6550-4114-8ca0-46c9ed28fbca</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ТекущаяДата</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
+					</dcscor:value>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:userSettingID>0b346995-4c1d-41fe-bb16-7d6e1f93d7c0</dcsset:userSettingID>
+			</dcsset:order>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МакетОформления</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">Античный</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">BeginAndEnd</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Лабораторные исследования</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Организация</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ЭтоУслугиЛИС</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						<dcsset:viewMode>Inaccessible</dcsset:viewMode>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Заголовок</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Лабораторные исследования</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+						<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Филиал</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Медсестра</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+						<dcsset:item xsi:type="dcsset:StructureItemGroup">
+							<dcsset:groupItems>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>Возвраст</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+							</dcsset:groupItems>
+							<dcsset:order>
+								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							</dcsset:order>
+							<dcsset:selection>
+								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							</dcsset:selection>
+							<dcsset:item xsi:type="dcsset:StructureItemGroup">
+								<dcsset:groupItems>
+									<dcsset:item xsi:type="dcsset:GroupItemField">
+										<dcsset:field>Заявка</dcsset:field>
+										<dcsset:groupType>Items</dcsset:groupType>
+										<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+										<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+										<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+									</dcsset:item>
+									<dcsset:item xsi:type="dcsset:GroupItemField">
+										<dcsset:field>Пациент</dcsset:field>
+										<dcsset:groupType>Items</dcsset:groupType>
+										<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+										<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+										<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+									</dcsset:item>
+									<dcsset:item xsi:type="dcsset:GroupItemField">
+										<dcsset:field>Номенклатура</dcsset:field>
+										<dcsset:groupType>Items</dcsset:groupType>
+										<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+										<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+										<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+									</dcsset:item>
+								</dcsset:groupItems>
+								<dcsset:order>
+									<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+								</dcsset:order>
+								<dcsset:selection>
+									<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+								</dcsset:selection>
+							</dcsset:item>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Организация</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ЭтоУслугиЛИС</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+						<dcsset:viewMode>Inaccessible</dcsset:viewMode>
+					</dcsset:item>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отбор исследований</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcsset:filter>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Заголовок</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Прочие услуги по заявкам</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+						<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Филиал</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Медсестра</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+						<dcsset:item xsi:type="dcsset:StructureItemGroup">
+							<dcsset:groupItems>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>Возвраст</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+							</dcsset:groupItems>
+							<dcsset:order>
+								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							</dcsset:order>
+							<dcsset:selection>
+								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							</dcsset:selection>
+							<dcsset:item xsi:type="dcsset:StructureItemGroup">
+								<dcsset:groupItems>
+									<dcsset:item xsi:type="dcsset:GroupItemField">
+										<dcsset:field>Заявка</dcsset:field>
+										<dcsset:groupType>Items</dcsset:groupType>
+										<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+										<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+										<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+									</dcsset:item>
+									<dcsset:item xsi:type="dcsset:GroupItemField">
+										<dcsset:field>Пациент</dcsset:field>
+										<dcsset:groupType>Items</dcsset:groupType>
+										<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+										<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+										<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+									</dcsset:item>
+									<dcsset:item xsi:type="dcsset:GroupItemField">
+										<dcsset:field>Номенклатура</dcsset:field>
+										<dcsset:groupType>Items</dcsset:groupType>
+										<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+										<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+										<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+									</dcsset:item>
+								</dcsset:groupItems>
+								<dcsset:order>
+									<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+								</dcsset:order>
+								<dcsset:selection>
+									<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+								</dcsset:selection>
+							</dcsset:item>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

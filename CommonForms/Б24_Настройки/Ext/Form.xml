@@ -1,0 +1,1477 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<Width>60</Width>
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="СохранитьИЗакрыть" id="16">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.СохранитьИЗакрыть</CommandName>
+				<TextColor>#000000</TextColor>
+				<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+				<ButtonImportance>Main</ButtonImportance>
+				<ExtendedTooltip name="СохранитьИЗакрытьРасширеннаяПодсказка" id="17"/>
+			</Button>
+			<Button name="Сохранить" id="43">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Сохранить</CommandName>
+				<ExtendedTooltip name="СохранитьРасширеннаяПодсказка" id="44"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаНастройкиВключения" id="74">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа настройки включения</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа настройки включения</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНастройкиВключенияРасширеннаяПодсказка" id="75"/>
+			<ChildItems>
+				<CheckBoxField name="ИспользоватьОбмен" id="68">
+					<DataPath>Б24_ИспользоватьОбмен</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Использовать обмен с Битрикс 24</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<ContextMenu name="ИспользоватьОбменКонтекстноеМеню" id="69"/>
+					<ExtendedTooltip name="ИспользоватьОбменРасширеннаяПодсказка" id="70"/>
+				</CheckBoxField>
+				<InputField name="РежимОбмена" id="71">
+					<DataPath>Б24_РежимОбмена</DataPath>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Получать лиды из Битрикс 24</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">1</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Отдавать лиды в Битрикс 24</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">2</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Двусторонний обмен</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:decimal">3</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="РежимОбменаКонтекстноеМеню" id="72"/>
+					<ExtendedTooltip name="РежимОбменаРасширеннаяПодсказка" id="73"/>
+					<Events>
+						<Event name="OnChange">РежимОбменаПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="СтраницыНастроек" id="199">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы настроек</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы настроек</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>TabsOnLeftHorizontal</PagesRepresentation>
+			<ExtendedTooltip name="СтраницыНастроекРасширеннаяПодсказка" id="200"/>
+			<ChildItems>
+				<Page name="НастройкиПодключения" id="201">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подключение</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Настройки подключения</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="НастройкиПодключенияРасширеннаяПодсказка" id="202"/>
+					<ChildItems>
+						<UsualGroup name="АдресБитрикса" id="128">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Адрес битрикса</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Адрес битрикса</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>HorizontalIfPossible</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>WeakSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ThroughAlign>Use</ThroughAlign>
+							<ExtendedTooltip name="АдресБитриксаРасширеннаяПодсказка" id="129"/>
+							<ChildItems>
+								<InputField name="НаименованиеБитрикс24" id="18">
+									<DataPath>НаименованиеБитрикс24</DataPath>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Адрес не должен содержать указание протокола, но может содержать указание порта. Если у портала несколько адресов - следует указать все, разделяя их символом ";".</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<InputHint>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>b24-example:8080.ru</v8:content>
+										</v8:item>
+									</InputHint>
+									<ContextMenu name="НаименованиеБитрикс24КонтекстноеМеню" id="19"/>
+									<ExtendedTooltip name="НаименованиеБитрикс24РасширеннаяПодсказка" id="20"/>
+								</InputField>
+								<InputField name="ИспользуетсяЗащищенноеСоединение" id="130">
+									<DataPath>НезащищенноеСоединение</DataPath>
+									<Width>5</Width>
+									<EditFormat>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>БЛ=HTTPS; БИ=HTTP</v8:content>
+										</v8:item>
+									</EditFormat>
+									<TextEdit>false</TextEdit>
+									<ContextMenu name="ИспользуетсяЗащищенноеСоединениеКонтекстноеМеню" id="131"/>
+									<ExtendedTooltip name="ИспользуетсяЗащищенноеСоединениеРасширеннаяПодсказка" id="132"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаВходящийВебхук" id="64">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Входящий вебхук (с точки зрения Битрикс 24)</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа входящий вебхук</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>HorizontalIfPossible</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>WeakSeparation</Representation>
+							<ThroughAlign>Use</ThroughAlign>
+							<ExtendedTooltip name="ГруппаВходящийВебхукРасширеннаяПодсказка" id="65"/>
+							<ChildItems>
+								<InputField name="КодВебхука" id="4">
+									<DataPath>КодВебхука</DataPath>
+									<ContextMenu name="КодВебхукаКонтекстноеМеню" id="5"/>
+									<ExtendedTooltip name="КодВебхукаРасширеннаяПодсказка" id="6"/>
+								</InputField>
+								<InputField name="ИДПользователяВебхука" id="21">
+									<DataPath>ИДПользователяВебхука</DataPath>
+									<Width>6</Width>
+									<ContextMenu name="ИДПользователяВебхукаКонтекстноеМеню" id="22"/>
+									<ExtendedTooltip name="ИДПользователяВебхукаРасширеннаяПодсказка" id="23"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаИсходящийВебхук" id="48">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Исходящий вебхук (с точки зрения Битрикс 24)</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа исходящий вебхук</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>HorizontalIfPossible</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>WeakSeparation</Representation>
+							<ThroughAlign>Use</ThroughAlign>
+							<ExtendedTooltip name="ГруппаИсходящийВебхукРасширеннаяПодсказка" id="49"/>
+							<ChildItems>
+								<InputField name="КодАвторизации" id="35">
+									<DataPath>КодАвторизации</DataPath>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Код авторизации исходящего вебхука</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<ContextMenu name="КодАвторизацииКонтекстноеМеню" id="36"/>
+									<ExtendedTooltip name="КодАвторизацииРасширеннаяПодсказка" id="37"/>
+								</InputField>
+								<InputField name="РежимПолученияЛида" id="55">
+									<DataPath>РежимПолученияЛида</DataPath>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Если "При создании" - принимать лид всегда.
+Если "При обновлении" - проверять на совпадение с прописанным статусом лида</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<ListChoiceMode>true</ListChoiceMode>
+									<TextEdit>false</TextEdit>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>При создании лида</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">0</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>При изменении статуса</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">1</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="РежимПолученияЛидаКонтекстноеМеню" id="56"/>
+									<ExtendedTooltip name="РежимПолученияЛидаРасширеннаяПодсказка" id="57"/>
+									<Events>
+										<Event name="OnChange">РежимПолученияЛидаПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаНастройкиПолученияДанных" id="207">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки получения данных</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа настройки получения данных</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>HorizontalIfPossible</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>WeakSeparation</Representation>
+							<ThroughAlign>Use</ThroughAlign>
+							<ExtendedTooltip name="ГруппаНастройкиПолученияДанныхРасширеннаяПодсказка" id="208"/>
+							<ChildItems>
+								<InputField name="ГруппаКлиентовИзБитрикс24" id="58">
+									<DataPath>ГруппаКлиентовИзБитрикс24</DataPath>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа, в которую попадают записываются новые клиенты из Битрикс24</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+									<OpenButton>false</OpenButton>
+									<ChoiceFoldersAndItems>Folders</ChoiceFoldersAndItems>
+									<ChoiceForm>Catalog.Клиенты.Form.ФормаВыбораГруппы</ChoiceForm>
+									<ContextMenu name="ГруппаКлиентовИзБитрикс24КонтекстноеМеню" id="59"/>
+									<ExtendedTooltip name="ГруппаКлиентовИзБитрикс24РасширеннаяПодсказка" id="60"/>
+								</InputField>
+								<InputField name="НастройкаОбменаССайтом" id="76">
+									<DataPath>НастройкаОбменаССайтом</DataPath>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Для поиска клиента и указания источника информации в листах ожидания, созданных по лидам из Битрикс 24</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<DropListButton>false</DropListButton>
+									<ChoiceButton>true</ChoiceButton>
+									<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+									<OpenButton>true</OpenButton>
+									<ContextMenu name="НастройкаОбменаССайтомКонтекстноеМеню" id="77"/>
+									<ExtendedTooltip name="НастройкаОбменаССайтомРасширеннаяПодсказка" id="78"/>
+									<Events>
+										<Event name="StartChoice">НастройкаОбменаССайтомНачалоВыбора</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="CRM" id="203">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>CRM</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа2</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="CRMРасширеннаяПодсказка" id="204"/>
+					<ChildItems>
+						<UsualGroup name="ДляОтправки" id="50">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отправка данных</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Для отправки</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>WeakSeparation</Representation>
+							<ThroughAlign>Use</ThroughAlign>
+							<ExtendedTooltip name="ДляОтправкиРасширеннаяПодсказка" id="51"/>
+							<ChildItems>
+								<InputField name="РежимСозданияСделки" id="45">
+									<DataPath>РежимСозданияСделки</DataPath>
+									<ListChoiceMode>true</ListChoiceMode>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Вручную</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">0</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Бизнес процесс</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">1</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="РежимСозданияСделкиКонтекстноеМеню" id="46"/>
+									<ExtendedTooltip name="РежимСозданияСделкиРасширеннаяПодсказка" id="47"/>
+									<Events>
+										<Event name="OnChange">РежимСозданияСделкиПриИзменении</Event>
+									</Events>
+								</InputField>
+								<UsualGroup name="ШаблоныБП" id="222">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Шаблоны БП</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Шаблоны БП</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>HorizontalIfPossible</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>WeakSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ThroughAlign>Use</ThroughAlign>
+									<ExtendedTooltip name="ШаблоныБПРасширеннаяПодсказка" id="223"/>
+									<ChildItems>
+										<InputField name="ШаблонБПКонвертацииЛида" id="40">
+											<DataPath>ШаблонБПКонвертацииЛида</DataPath>
+											<TitleHeight>2</TitleHeight>
+											<DropListButton>true</DropListButton>
+											<ChoiceButton>false</ChoiceButton>
+											<ClearButton>true</ClearButton>
+											<ListChoiceMode>true</ListChoiceMode>
+											<TextEdit>false</TextEdit>
+											<ContextMenu name="ШаблонБПКонвертацииЛидаКонтекстноеМеню" id="41"/>
+											<ExtendedTooltip name="ШаблонБПКонвертацииЛидаРасширеннаяПодсказка" id="42"/>
+										</InputField>
+										<InputField name="ШаблонБПСозданияСделкиПоКлиенту" id="125">
+											<DataPath>ШаблонБПСозданияСделкиПоКлиенту</DataPath>
+											<TitleHeight>2</TitleHeight>
+											<DropListButton>true</DropListButton>
+											<ChoiceButton>false</ChoiceButton>
+											<ClearButton>true</ClearButton>
+											<ListChoiceMode>true</ListChoiceMode>
+											<TextEdit>false</TextEdit>
+											<ContextMenu name="ШаблонБПСозданияСделкиПоКлиентуКонтекстноеМеню" id="126"/>
+											<ExtendedTooltip name="ШаблонБПСозданияСделкиПоКлиентуРасширеннаяПодсказка" id="127"/>
+										</InputField>
+										<InputField name="ШаблонБПИзменениеОтветственного" id="211">
+											<DataPath>ШаблонБПИзменениеОтветственного</DataPath>
+											<DropListButton>true</DropListButton>
+											<ChoiceButton>false</ChoiceButton>
+											<ClearButton>true</ClearButton>
+											<ListChoiceMode>true</ListChoiceMode>
+											<TextEdit>false</TextEdit>
+											<ContextMenu name="ШаблонБПИзменениеОтветственногоКонтекстноеМеню" id="212"/>
+											<ExtendedTooltip name="ШаблонБПИзменениеОтветственногоРасширеннаяПодсказка" id="213"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаЛидыИСделки" id="103">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Лиды и сделки</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа лиды и сделки</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>WeakSeparation</Representation>
+							<ThroughAlign>Use</ThroughAlign>
+							<ExtendedTooltip name="ГруппаЛидыИСделкиРасширеннаяПодсказка" id="104"/>
+							<ChildItems>
+								<InputField name="РежимРаботыСоСделками" id="217">
+									<DataPath>РежимРаботыСоСделками</DataPath>
+									<ListChoiceMode>true</ListChoiceMode>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Оказание услуг создаёт сделку</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">1</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Заявка создаёт сделку</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">2</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Не отправлять сделки</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">3</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="РежимРаботыСоСделкамиКонтекстноеМеню" id="218"/>
+									<ExtendedTooltip name="РежимРаботыСоСделкамиРасширеннаяПодсказка" id="219"/>
+									<Events>
+										<Event name="OnChange">РежимРаботыСоСделкамиПриИзменении</Event>
+									</Events>
+								</InputField>
+								<CheckBoxField name="Режим3" id="114">
+									<DataPath>Режим3</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<ContextMenu name="Режим3КонтекстноеМеню" id="115"/>
+									<ExtendedTooltip name="Режим3РасширеннаяПодсказка" id="116"/>
+									<Events>
+										<Event name="OnChange">РежимПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ПериодАктуальностиЗаявки" id="101">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Период актуальности заявки</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Период актуальности заявки</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>HorizontalIfPossible</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>WeakSeparation</Representation>
+							<ExtendedTooltip name="ПериодАктуальностиЗаявкиРасширеннаяПодсказка" id="102"/>
+							<ChildItems>
+								<InputField name="ПериодАктуальностиЗаявкиДни" id="95">
+									<DataPath>ПериодАктуальностиЗаявкиДни</DataPath>
+									<Width>3</Width>
+									<ContextMenu name="ПериодАктуальностиЗаявкиДниКонтекстноеМеню" id="96"/>
+									<ExtendedTooltip name="ПериодАктуальностиЗаявкиДниРасширеннаяПодсказка" id="97"/>
+									<Events>
+										<Event name="OnChange">ПериодАктуальностиЗаявкиПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="ПериодАктуальностиЗаявкиЧасы" id="98">
+									<DataPath>ПериодАктуальностиЗаявкиЧасы</DataPath>
+									<Width>2</Width>
+									<ContextMenu name="ПериодАктуальностиЗаявкиЧасыКонтекстноеМеню" id="99"/>
+									<ExtendedTooltip name="ПериодАктуальностиЗаявкиЧасыРасширеннаяПодсказка" id="100"/>
+									<Events>
+										<Event name="OnChange">ПериодАктуальностиЗаявкиПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="СправочникиБ24" id="220">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Справочники Б24</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Справочники б24</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>WeakSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="СправочникиБ24РасширеннаяПодсказка" id="221"/>
+							<ChildItems>
+								<Button name="СостоянияЛидовИСделок" id="90">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.СостоянияЛидовИСделок</CommandName>
+									<ExtendedTooltip name="СостоянияЛидовИСделокРасширеннаяПодсказка" id="91"/>
+								</Button>
+								<Button name="НастроитьПользовательскиеПоля" id="38">
+									<Type>Hyperlink</Type>
+									<CommandName>Form.Command.НастроитьПользовательскиеПоля</CommandName>
+									<ExtendedTooltip name="НастроитьПользовательскиеПоляРасширеннаяПодсказка" id="39"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="Прочее" id="205">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Прочее</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа2</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ПрочееРасширеннаяПодсказка" id="206"/>
+					<ChildItems>
+						<CheckBoxField name="ОтправлятьЗвонки" id="214">
+							<DataPath>ОтправлятьЗвонки</DataPath>
+							<ContextMenu name="ОтправлятьЗвонкиКонтекстноеМеню" id="215"/>
+							<ExtendedTooltip name="ОтправлятьЗвонкиРасширеннаяПодсказка" id="216"/>
+						</CheckBoxField>
+						<Button name="СопоставлениеПользователей" id="209">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.СопоставлениеПользователей</CommandName>
+							<ExtendedTooltip name="СопоставлениеПользователейРасширеннаяПодсказка" id="210"/>
+						</Button>
+						<UsualGroup name="ГруппаРегламентныеЗадания" id="138">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Регламентные задания</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа регламентные задания</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>AlwaysHorizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>WeakSeparation</Representation>
+							<ExtendedTooltip name="ГруппаРегламентныеЗаданияРасширеннаяПодсказка" id="139"/>
+							<ChildItems>
+								<UsualGroup name="Наименование" id="151">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Наименование</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Наименование</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>WeakSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="152"/>
+									<ChildItems>
+										<UsualGroup name="НаименованиеОтправкаНеотправленныхДокументов" id="140">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Наименование отправка неотправленных документов</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Наименование отправка неотправленных документов</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>AlwaysHorizontal</Group>
+											<Behavior>Usual</Behavior>
+											<Representation>WeakSeparation</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="НаименованиеОтправкаНеотправленныхДокументовРасширеннаяПодсказка" id="141"/>
+											<ChildItems>
+												<LabelDecoration name="РЗОтправкаНеотправленныхДокументов" id="148">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Отправка неотправленных документов</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="РЗОтправкаНеотправленныхДокументовКонтекстноеМеню" id="149"/>
+													<ExtendedTooltip name="РЗОтправкаНеотправленныхДокументовРасширеннаяПодсказка" id="150"/>
+												</LabelDecoration>
+												<InputField name="ВертикальноеВыравнивание" id="145">
+													<DataPath>ВертикальноеВыравнивание</DataPath>
+													<Enabled>false</Enabled>
+													<ReadOnly>true</ReadOnly>
+													<TitleLocation>None</TitleLocation>
+													<Width>1</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<BorderColor>style:FormBackColor</BorderColor>
+													<ContextMenu name="ВертикальноеВыравниваниеКонтекстноеМеню" id="146"/>
+													<ExtendedTooltip name="ВертикальноеВыравниваниеРасширеннаяПодсказка" id="147"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="НаименованиеОтменаПросроченныхЛидов" id="153">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Наименование отмена просроченных лидов</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Наименование неотправленные документы</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>AlwaysHorizontal</Group>
+											<Behavior>Usual</Behavior>
+											<Representation>WeakSeparation</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="НаименованиеОтменаПросроченныхЛидовРасширеннаяПодсказка" id="154"/>
+											<ChildItems>
+												<LabelDecoration name="РЗОтменаПросроченныхЛидов" id="155">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Отмена просроченных лидов</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="РЗОтменаПросроченныхЛидовКонтекстноеМеню" id="156"/>
+													<ExtendedTooltip name="РЗОтменаПросроченныхЛидовРасширеннаяПодсказка" id="157"/>
+												</LabelDecoration>
+												<InputField name="ВертикальноеВыравнивание1" id="158">
+													<DataPath>ВертикальноеВыравнивание</DataPath>
+													<Enabled>false</Enabled>
+													<ReadOnly>true</ReadOnly>
+													<TitleLocation>None</TitleLocation>
+													<Width>1</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<BorderColor>style:FormBackColor</BorderColor>
+													<ContextMenu name="ВертикальноеВыравнивание1КонтекстноеМеню" id="159"/>
+													<ExtendedTooltip name="ВертикальноеВыравнивание1РасширеннаяПодсказка" id="160"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="НаименованиеИмпортНедостающихЛидов" id="224">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Наименование импорт недостающих лидов</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Наименование неотправленные документы</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>AlwaysHorizontal</Group>
+											<Behavior>Usual</Behavior>
+											<Representation>WeakSeparation</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="НаименованиеИмпортНедостающихЛидовРасширеннаяПодсказка" id="225"/>
+											<ChildItems>
+												<LabelDecoration name="РЗИмпортНедостающихЛидов" id="226">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Импорт недостающих лидов</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="РЗИмпортНедостающихЛидовКонтекстноеМеню" id="227"/>
+													<ExtendedTooltip name="РЗИмпортНедостающихЛидовРасширеннаяПодсказка" id="228"/>
+												</LabelDecoration>
+												<InputField name="ВертикальноеВыравнивание2" id="229">
+													<DataPath>ВертикальноеВыравнивание</DataPath>
+													<Enabled>false</Enabled>
+													<ReadOnly>true</ReadOnly>
+													<TitleLocation>None</TitleLocation>
+													<Width>1</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<BorderColor>style:FormBackColor</BorderColor>
+													<ContextMenu name="ВертикальноеВыравнивание2КонтекстноеМеню" id="230"/>
+													<ExtendedTooltip name="ВертикальноеВыравнивание2РасширеннаяПодсказка" id="231"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="Кнопки" id="179">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Кнопки</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Кнопки</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>WeakSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="КнопкиРасширеннаяПодсказка" id="180"/>
+									<ChildItems>
+										<UsualGroup name="КнопкиОтправкаНеотправленныхДокументов" id="181">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Кнопки отправка неотправленных документов</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Кнопки отправка неотправленных документов</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>AlwaysHorizontal</Group>
+											<Behavior>Usual</Behavior>
+											<Representation>WeakSeparation</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="КнопкиОтправкаНеотправленныхДокументовРасширеннаяПодсказка" id="182"/>
+											<ChildItems>
+												<Button name="ОткрытьОтправкаНеотправленныхДокументов" id="188">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.ОткрытьОтправкаНеотправленныхДокументов</CommandName>
+													<ExtendedTooltip name="ОткрытьОтправкаНеотправленныхДокументовРасширеннаяПодсказка" id="189"/>
+												</Button>
+												<InputField name="ВертикальноеВыравнивание4" id="183">
+													<DataPath>ВертикальноеВыравнивание</DataPath>
+													<Enabled>false</Enabled>
+													<ReadOnly>true</ReadOnly>
+													<TitleLocation>None</TitleLocation>
+													<Width>1</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<BorderColor>style:FormBackColor</BorderColor>
+													<ContextMenu name="ВертикальноеВыравнивание4КонтекстноеМеню" id="184"/>
+													<ExtendedTooltip name="ВертикальноеВыравнивание4РасширеннаяПодсказка" id="185"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="КнопкиОтменаПросроченныхЛидов" id="190">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Кнопки отмена просроченных лидов</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Кнопки отмена просроченных лидов</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>AlwaysHorizontal</Group>
+											<Behavior>Usual</Behavior>
+											<Representation>WeakSeparation</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="КнопкиОтменаПросроченныхЛидовРасширеннаяПодсказка" id="191"/>
+											<ChildItems>
+												<Button name="ОткрытьОтменаПросроченныхЛидов" id="197">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.ОткрытьОтменаПросроченныхЛидов</CommandName>
+													<ExtendedTooltip name="ОткрытьОтменаПросроченныхЛидовРасширеннаяПодсказка" id="198"/>
+												</Button>
+												<InputField name="ВертикальноеВыравнивание5" id="192">
+													<DataPath>ВертикальноеВыравнивание</DataPath>
+													<Enabled>false</Enabled>
+													<ReadOnly>true</ReadOnly>
+													<TitleLocation>None</TitleLocation>
+													<Width>1</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<BorderColor>style:FormBackColor</BorderColor>
+													<ContextMenu name="ВертикальноеВыравнивание5КонтекстноеМеню" id="193"/>
+													<ExtendedTooltip name="ВертикальноеВыравнивание5РасширеннаяПодсказка" id="194"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="КнопкиИмпортНедостающихЛидов" id="232">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Кнопки импорт недостающих лидов</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Кнопки отмена просроченных лидов</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>AlwaysHorizontal</Group>
+											<Behavior>Usual</Behavior>
+											<Representation>WeakSeparation</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="КнопкиИмпортНедостающихЛидовРасширеннаяПодсказка" id="233"/>
+											<ChildItems>
+												<Button name="ОткрытьИмпортНедостающихЛидов" id="234">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.ОткрытьИмпортНедостающихЛидов</CommandName>
+													<ExtendedTooltip name="ОткрытьИмпортНедостающихЛидовРасширеннаяПодсказка" id="235"/>
+												</Button>
+												<InputField name="ВертикальноеВыравнивание6" id="236">
+													<DataPath>ВертикальноеВыравнивание</DataPath>
+													<Enabled>false</Enabled>
+													<ReadOnly>true</ReadOnly>
+													<TitleLocation>None</TitleLocation>
+													<Width>1</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<BorderColor>style:FormBackColor</BorderColor>
+													<ContextMenu name="ВертикальноеВыравнивание6КонтекстноеМеню" id="237"/>
+													<ExtendedTooltip name="ВертикальноеВыравнивание6РасширеннаяПодсказка" id="238"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="КодВебхука" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Код вебхука</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="НаименованиеБитрикс24" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес Битрикс24</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ИДПользователяВебхука" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ID пользователя вебхука</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="КодАвторизации" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Токен приложения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ШаблонБПКонвертацииЛида" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Бизнес процесс конвертации сделки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ОбязательныеНастройкиЗаполнены" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обязательные настройки заполнены</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="РежимСозданияСделки" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим создания сделки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="РежимПолученияЛида" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим получения лида</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ГруппаКлиентовИзБитрикс24" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа для новых клиентов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Клиенты</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Б24_ИспользоватьОбмен" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Б24 использовать обмен</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Б24_РежимОбмена" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим работы с лидами</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="НастройкаОбменаССайтом" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка обмена с сайтом</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.НастройкиОбменаССайтом</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Режим2" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим2</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Режим3" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние заявки меняет статус лида</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Режим1" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим1</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="РежимСделок" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим сделок</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ПериодАктуальностиЗаявки" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период актуальности заявки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПериодАктуальностиЗаявкиДни" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дни</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ПериодАктуальностиЗаявкиЧасы" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Часы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ШаблонБПСозданияСделкиПоКлиенту" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Бизнес процесс создания новой сделки по контакту</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НезащищенноеСоединение" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Протокол</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВертикальноеВыравнивание" id="5">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ШаблонБПИзменениеОтветственного" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Бизнес процесс изменения ответственного сделки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтправлятьЗвонки" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправлять события</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РежимРаботыСоСделками" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим работы со сделками</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Режим4" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим4</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="СохранитьИЗакрыть" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить и закрыть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СохранитьИЗакрыть</Action>
+		</Command>
+		<Command name="НастроитьПользовательскиеПоля" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользовательские поля</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настроить пользовательские поля</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>НастроитьПользовательскиеПоля</Action>
+		</Command>
+		<Command name="Сохранить" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Сохранить</Action>
+		</Command>
+		<Command name="СостоянияЛидовИСделок" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояния лидов и сделок</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояния лидов и сделок</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СостоянияЛидовИСделок</Action>
+		</Command>
+		<Command name="ОткрытьОтменаПросроченныхЛидов" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть отмена просроченных лидов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьРЗ</Action>
+		</Command>
+		<Command name="ОткрытьОтправкаНеотправленныхДокументов" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть отправка неотправленных документов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьРЗ</Action>
+		</Command>
+		<Command name="СопоставлениеПользователей" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставление пользователей</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сопоставление пользователей</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СопоставлениеПользователей</Action>
+		</Command>
+		<Command name="ОткрытьИмпортНедостающихЛидов" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть импорт недостающих лидов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьРЗ</Action>
+		</Command>
+	</Commands>
+</Form>

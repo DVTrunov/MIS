@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Сведения о результатах диспансеризации или профилактического медицинского осмотра (CDA) Редакция 2" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fias="urn:hl7-ru:fias" xmlns:address="urn:hl7-ru:address" xmlns:identity="urn:hl7-ru:identity">
+	<bitDiagnosis УсловиеИспользования="*Ложь">
+		<nodeDiagnosisStructure Множественное="*Истина" ГруппирующееПоле="Диагноз" Секция="DGN">
+			<nodeDiagnosis type="ВидНозологическойЕдиницы"	localid="НозологическаяЕдиницаДиагноза"				Обязательное="*Истина"/>
+			<nodeDiagnosis type="Описание"					localid="ВрачебноеОписаниеДиагноза"					Обязательное="*Ложь"/>
+			<nodeDiagnosis type="Диагноз"					localid="Заболевание"								Обязательное="*Истина"/>
+		</nodeDiagnosisStructure>
+	</bitDiagnosis>
+	<!-- R [1..1] СЕКЦИЯ: Сведения о диспансеризации или профилактическом медицинском осмотре -->
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="MEDEXAMINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>Сведения о диспансеризации или профилактическом медицинском осмотре</title>
+			<!-- [1..1] наполнение секции -->
+			<text></text>
+			<!-- R [1..1] Группа здоровья пациента -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="6020" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [1..1] Группа здоровья пациента -->
+					<value xsi:type="CD" ПустоеЗначение="NI" localid="ГруппаЗдоровья" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.766" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Статус диспансерного наблюдения -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="6021" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [1..1] Статус диспансерного наблюдения -->
+					<value xsi:type="CD" ПустоеЗначение="NI" localid="СтатусДиспансерногоНаблюдения" code="#code" codeSystem="1.2.643.5.1.13.13.11.1047" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: Диагнозы (ДИАГНОЗЫ) -->
+	<component ВозможноЗаполнениеИзТаблицыДиагнозов="true">
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="DGN" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>Диагнозы</title>
+			<!-- [1..1] наполнение секции -->
+			<text></text>
+			<!-- R [1..*] Диагноз [Основное заболевание] -->
+			<entry Множественное="*Истина" localid="Заболевание">
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="838" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<entryRelationship typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Вид нозологической единицы диагноза -->
+							<code localid="НозологическаяЕдиницаДиагноза" code="#code" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- [0..1] Врачебное описание диагноза -->
+							<text ТипДанных='Строка' localid="ВрачебноеОписаниеДиагноза" Обязательное="*Ложь">%ВрачебноеОписаниеДиагноза</text>
+							<!-- [1..1] Шифр МКБ-10 -->
+							<value xsi:type="CD" localid="Заболевание" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						</observation>
+					</entryRelationship>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: "Витальные параметры" -->
+	<component Обязательное="*Ложь">
+		<!-- R [1..1]-->
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="VITALPARAM" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+			<!-- R [1..1] Название секции -->
+			<title>Витальные параметры</title>
+			<!-- R [1..1] Человекочитаемое наполнение секции -->
+			<text></text>
+			<!-- R [1..*] Сведения о витальном параметре -->
+			<entry localid="ВитальныйПараметр" Множественное="*Истина">
+				<!-- R [1..1]-->
+				<organizer classCode="CLUSTER" moodCode="EVN">
+					<!-- R [1..1] Статус измерения -->
+					<statusCode code="completed"/>
+					<!-- R [1..1] Дата измерения -->
+					<effectiveTime ТипДанных='Дата' localid="ДатаИзмеренияВитальногоПараметра" value='*ДатаСоСмещением(%ДатаИзмеренияВитальногоПараметра, "ДФ=ггггММддЧЧмм")'/>
+					<!-- [0..1] Комментарии врача к собранным данным -->
+					<precondition typeCode="PRCN" Обязательное="*Ложь">
+						<!-- R [1..1]-->
+						<criterion>
+							<!-- R [1..1]-->
+							<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4"/>
+							<!-- R [1..1] Комментарии врача к собранным данным -->
+							<value xsi:type="ST" localid="КомментарийКВитальномуПараметру" localidСиноним="Комментарий к витальному параметру">%КомментарийКВитальномуПараметру</value>
+						</criterion>
+					</precondition>
+					<!-- R [1..2] Витальный параметр -->
+					<component typeCode="COMP">
+						<!-- R [1..1]-->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код параметра -->
+							<code localid="ВитальныйПараметр.КлассификацияПоля" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.262" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<!-- R [1..1] Значение параметра -->
+							<value xsi:type="PQ" value="%ВитальныйПараметр" unit='*ПредставлениеЕдиницыИзмеренияВитальногоПараметра(%ВитальныйПараметр.КлассификацияПоля, "UCUM")'>
+								<!-- [0..1] Единицы измерения параметра -->
+								<translation Обязательное="*Ложь" value="%ВитальныйПараметр" code="%ВитальныйПараметр.КлассификацияПоля.UnitCode" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemName="#codesystemname" displayName="*ПредставлениеЕдиницыИзмеренияВитальногоПараметра(%ВитальныйПараметр.КлассификацияПоля)" codeSystemVersion="#version"/>
+							</value>
+							<!-- [0..1] Референтный интервал -->
+							<referenceRange Обязательное="*Ложь">
+								<!-- R [1..1]-->
+								<observationRange>
+									<!-- R [1..1] Описание референтного интервала (текстом) -->
+									<text ТипДанных="Строка" localid="ОписаниеРеферентногоИнтервалаВитальногоПараметра">%ОписаниеРеферентногоИнтервалаВитальногоПараметра</text>
+									<!-- R [1..1] Границы референтного интервала -->
+									<value xsi:type="IVL_PQ">
+										<!-- [1..1] Нижняя граница референтного интервала -->
+										<low ТипДанных="Число" localid="НижняяГраницаРеферентногоИнтервала" ПустоеЗначение="NI" value="%НижняяГраницаРеферентногоИнтервала" unit="%НижняяГраницаРеферентногоИнтервала.КлассификацияПоля.UCUM">
+											<!-- R [1..1] Единицы измерения -->
+											<translation localid="НижняяГраницаРеферентногоИнтервала.КлассификацияПоля" value="%НижняяГраницаРеферентногоИнтервала" code="#code" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemName="#codesystemname" displayName="%НижняяГраницаРеферентногоИнтервала.КлассификацияПоля.PRINTNAME" codeSystemVersion="#version"/>
+										</low>
+										<!-- [1..1] Верхняя граница референтного интервала -->
+										<high ТипДанных="Число" localid="ВерхняяГраницаРеферентногоИнтервала" ПустоеЗначение="NI" value="%ВерхняяГраницаРеферентногоИнтервала" unit="%ВерхняяГраницаРеферентногоИнтервала.КлассификацияПоля.UCUM">
+											<!-- R [1..1] Единицы измерения -->
+											<translation localid="ВерхняяГраницаРеферентногоИнтервала.КлассификацияПоля" value="%ВерхняяГраницаРеферентногоИнтервала" code="#code" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemName="#codesystemname" displayName="%ВерхняяГраницаРеферентногоИнтервала.КлассификацияПоля.PRINTNAME" codeSystemVersion="#version"/>
+										</high>
+									</value>
+									<interpretationCode code="N"/>
+								</observationRange>
+							</referenceRange>
+						</observation>
+					</component>
+				</organizer>
+			</entry>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: Выявленные факторы риска -->
+	<bitOther> <!-- Большие справочники с непонятным подчинением друг другу -->
+		<component>
+			<section>
+				<!-- R [1..1] код секции -->
+				<code code="RISKFACTOR" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				<!-- R [1..1] заголовок секции -->
+				<title>Выявленные факторы риска</title>
+				<!-- [1..1] наполнение секции -->
+				<text></text>
+				<entry Обязательное="*Ложь" Множественное="*Истина" localid="НазваниеШкалы">
+					<observation classCode="OBS" moodCode="EVN">
+						<!-- R [1..1] Код поля -->
+						<code code="11040" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						<entryRelationship typeCode="COMP">
+							<observation classCode="OBS" moodCode="EVN">
+								<!-- R [1..1] Название шкалы -->
+								<code localid="НазваниеШкалы" code="#code" codeSystem="1.2.643.5.1.13.13.11.1514" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+								<!-- [0..1] Интерпретация расчета -->
+								<text ТипДанных='Строка' localid="ИнтерпритацияРасчета" Обязательное="*Ложь">%ИнтерпритацияРасчета</text>
+								<!-- [0..1] Результат расчета клинической шкалы или опросника -->
+								<value xsi:type="PQ" localid="РезультатОпросника" Обязательное="*Ложь" value="%РезультатОпросника" unit='*ПредставлениеЕдиницыИзмеренияВитальногоПараметра(%РезультатОпросника.КлассификацияПоля, "UCUM")'>
+									<!-- [0..1] Единицы измерения параметра -->
+									<translation Обязательное="*Ложь" value="%РезультатОпросника" code="%РезультатОпросника.КлассификацияПоля.UnitCode" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemName="#codesystemname" displayName="*ПредставлениеЕдиницыИзмеренияВитальногоПараметра(%РезультатОпросника.КлассификацияПоля)" codeSystemVersion="#version"/>
+								</value>
+							</observation>
+						</entryRelationship>
+					</observation>
+				</entry>
+				<!-- [0..*] Выявленный фактор [Кодирование по справочнику МКБ-10] -->
+				<entry Обязательное="*Ложь" Множественное="*Истина" localid="ВыявленныйФактор">
+					<observation classCode="OBS" moodCode="EVN">
+						<!-- R [1..1] Код поля -->
+						<code code="809" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						<value xsi:type="CD" localid="ВыявленныйФактор" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					</observation>
+				</entry>
+			</section>
+		</component>
+	</bitOther>
+	<!-- [0..1] СЕКЦИЯ: Сведения о выданных направлениях -->
+	<bitOther> <!-- Полный аналог секции LINKDOCS -->
+		<component>
+			<section>
+				<!-- R [1..1] код секции -->
+				<code code="ORDER" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				<!-- R [1..1] заголовок секции -->
+				<title>Сведения о выданных направлениях</title>
+				<!-- [1..1] наполнение секции -->
+				<text></text>
+				<!-- R [1..*] Кодирование документа [Направление на осмотр] -->
+				<entry Множественное="*Истина" localid="ВидСвязанногоДокумента">
+					<act classCode="ACT" moodCode="EVN">
+						<!-- R[1..1] Вид документа -->
+						<code localid="ВидСвязанногоДокумента" code="#code" codeSystem="1.2.643.5.1.13.13.11.1522" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						<text ТипДанных='Строка' localid="НаименованиеСвязанногоДокумента">%НаименованиеСвязанногоДокумента</text>
+						<!-- R[1..1] Дата выдачи документа -->
+						<effectiveTime ТипДанных='Дата' localid="ДатаВыдачиСвязанногоДокумента" value='*ДатаСоСмещением(%ДатаВыдачиСвязанногоДокумента, "ДФ=ггггММддЧЧмм")'/>
+						<!-- [0..1] Серия документа -->
+						<entryRelationship Обязательное="*Ложь" typeCode="COMP">
+							<observation classCode="OBS" moodCode="EVN">
+								<code code="11002" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+								<value xsi:type="ST" localid="СерияДокумента">%СерияДокумента</value>
+							</observation>
+						</entryRelationship>
+						<!-- [0..1] Номер документа -->
+						<entryRelationship typeCode="COMP" Обязательное="*Ложь">
+							<observation classCode="OBS" moodCode="EVN">
+								<code code="11003" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+								<value xsi:type="ST" localid="НомерДокумента">%НомерДокумента</value>
+							</observation>
+						</entryRelationship>
+						<!-- R [1..1] Ссылка на электронный документ (уникальный идентификатор в МИС) -->
+						<reference typeCode="REFR">
+							<externalDocument classCode="DOCCLIN" moodCode="EVN">
+								<!-- [1..1] Уникальный идентификатор документа в МИС -->
+								<id nullFlavor="NI"/>
+							</externalDocument>
+						</reference>
+					</act>
+				</entry>
+			</section>
+		</component>
+	</bitOther>
+</Items>

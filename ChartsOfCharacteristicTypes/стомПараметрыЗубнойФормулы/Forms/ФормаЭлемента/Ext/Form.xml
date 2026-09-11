@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Наименование" id="1">
+			<DataPath>Объект.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<InputField name="ТипЗначения" id="4">
+			<DataPath>Объект.ValueType</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<TypeDomainEnabled>false</TypeDomainEnabled>
+			<ContextMenu name="ТипЗначенияКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ТипЗначенияРасширеннаяПодсказка" id="6"/>
+			<Events>
+				<Event name="OnChange">ТипЗначенияПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="ЗначениеПоУмолчанию" id="35">
+			<DataPath>Объект.ЗначениеПоУмолчанию</DataPath>
+			<ChooseType>false</ChooseType>
+			<ContextMenu name="ЗначениеПоУмолчаниюКонтекстноеМеню" id="36"/>
+			<ExtendedTooltip name="ЗначениеПоУмолчаниюРасширеннаяПодсказка" id="37"/>
+		</InputField>
+		<UsualGroup name="ГруппаНастройкиПоТипу" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа настройки по типу</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа настройки по типу</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>HorizontalIfPossible</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНастройкиПоТипуРасширеннаяПодсказка" id="8"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаНастройкиЧисло" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа настройки число</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа настройки число</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>HorizontalIfPossible</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНастройкиЧислоРасширеннаяПодсказка" id="10"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаМинМакс" id="17">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа мин макс</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа мин макс</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаМинМаксРасширеннаяПодсказка" id="18"/>
+							<ChildItems>
+								<InputField name="МинимальноеЗначение" id="11">
+									<DataPath>Объект.МинимальноеЗначение</DataPath>
+									<ContextMenu name="МинимальноеЗначениеКонтекстноеМеню" id="12"/>
+									<ExtendedTooltip name="МинимальноеЗначениеРасширеннаяПодсказка" id="13"/>
+									<Events>
+										<Event name="OnChange">МинимальноеМаксимальноеЗначениеПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="МаксимальноеЗначение" id="14">
+									<DataPath>Объект.МаксимальноеЗначение</DataPath>
+									<ContextMenu name="МаксимальноеЗначениеКонтекстноеМеню" id="15"/>
+									<ExtendedTooltip name="МаксимальноеЗначениеРасширеннаяПодсказка" id="16"/>
+									<Events>
+										<Event name="OnChange">МинимальноеМаксимальноеЗначениеПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаРегулировка" id="19">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа регулировка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа регулировка</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаРегулировкаРасширеннаяПодсказка" id="20"/>
+							<ChildItems>
+								<InputField name="Регулирование" id="21">
+									<DataPath>Объект.Регулирование</DataPath>
+									<ContextMenu name="РегулированиеКонтекстноеМеню" id="22"/>
+									<ExtendedTooltip name="РегулированиеРасширеннаяПодсказка" id="23"/>
+									<Events>
+										<Event name="OnChange">РегулировкаПриИзменении</Event>
+									</Events>
+								</InputField>
+								<CheckBoxField name="ЗапретРучногоРедактирования" id="24">
+									<DataPath>Объект.ЗапретРучногоРедактирования</DataPath>
+									<ContextMenu name="ЗапретРучногоРедактированияКонтекстноеМеню" id="25"/>
+									<ExtendedTooltip name="ЗапретРучногоРедактированияРасширеннаяПодсказка" id="26"/>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОписаниеЗначений" id="41">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание значений параметров</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа описание значений</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>HorizontalIfPossible</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>WeakSeparation</Representation>
+			<ExtendedTooltip name="ГруппаОписаниеЗначенийРасширеннаяПодсказка" id="42"/>
+			<ChildItems>
+				<InputField name="ОписаниеЗначенийПараметров" id="38">
+					<DataPath>Объект.ОписаниеЗначенийПараметров</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<MultiLine>true</MultiLine>
+					<ContextMenu name="ОписаниеЗначенийПараметровКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="ОписаниеЗначенийПараметровРасширеннаяПодсказка" id="40"/>
+				</InputField>
+				<LabelDecoration name="ДекорацияОписаниеЗначений" id="43">
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание используется в печатных формах для расшифровки кратких обозначений или описания норм параметров</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДекорацияОписаниеЗначенийКонтекстноеМеню" id="44"/>
+					<ExtendedTooltip name="ДекорацияОписаниеЗначенийРасширеннаяПодсказка" id="45"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаФормат" id="27">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Формат</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа формат</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>WeakSeparation</Representation>
+			<ExtendedTooltip name="ГруппаФорматРасширеннаяПодсказка" id="28"/>
+			<ChildItems>
+				<InputField name="ФорматРедактирования" id="29">
+					<DataPath>Объект.ФорматРедактирования</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Редактирования</v8:content>
+						</v8:item>
+					</Title>
+					<Width>20</Width>
+					<ChoiceButton>true</ChoiceButton>
+					<ContextMenu name="ФорматРедактированияКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ФорматРедактированияРасширеннаяПодсказка" id="31"/>
+					<Events>
+						<Event name="StartChoice">ФорматНачалоВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="ФорматПредставления" id="32">
+					<DataPath>Объект.ФорматПредставления</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Представления</v8:content>
+						</v8:item>
+					</Title>
+					<Width>20</Width>
+					<ChoiceButton>true</ChoiceButton>
+					<ContextMenu name="ФорматПредставленияКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="ФорматПредставленияРасширеннаяПодсказка" id="34"/>
+					<Events>
+						<Event name="StartChoice">ФорматНачалоВыбора</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:ChartOfCharacteristicTypesObject.стомПараметрыЗубнойФормулы</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

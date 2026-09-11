@@ -1,0 +1,700 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Информация об очереди на ОЛИМП.АТС</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<Group>Vertical</Group>
+	<CommandBarLocation>None</CommandBarLocation>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<ShowCommandBar>false</ShowCommandBar>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="ИдентификаторОчереди" id="49">
+			<DataPath>ИдентификаторОчереди</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<ContextMenu name="ИдентификаторОчередиКонтекстноеМеню" id="50"/>
+			<ExtendedTooltip name="ИдентификаторОчередиРасширеннаяПодсказка" id="59"/>
+		</InputField>
+		<InputField name="ИмяОчереди" id="36">
+			<DataPath>ИмяОчереди</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<ContextMenu name="ИмяОчередиКонтекстноеМеню" id="37"/>
+			<ExtendedTooltip name="ИмяОчередиРасширеннаяПодсказка" id="60"/>
+		</InputField>
+		<InputField name="НомерОчереди" id="51">
+			<DataPath>НомерОчереди</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<ContextMenu name="НомерОчередиКонтекстноеМеню" id="52"/>
+			<ExtendedTooltip name="НомерОчередиРасширеннаяПодсказка" id="61"/>
+		</InputField>
+		<UsualGroup name="ГруппаЧлены" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Члены</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа члены</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>StrongSeparation</Representation>
+			<ExtendedTooltip name="ГруппаЧленыРасширеннаяПодсказка" id="62"/>
+			<ChildItems>
+				<Table name="Члены" id="17">
+					<Representation>List</Representation>
+					<CommandBarLocation>None</CommandBarLocation>
+					<ReadOnly>true</ReadOnly>
+					<RowSelectionMode>Cell</RowSelectionMode>
+					<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>Члены</DataPath>
+					<RowPictureDataPath>Члены.ИндексКартинкиСтатуса</RowPictureDataPath>
+					<RowsPicture>
+						<xr:Ref>CommonPicture.доп_СтатусыAMI</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</RowsPicture>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ЧленыКонтекстноеМеню" id="18">
+						<Autofill>false</Autofill>
+					</ContextMenu>
+					<AutoCommandBar name="ЧленыКоманднаяПанель" id="19"/>
+					<ExtendedTooltip name="ЧленыРасширеннаяПодсказка" id="63"/>
+					<SearchStringAddition name="ЧленыСтрокаПоиска" id="64">
+						<AdditionSource>
+							<Item>Члены</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ЧленыСтрокаПоискаКонтекстноеМеню" id="65"/>
+						<ExtendedTooltip name="ЧленыСтрокаПоискаРасширеннаяПодсказка" id="66"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ЧленыСостояниеПросмотра" id="67">
+						<AdditionSource>
+							<Item>Члены</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ЧленыСостояниеПросмотраКонтекстноеМеню" id="68"/>
+						<ExtendedTooltip name="ЧленыСостояниеПросмотраРасширеннаяПодсказка" id="69"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ЧленыУправлениеПоиском" id="70">
+						<AdditionSource>
+							<Item>Члены</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ЧленыУправлениеПоискомКонтекстноеМеню" id="71"/>
+						<ExtendedTooltip name="ЧленыУправлениеПоискомРасширеннаяПодсказка" id="72"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<InputField name="ЧленыНаименование" id="20">
+							<DataPath>Члены.Наименование</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ЧленыНаименованиеКонтекстноеМеню" id="21"/>
+							<ExtendedTooltip name="ЧленыНаименованиеРасширеннаяПодсказка" id="73"/>
+						</InputField>
+						<InputField name="ЧленыСтатус" id="34">
+							<DataPath>Члены.Статус</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ЧленыСтатусКонтекстноеМеню" id="35"/>
+							<ExtendedTooltip name="ЧленыСтатусРасширеннаяПодсказка" id="74"/>
+						</InputField>
+						<InputField name="ЧленыЗвонковПринято" id="26">
+							<DataPath>Члены.ЗвонковПринято</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ЧленыЗвонковПринятоКонтекстноеМеню" id="27"/>
+							<ExtendedTooltip name="ЧленыЗвонковПринятоРасширеннаяПодсказка" id="75"/>
+						</InputField>
+						<InputField name="ЧленыПоследнийЗвонок" id="28">
+							<DataPath>Члены.ПоследнийЗвонок</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ЧленыПоследнийЗвонокКонтекстноеМеню" id="29"/>
+							<ExtendedTooltip name="ЧленыПоследнийЗвонокРасширеннаяПодсказка" id="76"/>
+						</InputField>
+						<InputField name="ЧленыРасположение" id="22">
+							<DataPath>Члены.Расположение</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ЧленыРасположениеКонтекстноеМеню" id="23"/>
+							<ExtendedTooltip name="ЧленыРасположениеРасширеннаяПодсказка" id="77"/>
+						</InputField>
+						<InputField name="ЧленыЧленство" id="24">
+							<DataPath>Члены.Членство</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ЧленыЧленствоКонтекстноеМеню" id="25"/>
+							<ExtendedTooltip name="ЧленыЧленствоРасширеннаяПодсказка" id="78"/>
+						</InputField>
+						<InputField name="ЧленыПауза" id="30">
+							<DataPath>Члены.Пауза</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ЧленыПаузаКонтекстноеМеню" id="31"/>
+							<ExtendedTooltip name="ЧленыПаузаРасширеннаяПодсказка" id="79"/>
+						</InputField>
+						<InputField name="ЧленыПенальти" id="32">
+							<DataPath>Члены.Пенальти</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ЧленыПенальтиКонтекстноеМеню" id="33"/>
+							<ExtendedTooltip name="ЧленыПенальтиРасширеннаяПодсказка" id="80"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОжидающие" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ожидающие</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа ожидающие</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>StrongSeparation</Representation>
+			<ExtendedTooltip name="ГруппаОжидающиеРасширеннаяПодсказка" id="81"/>
+			<ChildItems>
+				<Table name="Ожидающие" id="38">
+					<Representation>List</Representation>
+					<CommandBarLocation>None</CommandBarLocation>
+					<ReadOnly>true</ReadOnly>
+					<RowSelectionMode>Cell</RowSelectionMode>
+					<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>Ожидающие</DataPath>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ОжидающиеКонтекстноеМеню" id="39">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="ОжидающиеКонтекстноеМенюПеревестиНаВыбранныйНомер" id="57">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ПеревестиНаВыбранныйНомер</CommandName>
+								<ExtendedTooltip name="ОжидающиеКонтекстноеМенюПеревестиНаВыбранныйНомерРасширеннаяПодсказка" id="82"/>
+							</Button>
+							<Button name="ОжидающиеКонтекстноеМенюПеревестиНаСвойНомер" id="58">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ПеревестиНаСвойНомер</CommandName>
+								<ExtendedTooltip name="ОжидающиеКонтекстноеМенюПеревестиНаСвойНомерРасширеннаяПодсказка" id="83"/>
+							</Button>
+						</ChildItems>
+					</ContextMenu>
+					<AutoCommandBar name="ОжидающиеКоманднаяПанель" id="40"/>
+					<ExtendedTooltip name="ОжидающиеРасширеннаяПодсказка" id="84"/>
+					<SearchStringAddition name="ОжидающиеСтрокаПоиска" id="85">
+						<AdditionSource>
+							<Item>Ожидающие</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ОжидающиеСтрокаПоискаКонтекстноеМеню" id="86"/>
+						<ExtendedTooltip name="ОжидающиеСтрокаПоискаРасширеннаяПодсказка" id="87"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ОжидающиеСостояниеПросмотра" id="88">
+						<AdditionSource>
+							<Item>Ожидающие</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ОжидающиеСостояниеПросмотраКонтекстноеМеню" id="89"/>
+						<ExtendedTooltip name="ОжидающиеСостояниеПросмотраРасширеннаяПодсказка" id="90"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ОжидающиеУправлениеПоиском" id="91">
+						<AdditionSource>
+							<Item>Ожидающие</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ОжидающиеУправлениеПоискомКонтекстноеМеню" id="92"/>
+						<ExtendedTooltip name="ОжидающиеУправлениеПоискомРасширеннаяПодсказка" id="93"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<InputField name="ОжидающиеCallerIDИмя" id="41">
+							<DataPath>Ожидающие.CallerIDИмя</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ОжидающиеCallerIDИмяКонтекстноеМеню" id="42"/>
+							<ExtendedTooltip name="ОжидающиеCallerIDИмяРасширеннаяПодсказка" id="94"/>
+						</InputField>
+						<InputField name="ОжидающиеCallerIDНомер" id="43">
+							<DataPath>Ожидающие.CallerIDНомер</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ОжидающиеCallerIDНомерКонтекстноеМеню" id="44"/>
+							<ExtendedTooltip name="ОжидающиеCallerIDНомерРасширеннаяПодсказка" id="95"/>
+						</InputField>
+						<InputField name="ОжидающиеКонтрагент" id="53">
+							<DataPath>Ожидающие.Контрагент</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ОжидающиеКонтрагентКонтекстноеМеню" id="54"/>
+							<ExtendedTooltip name="ОжидающиеКонтрагентРасширеннаяПодсказка" id="96"/>
+						</InputField>
+						<InputField name="ОжидающиеКонтактноеЛицо" id="55">
+							<DataPath>Ожидающие.КонтактноеЛицо</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ОжидающиеКонтактноеЛицоКонтекстноеМеню" id="56"/>
+							<ExtendedTooltip name="ОжидающиеКонтактноеЛицоРасширеннаяПодсказка" id="97"/>
+						</InputField>
+						<InputField name="ОжидающиеПозиция" id="45">
+							<DataPath>Ожидающие.Позиция</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ОжидающиеПозицияКонтекстноеМеню" id="46"/>
+							<ExtendedTooltip name="ОжидающиеПозицияРасширеннаяПодсказка" id="98"/>
+						</InputField>
+						<InputField name="ОжидающиеВремяОжидания" id="47">
+							<DataPath>Ожидающие.ВремяОжидания</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ОжидающиеВремяОжиданияКонтекстноеМеню" id="48"/>
+							<ExtendedTooltip name="ОжидающиеВремяОжиданияРасширеннаяПодсказка" id="99"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.доп_БитАТС</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="Члены" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Члены</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Наименование" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Расположение" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расположение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Членство" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Членство</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ЗвонковПринято" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Звонков принято</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПоследнийЗвонок" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Последний звонок</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Пауза" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пауза</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Пенальти" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пенальти</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Статус" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИндексКартинкиСтатуса" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Индекс картинки статуса</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Ожидающие" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ожидающие</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="CallerIDИмя" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>CallerID Имя</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="CallerIDНомер" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>CallerID Номер</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Позиция" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Позиция</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ВремяОжидания" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Время ожидания</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Контрагент" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контрагент</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="КонтактноеЛицо" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Контактное лицо</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Канал" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Канал</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ИмяОчереди" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя очереди</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторОчереди" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор очереди</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НомерОчереди" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер очереди</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИсточникВнешнихСобытий" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Источник внешних событий</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НомерСвязанногоТелефона" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер связанного телефона</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьВебСервис" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать веб сервис</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВебСервисИдКлиента" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Веб сервис ид клиента</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПеревестиНаВыбранныйНомер" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перевести на выбранный номер</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перевести на выбранный номер</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПеревестиНаВыбранныйНомер</Action>
+		</Command>
+		<Command name="ПеревестиНаСвойНомер" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перевести себе</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перевести на свой номер</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПеревестиНаСвойНомер</Action>
+		</Command>
+	</Commands>
+</Form>

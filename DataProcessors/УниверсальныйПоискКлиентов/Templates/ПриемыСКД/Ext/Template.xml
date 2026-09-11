@@ -1,0 +1,486 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>ПриемыЗаПериод</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеПриемов.Прием</dataPath>
+			<field>Прием</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеПриемов.МедицинскаяКарта</dataPath>
+			<field>МедицинскаяКарта</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеПриемов.Дата</dataPath>
+			<field>Дата</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Клиент</dataPath>
+			<field>Клиент</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеПриемов.ОписаниеШаблоновПриема</dataPath>
+			<field>ОписаниеШаблоновПриема</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеПриемов.Врач</dataPath>
+			<field>Врач</field>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>ДанныеПриемов</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные приемов</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеПриемов.ПервичныйПрием</dataPath>
+			<field>ПервичныйПрием</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Прием.Клиент КАК Клиент,
+	Прием.Ссылка КАК Прием,
+	Прием.Дата КАК Дата,
+	Прием.Врач КАК Врач,
+	Прием.ОписаниеШаблоновПриема,
+	Прием.МедицинскаяКарта,
+	Прием.ПервичныйПрием
+ИЗ
+	Документ.Прием КАК Прием
+ГДЕ
+	НЕ Прием.ПометкаУдаления
+	И Прием.Проведен
+{ГДЕ
+	(Прием.Дата МЕЖДУ &amp;ПриемДатаНачала И &amp;ПриемДатаОкончания)}</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>ПриемыПервыеПоследние</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Клиент</dataPath>
+			<field>Клиент</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеПриемов.ПервыйПрием</dataPath>
+			<field>ПервыйПрием</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеПриемов.ПоследнийПрием</dataPath>
+			<field>ПоследнийПрием</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеПриемов.ПервыйПриемВходитВПериод</dataPath>
+			<field>ПервыйПриемВходитВПериод</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеПриемов.ПоследнийПриемВходитВПериод</dataPath>
+			<field>ПоследнийПриемВходитВПериод</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	Прием.Клиент,
+	МАКСИМУМ(Прием.Дата) КАК ДатаПоследнегоПриема,
+	МИНИМУМ(Прием.Дата) КАК ДатаПервогоПриема
+ПОМЕСТИТЬ ПервыеПоследниеПриемы
+ИЗ
+	Документ.Прием КАК Прием
+ГДЕ
+	НЕ Прием.ПометкаУдаления
+	И Прием.Проведен
+
+СГРУППИРОВАТЬ ПО
+	Прием.Клиент
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ПервыеПоследниеПриемы.Клиент,
+	МАКСИМУМ(Прием.Дата = ПервыеПоследниеПриемы.ДатаПервогоПриема
+			И (Прием.Дата МЕЖДУ &amp;ПриемДатаНачала И &amp;ПриемДатаОкончания)) КАК ПервыйПриемВходитВПериод,
+	МАКСИМУМ(Прием.Дата = ПервыеПоследниеПриемы.ДатаПоследнегоПриема
+			И (Прием.Дата МЕЖДУ &amp;ПриемДатаНачала И &amp;ПриемДатаОкончания)) КАК ПоследнийПриемВходитВПериод,
+	МАКСИМУМ(ВЫБОР
+			КОГДА Прием.Дата = ПервыеПоследниеПриемы.ДатаПервогоПриема
+				ТОГДА Прием.Ссылка
+			ИНАЧЕ ЗНАЧЕНИЕ(Документ.Прием.ПустаяСсылка)
+		КОНЕЦ) КАК ПервыйПрием,
+	МАКСИМУМ(ВЫБОР
+			КОГДА Прием.Дата = ПервыеПоследниеПриемы.ДатаПоследнегоПриема
+				ТОГДА Прием.Ссылка
+			ИНАЧЕ ЗНАЧЕНИЕ(Документ.Прием.ПустаяСсылка)
+		КОНЕЦ) КАК ПоследнийПрием
+ИЗ
+	Документ.Прием КАК Прием
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ПервыеПоследниеПриемы КАК ПервыеПоследниеПриемы
+		ПО Прием.Клиент = ПервыеПоследниеПриемы.Клиент
+			И (Прием.Дата = ПервыеПоследниеПриемы.ДатаПоследнегоПриема
+				ИЛИ Прием.Дата = ПервыеПоследниеПриемы.ДатаПервогоПриема)
+
+СГРУППИРОВАТЬ ПО
+	ПервыеПоследниеПриемы.Клиент</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>ПриемыЗакрытые</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеПриемов.ПервичныйПрием</dataPath>
+			<field>ПервичныйПрием</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеПриемов.Закрыт</dataPath>
+			<field>Закрыт</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеПриемов.ЗакрывающийПрием</dataPath>
+			<field>ЗакрывающийПрием</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Клиент</dataPath>
+			<field>Клиент</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	Прием.Клиент,
+	Прием.ПервичныйПрием,
+	МАКСИМУМ(Прием.Закрыт) КАК Закрыт,
+	МАКСИМУМ(ВЫБОР
+			КОГДА Прием.Закрыт
+				ТОГДА Прием.Ссылка
+			ИНАЧЕ ЗНАЧЕНИЕ(Документ.Прием.ПустаяСсылка)
+		КОНЕЦ) КАК ЗакрывающийПрием
+ИЗ
+	Документ.Прием КАК Прием
+ГДЕ
+	НЕ Прием.ПометкаУдаления
+	И Прием.Проведен
+
+СГРУППИРОВАТЬ ПО
+	Прием.Клиент,
+	Прием.ПервичныйПрием</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>ПриемыПланыЛечения</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеПриемов.ПервичныйПрием</dataPath>
+			<field>ПервичныйПрием</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Клиент</dataPath>
+			<field>Клиент</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Клиент</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеПриемов.ПланЛеченияВыполнен</dataPath>
+			<field>ПланЛеченияВыполнен</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗЛИЧНЫЕ
+	ПланыЛечения.ПервичныйПрием
+ПОМЕСТИТЬ ПервичныеПриемыЗаПериод
+ИЗ
+	РегистрСведений.ПланыЛечения КАК ПланыЛечения
+{ГДЕ
+	(ПланыЛечения.ДокументРегистратор.Дата МЕЖДУ &amp;ПриемДатаНачала И &amp;ПриемДатаОкончания)}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ПервичныеПриемыЗаПериод.ПервичныйПрием.Клиент КАК Клиент,
+	ПланыЛечения.ПервичныйПрием,
+	ВЫБОР
+		КОГДА СУММА(ЕСТЬNULL(ВыполнениеПланаЛечения.Количество, 0) - ПланыЛечения.Количество) &gt;= 0
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК ПланЛеченияВыполнен
+ИЗ
+	ПервичныеПриемыЗаПериод КАК ПервичныеПриемыЗаПериод
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ПланыЛечения КАК ПланыЛечения
+			ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ВыполнениеПланаЛечения КАК ВыполнениеПланаЛечения
+			ПО ПланыЛечения.ПервичныйПрием = ВыполнениеПланаЛечения.ПервичныйПрием
+				И ПланыЛечения.ИдентификаторЭлемента = ВыполнениеПланаЛечения.ИдентификаторЭлемента
+		ПО ПервичныеПриемыЗаПериод.ПервичныйПрием = ПланыЛечения.ПервичныйПрием
+ГДЕ
+	ПланыЛечения.Номенклатура ССЫЛКА Справочник.Номенклатура
+
+СГРУППИРОВАТЬ ПО
+	ПервичныеПриемыЗаПериод.ПервичныйПрием.Клиент,
+	ПланыЛечения.ПервичныйПрием</query>
+	</dataSet>
+	<dataSetLink>
+		<sourceDataSet>ПриемыЗаПериод</sourceDataSet>
+		<destinationDataSet>ПриемыПервыеПоследние</destinationDataSet>
+		<sourceExpression>Клиент</sourceExpression>
+		<destinationExpression>Клиент</destinationExpression>
+		<required>false</required>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>ПриемыЗаПериод</sourceDataSet>
+		<destinationDataSet>ПриемыЗакрытые</destinationDataSet>
+		<sourceExpression>Клиент</sourceExpression>
+		<destinationExpression>Клиент</destinationExpression>
+		<required>false</required>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>ПриемыЗаПериод</sourceDataSet>
+		<destinationDataSet>ПриемыЗакрытые</destinationDataSet>
+		<sourceExpression>ДанныеПриемов.ПервичныйПрием</sourceExpression>
+		<destinationExpression>ДанныеПриемов.ПервичныйПрием</destinationExpression>
+		<required>false</required>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>ПриемыЗаПериод</sourceDataSet>
+		<destinationDataSet>ПриемыПланыЛечения</destinationDataSet>
+		<sourceExpression>Клиент</sourceExpression>
+		<destinationExpression>Клиент</destinationExpression>
+		<required>false</required>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>ПриемыЗаПериод</sourceDataSet>
+		<destinationDataSet>ПриемыПланыЛечения</destinationDataSet>
+		<sourceExpression>ДанныеПриемов.ПервичныйПрием</sourceExpression>
+		<destinationExpression>ДанныеПриемов.ПервичныйПрием</destinationExpression>
+		<required>false</required>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>ПриемыПланыЛечения</sourceDataSet>
+		<destinationDataSet>ПриемыЗакрытые</destinationDataSet>
+		<sourceExpression>Клиент</sourceExpression>
+		<destinationExpression>Клиент</destinationExpression>
+		<required>false</required>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>ПриемыПланыЛечения</sourceDataSet>
+		<destinationDataSet>ПриемыЗакрытые</destinationDataSet>
+		<sourceExpression>ДанныеПриемов.ПервичныйПрием</sourceExpression>
+		<destinationExpression>ДанныеПриемов.ПервичныйПрием</destinationExpression>
+		<required>false</required>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>ПриемыПервыеПоследние</sourceDataSet>
+		<destinationDataSet>ПриемыЗакрытые</destinationDataSet>
+		<sourceExpression>Клиент</sourceExpression>
+		<destinationExpression>Клиент</destinationExpression>
+		<required>false</required>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>ПриемыПервыеПоследние</sourceDataSet>
+		<destinationDataSet>ПриемыПланыЛечения</destinationDataSet>
+		<sourceExpression>Клиент</sourceExpression>
+		<destinationExpression>Клиент</destinationExpression>
+		<required>false</required>
+	</dataSetLink>
+	<calculatedField>
+		<dataPath>ДанныеПриемов.ИмяРазделаДанных</dataPath>
+		<expression>"Данные приемов"</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Данные приемов (Имя раздела)</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>0</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+	</calculatedField>
+	<parameter>
+		<name>ПриемДатаНачала</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Прием дата начала</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;ПриемПериод.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>ПриемДатаОкончания</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Прием дата окончания</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>КонецПериода(&amp;ПриемПериод.ДатаОкончания, "День")</expression>
+	</parameter>
+	<parameter>
+		<name>ПриемПериод</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период, в котором идёт поиск по выбранным отборам (даты приёмов)</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДанныеПриемов.Врач</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>bb35bdca-7861-4a48-aa10-c65c55c2d77b</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДанныеПриемов.ПервыйПриемВходитВПериод</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					<dcsset:userSettingID>0799dc16-9327-4603-bfcd-15266c0418c5</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДанныеПриемов.ПоследнийПриемВходитВПериод</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					<dcsset:userSettingID>3055e423-01d1-43d3-a596-256b9908426f</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДанныеПриемов.ПланЛеченияВыполнен</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					<dcsset:userSettingID>3ab5022d-ea01-449a-b36e-1df360d8fc5f</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДанныеПриемов.Закрыт</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					<dcsset:userSettingID>996edb01-b9f4-4869-82d2-8640bda6e94e</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ПриемПериод</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>2c41149e-d531-441d-947b-693c083e2761</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:use>false</dcsset:use>
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ДанныеПриемов.ИмяРазделаДанных</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ДанныеПриемов.ПервичныйПрием</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ДанныеПриемов.ЗакрывающийПрием</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ДанныеПриемов.ПланЛеченияВыполнен</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>ДанныеПриемов.Прием</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>ДанныеПриемов.Врач</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>ДанныеПриемов.ОписаниеШаблоновПриема</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

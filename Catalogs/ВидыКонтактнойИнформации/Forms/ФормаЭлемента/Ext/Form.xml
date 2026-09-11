@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаНаименованиеКод" id="51">
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНаименованиеКодРасширеннаяПодсказка" id="52"/>
+			<ChildItems>
+				<InputField name="Наименование" id="3">
+					<DataPath>Объект.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="15"/>
+				</InputField>
+				<InputField name="Код" id="1">
+					<DataPath>Объект.Code</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="14"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Тип" id="5">
+			<DataPath>Объект.Тип</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="ТипКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="ТипРасширеннаяПодсказка" id="16"/>
+			<Events>
+				<Event name="OnChange">ТипПриИзменении</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="ГруппаМаска" id="49">
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ChildItemsWidth>LeftWide</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ThroughAlign>DontUse</ThroughAlign>
+			<ExtendedTooltip name="ГруппаМаскаРасширеннаяПодсказка" id="50"/>
+			<ChildItems>
+				<CheckBoxField name="ИспользоватьМаскуВвода" id="31">
+					<DataPath>Объект.ИспользоватьМаскуВвода</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Использовать маску ввода номера телефона</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ИспользоватьМаскуВводаКонтекстноеМеню" id="32"/>
+					<ExtendedTooltip name="ИспользоватьМаскуВводаРасширеннаяПодсказка" id="33"/>
+					<Events>
+						<Event name="OnChange">ИспользоватьМаскуВводаПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<UsualGroup name="ГруппаВыравниваниеМаски" id="55">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выравнивание маски</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выравнивание маски</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаВыравниваниеМаскиРасширеннаяПодсказка" id="56"/>
+					<ChildItems>
+						<InputField name="МаскаВводаТелефонногоНомера" id="46">
+							<DataPath>Объект.МаскаВводаТелефонногоНомера</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<Width>14</Width>
+							<DropListButton>true</DropListButton>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">7-(999)-999-99-99</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">7-999-999-99-99</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">7-999-99-99-999</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="МаскаВводаТелефонногоНомераКонтекстноеМеню" id="47"/>
+							<ExtendedTooltip name="МаскаВводаТелефонногоНомераРасширеннаяПодсказка" id="48"/>
+						</InputField>
+						<Button name="ОткрытьСправкуМаскаВвода" id="53">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.ОткрытьСправкуМаскаВвода</CommandName>
+							<ExtendedTooltip name="ОткрытьСправкуМаскаВводаРасширеннаяПодсказка" id="54"/>
+						</Button>
+						<Button name="ПривестиТелефоныКМаске" id="65">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.ПривестиТелефоныКМаске</CommandName>
+							<ExtendedTooltip name="ПривестиТелефоныКМаскеРасширеннаяПодсказка" id="66"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаМеждународныйФорматАдреса" id="60">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа международный формат адреса</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа международный формат адреса</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ThroughAlign>DontUse</ThroughAlign>
+			<ExtendedTooltip name="ГруппаМеждународныйФорматАдресаРасширеннаяПодсказка" id="61"/>
+			<ChildItems>
+				<CheckBoxField name="МеждународныйФорматАдреса" id="57">
+					<DataPath>Объект.МеждународныйФорматАдреса</DataPath>
+					<ContextMenu name="МеждународныйФорматАдресаКонтекстноеМеню" id="58"/>
+					<ExtendedTooltip name="МеждународныйФорматАдресаРасширеннаяПодсказка" id="59"/>
+				</CheckBoxField>
+				<CheckBoxField name="РедактируетсяВФормеОбъекта" id="62">
+					<DataPath>Объект.РедактируетсяВФормеОбъекта</DataPath>
+					<TitleHeight>2</TitleHeight>
+					<ContextMenu name="РедактируетсяВФормеОбъектаКонтекстноеМеню" id="63"/>
+					<ExtendedTooltip name="РедактируетсяВФормеОбъектаРасширеннаяПодсказка" id="64"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="НазначениеКонтактнойИнформации" id="7">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<HorizontalLinesBWA>false</HorizontalLinesBWA>
+			<VerticalLinesBWA>false</VerticalLinesBWA>
+			<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>НазначениеКонтактнойИнформации</DataPath>
+			<RowPictureDataPath>НазначениеКонтактнойИнформации.Picture</RowPictureDataPath>
+			<CommandSet>
+				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>Pickup</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<ContextMenu name="НазначениеКонтактнойИнформацииКонтекстноеМеню" id="8"/>
+			<AutoCommandBar name="НазначениеКонтактнойИнформацииКоманднаяПанель" id="9"/>
+			<ExtendedTooltip name="НазначениеКонтактнойИнформацииРасширеннаяПодсказка" id="17"/>
+			<SearchStringAddition name="НазначениеКонтактнойИнформацииСтрокаПоиска" id="18">
+				<AdditionSource>
+					<Item>НазначениеКонтактнойИнформации</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="НазначениеКонтактнойИнформацииСтрокаПоискаКонтекстноеМеню" id="19"/>
+				<ExtendedTooltip name="НазначениеКонтактнойИнформацииСтрокаПоискаРасширеннаяПодсказка" id="20"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="НазначениеКонтактнойИнформацииСостояниеПросмотра" id="21">
+				<AdditionSource>
+					<Item>НазначениеКонтактнойИнформации</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="НазначениеКонтактнойИнформацииСостояниеПросмотраКонтекстноеМеню" id="22"/>
+				<ExtendedTooltip name="НазначениеКонтактнойИнформацииСостояниеПросмотраРасширеннаяПодсказка" id="23"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="НазначениеКонтактнойИнформацииУправлениеПоиском" id="24">
+				<AdditionSource>
+					<Item>НазначениеКонтактнойИнформации</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="НазначениеКонтактнойИнформацииУправлениеПоискомКонтекстноеМеню" id="25"/>
+				<ExtendedTooltip name="НазначениеКонтактнойИнформацииУправлениеПоискомРасширеннаяПодсказка" id="26"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<CheckBoxField name="НазначениеКонтактнойИнформацииПометка" id="12">
+					<DataPath>НазначениеКонтактнойИнформации.Check</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content> </v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="НазначениеКонтактнойИнформацииПометкаКонтекстноеМеню" id="13"/>
+					<ExtendedTooltip name="НазначениеКонтактнойИнформацииПометкаРасширеннаяПодсказка" id="27"/>
+				</CheckBoxField>
+				<InputField name="НазначениеКонтактнойИнформацииЗначение" id="10">
+					<DataPath>НазначениеКонтактнойИнформации.Value</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Назначение (отображается в форме всегда)</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="НазначениеКонтактнойИнформацииЗначениеКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="НазначениеКонтактнойИнформацииЗначениеРасширеннаяПодсказка" id="28"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ВидыКонтактнойИнформации</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="НазначениеКонтактнойИнформации" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Назначение вида контактной информации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Дополнитель" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дополнитель</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОткрытьСправкуМаскаВвода" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть справку по формату маски ввода</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть справку по формату маски ввода</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.FormHelp</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьСправкуМаскаВвода</Action>
+			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПривестиТелефоныКМаске" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Привести старые телефоны к маске</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Преобразовать телефоны этого же вида к текущей маске ввода</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.СложноеДействиеНадДанными</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПривестиТелефоныКМаске</Action>
+			<Representation>Picture</Representation>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>4:2fb5158a-407c-436e-9866-bcc0f13db76a</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormNavigationPanelGoTo</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

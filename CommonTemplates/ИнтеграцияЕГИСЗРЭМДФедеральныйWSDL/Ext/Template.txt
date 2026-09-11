@@ -1,0 +1,712 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://egisz.rosminzdrav.ru/iehr/emdr/callback/" xmlns:egisz="http://egisz.rosminzdrav.ru" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="EmdrClientCallback" targetNamespace="http://egisz.rosminzdrav.ru/iehr/emdr/callback/">
+	<wsdl:documentation>emdr client callback</wsdl:documentation>
+	<wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://egisz.rosminzdrav.ru/iehr/emdr/callback/" targetNamespace="http://egisz.rosminzdrav.ru/iehr/emdr/callback/" elementFormDefault="qualified">
+	<xs:element name="callbackResponse" type="tns:callbackResponse"/>
+	<xs:element name="getDocumentFileRequest" type="tns:getDocumentFileRequest"/>
+	<xs:element name="getDocumentFileResponse" type="tns:getDocumentFileResponse"/>
+	<xs:element name="registerDocumentResult" type="tns:registerDocumentResult"/>
+	<xs:element name="sendDocumentFileRequest" type="tns:sendDocumentFileRequest"/>
+	<xs:element name="sendNoticeRequest" type="tns:sendNoticeRequest"/>
+	<xs:complexType name="registerDocumentResult">
+		<xs:annotation>
+			<xs:documentation>Регистрация сведений об ЭМД. Ответ регистра</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="relatesToMessage" type="tns:notEmptyString">
+				<xs:annotation>
+					<xs:documentation>Идентификатор запроса на регистрацию документа, полученный РЭМД от МИС
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="status" type="tns:responseStatus">
+				<xs:annotation>
+					<xs:documentation>Статус ответа</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="registryItem" type="tns:registryItem">
+					<xs:annotation>
+						<xs:documentation>Запись регистра</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errors" type="tns:errors">
+					<xs:annotation>
+						<xs:documentation>Ошибки в случае статуса ответа "error"</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="callbackResponse">
+		<xs:annotation>
+			<xs:documentation>Ответ сервиса обратного вызова</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="status" type="tns:responseStatus">
+				<xs:annotation>
+					<xs:documentation>Статус ответа</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="errors" type="tns:errors" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Ошибки в случае статуса ответа "error"</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getDocumentFileRequest">
+		<xs:annotation>
+			<xs:documentation>Получение файла документа из МИС. Запрос в МИС</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="system" type="tns:notEmptyString">
+				<xs:annotation>
+					<xs:documentation>Идентификатор РМИС</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="organization" type="tns:notEmptyString">
+				<xs:annotation>
+					<xs:documentation>OID медицинской организации
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="localUid" type="tns:uuid">
+				<xs:annotation>
+					<xs:documentation>Уникальный идентификатор ЭМД в РМИС</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="kind" type="tns:notEmptyString">
+				<xs:annotation>
+					<xs:documentation>Вид документа согласно справочнику РЭМД
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentNumber" type="tns:notEmptyString">
+				<xs:annotation>
+					<xs:documentation>Номер документа в архиве РМИС
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="creationDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>Дата регистрации документа внутри организации или ее подразделения
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="emdrId" type="tns:notEmptyString">
+				<xs:annotation>
+					<xs:documentation>Уникальный номер, присвоенный сведениям об ЭМД в РЭМД</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentVersion" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Версия записи регистра</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="registrationDate" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Дата создания записи в регистре об ЭМД</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getDocumentFileResponse">
+		<xs:annotation>
+			<xs:documentation>Получение файла документа из МИС. Ответ МИС</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="status" type="tns:responseStatus">
+				<xs:annotation>
+					<xs:documentation>Статус ответа</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice>
+				<xs:element name="documentFile" type="tns:documentFile">
+					<xs:annotation>
+						<xs:documentation>Данные</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="errors" type="tns:errors" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Ошибки в случае статуса ответа "error"</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sendDocumentFileRequest">
+		<xs:annotation>
+			<xs:documentation>Отправка содержимого документа в МИС. Запрос</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="relatesToMessage" type="tns:notEmptyString">
+				<xs:annotation>
+					<xs:documentation>Идентификатор запроса на получение файла, полученный РЭМД от МИС
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="status" type="tns:responseStatus"/>
+			<xs:choice>
+				<xs:element name="file" type="tns:binaryData" minOccurs="0"/>
+				<xs:element name="errors" type="tns:errors" minOccurs="0"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sendNoticeRequest">
+		<xs:annotation>
+			<xs:documentation>Отправка уведомления в МИС. Запрос</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="initiatingOrg" type="tns:notEmptyString">
+				<xs:annotation>
+					<xs:documentation>Организация, которая выполнила действие</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="document" type="tns:document">
+				<xs:annotation>
+					<xs:documentation>Атрибуты документа</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="isNewDoc" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>true - зарегистрирован документ (возможно со связями), false - зарегистрированы
+                        связи существующих документов
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="association" type="tns:association" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Созданная связь</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="documentFile">
+		<xs:annotation>
+			<xs:documentation>Файл документа</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="system" type="tns:notEmptyString">
+				<xs:annotation>
+					<xs:documentation>Идентификатор РМИС</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="organization" type="tns:notEmptyString">
+				<xs:annotation>
+					<xs:documentation>OID медицинской организации
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="localUid" type="tns:uuid">
+				<xs:annotation>
+					<xs:documentation>Уникальный идентификатор ЭМД в РМИС</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="file" type="tns:binaryData">
+				<xs:annotation>
+					<xs:documentation>Файл</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="registryItem">
+		<xs:annotation>
+			<xs:documentation>Атрибуты информации, передаваемой из регистра</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="emdrId" type="tns:notEmptyString">
+				<xs:annotation>
+					<xs:documentation>Уникальный номер, присвоенный сведениям об ЭМД в регистре</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="documentVersion" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Версия записи регистра</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="registrationDate" type="xs:dateTime">
+				<xs:annotation>
+					<xs:documentation>Дата создания записи в регистре об ЭМД</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="storeTillDate" type="xs:date" nillable="true">
+				<xs:annotation>
+					<xs:documentation>Срок хранения сведений, установленный в соответствии с настройками хранения для
+                        данного вида ЭМД. Пустое значение означает регистрацию ЭМД без ограничения срока хранения
+                        сведений.
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="registrationWarnings" type="tns:registrationWarnings" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Список замечаний, выявленных на этапе проверки сведений об ЭМД при регистрации
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="errors">
+		<xs:annotation>
+			<xs:documentation>Ошибки обработки запроса</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="item" type="tns:error" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Ошибка обработки запроса</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="error">
+		<xs:annotation>
+			<xs:documentation>Ошибка обработки запроса</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="code" type="tns:notEmptyString">
+				<xs:annotation>
+					<xs:documentation>Код</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="message" type="tns:notEmptyString" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Детализация</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="registrationWarning">
+		<xs:annotation>
+			<xs:documentation>Замечание</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="code" type="tns:notEmptyString">
+				<xs:annotation>
+					<xs:documentation>Код</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="message" type="tns:notEmptyString" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Детализация</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="binaryData">
+		<xs:annotation>
+			<xs:documentation>Двоичные данные + контрольная сумма</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="data" type="xs:base64Binary">
+				<xs:annotation>
+					<xs:documentation>Данные</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="checksum" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>Контрольная сумма файла, вычисленная по алгоритму CRC32</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="registrationWarnings">
+		<xs:annotation>
+			<xs:documentation>Список замечаний, выявленных на этапе проверки сведений об ЭМД при регистрации
+            </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="item" type="tns:registrationWarning" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Замечание</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="document">
+		<xs:annotation>
+			<xs:documentation>Атрибуты документа</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="docKind" type="tns:notEmptyString">
+				<xs:annotation>
+					<xs:documentation>Вид документа</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="emdrId" type="tns:notEmptyString">
+				<xs:annotation>
+					<xs:documentation>Номер документа в регистре</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="version" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Версия документа в регистре</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="association">
+		<xs:annotation>
+			<xs:documentation>Связь документов: ссылка на документ и тип связи</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="type" type="tns:associationType">
+				<xs:annotation>
+					<xs:documentation>Тип связи</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="target" type="tns:notEmptyString">
+				<xs:annotation>
+					<xs:documentation>Номер документа в регистре</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="responseStatus">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="success"/>
+			<xs:enumeration value="error"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="uuid">
+		<xs:restriction base="xs:string">
+			<xs:length value="36"/>
+			<xs:pattern value="[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="notEmptyString">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="associationType">
+		<xs:annotation>
+			<xs:documentation>Тип связи документов</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="RELATES_TO">
+				<xs:annotation>
+					<xs:documentation>документы одноранговые</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="INCLUDED_IN">
+				<xs:annotation>
+					<xs:documentation>зарегистрированный документ входит в связанный</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="INCLUDES">
+				<xs:annotation>
+					<xs:documentation>зарегистрированный документ включает в себя связанный</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
+<!-- 
+OASIS takes no position regarding the validity or scope of any intellectual property or other rights that might be claimed to pertain to the implementation or use of the technology described in this document or the extent to which any license under such rights might or might not be available; neither does it represent that it has made any effort to identify any such rights. Information on OASIS's procedures with respect to rights in OASIS specifications can be found at the OASIS website. Copies of claims of rights made available for publication and any assurances of licenses to be made available, or the result of an attempt made to obtain a general license or permission for the use of such proprietary rights by implementors or users of this specification, can be obtained from the OASIS Executive Director.
+OASIS invites any interested party to bring to its attention any copyrights, patents or patent applications, or other proprietary rights which may cover technology that may be required to implement this specification. Please address the information to the OASIS Executive Director.
+Copyright © OASIS Open 2002-2004. All Rights Reserved.
+This document and translations of it may be copied and furnished to others, and derivative works that comment on or otherwise explain it or assist in its implementation may be prepared, copied, published and distributed, in whole or in part, without restriction of any kind, provided that the above copyright notice and this paragraph are included on all such copies and derivative works. However, this document itself does not be modified in any way, such as by removing the copyright notice or references to OASIS, except as needed for the purpose of developing OASIS specifications, in which case the procedures for copyrights defined in the OASIS Intellectual Property Rights document must be followed, or as required to translate it into languages other than English.
+The limited permissions granted above are perpetual and will not be revoked by OASIS or its successors or assigns.
+This document and the information contained herein is provided on an “AS IS” basis and OASIS DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION HEREIN WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+--><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" version="0.1">
+	<!-- // Fault Codes /////////////////////////////////////////// -->
+	<xsd:simpleType name="tTimestampFault">
+		<xsd:annotation>
+			<xsd:documentation>
+This type defines the fault code value for Timestamp message expiration.
+          </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:QName">
+			<xsd:enumeration value="wsu:MessageExpired"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!-- // Global attributes //////////////////////////////////// -->
+	<xsd:attribute name="Id" type="xsd:ID">
+		<xsd:annotation>
+			<xsd:documentation>
+This global attribute supports annotating arbitrary elements with an ID.
+          </xsd:documentation>
+		</xsd:annotation>
+	</xsd:attribute>
+	<xsd:attributeGroup name="commonAtts">
+		<xsd:annotation>
+			<xsd:documentation>
+Convenience attribute group used to simplify this schema.
+          </xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute ref="wsu:Id" use="optional"/>
+		<xsd:anyAttribute namespace="##other" processContents="lax"/>
+	</xsd:attributeGroup>
+	<!-- // Utility types //////////////////////////////////////// -->
+	<xsd:complexType name="AttributedDateTime">
+		<xsd:annotation>
+			<xsd:documentation>
+This type is for elements whose [children] is a psuedo-dateTime and can have arbitrary attributes. 
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:string">
+				<xsd:attributeGroup ref="wsu:commonAtts"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="AttributedURI">
+		<xsd:annotation>
+			<xsd:documentation>
+This type is for elements whose [children] is an anyURI and can have arbitrary attributes.
+      </xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:anyURI">
+				<xsd:attributeGroup ref="wsu:commonAtts"/>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<!-- // Timestamp header components /////////////////////////// -->
+	<xsd:complexType name="TimestampType">
+		<xsd:annotation>
+			<xsd:documentation>
+This complex type ties together the timestamp related elements into a composite type.
+            </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="0" ref="wsu:Created"/>
+			<xsd:element minOccurs="0" ref="wsu:Expires"/>
+			<xsd:choice maxOccurs="unbounded" minOccurs="0">
+				<xsd:any namespace="##other" processContents="lax"/>
+			</xsd:choice>
+		</xsd:sequence>
+		<xsd:attributeGroup ref="wsu:commonAtts"/>
+	</xsd:complexType>
+	<xsd:element name="Timestamp" type="wsu:TimestampType">
+		<xsd:annotation>
+			<xsd:documentation>
+This element allows Timestamps to be applied anywhere element wildcards are present,
+including as a SOAP header.
+            </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<!-- global element decls to allow individual elements to appear anywhere -->
+	<xsd:element name="Expires" type="wsu:AttributedDateTime">
+		<xsd:annotation>
+			<xsd:documentation>
+This element allows an expiration time to be applied anywhere element wildcards are present.
+            </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+	<xsd:element name="Created" type="wsu:AttributedDateTime">
+		<xsd:annotation>
+			<xsd:documentation>
+This element allows a creation time to be applied anywhere element wildcards are present.
+            </xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+</xsd:schema>
+<schema xmlns:tns="http://egisz.rosminzdrav.ru" xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://egisz.rosminzdrav.ru">
+    <import namespace="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"/>
+    <element name="transportHeader">
+        <complexType>
+            <annotation>
+                <documentation>Транспортный заголовок:
+                    - аутентификационная информация
+                    - пользовательская информация
+                </documentation>
+            </annotation>
+            <sequence>
+                <element name="authInfo" type="tns:authInfo"/>
+                <element minOccurs="0" name="userInfo" type="tns:userInfo"/>
+            </sequence>
+            <attribute xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" ref="wsu:Id"/>
+        </complexType>
+    </element>
+    <complexType name="userInfo">
+        <annotation>
+            <documentation>Транспортный заголовок - пользователь:
+                - идентификатор - СНИЛС
+                - фамилия
+                - имя
+                - отчество
+                - глобальная роль ЕСИАиА (код, имя)
+                - медицинская организация
+                - регион (код, имя)
+                - образования медработника
+            </documentation>
+        </annotation>
+        <sequence>
+            <element name="userId" type="tns:snils"/>
+            <element name="lastName" type="tns:string200"/>
+            <element name="firstName" type="tns:string200"/>
+            <element name="middleName" type="tns:string200"/>
+            <element name="role" type="tns:property"/>
+            <element maxOccurs="unbounded" minOccurs="0" name="medOrg" type="tns:organization"/>
+            <element minOccurs="0" name="region" type="tns:property"/>
+            <element maxOccurs="unbounded" minOccurs="0" name="education" type="tns:education"/>
+        </sequence>
+    </complexType>
+    <complexType name="authInfo">
+        <annotation>
+            <documentation>Транспортный заголовок - аутентификация:
+                - пользовательская сессия
+                - идентификатор вызывающей системы
+            </documentation>
+        </annotation>
+        <sequence>
+            <element minOccurs="0" name="userSession" type="string"/>
+            <element name="clientEntityId" type="string"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="organization">
+        <annotation>
+            <documentation>Медицинская организация
+                - идентификатор (OID, имя)
+                - тип (код, имя)
+                - тип должности сотрудника (основная/совмещение) (код, имя)
+                - должность сотрудника (код, имя)
+            </documentation>
+        </annotation>
+        <sequence>
+            <element name="id" type="tns:property"/>
+            <element name="type" type="tns:property"/>
+            <element minOccurs="0" name="positionType" type="tns:property"/>
+            <element minOccurs="0" name="position" type="tns:property"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="education">
+        <annotation>
+            <documentation>Образование:
+                - тип образования (диплом/сертификат) (код, имя)
+                - специальность (код, имя)
+                - тип образования по диплому (высшее/среднее) (код, имя)
+            </documentation>
+        </annotation>
+        <sequence>
+            <element name="type" type="tns:property"/>
+            <element name="speciality" type="tns:property"/>
+            <element minOccurs="0" name="diplomType" type="tns:property"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="property">
+        <annotation>
+            <documentation>Свойство: код, имя</documentation>
+        </annotation>
+        <sequence>
+            <element name="code" type="string"/>
+            <element name="name" type="string"/>
+        </sequence>
+    </complexType>
+    <simpleType name="snils">
+        <restriction base="string">
+            <pattern value="\d{11}"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="string200">
+        <restriction base="string">
+            <maxLength value="200"/>
+        </restriction>
+    </simpleType>
+</schema>
+	</wsdl:types>
+	<wsdl:message name="sendRegisterDocumentResult">
+		<wsdl:part name="header" element="egisz:transportHeader"> </wsdl:part>
+		<wsdl:part name="body" element="tns:registerDocumentResult"> </wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="sendDocumentFileResponse">
+		<wsdl:part name="body" element="tns:callbackResponse"> </wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="sendNotice">
+		<wsdl:part name="header" element="egisz:transportHeader"> </wsdl:part>
+		<wsdl:part name="body" element="tns:sendNoticeRequest"> </wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getDocumentFileResponse">
+		<wsdl:part name="body" element="tns:getDocumentFileResponse"> </wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="sendDocumentFile">
+		<wsdl:part name="header" element="egisz:transportHeader"> </wsdl:part>
+		<wsdl:part name="body" element="tns:sendDocumentFileRequest"> </wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="sendNoticeResponse">
+		<wsdl:part name="body" element="tns:callbackResponse"> </wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="sendRegisterDocumentResultResponse">
+		<wsdl:part name="body" element="tns:callbackResponse"> </wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="getDocumentFile">
+		<wsdl:part name="header" element="egisz:transportHeader"> </wsdl:part>
+		<wsdl:part name="body" element="tns:getDocumentFileRequest"> </wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="emdrClientCallbackPort">
+		<wsdl:operation name="sendDocumentFile">
+			<wsdl:documentation>Отправка файла ЭМД в МИС</wsdl:documentation>
+			<wsdl:input name="sendDocumentFile" message="tns:sendDocumentFile"> </wsdl:input>
+			<wsdl:output name="sendDocumentFileResponse" message="tns:sendDocumentFileResponse"> </wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="sendRegisterDocumentResult">
+			<wsdl:documentation>Отправка результата регистрации ЭМД</wsdl:documentation>
+			<wsdl:input name="sendRegisterDocumentResult" message="tns:sendRegisterDocumentResult"> </wsdl:input>
+			<wsdl:output name="sendRegisterDocumentResultResponse" message="tns:sendRegisterDocumentResultResponse"> </wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="sendNotice">
+			<wsdl:documentation>Отправка файла ЭМД в МИС</wsdl:documentation>
+			<wsdl:input name="sendNotice" message="tns:sendNotice"> </wsdl:input>
+			<wsdl:output name="sendNoticeResponse" message="tns:sendNoticeResponse"> </wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getDocumentFile">
+			<wsdl:documentation>Получение файла документа из МИС</wsdl:documentation>
+			<wsdl:input name="getDocumentFile" message="tns:getDocumentFile"> </wsdl:input>
+			<wsdl:output name="getDocumentFileResponse" message="tns:getDocumentFileResponse"> </wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="emdrClientCallbackSoapBinding" type="tns:emdrClientCallbackPort">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="sendRegisterDocumentResult">
+			<soap:operation soapAction="sendRegisterDocumentResult" style="document"/>
+			<wsdl:input name="sendRegisterDocumentResult">
+				<soap:header message="tns:sendRegisterDocumentResult" part="header" use="literal"/>
+				<soap:body parts="body" use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="sendRegisterDocumentResultResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getDocumentFile">
+			<soap:operation soapAction="getDocumentFile" style="document"/>
+			<wsdl:input name="getDocumentFile">
+				<soap:header message="tns:getDocumentFile" part="header" use="literal"/>
+				<soap:body parts="body" use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="getDocumentFileResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="sendDocumentFile">
+			<soap:operation soapAction="sendDocumentFile" style="document"/>
+			<wsdl:input name="sendDocumentFile">
+				<soap:header message="tns:sendDocumentFile" part="header" use="literal"/>
+				<soap:body parts="body" use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="sendDocumentFileResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="sendNotice">
+			<soap:operation soapAction="sendNotice" style="document"/>
+			<wsdl:input name="sendNotice">
+				<soap:header message="tns:sendNotice" part="header" use="literal"/>
+				<soap:body parts="body" use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="sendNoticeResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="emdrClientCallbackService">
+		<wsdl:port name="callbackPort" binding="tns:emdrClientCallbackSoapBinding">
+			<!--soap:address location="https://ips-test.rosminzdrav.ru/dwBSaIkPLSwor"/-->
+			<soap:address location="%1" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

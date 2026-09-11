@@ -1,0 +1,958 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаВерхняя" id="130">
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаВерхняяExtendedTooltip" id="198"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаВыборУслуг" id="21">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Критерии определения состава услуг</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа выбор услуг</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>WeakSeparation</Representation>
+					<ExtendedTooltip name="ГруппаВыборУслугExtendedTooltip" id="199"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаВыборУслугУслуги" id="26">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа выбор услуг услуги</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа выбор услуг услуги</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаВыборУслугУслугиExtendedTooltip" id="200"/>
+							<ChildItems>
+								<InputField name="НастройкаВыборУслуг" id="10">
+									<DataPath>НастройкаВыборУслуг</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Способ определения услуг</v8:content>
+										</v8:item>
+									</Title>
+									<Width>46</Width>
+									<ListChoiceMode>true</ListChoiceMode>
+									<TextEdit>false</TextEdit>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Все услуги, подлежащие прохождению</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">ВсеУслуги</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Только выполненные услуги</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">ТолькоВыполненные</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="НастройкаВыборУслугКонтекстноеМеню" id="11"/>
+									<ExtendedTooltip name="НастройкаВыборУслугExtendedTooltip" id="201"/>
+									<Events>
+										<Event name="OnChange">ЭлементНастроекПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="НастройкаУчетВыполнения" id="18">
+									<DataPath>НастройкаУчетВыполнения</DataPath>
+									<Width>46</Width>
+									<ListChoiceMode>true</ListChoiceMode>
+									<TextEdit>false</TextEdit>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>На основании отметок о выполнении действий медосмотра</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">ИзПриемов</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>На основании закрытых документов "Прохождение медосмотра"</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">ИзПрМО</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>На основании отметок о выполнении действий медосмотра из закрытых документов "Прохождение медосмотра"</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">ИзПрМОПоОтметкам</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="НастройкаУчетВыполненияКонтекстноеМеню" id="19"/>
+									<ExtendedTooltip name="НастройкаУчетВыполненияExtendedTooltip" id="202"/>
+									<Events>
+										<Event name="OnChange">ЭлементНастроекПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<Pages name="ГруппаСтраницыКоманднойПанелиФормы" id="132">
+					<Height>2</Height>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<PagesRepresentation>None</PagesRepresentation>
+					<ExtendedTooltip name="ГруппаСтраницыКоманднойПанелиФормыExtendedTooltip" id="203"/>
+					<ChildItems>
+						<Page name="ГруппаСтраницаКоманднойПанелиФормы" id="133">
+							<Height>2</Height>
+							<VerticalStretch>false</VerticalStretch>
+							<Group>Vertical</Group>
+							<ScrollOnCompress>false</ScrollOnCompress>
+							<ExtendedTooltip name="ГруппаСтраницаКоманднойПанелиФормыExtendedTooltip" id="204"/>
+							<ChildItems>
+								<CommandBar name="Группа2" id="131">
+									<CommandSource>Form</CommandSource>
+									<ExtendedTooltip name="Группа2ExtendedTooltip" id="205"/>
+								</CommandBar>
+							</ChildItems>
+						</Page>
+					</ChildItems>
+				</Pages>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаСозданиеОУ" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки создания документов "Оказание услуг"</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки документа "Оказание услуг"</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>WeakSeparation</Representation>
+			<ExtendedTooltip name="ГруппаСозданиеОУExtendedTooltip" id="206"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаДатаОУ" id="13">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа дата ОУ</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа дата ОУ</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаДатаОУExtendedTooltip" id="207"/>
+					<ChildItems>
+						<InputField name="НастройкаДатыСозданияОУ" id="7">
+							<DataPath>НастройкаДатыСозданияОУ</DataPath>
+							<ListChoiceMode>true</ListChoiceMode>
+							<TextEdit>false</TextEdit>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Общая дата (указывается пользователем)</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Фиксированная</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Дата закрытия прохождения медосмотра работника</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">ИзДатыПрМО</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="НастройкаДатыСозданияОУКонтекстноеМеню" id="8"/>
+							<ExtendedTooltip name="НастройкаДатыСозданияОУExtendedTooltip" id="208"/>
+							<Events>
+								<Event name="OnChange">ЭлементНастроекПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ДатаСозданияОУ" id="15">
+							<DataPath>ДатаСозданияОУ</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="ДатаСозданияОУКонтекстноеМеню" id="16"/>
+							<ExtendedTooltip name="ДатаСозданияОУExtendedTooltip" id="211"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаВыборУслугВрач" id="28">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа выбор услуг врач</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа выбор услуг врач</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаВыборУслугВрачExtendedTooltip" id="210"/>
+					<ChildItems>
+						<InputField name="ВрачПоУмолчанию" id="23">
+							<DataPath>ВрачПоУмолчанию</DataPath>
+							<Width>35</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ChoiceButton>true</ChoiceButton>
+							<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+							<ContextMenu name="ВрачПоУмолчаниюКонтекстноеМеню" id="24"/>
+							<ExtendedTooltip name="ВрачПоУмолчаниюExtendedTooltip" id="209"/>
+							<Events>
+								<Event name="OnChange">ЭлементНастроекПриИзменении</Event>
+							</Events>
+						</InputField>
+						<LabelDecoration name="ВыборУслугВрач" id="30">
+							<HorizontalStretch>true</HorizontalStretch>
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>(подставляется в качестве врача для услуг, исполнитель которых не указан и для специализации услуги не задан врач в составе медкомиссии)</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ВыборУслугВрачКонтекстноеМеню" id="31"/>
+							<ExtendedTooltip name="ВыборУслугВрачExtendedTooltip" id="212"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="ГруппаСтраницы" id="79">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа страницы</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа страницы</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="ГруппаСтраницыExtendedTooltip" id="213"/>
+			<ChildItems>
+				<Page name="ГруппаСпискиНаПрохождение" id="81">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Списки на прохождение</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа списки на прохождение</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ГруппаСпискиНаПрохождениеExtendedTooltip" id="214"/>
+					<ChildItems>
+						<Table name="ОтборСписковНаПрохождениеПользовательскиеНастройки" id="90">
+							<TitleLocation>Top</TitleLocation>
+							<Autofill>true</Autofill>
+							<HeightInTableRows>4</HeightInTableRows>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<VerticalStretch>false</VerticalStretch>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>ОтборСписковНаПрохождение.UserSettings</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отбор для заполнения списков на прохождение медосмотра</v8:content>
+								</v8:item>
+							</Title>
+							<CommandSet>
+								<ExcludedCommand>HierarchicalList</ExcludedCommand>
+								<ExcludedCommand>List</ExcludedCommand>
+								<ExcludedCommand>Tree</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<ViewMode>All</ViewMode>
+							<ComplexSettingsViewMode>Show</ComplexSettingsViewMode>
+							<ContextMenu name="ОтборСписковНаПрохождениеПользовательскиеНастройкиКонтекстноеМеню" id="91"/>
+							<AutoCommandBar name="ОтборСписковНаПрохождениеПользовательскиеНастройкиКоманднаяПанель" id="92">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ОтборСписковНаПрохождениеПользовательскиеНастройкиExtendedTooltip" id="215"/>
+							<SearchStringAddition name="ОтборСписковНаПрохождениеПользовательскиеНастройкиSearchString" id="216">
+								<AdditionSource>
+									<Item>ОтборСписковНаПрохождениеПользовательскиеНастройки</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОтборСписковНаПрохождениеПользовательскиеНастройкиSearchStringContextMenu" id="217"/>
+								<ExtendedTooltip name="ОтборСписковНаПрохождениеПользовательскиеНастройкиSearchStringExtendedTooltip" id="218"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ОтборСписковНаПрохождениеПользовательскиеНастройкиViewStatus" id="219">
+								<AdditionSource>
+									<Item>ОтборСписковНаПрохождениеПользовательскиеНастройки</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОтборСписковНаПрохождениеПользовательскиеНастройкиViewStatusContextMenu" id="220"/>
+								<ExtendedTooltip name="ОтборСписковНаПрохождениеПользовательскиеНастройкиViewStatusExtendedTooltip" id="221"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ОтборСписковНаПрохождениеПользовательскиеНастройкиSearchControl" id="222">
+								<AdditionSource>
+									<Item>ОтборСписковНаПрохождениеПользовательскиеНастройки</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ОтборСписковНаПрохождениеПользовательскиеНастройкиSearchControlContextMenu" id="223"/>
+								<ExtendedTooltip name="ОтборСписковНаПрохождениеПользовательскиеНастройкиSearchControlExtendedTooltip" id="224"/>
+							</SearchControlAddition>
+						</Table>
+						<Table name="СпискиНаПрохождениеМедосмотра" id="63">
+							<Representation>List</Representation>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>СпискиНаПрохождениеМедосмотра</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="СпискиНаПрохождениеМедосмотраКонтекстноеМеню" id="64"/>
+							<AutoCommandBar name="СпискиНаПрохождениеМедосмотраКоманднаяПанель" id="65">
+								<ChildItems>
+									<Button name="СпискиНаПрохождениеМедосмотраЗаполнитьСпискиНаПрохождение" id="88">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ЗаполнитьСпискиНаПрохождение</CommandName>
+										<ExtendedTooltip name="СпискиНаПрохождениеМедосмотраЗаполнитьСпискиНаПрохождениеExtendedTooltip" id="225"/>
+									</Button>
+									<Button name="ПерейтиКСпискуУслуг" id="129">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПерейтиКСпискуУслуг</CommandName>
+										<ExtendedTooltip name="ПерейтиКСпискуУслугExtendedTooltip" id="226"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СпискиНаПрохождениеМедосмотраExtendedTooltip" id="227"/>
+							<SearchStringAddition name="СпискиНаПрохождениеМедосмотраSearchString" id="228">
+								<AdditionSource>
+									<Item>СпискиНаПрохождениеМедосмотра</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СпискиНаПрохождениеМедосмотраSearchStringContextMenu" id="229"/>
+								<ExtendedTooltip name="СпискиНаПрохождениеМедосмотраSearchStringExtendedTooltip" id="230"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СпискиНаПрохождениеМедосмотраViewStatus" id="231">
+								<AdditionSource>
+									<Item>СпискиНаПрохождениеМедосмотра</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СпискиНаПрохождениеМедосмотраViewStatusContextMenu" id="232"/>
+								<ExtendedTooltip name="СпискиНаПрохождениеМедосмотраViewStatusExtendedTooltip" id="233"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СпискиНаПрохождениеМедосмотраSearchControl" id="234">
+								<AdditionSource>
+									<Item>СпискиНаПрохождениеМедосмотра</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СпискиНаПрохождениеМедосмотраSearchControlContextMenu" id="235"/>
+								<ExtendedTooltip name="СпискиНаПрохождениеМедосмотраSearchControlExtendedTooltip" id="236"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="СпискиНаПрохождениеМедосмотраСписокНаПрохождение" id="76">
+									<DataPath>СпискиНаПрохождениеМедосмотра.СписокНаПрохождение</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="СпискиНаПрохождениеМедосмотраСписокНаПрохождениеКонтекстноеМеню" id="77"/>
+									<ExtendedTooltip name="СпискиНаПрохождениеМедосмотраСписокНаПрохождениеExtendedTooltip" id="237"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<UsualGroup name="ГруппаДалее" id="124">
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа далее</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаДалееExtendedTooltip" id="238"/>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаСписокУслугНаОплату" id="83">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список услуг на оплату</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа список услуг на оплату</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ГруппаСписокУслугНаОплатуExtendedTooltip" id="239"/>
+					<ChildItems>
+						<Table name="СписокУслугНаОплату" id="35">
+							<Representation>List</Representation>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>СписокУслугНаОплату</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="СписокУслугНаОплатуКонтекстноеМеню" id="36"/>
+							<AutoCommandBar name="СписокУслугНаОплатуКоманднаяПанель" id="37">
+								<ChildItems>
+									<Button name="СписокУслугНаОплатуЗаполнитьСписокУслуг" id="106">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ЗаполнитьСписокУслуг</CommandName>
+										<ExtendedTooltip name="СписокУслугНаОплатуЗаполнитьСписокУслугExtendedTooltip" id="240"/>
+									</Button>
+									<Button name="СоздатьОказанияУслуг" id="117">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.СоздатьОказанияУслуг</CommandName>
+										<ExtendedTooltip name="СоздатьОказанияУслугExtendedTooltip" id="241"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокУслугНаОплатуExtendedTooltip" id="242"/>
+							<SearchStringAddition name="СписокУслугНаОплатуSearchString" id="243">
+								<AdditionSource>
+									<Item>СписокУслугНаОплату</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокУслугНаОплатуSearchStringContextMenu" id="244"/>
+								<ExtendedTooltip name="СписокУслугНаОплатуSearchStringExtendedTooltip" id="245"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокУслугНаОплатуViewStatus" id="246">
+								<AdditionSource>
+									<Item>СписокУслугНаОплату</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокУслугНаОплатуViewStatusContextMenu" id="247"/>
+								<ExtendedTooltip name="СписокУслугНаОплатуViewStatusExtendedTooltip" id="248"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокУслугНаОплатуSearchControl" id="249">
+								<AdditionSource>
+									<Item>СписокУслугНаОплату</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокУслугНаОплатуSearchControlContextMenu" id="250"/>
+								<ExtendedTooltip name="СписокУслугНаОплатуSearchControlExtendedTooltip" id="251"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="СписокУслугНаОплатуКлиент" id="48">
+									<DataPath>СписокУслугНаОплату.Клиент</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="СписокУслугНаОплатуКлиентКонтекстноеМеню" id="49"/>
+									<ExtendedTooltip name="СписокУслугНаОплатуКлиентExtendedTooltip" id="252"/>
+								</InputField>
+								<InputField name="СписокУслугНаОплатуНоменклатура" id="51">
+									<DataPath>СписокУслугНаОплату.Номенклатура</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="СписокУслугНаОплатуНоменклатураКонтекстноеМеню" id="52"/>
+									<ExtendedTooltip name="СписокУслугНаОплатуНоменклатураExtendedTooltip" id="253"/>
+								</InputField>
+								<InputField name="СписокУслугНаОплатуЦена" id="108">
+									<DataPath>СписокУслугНаОплату.Цена</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<Width>8</Width>
+									<ContextMenu name="СписокУслугНаОплатуЦенаКонтекстноеМеню" id="109"/>
+									<ExtendedTooltip name="СписокУслугНаОплатуЦенаExtendedTooltip" id="254"/>
+								</InputField>
+								<InputField name="СписокУслугНаОплатуКоличество" id="114">
+									<DataPath>СписокУслугНаОплату.Количество</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<Width>8</Width>
+									<ContextMenu name="СписокУслугНаОплатуКоличествоКонтекстноеМеню" id="115"/>
+									<ExtendedTooltip name="СписокУслугНаОплатуКоличествоExtendedTooltip" id="255"/>
+								</InputField>
+								<InputField name="СписокУслугНаОплатуДата" id="60">
+									<DataPath>СписокУслугНаОплату.Дата</DataPath>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дата выставления в оплату</v8:content>
+										</v8:item>
+									</ToolTip>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="СписокУслугНаОплатуДатаКонтекстноеМеню" id="61"/>
+									<ExtendedTooltip name="СписокУслугНаОплатуДатаExtendedTooltip" id="256"/>
+								</InputField>
+								<InputField name="СписокУслугНаОплатуВрач" id="54">
+									<DataPath>СписокУслугНаОплату.Врач</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="СписокУслугНаОплатуВрачКонтекстноеМеню" id="55"/>
+									<ExtendedTooltip name="СписокУслугНаОплатуВрачExtendedTooltip" id="257"/>
+								</InputField>
+								<InputField name="СписокУслугНаОплатуСписокНаПрохождение" id="57">
+									<DataPath>СписокУслугНаОплату.СписокНаПрохождение</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="СписокУслугНаОплатуСписокНаПрохождениеКонтекстноеМеню" id="58"/>
+									<ExtendedTooltip name="СписокУслугНаОплатуСписокНаПрохождениеExtendedTooltip" id="258"/>
+								</InputField>
+								<InputField name="СписокУслугНаОплатуПрохождениеМедосмотра" id="111">
+									<DataPath>СписокУслугНаОплату.ПрохождениеМедосмотра</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="СписокУслугНаОплатуПрохождениеМедосмотраКонтекстноеМеню" id="112"/>
+									<ExtendedTooltip name="СписокУслугНаОплатуПрохождениеМедосмотраExtendedTooltip" id="259"/>
+								</InputField>
+								<InputField name="СписокУслугНаОплатуФилиал" id="196">
+									<DataPath>СписокУслугНаОплату.Филиал</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Филиал</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="СписокУслугНаОплатуФилиалКонтекстноеМеню" id="197"/>
+									<ExtendedTooltip name="СписокУслугНаОплатуФилиалРасширеннаяПодсказка" id="260"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="СписокУслугНаОплату" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список услуг на оплату</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Клиент" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Клиент</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Клиенты</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Номенклатура" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номенклатура</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Врач" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Врач</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Сотрудники</v8:Type>
+					</Type>
+				</Column>
+				<Column name="СписокНаПрохождение" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список на прохождение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.СписокНаПрохождениеМедосмотра</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Дата" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Цена" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Цена</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПрохождениеМедосмотра" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Прохождение медосмотра</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.ПрохождениеМедосмотра</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Количество" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>3</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Филиал" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Филиал</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Филиалы</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ДатаСозданияОУ" id="5">
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкаДатыСозданияОУ" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата создания оказания услуг</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкаВыборУслуг" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройка выбор услуг</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НастройкаУчетВыполнения" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Зачет услуг как оказанных</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВрачПоУмолчанию" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Врач по умолчанию</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Сотрудники</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СпискиНаПрохождениеМедосмотра" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Списки на прохождение медосмотра</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="СписокНаПрохождение" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Список на прохождение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.СписокНаПрохождениеМедосмотра</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ОтборСписковНаПрохождение" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отбор списков на прохождение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>dcsset:SettingsComposer</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаполнитьСпискиНаПрохождение" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить по отбору</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить списки на прохождение</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.BusinessProcessStart</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗаполнитьСпискиНаПрохождение</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗаполнитьСписокУслуг" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить список услуг</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.BusinessProcessStart</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗаполнитьСписокУслуг</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьОказанияУслуг" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать документы оказания услуг</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать документы оказания услуг</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.InputOnBasis</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СоздатьОказанияУслуг</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПерейтиКСпискуУслуг" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать список услуг</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сфомировать список услуг по указанным спискам на прохождения</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.InputOnBasis</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПерейтиКСпискуУслуг</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="СпискиНаПрохождение">
+			<Type/>
+		</Parameter>
+	</Parameters>
+</Form>

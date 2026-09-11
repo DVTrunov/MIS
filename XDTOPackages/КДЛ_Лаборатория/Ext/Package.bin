@@ -1,0 +1,157 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="KDL">
+	<objectType name="КорневойУзел">
+		<property xmlns:d3p1="KDL" name="СписокИсследований" type="d3p1:test" lowerBound="0" upperBound="-1" localName="test"/>
+		<property xmlns:d3p1="KDL" name="СписокЛокусов" type="d3p1:locus" lowerBound="0" upperBound="-1" localName="locus"/>
+		<property xmlns:d3p1="KDL" name="СписокПрофилей" type="d3p1:profile" lowerBound="0" upperBound="-1" localName="profile"/>
+		<property xmlns:d3p1="KDL" name="СписокДополнительнойИнформации" type="d3p1:dopInfo" lowerBound="0" upperBound="-1" localName="dopInfo"/>
+		<property xmlns:d3p1="KDL" name="СписокМетодик" type="d3p1:methodic" lowerBound="0" upperBound="-1" localName="methodic"/>
+		<property xmlns:d3p1="KDL" name="СписокКонтейнеров" type="d3p1:container" lowerBound="0" upperBound="-1" localName="container"/>
+		<property xmlns:d3p1="KDL" name="СписокМедицинскихУслуг" type="d3p1:testegisz" lowerBound="0" upperBound="-1" localName="testegisz"/>
+	</objectType>
+	<objectType name="locus" ordered="false">
+		<property name="Код" type="xs:string" localName="locusShortName"/>
+		<property name="Наименование" type="xs:string" lowerBound="0" localName="locusName"/>
+		<property name="Тип" type="xs:integer" lowerBound="0" localName="locusType"/>
+		<property name="КодКонтейнера" type="xs:string" lowerBound="0" nillable="true" localName="containerShortName"/>
+		<property name="Обязательность" type="xs:integer" lowerBound="0" nillable="true" localName="obligatory"/>
+	</objectType>
+	<objectType name="test" ordered="false">
+		<property name="КодИсследования" type="xs:string" localName="testShortName"/>
+		<property name="НаименованиеИсследования" type="xs:string" lowerBound="0" nillable="true" localName="testName"/>
+		<property name="СрокВыполнения" type="xs:integer" lowerBound="0" nillable="true" localName="term"/>
+		<property name="ГруппаДополнительнойИнформации" type="xs:integer" lowerBound="0" nillable="true" localName="optionalGroup"/>
+		<property name="КодБиоматериала" type="xs:string" lowerBound="0" nillable="true" localName="locusShortName"/>
+		<property name="Обязательность" type="xs:integer" lowerBound="0" nillable="true" localName="obligatory"/>
+		<property name="Заполнение" type="xs:integer" lowerBound="0" nillable="true" localName="packing"/>
+		<property name="ОписаниеДляМедперсонала" type="xs:string" lowerBound="0" nillable="true" localName="medHelp"/>
+		<property name="ОписаниеДляКлиента" type="xs:string" lowerBound="0" nillable="true" localName="patientHelp"/>
+	</objectType>
+	<objectType name="profile" ordered="false">
+		<property name="Код" type="xs:string" localName="testShortName"/>
+		<property name="КодТеста" type="xs:string" localName="methodicShortName"/>
+		<property name="Обязательность" type="xs:integer" localName="obligatory"/>
+	</objectType>
+	<objectType name="dopInfo" ordered="false">
+		<property name="ГруппаДополнительнойИнформации" type="xs:integer" nillable="false" localName="optionalGroup"/>
+		<property name="НаименованиеПоля" type="xs:string" localName="field"/>
+		<property name="ТипДанных" type="xs:string" localName="type"/>
+		<property name="Обязательность" type="xs:integer" localName="obligatory"/>
+		<property name="Тег" type="xs:string" localName="tag"/>
+	</objectType>
+	<objectType name="methodic" ordered="false">
+		<property name="Код" type="xs:string" localName="methodicShortName"/>
+		<property name="Наименование" type="xs:string" lowerBound="0" localName="methodicName"/>
+	</objectType>
+	<objectType name="container" ordered="false">
+		<property name="Код" type="xs:string" localName="containerShortName"/>
+		<property name="Наименование" type="xs:string" lowerBound="0" localName="containerName"/>
+	</objectType>
+	<objectType name="price">
+		<property name="Организация" localName="Организация">
+			<typeDef xsi:type="ObjectType">
+				<property name="КодРегиона" type="xs:string" localName="КодРегиона"/>
+				<property name="Отправитель" localName="Отправитель">
+					<typeDef xsi:type="ObjectType" open="true">
+						<property name="КодОтправителя" type="xs:string" localName="КодОтправителя"/>
+						<property name="Номенклатура" lowerBound="0" upperBound="-1" localName="Номенклатура">
+							<typeDef xsi:type="ObjectType" open="true" ordered="false">
+								<property name="КодПрайса" type="xs:string" localName="КодПрайса"/>
+								<property name="Раздел" type="xs:string" localName="Раздел"/>
+								<property name="Цена" type="xs:decimal" localName="Цена"/>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="stoplist">
+		<property name="Исследование" lowerBound="0" upperBound="-1" localName="test">
+			<typeDef xsi:type="ObjectType" ordered="false">
+				<property name="ID" type="xs:string" localName="TestShortName"/>
+				<property name="ДатаОкончания" type="xs:string" localName="DateTo"/>
+				<property name="Период" type="xs:string" localName="DateFrom"/>
+				<property name="КодРегиона" type="xs:string" localName="CityCode"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="testegisz">
+		<property name="Исследование" lowerBound="0" upperBound="-1" localName="test">
+			<typeDef xsi:type="ObjectType" ordered="false">
+				<property name="КодИсследования" type="xs:string" localName="testShortName"/>
+				<property name="КодМедицинскойУслуги" type="xs:string" lowerBound="0" localName="EGISZShortName"/>
+			</typeDef>
+		</property>
+	</objectType>
+	<objectType name="root">
+		<property name="Header" localName="Header">
+			<typeDef xsi:type="ObjectType" open="true">
+				<property name="Version" type="xs:integer" localName="Version"/>
+				<property name="FileDate" type="xs:date" localName="FileDate"/>
+				<property name="FileTime" type="xs:time" localName="FileTime"/>
+				<property name="GenTime" type="xs:string" localName="GenTime"/>
+				<property name="FileType" type="xs:string" localName="FileType"/>
+				<property name="LaboratoryID" type="xs:string" localName="LaboratoryID"/>
+				<property name="LaboratoryName" type="xs:string" localName="LaboratoryName"/>
+				<property name="ClinicID" type="xs:string" localName="ClinicID"/>
+				<property name="ClinicName" type="xs:string" localName="ClinicName"/>
+				<property name="Direction" type="xs:string" localName="Direction"/>
+			</typeDef>
+		</property>
+		<property name="Order" localName="Order">
+			<typeDef xsi:type="ObjectType" open="true">
+				<property name="OrderID" type="xs:integer" form="Attribute" localName="OrderID"/>
+				<property name="OrderComment" type="xs:string" localName="OrderComment"/>
+				<property name="Doctor" type="xs:string" localName="Doctor"/>
+				<property name="Patient" localName="Patient">
+					<typeDef xsi:type="ObjectType" open="true">
+						<property name="LastName" type="xs:string" localName="LastName"/>
+						<property name="FirstMiddleName" type="xs:string" localName="FirstMiddleName"/>
+						<property name="DOB" type="xs:date" localName="DOB"/>
+						<property name="Sex" type="xs:string" localName="Sex"/>
+						<property name="HomeAddress" type="xs:string" localName="HomeAddress"/>
+						<property name="Email" type="xs:string" localName="Email"/>
+						<property name="PhoneNumber" type="xs:string" localName="PhoneNumber"/>
+						<property name="patkod" type="xs:string" localName="patkod"/>
+						<property name="patOtdelen" type="xs:string" localName="patOtdelen"/>
+						<property name="StrahNumber" type="xs:string" localName="StrahNumber"/>
+						<property name="patKodKonting" type="xs:string" localName="patKodKonting"/>
+						<property name="PREGNANCY" type="xs:string" localName="PREGNANCY"/>
+						<property name="CYCLE" type="xs:string" localName="CYCLE"/>
+						<property name="IDlmk" type="xs:string" localName="IDlmk"/>
+					</typeDef>
+				</property>
+				<property name="Samples" localName="Samples">
+					<typeDef xsi:type="ObjectType" open="true">
+						<property name="Sample" lowerBound="0" upperBound="-1" localName="Sample">
+							<typeDef xsi:type="ObjectType" open="true">
+								<property name="SampleType" type="xs:string" form="Attribute" localName="SampleType"/>
+								<property name="Barcode" type="xs:string" form="Attribute" localName="Barcode"/>
+								<property name="Tests" localName="Tests">
+									<typeDef xsi:type="ObjectType" open="true">
+										<property name="Test" lowerBound="0" upperBound="-1" localName="Test">
+											<typeDef xsi:type="ObjectType" open="true">
+												<property name="TestShortName" type="xs:string" localName="TestShortName"/>
+												<property name="locus" type="xs:string" localName="locus"/>
+												<property name="DopInfo" localName="DopInfo">
+													<typeDef xsi:type="ObjectType" open="true">
+														<property name="Info" lowerBound="0" upperBound="-1" localName="Info">
+															<typeDef xsi:type="ObjectType" open="true">
+																<property name="ID" type="xs:string" form="Attribute" localName="ID"/>
+																<property name="Value" type="xs:string" localName="Value"/>
+															</typeDef>
+														</property>
+													</typeDef>
+												</property>
+											</typeDef>
+										</property>
+									</typeDef>
+								</property>
+							</typeDef>
+						</property>
+					</typeDef>
+				</property>
+			</typeDef>
+		</property>
+	</objectType>
+</package>

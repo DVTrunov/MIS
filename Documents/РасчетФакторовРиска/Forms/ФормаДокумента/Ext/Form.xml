@@ -1,0 +1,538 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаНомерДата" id="47">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа номер дата</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа номер дата</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНомерДатаРасширеннаяПодсказка" id="48"/>
+			<ChildItems>
+				<InputField name="Номер" id="1">
+					<DataPath>Объект.Number</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>9</Width>
+					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+				</InputField>
+				<InputField name="Дата" id="4">
+					<DataPath>Объект.Date</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>от</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>16</Width>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Прием" id="7">
+			<Visible>false</Visible>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="ПриемКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ПриемРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<InputField name="Клиент" id="49">
+			<DataPath>Объект.Клиент</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пациент</v8:content>
+				</v8:item>
+			</Title>
+			<Width>28</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<DropListButton>false</DropListButton>
+			<ChoiceButton>true</ChoiceButton>
+			<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+			<ContextMenu name="КлиентКонтекстноеМеню" id="50"/>
+			<ExtendedTooltip name="КлиентРасширеннаяПодсказка" id="51"/>
+			<Events>
+				<Event name="OnChange">КлиентПриИзменении</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="ГруппаДатыТриместра" id="52">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа даты триместра</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа даты триместра</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаДатыТриместраРасширеннаяПодсказка" id="53"/>
+			<ChildItems>
+				<InputField name="ДатаПервыйТриместр" id="10">
+					<DataPath>Объект.ДатаПервыйТриместр</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Явка I триместр</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>10</Width>
+					<ContextMenu name="ДатаПервыйТриместрКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="ДатаПервыйТриместрРасширеннаяПодсказка" id="12"/>
+				</InputField>
+				<InputField name="ДатаВторойТриместр" id="13">
+					<DataPath>Объект.ДатаВторойТриместр</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Явка II триместр</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>10</Width>
+					<ContextMenu name="ДатаВторойТриместрКонтекстноеМеню" id="14"/>
+					<ExtendedTooltip name="ДатаВторойТриместрРасширеннаяПодсказка" id="15"/>
+				</InputField>
+				<InputField name="ДатаТретийТриместр" id="16">
+					<DataPath>Объект.ДатаТретийТриместр</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Явка III триместр</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>10</Width>
+					<ContextMenu name="ДатаТретийТриместрКонтекстноеМеню" id="17"/>
+					<ExtendedTooltip name="ДатаТретийТриместрРасширеннаяПодсказка" id="18"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ДеревоФакторовРиска" id="57">
+			<Representation>Tree</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>ДеревоФакторовРиска</DataPath>
+			<ContextMenu name="ДеревоФакторовРискаКонтекстноеМеню" id="58"/>
+			<AutoCommandBar name="ДеревоФакторовРискаКоманднаяПанель" id="59">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ДеревоФакторовРискаРасширеннаяПодсказка" id="60"/>
+			<SearchStringAddition name="ДеревоФакторовРискаСтрокаПоиска" id="61">
+				<AdditionSource>
+					<Item>ДеревоФакторовРиска</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДеревоФакторовРискаСтрокаПоискаКонтекстноеМеню" id="62"/>
+				<ExtendedTooltip name="ДеревоФакторовРискаСтрокаПоискаРасширеннаяПодсказка" id="63"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ДеревоФакторовРискаСостояниеПросмотра" id="64">
+				<AdditionSource>
+					<Item>ДеревоФакторовРиска</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДеревоФакторовРискаСостояниеПросмотраКонтекстноеМеню" id="65"/>
+				<ExtendedTooltip name="ДеревоФакторовРискаСостояниеПросмотраРасширеннаяПодсказка" id="66"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ДеревоФакторовРискаУправлениеПоиском" id="67">
+				<AdditionSource>
+					<Item>ДеревоФакторовРиска</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ДеревоФакторовРискаУправлениеПоискомКонтекстноеМеню" id="68"/>
+				<ExtendedTooltip name="ДеревоФакторовРискаУправлениеПоискомРасширеннаяПодсказка" id="69"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeRowChange">ФакторыРискаПередНачаломИзменения</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ДеревоФакторовРискаФакторРиска" id="70">
+					<DataPath>ДеревоФакторовРиска.ФакторРиска</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ДеревоФакторовРискаФакторРискаКонтекстноеМеню" id="71"/>
+					<ExtendedTooltip name="ДеревоФакторовРискаФакторРискаРасширеннаяПодсказка" id="72"/>
+				</InputField>
+				<InputField name="ДеревоФакторовРискаБаллы" id="73">
+					<DataPath>ДеревоФакторовРиска.Баллы</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<EditMode>EnterOnInput</EditMode>
+					<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ДеревоФакторовРискаБаллыКонтекстноеМеню" id="74"/>
+					<ExtendedTooltip name="ДеревоФакторовРискаБаллыРасширеннаяПодсказка" id="75"/>
+				</InputField>
+				<CheckBoxField name="ДеревоФакторовРискаПервыйТриместр" id="76">
+					<DataPath>ДеревоФакторовРиска.ПервыйТриместр</DataPath>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<EditMode>EnterOnInput</EditMode>
+					<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ДеревоФакторовРискаПервыйТриместрКонтекстноеМеню" id="77"/>
+					<ExtendedTooltip name="ДеревоФакторовРискаПервыйТриместрРасширеннаяПодсказка" id="78"/>
+				</CheckBoxField>
+				<CheckBoxField name="ДеревоФакторовРискаВторойТриместр" id="79">
+					<DataPath>ДеревоФакторовРиска.ВторойТриместр</DataPath>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<EditMode>EnterOnInput</EditMode>
+					<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ДеревоФакторовРискаВторойТриместрКонтекстноеМеню" id="80"/>
+					<ExtendedTooltip name="ДеревоФакторовРискаВторойТриместрРасширеннаяПодсказка" id="81"/>
+				</CheckBoxField>
+				<CheckBoxField name="ДеревоФакторовРискаТретийТриместр" id="82">
+					<DataPath>ДеревоФакторовРиска.ТретийТриместр</DataPath>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<EditMode>EnterOnInput</EditMode>
+					<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ДеревоФакторовРискаТретийТриместрКонтекстноеМеню" id="83"/>
+					<ExtendedTooltip name="ДеревоФакторовРискаТретийТриместрРасширеннаяПодсказка" id="84"/>
+				</CheckBoxField>
+			</ChildItems>
+		</Table>
+		<Table name="ФакторыРиска" id="19">
+			<Representation>Tree</Representation>
+			<Visible>false</Visible>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Объект.ФакторыРиска</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ФакторыРискаКонтекстноеМеню" id="20"/>
+			<AutoCommandBar name="ФакторыРискаКоманднаяПанель" id="21">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ФакторыРискаРасширеннаяПодсказка" id="22"/>
+			<SearchStringAddition name="ФакторыРискаСтрокаПоиска" id="23">
+				<AdditionSource>
+					<Item>ФакторыРиска</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ФакторыРискаСтрокаПоискаКонтекстноеМеню" id="24"/>
+				<ExtendedTooltip name="ФакторыРискаСтрокаПоискаРасширеннаяПодсказка" id="25"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ФакторыРискаСостояниеПросмотра" id="26">
+				<AdditionSource>
+					<Item>ФакторыРиска</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ФакторыРискаСостояниеПросмотраКонтекстноеМеню" id="27"/>
+				<ExtendedTooltip name="ФакторыРискаСостояниеПросмотраРасширеннаяПодсказка" id="28"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ФакторыРискаУправлениеПоиском" id="29">
+				<AdditionSource>
+					<Item>ФакторыРиска</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ФакторыРискаУправлениеПоискомКонтекстноеМеню" id="30"/>
+				<ExtendedTooltip name="ФакторыРискаУправлениеПоискомРасширеннаяПодсказка" id="31"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeRowChange">ФакторыРискаПередНачаломИзменения</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="ФакторыРискаНомерСтроки" id="32">
+					<DataPath>Объект.ФакторыРиска.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ФакторыРискаНомерСтрокиКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="ФакторыРискаНомерСтрокиРасширеннаяПодсказка" id="34"/>
+				</LabelField>
+				<InputField name="ФакторыРискаФакторРиска" id="35">
+					<DataPath>Объект.ФакторыРиска.ФакторРиска</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ФакторыРискаФакторРискаКонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="ФакторыРискаФакторРискаРасширеннаяПодсказка" id="37"/>
+				</InputField>
+				<InputField name="ФакторыРискаБаллы" id="54">
+					<DataPath>Объект.ФакторыРиска.Баллы</DataPath>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<EditMode>EnterOnInput</EditMode>
+					<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ФакторыРискаБаллыКонтекстноеМеню" id="55"/>
+					<ExtendedTooltip name="ФакторыРискаБаллыРасширеннаяПодсказка" id="56"/>
+				</InputField>
+				<CheckBoxField name="ФакторыРискаПервыйТриместр" id="38">
+					<DataPath>Объект.ФакторыРиска.ПервыйТриместр</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>I триместр</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<EditMode>EnterOnInput</EditMode>
+					<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
+					<FooterHorizontalAlign>Center</FooterHorizontalAlign>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ФакторыРискаПервыйТриместрКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="ФакторыРискаПервыйТриместрРасширеннаяПодсказка" id="40"/>
+				</CheckBoxField>
+				<CheckBoxField name="ФакторыРискаВторойТриместр" id="41">
+					<DataPath>Объект.ФакторыРиска.ВторойТриместр</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>II триместр</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<EditMode>EnterOnInput</EditMode>
+					<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
+					<FooterHorizontalAlign>Center</FooterHorizontalAlign>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ФакторыРискаВторойТриместрКонтекстноеМеню" id="42"/>
+					<ExtendedTooltip name="ФакторыРискаВторойТриместрРасширеннаяПодсказка" id="43"/>
+				</CheckBoxField>
+				<CheckBoxField name="ФакторыРискаТретийТриместр" id="44">
+					<DataPath>Объект.ФакторыРиска.ТретийТриместр</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>III триместр</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<EditMode>EnterOnInput</EditMode>
+					<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
+					<FooterHorizontalAlign>Center</FooterHorizontalAlign>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ФакторыРискаТретийТриместрКонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="ФакторыРискаТретийТриместрРасширеннаяПодсказка" id="46"/>
+				</CheckBoxField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.РасчетФакторовРиска</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Объект.ФакторыРиска"/>
+			</Columns>
+		</Attribute>
+		<Attribute name="ДеревоФакторовРиска" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево факторов риска</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="ФакторРиска" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фактор риска</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ФакторыРиска</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Баллы" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Баллы</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>2</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПервыйТриместр" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>I триместр</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВторойТриместр" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>II триместр</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ТретийТриместр" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>III триместр</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Уровень" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Уровень</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ДеревоФакторовРиска</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ДеревоФакторовРиска.Баллы</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ПользовательВыбранный</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>Доступность</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ДеревоФакторовРиска</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ДеревоФакторовРиска.Уровень</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Шрифт</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Font" ref="style:ШрифтКрупнойНадписи" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ДеревоФакторовРиска</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ДеревоФакторовРиска.Уровень</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">1</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ДеревоФакторовРиска.Баллы</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Шрифт</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Font" ref="style:ШрифтКрупнойНадписи" kind="StyleItem"/>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+</Form>

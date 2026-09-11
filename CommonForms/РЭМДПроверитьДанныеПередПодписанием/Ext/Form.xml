@@ -1,0 +1,565 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="Проверить" id="4">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Проверить</CommandName>
+				<ButtonImportance>Main</ButtonImportance>
+				<ExtendedTooltip name="ПроверитьРасширеннаяПодсказка" id="5"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Документ" id="6">
+			<DataPath>Ссылка</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<ChoiceButton>false</ChoiceButton>
+			<OpenButton>true</OpenButton>
+			<ContextMenu name="ДокументКонтекстноеМеню" id="7"/>
+			<ExtendedTooltip name="ДокументРасширеннаяПодсказка" id="8"/>
+		</InputField>
+		<InputField name="СотрудникУстановившийПодпись" id="1">
+			<DataPath>СотрудникУстановившийПодпись</DataPath>
+			<ChoiceButton>true</ChoiceButton>
+			<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+			<OpenButton>false</OpenButton>
+			<ContextMenu name="СотрудникУстановившийПодписьКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="СотрудникУстановившийПодписьРасширеннаяПодсказка" id="3"/>
+			<Events>
+				<Event name="OnChange">СотрудникУстановившийПодписьПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="ДолжностьМЗ" id="63">
+			<DataPath>ДолжностьМЗ</DataPath>
+			<ChoiceButton>true</ChoiceButton>
+			<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+			<OpenButton>false</OpenButton>
+			<CreateButton>false</CreateButton>
+			<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+			<ContextMenu name="ДолжностьМЗКонтекстноеМеню" id="64"/>
+			<ExtendedTooltip name="ДолжностьМЗРасширеннаяПодсказка" id="65"/>
+			<Events>
+				<Event name="OnChange">ДолжностьМЗПриИзменении</Event>
+			</Events>
+		</InputField>
+		<Pages name="Ошибки" id="57">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ошибки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ошибки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="ОшибкиРасширеннаяПодсказка" id="58"/>
+			<ChildItems>
+				<Page name="Основные" id="59">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основные</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основные</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ОсновныеРасширеннаяПодсказка" id="60"/>
+					<ChildItems>
+						<Table name="НезаполненныеОбязательныеПараметры" id="9">
+							<Representation>Tree</Representation>
+							<TitleLocation>Top</TitleLocation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<Header>false</Header>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>НезаполненныеОбязательныеПараметры</DataPath>
+							<ContextMenu name="НезаполненныеОбязательныеПараметрыКонтекстноеМеню" id="10"/>
+							<AutoCommandBar name="НезаполненныеОбязательныеПараметрыКоманднаяПанель" id="11">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="НезаполненныеОбязательныеПараметрыРасширеннаяПодсказка" id="12"/>
+							<SearchStringAddition name="НезаполненныеОбязательныеПараметрыСтрокаПоиска" id="13">
+								<AdditionSource>
+									<Item>НезаполненныеОбязательныеПараметры</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НезаполненныеОбязательныеПараметрыСтрокаПоискаКонтекстноеМеню" id="14"/>
+								<ExtendedTooltip name="НезаполненныеОбязательныеПараметрыСтрокаПоискаРасширеннаяПодсказка" id="15"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="НезаполненныеОбязательныеПараметрыСостояниеПросмотра" id="16">
+								<AdditionSource>
+									<Item>НезаполненныеОбязательныеПараметры</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НезаполненныеОбязательныеПараметрыСостояниеПросмотраКонтекстноеМеню" id="17"/>
+								<ExtendedTooltip name="НезаполненныеОбязательныеПараметрыСостояниеПросмотраРасширеннаяПодсказка" id="18"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="НезаполненныеОбязательныеПараметрыУправлениеПоиском" id="19">
+								<AdditionSource>
+									<Item>НезаполненныеОбязательныеПараметры</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="НезаполненныеОбязательныеПараметрыУправлениеПоискомКонтекстноеМеню" id="20"/>
+								<ExtendedTooltip name="НезаполненныеОбязательныеПараметрыУправлениеПоискомРасширеннаяПодсказка" id="21"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<ColumnGroup name="НезаполненныеОбязательныеПараметрыКолонки" id="74">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Незаполненные обязательные параметры колонки</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="НезаполненныеОбязательныеПараметрыКолонкиРасширеннаяПодсказка" id="75"/>
+									<ChildItems>
+										<InputField name="НезаполненныеОбязательныеПараметрыТекст" id="82">
+											<DataPath>НезаполненныеОбязательныеПараметры.Текст</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
+											<ContextMenu name="НезаполненныеОбязательныеПараметрыТекстКонтекстноеМеню" id="83"/>
+											<ExtendedTooltip name="НезаполненныеОбязательныеПараметрыТекстРасширеннаяПодсказка" id="84"/>
+										</InputField>
+										<InputField name="НезаполненныеОбязательныеПараметрыНаименованиеОбъектаЭМД" id="71">
+											<DataPath>НезаполненныеОбязательныеПараметры.НаименованиеОбъектаЭМД</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
+											<TextColor>web:LightGray</TextColor>
+											<Font ref="style:NormalTextFont" bold="false" italic="true" underline="false" strikeout="false" kind="StyleItem" scale="100"/>
+											<ContextMenu name="НезаполненныеОбязательныеПараметрыНаименованиеОбъектаЭМДКонтекстноеМеню" id="72"/>
+											<ExtendedTooltip name="НезаполненныеОбязательныеПараметрыНаименованиеОбъектаЭМДРасширеннаяПодсказка" id="73"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+						<Table name="ПрочиеОшибки" id="25">
+							<Representation>Tree</Representation>
+							<TitleLocation>Top</TitleLocation>
+							<ReadOnly>true</ReadOnly>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<Header>false</Header>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ПрочиеОшибки</DataPath>
+							<ContextMenu name="ПрочиеОшибкиКонтекстноеМеню" id="26"/>
+							<AutoCommandBar name="ПрочиеОшибкиКоманднаяПанель" id="27">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ПрочиеОшибкиРасширеннаяПодсказка" id="28"/>
+							<SearchStringAddition name="ПрочиеОшибкиСтрокаПоиска" id="29">
+								<AdditionSource>
+									<Item>ПрочиеОшибки</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПрочиеОшибкиСтрокаПоискаКонтекстноеМеню" id="30"/>
+								<ExtendedTooltip name="ПрочиеОшибкиСтрокаПоискаРасширеннаяПодсказка" id="31"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ПрочиеОшибкиСостояниеПросмотра" id="32">
+								<AdditionSource>
+									<Item>ПрочиеОшибки</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПрочиеОшибкиСостояниеПросмотраКонтекстноеМеню" id="33"/>
+								<ExtendedTooltip name="ПрочиеОшибкиСостояниеПросмотраРасширеннаяПодсказка" id="34"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ПрочиеОшибкиУправлениеПоиском" id="35">
+								<AdditionSource>
+									<Item>ПрочиеОшибки</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ПрочиеОшибкиУправлениеПоискомКонтекстноеМеню" id="36"/>
+								<ExtendedTooltip name="ПрочиеОшибкиУправлениеПоискомРасширеннаяПодсказка" id="37"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<ColumnGroup name="ПрочиеОшибкиКолонки" id="99">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Прочие ошибки колонки</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ПрочиеОшибкиКолонкиРасширеннаяПодсказка" id="100"/>
+									<ChildItems>
+										<InputField name="ПрочиеОшибкиТекст" id="93">
+											<DataPath>ПрочиеОшибки.Текст</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
+											<ContextMenu name="ПрочиеОшибкиТекстКонтекстноеМеню" id="94"/>
+											<ExtendedTooltip name="ПрочиеОшибкиТекстРасширеннаяПодсказка" id="95"/>
+										</InputField>
+										<InputField name="ПрочиеОшибкиНаименованиеОбъектаЭМД" id="96">
+											<DataPath>ПрочиеОшибки.НаименованиеОбъектаЭМД</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
+											<TextColor>web:LightGray</TextColor>
+											<Font ref="style:NormalTextFont" bold="false" italic="true" underline="false" strikeout="false" kind="StyleItem" scale="100"/>
+											<ContextMenu name="ПрочиеОшибкиНаименованиеОбъектаЭМДКонтекстноеМеню" id="97"/>
+											<ExtendedTooltip name="ПрочиеОшибкиНаименованиеОбъектаЭМДРасширеннаяПодсказка" id="98"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ВалидацияПоСхематрону" id="61">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Валидация по схематрону</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Валидация по схематрону</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ВалидацияПоСхематронуРасширеннаяПодсказка" id="62"/>
+					<ChildItems>
+						<Table name="ОшибкиВалидацииПоСхематрону" id="41">
+							<Representation>Tree</Representation>
+							<ReadOnly>true</ReadOnly>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<Header>false</Header>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ОшибкиВалидацииПоСхематрону</DataPath>
+							<ContextMenu name="ОшибкиВалидацииПоСхематронуКонтекстноеМеню" id="42"/>
+							<AutoCommandBar name="ОшибкиВалидацииПоСхематронуКоманднаяПанель" id="43">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ОшибкиВалидацииПоСхематронуРасширеннаяПодсказка" id="44"/>
+							<SearchStringAddition name="ОшибкиВалидацииПоСхематронуСтрокаПоиска" id="45">
+								<AdditionSource>
+									<Item>ОшибкиВалидацииПоСхематрону</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОшибкиВалидацииПоСхематронуСтрокаПоискаКонтекстноеМеню" id="46"/>
+								<ExtendedTooltip name="ОшибкиВалидацииПоСхематронуСтрокаПоискаРасширеннаяПодсказка" id="47"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ОшибкиВалидацииПоСхематронуСостояниеПросмотра" id="48">
+								<AdditionSource>
+									<Item>ОшибкиВалидацииПоСхематрону</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОшибкиВалидацииПоСхематронуСостояниеПросмотраКонтекстноеМеню" id="49"/>
+								<ExtendedTooltip name="ОшибкиВалидацииПоСхематронуСостояниеПросмотраРасширеннаяПодсказка" id="50"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ОшибкиВалидацииПоСхематронуУправлениеПоиском" id="51">
+								<AdditionSource>
+									<Item>ОшибкиВалидацииПоСхематрону</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ОшибкиВалидацииПоСхематронуУправлениеПоискомКонтекстноеМеню" id="52"/>
+								<ExtendedTooltip name="ОшибкиВалидацииПоСхематронуУправлениеПоискомРасширеннаяПодсказка" id="53"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<ColumnGroup name="ОшибкиВалидацииПоСхематронуКолонки" id="91">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ошибки валидации по схематрону колонки</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="ОшибкиВалидацииПоСхематронуКолонкиРасширеннаяПодсказка" id="92"/>
+									<ChildItems>
+										<InputField name="ОшибкиВалидацииПоСхематронуТекст" id="85">
+											<DataPath>ОшибкиВалидацииПоСхематрону.Текст</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<AutoCellHeight>true</AutoCellHeight>
+											<AutoEditMode>true</AutoEditMode>
+											<Height>5</Height>
+											<ContextMenu name="ОшибкиВалидацииПоСхематронуТекстКонтекстноеМеню" id="86"/>
+											<ExtendedTooltip name="ОшибкиВалидацииПоСхематронуТекстРасширеннаяПодсказка" id="87"/>
+										</InputField>
+										<InputField name="ОшибкиВалидацииПоСхематронуНаименованиеОбъектаЭМД" id="88">
+											<DataPath>ОшибкиВалидацииПоСхематрону.НаименованиеОбъектаЭМД</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
+											<TextColor>web:LightGray</TextColor>
+											<Font ref="style:NormalTextFont" bold="false" italic="true" underline="false" strikeout="false" kind="StyleItem" scale="100"/>
+											<ContextMenu name="ОшибкиВалидацииПоСхематронуНаименованиеОбъектаЭМДКонтекстноеМеню" id="89"/>
+											<ExtendedTooltip name="ОшибкиВалидацииПоСхематронуНаименованиеОбъектаЭМДРасширеннаяПодсказка" id="90"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="СотрудникУстановившийПодпись" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сотрудник установивший подпись</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Сотрудники</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Ссылка" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DefinedType.ДокументРЭМД</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="НезаполненныеОбязательныеПараметры" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Незаполненные обязательные параметры</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Текст" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текст</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НаименованиеОбъектаЭМД" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование объекта ЭМД</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ПрочиеОшибки" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прочие ошибки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Текст" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текст</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НаименованиеОбъектаЭМД" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование объекта ЭМД</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ОшибкиВалидацииПоСхематрону" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ошибки валидации по схематрону</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Текст" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текст</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="НаименованиеОбъектаЭМД" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование объекта ЭМД</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ДолжностьМЗ" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Должность Минздрава</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.КлассификаторыМинЗдрава</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>НезаполненныеОбязательныеПараметрыНаименованиеОбъектаЭМД</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">НезаполненныеОбязательныеПараметры.НаименованиеОбъектаЭМД</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Видимость</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ОшибкиВалидацииПоСхематронуНаименованиеОбъектаЭМД</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ОшибкиВалидацииПоСхематрону.НаименованиеОбъектаЭМД</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Видимость</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ПрочиеОшибкиНаименованиеОбъектаЭМД</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ПрочиеОшибки.НаименованиеОбъектаЭМД</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Видимость</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="Проверить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Проверить</Action>
+		</Command>
+	</Commands>
+</Form>

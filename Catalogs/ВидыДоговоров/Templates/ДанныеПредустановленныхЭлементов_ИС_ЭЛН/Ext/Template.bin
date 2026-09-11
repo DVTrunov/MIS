@@ -1,0 +1,974 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ФайлОбмена ВерсияФормата="2.0" ДатаВыгрузки="2024-06-05T13:33:03" НачалоПериодаВыгрузки="0001-01-01T00:00:00" ОкончаниеПериодаВыгрузки="0001-01-01T00:00:00" ИмяКонфигурацииИсточника="БИТУправлениеМедицинскимЦентром" ИмяКонфигурацииПриемника="БИТУправлениеМедицинскимЦентром" ИдПравилКонвертации="f1bcc6ab-18ca-4c66-9e20-8224eebc3429" Комментарий="">
+<ПравилаОбмена>
+	<ВерсияФормата>2.01</ВерсияФормата>
+	<Ид>f1bcc6ab-18ca-4c66-9e20-8224eebc3429</Ид>
+	<Наименование>Шаблоны Word и Виды договоров</Наименование>
+	<ДатаВремяСоздания>2024-06-05T12:59:48</ДатаВремяСоздания>
+	<Источник>БИТУправлениеМедицинскимЦентром</Источник>
+	<Приемник>БИТУправлениеМедицинскимЦентром</Приемник>
+	<Параметры>
+		<Параметр Имя="Ссылка" Наименование="Ссылка на шаблон"/>
+		<Параметр Имя="ТипыПредставленийТипов" Наименование="Типы представления типов (для конвертации принадлежности формы к документам)"/>
+	</Параметры>
+	<Обработки/>
+	<ПравилаКонвертацииОбъектов>
+		<Правило>
+			<Код>ШаблоныПечатиДляЭкспорта</Код>
+			<ПослеЗагрузки>Попытка
+	
+ТипыПредставленийТипов = ЗначениеИзСтрокиВнутр(Параметры.ТипыПредставленийТипов);
+
+Для Каждого СтрокаПринадлежность Из Объект.Принадлежность Цикл
+	ПолноеИмяМетаданных = ТипыПредставленийТипов.Получить(СтрокаПринадлежность.ПредставлениеОбъекта);
+	
+	Если ЗначениеЗаполнено(ПолноеИмяМетаданных) Тогда
+		СтрокаПринадлежность.СсылкаОбъекта = ОбщегоНазначения.МенеджерОбъектаПоПолномуИмени(ПолноеИмяМетаданных).ПустаяСсылка();
+	КонецЕсли;
+КонецЦикла;
+
+Исключение
+	Сообщить(ОписаниеОшибки());	
+КонецПопытки;</ПослеЗагрузки>
+			<СинхронизироватьПоИдентификатору>true</СинхронизироватьПоИдентификатору>
+			<ПродолжитьПоискПоПолямПоискаЕслиПоИдентификаторуНеНашли>true</ПродолжитьПоискПоПолямПоискаЕслиПоИдентификаторуНеНашли>
+			<ГенерироватьНовыйНомерИлиКодЕслиНеУказан>true</ГенерироватьНовыйНомерИлиКодЕслиНеУказан>
+			<Источник>СправочникСсылка.ШаблоныПечати</Источник>
+			<Приемник>СправочникСсылка.ШаблоныПечати</Приемник>
+		</Правило>
+		<Правило>
+			<Код>ШаблоныПечати</Код>
+			<ПослеЗагрузки>Попытка
+	
+ТипыПредставленийТипов = ЗначениеИзСтрокиВнутр(Параметры.ТипыПредставленийТипов);
+
+Для Каждого СтрокаПринадлежность Из Объект.Принадлежность Цикл
+	ПолноеИмяМетаданных = ТипыПредставленийТипов.Получить(СтрокаПринадлежность.ПредставлениеОбъекта);
+	
+	Если ЗначениеЗаполнено(ПолноеИмяМетаданных) Тогда
+		СтрокаПринадлежность.СсылкаОбъекта = ОбщегоНазначения.МенеджерОбъектаПоПолномуИмени(ПолноеИмяМетаданных).ПустаяСсылка();
+	КонецЕсли;
+КонецЦикла;
+
+Исключение
+	Сообщить(ОписаниеОшибки());	
+КонецПопытки;</ПослеЗагрузки>
+			<СинхронизироватьПоИдентификатору>true</СинхронизироватьПоИдентификатору>
+			<ПродолжитьПоискПоПолямПоискаЕслиПоИдентификаторуНеНашли>true</ПродолжитьПоискПоПолямПоискаЕслиПоИдентификаторуНеНашли>
+			<ГенерироватьНовыйНомерИлиКодЕслиНеУказан>true</ГенерироватьНовыйНомерИлиКодЕслиНеУказан>
+			<Источник>СправочникСсылка.ШаблоныПечати</Источник>
+			<Приемник>СправочникСсылка.ШаблоныПечати</Приемник>
+		</Правило>
+		<Правило>
+			<Код>ВидыДоговоров</Код>
+			<СинхронизироватьПоИдентификатору>true</СинхронизироватьПоИдентификатору>
+			<Источник>СправочникСсылка.ВидыДоговоров</Источник>
+			<Приемник>СправочникСсылка.ВидыДоговоров</Приемник>
+		</Правило>
+	</ПравилаКонвертацииОбъектов>
+	<ПравилаОчисткиДанных/>
+	<Алгоритмы/>
+	<Запросы/>
+</ПравилаОбмена>
+<ЗначениеПараметра Имя="Ссылка" Тип="СправочникСсылка.ШаблоныПечати">
+	<Пусто/>
+</ЗначениеПараметра>
+<ЗначениеПараметра Имя="ТипыПредставленийТипов" Тип="Строка">
+	<Значение>{"#",3d48feae-a9c6-4c5a-a099-9eb6477630c6,
+{2,
+{
+{"S","Документ ""Оказание услуг"""},
+{"S","Документ.ОказаниеУслуг"}
+},
+{
+{"S","Документ ""Справка об оплате для налоговой"""},
+{"S","Документ.СправкаДляНалоговой"}
+}
+}
+}</Значение>
+</ЗначениеПараметра>
+<Объект Нпп="2" Тип="СправочникСсылка.ШаблоныПечати" ИмяПравила="ШаблоныПечати"><Ссылка Нпп="2">
+	<Свойство Имя="{УникальныйИдентификатор}" Тип="Строка">
+		<Значение>c480b1ca-063c-11ec-8191-50af73235947</Значение>
+	</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Информированное согласие на формирование ЛН в форме электронного документа (демо)</Значение>
+	</Свойство>
+	<Свойство Имя="ЭтоГруппа" Тип="Булево">
+		<Значение>false</Значение>
+	</Свойство>
+</Ссылка>
+	<Свойство Имя="ИмяФайлаМакета" Тип="Строка">
+		<Значение>Согласие ЛН в электронной форме.docx</Значение>
+	</Свойство>
+	<Свойство Имя="КоличествоЭкземпляров" Тип="Число">
+		<Пусто/>
+	</Свойство>
+	<Свойство Имя="ПечатьБезПредварительногоПросмотра" Тип="Булево">
+		<Значение>false</Значение>
+	</Свойство><Свойство Имя="ФайлМакета" Тип="ХранилищеЗначения">
+	<Значение>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
+/wA=</Значение>
+</Свойство>
+	<Свойство Имя="ПометкаУдаления" Тип="Булево">
+		<Значение>false</Значение>
+	</Свойство><Свойство Имя="Родитель" Тип="СправочникСсылка.ШаблоныПечати">
+	<Пусто/>
+</Свойство><ТабличнаяЧасть Имя="ПараметрыПечати">
+	<Запись>
+		<Свойство Имя="Значение" Тип="Строка">
+			<Значение>СТАНДАРТНЫЕ_АЛГОРИТМЫ_ОРГАНИЗАЦИЯ_НАЗВАНИЕ_ОРГАНИЗАЦИИ</Значение>
+		</Свойство>
+		<Свойство Имя="ИмяПараметра" Тип="Строка">
+			<Значение>ОРГАНИЗАЦИЯ_НАЗВАНИЕ_ОРГАНИЗАЦИИ</Значение>
+		</Свойство>
+		<Свойство Имя="ВводитсяВручную" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+		<Свойство Имя="Описание" Тип="Строка">
+			<Пусто/>
+		</Свойство>
+		<Свойство Имя="СтандартныйАлгоритм" Тип="Булево">
+			<Значение>true</Значение>
+		</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Значение" Тип="Строка">
+			<Значение>СТАНДАРТНЫЕ_АЛГОРИТМЫ_ОРГАНИЗАЦИЯ_ЮРИДИЧЕСКИЙ_АДРЕС</Значение>
+		</Свойство>
+		<Свойство Имя="ИмяПараметра" Тип="Строка">
+			<Значение>ОРГАНИЗАЦИЯ_ЮРИДИЧЕСКИЙ_АДРЕС</Значение>
+		</Свойство>
+		<Свойство Имя="ВводитсяВручную" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+		<Свойство Имя="Описание" Тип="Строка">
+			<Пусто/>
+		</Свойство>
+		<Свойство Имя="СтандартныйАлгоритм" Тип="Булево">
+			<Значение>true</Значение>
+		</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Значение" Тип="Строка">
+			<Значение>Представитель = Клиент.ЗаконныйПредставитель;
+
+Если Не ЗначениеЗаполнено(Клиент.ЗаконныйПредставитель) Тогда
+
+         Результат =Строка(Клиент);
+
+Иначе
+
+         Если ТипЗнч(Клиент.ЗаконныйПредставитель) = Тип("СправочникСсылка.Клиенты") Тогда
+
+               Результат = СокрЛП(Представитель.Фамилия + " " + Представитель.Имя + " " + Представитель.Отчество);
+
+        Иначе
+
+                Результат = Строка(Представитель);
+     
+        КонецЕсли;  
+    
+КонецЕсли;</Значение>
+		</Свойство>
+		<Свойство Имя="ИмяПараметра" Тип="Строка">
+			<Значение>ФИО_ПОЛНОЕ</Значение>
+		</Свойство>
+		<Свойство Имя="ВводитсяВручную" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+		<Свойство Имя="Описание" Тип="Строка">
+			<Пусто/>
+		</Свойство>
+		<Свойство Имя="СтандартныйАлгоритм" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Значение" Тип="Строка">
+			<Значение>Представитель = Клиент.ЗаконныйПредставитель;
+
+Если Не ЗначениеЗаполнено (Клиент.ЗаконныйПредставитель) Тогда
+
+         Результат = Формат(Клиент.ДатаРождения,"ДФ=dd.MM.yyyy");
+
+Иначе
+
+         Если ТипЗнч(Клиент.ЗаконныйПредставитель) = Тип("СправочникСсылка.Клиенты") Тогда
+
+               Результат = Формат(Представитель.ДатаРождения,"ДФ=dd.MM.yyyy");
+
+       Иначе
+
+                Результат = "_____________________";
+     
+       КонецЕсли;  
+    
+КонецЕсли;</Значение>
+		</Свойство>
+		<Свойство Имя="ИмяПараметра" Тип="Строка">
+			<Значение>ДАТА_РОЖДЕНИЯ</Значение>
+		</Свойство>
+		<Свойство Имя="ВводитсяВручную" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+		<Свойство Имя="Описание" Тип="Строка">
+			<Пусто/>
+		</Свойство>
+		<Свойство Имя="СтандартныйАлгоритм" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Значение" Тип="Строка">
+			<Значение>Представитель = Клиент.ЗаконныйПредставитель;
+
+Результат = "";
+
+Если Не ЗначениеЗаполнено(Клиент.ЗаконныйПредставитель) Тогда
+
+         Запрос = Новый Запрос; 
+         Запрос.УстановитьПараметр("Клиент", Клиент); 
+         Запрос.УстановитьПараметр("ВидКИ", Справочники.ВидыКонтактнойИнформации.АдресЮридический); 
+         Запрос.Текст = "ВЫБРАТЬ ПЕРВЫЕ 1
+                    |	КонтактнаяИнформация.Представление КАК Представление
+                    |ИЗ
+                    |	РегистрСведений.КонтактнаяИнформация КАК КонтактнаяИнформация
+                    |ГДЕ
+                    |	КонтактнаяИнформация.Вид = &amp;ВидКИ
+                    |	И КонтактнаяИнформация.Объект = &amp;Клиент"; 
+        ВыборкаЗапроса = Запрос.Выполнить().Выбрать(); 
+        Если ВыборкаЗапроса.Следующий() Тогда
+	           Результат = ВыборкаЗапроса.Представление;
+        КонецЕсли;
+
+Иначе
+
+         Если ТипЗнч(Клиент.ЗаконныйПредставитель) = Тип("СправочникСсылка.Клиенты") Тогда
+
+               Запрос = Новый Запрос; 
+	        Запрос.УстановитьПараметр("Клиент", Представитель); 
+	        Запрос.УстановитьПараметр("ВидКИ", Справочники.ВидыКонтактнойИнформации.АдресЮридический); 
+	        Запрос.Текст = "ВЫБРАТЬ ПЕРВЫЕ 1
+                    |	КонтактнаяИнформация.Представление КАК Представление
+                    |ИЗ
+                    |	РегистрСведений.КонтактнаяИнформация КАК КонтактнаяИнформация
+                    |ГДЕ
+                    |	КонтактнаяИнформация.Вид = &amp;ВидКИ
+                    |	И КонтактнаяИнформация.Объект = &amp;Клиент"; 
+	       ВыборкаЗапроса = Запрос.Выполнить().Выбрать(); 
+	       Если ВыборкаЗапроса.Следующий() Тогда
+	       	Результат = ВыборкаЗапроса.Представление;
+	       КонецЕсли;
+
+        КонецЕсли;  
+    
+КонецЕсли;</Значение>
+		</Свойство>
+		<Свойство Имя="ИмяПараметра" Тип="Строка">
+			<Значение>АДРЕС_РЕГИСТРАЦИИ</Значение>
+		</Свойство>
+		<Свойство Имя="ВводитсяВручную" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+		<Свойство Имя="Описание" Тип="Строка">
+			<Пусто/>
+		</Свойство>
+		<Свойство Имя="СтандартныйАлгоритм" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Значение" Тип="Строка">
+			<Значение>Представитель = Клиент.ЗаконныйПредставитель;
+
+Результат = "______";
+
+Если Не ЗначениеЗаполнено(Клиент.ЗаконныйПредставитель) Тогда
+
+       Запрос = Новый Запрос; 
+       Запрос.УстановитьПараметр("Клиент", Клиент); 
+       Запрос.Текст = "ВЫБРАТЬ ПаспортныеДанныеСрезПоследних.ДокументСерия, ПаспортныеДанныеСрезПоследних.ДокументНомер, ПаспортныеДанныеСрезПоследних.ДокументКемВыдан ИЗ РегистрСведений.ПаспортныеДанные.СрезПоследних КАК ПаспортныеДанныеСрезПоследних ГДЕ ПаспортныеДанныеСрезПоследних.ФизЛицо = &amp;Клиент"; 
+       Выгрузка = Запрос.Выполнить().Выгрузить(); 
+       Для каждого Строка Из Выгрузка Цикл 
+       Результат = Строка.ДокументСерия; 
+       Прервать;
+       КонецЦикла;
+       
+Иначе
+
+         Если ТипЗнч(Клиент.ЗаконныйПредставитель) = Тип("СправочникСсылка.Клиенты") Тогда
+
+               Запрос = Новый Запрос; 
+	        Запрос.УстановитьПараметр("Клиент", Представитель);
+	        Запрос.Текст = "ВЫБРАТЬ ПЕРВЫЕ 1 ПаспортныеДанныеСрезПоследних.ДокументСерия, ПаспортныеДанныеСрезПоследних.ДокументНомер, ПаспортныеДанныеСрезПоследних.ДокументКемВыдан ИЗ 	РегистрСведений.ПаспортныеДанные.СрезПоследних КАК ПаспортныеДанныеСрезПоследних ГДЕ ПаспортныеДанныеСрезПоследних.ФизЛицо = &amp;Клиент"; 
+               Выгрузка = Запрос.Выполнить().Выгрузить(); 
+	        Для каждого Строка Из Выгрузка Цикл 
+	        Результат = Строка.ДокументСерия; 
+	        Прервать;
+	        КонецЦикла;
+
+       КонецЕсли;  
+    
+КонецЕсли;</Значение>
+		</Свойство>
+		<Свойство Имя="ИмяПараметра" Тип="Строка">
+			<Значение>ПАСПОРТ_СЕРИЯ</Значение>
+		</Свойство>
+		<Свойство Имя="ВводитсяВручную" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+		<Свойство Имя="Описание" Тип="Строка">
+			<Пусто/>
+		</Свойство>
+		<Свойство Имя="СтандартныйАлгоритм" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Значение" Тип="Строка">
+			<Значение>Представитель = Клиент.ЗаконныйПредставитель;
+
+Результат = "________";
+
+Если Не ЗначениеЗаполнено(Клиент.ЗаконныйПредставитель) Тогда
+
+       Запрос = Новый Запрос; 
+       Запрос.УстановитьПараметр("Клиент", Клиент); 
+       Запрос.Текст = "ВЫБРАТЬ ПаспортныеДанныеСрезПоследних.ДокументСерия, ПаспортныеДанныеСрезПоследних.ДокументНомер, ПаспортныеДанныеСрезПоследних.ДокументКемВыдан ИЗ РегистрСведений.ПаспортныеДанные.СрезПоследних КАК ПаспортныеДанныеСрезПоследних ГДЕ ПаспортныеДанныеСрезПоследних.ФизЛицо = &amp;Клиент"; 
+       Выгрузка = Запрос.Выполнить().Выгрузить(); 
+       Для каждого Строка Из Выгрузка Цикл 
+       Результат = Строка.ДокументНомер; 
+       Прервать;
+       КонецЦикла;
+       
+Иначе
+
+         Если ТипЗнч(Клиент.ЗаконныйПредставитель) = Тип("СправочникСсылка.Клиенты") Тогда
+
+               Запрос = Новый Запрос; 
+	        Запрос.УстановитьПараметр("Клиент", Представитель);
+	        Запрос.Текст = "ВЫБРАТЬ ПЕРВЫЕ 1 ПаспортныеДанныеСрезПоследних.ДокументСерия, ПаспортныеДанныеСрезПоследних.ДокументНомер, ПаспортныеДанныеСрезПоследних.ДокументКемВыдан ИЗ 	РегистрСведений.ПаспортныеДанные.СрезПоследних КАК ПаспортныеДанныеСрезПоследних ГДЕ ПаспортныеДанныеСрезПоследних.ФизЛицо = &amp;Клиент"; 
+              Выгрузка = Запрос.Выполнить().Выгрузить(); 
+          	 Для каждого Строка Из Выгрузка Цикл 
+        	 Результат = Строка.ДокументНомер; 
+	       Прервать;
+       	КонецЦикла;
+
+       КонецЕсли;  
+    
+КонецЕсли;</Значение>
+		</Свойство>
+		<Свойство Имя="ИмяПараметра" Тип="Строка">
+			<Значение>ПАСПОРТ_НОМЕР</Значение>
+		</Свойство>
+		<Свойство Имя="ВводитсяВручную" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+		<Свойство Имя="Описание" Тип="Строка">
+			<Пусто/>
+		</Свойство>
+		<Свойство Имя="СтандартныйАлгоритм" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Значение" Тип="Строка">
+			<Значение>Представитель = Клиент.ЗаконныйПредставитель;
+
+Результат = "__________";
+
+Если Не ЗначениеЗаполнено(Клиент.ЗаконныйПредставитель) Тогда
+
+       Запрос = Новый Запрос;
+       Запрос.УстановитьПараметр("Клиент", Клиент);
+       Запрос.Текст = "ВЫБРАТЬ ПаспортныеДанныеСрезПоследних.ДокументДатаВыдачи ИЗ РегистрСведений.ПаспортныеДанные.СрезПоследних КАК ПаспортныеДанныеСрезПоследних ГДЕ ПаспортныеДанныеСрезПоследних.ФизЛицо = &amp;Клиент"; 
+       Выгрузка = Запрос.Выполнить().Выгрузить(); 
+       Для каждого Строка Из Выгрузка Цикл 
+       Результат = Формат(Строка.ДокументДатаВыдачи, "ДЛФ=Д"); 
+       КонецЦикла;
+       
+Иначе
+
+       Если ТипЗнч(Клиент.ЗаконныйПредставитель) = Тип("СправочникСсылка.Клиенты") Тогда
+
+               Запрос = Новый Запрос; 
+	        Запрос.УстановитьПараметр("Клиент", Представитель);
+	        Запрос.Текст = "ВЫБРАТЬ ПЕРВЫЕ 1 ПаспортныеДанныеСрезПоследних.ДокументДатаВыдачи ИЗ 	РегистрСведений.ПаспортныеДанные.СрезПоследних КАК ПаспортныеДанныеСрезПоследних ГДЕ ПаспортныеДанныеСрезПоследних.ФизЛицо = &amp;Клиент"; 
+               Выгрузка = Запрос.Выполнить().Выгрузить(); 
+	        Для каждого Строка Из Выгрузка Цикл 
+	        Результат = Формат(Строка.ДокументДатаВыдачи,"ДФ=dd.MM.yyyy");
+	        Прервать;
+               КонецЦикла;
+
+       КонецЕсли;  
+    
+КонецЕсли;</Значение>
+		</Свойство>
+		<Свойство Имя="ИмяПараметра" Тип="Строка">
+			<Значение>ПАСПОРТ_ДАТА_ВЫДАЧИ</Значение>
+		</Свойство>
+		<Свойство Имя="ВводитсяВручную" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+		<Свойство Имя="Описание" Тип="Строка">
+			<Пусто/>
+		</Свойство>
+		<Свойство Имя="СтандартныйАлгоритм" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Значение" Тип="Строка">
+			<Значение>Представитель = Клиент.ЗаконныйПредставитель;
+
+Результат = "";
+
+Если Не ЗначениеЗаполнено(Клиент.ЗаконныйПредставитель) Тогда
+
+       Запрос = Новый Запрос; 
+       Запрос.УстановитьПараметр("Клиент", Клиент); 
+       Запрос.Текст = "ВЫБРАТЬ ПаспортныеДанныеСрезПоследних.ДокументСерия, ПаспортныеДанныеСрезПоследних.ДокументНомер, ПаспортныеДанныеСрезПоследних.ДокументКемВыдан ИЗ РегистрСведений.ПаспортныеДанные.СрезПоследних КАК ПаспортныеДанныеСрезПоследних ГДЕ ПаспортныеДанныеСрезПоследних.ФизЛицо = &amp;Клиент"; 
+       Выгрузка = Запрос.Выполнить().Выгрузить(); 
+       Для каждого Строка Из Выгрузка Цикл 
+       Результат = Строка.ДокументКемВыдан; 
+       Прервать;
+       КонецЦикла;
+       
+Иначе
+
+       Если ТипЗнч(Клиент.ЗаконныйПредставитель) = Тип("СправочникСсылка.Клиенты") Тогда
+
+               Запрос = Новый Запрос; 
+	        Запрос.УстановитьПараметр("Клиент", Представитель);
+	        Запрос.Текст = "ВЫБРАТЬ ПЕРВЫЕ 1 ПаспортныеДанныеСрезПоследних.ДокументСерия, ПаспортныеДанныеСрезПоследних.ДокументНомер, ПаспортныеДанныеСрезПоследних.ДокументКемВыдан ИЗ 	РегистрСведений.ПаспортныеДанные.СрезПоследних КАК ПаспортныеДанныеСрезПоследних ГДЕ ПаспортныеДанныеСрезПоследних.ФизЛицо = &amp;Клиент"; 
+               Выгрузка = Запрос.Выполнить().Выгрузить(); 
+	        Для каждого Строка Из Выгрузка Цикл 
+	        Результат = Строка.ДокументКемВыдан; 
+	        Прервать;
+	        КонецЦикла;
+               
+      КонецЕсли;  
+    
+КонецЕсли;</Значение>
+		</Свойство>
+		<Свойство Имя="ИмяПараметра" Тип="Строка">
+			<Значение>ПАСПОРТ_ВЫДАН</Значение>
+		</Свойство>
+		<Свойство Имя="ВводитсяВручную" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+		<Свойство Имя="Описание" Тип="Строка">
+			<Пусто/>
+		</Свойство>
+		<Свойство Имя="СтандартныйАлгоритм" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Значение" Тип="Строка">
+			<Значение>СТАНДАРТНЫЕ_АЛГОРИТМЫ_ПЕРС_ДАННЫЕ_1</Значение>
+		</Свойство>
+		<Свойство Имя="ИмяПараметра" Тип="Строка">
+			<Значение>ПЕРС_ДАННЫЕ_1</Значение>
+		</Свойство>
+		<Свойство Имя="ВводитсяВручную" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+		<Свойство Имя="Описание" Тип="Строка">
+			<Пусто/>
+		</Свойство>
+		<Свойство Имя="СтандартныйАлгоритм" Тип="Булево">
+			<Значение>true</Значение>
+		</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Значение" Тип="Строка">
+			<Значение>СТАНДАРТНЫЕ_АЛГОРИТМЫ_ПЕРС_ДАННЫЕ_2</Значение>
+		</Свойство>
+		<Свойство Имя="ИмяПараметра" Тип="Строка">
+			<Значение>ПЕРС_ДАННЫЕ_2</Значение>
+		</Свойство>
+		<Свойство Имя="ВводитсяВручную" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+		<Свойство Имя="Описание" Тип="Строка">
+			<Пусто/>
+		</Свойство>
+		<Свойство Имя="СтандартныйАлгоритм" Тип="Булево">
+			<Значение>true</Значение>
+		</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Значение" Тип="Строка">
+			<Значение>СТАНДАРТНЫЕ_АЛГОРИТМЫ_ДАТА</Значение>
+		</Свойство>
+		<Свойство Имя="ИмяПараметра" Тип="Строка">
+			<Значение>ДАТА</Значение>
+		</Свойство>
+		<Свойство Имя="ВводитсяВручную" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+		<Свойство Имя="Описание" Тип="Строка">
+			<Пусто/>
+		</Свойство>
+		<Свойство Имя="СтандартныйАлгоритм" Тип="Булево">
+			<Значение>true</Значение>
+		</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Значение" Тип="Строка">
+			<Значение>Представитель = Клиент.ЗаконныйПредставитель;
+
+Результат = "";
+
+Если Не ЗначениеЗаполнено(Клиент.ЗаконныйПредставитель) Тогда
+
+         ДанныеКлиентов = Новый Соответствие;
+         СписокКлиентов = Новый Массив;
+         СписокКлиентов.Добавить(Клиент);
+
+         КалендарьПланирования.ОбновитьКэшДопИнформацииКлиентов(ДанныеКлиентов,СписокКлиентов);
+         ДанныеКлиента = ДанныеКлиентов.Получить(Клиент);
+         Если ДанныеКлиента = Неопределено Тогда
+	        Результат = "";
+         ИначеЕсли ДанныеКлиента.Свойство("СотовыйТелефон") Тогда
+              Результат = ДанныеКлиента.СотовыйТелефон;
+         ИначеЕсли ДанныеКлиента.Свойство("Телефон") Тогда
+	       Результат = ДанныеКлиента.Телефон;
+         Иначе
+	       Результат = "";
+         КонецЕсли;
+
+Иначе
+
+         Если ТипЗнч(Клиент.ЗаконныйПредставитель) = Тип("СправочникСсылка.Клиенты") Тогда
+
+	        ДанныеКлиентов = Новый Соответствие;
+	        СписокКлиентов = Новый Массив;
+	        СписокКлиентов.Добавить(Клиент.ЗаконныйПредставитель);
+
+	        КалендарьПланирования.ОбновитьКэшДопИнформацииКлиентов(ДанныеКлиентов,СписокКлиентов);
+	        ДанныеКлиента = ДанныеКлиентов.Получить(Клиент.ЗаконныйПредставитель);
+	        Если ДанныеКлиента = Неопределено Тогда
+	      	       Результат = "";
+	        ИначеЕсли ДанныеКлиента.Свойство("СотовыйТелефон") Тогда
+		       Результат = ДанныеКлиента.СотовыйТелефон;
+	        ИначеЕсли ДанныеКлиента.Свойство("Телефон") Тогда
+		       Результат = ДанныеКлиента.Телефон;
+	       КонецЕсли;
+         
+        ИначеЕсли ТипЗнч(Клиент.ЗаконныйПредставитель) &lt;&gt;Тип("СправочникСсылка.Клиенты") Тогда
+
+              Результат = Клиент.ЗаконныйПредставительТелефон;
+	       
+
+        КонецЕсли;
+
+   
+КонецЕсли;</Значение>
+		</Свойство>
+		<Свойство Имя="ИмяПараметра" Тип="Строка">
+			<Значение>ТЕЛЕФОН</Значение>
+		</Свойство>
+		<Свойство Имя="ВводитсяВручную" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+		<Свойство Имя="Описание" Тип="Строка">
+			<Пусто/>
+		</Свойство>
+		<Свойство Имя="СтандартныйАлгоритм" Тип="Булево">
+			<Значение>false</Значение>
+		</Свойство>
+	</Запись>
+</ТабличнаяЧасть><ТабличнаяЧасть Имя="Принадлежность"/>
+	<Свойство Имя="ПередФормированием" Тип="Строка">
+		<Пусто/>
+	</Свойство>
+</Объект>
+<Объект Нпп="1" Тип="СправочникСсылка.ВидыДоговоров" ИмяПравила="ВидыДоговоров"><Ссылка Нпп="1">
+	<Свойство Имя="{УникальныйИдентификатор}" Тип="Строка">
+		<Значение>9fcdc393-1ab6-11ec-82dc-40167e631f2e</Значение>
+	</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Инф. согласие на ЭЛН</Значение>
+	</Свойство>
+	<Свойство Имя="ЭтоГруппа" Тип="Булево">
+		<Значение>false</Значение>
+	</Свойство>
+</Ссылка><Свойство Имя="ШаблонПечати" Тип="СправочникСсылка.ШаблоныПечати"><Ссылка Нпп="2">
+	<Свойство Имя="{УникальныйИдентификатор}" Тип="Строка">
+		<Значение>c480b1ca-063c-11ec-8191-50af73235947</Значение>
+	</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Информированное согласие на формирование ЛН в форме электронного документа (демо)</Значение>
+	</Свойство>
+	<Свойство Имя="ЭтоГруппа" Тип="Булево">
+		<Значение>false</Значение>
+	</Свойство>
+</Ссылка>
+</Свойство><Свойство Имя="Родитель" Тип="СправочникСсылка.ВидыДоговоров">
+	<Пусто/>
+</Свойство>
+</Объект>
+</ФайлОбмена>

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Справка об отсутствии контактов с инфекционными больными" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fias="urn:hl7-ru:fias" xmlns:address="urn:hl7-ru:address">
+	<bitLocalId УсловиеИспользования="*Ложь">
+		<nodeLocalId ТипДанных="ДокументСсылка.ДоговорСКлиентом" localid="ДоговорСКлиентом" localidСиноним="Договор с клиентом" Обязательное="*Истина"/>
+		<nodeLocalId ТипДанных="Строка" localid="ОрганизацияПолучательДокумента" localidСиноним="Организация-получатель документа" Множественное="*Истина" Обязательное="*Ложь"/>
+	</bitLocalId>
+	<!-- R [1..1] СЕКЦИЯ: СВЕДЕНИЯ О ДОКУМЕНТЕ (ОБЩИЕ СВЕДЕНИЯ)-->
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="DOCINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>ОБЩИЕ СВЕДЕНИЯ</title>
+			<!-- R [1..1] наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 837)</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.725", 8)</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Место учебы/работы</content>
+							</td>
+							<td>
+								<content>%НазваниеОрганизацииУчебыРаботы</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Адрес организации</content>
+							</td>
+							<td>
+								<content>%АдресОрганизацииУчебыРаботы</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..1] Заключение -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="837" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="CD" code="8" codeSystem="1.2.643.5.1.13.13.99.2.725" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- [0..1] Кодирование места учебы/работы -->
+			<!-- В текущем поле кодируется место учебы или работы, где осуществлялась проверка возможного контакта пациента с инфекционными больными -->
+			<entry localid="НазваниеОрганизацииУчебыРаботы" Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="4073" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<performer>
+						<assignedEntity>
+							<id nullFlavor="NI"/>
+							<representedOrganization Обязательное="*Ложь" classCode="ORG">
+								<!-- [1..1] Идентификатор организации -->
+								<id nullFlavor="NI"/>
+								<!-- R [1..1] Наименование организации -->
+								<name ТипДанных="Строка" localid="НазваниеОрганизацииУчебыРаботы" localidСиноним="Место учебы/работы (название организации)">%НазваниеОрганизацииУчебыРаботы</name>
+								<!-- [0..1] Контакты организации (телефон) -->
+								<!--<telecom localid="Телефон" value="%Телефон" use="WP"/>-->
+								<!-- [0..1] Адрес организации -->
+								<addr Обязательное="*Ложь">
+									<!-- R [1..1] Адрес текстом -->
+									<streetAddressLine ТипДанных="Строка" localid="АдресОрганизацииУчебыРаботы" localidСиноним="Место учебы/работы (адрес организации)">%АдресОрганизацииУчебыРаботы</streetAddressLine>
+									<!-- R [1..1] Субъект РФ (Код ФНС по справочнику "Субъекты Российской Федерации" (OID:1.2.643.5.1.13.13.99.2.206)) -->
+									<address:stateCode xsi:type="CD" localid="СубъектРФОрганизацииУчебыРаботы" localidСиноним="Место учебы/работы (адрес организации, субъект РФ)" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									<!-- [1..1] Почтовый индекс -->
+									<postalCode ТипДанных="Число" localid="ИндексОрганизацииУчебыРаботы" localidСиноним="Место учебы/работы (индекс адреса организации)">%ИндексОрганизацииУчебыРаботы</postalCode>
+									<!-- [1..1] Кодирование адреса по ФИАС -->
+									<fias:Address nullFlavor="NI"/>
+								</addr>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+				</observation>
+			</entry>
+			<!-- [0..1] Комментарий -->
+			<entry localid="Комментарий" Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="10000" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="Комментарий">%Комментарий</value>
+				</observation>
+			</entry>
+		</section>
+	</component>
+</Items>

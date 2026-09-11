@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Медицинское заключение по результатам предварительного (периодического) медицинского осмотра (обследования) (CDA) Редакция 2" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fias="urn:hl7-ru:fias" xmlns:address="urn:hl7-ru:address" xmlns:identity="urn:hl7-ru:identity">
+	<!-- R [1..1] СЕКЦИЯ: Сведения о документе-->
+	<component>
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="DOCINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<title>Общие сведения</title>
+			<text>
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<content>Сведения о работодателе</content>
+							</td>
+							<td>
+								<content>%НаименованиеРаботодателя</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>ИНН работодателя</content>
+							</td>
+							<td>
+								<content>%ИннРаботодателя</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Наименование структурного подразделения работодателя</content>
+							</td>
+							<td>
+								<content>%СтруктурноеПодразделениеРаботодателя</content>
+							</td>
+						</tr>
+						<bitOther>
+							<tr Обязательное="*Ложь">
+								<td>
+									<content>Наименование должности (профессии)</content>
+								</td>
+								<td>
+									<content>*ЗначениеЭлементаКлассификатора(%Должность)</content>
+								</td>
+							</tr>
+						</bitOther>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Наименование должности (профессии)</content>
+							</td>
+							<td>
+								<content>%ДолжностьСтрокой</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Наименование выполняемой работы</content>
+							</td>
+							<td>
+								<content>%ВыполняемаяРаботаКлиента</content>
+							</td>
+						</tr>
+						<tr localid="ВредныйПроизводственныйФактор" Множественное="*Истина" Обязательное="*Ложь">
+							<td>
+								<content>Наименование вредных и (или) опасных производственных факторов, видов работ</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%ВредныйПроизводственныйФактор)</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Результаты предварительного (периодического) осмотра</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%Заключение)</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Сведения о перенесенных инфекционных заболеваниях</content>
+							</td>
+							<td>
+								<content>%ПеренесенныеИнфекционныеЗаболевания</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Сведения о профилактических прививках</content>
+							</td>
+							<td>
+								<content>%ПрофилактическиеПрививки</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Группа здоровья лица, поступающего на работу (работника)</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%ГруппаЗдоровья)</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Дата проведения очередного периодического медицинского осмотра</content>
+							</td>
+							<td>
+								<content>*Формат(%ДатаПроведенияОчередногоПериодическогоМедицинскогоОсмотра, "ДФ=ггггММдд")</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Комментарий</content>
+							</td>
+							<td>
+								<content>%Комментарий</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Результаты химико-токсикологических исследований</content>
+							</td>
+							<td>
+								<content>%РезультатыХимикоТоксикологическихИсследований</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Результаты психофизиологического обследования</content>
+							</td>
+							<td>
+								<content>%РезультатыПсихофизическогоОбследования</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..1] Сведения о работодателе -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="4073" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1]-->
+					<performer>
+						<assignedEntity>
+							<!-- [1..1]-->
+							<id nullFlavor="NI"/>
+							<!-- R [1..1]-->
+							<representedOrganization classCode="ORG">
+								<!-- [1..1] Идентификатор организации -->
+								<id nullFlavor="NI"/>
+								<!-- R [1..1] Наименование организации -->
+								<name ТипДанных='Строка' localid="НаименованиеРаботодателя">%НаименованиеРаботодателя</name>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+				</observation>
+			</entry>
+			<!-- R [1..1] ИНН/ОГРН работодателя -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="8085" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [1..1] Значение поля -->
+					<value xsi:type="ST" localid="ИннРаботодателя" localidСиноним="ИНН работодателя" ПустоеЗначение="NI" СохранятьТипПриПустомЗначении="*Истина">%ИннРаботодателя</value>
+				</observation>
+			</entry>
+			<!-- [0..1] Наименование структурного подразделения работодателя -->
+			<entry Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="8006" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Значение поля -->
+					<value xsi:type="ST" localid="СтруктурноеПодразделениеРаботодателя">%СтруктурноеПодразделениеРаботодателя</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Наименование должности (профессии) или вида работы -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="4074" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [1..1] Значение поля -->
+					<bitOther>
+						<value xsi:type="CD" localid="Должность" Обязательное="*Не ЗначениеЗаполнено(%ДолжностьСтрокой)" ПустоеЗначение="OTH" СохранятьДочерниеУзлы="*Истина" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.855" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+							<originalText ТипДанных="Строка" localid="ДолжностьСтрокой" УсловиеИспользования="*Не ЗначениеЗаполнено(%Должность)" Обязательное="*Не ЗначениеЗаполнено(%Должность)">%ДолжностьСтрокой</originalText>
+						</value>
+					</bitOther>
+					<value xsi:type="CD" nullFlavor="OTH">
+						<originalText ТипДанных="Строка" localid="ДолжностьСтрокой">%ДолжностьСтрокой</originalText>
+					</value>
+				</observation>
+			</entry>
+			<!-- [0..1] Наименование выполняемой работы -->
+			<entry Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="8086" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="ВыполняемаяРаботаКлиента">%ВыполняемаяРаботаКлиента</value>
+				</observation>
+			</entry>
+			<!-- [0..*] Наименование вредных и (или) опасных производственных факторов, видов работ -->
+			<entry localid="ВредныйПроизводственныйФактор" Множественное="*Истина" Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="813" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Значение поля -->
+					<value xsi:type="CD" localid="ВредныйПроизводственныйФактор" code="#code" codeSystem="1.2.643.5.1.13.13.11.1060" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Результаты предварительного (периодического) осмотра -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="837" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Значение поля -->
+					<value xsi:type="CD" localid="Заключение" ДопустимыеЗначения="31;32" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.725" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Сведения о перенесенных инфекционных заболеваниях -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="8007" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [1..1] Значение поля -->
+					<value xsi:type="ST" localid="ПеренесенныеИнфекционныеЗаболевания">%ПеренесенныеИнфекционныеЗаболевания</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Сведения о профилактических прививках -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="9021" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [1..1] Значение поля -->
+					<value xsi:type="ST" localid="ПрофилактическиеПрививки">%ПрофилактическиеПрививки</value>
+				</observation>
+			</entry>
+			<!-- [0..1] Группа здоровья лица, поступающего на работу (работника) -->
+			<entry Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="6020" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="CD" localid="ГруппаЗдоровья" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.766" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Дата проведения очередного периодического медицинского осмотра -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="8087" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [1..1] Дата проведения очередного периодического медицинского осмотра -->
+					<effectiveTime ТипДанных='Дата' localid="ДатаПроведенияОчередногоПериодическогоМедицинскогоОсмотра" ПустоеЗначение="NI" Формат="ДФ=ггггММдд" value="%ДатаПроведенияОчередногоПериодическогоМедицинскогоОсмотра"/>
+				</observation>
+			</entry>
+			<!-- [0..1] Комментарий -->
+			<entry Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="10000" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="Комментарий">%Комментарий</value>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: "Результаты лабораторного исследования" ("Результаты химико-токсикологических исследований") -->
+	<component Обязательное="*Ложь">
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="RESLAB" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>Результаты лабораторных исследований</title>
+			<!-- [1..1] наполнение секции -->
+			<text ТипДанных="Строка" localid="РезультатыХимикоТоксикологическихИсследований">%РезультатыХимикоТоксикологическихИсследований</text>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: "Результаты психофизиологического обследования" -->
+	<component Обязательное="*Ложь">
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="RESPSYCHOPHYSIOLEXAM" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>Результаты психофизиологического обследования</title>
+			<!-- [1..1] наполнение секции -->
+			<text ТипДанных="Строка" localid="РезультатыПсихофизическогоОбследования">%РезультатыПсихофизическогоОбследования</text>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: "Связанные документы" ("Результаты исследований и осмотров") -->
+	<component>
+		<!-- R [1..1]-->
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="LINKDOCS" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Название секции -->
+			<title>Результаты исследований и осмотров</title>
+			<!-- R [1..1] Человекочитаемое наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr localid="СвязанныйДокументКонсультации" Множественное="*Истина">
+							<td>%СвязанныйДокументКонсультации.Описание</td>
+						</tr>
+						<tr localid="СвязанныйДокументЛабИсследования" Множественное="*Истина">
+							<td>%СвязанныйДокументЛабИсследования.Описание</td>
+						</tr>
+						<tr localid="СвязанныйДокументИнстрИсследования" Множественное="*Истина" Обязательное="*Ложь">
+							<td>%СвязанныйДокументИнстрИсследования.Описание</td>
+						</tr>
+						<tr localid="СвязанныйДокумент" Множественное="*Истина" Обязательное="*Ложь">
+							<td>%СвязанныйДокумент.Описание</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..*] Сведения о связанном документе -->
+			<entry ТипДанных="ДокументСсылка.Прием" localid="СвязанныйДокументКонсультации" localidСиноним="Консультация, связанная с заключением" Множественное="*Истина">
+				<!-- R [1..1]-->
+				<act classCode="ACT" moodCode="EVN">
+					<!-- R [1..1] Вид документа -->
+					<code localid="СвязанныйДокументКонсультации.ВидДокумента" code="#code" codeSystem="#codesystem" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [0..1] Примечание к документу -->
+					<text>%СвязанныйДокументКонсультации.Описание</text>
+					<!-- R [1..1] Дата формирования документа -->
+					<effectiveTime Формат="ДФ=ггггММдд" value="%СвязанныйДокументКонсультации.Дата"/>
+					<!-- R [1..1] Ссылка на внешний документ -->
+					<reference typeCode="REFR">
+						<!-- R [1..1]-->
+						<externalDocument classCode="DOCCLIN" moodCode="EVN">
+							<!-- [1..1] Уникальный идентификатор документа в МИС -->
+							<id ПустоеЗначение="NI" root="%Организация$СвязанныйДокумент" extension="%СвязанныйДокументКонсультации.ИдентификаторМИС"/>
+							<!-- [1..1] Уникальный идентификатор документа в РЭМД -->
+							<id ПустоеЗначение="NI" root="1.2.643.5.1.13.13.17.1.1" extension="%СвязанныйДокументКонсультации.ИдентификаторРЭМД"/>
+						</externalDocument>
+					</reference>
+				</act>
+			</entry>
+			<!-- R [1..*] Сведения о связанном документе -->
+			<entry ТипДанных="ДокументСсылка.Прием" localid="СвязанныйДокументЛабИсследования" localidСиноним="Лабораторное исследование, связанное с заключением" Множественное="*Истина">
+				<!-- R [1..1]-->
+				<act classCode="ACT" moodCode="EVN">
+					<!-- R [1..1] Вид документа -->
+					<code localid="СвязанныйДокументЛабИсследования.ВидДокумента" code="#code" codeSystem="#codesystem" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [0..1] Примечание к документу -->
+					<text>%СвязанныйДокументЛабИсследования.Описание</text>
+					<!-- R [1..1] Дата формирования документа -->
+					<effectiveTime Формат="ДФ=ггггММдд" value="%СвязанныйДокументЛабИсследования.Дата"/>
+					<!-- R [1..1] Ссылка на внешний документ -->
+					<reference typeCode="REFR">
+						<!-- R [1..1]-->
+						<externalDocument classCode="DOCCLIN" moodCode="EVN">
+							<!-- [1..1] Уникальный идентификатор документа в МИС -->
+							<id ПустоеЗначение="NI" root="%Организация$СвязанныйДокумент" extension="%СвязанныйДокументЛабИсследования.ИдентификаторМИС"/>
+							<!-- [1..1] Уникальный идентификатор документа в РЭМД -->
+							<id ПустоеЗначение="NI" root="1.2.643.5.1.13.13.17.1.1" extension="%СвязанныйДокументЛабИсследования.ИдентификаторРЭМД"/>
+						</externalDocument>
+					</reference>
+				</act>
+			</entry>
+			<entry ТипДанных="ДокументСсылка.Прием" localid="СвязанныйДокументИнстрИсследования" localidСиноним="Инструментальное исследование, связанное с заключением" Множественное="*Истина" Обязательное="*Ложь">
+				<!-- R [1..1]-->
+				<act classCode="ACT" moodCode="EVN">
+					<!-- R [1..1] Вид документа -->
+					<code localid="СвязанныйДокументИнстрИсследования.ВидДокумента" code="#code" codeSystem="#codesystem" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [0..1] Примечание к документу -->
+					<text>%СвязанныйДокументИнстрИсследования.Описание</text>
+					<!-- R [1..1] Дата формирования документа -->
+					<effectiveTime Формат="ДФ=ггггММдд" value="%СвязанныйДокументИнстрИсследования.Дата"/>
+					<!-- R [1..1] Ссылка на внешний документ -->
+					<reference typeCode="REFR">
+						<!-- R [1..1]-->
+						<externalDocument classCode="DOCCLIN" moodCode="EVN">
+							<!-- [1..1] Уникальный идентификатор документа в МИС -->
+							<id ПустоеЗначение="NI" root="%Организация$СвязанныйДокумент" extension="%СвязанныйДокументИнстрИсследования.ИдентификаторМИС"/>
+							<!-- [1..1] Уникальный идентификатор документа в РЭМД -->
+							<id ПустоеЗначение="NI" root="1.2.643.5.1.13.13.17.1.1" extension="%СвязанныйДокументИнстрИсследования.ИдентификаторРЭМД"/>
+						</externalDocument>
+					</reference>
+				</act>
+			</entry>
+			<!-- [0..*] Сведения о связанном документе -->
+			<entry ТипДанных="ДокументСсылка.Прием" localid="СвязанныйДокумент" Множественное="*Истина" Обязательное="*Ложь">
+				<!-- R [1..1]-->
+				<act classCode="ACT" moodCode="EVN">
+					<!-- R [1..1] Вид документа -->
+					<code localid="СвязанныйДокумент.ВидДокумента" code="#code" codeSystem="#codesystem" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [0..1] Примечание к документу -->
+					<text>%СвязанныйДокумент.Описание</text>
+					<!-- R [1..1] Дата формирования документа -->
+					<effectiveTime Формат="ДФ=ггггММдд" value="%СвязанныйДокумент.Дата"/>
+					<!-- R [1..1] Ссылка на внешний документ -->
+					<reference typeCode="REFR">
+						<!-- R [1..1]-->
+						<externalDocument classCode="DOCCLIN" moodCode="EVN">
+							<!-- [1..1] Уникальный идентификатор документа в МИС -->
+							<id ПустоеЗначение="NI" root="%Организация$СвязанныйДокумент" extension="%СвязанныйДокумент.ИдентификаторМИС"/>
+							<!-- [1..1] Уникальный идентификатор документа в РЭМД -->
+							<id ПустоеЗначение="NI" root="1.2.643.5.1.13.13.17.1.1" extension="%СвязанныйДокумент.ИдентификаторРЭМД"/>
+						</externalDocument>
+					</reference>
+				</act>
+			</entry>
+		</section>
+	</component>
+</Items>

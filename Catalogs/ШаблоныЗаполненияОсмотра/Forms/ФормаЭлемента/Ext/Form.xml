@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnWriteAtServer">ПриЗаписиНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаНаименованиеКод" id="22">
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНаименованиеКодРасширеннаяПодсказка" id="23"/>
+			<ChildItems>
+				<InputField name="Наименование" id="3">
+					<DataPath>Объект.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>40</Width>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="24"/>
+				</InputField>
+				<InputField name="Код" id="1">
+					<DataPath>Объект.Code</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<SkipOnInput>true</SkipOnInput>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="25"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Родитель" id="7">
+			<DataPath>Объект.Parent</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа</v8:content>
+				</v8:item>
+			</Title>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<DropListButton>false</DropListButton>
+			<ChoiceButton>true</ChoiceButton>
+			<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+			<ContextMenu name="РодительКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="РодительРасширеннаяПодсказка" id="26"/>
+		</InputField>
+		<InputField name="омг_ВрачВладелец" id="73">
+			<DataPath>Объект.омг_ВрачВладелец</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Врач (владелец шаблона)</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="омг_ВрачВладелецКонтекстноеМеню" id="74"/>
+			<ExtendedTooltip name="омг_ВрачВладелецРасширеннаяПодсказка" id="75"/>
+		</InputField>
+		<UsualGroup name="ГруппаВладелец" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа владелец</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа владелец</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаВладелецРасширеннаяПодсказка" id="27"/>
+			<ChildItems>
+				<InputField name="Владелец" id="5">
+					<DataPath>Объект.Owner</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Шаблон осмотра</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<DropListButton>false</DropListButton>
+					<ChoiceButton>true</ChoiceButton>
+					<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+					<ContextMenu name="ВладелецКонтекстноеМеню" id="6"/>
+					<ExtendedTooltip name="ВладелецРасширеннаяПодсказка" id="28"/>
+				</InputField>
+				<Button name="ПерезполнитьПараметры" id="19">
+					<Type>UsualButton</Type>
+					<Representation>Picture</Representation>
+					<CommandName>Form.Command.ПерезполнитьПараметры</CommandName>
+					<Picture>
+						<xr:Ref>StdPicture.Refresh</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="ПерезполнитьПараметрыРасширеннаяПодсказка" id="29"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ЗначенияЗаполнения" id="9">
+			<Representation>List</Representation>
+			<Width>45</Width>
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Объект.ЗначенияЗаполнения</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ЗначенияЗаполненияКонтекстноеМеню" id="10"/>
+			<AutoCommandBar name="ЗначенияЗаполненияКоманднаяПанель" id="11"/>
+			<ExtendedTooltip name="ЗначенияЗаполненияРасширеннаяПодсказка" id="30"/>
+			<SearchStringAddition name="ЗначенияЗаполненияСтрокаПоиска" id="31">
+				<AdditionSource>
+					<Item>ЗначенияЗаполнения</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ЗначенияЗаполненияСтрокаПоискаКонтекстноеМеню" id="32"/>
+				<ExtendedTooltip name="ЗначенияЗаполненияСтрокаПоискаРасширеннаяПодсказка" id="33"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ЗначенияЗаполненияСостояниеПросмотра" id="34">
+				<AdditionSource>
+					<Item>ЗначенияЗаполнения</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ЗначенияЗаполненияСостояниеПросмотраКонтекстноеМеню" id="35"/>
+				<ExtendedTooltip name="ЗначенияЗаполненияСостояниеПросмотраРасширеннаяПодсказка" id="36"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ЗначенияЗаполненияУправлениеПоиском" id="37">
+				<AdditionSource>
+					<Item>ЗначенияЗаполнения</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ЗначенияЗаполненияУправлениеПоискомКонтекстноеМеню" id="38"/>
+				<ExtendedTooltip name="ЗначенияЗаполненияУправлениеПоискомРасширеннаяПодсказка" id="39"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="OnActivateRow">ЗначенияЗаполненияПриАктивизацииСтроки</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="ЗначенияЗаполненияНомерСтроки" id="12">
+					<DataPath>Объект.ЗначенияЗаполнения.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ЗначенияЗаполненияНомерСтрокиКонтекстноеМеню" id="13"/>
+					<ExtendedTooltip name="ЗначенияЗаполненияНомерСтрокиРасширеннаяПодсказка" id="40"/>
+				</LabelField>
+				<InputField name="ЗначенияЗаполненияПараметр" id="14">
+					<DataPath>Объект.ЗначенияЗаполнения.Параметр</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>15</Width>
+					<ChoiceButton>true</ChoiceButton>
+					<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+					<ContextMenu name="ЗначенияЗаполненияПараметрКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="ЗначенияЗаполненияПараметрРасширеннаяПодсказка" id="41"/>
+					<Events>
+						<Event name="OnChange">ЗначенияЗаполненияПараметрПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="ГруппаЗначенияЗаполненияТаблиц" id="71">
+			<Visible>false</Visible>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Значения заполнения таблиц</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа значения заполнения таблиц</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>HorizontalIfPossible</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<Representation>WeakSeparation</Representation>
+			<ExtendedTooltip name="ГруппаЗначенияЗаполненияТаблицРасширеннаяПодсказка" id="72"/>
+			<ChildItems>
+				<Table name="ЗначенияЗаполненияТаблиц" id="43">
+					<RowSelectionMode>Cell</RowSelectionMode>
+					<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>Объект.ЗначенияЗаполненияТаблиц</DataPath>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ЗначенияЗаполненияТаблицКонтекстноеМеню" id="44"/>
+					<AutoCommandBar name="ЗначенияЗаполненияТаблицКоманднаяПанель" id="45"/>
+					<ExtendedTooltip name="ЗначенияЗаполненияТаблицРасширеннаяПодсказка" id="46"/>
+					<SearchStringAddition name="ЗначенияЗаполненияТаблицСтрокаПоиска" id="47">
+						<AdditionSource>
+							<Item>ЗначенияЗаполненияТаблиц</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ЗначенияЗаполненияТаблицСтрокаПоискаКонтекстноеМеню" id="48"/>
+						<ExtendedTooltip name="ЗначенияЗаполненияТаблицСтрокаПоискаРасширеннаяПодсказка" id="49"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ЗначенияЗаполненияТаблицСостояниеПросмотра" id="50">
+						<AdditionSource>
+							<Item>ЗначенияЗаполненияТаблиц</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ЗначенияЗаполненияТаблицСостояниеПросмотраКонтекстноеМеню" id="51"/>
+						<ExtendedTooltip name="ЗначенияЗаполненияТаблицСостояниеПросмотраРасширеннаяПодсказка" id="52"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ЗначенияЗаполненияТаблицУправлениеПоиском" id="53">
+						<AdditionSource>
+							<Item>ЗначенияЗаполненияТаблиц</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ЗначенияЗаполненияТаблицУправлениеПоискомКонтекстноеМеню" id="54"/>
+						<ExtendedTooltip name="ЗначенияЗаполненияТаблицУправлениеПоискомРасширеннаяПодсказка" id="55"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<LabelField name="ЗначенияЗаполненияТаблицНомерСтроки" id="56">
+							<DataPath>Объект.ЗначенияЗаполненияТаблиц.LineNumber</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ЗначенияЗаполненияТаблицНомерСтрокиКонтекстноеМеню" id="57"/>
+							<ExtendedTooltip name="ЗначенияЗаполненияТаблицНомерСтрокиРасширеннаяПодсказка" id="58"/>
+						</LabelField>
+						<InputField name="ЗначенияЗаполненияТаблицПараметр" id="59">
+							<DataPath>Объект.ЗначенияЗаполненияТаблиц.Параметр</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ЗначенияЗаполненияТаблицПараметрКонтекстноеМеню" id="60"/>
+							<ExtendedTooltip name="ЗначенияЗаполненияТаблицПараметрРасширеннаяПодсказка" id="61"/>
+						</InputField>
+						<InputField name="ЗначенияЗаполненияТаблицЗначение" id="62">
+							<DataPath>Объект.ЗначенияЗаполненияТаблиц.Значение</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Значение</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ЗначенияЗаполненияТаблицЗначениеКонтекстноеМеню" id="63"/>
+							<ExtendedTooltip name="ЗначенияЗаполненияТаблицЗначениеРасширеннаяПодсказка" id="64"/>
+							<Events>
+								<Event name="StartChoice">ЗначенияЗаполненияТаблицЗначениеНачалоВыбора</Event>
+							</Events>
+						</InputField>
+						<InputField name="ЗначенияЗаполненияТаблицТаблица" id="65">
+							<DataPath>Объект.ЗначенияЗаполненияТаблиц.ТаблицаШаблонов</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ЗначенияЗаполненияТаблицТаблицаКонтекстноеМеню" id="66"/>
+							<ExtendedTooltip name="ЗначенияЗаполненияТаблицТаблицаРасширеннаяПодсказка" id="67"/>
+						</InputField>
+						<InputField name="ЗначенияЗаполненияТаблицНомерСтрокиТаблицы" id="68">
+							<DataPath>Объект.ЗначенияЗаполненияТаблиц.НомерСтрокиТаблицы</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="ЗначенияЗаполненияТаблицНомерСтрокиТаблицыКонтекстноеМеню" id="69"/>
+							<ExtendedTooltip name="ЗначенияЗаполненияТаблицНомерСтрокиТаблицыРасширеннаяПодсказка" id="70"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ШаблоныЗаполненияОсмотра</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<Columns>
+				<AdditionalColumns table="Объект.ЗначенияЗаполнения"/>
+				<AdditionalColumns table="Объект.ЗначенияЗаполненияТаблиц">
+					<Column name="ЗначениеНаФорме" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Значение на форме</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+							<v8:Type>xs:boolean</v8:Type>
+							<v8:Type>cfg:CatalogRef.Клиенты</v8:Type>
+							<v8:Type>cfg:CatalogRef.Филиалы</v8:Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:Type>cfg:CatalogRef.Сотрудники</v8:Type>
+							<v8:Type>xs:dateTime</v8:Type>
+							<v8:Type>cfg:CatalogRef.КатегорииВыработки</v8:Type>
+							<v8:Type>cfg:CatalogRef.ДополнительныеЗначенияХарактеристик</v8:Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>15</v8:Digits>
+								<v8:FractionDigits>6</v8:FractionDigits>
+								<v8:AllowedSign>Any</v8:AllowedSign>
+							</v8:NumberQualifiers>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+							<v8:DateQualifiers>
+								<v8:DateFractions>Date</v8:DateFractions>
+							</v8:DateQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПерезполнитьПараметры" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перезаполнить параметры</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перезаполнить параметры</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПерезаполнитьПараметры</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

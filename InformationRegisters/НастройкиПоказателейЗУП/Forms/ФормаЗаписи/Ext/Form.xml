@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Сотрудник" id="1">
+			<DataPath>Запись.Сотрудник</DataPath>
+			<ContextMenu name="СотрудникКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="СотрудникExtendedTooltip" id="24"/>
+		</InputField>
+		<InputField name="ПоказательЗУП" id="4">
+			<DataPath>Запись.ПоказательЗУП</DataPath>
+			<ContextMenu name="ПоказательЗУПКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ПоказательЗУПExtendedTooltip" id="25"/>
+			<Events>
+				<Event name="OnChange">ПоказательЗУППриИзменении</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="ГруппаПериод" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПериодРасширеннаяПодсказка" id="35"/>
+			<ChildItems>
+				<InputField name="ДатаНачала" id="19">
+					<DataPath>Запись.ДатаНачала</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Действует с</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДатаНачалаКонтекстноеМеню" id="20"/>
+					<ExtendedTooltip name="ДатаНачалаExtendedTooltip" id="30"/>
+				</InputField>
+				<InputField name="ДатаОкончания" id="22">
+					<DataPath>Запись.ДатаОкончания</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>по</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ДатаОкончанияКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="ДатаОкончанияExtendedTooltip" id="31"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПараметрыВычисления" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры вычисления значения показателя</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры вычисления значения показателя</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>HorizontalIfPossible</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>WeakSeparation</Representation>
+			<ExtendedTooltip name="ГруппаПараметрыВычисленияРасширеннаяПодсказка" id="33"/>
+			<ChildItems>
+				<InputField name="ВидРасчета" id="10">
+					<DataPath>Запись.ВидПараметра</DataPath>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ВидыПараметровРасчетаНачислений.EnumValue.КатегорияВыработки</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ВидыПараметровРасчетаНачислений.EnumValue.ВсеУслуги</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ВидыПараметровРасчетаНачислений.EnumValue.ВсеТовары</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ВидыПараметровРасчетаНачислений.EnumValue.ДанныеТабеля</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="ВидРасчетаКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="ВидРасчетаExtendedTooltip" id="27"/>
+					<Events>
+						<Event name="OnChange">ВидРасчетаПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ПоказательРасчета" id="13">
+					<DataPath>Запись.ПоказательРасчета</DataPath>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ContextMenu name="ПоказательРасчетаКонтекстноеМеню" id="14"/>
+					<ExtendedTooltip name="ПоказательРасчетаExtendedTooltip" id="28"/>
+				</InputField>
+				<InputField name="ЗначениеПараметра" id="16">
+					<DataPath>Запись.ЗначениеПараметра</DataPath>
+					<ContextMenu name="ЗначениеПараметраКонтекстноеМеню" id="17"/>
+					<ExtendedTooltip name="ЗначениеПараметраExtendedTooltip" id="29"/>
+				</InputField>
+				<InputField name="ФормаУчастия" id="7">
+					<DataPath>Запись.ФормаУчастия</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>По форме участия</v8:content>
+						</v8:item>
+					</Title>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основной исполнитель</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="ФормаУчастияКонтекстноеМеню" id="8"/>
+					<ExtendedTooltip name="ФормаУчастияExtendedTooltip" id="26"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Запись" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.НастройкиПоказателейЗУП</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

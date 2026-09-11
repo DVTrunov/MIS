@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Диагноз</dataPath>
+			<field>Диагноз</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>До14</dataPath>
+			<field>До14</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>С15По17</dataPath>
+			<field>С15По17</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>С18</dataPath>
+			<field>С18</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>До14Впервые</dataPath>
+			<field>До14Впервые</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>С15По17Впервые</dataPath>
+			<field>С15По17Впервые</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>С18Впервые</dataPath>
+			<field>С18Впервые</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>С15По17ВпервыеЮноши</dataPath>
+			<field>С15По17ВпервыеЮноши</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>С15По17Юноши</dataPath>
+			<field>С15По17Юноши</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ДиагнозыРегистр.Диагноз,
+	ЕСТЬNULL(ВЫБОР
+			КОГДА ДиагнозыРегистр.Возраст &lt; 14
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ, 0) КАК До14,
+	ЕСТЬNULL(ВЫБОР
+			КОГДА ДиагнозыРегистр.Возраст &gt; 14
+					И ДиагнозыРегистр.Возраст &lt;= 17
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ, 0) КАК С15По17,
+	ЕСТЬNULL(ВЫБОР
+			КОГДА ДиагнозыРегистр.Возраст &gt; 17
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ, 0) КАК С18,
+	ЕСТЬNULL(ВЫБОР
+			КОГДА ДиагнозыРегистр.Возраст &lt; 14
+					И ДиагнозыРегистр.ВыявленВпервые
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ, 0) КАК До14Впервые,
+	ЕСТЬNULL(ВЫБОР
+			КОГДА ДиагнозыРегистр.Возраст &gt; 14
+					И ДиагнозыРегистр.Возраст &lt;= 17
+					И ДиагнозыРегистр.ВыявленВпервые
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ, 0) КАК С15По17Впервые,
+	ЕСТЬNULL(ВЫБОР
+			КОГДА ДиагнозыРегистр.Возраст &gt; 17
+					И ДиагнозыРегистр.ВыявленВпервые
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ, 0) КАК С18Впервые,
+	ЕСТЬNULL(ВЫБОР
+			КОГДА ДиагнозыРегистр.Возраст &gt; 14
+					И ДиагнозыРегистр.Возраст &lt;= 17
+					И ДиагнозыРегистр.Клиент.Пол = ЗНАЧЕНИЕ(Перечисление.ПолФизическихЛиц.Мужской)
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ, 0) КАК С15По17Юноши,
+	ЕСТЬNULL(ВЫБОР
+			КОГДА ДиагнозыРегистр.Возраст &gt; 14
+					И ДиагнозыРегистр.Возраст &lt;= 17
+					И ДиагнозыРегистр.ВыявленВпервые
+					И ДиагнозыРегистр.Клиент.Пол = ЗНАЧЕНИЕ(Перечисление.ПолФизическихЛиц.Мужской)
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ, 0) КАК С15По17ВпервыеЮноши
+ИЗ
+	(ВЫБРАТЬ
+		Диагнозы.Диагноз КАК Диагноз,
+		Диагнозы.ВыявленВпервые КАК ВыявленВпервые,
+		РАЗНОСТЬДАТ(Диагнозы.Регистратор.Клиент.ДатаРождения, Диагнозы.Период, ГОД) - ВЫБОР
+			КОГДА ДЕНЬГОДА(Диагнозы.Регистратор.Клиент.ДатаРождения) &gt;= ДЕНЬГОДА(Диагнозы.Период)
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ КАК Возраст,
+		Диагнозы.Регистратор.Клиент КАК Клиент
+	ИЗ
+		РегистрСведений.Диагнозы КАК Диагнозы
+	{ГДЕ
+		(Диагнозы.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)}
+	
+	СГРУППИРОВАТЬ ПО
+		Диагнозы.Диагноз,
+		Диагнозы.ВыявленВпервые,
+		Диагнозы.Регистратор.Клиент,
+		РАЗНОСТЬДАТ(Диагнозы.Регистратор.Клиент.ДатаРождения, Диагнозы.Период, ГОД) - ВЫБОР
+			КОГДА ДЕНЬГОДА(Диагнозы.Регистратор.Клиент.ДатаРождения) &gt;= ДЕНЬГОДА(Диагнозы.Период)
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ) КАК ДиагнозыРегистр</query>
+	</dataSet>
+	<totalField>
+		<dataPath>До14</dataPath>
+		<expression>Сумма(До14)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>С15По17</dataPath>
+		<expression>Сумма(С15По17)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>С18</dataPath>
+		<expression>Сумма(С18)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>С15По17Впервые</dataPath>
+		<expression>Сумма(С15По17Впервые)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>С18Впервые</dataPath>
+		<expression>Сумма(С18Впервые)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>До14Впервые</dataPath>
+		<expression>Сумма(До14Впервые)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>С15По17Юноши</dataPath>
+		<expression>Сумма(С15По17Юноши)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>С15По17ВпервыеЮноши</dataPath>
+		<expression>Сумма(С15По17ВпервыеЮноши)</expression>
+	</totalField>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>КонецПериода(&amp;Период.ДатаОкончания, "День")</expression>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>До14</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>До14Впервые</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>С15По17</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>С15По17Впервые</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>С15По17ВпервыеЮноши</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>С15По17Юноши</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>С18</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>С18Впервые</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>8fbb58e0-4a59-4973-8428-1bd057758309</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Диагноз.КодДиагноза</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Диагноз</dcsset:field>
+						<dcsset:groupType>Hierarchy</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Диагноз.КодДиагноза</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

@@ -1,0 +1,885 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<ChildItemsWidth>LeftWide</ChildItemsWidth>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Popup name="КомандыОбменСФСС" id="137">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Обмен с ФСС</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="КомандыОбменСФССРасширеннаяПодсказка" id="138"/>
+				<ChildItems>
+					<Button name="ФормаЗапроситьЭЛНИзФСС" id="128">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ЗапроситьЭЛНИзФСС</CommandName>
+						<ExtendedTooltip name="ФормаЗапроситьЭЛНИзФССРасширеннаяПодсказка" id="129"/>
+					</Button>
+					<Button name="ФормаПолучитьСписокПоследнихЭЛН" id="139">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ПолучитьСписокПоследнихЭЛН</CommandName>
+						<ExtendedTooltip name="ФормаПолучитьСписокПоследнихЭЛНРасширеннаяПодсказка" id="140"/>
+					</Button>
+					<ButtonGroup name="КомандыФССКонтроль" id="143">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Команды ФССКонтроль</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="КомандыФССКонтрольРасширеннаяПодсказка" id="144"/>
+						<ChildItems>
+							<Button name="ФормаОткрытьФормуПросмотраОбмена" id="133">
+								<Type>CommandBarButton</Type>
+								<UserVisible>
+									<xr:Common>false</xr:Common>
+									<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+									<xr:Value name="Role.Врач">false</xr:Value>
+									<xr:Value name="Role.МедицинскаяСтатистика">true</xr:Value>
+								</UserVisible>
+								<CommandName>Form.Command.ОткрытьФормуКонтроляОбменаФСС</CommandName>
+								<ExtendedTooltip name="ФормаОткрытьФормуПросмотраОбменаРасширеннаяПодсказка" id="134"/>
+							</Button>
+							<Button name="ОткрытьПулНомеров" id="141">
+								<Type>CommandBarButton</Type>
+								<UserVisible>
+									<xr:Common>false</xr:Common>
+									<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+									<xr:Value name="Role.Врач">false</xr:Value>
+									<xr:Value name="Role.МедицинскаяСтатистика">false</xr:Value>
+								</UserVisible>
+								<CommandName>Form.Command.ОткрытьПулНомеров</CommandName>
+								<ExtendedTooltip name="ОткрытьПулНомеровРасширеннаяПодсказка" id="142"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<ButtonGroup name="КомандыСвязьСФСС" id="162">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Команды связь С ФСС</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Команды связь СФСС</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="КомандыСвязьСФССРасширеннаяПодсказка" id="163"/>
+						<ChildItems>
+							<Button name="ФормаПроверитьСвязьСФСС" id="164">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ПроверитьСвязьСФСС</CommandName>
+								<ExtendedTooltip name="ФормаПроверитьСвязьСФССРасширеннаяПодсказка" id="165"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+				</ChildItems>
+			</Popup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаОсновныеДанные" id="70">
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОсновныеДанныеExtendedTooltip" id="91"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаГлавнаяТаблица" id="29">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа главная таблица</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа главная таблица</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаГлавнаяТаблицаExtendedTooltip" id="92"/>
+					<ChildItems>
+						<Table name="Список" id="1">
+							<Representation>List</Representation>
+							<CommandBarLocation>None</CommandBarLocation>
+							<DefaultItem>true</DefaultItem>
+							<Height>15</Height>
+							<SelectionMode>SingleRow</SelectionMode>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<InitialTreeView>ExpandTopLevel</InitialTreeView>
+							<EnableStartDrag>true</EnableStartDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Список</DataPath>
+							<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
+							<AutoCommandBar name="СписокКоманднаяПанель" id="3">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокExtendedTooltip" id="93"/>
+							<SearchStringAddition name="СписокSearchString" id="94">
+								<AdditionSource>
+									<Item>Список</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокSearchStringContextMenu" id="95"/>
+								<ExtendedTooltip name="СписокSearchStringExtendedTooltip" id="96"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокViewStatus" id="97">
+								<AdditionSource>
+									<Item>Список</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокViewStatusContextMenu" id="98"/>
+								<ExtendedTooltip name="СписокViewStatusExtendedTooltip" id="99"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокSearchControl" id="100">
+								<AdditionSource>
+									<Item>Список</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокSearchControlContextMenu" id="101"/>
+								<ExtendedTooltip name="СписокSearchControlExtendedTooltip" id="102"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="Ссылка" id="130">
+									<DataPath>Список.Ref</DataPath>
+									<Visible>false</Visible>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Наименование</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="СсылкаКонтекстноеМеню" id="131"/>
+									<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="132"/>
+								</LabelField>
+								<LabelField name="Дата" id="4">
+									<DataPath>Список.Date</DataPath>
+									<DefaultItem>true</DefaultItem>
+									<Width>14</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+									<ExtendedTooltip name="ДатаExtendedTooltip" id="103"/>
+								</LabelField>
+								<LabelField name="Номер" id="6">
+									<DataPath>Список.Number</DataPath>
+									<Width>12</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="НомерКонтекстноеМеню" id="7"/>
+									<ExtendedTooltip name="НомерExtendedTooltip" id="104"/>
+								</LabelField>
+								<LabelField name="СледующийЛН" id="148">
+									<DataPath>Список.СледующийЛН</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Следующий ЛН</v8:content>
+										</v8:item>
+									</Title>
+									<Width>12</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="СледующийЛНКонтекстноеМеню" id="149"/>
+									<ExtendedTooltip name="СледующийЛНРасширеннаяПодсказка" id="150"/>
+								</LabelField>
+								<LabelField name="ФИО" id="8">
+									<DataPath>Список.Клиент</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пациент</v8:content>
+										</v8:item>
+									</Title>
+									<Width>20</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ФИОКонтекстноеМеню" id="9"/>
+									<ExtendedTooltip name="ФИОExtendedTooltip" id="106"/>
+								</LabelField>
+								<LabelField name="ЛПУОГРН" id="145">
+									<DataPath>Список.ЛПУОГРН</DataPath>
+									<Width>14</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ЛПУОГРНКонтекстноеМеню" id="146"/>
+									<ExtendedTooltip name="ЛПУОГРНРасширеннаяПодсказка" id="147"/>
+								</LabelField>
+								<ColumnGroup name="ДатыЗакрытия" id="151">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Даты закрытия</v8:content>
+										</v8:item>
+									</Title>
+									<Group>InCell</Group>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="ДатыЗакрытияРасширеннаяПодсказка" id="152"/>
+									<ChildItems>
+										<LabelField name="ДатаНачалаРаботы" id="159">
+											<DataPath>Список.ДатаНачалаРаботы</DataPath>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ДатаНачалаРаботыКонтекстноеМеню" id="160"/>
+											<ExtendedTooltip name="ДатаНачалаРаботыРасширеннаяПодсказка" id="161"/>
+										</LabelField>
+										<LabelField name="ДатаУстановленияСтатуса" id="153">
+											<DataPath>Список.ДатаУстановленияСтатуса</DataPath>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ДатаУстановленияСтатусаКонтекстноеМеню" id="154"/>
+											<ExtendedTooltip name="ДатаУстановленияСтатусаРасширеннаяПодсказка" id="155"/>
+										</LabelField>
+										<LabelField name="ДатаНарушенияРежима" id="156">
+											<DataPath>Список.ДатаНарушенияРежима</DataPath>
+											<ShowInHeader>false</ShowInHeader>
+											<ContextMenu name="ДатаНарушенияРежимаКонтекстноеМеню" id="157"/>
+											<ExtendedTooltip name="ДатаНарушенияРежимаРасширеннаяПодсказка" id="158"/>
+										</LabelField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПодчиненнаяТаблица" id="30">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Созданные на основании:</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа подчиненная таблица</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>WeakSeparation</Representation>
+					<ExtendedTooltip name="ГруппаПодчиненнаяТаблицаExtendedTooltip" id="109"/>
+					<ChildItems>
+						<Table name="ПодчиненныйСписок" id="31">
+							<Height>6</Height>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<EnableStartDrag>true</EnableStartDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>ПодчиненныйСписок</DataPath>
+							<RowPictureDataPath>~ПодчиненныйСписок.DefaultPicture</RowPictureDataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="ПодчиненныйСписокКонтекстноеМеню" id="32"/>
+							<AutoCommandBar name="ПодчиненныйСписокКоманднаяПанель" id="33"/>
+							<ExtendedTooltip name="ПодчиненныйСписокExtendedTooltip" id="110"/>
+							<SearchStringAddition name="ПодчиненныйСписокSearchString" id="111">
+								<AdditionSource>
+									<Item>ПодчиненныйСписок</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПодчиненныйСписокSearchStringContextMenu" id="112"/>
+								<ExtendedTooltip name="ПодчиненныйСписокSearchStringExtendedTooltip" id="113"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ПодчиненныйСписокViewStatus" id="114">
+								<AdditionSource>
+									<Item>ПодчиненныйСписок</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПодчиненныйСписокViewStatusContextMenu" id="115"/>
+								<ExtendedTooltip name="ПодчиненныйСписокViewStatusExtendedTooltip" id="116"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ПодчиненныйСписокSearchControl" id="117">
+								<AdditionSource>
+									<Item>ПодчиненныйСписок</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ПодчиненныйСписокSearchControlContextMenu" id="118"/>
+								<ExtendedTooltip name="ПодчиненныйСписокSearchControlExtendedTooltip" id="119"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ПодчиненныйСписокДата" id="34">
+									<DataPath>ПодчиненныйСписок.Date</DataPath>
+									<Width>15</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ПодчиненныйСписокДатаКонтекстноеМеню" id="35"/>
+									<ExtendedTooltip name="ПодчиненныйСписокДатаExtendedTooltip" id="120"/>
+								</LabelField>
+								<LabelField name="ПодчиненныйСписокНомер" id="36">
+									<DataPath>ПодчиненныйСписок.Number</DataPath>
+									<Width>12</Width>
+									<ContextMenu name="ПодчиненныйСписокНомерКонтекстноеМеню" id="37"/>
+									<ExtendedTooltip name="ПодчиненныйСписокНомерExtendedTooltip" id="121"/>
+								</LabelField>
+								<LabelField name="ПодчиненныйСписокНомерЛистка" id="89">
+									<DataPath>~ПодчиненныйСписок.НомерЛистка</DataPath>
+									<Width>12</Width>
+									<Format>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ЧЦ=12; ЧВН=</v8:content>
+										</v8:item>
+									</Format>
+									<ContextMenu name="ПодчиненныйСписокНомерЛисткаКонтекстноеМеню" id="90"/>
+									<ExtendedTooltip name="ПодчиненныйСписокНомерЛисткаExtendedTooltip" id="122"/>
+								</LabelField>
+								<LabelField name="ПодчиненныйСписокФИО" id="48">
+									<DataPath>ПодчиненныйСписок.ФИО</DataPath>
+									<Width>20</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ПодчиненныйСписокФИОКонтекстноеМеню" id="49"/>
+									<ExtendedTooltip name="ПодчиненныйСписокФИОExtendedTooltip" id="123"/>
+								</LabelField>
+								<PictureField name="ПодчиненныйСписокКартинкаСтатуса" id="42">
+									<DataPath>~ПодчиненныйСписок.КартинкаСтатуса</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content> </v8:content>
+										</v8:item>
+									</Title>
+									<Width>2</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<FileDragMode>AsFile</FileDragMode>
+									<ContextMenu name="ПодчиненныйСписокКартинкаСтатусаКонтекстноеМеню" id="43"/>
+									<ExtendedTooltip name="ПодчиненныйСписокКартинкаСтатусаExtendedTooltip" id="124"/>
+								</PictureField>
+								<LabelField name="ПодчиненныйСписокСтатус" id="66">
+									<DataPath>ПодчиненныйСписок.Статус</DataPath>
+									<ContextMenu name="ПодчиненныйСписокСтатусКонтекстноеМеню" id="67"/>
+									<ExtendedTooltip name="ПодчиненныйСписокСтатусExtendedTooltip" id="125"/>
+								</LabelField>
+								<LabelField name="ПодчиненныйСписокТипЛН" id="72">
+									<DataPath>ПодчиненныйСписок.ТипЛН</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Тип</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ПодчиненныйСписокТипЛНКонтекстноеМеню" id="73"/>
+									<ExtendedTooltip name="ПодчиненныйСписокТипЛНExtendedTooltip" id="126"/>
+								</LabelField>
+								<LabelField name="ПодчиненныйСписокПоМестуРаботы" id="74">
+									<DataPath>ПодчиненныйСписок.ПоМестуРаботы</DataPath>
+									<ContextMenu name="ПодчиненныйСписокПоМестуРаботыКонтекстноеМеню" id="75"/>
+									<ExtendedTooltip name="ПодчиненныйСписокПоМестуРаботыExtendedTooltip" id="127"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Список" id="1">
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.Ref</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>Document.ЛистокНетрудоспособности</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Дубликат</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Шрифт</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="false" underline="true" strikeout="false" kind="WindowsFont"/>
+								</dcscor:item>
+							</dcsset:appearance>
+							<dcsset:presentation xsi:type="xs:string">Дубликат</dcsset:presentation>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Первичный</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Шрифт</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="true" underline="false" strikeout="false" kind="WindowsFont"/>
+								</dcscor:item>
+							</dcsset:appearance>
+							<dcsset:presentation xsi:type="xs:string">Продолжение</dcsset:presentation>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ПодчиненныйСписок" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подчиненный список</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ЛН.Ссылка,
+	ЛН.Номер,
+	ЛН.Дата,
+	ЛН.МедицинскаяКарта.Клиент КАК ФИО,
+	ЛН.Первичный,
+	ЛН.Дубликат,
+	ЛН.МестоРаботыВидЗанятости,
+	ЛН.МедицинскаяКарта,
+	ВЫБОР
+		КОГДА ЛН.Дубликат
+				И НЕ ЛН.Первичный
+			ТОГДА "Продолжение (Дубликат)"
+		КОГДА ЛН.Дубликат
+			ТОГДА "Дубликат"
+		КОГДА ЛН.Первичный
+			ТОГДА "Первичный"
+		КОГДА НЕ ЛН.Первичный
+			ТОГДА "Продолжение"
+		ИНАЧЕ ""
+	КОНЕЦ КАК ТипЛН,
+	ВЫБОР
+		КОГДА ЛН.МестоРаботыВидЗанятости = 2
+			ТОГДА "Основное"
+		КОГДА ЛН.МестоРаботыВидЗанятости = 1
+			ТОГДА "По совместительству"
+		ИНАЧЕ ""
+	КОНЕЦ КАК ПоМестуРаботы,
+	ЛН.Статус
+ИЗ
+	Документ.ЛистокНетрудоспособности КАК ЛН
+ГДЕ
+	ЛН.ДокументОснование = &amp;ЛН
+	И &amp;ЛН &lt;&gt; ЗНАЧЕНИЕ(Документ.ЛистокНетрудоспособности.ПустаяСсылка)</QueryText>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Статус</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.СтатусыЛистковНетрудоспособности.Выдан</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>ЦветТекста</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">web:Green</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+							<dcsset:presentation xsi:type="xs:string">Выданные</dcsset:presentation>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Статус</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.СтатусыЛистковНетрудоспособности.Испорчен</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:use>false</dcscor:use>
+									<dcscor:parameter>ЦветТекста</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">web:IndianRed</dcscor:value>
+								</dcscor:item>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Шрифт</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="false" underline="false" strikeout="true" kind="WindowsFont"/>
+								</dcscor:item>
+							</dcsset:appearance>
+							<dcsset:presentation xsi:type="xs:string">Испорченные</dcsset:presentation>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Дубликат</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Шрифт</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="false" underline="true" strikeout="false" kind="WindowsFont"/>
+								</dcscor:item>
+							</dcsset:appearance>
+							<dcsset:presentation xsi:type="xs:string">Дубликат</dcsset:presentation>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Первичный</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Шрифт</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="false" italic="true" underline="false" strikeout="false" kind="WindowsFont"/>
+								</dcscor:item>
+							</dcsset:appearance>
+							<dcsset:presentation xsi:type="xs:string">Продолжение</dcsset:presentation>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">ПризнакМестаРаботы</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:decimal">1</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>ЦветТекста</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">style:FieldSelectionBackColor</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+							<dcsset:presentation xsi:type="xs:string">Место работы по совместительству</dcsset:presentation>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="Сообщение" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сообщение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="МедицинскаяКарта" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Медицинская карта</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.МедицинскиеКарты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДокументПустаяСсылка" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ пустая ссылка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.ЛистокНетрудоспособности</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОтборПоКарте" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отбор по карте</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="МедицинскийДокумент" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Медицинский документ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СообщениеДокументНеНайден" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сообщение документ не найден</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПредставителиМедицинскойКарты" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представители медицинской карты</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗапроситьЭЛНИзФСС" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запросить ЭЛН из ФСС</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запросить ЭЛНИз ФСС</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗапроситьЭЛНИзФСС</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ОткрытьФормуКонтроляОбменаФСС" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контроль обмена с ФСС</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть форму контроля обмена ФСС</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьФормуПросмотраОбмена</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ПолучитьСписокПоследнихЭЛН" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запросить незакрытый ЭЛН по СНИЛС</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запросить из списка ЭЛН по СНИЛС пациента за последний незакрытый страховой случай</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПолучитьСписокПоследнихЭЛН</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ОткрытьПулНомеров" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пулы номеров ЭЛН</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть список пулов номеров для электронных ЛН</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьПулНомеров</Action>
+		</Command>
+		<Command name="ПроверитьСвязьСФСС" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить связь с ФСС</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить связь СФСС</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПроверитьСвязьСФСС</Action>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="МедицинскийДокумент">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Parameter>
+	</Parameters>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>0:bb1a77d7-68cd-4433-b17f-d5818b2b4d14</Command>
+				<Type>Auto</Type>
+			</Item>
+			<Item>
+				<Command>0:9dbdb02c-11d8-46ae-ac44-6ed3e5e462f9</Command>
+				<Type>Auto</Type>
+				<Index>1</Index>
+			</Item>
+			<Item>
+				<Command>0:f4d31e0a-74b9-4905-806f-cc69162d0e94</Command>
+				<Type>Auto</Type>
+				<Index>2</Index>
+			</Item>
+			<Item>
+				<Command>0</Command>
+				<Type>Auto</Type>
+				<Index>8</Index>
+			</Item>
+			<Item>
+				<Command>0:1816cd28-1e05-472c-b122-fcc173e003a9</Command>
+				<Type>Auto</Type>
+				<Index>3</Index>
+			</Item>
+			<Item>
+				<Command>0:d41f9458-46f8-438e-b134-d172146f378f</Command>
+				<Type>Auto</Type>
+				<Index>4</Index>
+			</Item>
+			<Item>
+				<Command>0:b21b0b3b-072c-4877-9cdd-ba505af566f5</Command>
+				<Type>Auto</Type>
+				<Index>5</Index>
+			</Item>
+			<Item>
+				<Command>0:1f3d594f-db4d-48c7-86f5-930a48a79522</Command>
+				<Type>Auto</Type>
+				<Index>7</Index>
+			</Item>
+			<Item>
+				<Command>Document.ЛистокНетрудоспособности.Command.СоздатьЛНПродолжение</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<Index>1</Index>
+			</Item>
+			<Item>
+				<Command>Document.ЛистокНетрудоспособности.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>0:560c2af8-6fb2-42d0-8986-e885239cbc1f</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarCreateBasedOn</CommandGroup>
+				<Index>2</Index>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

@@ -1,0 +1,881 @@
+﻿<HTML><HEAD>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<META name=GENERATOR content="MSHTML 11.00.10570.1001"></HEAD>
+<script><<ИмяФайлаKonvaJS>></script>
+<BODY>
+	<div id="stage-parent">
+		<div align="left" id="container"></div>
+	</div>
+</BODY>
+<script>
+
+var additionalData = "";
+
+// Функция обновления параметров карты - выделение зубов, изменение координат и т.д.
+function updateCard(data) {
+	fireClick(undefined, {commandName: "update", data: data});
+}
+    	
+// Функция запроса данных для приложения
+function queryData(data) {
+	fireClick(undefined, {commandName: "querydata", data: data});
+}
+
+var tc;
+var selectMode = {ctrl: true, wctrl: false};
+
+function ToothCard(params)
+{
+	this.init = true;
+	this.stage = new Konva.Stage
+	({
+		container: 'container',
+	});
+	this.layer = new Konva.Layer();
+	this.stage.add(this.layer);
+	this.container = new Konva.Group();
+	this.layer.add(this.container);
+		
+	// Параметры зубов по умолчанию
+	this.toothConsts = 
+	{	
+		fill: 'white',
+		stroke: 'white',
+		strokeWidth: 2,
+		selectedFill: '#a8ecfd',
+		selectedStroke: 'white',
+		selectedStrokeWidth: 0
+	};
+		
+	// Параметры сегментов по умолчанию
+	this.segmentConsts = 
+	{
+		fill: 'white',
+		stroke: 'black',
+		strokeWidth: 1,
+		selectedFill: '#007fff',
+		selectedStroke: '#003f7f',
+		selectedStrokeWidth: 1
+	};
+		
+	this.selectMode = selectMode.ctrl;
+	this.elements = {};
+	this.selectedElements = {};
+	this.setParams(params);
+		
+	if (this.init) {
+		this.init = false;
+		if (this.container.getLayer()) {
+			this.container.draw();
+		}
+	}
+}	
+	
+ToothCard.prototype.setParams = function(paramsJSON)
+	{
+		var params = getObjectParams(paramsJSON);
+		
+		this.setSize(params);
+		
+		if (params.hasOwnProperty('elements')) {
+			this.setElements(params.elements);
+		}
+		
+		if (params.hasOwnProperty('selectWithCTRL')) {
+			this.selectMode = params.selectWithCTRL;
+		}
+		
+		if (params.hasOwnProperty('selectedElements')) {
+			this.setSelectedElements(params.selectedElements);
+		}
+	}
+	
+ToothCard.prototype.setSize = function(paramsJSON)
+	{
+		var params = getObjectParams(paramsJSON);
+		
+		var resized = false;
+		if (params.hasOwnProperty('width')) {
+			this.width = params.width;
+			resized = true;
+		}
+		if (params.hasOwnProperty('height')) {
+			this.height = params.height;
+			resized = true;
+		}
+		
+		if (resized && this.stage) 
+		{
+			this.stage.width(this.width);
+			this.stage.height(this.height);
+			fitStageIntoParentContainer();
+		}
+	}
+	
+ToothCard.prototype.setElements = function(elementsJSON)
+	{
+		var elements = getObjectParams(elementsJSON);
+		
+		for (var i = 0; i < elements.length; i++) 
+		{
+			var elParams = elements[i];
+			var operation = undefined;
+			var id = undefined;
+			
+			if (elParams.hasOwnProperty('operation')) operation = elParams.operation;
+			if (elParams.hasOwnProperty('id')) id = elParams.id;
+			
+			if (id == undefined) { 
+				if (operation == '-') {
+					this.removeElement();
+					this.init = true;
+				}
+				continue;
+			}
+			
+			if (operation == '-') {
+				this.removeElement(id);
+			}
+			else
+			{
+				var elExists = (this.elements.hasOwnProperty(id));
+				if (operation == '+') {
+					if (elExists) {
+						this.removeElement(id);
+					}
+					var element = new Tooth(this, elParams.id, elParams);
+				}
+				else if (elExists)
+				{
+					var element = this.elements[id];
+					element.setParams(elParams);
+				}
+			}
+		}
+		
+		// Если проводилась переинициализация - перерисовываем карту
+		if (this.init) {
+			this.init = false;
+			if (this.container.getLayer()) {
+				this.container.draw();
+			}
+		}
+	}
+	
+ToothCard.prototype.addElement = function(tooth) 
+	{
+		tooth.toothCard = this;
+		this.elements[tooth.id] = tooth;
+		this.container.add(tooth.baseContainer);
+		if (!this.init && this.container.getLayer()) {
+			this.container.draw();
+		}
+	}
+	
+ToothCard.prototype.removeElement = function(id)
+	{
+		if (id == undefined) {
+			this.elements = {};
+			this.selectedElements = {};
+			this.container.destroyChildren();
+		} 
+		else {
+			delete this.elements[id];
+			delete this.selectedElements[id];
+			this.stage.find('#' + id)[0].destroy();
+		}
+		if (!this.init && this.container.getLayer()) {
+			this.container.draw();
+		}
+	}
+	
+ToothCard.prototype.hasSelectedElements = function()
+	{
+		for (var id in this.selectedElements) 
+		{
+			return true;
+		}
+		return false;
+	}
+	
+ToothCard.prototype.selectElements = function(value, elements)
+	{
+		if (!elements) {
+			var curElements = value ? this.elements : this.selectedElements;
+			for (var elementId in curElements) {
+				this.elements[elementId].select(value);
+			}
+		}
+	}
+	
+ToothCard.prototype.setSelectedElements = function(selectedElements)
+	{
+		this.selectElements(false);
+		for (var toothId in selectedElements)
+		{
+			var tooth = this.elements[toothId];
+			if (!tooth) continue;
+			tooth.select(true);
+			for (var segmentId in selectedElements[toothId])
+			{
+				var segment = tooth.elements[segmentId];
+				if (!segment) continue;
+				segment.select(true);
+			}
+		}
+	}
+	
+ToothCard.prototype.getSelectedElements = function() 
+	{
+		var selectedTooths = {};
+		for (var toothId in this.selectedElements)
+		{
+			var tooth = this.elements[toothId];
+			var selectedSegments = {};
+			for (var segmentId in tooth.selectedElements)
+			{
+				selectedSegments[segmentId] = "";
+			}
+			selectedTooths[toothId] = selectedSegments;
+		}
+		return selectedTooths;
+	}
+
+function Tooth(toothCard, id, params) 
+{
+	this.toothCard = toothCard;
+	this.id = id;
+	this.transform = 
+	{
+		x: 0,
+		y: 0,
+		sX: 1,
+		sY: 1,
+		r: 0
+	};
+	
+	this.baseContainer = new Konva.Group({id: 'bc_' + id});
+	this.container = new Konva.Group({id: 'c_' + id});
+	this.frame = new Konva.Rect
+	({
+		id: id
+	});
+	this.baseContainer.add(this.frame);
+	this.baseContainer.add(this.container);
+	this.updateColor();
+	
+	this.elements = {};
+	this.selectedElements = {};
+	
+	this.frame.stomElement = this;
+	this.addSelectEvent();
+	toothCard.addElement(this);
+	if (params) {
+		this.setParams(params);
+	}
+}
+	
+Tooth.prototype.setParams = function(paramsJSON)
+	{
+		var params = getObjectParams(paramsJSON);
+		
+		if (params.hasOwnProperty('id')) {
+			this.id = params.id;
+		}
+		this.setSize(params);
+		if (params.hasOwnProperty('elements')) {
+			this.setElements(params.elements);
+		}
+		if (params.hasOwnProperty('transform')) {
+			this.setTransform(params.transform);
+		}
+	}
+	
+Tooth.prototype.setSize = function(paramsJSON)
+	{
+		var params = getObjectParams(paramsJSON);
+		
+		var resized = false;
+		if (params.hasOwnProperty('width')) {
+			this.width = params.width;
+			resized = true;
+		}
+		if (params.hasOwnProperty('height')) {
+			this.height = params.height;
+			resized = true;
+		}
+		
+		if (resized)
+		{ 
+			if (this.frame) 
+			{
+				this.frame.width(this.width);
+				this.frame.height(this.height);
+			}
+			if (this.baseContainer)
+			{
+				this.container.clip
+				({
+					x : 1,
+					y : 1,
+					width : this.width-2,
+					height : this.height-2
+				});
+			}
+		}
+	}
+	
+Tooth.prototype.setElements = function(elementsJSON)
+	{
+		var elements = getObjectParams(elementsJSON);
+		
+		for (var i = 0; i < elements.length; i++) 
+		{
+			var elParams = elements[i];
+			var operation = undefined;
+			var id = undefined;
+			
+			if (elParams.hasOwnProperty('operation')) operation = elParams.operation;
+			if (elParams.hasOwnProperty('id')) id = elParams.id;
+			
+			if (id == undefined) { 
+				if (operation == '-') {
+					this.removeElement();
+				}
+				continue;
+			}
+			
+			if (operation == '-') {
+				this.removeElement(id);
+			}
+			else
+			{
+				var elExists = (this.elements.hasOwnProperty(id));
+				if (operation == '+') {
+					if (elExists) {
+						this.removeElement(id);
+					}
+					var element = new Segment(this, elParams.id, elParams);
+				}
+				else if (elExists)
+				{
+					var element = this.elements[id];
+					element.setParams(elParams);
+				}
+			}
+		}
+		
+		for (var i = 0; i < 2; i++) {
+			for (var elementId in this.elements) {
+				this.elements[elementId].updateZIndex();
+			}
+		}
+	}
+	
+Tooth.prototype.addElement = function(segment) 
+	{
+		segment.tooth = this;
+		this.elements[segment.id] = segment;
+		if (segment.element) {
+			this.container.add(segment.element);
+		}
+		if (!this.toothCard.init && this.baseContainer.getLayer()) {
+			this.baseContainer.draw();
+		}
+	}
+	
+Tooth.prototype.removeElement = function(id)
+	{
+		if (id == undefined) {
+			this.elements = {};
+			this.selectedElements = {};
+			this.container.destroyChildren();
+		} 
+		else {
+			delete this.elements[id];
+			delete this.selectedElements[id];
+			this.container.find('#' + id)[0].destroy();
+		}
+		
+		if (!this.toothCard.init && this.container.getLayer()) {
+			this.container.draw();
+		}
+	}
+	
+Tooth.prototype.setTransform = function(paramsJSON) 
+	{
+		var trParams = getObjectParams(paramsJSON);
+		for (var trParam in trParams) {
+			this.transform[trParam] = trParams[trParam];
+		}
+		this.updateTransform();
+	}
+	
+Tooth.prototype.updateTransform = function()
+	{
+		if (!this.baseContainer) return;
+		this.baseContainer.position({x: this.transform.x, y: this.transform.y});
+		this.baseContainer.scale({x: this.transform.sX, y: this.transform.sY});
+		this.baseContainer.rotation(this.transform.r);
+	}
+	
+Tooth.prototype.updateColor = function(selected)
+	{
+		if (!this.frame) return;
+		
+		if (selected == undefined) selected = this.isSelected();
+		
+		if (selected) {
+			this.frame.fill(this.toothCard.toothConsts.selectedFill);
+			this.frame.stroke(this.toothCard.toothConsts.selectedStroke);
+			this.frame.strokeWidth(this.toothCard.toothConsts.selectedStrokeWidth);
+		} else {
+			this.frame.fill(this.toothCard.toothConsts.fill);
+			this.frame.stroke(this.toothCard.toothConsts.stroke);
+			this.frame.strokeWidth(this.toothCard.toothConsts.strokeWidth);
+		}
+	}
+	
+Tooth.prototype.isSelected = function()
+	{
+		return this.toothCard.selectedElements.hasOwnProperty(this.id);
+	}
+	
+Tooth.prototype.hasSelectedElements = function()
+	{
+		for (var id in this.selectedElements) 
+		{
+			return true;
+		}
+		return false;
+	}
+	
+Tooth.prototype.addSelectEvent = function()
+	{
+		if (!this.frame) return;
+		this.frame.on('click tap', function (e) {
+			var isRightButton = (e.evt.button == 2);
+			var element = e.target.stomElement;
+			var toothCard = element.toothCard;
+			if (isRightButton) {
+				toothCard.selectElements(false);
+			} else {
+				// Режим множественного выделения через зажатый CTRL
+				var selectEnable = true;
+				if ((toothCard.selectMode == selectMode.ctrl && !e.evt.ctrlKey) || (toothCard.selectMode == selectMode.wctrl && e.evt.ctrlKey)) {
+					toothCard.selectElements(false);
+				} else { // Иначе проверяем, можно ли выделять - если уже выделены сегменты в других зубах, то нельзя (отключил) 
+					//for (var id in toothCard.selectedElements)
+					//{
+					//	var tooth = toothCard.selectedElements[id];
+					//	if (tooth.hasSelectedElements()) {
+					//		selectEnable = false;
+					//	}
+					//}
+				}
+				if (selectEnable || element.isSelected()) {
+					element.select(!element.isSelected());
+				}
+			}
+			// Отправка в 1С
+			updateCard(JSON.stringify(toothCard.getSelectedElements()));
+		});
+		this.frame.on('mouseover', function (e) {
+			var element = e.target.stomElement;
+			if (!element) return;
+			if (element.isSelected()) return;
+			element.updateColor(true);
+			element.baseContainer.draw();
+			
+		});
+		this.frame.on('mouseout', function (e) {
+			var element = e.target.stomElement;
+			if (!element) return;
+			if (element.isSelected()) return;
+			element.updateColor(false);
+			element.baseContainer.draw();
+		});
+	}
+	
+Tooth.prototype.select = function(value)
+	{
+		if (value) {
+			this.toothCard.selectedElements[this.id] = this;
+		} else {
+			this.selectElements(false);
+			delete this.toothCard.selectedElements[this.id];
+		}
+		this.updateColor();
+		this.baseContainer.draw();
+	}
+	
+Tooth.prototype.selectElements = function(value, elements)
+	{
+		if (!elements) {
+			var curElements = value ? this.elements : this.selectedElements;
+			for (var elementId in curElements) {
+				this.elements[elementId].select(value);
+			}
+		}
+	}
+
+function Segment(tooth, id, params) 
+{
+	this.tooth = tooth;
+	this.id = id;
+	this.fill = tooth.toothCard.segmentConsts.fill;
+	this.selectedFill = tooth.toothCard.segmentConsts.selectedFill;
+	this.isDecoration = false;
+	this.transform = 
+	{
+		x: 0,
+		y: 0,
+		sX: 1,
+		sY: 1,
+		r: 0,
+		z: -1
+	};
+	
+	this.element = undefined;
+	this.statementsGradientStops = [];
+	this.statementsGradientStopsSelected = [];
+	
+	tooth.addElement(this);
+	if (params) {
+		this.setParams(params);
+	}
+}
+	
+Segment.readShapeParamsFromSL = function(silverlightString)
+	{
+		var typeRegExp = /\s*<\s*(\w+)/gi;
+		var paramsRegExp = /(\S+)\s*=\s*[\'"]?((?:(?!\/>|>|"|\').)+)/gi;	
+		var params = {};
+		var typeRes = typeRegExp.exec(silverlightString);
+		if (typeRes == null) return;
+		params['type'] = typeRes[1].toLowerCase();
+		
+		var paramsRes;
+		while ((paramsRes = paramsRegExp.exec(silverlightString)) !== null) 
+		{
+			var value = parseFloat(paramsRes[2]);
+			if (!isNaN(value)) {
+				params[paramsRes[1].toLowerCase()] = value;
+			} else {
+				params[paramsRes[1].toLowerCase()] = paramsRes[2];
+			}
+		}	
+		return params;
+	}
+	
+Segment.prototype.setParams = function(paramsJSON)
+	{
+		var params = getObjectParams(paramsJSON);
+		
+		if (params.hasOwnProperty('id')) {
+			this.id = params.id;
+		}
+		if (params.hasOwnProperty('isDecoration')) {
+			this.isDecoration = params.isDecoration;
+		}
+		if (params.hasOwnProperty('shape')) {
+			this.setShape(params.shape);
+		}
+		if (params.hasOwnProperty('transform')) {
+			this.setTransform(params.transform);
+		}
+		if (params.hasOwnProperty('statements')) {
+			this.setStatements(params.statements);
+		}
+	}
+	
+Segment.prototype.setShape = function(paramsJSON) 
+	{
+		var shapeParams = getObjectParams(paramsJSON);
+		
+		if (shapeParams.hasOwnProperty('silverlight')) {
+			var slParams = Segment.readShapeParamsFromSL(shapeParams.silverlight);
+			for (var slParam in slParams) {
+				shapeParams[slParam] = slParams[slParam];
+			}
+		}
+		shapeParams.id = this.id;
+		shapeParams.stroke = this.tooth.toothCard.segmentConsts.stroke;
+		shapeParams.strokeWidth = this.tooth.toothCard.segmentConsts.strokeWidth;
+		if (shapeParams.hasOwnProperty('fill')) {
+			this.fill = shapeParams.fill;
+			this.selectedFill = blendColors(this.fill, this.tooth.toothCard.segmentConsts.selectedFill);
+			delete shapeParams.fill;
+		}
+			
+		var shape;
+		if (shapeParams.type == 'rectangle' || shapeParams.type == 'rect') {
+			shape = new Konva.Rect(shapeParams);
+		} else if (shapeParams.type == 'ellipse') {
+			shape = new Konva.Ellipse(shapeParams);
+		} else {
+			shape = new Konva.Path(shapeParams);
+		}
+		shape.stomElement = this;
+		
+		if (this.element) this.element.destroy();
+		this.element = shape;
+		this.tooth.container.add(this.element);
+		
+		this.updateTransform();
+		this.addSelectEvent();
+		
+		this.element.fillLinearGradientStartPoint({x: 0, y: 0});
+		this.element.fillLinearGradientEndPoint({x: this.element.getClientRect().width, y: 0});
+		this.updateColor();
+	}
+	
+Segment.prototype.setTransform = function(paramsJSON) 
+	{
+		var trParams = getObjectParams(paramsJSON);
+		for (var trParam in trParams) {
+			this.transform[trParam] = trParams[trParam];
+		}
+		this.updateTransform();
+	}
+	
+Segment.prototype.setStatements = function(paramsJSON)
+	{
+		var stParams = getObjectParams(paramsJSON);
+		
+		var selectedFill = this.tooth.toothCard.segmentConsts.selectedFill;
+		if (!stParams || stParams.length == 0) {
+			this.statementsGradientStops = [0, this.fill];
+			this.statementsGradientStopsSelected = [0, blendColors(this.fill, selectedFill)];
+			this.updateColor();
+			return;
+		}
+		
+		this.statementsGradientStops = [];
+		this.statementsGradientStopsSelected = [];
+		
+		this.statementsGradientStops.push(0);
+		this.statementsGradientStops.push(stParams[0]);
+		this.statementsGradientStopsSelected.push(0);
+		this.statementsGradientStopsSelected.push(blendColors(stParams[0], selectedFill));	
+		if (stParams.length > 1) 
+		{
+			var stLength = stParams.length - 1;
+			for (var i = 1; i < stLength; i++) 
+			{
+				this.statementsGradientStops.push(i / stLength);
+				this.statementsGradientStops.push(stParams[i]);
+				this.statementsGradientStopsSelected.push(i / stLength);
+				this.statementsGradientStopsSelected.push(blendColors(stParams[i], selectedFill));
+			}
+			this.statementsGradientStops.push(1);
+			this.statementsGradientStops.push(stParams[stLength]);
+			this.statementsGradientStopsSelected.push(1);
+			this.statementsGradientStopsSelected.push(blendColors(stParams[stLength], selectedFill));
+		}
+		this.updateColor();
+	}
+	
+Segment.prototype.updateColor = function(selected)
+	{
+		if (!this.element) return;
+		if (!this.statementsGradientStops || this.statementsGradientStops.length == 0) { 
+			this.statementsGradientStops = [0, this.fill];
+			this.statementsGradientStopsSelected = [0, blendColors(this.fill, this.tooth.toothCard.segmentConsts.selectedFill)];
+		}
+		
+		if (selected == undefined) selected = this.isSelected();
+		
+		if (selected) {
+			this.element.fillLinearGradientColorStops(this.statementsGradientStopsSelected);
+			this.element.stroke(this.tooth.toothCard.segmentConsts.selectedStroke);
+			this.element.strokeWidth(this.tooth.toothCard.segmentConsts.selectedStrokeWidth);
+		} else {
+			this.element.fillLinearGradientColorStops(this.statementsGradientStops);
+			this.element.stroke(this.tooth.toothCard.segmentConsts.stroke);
+			this.element.strokeWidth(this.tooth.toothCard.segmentConsts.strokeWidth);
+		}
+	}
+	
+Segment.prototype.updateTransform = function()
+	{
+		if (!this.element) return;
+		var offset = (this.element.className == 'Ellipse' ? this.element.radius() : {x: 0, y: 0});
+		this.element.position({x: this.transform.x + offset.x, y: this.transform.y + offset.y});
+		this.element.scale({x: this.transform.sX, y: this.transform.sY});
+		this.element.rotation(this.transform.r);
+		this.updateZIndex();
+	}
+	
+Segment.prototype.updateZIndex = function()
+	{
+		if (!this.element || this.transform.z < 0) return;
+		this.element.setZIndex(this.transform.z);
+	}
+		
+Segment.prototype.isSelected = function()
+	{
+		return this.tooth.selectedElements.hasOwnProperty(this.id);
+	}
+	
+Segment.prototype.addSelectEvent = function()
+	{
+		if (!this.element) return;
+		this.element.on('click tap', function (e) {
+			var isRightButton = (e.evt.button == 2);
+			var element = e.target.stomElement;
+			if (!element) return;
+			if (element.isDecoration) return;
+			
+			var tooth = element.tooth;
+			var toothCard = tooth.toothCard;
+			if (isRightButton) {
+				toothCard.selectElements(false);
+			} else {
+				// Проверяем, можно ли выделять, если выделены зубы без сегментов, то выделять сегмент нельзя (отключил)
+				//for (var id in toothCard.selectedElements) {
+					//if (id == tooth.id) continue;
+					//if (!toothCard.selectedElements[id].hasSelectedElements()) return;
+				//}
+				if ((toothCard.selectMode == selectMode.ctrl && !e.evt.ctrlKey) || (toothCard.selectMode == selectMode.wctrl && e.evt.ctrlKey)) {
+					toothCard.selectElements(false);
+					tooth.selectElements(false);
+				}
+				element.select(!element.isSelected());
+				tooth.select(tooth.hasSelectedElements());
+			}
+			// Отправка в 1С
+			updateCard(JSON.stringify(toothCard.getSelectedElements()));
+		});
+		this.element.on('mouseover', function (e) {
+			var element = e.target.stomElement;
+			if (!element) return;
+			if (element.isDecoration) return;
+			if (element.isSelected()) return;
+			element.updateColor(true);
+			element.tooth.baseContainer.draw();
+			
+		});
+		this.element.on('mouseout', function (e) {
+			var element = e.target.stomElement;
+			if (!element) return;
+			if (element.isDecoration) return;
+			if (element.isSelected()) return;
+			element.updateColor(false);
+			element.tooth.baseContainer.draw();
+		});
+	}
+	
+Segment.prototype.select = function(value)
+	{
+		if (value) {
+			this.tooth.selectedElements[this.id] = this;
+		} else {
+			delete this.tooth.selectedElements[this.id];
+		}
+		this.updateColor();
+		//this.element.draw();	
+	}
+
+function Statement (id, color) 
+{
+	this.id = id;
+	this.color = color;
+}
+
+function getObjectParams(paramsJSON)
+{
+	if (!paramsJSON) return {};
+	
+	if (typeof paramsJSON == 'string')
+	{
+		return JSON.parse(paramsJSON);
+	}	
+	return paramsJSON;
+}
+	
+function componentToHex(c) {
+	var hex = c.toString(16);
+	return hex.length == 1 ? '0' + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+	return '#' + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+	
+function blendColors(color1, color2) 
+{
+	var rgb1 = Konva.Util.getRGB(color1);
+	var rgb2 = Konva.Util.getRGB(color2);
+	var r = Math.floor((rgb1.r + rgb2.r) / 2.0);
+	var g = Math.floor((rgb1.g + rgb2.g) / 2.0);
+	var b = Math.floor((rgb1.b + rgb2.b) / 2.0);
+	return rgbToHex(r, g, b);
+}
+
+function fireClick(node, addData) {
+	additionalData = "";
+	if (!node) {
+		node = document.body;
+	}
+    if (document.createEvent) {
+        var evt = document.createEvent('MouseEvents');
+        evt.initEvent('click', true, false);
+		if (addData) {
+			evt.additionalData = addData;
+			additionalData = JSON.stringify(addData);
+		}
+		node.dispatchEvent(evt);    
+    } else if (document.createEventObject) {
+		var evt = document.createEventObject();
+		if (addData) {
+			evt.additionalData = addData;
+			additionalData = JSON.stringify(addData);
+		}
+        node.fireEvent('onclick', evt) ; 
+    }
+}
+
+function editCard(paramsJSON) {
+
+	if (!tc) return;
+	tc.setParams(paramsJSON);
+	//tc.layer.draw();
+	fitStageIntoParentContainer();
+}
+
+function init(paramsJSON) {
+	if (tc) tc.layer.destroy();
+	tc = new ToothCard(paramsJSON);
+	fitStageIntoParentContainer();
+}
+
+function loadToothCard()
+{
+	queryData();
+}
+
+function fitStageIntoParentContainer() {
+	
+	if (!tc) return;
+	
+	var w = window.innerWidth - 20;
+	var h = window.innerHeight - 20;
+            
+	var scaleX = w / tc.width;
+	var scaleY = h / tc.height;
+
+	var scale = Math.min(scaleX, scaleY);
+
+	tc.stage.width(tc.width * scale);
+	tc.stage.height(tc.height * scale);
+	tc.stage.scale({x: scale, y: scale});
+	tc.stage.draw();
+}
+
+fitStageIntoParentContainer();
+window.addEventListener('resize', fitStageIntoParentContainer);
+
+</script>
+</HTML>

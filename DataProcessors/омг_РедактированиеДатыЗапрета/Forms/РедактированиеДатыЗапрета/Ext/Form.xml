@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаПрименить" id="64">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<DefaultItem>true</DefaultItem>
+				<CommandName>Form.Command.Применить</CommandName>
+				<ButtonImportance>Main</ButtonImportance>
+				<ExtendedTooltip name="ФормаПрименитьРасширеннаяПодсказка" id="65"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Table name="Пользователи" id="1">
+			<Representation>List</Representation>
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ПользователиЗапрета</DataPath>
+			<CommandSet>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>Copy</ExcludedCommand>
+			</CommandSet>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ПользователиКонтекстноеМеню" id="2"/>
+			<AutoCommandBar name="ПользователиКоманднаяПанель" id="3">
+				<ChildItems>
+					<Popup name="ПользователиГруппа1" id="38">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Подобрать</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ПользователиГруппа1РасширеннаяПодсказка" id="39"/>
+						<ChildItems>
+							<Button name="ПользователиПодобратьПользователей" id="40">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ПодобратьПользователей</CommandName>
+								<ExtendedTooltip name="ПользователиПодобратьПользователейРасширеннаяПодсказка" id="41"/>
+							</Button>
+							<Button name="ПользователиПодобратьГруппыПользователей" id="42">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ПодобратьГруппыПользователей</CommandName>
+								<ExtendedTooltip name="ПользователиПодобратьГруппыПользователейРасширеннаяПодсказка" id="43"/>
+							</Button>
+						</ChildItems>
+					</Popup>
+					<Button name="ПользователиПереместитьВверх" id="53">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Пользователи.StandardCommand.MoveUp</CommandName>
+						<ExtendedTooltip name="ПользователиПереместитьВверхРасширеннаяПодсказка" id="54"/>
+					</Button>
+					<Button name="ПользователиПереместитьВниз" id="55">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Пользователи.StandardCommand.MoveDown</CommandName>
+						<ExtendedTooltip name="ПользователиПереместитьВнизРасширеннаяПодсказка" id="56"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ПользователиРасширеннаяПодсказка" id="4"/>
+			<SearchStringAddition name="ПользователиСтрокаПоиска" id="5">
+				<AdditionSource>
+					<Item>Пользователи</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПользователиСтрокаПоискаКонтекстноеМеню" id="6"/>
+				<ExtendedTooltip name="ПользователиСтрокаПоискаРасширеннаяПодсказка" id="7"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ПользователиСостояниеПросмотра" id="8">
+				<AdditionSource>
+					<Item>Пользователи</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПользователиСостояниеПросмотраКонтекстноеМеню" id="9"/>
+				<ExtendedTooltip name="ПользователиСостояниеПросмотраРасширеннаяПодсказка" id="10"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ПользователиУправлениеПоиском" id="11">
+				<AdditionSource>
+					<Item>Пользователи</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ПользователиУправлениеПоискомКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="ПользователиУправлениеПоискомРасширеннаяПодсказка" id="13"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">ПользователиПередНачаломДобавления</Event>
+				<Event name="BeforeDeleteRow">ПользователиПередУдалением</Event>
+				<Event name="OnActivateRow">ПользователиПриАктивизацииСтроки</Event>
+				<Event name="OnStartEdit">ПользователиПриНачалеРедактирования</Event>
+				<Event name="OnChange">ПользователиПриИзменении</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ПользователиПользователь" id="14">
+					<DataPath>ПользователиЗапрета.Пользователь</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь/Группа пользователей</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ПользователиПользовательКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="ПользователиПользовательРасширеннаяПодсказка" id="16"/>
+				</InputField>
+				<InputField name="ПользователиДатаЗапрета" id="61">
+					<DataPath>ПользователиЗапрета.ДатаЗапрета</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Общая дата</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ПользователиДатаЗапретаКонтекстноеМеню" id="62"/>
+					<ExtendedTooltip name="ПользователиДатаЗапретаРасширеннаяПодсказка" id="63"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<Table name="ОбъектыЗапрета" id="17">
+			<Representation>List</Representation>
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ОбъектыЗапрета</DataPath>
+			<CommandSet>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>Copy</ExcludedCommand>
+			</CommandSet>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ОбъектыЗапретаКонтекстноеМеню" id="18"/>
+			<AutoCommandBar name="ОбъектыЗапретаКоманднаяПанель" id="19">
+				<ChildItems>
+					<Popup name="ОбъектыЗапретаГруппа1" id="44">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Подобрать</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ОбъектыЗапретаГруппа1РасширеннаяПодсказка" id="45"/>
+						<ChildItems>
+							<Button name="ОбъектыЗапретаПодобратьОрганизации" id="46">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ПодобратьОрганизации</CommandName>
+								<ExtendedTooltip name="ОбъектыЗапретаПодобратьОрганизацииРасширеннаяПодсказка" id="47"/>
+							</Button>
+							<Button name="ОбъектыЗапретаПодобратьКлиники" id="48">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ПодобратьКлиники</CommandName>
+								<ExtendedTooltip name="ОбъектыЗапретаПодобратьКлиникиРасширеннаяПодсказка" id="49"/>
+							</Button>
+						</ChildItems>
+					</Popup>
+					<Button name="ОбъектыЗапретаПереместитьВверх" id="57">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ОбъектыЗапрета.StandardCommand.MoveUp</CommandName>
+						<ExtendedTooltip name="ОбъектыЗапретаПереместитьВверхРасширеннаяПодсказка" id="58"/>
+					</Button>
+					<Button name="ОбъектыЗапретаПереместитьВниз" id="59">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ОбъектыЗапрета.StandardCommand.MoveDown</CommandName>
+						<ExtendedTooltip name="ОбъектыЗапретаПереместитьВнизРасширеннаяПодсказка" id="60"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ОбъектыЗапретаРасширеннаяПодсказка" id="20"/>
+			<SearchStringAddition name="ОбъектыЗапретаСтрокаПоиска" id="21">
+				<AdditionSource>
+					<Item>ОбъектыЗапрета</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ОбъектыЗапретаСтрокаПоискаКонтекстноеМеню" id="22"/>
+				<ExtendedTooltip name="ОбъектыЗапретаСтрокаПоискаРасширеннаяПодсказка" id="23"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ОбъектыЗапретаСостояниеПросмотра" id="24">
+				<AdditionSource>
+					<Item>ОбъектыЗапрета</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ОбъектыЗапретаСостояниеПросмотраКонтекстноеМеню" id="25"/>
+				<ExtendedTooltip name="ОбъектыЗапретаСостояниеПросмотраРасширеннаяПодсказка" id="26"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ОбъектыЗапретаУправлениеПоиском" id="27">
+				<AdditionSource>
+					<Item>ОбъектыЗапрета</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ОбъектыЗапретаУправлениеПоискомКонтекстноеМеню" id="28"/>
+				<ExtendedTooltip name="ОбъектыЗапретаУправлениеПоискомРасширеннаяПодсказка" id="29"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">ОбъектыЗапретаПередНачаломДобавления</Event>
+				<Event name="OnStartEdit">ОбъектыЗапретаПриНачалеРедактирования</Event>
+				<Event name="OnChange">ОбъектыЗапретаПриИзменении</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ОбъектыЗапретаОбъект" id="30">
+					<DataPath>ОбъектыЗапрета.Объект</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОбъектыЗапретаОбъектКонтекстноеМеню" id="31"/>
+					<ExtendedTooltip name="ОбъектыЗапретаОбъектРасширеннаяПодсказка" id="32"/>
+				</InputField>
+				<InputField name="ОбъектыЗапретаТипОбъекта" id="50">
+					<DataPath>ОбъектыЗапрета.ТипОбъекта</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОбъектыЗапретаТипОбъектаКонтекстноеМеню" id="51"/>
+					<ExtendedTooltip name="ОбъектыЗапретаТипОбъектаРасширеннаяПодсказка" id="52"/>
+				</InputField>
+				<InputField name="ОбъектыЗапретаДатаЗапрета" id="33">
+					<DataPath>ОбъектыЗапрета.ДатаЗапрета</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОбъектыЗапретаДатаЗапретаКонтекстноеМеню" id="34"/>
+					<ExtendedTooltip name="ОбъектыЗапретаДатаЗапретаРасширеннаяПодсказка" id="35"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ПользователиЗапрета" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователи запрета</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Save>
+				<Field>ПользователиЗапрета</Field>
+			</Save>
+			<Columns>
+				<Column name="Пользователь" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.омг_АдресаЗапретаРедактирования</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="КлючСтроки" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ключ строки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:UUID</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДатаЗапрета" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата запрета</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ОбъектыЗапрета" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объекты запрета</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Save>
+				<Field>ОбъектыЗапрета</Field>
+			</Save>
+			<Columns>
+				<Column name="Объект" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Объект</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.омг_ОбъектыЗапретаРедактирования</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="ДатаЗапрета" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата запрета</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="КлючСтроки" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ключ строки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:UUID</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ТипОбъекта" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тип объекта</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>100</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПодобратьПользователей" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователи</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать пользователей</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодобратьПользователей</Action>
+		</Command>
+		<Command name="ПодобратьГруппыПользователей" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группы пользователей</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать группы пользователей</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодобратьГруппыПользователей</Action>
+		</Command>
+		<Command name="ПодобратьОрганизации" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организации</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать организации</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодобратьОрганизации</Action>
+		</Command>
+		<Command name="ПодобратьКлиники" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Клиники</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать клиники</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодобратьКлиники</Action>
+		</Command>
+		<Command name="Применить" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Применить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Применить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Применить</Action>
+		</Command>
+	</Commands>
+</Form>

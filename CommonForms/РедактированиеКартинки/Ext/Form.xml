@@ -1,0 +1,650 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="Закрыть" id="35">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<ExtendedTooltip name="ЗакрытьРасширеннаяПодсказка" id="36"/>
+			</Button>
+			<Button name="Сохранить" id="3">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Сохранить</CommandName>
+				<ButtonImportance>Main</ButtonImportance>
+				<ExtendedTooltip name="СохранитьРасширеннаяПодсказка" id="4"/>
+			</Button>
+			<Button name="Назад" id="5">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Назад</CommandName>
+				<ExtendedTooltip name="НазадРасширеннаяПодсказка" id="6"/>
+			</Button>
+			<Button name="Вперед" id="97">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Вперед</CommandName>
+				<ExtendedTooltip name="ВпередРасширеннаяПодсказка" id="98"/>
+			</Button>
+			<Button name="Очистить" id="7">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Очистить</CommandName>
+				<ExtendedTooltip name="ОчиститьРасширеннаяПодсказка" id="8"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ПанельНастроек" id="83">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель настроек</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель настроек</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ПанельНастроекРасширеннаяПодсказка" id="84"/>
+			<ChildItems>
+				<LabelDecoration name="ГоризонтальныйОтступ" id="64">
+					<Width>13</Width>
+					<Height>2</Height>
+					<ContextMenu name="ГоризонтальныйОтступКонтекстноеМеню" id="65"/>
+					<ExtendedTooltip name="ГоризонтальныйОтступРасширеннаяПодсказка" id="66"/>
+				</LabelDecoration>
+				<TrackBarField name="ШиринаЛинии" id="85">
+					<DataPath>ШиринаЛинии</DataPath>
+					<TitleLocation>Top</TitleLocation>
+					<Width>25</Width>
+					<Height>1</Height>
+					<HorizontalStretch>false</HorizontalStretch>
+					<MinValue>1</MinValue>
+					<MaxValue>20</MaxValue>
+					<LargeStep>4</LargeStep>
+					<MarkingStep>1</MarkingStep>
+					<ContextMenu name="ШиринаЛинииКонтекстноеМеню" id="86"/>
+					<ExtendedTooltip name="ШиринаЛинииРасширеннаяПодсказка" id="87"/>
+					<Events>
+						<Event name="OnChange">РазмерКистиПриИзменении</Event>
+					</Events>
+				</TrackBarField>
+				<TrackBarField name="РазмерТекста" id="88">
+					<DataPath>РазмерТекста</DataPath>
+					<TitleLocation>Top</TitleLocation>
+					<Width>25</Width>
+					<Height>1</Height>
+					<HorizontalStretch>false</HorizontalStretch>
+					<MinValue>1</MinValue>
+					<MaxValue>7</MaxValue>
+					<LargeStep>1</LargeStep>
+					<MarkingStep>1</MarkingStep>
+					<ContextMenu name="РазмерТекстаКонтекстноеМеню" id="89"/>
+					<ExtendedTooltip name="РазмерТекстаРасширеннаяПодсказка" id="90"/>
+					<Events>
+						<Event name="OnChange">РазмерТекстаПриИзменении</Event>
+					</Events>
+				</TrackBarField>
+				<TrackBarField name="Непрозрачность" id="91">
+					<DataPath>Непрозрачность</DataPath>
+					<TitleLocation>Top</TitleLocation>
+					<Width>25</Width>
+					<Height>1</Height>
+					<HorizontalStretch>false</HorizontalStretch>
+					<MinValue>1</MinValue>
+					<MaxValue>10</MaxValue>
+					<LargeStep>3</LargeStep>
+					<MarkingStep>1</MarkingStep>
+					<ContextMenu name="НепрозрачностьКонтекстноеМеню" id="92"/>
+					<ExtendedTooltip name="НепрозрачностьРасширеннаяПодсказка" id="93"/>
+					<Events>
+						<Event name="OnChange">НепрозрачностьПриИзменении</Event>
+					</Events>
+				</TrackBarField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ОбластьРедактирования" id="60">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Область редактирования</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ОбластьРедактированияРасширеннаяПодсказка" id="61"/>
+			<ChildItems>
+				<UsualGroup name="Инструменты" id="62">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Инструменты</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Инструменты</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Width>13</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ThroughAlign>Use</ThroughAlign>
+					<ExtendedTooltip name="ИнструментыРасширеннаяПодсказка" id="63"/>
+					<ChildItems>
+						<Button name="Кисть" id="67">
+							<Type>UsualButton</Type>
+							<Width>13</Width>
+							<CommandName>Form.Command.Кисть</CommandName>
+							<ShapeRepresentation>Always</ShapeRepresentation>
+							<ExtendedTooltip name="КистьРасширеннаяПодсказка" id="68"/>
+						</Button>
+						<Button name="Прямая" id="69">
+							<Type>UsualButton</Type>
+							<Width>13</Width>
+							<CommandName>Form.Command.Прямая</CommandName>
+							<ShapeRepresentation>Always</ShapeRepresentation>
+							<ExtendedTooltip name="ПрямаяРасширеннаяПодсказка" id="70"/>
+						</Button>
+						<Button name="Стрелка" id="71">
+							<Type>UsualButton</Type>
+							<Width>13</Width>
+							<CommandName>Form.Command.Стрелка</CommandName>
+							<ShapeRepresentation>Always</ShapeRepresentation>
+							<ExtendedTooltip name="СтрелкаРасширеннаяПодсказка" id="72"/>
+						</Button>
+						<Button name="Прямоугольник" id="73">
+							<Type>UsualButton</Type>
+							<Width>13</Width>
+							<CommandName>Form.Command.Прямоугольник</CommandName>
+							<ShapeRepresentation>Always</ShapeRepresentation>
+							<ExtendedTooltip name="ПрямоугольникРасширеннаяПодсказка" id="74"/>
+						</Button>
+						<Button name="Текст" id="75">
+							<Type>UsualButton</Type>
+							<Width>13</Width>
+							<CommandName>Form.Command.Текст</CommandName>
+							<ShapeRepresentation>Always</ShapeRepresentation>
+							<ExtendedTooltip name="ТекстРасширеннаяПодсказка" id="76"/>
+						</Button>
+						<Button name="Ластик" id="77">
+							<Type>UsualButton</Type>
+							<Width>13</Width>
+							<CommandName>Form.Command.Ластик</CommandName>
+							<ShapeRepresentation>Always</ShapeRepresentation>
+							<ExtendedTooltip name="ЛастикРасширеннаяПодсказка" id="78"/>
+						</Button>
+						<Button name="Цвет" id="79">
+							<Type>UsualButton</Type>
+							<Width>6</Width>
+							<Height>3</Height>
+							<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+							<CommandName>Form.Command.Цвет</CommandName>
+							<Shape>Usual</Shape>
+							<ExtendedTooltip name="ЦветРасширеннаяПодсказка" id="80"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<HTMLDocumentField name="HTML" id="94">
+					<DataPath>HTML</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ContextMenu name="HTMLКонтекстноеМеню" id="95"/>
+					<ExtendedTooltip name="HTMLРасширеннаяПодсказка" id="96"/>
+					<Events>
+						<Event name="DocumentComplete">HTMLДокументСформирован</Event>
+						<Event name="OnClick">HTMLПриНажатии</Event>
+					</Events>
+				</HTMLDocumentField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Картинка" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Картинка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="HTML" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>HTML</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Инструмент" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Инструмент</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<Save>
+				<Field>Инструмент</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ШиринаЛинии" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Толщина</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>3</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<Save>
+				<Field>ШиринаЛинии</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Результат" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Результат</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЦветСтрокой" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цвет строкой</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<Save>
+				<Field>ЦветСтрокой</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Base64Картинки" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Base64 картинки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Base64Рисунка" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Base64 рисунка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="УИДФормы" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>УИДФормы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:UUID</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторНастроек" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор настроек</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Непрозрачность" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Непрозрачность</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЦветЛинии" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цвет</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Color</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РазмерТекста" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Размер шрифта</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЦветАкцента" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цвет акцента</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Color</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Назад" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Назад</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Назад</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Ctrl+Z</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.РедакторКартинок_Назад</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Назад</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Очистить" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Delete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Очистить</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Сохранить" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.SaveFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Сохранить</Action>
+		</Command>
+		<Command name="Кисть" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кисть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Кисть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.РедакторКартинок_Кисть</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Кисть</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Ластик" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ластик</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ластик</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.РедакторКартинок_Ластик</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Ластик</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Прямая" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прямая</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прямая</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.РедакторКартинок_Прямая</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Прямая</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Прямоугольник" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прямоуг.</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прямоугольник</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.РедакторКартинок_Прямоугольник</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Прямоугольник</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Стрелка" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Стрелка</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Стрелка</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.РедакторКартинок_Стрелка</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Стрелка</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Текст" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.РедакторКартинок_Текст</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Текст</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Цвет" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content> </v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цвет</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Цвет</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="Вперед" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вперед</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вперед</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Ctrl+Y</Shortcut>
+			<Picture>
+				<xr:Ref>CommonPicture.РедакторКартинок_Вперед</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Вперед</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

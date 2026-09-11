@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="32"/>
+			<ChildItems>
+				<InputField name="Наименование" id="3">
+					<DataPath>Объект.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="33"/>
+				</InputField>
+				<InputField name="Код" id="1">
+					<DataPath>Объект.Code</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>9</Width>
+					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="34"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаТип" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа тип</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа тип</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаТипРасширеннаяПодсказка" id="35"/>
+			<ChildItems>
+				<InputField name="ТипГрафика" id="5">
+					<DataPath>Объект.ТипГрафика</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ТипГрафикаКонтекстноеМеню" id="6"/>
+					<ExtendedTooltip name="ТипГрафикаРасширеннаяПодсказка" id="36"/>
+					<Events>
+						<Event name="OnChange">ТипГрафикаПриИзменении</Event>
+						<Event name="StartChoice">ТипГрафикаНачалоВыбора</Event>
+					</Events>
+				</InputField>
+				<CheckBoxField name="ЧетностьНедели" id="24">
+					<DataPath>Объект.ЧетностьНедели</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Учитывать четность недель</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<ContextMenu name="ЧетностьНеделиКонтекстноеМеню" id="25"/>
+					<ExtendedTooltip name="ЧетностьНеделиРасширеннаяПодсказка" id="37"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="Смены" id="7">
+			<Representation>List</Representation>
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Объект.Смены</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="СменыКонтекстноеМеню" id="8"/>
+			<AutoCommandBar name="СменыКоманднаяПанель" id="9"/>
+			<ExtendedTooltip name="СменыРасширеннаяПодсказка" id="38"/>
+			<SearchStringAddition name="СменыСтрокаПоиска" id="39">
+				<AdditionSource>
+					<Item>Смены</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СменыСтрокаПоискаКонтекстноеМеню" id="40"/>
+				<ExtendedTooltip name="СменыСтрокаПоискаРасширеннаяПодсказка" id="41"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СменыСостояниеПросмотра" id="42">
+				<AdditionSource>
+					<Item>Смены</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СменыСостояниеПросмотраКонтекстноеМеню" id="43"/>
+				<ExtendedTooltip name="СменыСостояниеПросмотраРасширеннаяПодсказка" id="44"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СменыУправлениеПоиском" id="45">
+				<AdditionSource>
+					<Item>Смены</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СменыУправлениеПоискомКонтекстноеМеню" id="46"/>
+				<ExtendedTooltip name="СменыУправлениеПоискомРасширеннаяПодсказка" id="47"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">СменыПередНачаломДобавления</Event>
+				<Event name="BeforeDeleteRow">СменыПередУдалением</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="СменыНомерСтроки" id="10">
+					<DataPath>Объект.Смены.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="СменыНомерСтрокиКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="СменыНомерСтрокиРасширеннаяПодсказка" id="48"/>
+				</LabelField>
+				<InputField name="СменыДеньНедели" id="12">
+					<DataPath>Объект.Смены.ДеньНедели</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="СменыДеньНеделиКонтекстноеМеню" id="13"/>
+					<ExtendedTooltip name="СменыДеньНеделиРасширеннаяПодсказка" id="49"/>
+				</InputField>
+				<InputField name="СменыНомерДня" id="14">
+					<DataPath>Объект.Смены.НомерДня</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="СменыНомерДняКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="СменыНомерДняРасширеннаяПодсказка" id="50"/>
+				</InputField>
+				<CheckBoxField name="СменыБратьИзНастроекЗаполнения" id="30">
+					<DataPath>Объект.Смены.БратьИзНастроекЗаполнения</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="СменыБратьИзНастроекЗаполненияКонтекстноеМеню" id="31"/>
+					<ExtendedTooltip name="СменыБратьИзНастроекЗаполненияРасширеннаяПодсказка" id="51"/>
+				</CheckBoxField>
+				<InputField name="СменыСмена" id="18">
+					<DataPath>Объект.Смены.Смена</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="СменыСменаКонтекстноеМеню" id="19"/>
+					<ExtendedTooltip name="СменыСменаРасширеннаяПодсказка" id="52"/>
+				</InputField>
+				<InputField name="СменыВремяНачала" id="20">
+					<DataPath>Объект.Смены.ВремяНачала</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="СменыВремяНачалаКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="СменыВремяНачалаРасширеннаяПодсказка" id="53"/>
+				</InputField>
+				<InputField name="СменыВремяОкончания" id="22">
+					<DataPath>Объект.Смены.ВремяОкончания</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="СменыВремяОкончанияКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="СменыВремяОкончанияРасширеннаяПодсказка" id="54"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.СпособыЗаполненияГрафиковРабот</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СменыСмена</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>СменыВремяНачала</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>СменыВремяОкончания</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.Смены.БратьИзНастроекЗаполнения</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#C2C0AF</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Доступность</dcscor:parameter>
+						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+</Form>

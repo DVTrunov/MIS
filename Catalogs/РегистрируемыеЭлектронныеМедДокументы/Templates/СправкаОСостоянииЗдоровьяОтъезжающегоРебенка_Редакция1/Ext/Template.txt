@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Медицинская справка о состоянии здоровья ребенка, отъезжающего в организацию отдыха детей и их оздоровления (CDA) Редакция 1" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<bitLocalId УсловиеИспользования="*Ложь">
+		<nodeLocalId ТипДанных="ДокументСсылка.ДоговорСКлиентом" localid="ДоговорСКлиентом" localidСиноним="Договор с клиентом" Обязательное="*Истина"/>
+		<nodeLocalId ТипДанных="Строка" localid="ОрганизацияПолучательДокумента" localidСиноним="Организация-получатель документа" Множественное="*Истина" Обязательное="*Ложь"/>
+	</bitLocalId>
+	<bitDiagnosis УсловиеИспользования="*Ложь">
+		<nodeDiagnosisStructure Множественное="*Истина" ГруппирующееПоле="Описание">
+			<nodeDiagnosis type="Диагноз"	localid="Диагноз"/>
+			<nodeDiagnosis type="Описание"	localid="Описание"/>
+		</nodeDiagnosisStructure>
+	</bitDiagnosis>
+	<!-- R [1..1] СЕКЦИЯ: Место работы и должность, условия труда (Место учёбы)-->
+	<component>
+		<!-- R [1..1] Содержимое секции -->
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="WORK" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Заголовок секции -->
+			<title>Место учёбы</title>
+			<!-- R [1..1] Человекочитаемое наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<content>Номер школы: </content>
+								<content>%Школа</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Класс: </content>
+								<content>%Класс</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..1] Кодирование ... Номер школы -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="9018" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="Школа">%Школа</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Кодирование ... Класс -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="9019" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="Класс">%Класс</value>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: Сведения о документе (Общие сведения)-->
+	<component>
+		<!-- R [1..1] Содержимое секции -->
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="DOCINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Заголовок секции -->
+			<title>Общие сведения</title>
+			<!-- R [1..1] Человекочитаемое наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 9020)</content>
+							</td>
+							<td>
+								<content>%ДетскиеЗаболевания</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 9021)</content>
+							</td>
+							<td>
+								<content localid="ПроведенныеПрофПрививки" Множественное="*Истина">%ПроведенныеПрофПрививки<br/></content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 9022)</content>
+							</td>
+							<td>
+								<content>%РежимЛечения</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 10003)</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%ГруппаФизическойКультуры)</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 9023)</content>
+							</td>
+							<td>
+								<content>%НуждаемостьВУсловияхДоступнойСреды</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 9004)</content>
+							</td>
+							<td>
+								<content>*Формат(%НеобходимостьСопровождения,"БЛ='не требуется'; БИ=требуется")</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 12007)</content>
+							</td>
+							<td>
+								<content>%КонтактСИнфекционнымиБольными</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 9024)</content>
+							</td>
+							<td>
+								<content>%ОтсутствиеПротивопоказаний</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 10000)</content>
+							</td>
+							<td>
+								<content>%КомментарийВрача</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..1] Кодирование ... Перенесенные детские инфекционные заболевания -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="9020" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="ДетскиеЗаболевания">%ДетскиеЗаболевания</value>
+				</observation>
+			</entry>
+			<!-- R [1..*] Кодирование ... Проведенные профилактические прививки -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="9021" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="ПроведенныеПрофПрививки" localidСиноним="Проведенные проф. прививки">%ПроведенныеПрофПрививки</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Кодирование ... Назначенный лечащим врачом режим лечения -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="9022" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="РежимЛечения">%РежимЛечения</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Кодирование ... Медицинская группа для занятий физической культурой -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="10003" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="CD" localid="ГруппаФизическойКультуры" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.765" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Кодирование ... Нуждаемость в условиях доступной среды -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="9023" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="НуждаемостьВУсловияхДоступнойСреды" localidСиноним="Нуждаемость в условиях доступной среды">%НуждаемостьВУсловияхДоступнойСреды</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Кодирование ... Необходимость сопровождения пациента -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="9004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="BL" localid="НеобходимостьСопровождения" value='*Формат(%НеобходимостьСопровождения,"БЛ=false; БИ=true")'/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Кодирование ... Отсутствие контакта с больными инфекционными заболеваниями -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="12007" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="КонтактСИнфекционнымиБольными" localidСиноним="Контакт с инфекционными больными">%КонтактСИнфекционнымиБольными</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Кодирование ... Отсутствие медицинских противопоказаний для пребывания в организации отдыха детей и их оздоровления -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="9024" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="ОтсутствиеПротивопоказаний">%ОтсутствиеПротивопоказаний</value>
+				</observation>
+			</entry>
+			<!-- [0..1] Кодирование ... Комментарий -->
+			<entry Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="10000" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="КомментарийВрача" localidСиноним="Комментарий врача">%КомментарийВрача</value>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- R [0..1] СЕКЦИЯ: Витальные параметры (Физическое развитие) -->
+	<component Обязательное="*Ложь">
+		<!-- R [1..1] Содержимое секции -->
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="VITALPARAM" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Заголовок секции -->
+			<title>Физическое развитие</title>
+			<!-- R [1..1] Человекочитаемое наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr localid="ВитальныйПараметр" Множественное="*Истина">
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%ВитальныйПараметр.КлассификацияПоля)</content>
+							</td>
+							<td>
+								<content>*СтрШаблон("%1 %2", %ВитальныйПараметр, ПредставлениеЕдиницыИзмеренияВитальногоПараметра(%ВитальныйПараметр.КлассификацияПоля))</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- [1..*] Витальные параметры (Рост) -->
+			<entry localid="ВитальныйПараметр" Множественное="*Истина">
+				<!-- R [1..1] Рост -->
+				<organizer classCode="CLUSTER" moodCode="EVN">
+					<!-- R [1..1] Статус измерения - выполнено -->
+					<statusCode code="completed"/>
+					<!-- R [1..1] Дата измерения -->
+					<effectiveTime ТипДанных="Дата" localid="ДатаИзмерения" value='*ДатаСоСмещением(%ДатаИзмерения, "ДФ=ггггММддЧЧмм")'/>
+					<!-- [0..1] Комментарии врача к собранным данным -->
+					<precondition typeCode="PRCN">
+						<!-- R [1..1] -->
+						<criterion>
+							<!-- R [1..1] Кодирование особых указаний -->
+							<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4" codeSystemVersion="False"/>
+							<!-- R [1..1] Комментарии врача к собранным данным (текстом) -->
+							<value xsi:type="ST" localid="Комментарий" localidСиноним="Комментарий к витальному параметру">%Комментарий</value>
+						</criterion>
+					</precondition>
+					<!-- R [1..*] Витальный параметр -->
+					<component typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Наименование -->
+							<code localid="ВитальныйПараметр.КлассификацияПоля" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.262" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] Значение -->
+							<!-- Атрибут value - значение показателя, unit - поле "Код UCUM" по справочнику "Единицы измерения" (OID: 1.2.643.5.1.13.13.11.1358) -->
+							<value xsi:type="PQ" value="%ВитальныйПараметр" unit="*ПредставлениеЕдиницыИзмеренияВитальногоПараметра(%ВитальныйПараметр.КлассификацияПоля)">
+								<!-- R [1..1] Единицы измерения -->
+								<!-- Атрибут value - значение показателя, code - поле "Уникальный идентификатор", displayName - поле "Краткое наименование" -->
+								<translation ТипДанных="Число" value="%ВитальныйПараметр" code="%ВитальныйПараметр.КлассификацияПоля.UnitCode" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							</value>
+						</observation>
+					</component>
+				</organizer>
+			</entry>
+			<!-- R [1..1] Заключение о физическом развитии -->
+			<entry>
+				<!-- R [1..1] Информация об объекте -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Наименование -->
+					<code code="4051" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Значение -->
+					<value xsi:type="ST" localid="ОценкаФизическогоРазвития">%ОценкаФизическогоРазвития</value>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: Диагнозы (Состояние здоровья) -->
+	<component ВозможноЗаполнениеИзТаблицыДиагнозов="true">
+		<!-- R [1..1] Содержимое секции -->
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="DGN" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Заголовок секции -->
+			<title>Состояние здоровья</title>
+			<!-- R [1..1] Человекочитаемое наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<content>Описание заболевания</content>
+							</td>
+							<td>
+								<content>Код по МКБ-10</content>
+							</td>
+						</tr>
+						<tr localid="Описание" Множественное="*Истина">
+							<td>
+								<content>%Описание</content>
+							</td>
+							<td>
+								<content Обязательное="*Ложь">*ЗначениеЭлементаКлассификатора(%Диагноз,,,"code")</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..*] Описание объекта ... Диагноз заболевания -->
+			<entry localid="Описание" Множественное="*Истина">
+				<!-- R [1..1] Информация об объекте -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Наименование -->
+					<code code="838" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Компонент ... Врачебное описание нозологической единицы -->
+					<entryRelationship typeCode="COMP">
+						<!-- R [1..1] Информация о компоненте -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Наименование -->
+							<code code="9010" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] Значение -->
+							<value xsi:type="ST" localid="Описание" localidСиноним="Врачебное описание нозологической единицы">%Описание</value>
+						</observation>
+					</entryRelationship>
+					<!-- R [1..1] Компонент ... Шифр МКБ -->
+					<entryRelationship typeCode="COMP">
+						<!-- R [1..1] Информация о компоненте -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Наименование -->
+							<code code="809" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- [1..1] Значение -->
+							<!-- Если пациент здоров (не имеет заболеваний), указывается атрибут nullFlavor="NA" -->
+							<value xsi:type="CD" localid="Диагноз" ПустоеЗначение="NA" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						</observation>
+					</entryRelationship>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<bitOther>
+		<!-- [0..1] СЕКЦИЯ: Связанные документы -->
+		<component>
+			<!-- R [1..1] Содержимое секции -->
+			<section>
+				<!-- R [1..1] Код секции -->
+				<code code="LINKDOCS" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				<!-- R [1..1] Заголовок секции -->
+				<title>Связанные документы</title>
+				<!-- R [1..1] Человекочитаемое наполнение секции -->
+				<text></text>
+				<!-- R [1..*] Описание объекта ... Связанный документ -->
+				<entry ТипДанных="ДокументСсылка.Прием" localid="СвязанныйДокумент" Множественное="*Истина">
+					<!-- R [1..1] Информация об объекте -->
+					<act classCode="ACT" moodCode="EVN">
+						<!-- R [1..1] Вид документа -->
+						<code code="189" codeSystem="1.2.643.5.1.13.13.11.1522" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						<!-- [0..1] Компонент ... Примечание к документу -->
+						<text>%СвязанныйДокумент</text>
+						<!-- R [1..1] Дата выдачи документа -->
+						<effectiveTime value="%СвязанныйДокумент.Дата" Формат="ДФ=ггггММдд"/>
+						<!-- [0..1] Компонент ... Серия документа -->
+						<!-- [0..1] Компонент ... Номер документа -->
+						<!-- R [1..1] Ссылка ... Ссылка на внешний документ -->
+						<reference typeCode="REFR">
+							<!-- R [1..1] Внешний документ -->
+							<externalDocument classCode="DOCCLIN" moodCode="EVN">
+								<!-- [1..1] Уникальный идентификатор документа МИС -->
+								<!-- по правилу: root = OID_медицинской_организации.100.НомерМИС.НомерЭкзМИС.51 extension = идентификатор документа -->
+								<id root="%Организация$СвязанныйДокумент" extension="*УникальныйИдентификаторПоСсылке(%СвязанныйДокумент)"/>
+							</externalDocument>
+						</reference>
+					</act>
+				</entry>
+			</section>
+		</component>
+	</bitOther>
+</Items>

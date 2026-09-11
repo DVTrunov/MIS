@@ -1,0 +1,922 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаОтправитьСообщения" id="137">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.Command.ОтправитьСообщения</CommandName>
+				<Picture>
+					<xr:Ref>CommonPicture.Рассылка_SMS_16х16</xr:Ref>
+					<xr:LoadTransparent>false</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="ФормаОтправитьСообщенияРасширеннаяПодсказка" id="141"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаНомер" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ThroughAlign>DontUse</ThroughAlign>
+			<ExtendedTooltip name="ГруппаНомерРасширеннаяПодсказка" id="142"/>
+			<ChildItems>
+				<InputField name="Номер" id="1">
+					<DataPath>Объект.Number</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Рассылка №</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>8</Width>
+					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="143"/>
+				</InputField>
+				<InputField name="Дата" id="3">
+					<DataPath>Объект.Date</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>от</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>15</Width>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="144"/>
+				</InputField>
+				<LabelDecoration name="НадписьСозданАвтоматически" id="26">
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Создан автоматически</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="НадписьСозданАвтоматическиКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="НадписьСозданАвтоматическиРасширеннаяПодсказка" id="145"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОбработка" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа обработка</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа обработка</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОбработкаРасширеннаяПодсказка" id="146"/>
+			<ChildItems>
+				<InputField name="ОбработкаSMSРассылки" id="5">
+					<DataPath>Объект.ОбработкаSMSРассылки</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<MarkRequiredComplete>true</MarkRequiredComplete>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>42</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="ОбработкаSMSРассылкиКонтекстноеМеню" id="6"/>
+					<ExtendedTooltip name="ОбработкаSMSРассылкиРасширеннаяПодсказка" id="147"/>
+					<Events>
+						<Event name="OnChange">ОбработкаSMSРассылкиПриИзменении</Event>
+					</Events>
+				</InputField>
+				<Button name="УзнатьБаланс" id="22">
+					<Type>UsualButton</Type>
+					<Representation>PictureAndText</Representation>
+					<Height>1</Height>
+					<CommandName>Form.Command.УзнатьБаланс</CommandName>
+					<Picture>
+						<xr:Ref>CommonPicture.Обновить_32х32</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="УзнатьБалансРасширеннаяПодсказка" id="148"/>
+				</Button>
+				<LabelDecoration name="Баланс" id="24">
+					<Width>14</Width>
+					<HorizontalStretch>true</HorizontalStretch>
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<GroupVerticalAlign>Center</GroupVerticalAlign>
+					<ContextMenu name="БалансКонтекстноеМеню" id="25"/>
+					<ExtendedTooltip name="БалансРасширеннаяПодсказка" id="149"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаДатаДоставки" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа дата доставки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа дата доставки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаДатаДоставкиРасширеннаяПодсказка" id="150"/>
+			<ChildItems>
+				<InputField name="ДоставитьСообщениеВУказанноеВремя" id="9">
+					<DataPath>Объект.ДоставитьСообщениеВУказанноеВремя</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доставить сообщения получателям</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>15</Width>
+					<EditFormat>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>БЛ=Сразу; БИ='В указанное время'</v8:content>
+						</v8:item>
+					</EditFormat>
+					<ContextMenu name="ДоставитьСообщениеВУказанноеВремяКонтекстноеМеню" id="10"/>
+					<ExtendedTooltip name="ДоставитьСообщениеВУказанноеВремяРасширеннаяПодсказка" id="151"/>
+					<Events>
+						<Event name="OnChange">ДоставитьСообщениеВУказанноеВремяПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ДатаОтправки" id="11">
+					<DataPath>Объект.ДатаОтправки</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>10</Width>
+					<EditFormat>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=dd.MM.yyyy</v8:content>
+						</v8:item>
+					</EditFormat>
+					<ContextMenu name="ДатаОтправкиКонтекстноеМеню" id="12"/>
+					<ExtendedTooltip name="ДатаОтправкиРасширеннаяПодсказка" id="152"/>
+				</InputField>
+				<InputField name="ДатаОтправкиВремя" id="29">
+					<DataPath>Объект.ДатаОтправки</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Время</v8:content>
+						</v8:item>
+					</Title>
+					<Width>4</Width>
+					<ChoiceButton>false</ChoiceButton>
+					<EditFormat>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=ЧЧ:мм</v8:content>
+						</v8:item>
+					</EditFormat>
+					<ContextMenu name="ДатаОтправкиВремяКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="ДатаОтправкиВремяРасширеннаяПодсказка" id="153"/>
+				</InputField>
+				<Button name="КнопкаОтправить" id="138">
+					<Type>UsualButton</Type>
+					<Representation>PictureAndText</Representation>
+					<CommandName>Form.Command.ОтправитьСообщения</CommandName>
+					<Picture>
+						<xr:Ref>CommonPicture.Рассылка_SMS_16х16</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="КнопкаОтправитьРасширеннаяПодсказка" id="154"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="SMSСообщения" id="60">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>SMS-Сообщения</v8:content>
+				</v8:item>
+			</Title>
+			<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>SMSСообщения</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>WeakSeparation</Representation>
+			<ExtendedTooltip name="SMSСообщенияРасширеннаяПодсказка" id="155"/>
+			<ChildItems>
+				<Table name="Сообщения" id="105">
+					<RowSelectionMode>Cell</RowSelectionMode>
+					<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>Сообщения</DataPath>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="СообщенияКонтекстноеМеню" id="106"/>
+					<AutoCommandBar name="СообщенияКоманднаяПанель" id="107">
+						<ChildItems>
+							<Popup name="ЗаполнениеПолучателей" id="133">
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Заполнение получателей</v8:content>
+									</v8:item>
+								</Title>
+								<ToolTip>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Заполнение получателей</v8:content>
+									</v8:item>
+								</ToolTip>
+								<ExtendedTooltip name="ЗаполнениеПолучателейРасширеннаяПодсказка" id="156"/>
+								<ChildItems>
+									<ButtonGroup name="СообщенияГруппаВерх" id="134">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Сообщения группа верх</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Сообщения группа верх</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="СообщенияГруппаВерхРасширеннаяПодсказка" id="157"/>
+										<ChildItems>
+											<Button name="СообщенияПодборКлиентов1" id="132">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ПодборКлиентов1</CommandName>
+												<ExtendedTooltip name="СообщенияПодборКлиентов1РасширеннаяПодсказка" id="158"/>
+											</Button>
+											<Button name="СообщенияПодборСотрудников" id="135">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ПодборСотрудников</CommandName>
+												<ExtendedTooltip name="СообщенияПодборСотрудниковРасширеннаяПодсказка" id="159"/>
+											</Button>
+											<Button name="СообщенияПодборПоПараметрам" id="139">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ПодборПоПараметрам</CommandName>
+												<ExtendedTooltip name="СообщенияПодборПоПараметрамРасширеннаяПодсказка" id="160"/>
+											</Button>
+											<Button name="СообщенияПодборПоПараметрамРасширенный" id="197">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ПодборПоПараметрамРасширенный</CommandName>
+												<ExtendedTooltip name="СообщенияПодборПоПараметрамРасширенныйРасширеннаяПодсказка" id="198"/>
+											</Button>
+										</ChildItems>
+									</ButtonGroup>
+									<Button name="СообщенияЗаполнитьВнешнейОбработкой" id="136">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ЗаполнитьВнешнейОбработкой</CommandName>
+										<ExtendedTooltip name="СообщенияЗаполнитьВнешнейОбработкойРасширеннаяПодсказка" id="161"/>
+									</Button>
+								</ChildItems>
+							</Popup>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="СообщенияРасширеннаяПодсказка" id="162"/>
+					<SearchStringAddition name="СообщенияСтрокаПоиска" id="163">
+						<AdditionSource>
+							<Item>Сообщения</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СообщенияСтрокаПоискаКонтекстноеМеню" id="164"/>
+						<ExtendedTooltip name="СообщенияСтрокаПоискаРасширеннаяПодсказка" id="165"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="СообщенияСостояниеПросмотра" id="166">
+						<AdditionSource>
+							<Item>Сообщения</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СообщенияСостояниеПросмотраКонтекстноеМеню" id="167"/>
+						<ExtendedTooltip name="СообщенияСостояниеПросмотраРасширеннаяПодсказка" id="168"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="СообщенияУправлениеПоиском" id="169">
+						<AdditionSource>
+							<Item>Сообщения</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="СообщенияУправлениеПоискомКонтекстноеМеню" id="170"/>
+						<ExtendedTooltip name="СообщенияУправлениеПоискомРасширеннаяПодсказка" id="171"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="OnActivateRow">СообщенияПриАктивизацииСтроки</Event>
+						<Event name="ChoiceProcessing">СообщенияОбработкаВыбора</Event>
+						<Event name="OnStartEdit">СообщенияПриНачалеРедактирования</Event>
+					</Events>
+					<ChildItems>
+						<InputField name="СообщенияПолучатель" id="112">
+							<DataPath>Сообщения.Получатель</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="СообщенияПолучательКонтекстноеМеню" id="113"/>
+							<ExtendedTooltip name="СообщенияПолучательРасширеннаяПодсказка" id="172"/>
+							<Events>
+								<Event name="ChoiceProcessing">СообщенияПолучательОбработкаВыбора</Event>
+							</Events>
+						</InputField>
+						<InputField name="СообщенияТелефонПолучателя" id="118">
+							<DataPath>Сообщения.КонтактПолучателя</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<Width>10</Width>
+							<ContextMenu name="СообщенияТелефонПолучателяКонтекстноеМеню" id="119"/>
+							<ExtendedTooltip name="СообщенияТелефонПолучателяРасширеннаяПодсказка" id="173"/>
+						</InputField>
+						<InputField name="СообщенияСтатусОтправки" id="116">
+							<DataPath>Сообщения.СтатусОтправки</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="СообщенияСтатусОтправкиКонтекстноеМеню" id="117"/>
+							<ExtendedTooltip name="СообщенияСтатусОтправкиРасширеннаяПодсказка" id="174"/>
+						</InputField>
+						<InputField name="СообщенияВидСообщения" id="110">
+							<DataPath>Сообщения.ВидСообщения</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="СообщенияВидСообщенияКонтекстноеМеню" id="111"/>
+							<ExtendedTooltip name="СообщенияВидСообщенияРасширеннаяПодсказка" id="175"/>
+						</InputField>
+						<InputField name="СообщенияИсточник" id="114">
+							<DataPath>Сообщения.Источник</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="СообщенияИсточникКонтекстноеМеню" id="115"/>
+							<ExtendedTooltip name="СообщенияИсточникРасширеннаяПодсказка" id="176"/>
+						</InputField>
+						<InputField name="СообщенияТекст" id="120">
+							<DataPath>Сообщения.Текст</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="СообщенияТекстКонтекстноеМеню" id="121"/>
+							<ExtendedTooltip name="СообщенияТекстРасширеннаяПодсказка" id="177"/>
+							<Events>
+								<Event name="OnChange">СообщенияТекстПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="СообщенияДатаСоздания" id="122">
+							<DataPath>Сообщения.ДатаСоздания</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="СообщенияДатаСозданияКонтекстноеМеню" id="123"/>
+							<ExtendedTooltip name="СообщенияДатаСозданияРасширеннаяПодсказка" id="178"/>
+						</InputField>
+						<InputField name="СообщенияДатаОтправки" id="124">
+							<DataPath>Сообщения.ДатаОтправки</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="СообщенияДатаОтправкиКонтекстноеМеню" id="125"/>
+							<ExtendedTooltip name="СообщенияДатаОтправкиРасширеннаяПодсказка" id="179"/>
+						</InputField>
+						<InputField name="СообщенияДатаФактическойОтправки" id="126">
+							<DataPath>Сообщения.ДатаФактическойОтправки</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="СообщенияДатаФактическойОтправкиКонтекстноеМеню" id="127"/>
+							<ExtendedTooltip name="СообщенияДатаФактическойОтправкиРасширеннаяПодсказка" id="180"/>
+						</InputField>
+						<InputField name="СообщенияКтоОтправил" id="128">
+							<DataPath>Сообщения.КтоОтправил</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="СообщенияКтоОтправилКонтекстноеМеню" id="129"/>
+							<ExtendedTooltip name="СообщенияКтоОтправилРасширеннаяПодсказка" id="181"/>
+						</InputField>
+						<InputField name="СообщенияИнформацияОбОтправке" id="130">
+							<DataPath>Сообщения.ИнформацияОбОтправке</DataPath>
+							<Visible>false</Visible>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="СообщенияИнформацияОбОтправкеКонтекстноеМеню" id="131"/>
+							<ExtendedTooltip name="СообщенияИнформацияОбОтправкеРасширеннаяПодсказка" id="182"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаТекст" id="62">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа текст</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа текст</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаТекстРасширеннаяПодсказка" id="183"/>
+			<ChildItems>
+				<InputField name="ТекстФиксированный" id="19">
+					<DataPath>Объект.ТекстФиксированный</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Способ формирования текста SMS</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>26</Width>
+					<EditFormat>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>БЛ='Заполнение по виду сообщения'; БИ='Общий текст для всех'</v8:content>
+						</v8:item>
+					</EditFormat>
+					<TextColor>style:FormTextColor</TextColor>
+					<BackColor>style:FormBackColor</BackColor>
+					<ContextMenu name="ТекстФиксированныйКонтекстноеМеню" id="20"/>
+					<ExtendedTooltip name="ТекстФиксированныйРасширеннаяПодсказка" id="184"/>
+					<Events>
+						<Event name="OnChange">ТекстФиксированныйПриИзменении</Event>
+					</Events>
+				</InputField>
+				<CommandBar name="КПФормированиеТекста" id="65">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КПФормирование текста</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>КПФормирование текста</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="КПФормированиеТекстаРасширеннаяПодсказка" id="185"/>
+					<ChildItems>
+						<Popup name="ГруппаКнопок" id="66">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Формирование текста</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа кнопок</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="ГруппаКнопокРасширеннаяПодсказка" id="186"/>
+							<ChildItems>
+								<Button name="ФормированиеТекста" id="61">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.ПроставитьВидСообщения</CommandName>
+									<ExtendedTooltip name="ФормированиеТекстаРасширеннаяПодсказка" id="187"/>
+								</Button>
+								<Button name="ПереформироватьТекстПоВидуСообщения" id="67">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.ПереформироватьТекстПоВидуСообщения</CommandName>
+									<ExtendedTooltip name="ПереформироватьТекстПоВидуСообщенияРасширеннаяПодсказка" id="188"/>
+								</Button>
+							</ChildItems>
+						</Popup>
+					</ChildItems>
+				</CommandBar>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="ГруппаСтраниц" id="100">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа страниц</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа страниц</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="ГруппаСтраницРасширеннаяПодсказка" id="189"/>
+			<ChildItems>
+				<Page name="ТекстОбщий" id="102">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текст общий</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текст общий</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ТекстОбщийРасширеннаяПодсказка" id="190"/>
+					<ChildItems>
+						<InputField name="ПолеВводаТекстСообщений" id="103">
+							<DataPath>ТекстСообщений</DataPath>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="ПолеВводаТекстСообщенийКонтекстноеМеню" id="104"/>
+							<ExtendedTooltip name="ПолеВводаТекстСообщенийРасширеннаяПодсказка" id="191"/>
+							<Events>
+								<Event name="OnChange">ПолеВводаТекстСообщенийПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="ТекстПострочно" id="101">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текст построчно</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текст построчно</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ТекстПострочноРасширеннаяПодсказка" id="192"/>
+					<ChildItems>
+						<InputField name="ПолеВводаТекстСообщения" id="63">
+							<DataPath>ТекстСтрокиСообщения</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Текст сообщения</v8:content>
+								</v8:item>
+							</Title>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="ПолеВводаТекстСообщенияКонтекстноеМеню" id="64"/>
+							<ExtendedTooltip name="ПолеВводаТекстСообщенияРасширеннаяПодсказка" id="193"/>
+							<Events>
+								<Event name="OnChange">ПолеВводаТекстСообщенияПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+		<UsualGroup name="ГруппаПодвал" id="140">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа подвал</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа подвал</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ThroughAlign>DontUse</ThroughAlign>
+			<ExtendedTooltip name="ГруппаПодвалРасширеннаяПодсказка" id="194"/>
+			<ChildItems>
+				<InputField name="Ответственный" id="15">
+					<DataPath>Объект.Ответственный</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ОтветственныйКонтекстноеМеню" id="16"/>
+					<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="195"/>
+				</InputField>
+				<InputField name="Комментарий" id="13">
+					<DataPath>Объект.Комментарий</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ContextMenu name="КомментарийКонтекстноеМеню" id="14"/>
+					<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="196"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.Рассылка</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="ТекстСообщений" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст сообщений</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>1000</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Сообщения" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сообщения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordSet.СообщенияSMS</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ОбработкаИнициализирована" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обработка инициализирована</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекстСтрокиСообщения" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст строки сообщения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>Сообщения</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Сообщения.СтатусОтправки</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.СтатусыОтправкиСообщений.Отправлена</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:SpringGreen</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="УзнатьБаланс" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Узнать баланс</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Узнать баланс</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УзнатьБаланс</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПроставитьВидСообщения" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проставить вид сообщения</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проставить вид сообщения</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПроставитьВидСообщения</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПереформироватьТекстПоВидуСообщения" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать текст сообщений</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Переформировать текст по виду сообщения</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПереформироватьТекстПоВидуСообщения</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПодборКлиентов1" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор клиентов</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор клиентов1</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодборКлиентов1</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПодборСотрудников" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор сотрудников</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор сотрудников</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодборСотрудников</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ЗаполнитьВнешнейОбработкой" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить внешней обработкой</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить внешней обработкой</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьВнешнейОбработкой</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОтправитьСообщения" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить сообщения</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить сообщения</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОтправитьСообщения</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПодборПоПараметрам" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор по параметрам</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор по параметрам</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодборПоПараметрам</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПодборПоПараметрамРасширенный" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить универсальным поиском клиентов</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор по параметрам расширенный</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодборПоПараметрамРасширенный</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>6:8d6836b5-f169-4855-a141-58ebfc744ec7</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>3:8d6836b5-f169-4855-a141-58ebfc744ec7</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

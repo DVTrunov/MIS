@@ -1,0 +1,1141 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Группа1" id="25">
+			<Group>AlwaysHorizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="26"/>
+			<ChildItems>
+				<Button name="СписокСоздать" id="20">
+					<Type>UsualButton</Type>
+					<Representation>PictureAndText</Representation>
+					<CommandName>Form.Item.СписокОказанияУслуг.StandardCommand.Create</CommandName>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Создать заявку</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="СписокСоздатьРасширеннаяПодсказка" id="21"/>
+				</Button>
+				<Button name="Обновить" id="72">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.Обновить</CommandName>
+					<ExtendedTooltip name="ОбновитьРасширеннаяПодсказка" id="73"/>
+				</Button>
+				<InputField name="ДеньОтбора" id="22">
+					<DataPath>ДеньОтбора</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ДеньОтбораКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="ДеньОтбораРасширеннаяПодсказка" id="24"/>
+					<Events>
+						<Event name="OnChange">ДеньОтбораПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Группа2" id="27">
+			<Group>AlwaysHorizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="28"/>
+			<ChildItems>
+				<Table name="СписокОказанияУслуг" id="1">
+					<RowSelectionMode>Cell</RowSelectionMode>
+					<EnableStartDrag>true</EnableStartDrag>
+					<DataPath>СписокОказанияУслуг</DataPath>
+					<RowPictureDataPath>СписокОказанияУслуг.DefaultPicture</RowPictureDataPath>
+					<AutoRefresh>false</AutoRefresh>
+					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<Period>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</Period>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<RestoreCurrentRow>false</RestoreCurrentRow>
+					<TopLevelParent xsi:nil="true"/>
+					<ShowRoot>true</ShowRoot>
+					<AllowRootChoice>false</AllowRootChoice>
+					<UpdateOnDataChange>Auto</UpdateOnDataChange>
+					<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+					<ContextMenu name="СписокОказанияУслугКонтекстноеМеню" id="2"/>
+					<AutoCommandBar name="СписокОказанияУслугКоманднаяПанель" id="3">
+						<Autofill>false</Autofill>
+					</AutoCommandBar>
+					<ExtendedTooltip name="СписокОказанияУслугРасширеннаяПодсказка" id="4"/>
+					<SearchStringAddition name="СписокОказанияУслугСтрокаПоиска" id="5">
+						<AdditionSource>
+							<Item>СписокОказанияУслуг</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокОказанияУслугСтрокаПоискаКонтекстноеМеню" id="6"/>
+						<ExtendedTooltip name="СписокОказанияУслугСтрокаПоискаРасширеннаяПодсказка" id="7"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="СписокОказанияУслугСостояниеПросмотра" id="8">
+						<AdditionSource>
+							<Item>СписокОказанияУслуг</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокОказанияУслугСостояниеПросмотраКонтекстноеМеню" id="9"/>
+						<ExtendedTooltip name="СписокОказанияУслугСостояниеПросмотраРасширеннаяПодсказка" id="10"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="СписокОказанияУслугУправлениеПоиском" id="11">
+						<AdditionSource>
+							<Item>СписокОказанияУслуг</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокОказанияУслугУправлениеПоискомКонтекстноеМеню" id="12"/>
+						<ExtendedTooltip name="СписокОказанияУслугУправлениеПоискомРасширеннаяПодсказка" id="13"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
+					</Events>
+					<ChildItems>
+						<LabelField name="Клиент" id="14">
+							<DataPath>СписокОказанияУслуг.Клиент</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Пациент</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="КлиентКонтекстноеМеню" id="15"/>
+							<ExtendedTooltip name="КлиентРасширеннаяПодсказка" id="16"/>
+						</LabelField>
+						<LabelField name="Ссылка" id="17">
+							<DataPath>СписокОказанияУслуг.Ссылка</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Заявка</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="СсылкаКонтекстноеМеню" id="18"/>
+							<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="19"/>
+						</LabelField>
+					</ChildItems>
+				</Table>
+				<UsualGroup name="Группа3" id="48">
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="49"/>
+					<ChildItems>
+						<Table name="СписокЗаявокЛИС" id="74">
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>СписокЗаявокЛИС</DataPath>
+							<RowPictureDataPath>~СписокЗаявокЛИС.DefaultPicture</RowPictureDataPath>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="СписокЗаявокЛИСКонтекстноеМеню" id="75"/>
+							<AutoCommandBar name="СписокЗаявокЛИСКоманднаяПанель" id="76">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокЗаявокЛИСРасширеннаяПодсказка" id="77"/>
+							<SearchStringAddition name="СписокЗаявокЛИССтрокаПоиска" id="78">
+								<AdditionSource>
+									<Item>СписокЗаявокЛИС</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокЗаявокЛИССтрокаПоискаКонтекстноеМеню" id="79"/>
+								<ExtendedTooltip name="СписокЗаявокЛИССтрокаПоискаРасширеннаяПодсказка" id="80"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокЗаявокЛИССостояниеПросмотра" id="81">
+								<AdditionSource>
+									<Item>СписокЗаявокЛИС</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокЗаявокЛИССостояниеПросмотраКонтекстноеМеню" id="82"/>
+								<ExtendedTooltip name="СписокЗаявокЛИССостояниеПросмотраРасширеннаяПодсказка" id="83"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокЗаявокЛИСУправлениеПоиском" id="84">
+								<AdditionSource>
+									<Item>СписокЗаявокЛИС</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокЗаявокЛИСУправлениеПоискомКонтекстноеМеню" id="85"/>
+								<ExtendedTooltip name="СписокЗаявокЛИСУправлениеПоискомРасширеннаяПодсказка" id="86"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">СписокЗаявокЛИСВыбор</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="СписокЗаявокЛИСНомерЗаявки" id="96">
+									<DataPath>СписокЗаявокЛИС.НомерЗаявки</DataPath>
+									<ContextMenu name="СписокЗаявокЛИСНомерЗаявкиКонтекстноеМеню" id="97"/>
+									<ExtendedTooltip name="СписокЗаявокЛИСНомерЗаявкиРасширеннаяПодсказка" id="98"/>
+								</LabelField>
+								<LabelField name="СписокЗаявокЛИСДата" id="90">
+									<DataPath>~СписокЗаявокЛИС.Дата</DataPath>
+									<ContextMenu name="СписокЗаявокЛИСДатаКонтекстноеМеню" id="91"/>
+									<ExtendedTooltip name="СписокЗаявокЛИСДатаРасширеннаяПодсказка" id="92"/>
+								</LabelField>
+								<LabelField name="СписокЗаявокЛИСЗаявка" id="93">
+									<DataPath>СписокЗаявокЛИС.Заявка</DataPath>
+									<Visible>false</Visible>
+									<ContextMenu name="СписокЗаявокЛИСЗаявкаКонтекстноеМеню" id="94"/>
+									<ExtendedTooltip name="СписокЗаявокЛИСЗаявкаРасширеннаяПодсказка" id="95"/>
+								</LabelField>
+								<CheckBoxField name="СписокЗаявокЛИСПометкаУдаления" id="99">
+									<DataPath>~СписокЗаявокЛИС.ПометкаУдаления</DataPath>
+									<ContextMenu name="СписокЗаявокЛИСПометкаУдаленияКонтекстноеМеню" id="100"/>
+									<ExtendedTooltip name="СписокЗаявокЛИСПометкаУдаленияРасширеннаяПодсказка" id="101"/>
+								</CheckBoxField>
+								<CheckBoxField name="СписокЗаявокЛИСПроведен" id="102">
+									<DataPath>~СписокЗаявокЛИС.Проведен</DataPath>
+									<ContextMenu name="СписокЗаявокЛИСПроведенКонтекстноеМеню" id="103"/>
+									<ExtendedTooltip name="СписокЗаявокЛИСПроведенРасширеннаяПодсказка" id="104"/>
+								</CheckBoxField>
+								<LabelField name="СписокЗаявокЛИССтатус" id="105">
+									<DataPath>СписокЗаявокЛИС.Статус</DataPath>
+									<ContextMenu name="СписокЗаявокЛИССтатусКонтекстноеМеню" id="106"/>
+									<ExtendedTooltip name="СписокЗаявокЛИССтатусРасширеннаяПодсказка" id="107"/>
+								</LabelField>
+								<LabelField name="СписокЗаявокЛИСВыполнена" id="87">
+									<DataPath>СписокЗаявокЛИС.Выполнена</DataPath>
+									<ContextMenu name="СписокЗаявокЛИСВыполненаКонтекстноеМеню" id="88"/>
+									<ExtendedTooltip name="СписокЗаявокЛИСВыполненаРасширеннаяПодсказка" id="89"/>
+								</LabelField>
+								<LabelField name="СписокЗаявокЛИССтандартнаяКартинка" id="108">
+									<DataPath>~СписокЗаявокЛИС.DefaultPicture</DataPath>
+									<ContextMenu name="СписокЗаявокЛИССтандартнаяКартинкаКонтекстноеМеню" id="109"/>
+									<ExtendedTooltip name="СписокЗаявокЛИССтандартнаяКартинкаРасширеннаяПодсказка" id="110"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+						<Table name="СписокИсследований" id="29">
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>СписокИсследований</DataPath>
+							<RowPictureDataPath>~СписокИсследований.DefaultPicture</RowPictureDataPath>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="СписокИсследованийКонтекстноеМеню" id="30"/>
+							<AutoCommandBar name="СписокИсследованийКоманднаяПанель" id="31">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокИсследованийРасширеннаяПодсказка" id="32"/>
+							<SearchStringAddition name="СписокИсследованийСтрокаПоиска" id="33">
+								<AdditionSource>
+									<Item>СписокИсследований</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокИсследованийСтрокаПоискаКонтекстноеМеню" id="34"/>
+								<ExtendedTooltip name="СписокИсследованийСтрокаПоискаРасширеннаяПодсказка" id="35"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокИсследованийСостояниеПросмотра" id="36">
+								<AdditionSource>
+									<Item>СписокИсследований</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокИсследованийСостояниеПросмотраКонтекстноеМеню" id="37"/>
+								<ExtendedTooltip name="СписокИсследованийСостояниеПросмотраРасширеннаяПодсказка" id="38"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокИсследованийУправлениеПоиском" id="39">
+								<AdditionSource>
+									<Item>СписокИсследований</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокИсследованийУправлениеПоискомКонтекстноеМеню" id="40"/>
+								<ExtendedTooltip name="СписокИсследованийУправлениеПоискомРасширеннаяПодсказка" id="41"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="СписокЗаявкиЛИСИсследование" id="42">
+									<DataPath>СписокИсследований.Исследование</DataPath>
+									<ContextMenu name="СписокЗаявкиЛИСИсследованиеКонтекстноеМеню" id="43"/>
+									<ExtendedTooltip name="СписокЗаявкиЛИСИсследованиеРасширеннаяПодсказка" id="44"/>
+								</LabelField>
+								<LabelField name="СписокЗаявкиЛИСВыполнено" id="45">
+									<DataPath>СписокИсследований.Выполнено</DataPath>
+									<ContextMenu name="СписокЗаявкиЛИСВыполненоКонтекстноеМеню" id="46"/>
+									<ExtendedTooltip name="СписокЗаявкиЛИСВыполненоРасширеннаяПодсказка" id="47"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+						<Table name="СписокОшибокЗаявки" id="50">
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>СписокОшибокЗаявки</DataPath>
+							<RowPictureDataPath>~СписокОшибокЗаявки.DefaultPicture</RowPictureDataPath>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="СписокОшибокЗаявкиКонтекстноеМеню" id="51"/>
+							<AutoCommandBar name="СписокОшибокЗаявкиКоманднаяПанель" id="52"/>
+							<ExtendedTooltip name="СписокОшибокЗаявкиРасширеннаяПодсказка" id="53"/>
+							<SearchStringAddition name="СписокОшибокЗаявкиСтрокаПоиска" id="54">
+								<AdditionSource>
+									<Item>СписокОшибокЗаявки</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокОшибокЗаявкиСтрокаПоискаКонтекстноеМеню" id="55"/>
+								<ExtendedTooltip name="СписокОшибокЗаявкиСтрокаПоискаРасширеннаяПодсказка" id="56"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокОшибокЗаявкиСостояниеПросмотра" id="57">
+								<AdditionSource>
+									<Item>СписокОшибокЗаявки</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокОшибокЗаявкиСостояниеПросмотраКонтекстноеМеню" id="58"/>
+								<ExtendedTooltip name="СписокОшибокЗаявкиСостояниеПросмотраРасширеннаяПодсказка" id="59"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокОшибокЗаявкиУправлениеПоиском" id="60">
+								<AdditionSource>
+									<Item>СписокОшибокЗаявки</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокОшибокЗаявкиУправлениеПоискомКонтекстноеМеню" id="61"/>
+								<ExtendedTooltip name="СписокОшибокЗаявкиУправлениеПоискомРасширеннаяПодсказка" id="62"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="СписокОшибокЗаявкиТекстОшибки" id="69">
+									<DataPath>СписокОшибокЗаявки.ТекстОшибки</DataPath>
+									<Height>2</Height>
+									<ContextMenu name="СписокОшибокЗаявкиТекстОшибкиКонтекстноеМеню" id="70"/>
+									<ExtendedTooltip name="СписокОшибокЗаявкиТекстОшибкиРасширеннаяПодсказка" id="71"/>
+								</LabelField>
+								<LabelField name="СписокОшибокЗаявкиСсылка" id="66">
+									<DataPath>СписокОшибокЗаявки.Ссылка</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Заявка</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="СписокОшибокЗаявкиСсылкаКонтекстноеМеню" id="67"/>
+									<ExtendedTooltip name="СписокОшибокЗаявкиСсылкаРасширеннаяПодсказка" id="68"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="СписокОказанияУслуг" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список оказания услуг</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>СписокОказанияУслуг.ЕстьОшибки</Field>
+				<Field>СписокОказанияУслуг.СтатусЗаявки</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ДокументОказаниеУслуг.Ссылка КАК Ссылка,
+	ДокументОказаниеУслуг.ПометкаУдаления КАК ПометкаУдаления,
+	ДокументОказаниеУслуг.Номер КАК Номер,
+	ДокументОказаниеУслуг.Дата КАК Дата,
+	ДокументОказаниеУслуг.Проведен КАК Проведен,
+	ДокументОказаниеУслуг.ДатаНачала КАК ДатаНачала,
+	ДокументОказаниеУслуг.ДатаОкончания КАК ДатаОкончания,
+	ДокументОказаниеУслуг.КартаКлиента КАК КартаКлиента,
+	ДокументОказаниеУслуг.Касса КАК Касса,
+	ДокументОказаниеУслуг.Клиент КАК Клиент,
+	ДокументОказаниеУслуг.Сотрудник КАК Сотрудник,
+	ДокументОказаниеУслуг.Прейскурант КАК Прейскурант,
+	ДокументОказаниеУслуг.Сертификат КАК Сертификат,
+	ДокументОказаниеУслуг.Склад КАК Склад,
+	ДокументОказаниеУслуг.СкладМатериалов КАК СкладМатериалов,
+	ДокументОказаниеУслуг.СуммаДокумента КАК СуммаДокумента,
+	ДокументОказаниеУслуг.ПолученоНаличными КАК ПолученоНаличными,
+	ДокументОказаниеУслуг.Сдача КАК Сдача,
+	ДокументОказаниеУслуг.СдачуВДепозит КАК СдачуВДепозит,
+	ДокументОказаниеУслуг.Ответственный КАК Ответственный,
+	ДокументОказаниеУслуг.Филиал КАК Филиал,
+	ДокументОказаниеУслуг.НомерЧекаККМ КАК НомерЧекаККМ,
+	ДокументОказаниеУслуг.НомерЧекаЭТ КАК НомерЧекаЭТ,
+	ДокументОказаниеУслуг.Контрагент КАК Контрагент,
+	ДокументОказаниеУслуг.Документ КАК Документ,
+	ДокументОказаниеУслуг.СтатьяДвиженияДенежныхСредств КАК СтатьяДвиженияДенежныхСредств,
+	ДокументОказаниеУслуг.Комментарий КАК Комментарий,
+	ДокументОказаниеУслуг.РучнаяКорректировкаМатериалов КАК РучнаяКорректировкаМатериалов,
+	ДокументОказаниеУслуг.РучноеРедактированиеСкидок КАК РучноеРедактированиеСкидок,
+	ДокументОказаниеУслуг.ВидОперации КАК ВидОперации,
+	ДокументОказаниеУслуг.КомплексныйРасчет КАК КомплексныйРасчет,
+	ДокументОказаниеУслуг.СостояниеЧековККМ КАК СостояниеЧековККМ,
+	ДокументОказаниеУслуг.ТелефонЧек КАК ТелефонЧек,
+	ДокументОказаниеУслуг.АдресEmailЧек КАК АдресEmailЧек,
+	ДокументОказаниеУслуг.СпособРасчетаЧекаККМ КАК СпособРасчетаЧекаККМ,
+	ДокументОказаниеУслуг.ПринятоОт КАК ПринятоОт,
+	ДокументОказаниеУслуг.ПринятоОтИНН КАК ПринятоОтИНН,
+	ДокументОказаниеУслуг.ПринятоОтАдрес КАК ПринятоОтАдрес,
+	ДокументОказаниеУслуг.НеприменениеККТ КАК НеприменениеККТ,
+	ДокументОказаниеУслуг.ТипКоррекции КАК ТипКоррекции,
+	ДокументОказаниеУслуг.ОписаниеКоррекции КАК ОписаниеКоррекции,
+	ДокументОказаниеУслуг.ДатаКоррекции КАК ДатаКоррекции,
+	ДокументОказаниеУслуг.НомерПредписания КАК НомерПредписания,
+	ДокументОказаниеУслуг.ДополнительныйРеквизит КАК ДополнительныйРеквизит,
+	ДокументОказаниеУслуг.Коррекция КАК Коррекция,
+	ДокументОказаниеУслуг.ДокументОснование КАК ДокументОснование,
+	ДокументОказаниеУслуг.СуммаЗачетаАвансаПродажиВДолг КАК СуммаЗачетаАвансаПродажиВДолг,
+	ДокументОказаниеУслуг.СсылочныйНомер КАК СсылочныйНомер,
+	ДокументОказаниеУслуг.НомерКарты КАК НомерКарты,
+	ДокументОказаниеУслуг.ПерсональныеДанныеПокупателя КАК ПерсональныеДанныеПокупателя,
+	ДокументОказаниеУслуг.ОперационныйРеквизит КАК ОперационныйРеквизит,
+	ДокументОказаниеУслуг.ОтраслевойРеквизит КАК ОтраслевойРеквизит,
+	ДокументОказаниеУслуг.ИдентификаторКорзиныНСПК КАК ИдентификаторКорзиныНСПК,
+	ДокументОказаниеУслуг.омг_СтраховаяПрограмма КАК омг_СтраховаяПрограмма,
+	ДокументОказаниеУслуг.омг_ИспользуемыйТерминал КАК омг_ИспользуемыйТерминал,
+	ДокументОказаниеУслуг.омг_НомерТранзакцииТерминала КАК омг_НомерТранзакцииТерминала,
+	ДокументОказаниеУслуг.Организация КАК Организация,
+	ДокументОказаниеУслуг.ИдентификаторВЕИП КАК ИдентификаторВЕИП,
+	ДокументОказаниеУслуг.омг_ЭтоОперация КАК омг_ЭтоОперация,
+	ДокументОказаниеУслуг.омг_КодСкидки КАК омг_КодСкидки,
+	ДокументОказаниеУслуг.МоментВремени КАК МоментВремени,
+	ВЫБОР
+		КОГДА ВложенныйЗапрос.Ссылка ЕСТЬ NULL
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ ИСТИНА
+	КОНЕЦ КАК ЕстьОшибки,
+	ВложенныйЗапрос.Статус КАК СтатусЗаявки
+ИЗ
+	Документ.ОказаниеУслуг КАК ДокументОказаниеУслуг
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСОшибки.Заявка.ДокументОснование КАК Ссылка,
+			МАКСИМУМ(омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСОшибки.Заявка.Статус) КАК Статус
+		ИЗ
+			РегистрСведений.омг_ОшибкиОтправкиЗаявокЛИС КАК омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСОшибки
+		ГДЕ
+			омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСОшибки.Заявка.Проведен
+		
+		СГРУППИРОВАТЬ ПО
+			омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСОшибки.Заявка.ДокументОснование) КАК ВложенныйЗапрос
+		ПО ДокументОказаниеУслуг.Ссылка = ВложенныйЗапрос.Ссылка</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаНачала</dcssch:dataPath>
+					<dcssch:field>ДатаНачала</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номер</dcssch:dataPath>
+					<dcssch:field>Номер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Проведен</dcssch:dataPath>
+					<dcssch:field>Проведен</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_СтраховаяПрограмма</dcssch:dataPath>
+					<dcssch:field>омг_СтраховаяПрограмма</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Дата</dcssch:dataPath>
+					<dcssch:field>Дата</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СтатьяДвиженияДенежныхСредств</dcssch:dataPath>
+					<dcssch:field>СтатьяДвиженияДенежныхСредств</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Касса</dcssch:dataPath>
+					<dcssch:field>Касса</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Сдача</dcssch:dataPath>
+					<dcssch:field>Сдача</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаОкончания</dcssch:dataPath>
+					<dcssch:field>ДатаОкончания</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КартаКлиента</dcssch:dataPath>
+					<dcssch:field>КартаКлиента</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Клиент</dcssch:dataPath>
+					<dcssch:field>Клиент</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Сотрудник</dcssch:dataPath>
+					<dcssch:field>Сотрудник</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОперационныйРеквизит</dcssch:dataPath>
+					<dcssch:field>ОперационныйРеквизит</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldNestedDataSet">
+					<dcssch:dataPath>Заявки</dcssch:dataPath>
+					<dcssch:field>Заявки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Прейскурант</dcssch:dataPath>
+					<dcssch:field>Прейскурант</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Сертификат</dcssch:dataPath>
+					<dcssch:field>Сертификат</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТипКоррекции</dcssch:dataPath>
+					<dcssch:field>ТипКоррекции</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Склад</dcssch:dataPath>
+					<dcssch:field>Склад</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СкладМатериалов</dcssch:dataPath>
+					<dcssch:field>СкладМатериалов</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СуммаДокумента</dcssch:dataPath>
+					<dcssch:field>СуммаДокумента</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_КодСкидки</dcssch:dataPath>
+					<dcssch:field>омг_КодСкидки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПолученоНаличными</dcssch:dataPath>
+					<dcssch:field>ПолученоНаличными</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДокументОснование</dcssch:dataPath>
+					<dcssch:field>ДокументОснование</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СдачуВДепозит</dcssch:dataPath>
+					<dcssch:field>СдачуВДепозит</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ЭтоОперация</dcssch:dataPath>
+					<dcssch:field>омг_ЭтоОперация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИдентификаторВЕИП</dcssch:dataPath>
+					<dcssch:field>ИдентификаторВЕИП</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИдентификаторКорзиныНСПК</dcssch:dataPath>
+					<dcssch:field>ИдентификаторКорзиныНСПК</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_НомерТранзакцииТерминала</dcssch:dataPath>
+					<dcssch:field>омг_НомерТранзакцииТерминала</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ответственный</dcssch:dataPath>
+					<dcssch:field>Ответственный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Филиал</dcssch:dataPath>
+					<dcssch:field>Филиал</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Организация</dcssch:dataPath>
+					<dcssch:field>Организация</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Контрагент</dcssch:dataPath>
+					<dcssch:field>Контрагент</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерЧекаККМ</dcssch:dataPath>
+					<dcssch:field>НомерЧекаККМ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерЧекаЭТ</dcssch:dataPath>
+					<dcssch:field>НомерЧекаЭТ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Документ</dcssch:dataPath>
+					<dcssch:field>Документ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Комментарий</dcssch:dataPath>
+					<dcssch:field>Комментарий</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ИспользуемыйТерминал</dcssch:dataPath>
+					<dcssch:field>омг_ИспользуемыйТерминал</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаКоррекции</dcssch:dataPath>
+					<dcssch:field>ДатаКоррекции</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>РучнаяКорректировкаМатериалов</dcssch:dataPath>
+					<dcssch:field>РучнаяКорректировкаМатериалов</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>АдресEmailЧек</dcssch:dataPath>
+					<dcssch:field>АдресEmailЧек</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>РучноеРедактированиеСкидок</dcssch:dataPath>
+					<dcssch:field>РучноеРедактированиеСкидок</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидОперации</dcssch:dataPath>
+					<dcssch:field>ВидОперации</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КомплексныйРасчет</dcssch:dataPath>
+					<dcssch:field>КомплексныйРасчет</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПринятоОт</dcssch:dataPath>
+					<dcssch:field>ПринятоОт</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерКарты</dcssch:dataPath>
+					<dcssch:field>НомерКарты</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldNestedDataSet">
+					<dcssch:dataPath>Сертификаты</dcssch:dataPath>
+					<dcssch:field>Сертификаты</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СостояниеЧековККМ</dcssch:dataPath>
+					<dcssch:field>СостояниеЧековККМ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДополнительныйРеквизит</dcssch:dataPath>
+					<dcssch:field>ДополнительныйРеквизит</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТелефонЧек</dcssch:dataPath>
+					<dcssch:field>ТелефонЧек</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СпособРасчетаЧекаККМ</dcssch:dataPath>
+					<dcssch:field>СпособРасчетаЧекаККМ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПринятоОтАдрес</dcssch:dataPath>
+					<dcssch:field>ПринятоОтАдрес</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПринятоОтИНН</dcssch:dataPath>
+					<dcssch:field>ПринятоОтИНН</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерПредписания</dcssch:dataPath>
+					<dcssch:field>НомерПредписания</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НеприменениеККТ</dcssch:dataPath>
+					<dcssch:field>НеприменениеККТ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОписаниеКоррекции</dcssch:dataPath>
+					<dcssch:field>ОписаниеКоррекции</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Коррекция</dcssch:dataPath>
+					<dcssch:field>Коррекция</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СуммаЗачетаАвансаПродажиВДолг</dcssch:dataPath>
+					<dcssch:field>СуммаЗачетаАвансаПродажиВДолг</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СсылочныйНомер</dcssch:dataPath>
+					<dcssch:field>СсылочныйНомер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldNestedDataSet">
+					<dcssch:dataPath>Работы</dcssch:dataPath>
+					<dcssch:field>Работы</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПерсональныеДанныеПокупателя</dcssch:dataPath>
+					<dcssch:field>ПерсональныеДанныеПокупателя</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОтраслевойРеквизит</dcssch:dataPath>
+					<dcssch:field>ОтраслевойРеквизит</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldNestedDataSet">
+					<dcssch:dataPath>Материалы</dcssch:dataPath>
+					<dcssch:field>Материалы</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldNestedDataSet">
+					<dcssch:dataPath>Скидки</dcssch:dataPath>
+					<dcssch:field>Скидки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldNestedDataSet">
+					<dcssch:dataPath>Оплата</dcssch:dataPath>
+					<dcssch:field>Оплата</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МоментВремени</dcssch:dataPath>
+					<dcssch:field>МоментВремени</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldNestedDataSet">
+					<dcssch:dataPath>НатуральныеСкидки</dcssch:dataPath>
+					<dcssch:field>НатуральныеСкидки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldNestedDataSet">
+					<dcssch:dataPath>Товары</dcssch:dataPath>
+					<dcssch:field>Товары</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldNestedDataSet">
+					<dcssch:dataPath>ПополнениеСертификатов</dcssch:dataPath>
+					<dcssch:field>ПополнениеСертификатов</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldNestedDataSet">
+					<dcssch:dataPath>РолиИсполнителей</dcssch:dataPath>
+					<dcssch:field>РолиИсполнителей</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldNestedDataSet">
+					<dcssch:dataPath>Чеки</dcssch:dataPath>
+					<dcssch:field>Чеки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЕстьОшибки</dcssch:dataPath>
+					<dcssch:field>ЕстьОшибки</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Есть ошибки</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СтатусЗаявки</dcssch:dataPath>
+					<dcssch:field>СтатусЗаявки</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус заявки</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Статус</dcssch:dataPath>
+					<dcssch:field>Статус</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ДатаОплаты</dcssch:dataPath>
+					<dcssch:field>омг_ДатаОплаты</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ОснованиеСкидки</dcssch:dataPath>
+					<dcssch:field>омг_ОснованиеСкидки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_Причина</dcssch:dataPath>
+					<dcssch:field>омг_Причина</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОМГ_СтавкаНДС</dcssch:dataPath>
+					<dcssch:field>ОМГ_СтавкаНДС</dcssch:field>
+				</Field>
+				<MainTable>Document.ОказаниеУслуг</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ДеньОтбора" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>День отбора</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<Save>
+				<Field>ДеньОтбора</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="СписокИсследований" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список исследований</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>СписокИсследований.ДокументОснование</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСБланкиРезультатовИсследования.Заявка.ДокументОснование КАК ДокументОснование,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСБланкиРезультатовИсследования.НаименованиеИсследованияЛИС КАК Исследование,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСБланкиРезультатовИсследования.Выполнено КАК Выполнено
+ИЗ
+	РегистрСведений.омг_БланкиРезультатовИсследованийЛИС КАК омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСБланкиРезультатовИсследования
+ГДЕ
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСБланкиРезультатовИсследования.Заявка.Проведен
+	И омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСБланкиРезультатовИсследования.Заявка.ДокументОснование = &amp;Ссылка</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДокументОснование</dcssch:dataPath>
+					<dcssch:field>ДокументОснование</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Исследование</dcssch:dataPath>
+					<dcssch:field>Исследование</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Исследование</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Выполнено</dcssch:dataPath>
+					<dcssch:field>Выполнено</dcssch:field>
+				</Field>
+				<Parameter>
+					<dcssch:name>Ссылка</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>cfg:DocumentRef.омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС</v8:Type>
+					</dcssch:valueType>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="СписокОшибокЗаявки" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список ошибок заявки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСОшибки.Заявка.ДокументОснование КАК Ссылка,
+	1 КАК НомерСтроки,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСОшибки.ТекстОшибки КАК ТекстОшибки
+ИЗ
+	РегистрСведений.омг_ОшибкиОтправкиЗаявокЛИС КАК омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСОшибки
+ГДЕ
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСОшибки.Заявка.ДокументОснование = &amp;Ссылка
+	И омг_ЗаявкаНаЛабораторноеИсследованиеВЛИСОшибки.Заявка.Проведен</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерСтроки</dcssch:dataPath>
+					<dcssch:field>НомерСтроки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТекстОшибки</dcssch:dataPath>
+					<dcssch:field>ТекстОшибки</dcssch:field>
+				</Field>
+				<Parameter>
+					<dcssch:name>Ссылка</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>cfg:DocumentRef.ОказаниеУслуг</v8:Type>
+					</dcssch:valueType>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="СписокЗаявокЛИС" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список заявок ЛИС</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>СписокЗаявокЛИС.Заявка</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Ссылка КАК Заявка,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Статус КАК Статус,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.НомерЗаявки КАК НомерЗаявки,
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Выполнена КАК Выполнена
+ИЗ
+	Документ.омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС КАК омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС
+ГДЕ
+	омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.ДокументОснование = &amp;ДокументОснование</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерЗаявки</dcssch:dataPath>
+					<dcssch:field>НомерЗаявки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Заявка</dcssch:dataPath>
+					<dcssch:field>Заявка</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заявка</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Статус</dcssch:dataPath>
+					<dcssch:field>Статус</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Выполнена</dcssch:dataPath>
+					<dcssch:field>Выполнена</dcssch:field>
+				</Field>
+				<Parameter>
+					<dcssch:name>ДокументОснование</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ основание</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>cfg:DocumentRef.ОказаниеУслуг</v8:Type>
+					</dcssch:valueType>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СписокОказанияУслуг</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">СписокОказанияУслуг.ЕстьОшибки</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">СписокОказанияУслуг.СтатусЗаявки</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.омг_СтатусыЗаякиНаЛабИсследованиеВЛИС.ОтклоненоЛИС</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:NegativeTextColor</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:FieldSelectedTextColor</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>Шрифт</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СписокОказанияУслуг</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">СписокОказанияУслуг.ЕстьОшибки</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">СписокОказанияУслуг.СтатусЗаявки</dcsset:left>
+						<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.омг_СтатусыЗаякиНаЛабИсследованиеВЛИС.ОтклоненоЛИС</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:Yellow</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:Yellow</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>Шрифт</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="Обновить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Обновить</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

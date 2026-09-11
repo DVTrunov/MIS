@@ -1,0 +1,1068 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Амбулаторный эпикриз" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- R [1..1] СЕКЦИЯ: Общие данные об обращении (с кодированными элементами) -->
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="AMBS" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>ОБРАЩЕНИЕ</title>
+			<!-- R [1..1] наполнение секции -->
+			<text></text>
+			<!-- R [1..1] Случай оказания медицинской помощи -->
+			<entry>
+				<encounter classCode="ENC" moodCode="EVN">
+					<!-- R [1..1] Уникальный идентификатор случая оказания медицинской помощи (незначащий уникальный идентификатор, номер талона) -->
+					<id root="%Организация$Медпомощь" extension="*УникальныйИдентификаторПоСсылке(%ПервичныйПрием)"/>
+					<!-- R [1..1] Даты случая -->
+					<effectiveTime>
+						<!-- R [1..1] Дата открытия обращения -->
+						<low value="МедПомощь.ДатаГоспитализации"/>
+						<!-- R [1..1] Дата закрытия обращения -->
+						<high value="МедПомощь.ДатаВыписки"/>
+					</effectiveTime>
+					<!-- R [1..1] Кодирование порядка обращения -->
+					<entryRelationship typeCode="SUBJ" inversionInd="true">
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Порядок обращения -->
+							<code code="#code" localid="ПорядокОбращения" codeSystem="1.2.643.5.1.13.13.11.1007" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						</observation>
+					</entryRelationship>
+					<!-- R [1..1] Кодирование шифра МКБ данного случая -->
+					<entryRelationship typeCode="REFR" inversionInd="false">
+						<act classCode="ACT" moodCode="EVN">
+							<!-- R [1..1] Шифр МКБ данного случая -->
+							<code code="#code" localid="МедПомощьДиагноз" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						</act>
+					</entryRelationship>
+				</encounter>
+			</entry>
+			<!-- [0..1] Кодирование результата обращения -->
+			<entry localid="Результат" Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Результат обращения -->
+					<code code="#code" localid="Результат" codeSystem="1.2.643.5.1.13.13.11.1046" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- [0..1] Кодирование направления по завершению обращения -->
+			<entry localid="Направление" Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Направление -->
+					<code code="#code" localid="Направление" codeSystem="1.2.643.5.1.13.13.11.1009" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Кодирование вида оплаты -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Вид оплаты -->
+					<code code="#code" localid="Оплата" codeSystem="1.2.643.5.1.13.13.11.1039" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- [0..1] Кодирование вида оказанной медицинской помощи в рамках обращения -->
+			<entry localid="ВидМедПомощи" Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Вид медицинской помощи -->
+					<code code="#code" localid="ВидМедПомощи" codeSystem="1.2.643.5.1.13.13.11.1034" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- [0..1] Кодирование предварительного диагноза -->
+			<entry localid="ПредварительныйДиагноз" Обязательное="*Ложь">
+				<act classCode="ACT" moodCode="EVN">
+					<!-- R [1..1] Степень обоснованности диагноза -->
+					<code code="1" codeSystem="1.2.643.5.1.13.13.11.1076" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..*] Кодирование основного предварительного диагноза -->
+					<entryRelationship typeCode="COMP" localid="ПредварительныйДиагноз" Множественное="*Истина">
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="1" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemVersion="#version" displayName="#name" codeSystemName="#codesystemname"/>
+							<text ТипДанных="Строка" localid="ПредварительныйДиагнозОписание">%ПредварительныйДиагнозОписание</text>
+							<value xsi:type="CD" localid="ПредварительныйДиагноз" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- [0..1] Уточнение внешней причины -->
+							<entryRelationship localid="ПредварительныйДиагнозПричина" Обязательное="*Ложь" typeCode="CAUS" inversionInd="true">
+								<act classCode="ACT" moodCode="EVN">
+									<!-- R [1..1] Внешняя причина заболевания -->
+									<code code="#code" localid="ПредварительныйДиагнозПричина" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+								</act>
+							</entryRelationship>
+						</observation>
+					</entryRelationship>
+					<!-- [0..*] Кодирование осложнения предварительного диагноза -->
+					<entryRelationship typeCode="COMP" localid="ПредварительныйДиагнозОсложнение" Множественное="*Истина" Обязательное="*Ложь">
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="2" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemVersion="#version" displayName="#name" codeSystemName="#codesystemname"/>
+							<text ТипДанных="Строка" localid="ПредварительныйДиагнозОсложнениеОписание">%ПредварительныйДиагнозОсложнениеОписание</text>
+							<value xsi:type="CD" localid="ПредварительныйДиагнозОсложнение" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						</observation>
+					</entryRelationship>
+					<!-- [0..*] Кодирование сопутствующей патологии предварительного диагноза -->
+					<entryRelationship typeCode="COMP" localid="ПредварительныйДиагнозПатология" Множественное="*Истина" Обязательное="*Ложь">
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="3" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemVersion="#version" displayName="#name" codeSystemName="#codesystemname"/>
+							<text ТипДанных="Строка" localid="ПредварительныйДиагнозПатологияОписание">%ПредварительныйДиагнозПатологияОписание</text>
+							<value xsi:type="CD" localid="ПредварительныйДиагнозПатология" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						</observation>
+					</entryRelationship>
+				</act>
+			</entry>
+			<!-- R [0..1] Кодирование заключительного диагноза -->
+			<entry localid="ЗаключительныйДиагноз" Обязательное="*Ложь">
+				<act classCode="ACT" moodCode="EVN">
+					<code code="3" codeSystem="1.2.643.5.1.13.13.11.1076" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<entryRelationship typeCode="COMP" localid="ЗаключительныйДиагноз" Множественное="*Истина">
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="1" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemVersion="#version" displayName="#name" codeSystemName="#codesystemname"/>
+							<text ТипДанных="Строка" localid="ЗаключительныйДиагнозОписание">%ЗаключительныйДиагнозОписание</text>
+							<value xsi:type="CD" localid="ЗаключительныйДиагноз" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- [0..1] Уточнение внешней причины -->
+							<entryRelationship localid="ЗаключительныйДиагнозПричина" Обязательное="*Ложь" typeCode="CAUS" inversionInd="true">
+								<act classCode="ACT" moodCode="EVN">
+									<!-- R [1..1] Внешняя причина заболевания -->
+									<code code="#code" localid="ЗаключительныйДиагнозПричина" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+								</act>
+							</entryRelationship>
+						</observation>
+					</entryRelationship>
+					<entryRelationship typeCode="COMP" localid="ЗаключительныйДиагнозОсложнение" Множественное="*Истина" Обязательное="*Ложь">
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="2" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemVersion="#version" displayName="#name" codeSystemName="#codesystemname"/>
+							<text ТипДанных="Строка" localid="ЗаключительныйДиагнозОсложнениеОписание">%ЗаключительныйДиагнозОсложнениеОписание</text>
+							<value xsi:type="CD" localid="ЗаключительныйДиагнозОсложнение" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						</observation>
+					</entryRelationship>
+					<entryRelationship typeCode="COMP" localid="ЗаключительныйДиагнозПатология" Множественное="*Истина" Обязательное="*Ложь">
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="3" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemVersion="#version" displayName="#name" codeSystemName="#codesystemname"/>
+							<text ТипДанных="Строка" localid="ЗаключительныйДиагнозПатологияОписание">%ЗаключительныйДиагнозПатологияОписание</text>
+							<value xsi:type="CD" localid="ЗаключительныйДиагнозПатология" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						</observation>
+					</entryRelationship>
+				</act>
+			</entry>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: Социальный анамнез (с кодированными элементами) -->
+	<component Обязательное="*Ложь" localid="SOCANAM">
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="SOCANAM" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>Социальный анамнез</title>
+			<!-- R [1..1] наполнение секции -->
+			<text></text>
+			<!-- [0..*] Кодирование льготной категории -->
+			<entry Обязательное="*Ложь" Множественное="*Истина" localid="ЛьготнаяКатегория">
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Льготная категория -->
+					<code localid="ЛьготнаяКатегория" code="#code" codeSystem="1.2.643.5.1.13.13.11.1050" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<originalText>
+							<reference value="*ЛьготнаяКатегория"/>
+						</originalText>
+					</code>
+					<effectiveTime>
+						<!-- [1..1] Дата\время начала действия льготы -->
+						<low localid="ЛьготнаяКатегорияДатаНачало" xsi:type="TS" value="#date"/> 
+						<!-- [1..1] Дата\время начала действия льготы -->
+						<high localid="ЛьготнаяКатегорияДатаНачало" xsi:type="TS" value="#date"/>
+					</effectiveTime>
+				</observation>
+			</entry>
+			<!-- [0..1] Кодирование инвалидности -->
+			<entry Обязательное="*Ложь" localid="Инвалидность">
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Инвалидность -->
+					<code localid="Инвалидность" code="#code" codeSystem="1.2.643.5.1.13.13.11.1053" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<originalText>
+							<reference value="*Инвалидность"/>
+						</originalText>
+						<!-- [0..1] Уточнение порядка установления инвалидности -->
+						<qualifier localid="ИнвалидностьПорядокУстановления" Обязательное="*Ложь">
+							<value localid="ИнвалидностьПорядокУстановления" code="#code" codeSystem="1.2.643.5.1.13.13.11.1041" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						</qualifier>
+					</code>
+					<!-- R [1..1] Дата\время установления инвалидности -->
+					<effectiveTime>
+						<low localid="ИнвалидностьДатаНачало" xsi:type="TS" value="#date"/> 
+					</effectiveTime>
+				</observation>
+			</entry>
+			<!-- [0..*] Кодирование потенциально-опасных для здоровья социальных факторов -->
+			<entry Обязательное="*Ложь" Множественное="*Истина" localid="ОпасныйСоциальныйФактор">
+				<observation classCode="OBS" moodCode="EVN">
+					<code localid="ОпасныйСоциальныйФактор" code="#code" codeSystem="1.2.643.5.1.13.13.11.1059" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<originalText>
+							<reference value="*ОпасныйСоциальныйФактор"/>
+						</originalText>
+					</code>
+				</observation>
+			</entry>
+			<!-- [0..*] Кодирование профессиональных вредностей -->
+			<entry Обязательное="*Ложь" Множественное="*Истина" localid="ПрофессиональнаяВредность">
+				<observation classCode="OBS" moodCode="EVN">
+					<code localid="ПрофессиональнаяВредность" code="#code" codeSystem="1.2.643.5.1.13.13.11.1060" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<originalText>
+							<reference value="*ПрофессиональнаяВредность"/>
+						</originalText>
+					</code>
+				</observation>
+			</entry>
+			<!-- [0..1] Кодирование местности регистрации -->
+			<entry Обязательно="Ложь" localid="МестностьРегистрации">
+				<observation classCode="OBS" moodCode="EVN">
+					<code localid="МестностьРегистрации" code="#code" codeSystem="1.2.643.5.1.13.13.11.1042" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- [0..1] Кодирование занятости -->
+			<entry Обязательно="Ложь" localid="Занятость"> 
+				<observation classCode="OBS" moodCode="EVN">
+					<code localid="Занятость" code="#code" codeSystem="1.2.643.5.1.13.13.11.1038" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<originalText>
+							<reference value="*Занятость"/>
+						</originalText>
+					</code>
+					<!-- [1..1] Текстовое описание занятости (место и должность работы) -->
+					<text ТипДанных="Строка" localid="ЗанятостьОписание">%ЗанятостьОписание</text>
+				</observation>
+			</entry>
+			<!-- [0..*] Кодирование вредных привычек и зависимостей -->
+			<entry Обязательное="*Ложь" Множественное="*Истина" localid="ВреднаяПривычка">
+				<observation classCode="OBS" moodCode="EVN">
+					<code localid="ВреднаяПривычка" code="#code" codeSystem="1.2.643.5.1.13.13.11.1058" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<originalText>
+							<reference value="*ВреднаяПривычка"/>
+						</originalText>
+					</code>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: Сведения амбулаторно-поликлинического посещения (с кодированными элементами) -->
+	<component Обязательное="*Ложь" localid="Посещение">
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="AMBSV" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>ПОСЕЩЕНИЯ</title>
+			<!-- R [1..1] наполнение секции -->
+			<text></text>
+			<!-- [0..*] Кодирование посещений -->
+			<entry localid="Посещение" Обязательное="*Ложь" Множественное="*Истина">
+				<!-- R [1..1] Посещение -->
+				<encounter classCode="ENC" moodCode="EVN">
+					<!-- R [1..1] Дата посещения -->
+					<effectiveTime>
+						<!-- R [1..1] Дата начала посещения -->
+						<low localid="ПосещениеДатаНачало" xsi:type="TS" value="#date"/>
+						<!-- R [1..1] Дата окончания посещения -->
+						<high localid="ПосещениеДатаОкончание" xsi:type="TS" value="#date"/>
+					</effectiveTime>
+					<!-- R [1..1] исполнитель (роль) -->
+					<performer>
+						<assignedEntity>
+							<!-- R [1..1] Уникальный идентификатор исполнителя -->
+							<id root="%Организация$Сотрудник" extension="*УникальныйИдентификаторПоСсылке(%Сотрудник)"/>
+							<!-- [0..1] СНИЛС исполнителя -->
+							<id root="1.2.643.100.3" extension="%Сотрудник.СНИЛС"/>
+							<!-- R [1..1] Код должности исполнителя -->
+							<code code="#code" localid="СотрудникДолжность" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/><!-- R [1..1] исполнитель (человек) -->
+							<assignedPerson>
+								<name>
+									<family>%Сотрудник.Имя</family>
+									<given>%Сотрудник.Фамилия</given>
+									<given>%Сотрудник.Отчество</given>
+								</name>
+							</assignedPerson>
+							<!-- [0..1] Место работы исполнителя  -->
+							<representedOrganization>
+								<!-- R [1..1] Идентификатор организации -->
+								<id root="%OIDМедицинскойОрганизации"/>
+								<!-- R [1..1] Наименование организации -->
+								<name>*НаименованиеОрганизации(%Организация)</name>
+								<!-- [1..1] Телефон организации -->
+								<telecom value="*ПолучитьТелефон(%Организация)" use="WP"/>
+								<!-- [0..*] Прочие контакты организации (факс) -->
+								<!-- [0..*] Прочие контакты организации (веб-сайт) -->
+								<!-- [1..1] Адрес организации -->
+								<addr>
+									<!-- R [1..1] адрес текстом -->
+									<streetAddressLine>*ПолучитьАдрес(%Организация)</streetAddressLine>
+									<!-- R [1..1] Регион РФ -->
+									<state>*ПолучитьРегион(%Организация)</state>
+								</addr>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+					<!-- R [1..1] Кодирование места посещения -->
+					<participant typeCode="LOC">
+						<participantRole classCode="SDLOC">
+							<!-- R [1..1] Место посещения -->
+							<code code="1" codeSystem="1.2.643.5.1.13.13.11.1008" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						</participantRole>
+					</participant>
+					<!-- R [1..*] Кодирование оказанных услуг -->
+					<entryRelationship localid="ПосещениеМедУслуга" Множественное="*Истина" typeCode="REFR" inversionInd="false">
+						<act classCode="ACT" moodCode="EVN">
+							<!-- R [1..1] Оказанная услуга -->
+							<code code="#code" localid="ПосещениеМедУслуга" codeSystem="1.2.643.5.1.13.13.11.1070" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] Дата и время оказания услуги -->
+							<effectiveTime value="%ДатаДокумента"/>
+						</act>
+					</entryRelationship>
+					<!-- [0..1] Описание результатов посещения: Кодирование жалоб -->
+					<entryRelationship localid="ПосещениеЖалоба" Обязательное="*Ложь" typeCode="REFR" inversionInd="false">
+						<observation classCode="OBS" moodCode="INT">
+							<!-- R [1..1] Раздел описания результатов посещения -->
+							<code code="835" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] Жалобы -->
+							<value xsi:type="ST">%ПосещениеЖалоба</value>
+						</observation>
+					</entryRelationship>
+					<!-- [0..1] Описание результатов посещения: Объективные данные -->
+					<entryRelationship localid="ПосещениеРезультат" Обязательное="*Ложь" typeCode="REFR" inversionInd="false">
+						<observation classCode="OBS" moodCode="INT">
+							<!-- R [1..1] Раздел описания результатов посещения -->
+							<code code="836" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] Объективные данные-->
+							<value xsi:type="ST">%ПосещениеРезультат</value>
+						</observation>
+					</entryRelationship>
+					<!-- [0..1] Описание результатов посещения: Кодирование заключения -->
+					<entryRelationship localid="ПосещениеЗаключение" typeCode="REFR" inversionInd="false">
+						<observation classCode="OBS" moodCode="INT">
+							<!-- R [1..1] Раздел описания результатов посещения -->
+							<code code="837" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] Заключение -->
+							<value xsi:type="ST">%ПосещениеЗаключение</value>
+						</observation>
+					</entryRelationship>
+					<!-- [0..1] Кодирование предварительного диагноза -->
+					<entry localid="ПосещениеДиагноз" Обязательное="*Ложь">
+						<act classCode="ACT" moodCode="EVN">
+							<!-- R [1..1] Степень обоснованности диагноза -->
+							<code code="1" codeSystem="1.2.643.5.1.13.13.11.1076" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..*] Кодирование основного предварительного диагноза -->
+							<entryRelationship typeCode="COMP" localid="ПосещениеДиагноз" Множественное="*Истина">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="1" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemVersion="#version" displayName="#name" codeSystemName="#codesystemname"/>
+									<text ТипДанных="Строка" localid="ПосещениеДиагнозОписание">%ПосещениеДиагнозОписание</text>
+									<value xsi:type="CD" localid="ПосещениеДиагноз" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									<!-- [0..1] Уточнение внешней причины -->
+									<entryRelationship localid="ПосещениеДиагнозПричина" Обязательное="*Ложь" typeCode="CAUS" inversionInd="true">
+										<act classCode="ACT" moodCode="EVN">
+											<!-- R [1..1] Внешняя причина заболевания -->
+											<code code="#code" localid="ПосещениеДиагнозПричина" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+										</act>
+									</entryRelationship>
+								</observation>
+							</entryRelationship>
+							<!-- [0..*] Кодирование осложнения предварительного диагноза -->
+							<entryRelationship typeCode="COMP" localid="ПосещениеДиагнозОсложнение" Множественное="*Истина" Обязательное="*Ложь">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="2" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemVersion="#version" displayName="#name" codeSystemName="#codesystemname"/>
+									<text ТипДанных="Строка" localid="ПосещениеДиагнозОсложнениеОписание">%ПосещениеДиагнозОсложнениеОписание</text>
+									<value xsi:type="CD" localid="ПосещениеДиагнозОсложнение" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+								</observation>
+							</entryRelationship>
+							<!-- [0..*] Кодирование сопутствующей патологии предварительного диагноза -->
+							<entryRelationship typeCode="COMP" localid="ПосещениеДиагнозПатология" Множественное="*Истина" Обязательное="*Ложь">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="3" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemVersion="#version" displayName="#name" codeSystemName="#codesystemname"/>
+									<text ТипДанных="Строка" localid="ПосещениеДиагнозПатологияОписание">%ПосещениеДиагнозПатологияОписание</text>
+									<value xsi:type="CD" localid="ПосещениеДиагнозПатология" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+								</observation>
+							</entryRelationship>
+						</act>
+					</entry>
+					<!-- [0..1] Описание результатов посещения: Кодирование рекомендаций -->
+					<entryRelationship localid="ПосещениеРекомендации" Обязательное="*Ложь" typeCode="REFR" inversionInd="false">
+						<observation classCode="OBS" moodCode="INT">
+							<!-- R [1..1] Раздел описания результатов посещения -->
+							<code code="839" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] Рекомендации -->
+							<value xsi:type="ST">%ПосещениеРекомендации</value>
+						</observation>
+					</entryRelationship>
+				</encounter>
+			</entry>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: Патологические реакции (с кодированными элементами) -->
+	<component Обязательное="*Ложь" localid="ПатологическаяРеакция">
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="ALL" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>ПАТОЛОГИЧЕСКИЕ РЕАКЦИИ</title>
+			<!-- R [1..1] наполнение секции -->
+			<text></text>
+			<!-- [0..*] кодирование патологической реакции (на Медикамент) -->
+			<entry Обязательное="*Ложь" Множественное="*Истина" localid="ПатологическаяРеакция">
+				<observation classCode="OBS" moodCode="EVN">
+					<code localid="ПатологическаяРеакцияТип" code="#code" codeSystem="1.2.643.5.1.13.13.11.1064" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [0..1] Комментарии -->
+					<text Обязательное="*Ложь" localid="ПатологическаяРеакцияОписание" ТипДанных="Строка">%ПатологическаяРеакцияОписание</text>
+					<!-- R [1..1] Дата выявления -->
+					<effectiveTime localid="ПатологическаяРеакцияДата" xsi:type="TS" value="#date"/>
+					<!-- R [1..1] Кодирование Действующего вещества -->
+					<participant typeCode="IND">
+						<participantRole classCode="MANU">
+							<playingEntity classCode="MMAT">
+								<!-- R [1..1] Действующее вещество -->
+								<code localid="ПатологическаяРеакцияВещество" code="#code" codeSystem="1.2.643.5.1.13.13.11.1367" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+									<originalText>
+										<reference value="*ПатологическаяРеакцияВещество"/>
+									</originalText>
+								</code>
+								<name/>
+							</playingEntity>
+						</participantRole>
+					</participant>
+					<!-- R [1..1] Кодирование реакции -->
+					<entryRelationship typeCode="MFST">
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Реакция -->
+							<code localid="ПатологическаяРеакция" code="#code" codeSystem="1.2.643.5.1.13.13.11.1063" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+								<originalText>
+									<reference value="*ПатологическаяРеакция"/>
+								</originalText>
+							</code>
+						</observation>
+					</entryRelationship>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: Витальные параметры (с кодированными элементами) -->
+	<component Обязательное="*Ложь" localid="ВитальныйПараметр">
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="VITALPARAM" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>ВИТАЛЬНЫЕ ПАРАМЕТРЫ</title>
+			<text></text>
+			<!-- [0..*] Кодирование витальных параметров -->
+			<entry Обязательное="*Ложь" Множественное="*Истина" localid="ВитальныйПараметр">
+				<organizer classCode="CLUSTER" moodCode="EVN">
+					<!-- R [1..1] Статус измерения - выполнено -->
+					<statusCode code="completed"/>
+					<!-- R [1..1] Дата измерения -->
+					<effectiveTime value="%ДатаДокумента"/>
+					<!-- R [1..2] Кодирование витального параметра -->
+					<component typeCode="COMP">
+						<!-- R [1..1] Кодирование систолического давления -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Тип витального параметра -->
+							<code localid="ВитальныйПараметр.КлассификацияПоля" code="#code" codeSystem="1.2.643.5.1.13.13.11.1010" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+								<originalText>
+									<reference value="*ВитальныйПараметр"/>
+								</originalText>
+							</code>
+							<!-- R [1..1] Систолическое давление -->
+							<value xsi:type="PQ" value="%ВитальныйПараметр" unit="*ПредставлениеЕдиницыИзмеренияВитальногоПараметра(%ВитальныйПараметр.КлассификацияПоля)"/>
+						</observation>
+					</component>
+				</organizer>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: ДИАГНОСТИЧЕСКИЕ ИССЛЕДОВАНИЯ И КОНСУЛЬТАЦИИ  -->
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="PROC" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>ДИАГНОСТИЧЕСКИЕ ИССЛЕДОВАНИЯ И КОНСУЛЬТАЦИИ</title>
+			<!-- [1..1] СЕКЦИЯ: Результаты  инструментальных исследований  -->
+			<component>
+				<section>
+					<code code="RESINSTR" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<title>Результаты инструментальных исследований</title>
+					<text></text>
+					<!-- [0..*] кодирование инстументального исследования (Rg-графия голени) -->
+					<entry Обязательное="*Ложь" Множественное="*Истина" localid="ИнструментальноеИсследование">
+						<observation classCode="OBS" moodCode="EVN">
+							<code localid="ИнструментальноеИсследованиеТип" code="#code" displayName="#name" codeSystem="1.2.643.5.1.13.13.11.1378" codeSystemVersion="#version" codeSystemName="#codesystemname"/>
+							<statusCode code="completed"/>
+							<effectiveTime value="%ДатаДокумента"/>
+							<priorityCode localid="ИнструментальноеИсследованиеПриоритет" code="#code" displayName="#name" codeSystem="1.2.643.5.1.13.13.11.1377" codeSystemVersion="#version" codeSystemName="#codesystemname"/>
+							<!-- [1..1] текст результатов и\или заключения -->
+							<value xsi:type="ST" localid="ИнструментальноеИсследованиеЗаключение">%ИнструментальноеИсследованиеЗаключение</value>
+							<!-- R [1..1] исполнитель (роль) -->
+							<performer Обязательное="*Ложь" Множественное="*Истина" localid="Сотрудник">
+								<assignedEntity>
+									<id root="%Организация$Сотрудник" extension="*УникальныйИдентификаторПоСсылке(%Сотрудник)"/>
+									<id root="1.2.643.100.3" extension="%Сотрудник.СНИЛС"/>
+									<code code="#code" localid="Должность" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									<addr localid="Адрес" Обязательное="*Ложь">
+										<streetAddressLine localid="Улица" Обязательное="*Ложь">*ПолучитьАдрес(%Сотрудник)</streetAddressLine>
+										<state localid="Регион" Обязательное="*Ложь">*ПолучитьРегион(%Сотрудник)</state>
+									</addr>
+									<telecom localid="Телефон" Обязательное="*Ложь" value="*ПолучитьТелефон(%Сотрудник)"/>
+									<assignedPerson>
+										<name>
+											<family>%Сотрудник.Имя</family>
+											<given>%Сотрудник.Фамилия</given>
+											<given>%Сотрудник.Отчество</given>
+										</name>
+									</assignedPerson>
+									<representedOrganization>
+										<!-- [1..1] Идентификатор организации, в которой проводился забор/подготовка материала  -->
+										<!-- организации - по справочнику «Регистр медицинских организаций Российской Федерации. Версия 2» (OID: 1.2.643.5.1.13.2.1.1.178) -->
+										<!-- индивидуальные предприниматели - указание на отсутствие кода, nullFlavor="NI" -->
+										<id root="%OIDМедицинскойОрганизации"/>
+										<name>*НаименованиеОрганизации(%Организация)</name>
+										<telecom value="*ПолучитьТелефон(%Организация)"/>
+										<addr localid="Адрес">
+											<streetAddressLine>*ПолучитьАдрес(%Организация)</streetAddressLine>
+											<state>*ПолучитьРегион(%Организация)</state>
+										</addr>
+									</representedOrganization>
+								</assignedEntity>
+							</performer>
+							<!-- R [1..*] Кодирование медицинской услуги -->
+							<entryRelationship typeCode="REFR" inversionInd="false" localid="ИнструментальноеИсследованиеМедУслуга" Множественное="*Истина">
+								<act classCode="ACT" moodCode="EVN">
+									<!-- R [1..1] Оказанная услуга -->
+									<code localid="ИнструментальноеИсследованиеМедУслуга" code="#code" displayName="#name" codeSystem="1.2.643.5.1.13.13.11.1070" codeSystemVersion="#version" codeSystemName="#codesystemname"/>
+									<!-- R [1..1] Дата и время оказания услуги -->
+									<effectiveTime value="%ДатаДокумента"/>
+								</act>
+							</entryRelationship>
+						</observation>
+					</entry>				
+				</section>
+			</component>
+			<!-- [1..1] СЕКЦИЯ: Результаты лабораторных исследований  -->
+			<component>
+				<section>
+					<code code="RESLAB" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<title>Результаты лабораторных исследований</title>
+					<text></text>
+					<!-- [0..*] Кодирование лабораторного исследования -->
+					<component Обязательное="*Ложь" Множественное="*Истина" localid="ЛабораторноеИсследование">
+						<organizer classCode="CLUSTER" moodCode="EVN">
+							<!-- R [1..1] Кодирование статуса всего исследования -->
+							<statusCode code="completed"/>
+							<!-- [0..1] Ссылка на исходный документ-исследование -->
+							<reference typeCode="REFR" localid="ЛабораторноеИсследование">
+								<externalDocument>
+									<id root="%Организация$ЛабораторноеИсследование" extension="*УникальныйИдентификаторПоСсылке(%ЛабораторноеИсследование)"/>
+								</externalDocument>
+							</reference>
+							<!-- R [1..*] Кодирование группы показателей лабораторного исследования -->
+							<component Множетсов="Истина" localid="ЛабораторноеИсследованиеГруппа">
+								<!-- R [1..1] Группа показателей -->
+								<organizer classCode="BATTERY" moodCode="EVN">
+									<!-- R [1..1] Указание произвольной группировки исследований -->
+									<code>
+										<originalText localid="ЛабораторноеИсследованиеГруппа" ТипДанных="Строка">%ЛабораторноеИсследованиеГруппа</originalText>
+									</code>
+									<!-- R [1..1] Кодирование статуса исследования группы показателей -->
+									<statusCode code="completed"/>
+									<!-- R [1..*] Кодирование лабораторного показателя -->
+									<component Множественное="*Истина" localid="ЛабораторноеИсследованиеПараметр">
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] Лабораторный показатель -->
+											<code code="#code" localid="ЛабораторноеИсследованиеПараметр.КлассификацияПоля" codeSystem="1.2.643.5.1.13.13.11.1080" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+											<!-- R [1..1] Кодирование статуса исследования параметра -->
+											<statusCode code="completed"/>
+											<!-- R [1..1]  Время выполнения лабораторного исследования -->
+											<effectiveTime value="%ДатаДокумента"/>
+											<!-- [1..1] Кодирование результата -->
+											<value xsi:type="PQ" value="%ЛабораторноеИсследованиеПараметр" unit="%ЛабораторноеИсследованиеПараметр.КлассификацияПоля.ЕдиницаИзмерения"/>
+											<!-- [1..1] Код интерпретации результата - выше нормы -->
+											<interpretationCode КлассификацияПоля="1.2.643.5.1.13.13.99.2.257" code="#code"/> <!-- РАЗОБРАТЬ значение взятое из классификатора, но при этом в примере макс это никак не отображалось -->
+											<!-- R [1..*] Кодирование материала исследования -->
+											<specimen Множественное="*Истина" localid="ЛабораторноеИсследованиеОразец">
+												<specimenRole>
+													<!-- R [1..1] Идентификатор материала исследования - ссылка на секцию SPECIMENS -->
+													<!-- ссылка на Пробирку для гематологических исследований с K3-ЭДТА. Штрихкод: 1234567890 -->
+													<id root="%Организация$ЛабораторноеИсследованиеОразец" extension="*УникальныйИдентификаторПоСсылке(%ЛабораторноеИсследованиеОразец)"/>
+												</specimenRole>
+											</specimen>
+											<!-- R [1..*] исполнитель (роль) -->
+											<performer Множественное="*Истина" localid="ЛабораторноеИсследованиеСотрудник">
+												<assignedEntity>
+													<!-- R [1..1] Уникальный идентификатор исполнителя - ссылка на раздел doсumentationOf заголовка -->
+													<!--ссылка на врача КЛД Смирнову -->
+													<id root="%Организация$ЛабораторноеИсследованиеСотрудник" extension="*УникальныйИдентификаторПоСсылке(%ЛабораторноеИсследованиеСотрудник)"/>
+												</assignedEntity>
+											</performer>
+											<!-- [1..*] Информация об использованном оборудовании и расходных материалах-->
+											<participant typeCode="DEV" Множественное="*Истина" localid="ЛабораторноеИсследованиеОборудование">
+												<participantRole classCode="ROL">
+													<!-- использованный анализатор - ссылка на секцию ANALYSERS -->
+													<!-- Гематологический анализатор Sysmex KX21 -->
+													<id root="%Организация$ЛабораторноеИсследованиеОборудование" extension="*УникальныйИдентификаторПоСсылке(%ЛабораторноеИсследованиеОборудование)"/>
+												</participantRole>
+											</participant>
+											<!-- [0..1] Кодирование референтного интервала -->
+										</observation>
+									</component>
+									<!-- [0..1] Примечание к результату исследования -->
+									<component Обязательное="*Ложь" localid="ЛабораторноеИсследованиеРезультат">
+										<act classCode="ACT" moodCode="EVN">
+											<code code="900" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+											<text ТипДанных="Строка">%ЛабораторноеИсследованиеРезультат</text>
+											<author>
+												<!-- R [1..1] Дата установки примечания -->
+												<time value="%ДатаДокумента"/>
+												<!-- R [1..1] Автор примечания -->
+												<assignedAuthor>
+													<!-- R [1..1] Уникальный идентификатор автора примечания  - ссылка на раздел doсumentationOf заголовка -->
+													<!-- по правилу: root = OID_медицинской_организации.100.НомерМИС.НомерЭкзМИС.70 extension = идентификатор персонала -->
+													<!--ссылка на врача КЛД Смирнову -->
+													<id root="%Организация$ЛабораторноеИсследованиеРезультат" extension="*УникальныйИдентификаторПоСсылке(%ЛабораторноеИсследованиеРезультат)"/>
+												</assignedAuthor>
+											</author>
+										</act>
+									</component>
+								</organizer>
+							</component>
+						</organizer>
+					</component>
+				</section>
+			</component>
+			<!-- [1..1] СЕКЦИЯ: Результаты морфологических исследований  -->
+			<component>
+				<section>
+					<code code="RESMOR" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<title>Результаты морфологических исследований</title>
+					<text></text>
+					<!-- [0..*] кодирование морфологического исследования (ИГХ) -->
+					<entry Обязательное="*Ложь" Множественное="*Истина" localid="МорфологическоеИсследование">
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- [1..1] Тип морфологического исследования -->
+							<code nullFlavor="NA"/>
+							<!-- R [1..1] Статус морфологического исследования -->
+							<statusCode code="completed"/>
+							<!-- R [1..1] Время выполнения морфологического исследования -->
+							<effectiveTime value="%ДатаДокумента"/>
+							<!-- R [1..1] Приоритет морфологического исследования -->
+							<priorityCode localid="МорфологическоеИсследованиеПриоритет" code="#code" displayName="#name" codeSystem="1.2.643.5.1.13.13.11.1377" codeSystemVersion="#version" codeSystemName="#codesystemname"/>
+							<!-- [1..1] текст результатов и\или заключения -->
+							<value xsi:type="ST" localid="МорфологическоеИсследованиеЗаключение">%МорфологическоеИсследованиеЗаключение</value>
+							<!-- R [1..1] исполнитель (роль) -->
+							<performer>
+								<assignedEntity>
+									<id root="%Организация$Сотрудник" extension="*УникальныйИдентификаторПоСсылке(%Сотрудник)"/>
+									<id root="1.2.643.100.3" extension="%Сотрудник.СНИЛС"/>
+									<code code="#code" localid="Должность" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									<addr localid="Адрес" Обязательное="*Ложь">
+										<streetAddressLine localid="Улица" Обязательное="*Ложь">*ПолучитьАдрес(%Сотрудник)</streetAddressLine> 
+										<state localid="Регион" Обязательное="*Ложь">*ПолучитьРегион(%Сотрудник)</state>
+									</addr>
+									<telecom localid="МорфологическоеИсследованиеСотрудникТелефон" Обязательное="*Ложь" value="*ПолучитьТелефон(%Сотрудник)"/> 
+									<assignedPerson>
+										<name>
+											<family>%Сотрудник.Имя</family>
+											<given>%Сотрудник.Фамилия</given>
+											<given>%Сотрудник.Отчество</given>
+										</name>
+									</assignedPerson>
+									<representedOrganization>
+										<!-- [1..1] Идентификатор организации, в которой проводился забор/подготовка материала  -->
+										<!-- организации - по справочнику «Регистр медицинских организаций Российской Федерации. Версия 2» (OID: 1.2.643.5.1.13.2.1.1.178) -->
+										<!-- индивидуальные предприниматели - указание на отсутствие кода, nullFlavor="NI" -->
+										<id root="%OIDМедицинскойОрганизации"/>
+										<name>*НаименованиеОрганизации(%Организация)</name>
+										<telecom value="*ПолучитьТелефон(%Организация)"/>
+										<addr>
+											<streetAddressLine>*ПолучитьАдрес(%Организация)</streetAddressLine>
+											<state>*ПолучитьРегион(%Организация)</state>
+										</addr>
+									</representedOrganization>
+								</assignedEntity>
+							</performer>
+							<!-- R [1..*] Кодирование медицинской услуги -->
+							<entryRelationship typeCode="REFR" inversionInd="false" Множественное="*Истина" localid="МорфологическоеИсследованиеМедУслуга">
+								<act classCode="ACT" moodCode="EVN">
+									<!-- R [1..1] Оказанная услуга -->
+									<code localid="МорфологическоеИсследованиеМедУслуга" code="#code" displayName="#name" codeSystem="1.2.643.5.1.13.13.11.1070" codeSystemVersion="#version" codeSystemName="#codesystemname"/>
+									<!-- R [1..1] Дата и время оказания услуги -->
+									<effectiveTime value="%ДатаДокумента"/>
+								</act>
+							</entryRelationship>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!-- [1..1] СЕКЦИЯ: Консультации врачей специалистов  -->
+			<component>
+				<section>
+					<code code="RESCONS" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<title>Консультации врачей специалистов</title>
+					<text></text>
+					<!-- [0..*] Кодирование консультаций -->
+					<entry Обязательное="*Ложь" Множественное="*Истина" localid="Консультация">
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Тип консультации -->
+							<code localid="Консультация" code="#code" displayName="#name" codeSystem="1.2.643.5.1.13.13.11.1066" codeSystemVersion="#version" codeSystemName="#codesystemname"/>
+							<!-- R [1..1] Статус консультации -->
+							<statusCode code="completed"/>
+							<!-- R [1..1] Время выполнения консультации -->
+							<effectiveTime localid="КонсультацияДата" xsi:type="TS" value="#date"/>
+							<!-- R [1..1] Приоритет консультации -->
+							<priorityCode localid="КонсультацияПриоритет" code="#code" displayName="#name" codeSystem="1.2.643.5.1.13.13.11.1377" codeSystemVersion="#version" codeSystemName="#codesystemname"/>
+							<!-- [1..1] Текст результатов и\или заключения -->
+							<value xsi:type="ST" localid="КонсультацияОписание">%КонсультацияОписание</value>
+							<!-- R [1..1] исполнитель (роль) -->
+							<performer localid="Сотрудник">
+								<assignedEntity>
+									<id root="%Организация$Сотрудник" extension="*УникальныйИдентификаторПоСсылке(%Сотрудник)"/>
+									<id root="1.2.643.100.3" extension="%Сотрудник.СНИЛС"/>
+									<code code="#code" localid="КонсультацияСотрудникДолжность" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									<addr localid="Адрес" Обязательное="*Ложь">
+										<streetAddressLine localid="Улица" Обязательное="*Ложь">*ПолучитьАдрес(%Сотрудник)</streetAddressLine>
+										<state localid="КонсультацияСотрудникРегион" Обязательное="*Ложь">*ПолучитьРегион(%Сотрудник)</state>
+									</addr>
+									<telecom localid="КонсультацияСотрудникТелефон" Обязательное="*Ложь" value="*ПолучитьТелефон(%Сотрудник)"/>
+									<assignedPerson>
+										<name>
+											<family>%Сотрудник.Имя</family>
+											<given>%Сотрудник.Фамилия</given>
+											<given>%Сотрудник.Отчество</given>
+										</name>
+									</assignedPerson>
+									<representedOrganization>
+										<!-- [1..1] Идентификатор организации, в которой проводился забор/подготовка материала  -->
+										<!-- организации - по справочнику «Регистр медицинских организаций Российской Федерации. Версия 2» (OID: 1.2.643.5.1.13.2.1.1.178) -->
+										<!-- индивидуальные предприниматели - указание на отсутствие кода, nullFlavor="NI" -->
+										<id root="%OIDМедицинскойОрганизации"/>
+										<name>*НаименованиеОрганизации(%Организация)</name>
+										<telecom value="*ПолучитьТелефон(%Организация)"/>
+										<addr>
+											<streetAddressLine>*ПолучитьАдрес(%Организация)</streetAddressLine>
+											<state>*ПолучитьРегион(%Организация)</state>
+										</addr>
+									</representedOrganization>
+								</assignedEntity>
+							</performer>
+							<!-- R [1..*] Кодирование медицинской услуги -->
+							<entryRelationship typeCode="REFR" inversionInd="false" Множественное="*Истина" localid="КонсультацияМедУслуга">
+								<act classCode="ACT" moodCode="EVN">
+									<!-- R [1..1] Оказанная услуга -->
+									<code localid="КонсультацияМедУслуга" code="#code" displayName="#name" codeSystem="1.2.643.5.1.13.13.11.1070" codeSystemVersion="#version" codeSystemName="#codesystemname"/>
+									<!-- R [1..1] Дата и время оказания услуги -->
+									<effectiveTime value="%ДатаДокумента"/>
+								</act>
+							</entryRelationship>
+							<!-- R [1..1] кодирование ... Состояние пациента -->
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<code localid="КонсультацияСостояние" code="#code" codeSystem="1.2.643.5.1.13.13.11.1006" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+									</code>
+									<!-- [0..1] Ссылка на фрагмент текстовой части секции -->
+									<text>-</text>
+								</observation>
+							</entryRelationship>
+							<!-- R [1..1] кодирование ... Протокол консультации -->
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="805" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									<!-- [0..1] Ссылка на фрагмент текстовой части секции -->
+									<text>-</text>
+									<value xsi:type="ST" localid="КонсультацияПротокол">%КонсультацияПротокол</value>
+								</observation>
+							</entryRelationship>
+							<!-- R [1..1] кодирование ... Заключение -->
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="806" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									<!-- [0..1] Ссылка на фрагмент текстовой части секции -->
+									<text>-</text>
+									<value xsi:type="ST" localid="КонсультацияЗаключение">%КонсультацияЗаключение</value>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] кодирование ... Рекомендации -->
+							<entryRelationship typeCode="COMP" Обязательное="*Ложь" localid="КонсультацияРекомендации">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="807" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									<!-- [0..1] Ссылка на фрагмент текстовой части секции -->
+									<text>-</text>
+									<value xsi:type="ST" localid="КонсультацияРекомендации">%КонсультацияРекомендации</value>
+								</observation>
+							</entryRelationship>
+							<!-- [0..*] кодирование ... Выявленные патологии -->
+							<entryRelationship typeCode="COMP" Обязательное="*Ложь" localid="КонсультацияВыявленнаяПатология" Множественное="*Истина">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="808" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+									</code>
+									<value localid="КонсультацияВыявленнаяПатология" xsi:type="CD" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+										<!-- [0..1] Ссылка на фрагмент текстовой части секции -->
+										<originalText>-</originalText>
+									</value>
+								</observation>
+							</entryRelationship>
+							<!-- R [1..1] кодирование ... Шифр по МКБ-10 -->
+							<entryRelationship typeCode="COMP">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="809" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+									</code>
+									<value localid="КонсультацияДиагноз" xsi:type="CD" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+										<!-- [0..1] Ссылка на фрагмент текстовой части секции -->
+										<originalText>-</originalText>
+									</value>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] кодирование ... Результат консультации -->
+							<entryRelationship typeCode="COMP" Обязательное="*Ложь" localid="КонсультацияРезультат">
+								<observation classCode="OBS" moodCode="EVN">
+									<code code="810" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+									</code>
+									<value localid="КонсультацияРезультат" xsi:type="CD" code="#code" codeSystem="1.2.643.5.1.13.13.11.1009" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+										<!-- [0..1] Ссылка на фрагмент текстовой части секции -->
+										<originalText>-</originalText>
+									</value>
+								</observation>
+							</entryRelationship>
+						</observation>
+					</entry>
+				</section>
+			</component>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: Вакцинация и иммунизация (с кодированными элементами) -->
+	<component Обязательное="*Ложь" localid="Вакцинация">
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="IMM" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>ВАКЦИНАЦИЯ И ИММУНИЗАЦИЯ</title>
+			<!-- [1..1] наполнение секции -->
+			<text></text>
+			<!-- [0..1] Кодирование вакцинации -->
+			<entry localid="Вакцинация" Обязательное="*Ложь">
+				<substanceAdministration classCode="SBADM" moodCode="EVN">
+					<!-- [0..1] Комментарий -->
+					<text>-</text>
+					<!-- R [1..1] Дата вакцинации -->
+					<effectiveTime localid="ВакцинацияДата" xsi:type="TS" value="#date"/>
+					<!-- R [1..1] Кодирование использованного препарата -->
+					<consumable typeCode="CSM">
+						<manufacturedProduct classCode="MANU">
+							<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+								<!-- R [1..1] Препарат -->
+								<code code="#code" localid="Вакцинация" codeSystem="1.2.643.5.1.13.13.11.1078" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+									<!-- [0..1] Ссылка на фрагмент текстовой части секции -->
+									<originalText>
+										<reference value="*Вакцинация"/>
+									</originalText>
+								</code>
+							</manufacturedMaterial>
+						</manufacturedProduct>
+					</consumable>
+				</substanceAdministration>
+			</entry>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: Проведенное лечение (без кодированных элементов) -->
+	<component Обязательное="*Ложь" localid="SUM">
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="SUM" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>ПРОВЕДЕННОЕ ЛЕЧЕНИЕ</title>
+			<!-- [0..1] СЕКЦИЯ: Медикаменты (без кодированных элементов) -->
+			<component Обязательное="*Ложь" localid="МедикаментозноеЛечение">
+				<section>
+					<code code="DRUG" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<title>Медикаментозное лечение</title>
+					<text></text>
+					<!-- [0..*] кодирование медикаментов -->
+					<entry Обязательное="*Ложь" Множественное="*Истина" localid="МедикаментозноеЛечение">
+						<substanceAdministration classCode="SBADM" moodCode="EVN">
+							<consumable>
+								<manufacturedProduct>
+									<manufacturedLabeledDrug>
+										<!-- R [1..1] Действующее вещество -->
+										<code localid="МедикаментозноеЛечение" code="#code" codeSystem="1.2.643.5.1.13.13.11.1367" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									</manufacturedLabeledDrug>
+								</manufacturedProduct>
+							</consumable>
+						</substanceAdministration>
+					</entry>
+				</section>
+			</component>
+			<!-- [0..1] СЕКЦИЯ: Немедикаментозное лечение  -->
+			<component Обязательное="*Ложь" localid="NONDRUG">
+				<section>
+					<code code="NONDRUG" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<title>Немедикаментозное лечение</title>
+					<text></text>
+				</section>
+			</component>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: Хирургические операции (с кодированными элементами) -->
+	<component Обязательное="*Ложь" localid="ХирургическаяОперация">
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="SUR" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>ХИРУРГИЧЕСКИЕ ВМЕШАТЕЛЬСТВА</title>
+			<!-- [1..1] наполнение секции -->
+			<text></text>
+			<!-- [0..*] кодирование операции -->
+			<entry Обязательное="*Ложь" Множественное="*Истина" localid="ХирургическаяОперация">
+				<procedure classCode="PROC" moodCode="EVN">
+					<!-- R [1..1] код операции -->
+					<code localid="ХирургическаяОперация" code="#code" displayName="#name" codeSystem="1.2.643.5.1.13.13.11.1070" codeSystemVersion="#version" codeSystemName="#codesystemname"/>
+					<!-- R [1..1] Текстовое описание операции -->
+					<text localid="ХирургическаяОперацияОписание" ТипДанных="Строка">%ХирургическаяОперацияОписание</text>
+					<statusCode code="completed"/>
+					<!-- [0..1] дата операции -->
+					<effectiveTime localid="ХирургическаяОперацияДата" xsi:type="TS" value="#date"/>
+					<!-- [0..*] исполнитель (роль) -->
+					<performer Обязательное="*Ложь" Множественное="*Истина" localid="Сотрудник">
+						<assignedEntity>
+							<id root="%Организация$Сотрудник" extension="*УникальныйИдентификаторПоСсылке(%Сотрудник)"/>
+							<id root="1.2.643.100.3" extension="%Сотрудник.СНИЛС"/>
+							<code code="#code" localid="Должность" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<addr localid="Адрес" Обязательное="*Ложь">
+								<streetAddressLine localid="Улица" Обязательное="*Ложь">*ПолучитьАдрес(%Сотрудник)</streetAddressLine> 
+								<state localid="Регион" Обязательное="*Ложь">*ПолучитьРегион(%Сотрудник)</state> 
+							</addr>
+							<telecom localid="Телефон" Обязательное="*Ложь" value="*ПолучитьТелефон(%Сотрудник)"/> 
+							<assignedPerson>
+								<name localid="ФИО">
+									<family>%Сотрудник.Имя</family>
+									<given>%Сотрудник.Фамилия</given>
+									<given>%Сотрудник.Отчество</given>
+								</name>
+							</assignedPerson>
+							<representedOrganization>
+								<!-- [1..1] Идентификатор организации, в которой проводился забор/подготовка материала  -->
+								<!-- организации - по справочнику «Регистр медицинских организаций Российской Федерации. Версия 2» (OID: 1.2.643.5.1.13.2.1.1.178) -->
+								<!-- индивидуальные предприниматели - указание на отсутствие кода, nullFlavor="NI" -->
+								<id root="%OIDМедицинскойОрганизации"/>
+								<name>*НаименованиеОрганизации(%Организация)</name>
+								<telecom value="*ПолучитьТелефон(%Организация)"/>
+								<addr localid="Адрес">
+									<streetAddressLine>*ПолучитьАдрес(%Организация)</streetAddressLine> 
+									<state>*ПолучитьРегион(%Организация)</state> 
+								</addr>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+					<!-- [0..*] уточнение операции: использование аппаратуры -->
+					<participant typeCode="DEV" Обязательное="*Ложь" Множественное="*Истина" localid="ХирургическаяОперацияОборудование">>
+						<participantRole classCode="MNT">
+							<playingDevice>
+								<code localid="ХирургическаяОперацияОборудование" code="#code" codeSystem="1.2.643.5.1.13.13.11.1048" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							</playingDevice>
+						</participantRole>
+					</participant>
+					<!-- [0..*] уточнение операции: использование устройств и имплантов -->
+					<participant typeCode="DEV" Обязательное="*Ложь" Множественное="*Истина" localid="ХирургическаяОперацияУстройствоИмплант">
+						<participantRole classCode="MANU">
+							<playingDevice>
+								<code localid="ХирургическаяОперацияУстройствоИмплант" code="#code" codeSystem="1.2.643.5.1.13.13.11.1079" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							</playingDevice>
+						</participantRole>
+					</participant>
+					<!-- [0..1] уточнение операции: использованная анестезия -->
+					<entryRelationship typeCode="COMP" Обязательное="*Ложь" localid="ХирургическаяОперацияАнестезия">
+						<substanceAdministration classCode="SBADM" moodCode="EVN">
+							<consumable typeCode="CSM">
+								<manufacturedProduct classCode="MANU">
+									<manufacturedLabeledDrug>
+										<code localid="ХирургическаяОперацияАнестезия" code="#code" codeSystem="1.2.643.5.1.13.13.11.1033" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									</manufacturedLabeledDrug>
+								</manufacturedProduct>
+							</consumable>
+						</substanceAdministration>
+					</entryRelationship>
+				</procedure>
+			</entry>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: МЕДИЦИНСКИЕ ПРОЦЕДУРЫ  -->
+	<component Обязательное="*Ложь" localid="МедицинскаяПроцедура">
+		<section>
+			<code code="PROCEDURE" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<title>МЕДИЦИНСКИЕ ПРОЦЕДУРЫ</title>
+			<text></text>
+			<!-- [0..*] кодирование процедуры -->
+			<entry Множественное="*Истина" Обязательное="*Ложь" localid="МедицинскаяПроцедура">
+				<procedure classCode="PROC" moodCode="EVN">
+					<!-- [0..1] код процедуры -->
+					<code localid="МедицинскаяПроцедура" code="#code" displayName="#name" codeSystem="1.2.643.5.1.13.13.11.1070" codeSystemVersion="#version" codeSystemName="#codesystemname"/>
+					<!-- R [1..1] Текстовое описание процедуры -->
+					<text localid="МедицинскаяПроцедураОписание" ТипДанных="Строка">%МедицинскаяПроцедураОписание</text>
+					<!-- R [1..1] Статус процедуры -->
+					<statusCode code="completed"/>
+					<!-- [0..1] дата операции -->
+					<effectiveTime value="%ДатаДокумента"/>
+					<!-- [0..*] исполнитель (роль) -->
+					<performer Обязательное="*Ложь" Множественное="*Истина" localid="Сотрудник">
+						<assignedEntity>
+							<id root="%Организация$Сотрудник" extension="*УникальныйИдентификаторПоСсылке(%Сотрудник)"/>
+							<id root="1.2.643.100.3" extension="%Сотрудник.СНИЛС"/>
+							<code code="#code" localid="Должность" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<addr localid="Адрес" Обязательное="*Ложь">
+								<streetAddressLine localid="Улица" Обязательное="*Ложь">*ПолучитьАдрес(%Сотрудник)</streetAddressLine>
+								<state localid="Регион" Обязательное="*Ложь">*ПолучитьРегион(%Сотрудник)</state>
+							</addr>
+							<telecom localid="Телефон" Обязательное="*Ложь" value="*ПолучитьТелефон(%Сотрудник)"/>
+							<assignedPerson>
+								<name localid="ФИО">
+									<family>%Сотрудник.Имя</family>
+									<given>%Сотрудник.Фамилия</given>
+									<given>%Сотрудник.Отчество</given>
+								</name>
+							</assignedPerson>
+							<representedOrganization>
+								<!-- [1..1] Идентификатор организации, в которой проводился забор/подготовка материала  -->
+								<!-- организации - по справочнику «Регистр медицинских организаций Российской Федерации. Версия 2» (OID: 1.2.643.5.1.13.2.1.1.178) -->
+								<!-- индивидуальные предприниматели - указание на отсутствие кода, nullFlavor="NI" -->
+								<id root="%OIDМедицинскойОрганизации"/>
+								<name>*НаименованиеОрганизации(%Организация)</name>
+								<telecom value="*ПолучитьТелефон(%Организация)"/>
+								<addr localid="Адрес">
+									<streetAddressLine>*ПолучитьАдрес(%Организация)</streetAddressLine> 
+									<state>*ПолучитьРегион(%Организация)</state> 
+								</addr>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+					<!-- [0..*] уточнение операции: использование устройств и имплантов -->
+					<participant typeCode="DEV" Обязательное="*Ложь" Множественное="*Истина" localid="МедицинскаяПроцедураУстройствоИмплант">
+						<participantRole classCode="MANU">
+							<playingDevice>
+								<code localid="МедицинскаяПроцедураУстройствоИмплант" code="#code" codeSystem="1.2.643.5.1.13.13.11.1079" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							</playingDevice>
+						</participantRole>
+					</participant>
+					<!-- [0..1] уточнение операции: использованная анестезия -->
+					<entryRelationship typeCode="COMP" Обязательное="*Ложь" localid="МедицинскаяПроцедураАнестезия">
+						<substanceAdministration classCode="SBADM" moodCode="EVN">
+							<consumable>
+								<manufacturedProduct>
+									<manufacturedLabeledDrug>
+										<code localid="МедицинскаяПроцедураАнестезия" code="#code" codeSystem="1.2.643.5.1.13.13.11.1033" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									</manufacturedLabeledDrug>
+								</manufacturedProduct>
+							</consumable>
+						</substanceAdministration>
+					</entryRelationship>
+				</procedure>
+			</entry>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: МЕДИЦИНСКИЕ УСЛУГИ  -->
+	<component Обязательное="*Ложь" localid="ДопМедУслуга">
+		<section>
+			<code code="SERVICES" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<title>МЕДИЦИНСКИЕ УСЛУГИ</title>
+			<text></text>
+			<!-- R [1..*] Кодирование медицинской услуги -->
+			<entry Множественное="*Истина" localid="ДопМедУслуга">
+				<act classCode="ACT" moodCode="EVN">
+					<!-- R [1..1] Оказанная услуга -->
+					<code localid="ДопМедУслуга" code="#code" displayName="#name" codeSystem="1.2.643.5.1.13.13.11.1070" codeSystemVersion="#version" codeSystemName="#codesystemname"/>
+					<!-- R [1..1] Дата и время оказания услуги -->
+					<effectiveTime value="%ДатаДокумента"/>
+				</act>
+			</entry>
+		</section>
+	</component>
+</Items>

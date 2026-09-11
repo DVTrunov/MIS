@@ -1,0 +1,443 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<Width>56</Width>
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ИзменитьИзображение" id="5">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ИзменитьИзображение</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Изменить фото</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ИзменитьИзображениеРасширеннаяПодсказка" id="22"/>
+			</Button>
+			<Button name="ФормаСохранитьИзображение" id="19">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СохранитьИзображение</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сохранить</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаСохранитьИзображениеРасширеннаяПодсказка" id="23"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnWriteAtServer">ПриЗаписиНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Объект" id="3">
+			<DataPath>Объект.Объект</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="ОбъектКонтекстноеМеню" id="4"/>
+			<ExtendedTooltip name="ОбъектРасширеннаяПодсказка" id="24"/>
+		</InputField>
+		<InputField name="Наименование" id="1">
+			<DataPath>Объект.Description</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание изображения</v8:content>
+				</v8:item>
+			</Title>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="25"/>
+		</InputField>
+		<PictureField name="ПолеИзображения" id="6">
+			<DataPath>ПолеИзображения</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<Height>12</Height>
+			<PictureSize>Proportionally</PictureSize>
+			<Zoomable>true</Zoomable>
+			<NonselectedPictureText>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Фото</v8:content>
+				</v8:item>
+			</NonselectedPictureText>
+			<FileDragMode>AsFile</FileDragMode>
+			<ContextMenu name="ПолеИзображенияКонтекстноеМеню" id="7"/>
+			<ExtendedTooltip name="ПолеИзображенияРасширеннаяПодсказка" id="26"/>
+		</PictureField>
+		<UsualGroup name="Группа1" id="8">
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>WeakSeparation</Representation>
+			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="27"/>
+			<ChildItems>
+				<Table name="СписокФото" id="9">
+					<HeightInTableRows>6</HeightInTableRows>
+					<RowSelectionMode>Cell</RowSelectionMode>
+					<EnableStartDrag>true</EnableStartDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>СписокФото</DataPath>
+					<RowPictureDataPath>СписокФото.DefaultPicture</RowPictureDataPath>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<AutoRefresh>false</AutoRefresh>
+					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<Period>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</Period>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<RestoreCurrentRow>false</RestoreCurrentRow>
+					<TopLevelParent xsi:nil="true"/>
+					<ShowRoot>true</ShowRoot>
+					<AllowRootChoice>false</AllowRootChoice>
+					<UpdateOnDataChange>Auto</UpdateOnDataChange>
+					<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+					<ContextMenu name="СписокФотоКонтекстноеМеню" id="10"/>
+					<AutoCommandBar name="СписокФотоКоманднаяПанель" id="11">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="СписокФотоДобавитьИзображение" id="16">
+								<Type>CommandBarButton</Type>
+								<Representation>PictureAndText</Representation>
+								<CommandName>Form.Command.ДобавитьИзображение</CommandName>
+								<Picture>
+									<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Добавить</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="СписокФотоДобавитьИзображениеРасширеннаяПодсказка" id="28"/>
+							</Button>
+							<Button name="СписокФотоПометитьНаУдалениеИзображение" id="17">
+								<Type>CommandBarButton</Type>
+								<Representation>PictureAndText</Representation>
+								<CommandName>Form.Command.ПометитьНаУдалениеИзображение</CommandName>
+								<Picture>
+									<xr:Ref>StdPicture.MarkToDelete</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Пометить на удаление</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="СписокФотоПометитьНаУдалениеИзображениеРасширеннаяПодсказка" id="29"/>
+							</Button>
+							<Button name="СписокФотоКнопкаОбновить" id="21">
+								<Type>CommandBarButton</Type>
+								<Representation>PictureAndText</Representation>
+								<CommandName>Form.Command.КомандаОбновить</CommandName>
+								<Picture>
+									<xr:Ref>StdPicture.Refresh</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Обновить</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="СписокФотоКнопкаОбновитьРасширеннаяПодсказка" id="30"/>
+							</Button>
+							<Button name="СписокФотоОсновнаяФотография" id="18">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ОсновнаяФотография</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Основная фотография</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="СписокФотоОсновнаяФотографияРасширеннаяПодсказка" id="31"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="СписокФотоРасширеннаяПодсказка" id="32"/>
+					<SearchStringAddition name="СписокФотоСтрокаПоиска" id="33">
+						<AdditionSource>
+							<Item>СписокФото</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокФотоСтрокаПоискаКонтекстноеМеню" id="34"/>
+						<ExtendedTooltip name="СписокФотоСтрокаПоискаРасширеннаяПодсказка" id="35"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="СписокФотоСостояниеПросмотра" id="36">
+						<AdditionSource>
+							<Item>СписокФото</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокФотоСостояниеПросмотраКонтекстноеМеню" id="37"/>
+						<ExtendedTooltip name="СписокФотоСостояниеПросмотраРасширеннаяПодсказка" id="38"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="СписокФотоУправлениеПоиском" id="39">
+						<AdditionSource>
+							<Item>СписокФото</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="СписокФотоУправлениеПоискомКонтекстноеМеню" id="40"/>
+						<ExtendedTooltip name="СписокФотоУправлениеПоискомРасширеннаяПодсказка" id="41"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">СписокФотоВыбор</Event>
+						<Event name="OnActivateRow">СписокФотоПриАктивизацииСтроки</Event>
+					</Events>
+					<ChildItems>
+						<LabelField name="СписокФотоНаименование" id="12">
+							<DataPath>СписокФото.Description</DataPath>
+							<ContextMenu name="СписокФотоНаименованиеКонтекстноеМеню" id="13"/>
+							<ExtendedTooltip name="СписокФотоНаименованиеРасширеннаяПодсказка" id="42"/>
+						</LabelField>
+						<LabelField name="СписокФотоОбъект" id="14">
+							<DataPath>СписокФото.Объект</DataPath>
+							<Visible>false</Visible>
+							<ContextMenu name="СписокФотоОбъектКонтекстноеМеню" id="15"/>
+							<ExtendedTooltip name="СписокФотоОбъектРасширеннаяПодсказка" id="43"/>
+						</LabelField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ХранилищеДополнительнойИнформации</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="СписокФото" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список фото</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>СписокФото.DeletionMark</Field>
+				<Field>СписокФото.Description</Field>
+				<Field>СписокФото.Predefined</Field>
+				<Field>СписокФото.Ref</Field>
+				<Field>СписокФото.Объект</Field>
+				<Field>СписокФото.Основная</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	СправочникХранилищеДополнительнойИнформации.Ссылка,
+	СправочникХранилищеДополнительнойИнформации.ВерсияДанных,
+	СправочникХранилищеДополнительнойИнформации.ПометкаУдаления,
+	СправочникХранилищеДополнительнойИнформации.Предопределенный,
+	СправочникХранилищеДополнительнойИнформации.Наименование,
+	СправочникХранилищеДополнительнойИнформации.Объект,
+	СправочникХранилищеДополнительнойИнформации.Хранилище,
+	ВЫБОР
+		КОГДА СправочникХранилищеДополнительнойИнформации.Ссылка = &amp;ТекОснИзображение
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК Основная
+ИЗ
+	Справочник.ХранилищеДополнительнойИнформации КАК СправочникХранилищеДополнительнойИнформации</QueryText>
+				<MainTable>Catalog.ХранилищеДополнительнойИнформации</MainTable>
+				<AutoSaveUserSettings>false</AutoSaveUserSettings>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ПолеИзображения" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поле изображения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КлиентВладелецСсылкаСервер" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Клиент владелец ссылка сервер</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Клиенты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОсновноеИзображениеПриОткрытии" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основное изображение при открытии</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ХранилищеДополнительнойИнформации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекОснИзображение" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тек осн изображение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ХранилищеДополнительнойИнформации</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ИзменитьИзображение" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить изображение</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить изображение</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ИзменитьИзображение</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ДобавитьИзображение" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить изображение</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить изображение</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДобавитьИзображение</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПометитьНаУдалениеИзображение" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пометить на удаление изображение</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пометить на удаление изображение</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПометитьНаУдалениеИзображение</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОсновнаяФотография" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основная фотография</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основная фотография</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОсновнаяФотография</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СохранитьИзображение" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить изображение</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить изображение</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СохранитьИзображение</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="КомандаОбновить" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда обновить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команда обновить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаОбновить</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>3:7cf22e60-9579-4ea8-9d4c-f32766c8ea5b</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

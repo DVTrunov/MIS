@@ -1,0 +1,484 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<CommandBarLocation>None</CommandBarLocation>
+	<ShowCommandBar>false</ShowCommandBar>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаКоманды" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа команды</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКомандыРасширеннаяПодсказка" id="25"/>
+			<ChildItems>
+				<Button name="ВыполнитьЗакрытиеМесяца" id="20">
+					<Type>UsualButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Form.Command.ВыполнитьЗакрытиеМесяца</CommandName>
+					<ButtonImportance>Main</ButtonImportance>
+					<ExtendedTooltip name="ВыполнитьЗакрытиеМесяцаРасширеннаяПодсказка" id="21"/>
+				</Button>
+				<Button name="ОтменитьЗакрытиеМесяца" id="22">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ОтменитьЗакрытиеМесяца</CommandName>
+					<ExtendedTooltip name="ОтменитьЗакрытиеМесяцаРасширеннаяПодсказка" id="23"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПериод" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа период</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПериодРасширеннаяПодсказка" id="8"/>
+			<ChildItems>
+				<InputField name="Период" id="64">
+					<DataPath>Объект.Период</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Месяц</v8:content>
+						</v8:item>
+					</Title>
+					<SpinButton>true</SpinButton>
+					<ContextMenu name="ПериодКонтекстноеМеню" id="65"/>
+					<ExtendedTooltip name="ПериодРасширеннаяПодсказка" id="66"/>
+					<Events>
+						<Event name="OnChange">ПериодПриИзменении</Event>
+						<Event name="Tuning">ПериодРегулирование</Event>
+					</Events>
+				</InputField>
+				<LabelField name="НадписьПериод" id="67">
+					<DataPath>Объект.Период</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Width>10</Width>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ='MMMM yyyy'</v8:content>
+						</v8:item>
+					</Format>
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<ContextMenu name="НадписьПериодКонтекстноеМеню" id="68"/>
+					<ExtendedTooltip name="НадписьПериодРасширеннаяПодсказка" id="69"/>
+				</LabelField>
+				<LabelField name="Статус" id="70">
+					<DataPath>Статус</DataPath>
+					<TitleFont ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<ContextMenu name="СтатусКонтекстноеМеню" id="71"/>
+					<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="72"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаКолонкаОпераций" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа колонка операций</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>NormalSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКолонкаОперацийРасширеннаяПодсказка" id="10"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаОпераций1" id="30">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа операций1</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОпераций1РасширеннаяПодсказка" id="31"/>
+					<ChildItems>
+						<PictureDecoration name="Состояние1" id="36">
+							<Width>4</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Состояние1</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Состояние1КонтекстноеМеню" id="37"/>
+							<ExtendedTooltip name="Состояние1РасширеннаяПодсказка" id="38"/>
+						</PictureDecoration>
+						<LabelDecoration name="Операция1" id="1">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Операция1</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="Операция1КонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="Операция1РасширеннаяПодсказка" id="3"/>
+							<Events>
+								<Event name="Click">ОперацияНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаСтрелка1" id="45">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ГруппаСтрелка1</v8:content>
+						</v8:item>
+					</Title>
+					<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСтрелка1РасширеннаяПодсказка" id="46"/>
+					<ChildItems>
+						<PictureDecoration name="СтрелкаВыполнить1" id="47">
+							<Picture>
+								<xr:Ref>StdPicture.MoveDown</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="СтрелкаВыполнить1КонтекстноеМеню" id="48"/>
+							<ExtendedTooltip name="СтрелкаВыполнить1РасширеннаяПодсказка" id="49"/>
+						</PictureDecoration>
+						<PictureDecoration name="СтрелкаПропустить1" id="55">
+							<Visible>false</Visible>
+							<Picture>
+								<xr:Ref>CommonPicture.Пропустить</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="СтрелкаПропустить1КонтекстноеМеню" id="56"/>
+							<ExtendedTooltip name="СтрелкаПропустить1РасширеннаяПодсказка" id="57"/>
+						</PictureDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаОпераций2" id="32">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа операций2</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОпераций2РасширеннаяПодсказка" id="33"/>
+					<ChildItems>
+						<PictureDecoration name="Состояние2" id="39">
+							<Width>4</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Состояние2</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Состояние2КонтекстноеМеню" id="40"/>
+							<ExtendedTooltip name="Состояние2РасширеннаяПодсказка" id="41"/>
+						</PictureDecoration>
+						<LabelDecoration name="Операция2" id="11">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Операция2</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="Операция2КонтекстноеМеню" id="12"/>
+							<ExtendedTooltip name="Операция2РасширеннаяПодсказка" id="13"/>
+							<Events>
+								<Event name="Click">ОперацияНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаСтрелка2" id="83">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ГруппаСтрелка2</v8:content>
+						</v8:item>
+					</Title>
+					<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаСтрелка2РасширеннаяПодсказка" id="84"/>
+					<ChildItems>
+						<PictureDecoration name="СтрелкаВыполнить2" id="85">
+							<Picture>
+								<xr:Ref>StdPicture.MoveDown</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="СтрелкаВыполнить2КонтекстноеМеню" id="86"/>
+							<ExtendedTooltip name="СтрелкаВыполнить2РасширеннаяПодсказка" id="87"/>
+						</PictureDecoration>
+						<PictureDecoration name="СтрелкаПропустить2" id="88">
+							<Visible>false</Visible>
+							<Picture>
+								<xr:Ref>CommonPicture.Пропустить</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="СтрелкаПропустить2КонтекстноеМеню" id="89"/>
+							<ExtendedTooltip name="СтрелкаПропустить2РасширеннаяПодсказка" id="90"/>
+						</PictureDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаОпераций3" id="91">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа операций3</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОпераций3РасширеннаяПодсказка" id="92"/>
+					<ChildItems>
+						<PictureDecoration name="Состояние3" id="93">
+							<Width>4</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Состояние3</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Состояние3КонтекстноеМеню" id="94"/>
+							<ExtendedTooltip name="Состояние3РасширеннаяПодсказка" id="95"/>
+						</PictureDecoration>
+						<LabelDecoration name="Операция3" id="96">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Операция3</v8:content>
+								</v8:item>
+							</Title>
+							<Hyperlink>true</Hyperlink>
+							<ContextMenu name="Операция3КонтекстноеМеню" id="97"/>
+							<ExtendedTooltip name="Операция3РасширеннаяПодсказка" id="98"/>
+							<Events>
+								<Event name="Click">ОперацияНажатие</Event>
+							</Events>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаПрочаяИнформация" id="81">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Прочая информация</v8:content>
+				</v8:item>
+			</Title>
+			<Group>HorizontalIfPossible</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>StrongSeparation</Representation>
+			<ExtendedTooltip name="ГруппаПрочаяИнформацияРасширеннаяПодсказка" id="82"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаГраницаПартионногоУчета" id="73">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа граница партионного учета</v8:content>
+						</v8:item>
+					</Title>
+					<Group>AlwaysHorizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>NormalSeparation</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаГраницаПартионногоУчетаРасширеннаяПодсказка" id="74"/>
+					<ChildItems>
+						<LabelField name="ДатаГраницыПартионногоУчета" id="75">
+							<DataPath>ДатаГраницыПартионногоУчета</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Граница последовательности складского партионного учета</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Граница подсказывает, когда был проведен последний документ прихода или списания, соблюдавшем последовательность.
+Несоблюдение последовательности искажает списание по средней и делает невозможным корректное списание суммы по FIFO/LIFO</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<Hiperlink>true</Hiperlink>
+							<ContextMenu name="ДатаГраницыПартионногоУчетаКонтекстноеМеню" id="76"/>
+							<ExtendedTooltip name="ДатаГраницыПартионногоУчетаРасширеннаяПодсказка" id="77"/>
+							<Events>
+								<Event name="Click">ДатаГраницыПартионногоУчетаНажатие</Event>
+							</Events>
+						</LabelField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ЗакрытиеМесяца</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="ТаблицаОпераций" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица операций</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ВидОперации" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид операции</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.ВидыОперацийРаспределениеЗатрат</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Ссылка" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.ПрочиеЗатраты</v8:Type>
+						<v8:Type>cfg:DocumentRef.РаспределениеЗатрат</v8:Type>
+					</Type>
+				</Column>
+				<Column name="НомерЭлементаФормы" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер элемента формы</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>2</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Выполнена" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выполнена</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Статус" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаГраницыПартионногоУчета" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата границы партионного учета</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ВыполнитьЗакрытиеМесяца" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить закрытие месяца</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить все операции закрытия месяца</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыполнитьЗакрытиеМесяца</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОтменитьЗакрытиеМесяца" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить закрытие месяца</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить все операции закрытия месяца</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОтменитьЗакрытиеМесяца</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

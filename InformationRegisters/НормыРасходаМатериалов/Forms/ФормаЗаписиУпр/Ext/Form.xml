@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>HorizontalIfPossible</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаОписаниеРасхода" id="28">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание нормативного расхода</v8:content>
+				</v8:item>
+			</Title>
+			<Width>46</Width>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>StrongSeparation</Representation>
+			<ExtendedTooltip name="ГруппаОписаниеРасходаРасширеннаяПодсказка" id="29"/>
+			<ChildItems>
+				<InputField name="Номенклатура" id="1">
+					<DataPath>Запись.Номенклатура</DataPath>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ChoiceButton>true</ChoiceButton>
+					<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+					<ContextMenu name="НоменклатураКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="НоменклатураРасширеннаяПодсказка" id="15"/>
+				</InputField>
+				<InputField name="ХарактеристикаНоменклатуры" id="3">
+					<DataPath>Запись.ХарактеристикаНоменклатуры</DataPath>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ChoiceButton>true</ChoiceButton>
+					<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+					<ContextMenu name="ХарактеристикаНоменклатурыКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="ХарактеристикаНоменклатурыРасширеннаяПодсказка" id="16"/>
+				</InputField>
+				<InputField name="Материал" id="5">
+					<DataPath>Запись.Материал</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Материал расхода</v8:content>
+						</v8:item>
+					</Title>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ChoiceButton>true</ChoiceButton>
+					<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+					<ChoiceParameters>
+						<app:item name="Отбор.ВидНоменклатуры">
+							<app:value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.ВидыНоменклатуры.EnumValue.Материал</Value>
+							</app:value>
+						</app:item>
+					</ChoiceParameters>
+					<ContextMenu name="МатериалКонтекстноеМеню" id="6"/>
+					<ExtendedTooltip name="МатериалРасширеннаяПодсказка" id="17"/>
+					<Events>
+						<Event name="OnChange">МатериалПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ЕдиницаИзмерения" id="11">
+					<DataPath>Запись.ЕдиницаИзмерения</DataPath>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ContextMenu name="ЕдиницаИзмеренияКонтекстноеМеню" id="12"/>
+					<ExtendedTooltip name="ЕдиницаИзмеренияРасширеннаяПодсказка" id="18"/>
+				</InputField>
+				<InputField name="ХарактеристикаМатериала" id="7">
+					<DataPath>Запись.ХарактеристикаМатериала</DataPath>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ChoiceButton>true</ChoiceButton>
+					<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+					<ContextMenu name="ХарактеристикаМатериалаКонтекстноеМеню" id="8"/>
+					<ExtendedTooltip name="ХарактеристикаМатериалаРасширеннаяПодсказка" id="19"/>
+				</InputField>
+				<InputField name="Норма" id="9">
+					<DataPath>Запись.Норма</DataPath>
+					<Width>8</Width>
+					<ContextMenu name="НормаКонтекстноеМеню" id="10"/>
+					<ExtendedTooltip name="НормаРасширеннаяПодсказка" id="20"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаНастройкиПрименения" id="30">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки применения</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>StrongSeparation</Representation>
+			<ExtendedTooltip name="ГруппаНастройкиПримененияРасширеннаяПодсказка" id="31"/>
+			<ChildItems>
+				<CheckBoxField name="ВходитВСтоимость" id="13">
+					<DataPath>Запись.ВходитВСтоимость</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<ContextMenu name="ВходитВСтоимостьКонтекстноеМеню" id="14"/>
+					<ExtendedTooltip name="ВходитВСтоимостьРасширеннаяПодсказка" id="21"/>
+				</CheckBoxField>
+				<CheckBoxField name="НеПропорциональноКоличествуУслуги" id="22">
+					<DataPath>Запись.НеЗависитОтКоличестваУслуги</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Не зависит от количества услуги в строке (фикс.)</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<ContextMenu name="НеПропорциональноКоличествуУслугиКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="НеПропорциональноКоличествуУслугиРасширеннаяПодсказка" id="24"/>
+				</CheckBoxField>
+				<CheckBoxField name="СписыватьОднократноНаДокумент" id="25">
+					<DataPath>Запись.ОбщийРасходНаУслугиДокумента</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<ContextMenu name="СписыватьОднократноНаДокументКонтекстноеМеню" id="26"/>
+					<ExtendedTooltip name="СписыватьОднократноНаДокументРасширеннаяПодсказка" id="27"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Запись" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.НормыРасходаМатериалов</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+</Form>

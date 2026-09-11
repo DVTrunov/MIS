@@ -1,0 +1,1155 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<ScaleVariant>Compact</ScaleVariant>
+	<CommandSet>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>Close</ExcludedCommand>
+		<ExcludedCommand>CustomizeForm</ExcludedCommand>
+		<ExcludedCommand>Help</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаСоздатьНаправление" id="102">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.Command.СоздатьНаправление</CommandName>
+				<ExtendedTooltip name="ФормаСоздатьНаправлениеРасширеннаяПодсказка" id="124"/>
+			</Button>
+			<Button name="ФормаСоздатьПоступление" id="104">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.Command.СоздатьПоступление</CommandName>
+				<ExtendedTooltip name="ФормаСоздатьПоступлениеРасширеннаяПодсказка" id="125"/>
+			</Button>
+			<Button name="ФормаСоздатьПеремещение" id="106">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.Command.СоздатьИзменениеУсловий</CommandName>
+				<ExtendedTooltip name="ФормаСоздатьПеремещениеРасширеннаяПодсказка" id="126"/>
+			</Button>
+			<Button name="ФормаСоздатьПеремещениеПоОтделениям" id="221">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.Command.СоздатьПереводМеждуПодразделениями</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Перевод между отделениями</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаСоздатьПеремещениеПоОтделениямРасширеннаяПодсказка" id="222"/>
+			</Button>
+			<Button name="ФормаВыписать" id="100">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.Command.СоздатьВыписку</CommandName>
+				<ExtendedTooltip name="ФормаВыписатьРасширеннаяПодсказка" id="127"/>
+			</Button>
+			<Button name="ФормаСоздатьОУ" id="119">
+				<Type>CommandBarButton</Type>
+				<Visible>false</Visible>
+				<CommandName>Form.Command.СоздатьОУ</CommandName>
+				<ExtendedTooltip name="ФормаСоздатьОУРасширеннаяПодсказка" id="128"/>
+			</Button>
+			<Button name="ДоговорыКлиента" id="98">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.Command.ДоговорыКлиента</CommandName>
+				<ExtendedTooltip name="ДоговорыКлиентаРасширеннаяПодсказка" id="123"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="омг_Филиалы" id="223">
+			<DataPath>омг_Филиалы</DataPath>
+			<ChoiceButton>true</ChoiceButton>
+			<ClearButton>true</ClearButton>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="омг_ФилиалыКонтекстноеМеню" id="224"/>
+			<ExtendedTooltip name="омг_ФилиалыРасширеннаяПодсказка" id="225"/>
+			<Events>
+				<Event name="OnChange">омг_ФилиалыПриИзменении</Event>
+				<Event name="StartChoice">омг_ФилиалыНачалоВыбора</Event>
+				<Event name="ChoiceProcessing">омг_ФилиалыОбработкаВыбора</Event>
+			</Events>
+		</InputField>
+		<InputField name="омг_Отделения" id="226">
+			<DataPath>омг_Отделения</DataPath>
+			<ChoiceButton>true</ChoiceButton>
+			<ClearButton>true</ClearButton>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="омг_ОтделенияКонтекстноеМеню" id="227"/>
+			<ExtendedTooltip name="омг_ОтделенияРасширеннаяПодсказка" id="228"/>
+			<Events>
+				<Event name="OnChange">омг_ОтделенияПриИзменении</Event>
+				<Event name="StartChoice">омг_ОтделенияНачалоВыбора</Event>
+				<Event name="ChoiceProcessing">омг_ОтделенияОбработкаВыбора</Event>
+			</Events>
+		</InputField>
+		<Pages name="ГруппаСтраницы" id="171">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="ГруппаСтраницыРасширеннаяПодсказка" id="172"/>
+			<ChildItems>
+				<Page name="ГруппаПациентыВСтационаре" id="175">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пациенты в стационаре</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пациенты в стационаре</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ГруппаПациентыВСтационареРасширеннаяПодсказка" id="176"/>
+					<ChildItems>
+						<Table name="ПациентыВСтационаре" id="177">
+							<Representation>List</Representation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>ПациентыВСтационаре</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Change</ExcludedCommand>
+							</CommandSet>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ПациентыВСтационареКонтекстноеМеню" id="178"/>
+							<AutoCommandBar name="ПациентыВСтационареКоманднаяПанель" id="179">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="ПациентыВСтационареОбновитьТекущихКлиентовСтационара" id="211">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ОбновитьТекущихКлиентовСтационара</CommandName>
+										<ExtendedTooltip name="ПациентыВСтационареОбновитьТекущихКлиентовСтационараРасширеннаяПодсказка" id="212"/>
+									</Button>
+									<Button name="ПациентыВСтационареИсторияПребыванияПациента" id="216">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ИсторияПребыванияПациента</CommandName>
+										<ExtendedTooltip name="ПациентыВСтационареИсторияПребыванияПациентаРасширеннаяПодсказка" id="217"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ПациентыВСтационареРасширеннаяПодсказка" id="180"/>
+							<SearchStringAddition name="ПациентыВСтационареСтрокаПоиска" id="181">
+								<AdditionSource>
+									<Item>ПациентыВСтационаре</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПациентыВСтационареСтрокаПоискаКонтекстноеМеню" id="182"/>
+								<ExtendedTooltip name="ПациентыВСтационареСтрокаПоискаРасширеннаяПодсказка" id="183"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ПациентыВСтационареСостояниеПросмотра" id="184">
+								<AdditionSource>
+									<Item>ПациентыВСтационаре</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПациентыВСтационареСостояниеПросмотраКонтекстноеМеню" id="185"/>
+								<ExtendedTooltip name="ПациентыВСтационареСостояниеПросмотраРасширеннаяПодсказка" id="186"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ПациентыВСтационареУправлениеПоиском" id="187">
+								<AdditionSource>
+									<Item>ПациентыВСтационаре</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ПациентыВСтационареУправлениеПоискомКонтекстноеМеню" id="188"/>
+								<ExtendedTooltip name="ПациентыВСтационареУправлениеПоискомРасширеннаяПодсказка" id="189"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ПациентыВСтационареВыбор</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="ПациентыВСтационареКлиент" id="190">
+									<DataPath>ПациентыВСтационаре.Клиент</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ПациентыВСтационареКлиентКонтекстноеМеню" id="191"/>
+									<ExtendedTooltip name="ПациентыВСтационареКлиентРасширеннаяПодсказка" id="192"/>
+								</InputField>
+								<InputField name="ПациентыВСтационареДатаПоступления" id="193">
+									<DataPath>ПациентыВСтационаре.ДатаПоступления</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<Format>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ДФ='дд.ММ.гггг ЧЧ.мм'</v8:content>
+										</v8:item>
+									</Format>
+									<EditFormat>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ДФ='дд.ММ.гггг ЧЧ.мм'</v8:content>
+										</v8:item>
+									</EditFormat>
+									<ContextMenu name="ПациентыВСтационареДатаПоступленияКонтекстноеМеню" id="194"/>
+									<ExtendedTooltip name="ПациентыВСтационареДатаПоступленияРасширеннаяПодсказка" id="195"/>
+								</InputField>
+								<InputField name="ПациентыВСтационареПалата" id="196">
+									<DataPath>ПациентыВСтационаре.Палата</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ПациентыВСтационареПалатаКонтекстноеМеню" id="197"/>
+									<ExtendedTooltip name="ПациентыВСтационареПалатаРасширеннаяПодсказка" id="198"/>
+								</InputField>
+								<InputField name="ПациентыВСтационареКойкоМесто" id="199">
+									<DataPath>ПациентыВСтационаре.КойкоМесто</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ПациентыВСтационареКойкоМестоКонтекстноеМеню" id="200"/>
+									<ExtendedTooltip name="ПациентыВСтационареКойкоМестоРасширеннаяПодсказка" id="201"/>
+								</InputField>
+								<InputField name="ПациентыВСтационареДатаПоследнегоИзменения" id="208">
+									<DataPath>ПациентыВСтационаре.ДатаПоследнегоИзменения</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<Format>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ДФ='дд.ММ.гггг ЧЧ.мм'</v8:content>
+										</v8:item>
+									</Format>
+									<EditFormat>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ДФ='дд.ММ.гггг ЧЧ.мм'</v8:content>
+										</v8:item>
+									</EditFormat>
+									<ContextMenu name="ПациентыВСтационареДатаПоследнегоИзмененияКонтекстноеМеню" id="209"/>
+									<ExtendedTooltip name="ПациентыВСтационареДатаПоследнегоИзмененияРасширеннаяПодсказка" id="210"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаСтраницаОбращения" id="173">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обращения в стационар</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обращения в стационар</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ГруппаСтраницаОбращенияРасширеннаяПодсказка" id="174"/>
+					<ChildItems>
+						<Table name="СписокОбращений" id="1">
+							<TitleLocation>Auto</TitleLocation>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<EnableStartDrag>true</EnableStartDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>СписокОбращений</DataPath>
+							<RowPictureDataPath>СписокОбращений.DefaultPicture</RowPictureDataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Обращения в стационар</v8:content>
+								</v8:item>
+							</Title>
+							<TitleTextColor>style:ButtonTextColor</TitleTextColor>
+							<TitleFont ref="style:NormalTextFont" height="11" kind="StyleItem"/>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="СписокОбращенийКонтекстноеМеню" id="2"/>
+							<AutoCommandBar name="СписокОбращенийКоманднаяПанель" id="3">
+								<ChildItems>
+									<Button name="ОтборСегодняшниеОбращения" id="111">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ОтборСегодняшниеОбращения</CommandName>
+										<ExtendedTooltip name="ОтборСегодняшниеОбращенияРасширеннаяПодсказка" id="129"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокОбращенийРасширеннаяПодсказка" id="133"/>
+							<SearchStringAddition name="СписокОбращенийСтрокаПоиска" id="134">
+								<AdditionSource>
+									<Item>СписокОбращений</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокОбращенийСтрокаПоискаКонтекстноеМеню" id="135"/>
+								<ExtendedTooltip name="СписокОбращенийСтрокаПоискаРасширеннаяПодсказка" id="136"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокОбращенийСостояниеПросмотра" id="137">
+								<AdditionSource>
+									<Item>СписокОбращений</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокОбращенийСостояниеПросмотраКонтекстноеМеню" id="138"/>
+								<ExtendedTooltip name="СписокОбращенийСостояниеПросмотраРасширеннаяПодсказка" id="139"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокОбращенийУправлениеПоиском" id="140">
+								<AdditionSource>
+									<Item>СписокОбращений</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокОбращенийУправлениеПоискомКонтекстноеМеню" id="141"/>
+								<ExtendedTooltip name="СписокОбращенийУправлениеПоискомРасширеннаяПодсказка" id="142"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="СписокОбращенийДата" id="20">
+									<DataPath>СписокОбращений.Дата</DataPath>
+									<ContextMenu name="СписокОбращенийДатаКонтекстноеМеню" id="21"/>
+									<ExtendedTooltip name="СписокОбращенийДатаРасширеннаяПодсказка" id="143"/>
+								</LabelField>
+								<LabelField name="СписокОбращенийСтатус1" id="121">
+									<DataPath>~СписокОбращений.Статус</DataPath>
+									<ContextMenu name="СписокОбращенийСтатус1КонтекстноеМеню" id="122"/>
+									<ExtendedTooltip name="СписокОбращенийСтатус1РасширеннаяПодсказка" id="144"/>
+								</LabelField>
+								<LabelField name="СписокОбращенийНомер" id="23">
+									<DataPath>СписокОбращений.Номер</DataPath>
+									<ContextMenu name="СписокОбращенийНомерКонтекстноеМеню" id="24"/>
+									<ExtendedTooltip name="СписокОбращенийНомерРасширеннаяПодсказка" id="145"/>
+								</LabelField>
+								<LabelField name="СписокОбращенийКлиент" id="29">
+									<DataPath>СписокОбращений.Клиент</DataPath>
+									<ContextMenu name="СписокОбращенийКлиентКонтекстноеМеню" id="30"/>
+									<ExtendedTooltip name="СписокОбращенийКлиентРасширеннаяПодсказка" id="147"/>
+								</LabelField>
+								<LabelField name="СписокОбращенийДатаВремяПоступления" id="32">
+									<DataPath>СписокОбращений.ДатаВремяПоступления</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дата, время поступления</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="СписокОбращенийДатаВремяПоступленияКонтекстноеМеню" id="33"/>
+									<ExtendedTooltip name="СписокОбращенийДатаВремяПоступленияРасширеннаяПодсказка" id="148"/>
+								</LabelField>
+								<LabelField name="СписокОбращенийДокументОснование" id="92">
+									<DataPath>СписокОбращений.ДокументОснование</DataPath>
+									<Width>30</Width>
+									<ContextMenu name="СписокОбращенийДокументОснованиеКонтекстноеМеню" id="93"/>
+									<ExtendedTooltip name="СписокОбращенийДокументОснованиеРасширеннаяПодсказка" id="168"/>
+								</LabelField>
+								<LabelField name="СписокОбращенийСтатусПациента" id="213">
+									<DataPath>СписокОбращений.СтатусПациента</DataPath>
+									<Width>15</Width>
+									<ContextMenu name="СписокОбращенийСтатусПациентаКонтекстноеМеню" id="214"/>
+									<ExtendedTooltip name="СписокОбращенийСтатусПациентаРасширеннаяПодсказка" id="215"/>
+								</LabelField>
+								<LabelField name="СписокОбращенийПодразделение" id="38">
+									<DataPath>СписокОбращений.Подразделение</DataPath>
+									<ContextMenu name="СписокОбращенийПодразделениеКонтекстноеМеню" id="39"/>
+									<ExtendedTooltip name="СписокОбращенийПодразделениеРасширеннаяПодсказка" id="150"/>
+								</LabelField>
+								<LabelField name="СписокОбращенийЛечащийВрач" id="41">
+									<DataPath>СписокОбращений.ЛечащийВрач</DataPath>
+									<ContextMenu name="СписокОбращенийЛечащийВрачКонтекстноеМеню" id="42"/>
+									<ExtendedTooltip name="СписокОбращенийЛечащийВрачРасширеннаяПодсказка" id="151"/>
+								</LabelField>
+								<LabelField name="СписокОбращенийМедицинскаяКарта" id="35">
+									<DataPath>СписокОбращений.МедицинскаяКарта</DataPath>
+									<ContextMenu name="СписокОбращенийМедицинскаяКартаКонтекстноеМеню" id="36"/>
+									<ExtendedTooltip name="СписокОбращенийМедицинскаяКартаРасширеннаяПодсказка" id="149"/>
+								</LabelField>
+								<LabelField name="СписокОбращенийДиагнозПоступления" id="50">
+									<DataPath>СписокОбращений.ДиагнозПоступления</DataPath>
+									<ContextMenu name="СписокОбращенийДиагнозПоступленияКонтекстноеМеню" id="51"/>
+									<ExtendedTooltip name="СписокОбращенийДиагнозПоступленияРасширеннаяПодсказка" id="154"/>
+								</LabelField>
+								<CheckBoxField name="СписокОбращенийОтказВГоспитализации" id="68">
+									<DataPath>СписокОбращений.ОтказВГоспитализации</DataPath>
+									<ContextMenu name="СписокОбращенийОтказВГоспитализацииКонтекстноеМеню" id="69"/>
+									<ExtendedTooltip name="СписокОбращенийОтказВГоспитализацииРасширеннаяПодсказка" id="160"/>
+								</CheckBoxField>
+								<LabelField name="СписокОбращенийПричинаОтказаВГоспитализации" id="71">
+									<DataPath>СписокОбращений.ПричинаОтказаВГоспитализации</DataPath>
+									<ContextMenu name="СписокОбращенийПричинаОтказаВГоспитализацииКонтекстноеМеню" id="72"/>
+									<ExtendedTooltip name="СписокОбращенийПричинаОтказаВГоспитализацииРасширеннаяПодсказка" id="161"/>
+								</LabelField>
+								<LabelField name="СписокОбращенийКомментарий" id="86">
+									<DataPath>СписокОбращений.Комментарий</DataPath>
+									<ContextMenu name="СписокОбращенийКомментарийКонтекстноеМеню" id="87"/>
+									<ExtendedTooltip name="СписокОбращенийКомментарийРасширеннаяПодсказка" id="166"/>
+								</LabelField>
+								<LabelField name="СписокОбращенийОтветственный" id="89">
+									<DataPath>СписокОбращений.Ответственный</DataPath>
+									<ContextMenu name="СписокОбращенийОтветственныйКонтекстноеМеню" id="90"/>
+									<ExtendedTooltip name="СписокОбращенийОтветственныйРасширеннаяПодсказка" id="167"/>
+								</LabelField>
+								<LabelField name="СписокОбращенийФилиал" id="26">
+									<DataPath>~СписокОбращений.Салон</DataPath>
+									<ContextMenu name="СписокОбращенийФилиалКонтекстноеМеню" id="27"/>
+									<ExtendedTooltip name="СписокОбращенийФилиалРасширеннаяПодсказка" id="146"/>
+								</LabelField>
+								<LabelField name="СписокОбращенийСсылка" id="218">
+									<DataPath>СписокОбращений.Ссылка</DataPath>
+									<Visible>false</Visible>
+									<ContextMenu name="СписокОбращенийСсылкаКонтекстноеМеню" id="219"/>
+									<ExtendedTooltip name="СписокОбращенийСсылкаРасширеннаяПодсказка" id="220"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="СписокОбращений" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список обращений</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ РАЗЛИЧНЫЕ
+	ДокументОбращениеВСтационар.Ссылка КАК Ссылка,
+	ДокументОбращениеВСтационар.ПометкаУдаления КАК ПометкаУдаления,
+	ДокументОбращениеВСтационар.Номер КАК Номер,
+	ДокументОбращениеВСтационар.Дата КАК Дата,
+	ДокументОбращениеВСтационар.Проведен КАК Проведен,
+	ДокументОбращениеВСтационар.Филиал КАК Филиал,
+	ДокументОбращениеВСтационар.Клиент КАК Клиент,
+	ДокументОбращениеВСтационар.ДатаВремяПоступления КАК ДатаВремяПоступления,
+	ДокументОбращениеВСтационар.МедицинскаяКарта КАК МедицинскаяКарта,
+	ДокументОбращениеВСтационар.Подразделение КАК Подразделение,
+	ДокументОбращениеВСтационар.ЛечащийВрач КАК ЛечащийВрач,
+	ДокументОбращениеВСтационар.НаправившееУчреждение КАК НаправившееУчреждение,
+	ДокументОбращениеВСтационар.ДиагнозНаправления КАК ДиагнозНаправления,
+	ДокументОбращениеВСтационар.ДиагнозПоступления КАК ДиагнозПоступления,
+	ДокументОбращениеВСтационар.ДоставленПоЭкстреннымПоказателям КАК ДоставленПоЭкстреннымПоказателям,
+	ДокументОбращениеВСтационар.ЧерезЧасовПослеНачалаЗаболевания КАК ЧерезЧасовПослеНачалаЗаболевания,
+	ПОДСТРОКА(ДокументОбращениеВСтационар.ПричинаГоспитализации,1,100) КАК ПричинаГоспитализации,
+	ДокументОбращениеВСтационар.СообщитьРодственникам КАК СообщитьРодственникам,
+	ДокументОбращениеВСтационар.ОтказВГоспитализации КАК ОтказВГоспитализации,
+	ДокументОбращениеВСтационар.ПричинаОтказаВГоспитализации КАК ПричинаОтказаВГоспитализации,
+	ДокументОбращениеВСтационар.ПервичныйПовторныйОтказ КАК ПервичныйПовторныйОтказ,
+	ДокументОбращениеВСтационар.ДатаВремяОтказа КАК ДатаВремяОтказа,
+	ПОДСТРОКА(ДокументОбращениеВСтационар.ПринятыеМеры,1,100) КАК ПринятыеМеры,
+	ПОДСТРОКА(ДокументОбращениеВСтационар.Рекомендации,1,100) КАК Рекомендации,
+	ПОДСТРОКА(ДокументОбращениеВСтационар.Комментарий,1,100) КАК Комментарий,
+	ДокументОбращениеВСтационар.Ответственный КАК Ответственный,
+	ДокументОбращениеВСтационар.ДокументОснование КАК ДокументОснование,
+	ДокументОбращениеВСтационар.МоментВремени КАК МоментВремени,
+	ВЫБОР
+		КОГДА ИсходыГоспитализаций.Выписан ЕСТЬ NULL
+			ТОГДА 0
+		КОГДА ИсходыГоспитализаций.Выписан = ИСТИНА
+			ТОГДА 2
+		ИНАЧЕ 1
+	КОНЕЦ КАК СтатусПациента
+ИЗ
+	Документ.ОбращениеВСтационар КАК ДокументОбращениеВСтационар
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			КлиентыСтационараСрезПоследних.Клиент КАК Клиент,
+			КлиентыСтационараСрезПоследних.ДокументПоступления.ДокументОбращения КАК ДокументОбращения,
+			МАКСИМУМ(КлиентыСтационараСрезПоследних.Выписан) КАК Выписан
+		ИЗ
+			РегистрСведений.КлиентыСтационара.СрезПоследних КАК КлиентыСтационараСрезПоследних
+		ГДЕ
+			КлиентыСтационараСрезПоследних.ДокументПоступления &lt;&gt; ЗНАЧЕНИЕ(Документ.ОбращениеВСтационар.ПустаяСсылка)
+		
+		СГРУППИРОВАТЬ ПО
+			КлиентыСтационараСрезПоследних.Клиент,
+			КлиентыСтационараСрезПоследних.ДокументПоступления.ДокументОбращения) КАК ИсходыГоспитализаций
+		ПО ДокументОбращениеВСтационар.Ссылка = ИсходыГоспитализаций.ДокументОбращения
+			И ДокументОбращениеВСтационар.Клиент = ИсходыГоспитализаций.Клиент</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>удалитьДоставленСкоройПомощью</dcssch:dataPath>
+					<dcssch:field>удалитьДоставленСкоройПомощью</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПричинаГоспитализации</dcssch:dataPath>
+					<dcssch:field>ПричинаГоспитализации</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерНаправления</dcssch:dataPath>
+					<dcssch:field>НомерНаправления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаВыдачиНаправления</dcssch:dataPath>
+					<dcssch:field>ДатаВыдачиНаправления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаркотическоеОпьянение</dcssch:dataPath>
+					<dcssch:field>НаркотическоеОпьянение</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаВремяОтказа</dcssch:dataPath>
+					<dcssch:field>ДатаВремяОтказа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КаналГоспитализации</dcssch:dataPath>
+					<dcssch:field>КаналГоспитализации</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НомерНаряда</dcssch:dataPath>
+					<dcssch:field>НомерНаряда</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>АлкогольноеОпьянение</dcssch:dataPath>
+					<dcssch:field>АлкогольноеОпьянение</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаВремяГоспитализации</dcssch:dataPath>
+					<dcssch:field>ДатаВремяГоспитализации</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ответственный</dcssch:dataPath>
+					<dcssch:field>Ответственный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СотрудникЗафиксировавшийОтказ</dcssch:dataPath>
+					<dcssch:field>СотрудникЗафиксировавшийОтказ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОтказЗаконныйПредставитель</dcssch:dataPath>
+					<dcssch:field>ОтказЗаконныйПредставитель</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Выписан</dcssch:dataPath>
+					<dcssch:field>Выписан</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОпьянениеДатаВремяВзятияПробы</dcssch:dataPath>
+					<dcssch:field>ОпьянениеДатаВремяВзятияПробы</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОпьянениеРезультатВзятияПробы</dcssch:dataPath>
+					<dcssch:field>ОпьянениеРезультатВзятияПробы</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Комментарий</dcssch:dataPath>
+					<dcssch:field>Комментарий</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаВремяИнформированияЗП</dcssch:dataPath>
+					<dcssch:field>ДатаВремяИнформированияЗП</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Подразделение</dcssch:dataPath>
+					<dcssch:field>Подразделение</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПовторноеПоступление</dcssch:dataPath>
+					<dcssch:field>ПовторноеПоступление</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПутьПоступления</dcssch:dataPath>
+					<dcssch:field>ПутьПоступления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидСтационараНаправления</dcssch:dataPath>
+					<dcssch:field>ВидСтационараНаправления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Рекомендации</dcssch:dataPath>
+					<dcssch:field>Рекомендации</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номер</dcssch:dataPath>
+					<dcssch:field>Номер</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЛечащийВрач</dcssch:dataPath>
+					<dcssch:field>ЛечащийВрач</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Дата</dcssch:dataPath>
+					<dcssch:field>Дата</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДиагнозНаправления</dcssch:dataPath>
+					<dcssch:field>ДиагнозНаправления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Проведен</dcssch:dataPath>
+					<dcssch:field>Проведен</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МедицинскаяКарта</dcssch:dataPath>
+					<dcssch:field>МедицинскаяКарта</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Филиал</dcssch:dataPath>
+					<dcssch:field>Филиал</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Клиент</dcssch:dataPath>
+					<dcssch:field>Клиент</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДатаВремяПоступления</dcssch:dataPath>
+					<dcssch:field>ДатаВремяПоступления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаправившееУчреждение</dcssch:dataPath>
+					<dcssch:field>НаправившееУчреждение</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДиагнозПоступления</dcssch:dataPath>
+					<dcssch:field>ДиагнозПоступления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДоставленПоЭкстреннымПоказателям</dcssch:dataPath>
+					<dcssch:field>ДоставленПоЭкстреннымПоказателям</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЧерезЧасовПослеНачалаЗаболевания</dcssch:dataPath>
+					<dcssch:field>ЧерезЧасовПослеНачалаЗаболевания</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СообщитьРодственникам</dcssch:dataPath>
+					<dcssch:field>СообщитьРодственникам</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОтказВГоспитализации</dcssch:dataPath>
+					<dcssch:field>ОтказВГоспитализации</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДокументПоступления</dcssch:dataPath>
+					<dcssch:field>ДокументПоступления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПричинаОтказаВГоспитализации</dcssch:dataPath>
+					<dcssch:field>ПричинаОтказаВГоспитализации</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПервичныйПовторныйОтказ</dcssch:dataPath>
+					<dcssch:field>ПервичныйПовторныйОтказ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПринятыеМеры</dcssch:dataPath>
+					<dcssch:field>ПринятыеМеры</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДокументОснование</dcssch:dataPath>
+					<dcssch:field>ДокументОснование</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МоментВремени</dcssch:dataPath>
+					<dcssch:field>МоментВремени</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СтатусПациента</dcssch:dataPath>
+					<dcssch:field>СтатусПациента</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус пациента</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ДокументОбращения</dcssch:dataPath>
+					<dcssch:field>ДокументОбращения</dcssch:field>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ обращения</v8:content>
+						</v8:item>
+					</dcssch:title>
+				</Field>
+				<Parameter>
+					<dcssch:name>Период</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</dcssch:valueType>
+					<dcssch:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcssch:value>
+					<dcssch:useRestriction>false</dcssch:useRestriction>
+				</Parameter>
+				<MainTable>Document.ОбращениеВСтационар</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>СтатусПациента</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">СтатусПациента</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:decimal">1</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Текст</dcscor:parameter>
+									<dcscor:value xsi:type="xs:string">В стационаре</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>СтатусПациента</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">СтатусПациента</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:decimal">2</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Текст</dcscor:parameter>
+									<dcscor:value xsi:type="xs:string">Выписан</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>СтатусПациента</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">СтатусПациента</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Текст</dcscor:parameter>
+									<dcscor:value xsi:type="xs:string"/>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ПациентыВСтационаре" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пациенты в стационаре</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Клиент" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пациент</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Клиенты</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДатаПоступления" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата поступления</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Палата" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Палата</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Палаты</v8:Type>
+					</Type>
+				</Column>
+				<Column name="КойкоМесто" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Койко-место</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.КойкоМеста</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДокументПоступления" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ поступления</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.УстановкаУсловийПребывания</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДокументИзмененияРазмещения" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ последнего изменения размещения</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.УстановкаУсловийПребывания</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ДатаПоследнегоИзменения" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Последнее изменение</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДокументОбращения" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ обращения</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.ОбращениеВСтационар</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="омг_Отделения" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отделения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Save>
+				<Field>омг_Отделения</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="омг_Филиалы" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Филиалы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Save>
+				<Field>омг_Филиалы</Field>
+			</Save>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ДоговорыКлиента" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Договоры и соглашения</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Договоры клиента</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Document</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ДоговорыКлиента</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьВыписку" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выписать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выписать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.СостояниеПользователя03</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>СоздатьПоступлениеИзменениеВыписку</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьНаправление" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Направление</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать направление</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Текст</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СоздатьНаправление</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьПоступление" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поместить в палату</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать поступление пациента</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.СостояниеПользователя04</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СоздатьПоступлениеИзменениеВыписку</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьИзменениеУсловий" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменение размещения</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать документ изменения условий пребывания пациента</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ПользователиВыполнитьСинхронизацию</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>СоздатьПоступлениеИзменениеВыписку</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОтборСегодняшниеОбращения" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>За последние сутки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отображать только сегодняшние документы</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОтборСегодняшниеОбращения</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьОУ" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расчет клиента</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать ОУ</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ОказаниеУслуг_16х16</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СоздатьОУ</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОбновитьТекущихКлиентовСтационара" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить список</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить список текущих пациентов в стационаре</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОбновитьСписокТекущихПациентовСтационара</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ИсторияПребыванияПациента" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История пребывания пациента</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>История пребывания пациента</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DocumentJournal</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ИсторияПребыванияПациента</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="СоздатьПереводМеждуПодразделениями" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать перевод между подразделениями</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать перевод между подразделениями</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ПользователиВыполнитьСинхронизацию</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СоздатьПоступлениеИзменениеВыписку</Action>
+		</Command>
+	</Commands>
+</Form>

@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаНаименованиеКод" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа наименование, код</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНаименованиеКодРасширеннаяПодсказка" id="23"/>
+			<ChildItems>
+				<InputField name="Наименование" id="3">
+					<DataPath>Объект.Description</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>40</Width>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="24"/>
+				</InputField>
+				<InputField name="Код" id="1">
+					<DataPath>Объект.Code</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="25"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Филиал" id="8">
+			<DataPath>Объект.Филиал</DataPath>
+			<ContextMenu name="ФилиалКонтекстноеМеню" id="9"/>
+			<ExtendedTooltip name="ФилиалРасширеннаяПодсказка" id="21"/>
+			<Events>
+				<Event name="OnChange">ФилиалПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="Родитель" id="5">
+			<DataPath>Объект.Parent</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа</v8:content>
+				</v8:item>
+			</Title>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="РодительКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="РодительРасширеннаяПодсказка" id="22"/>
+		</InputField>
+		<UsualGroup name="ГруппаВидГрафикаСотруников" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Графики, расписание</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа вид графика сотруников</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ExtendedTooltip name="ГруппаВидГрафикаСотруниковРасширеннаяПодсказка" id="26"/>
+			<ChildItems>
+				<CheckBoxField name="ВсегдаПоказыватьВОтбореЖурналаЗаписи" id="10">
+					<DataPath>Объект.ВсегдаПоказыватьВОтбореЖурналаЗаписи</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<ContextMenu name="ВсегдаПоказыватьВОтбореЖурналаЗаписиКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="ВсегдаПоказыватьВОтбореЖурналаЗаписиРасширеннаяПодсказка" id="28"/>
+				</CheckBoxField>
+				<InputField name="ОсновнойСпособЗаполненияГрафика" id="18">
+					<DataPath>Объект.ОсновнойСпособЗаполненияГрафика</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основной вид графика сотрудников подразделения</v8:content>
+						</v8:item>
+					</Title>
+					<TitleHeight>2</TitleHeight>
+					<ChoiceButton>true</ChoiceButton>
+					<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+					<ContextMenu name="ОсновнойСпособЗаполненияГрафикаКонтекстноеМеню" id="19"/>
+					<ExtendedTooltip name="ОсновнойСпособЗаполненияГрафикаРасширеннаяПодсказка" id="27"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаРеквизитыМедицинскогоПодразделения" id="41">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Реквизиты медицинского подразделения</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаРеквизитыМедицинскогоПодразделенияРасширеннаяПодсказка" id="42"/>
+			<ChildItems>
+				<InputField name="НаименованиеПолное" id="43">
+					<DataPath>Объект.НаименованиеПолное</DataPath>
+					<ContextMenu name="НаименованиеПолноеКонтекстноеМеню" id="44"/>
+					<ExtendedTooltip name="НаименованиеПолноеРасширеннаяПодсказка" id="45"/>
+				</InputField>
+				<InputField name="КодОтделения" id="46">
+					<DataPath>Объект.КодОтделения</DataPath>
+					<ContextMenu name="КодОтделенияКонтекстноеМеню" id="47"/>
+					<ExtendedTooltip name="КодОтделенияРасширеннаяПодсказка" id="48"/>
+				</InputField>
+				<InputField name="Руководитель" id="38">
+					<DataPath>Объект.Руководитель</DataPath>
+					<ContextMenu name="РуководительКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="РуководительРасширеннаяПодсказка" id="40"/>
+				</InputField>
+				<InputField name="ПодразделениеМинздрава" id="32">
+					<DataPath>Объект.ПодразделениеМинздрава</DataPath>
+					<DropListButton>false</DropListButton>
+					<ChoiceButton>true</ChoiceButton>
+					<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+					<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+					<ContextMenu name="ПодразделениеМинздраваКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="ПодразделениеМинздраваРасширеннаяПодсказка" id="34"/>
+				</InputField>
+				<InputField name="ВидСтационара" id="35">
+					<DataPath>Объект.ВидСтационара</DataPath>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ВидСтационараКонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="ВидСтационараРасширеннаяПодсказка" id="37"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.Подразделения</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>3:7cf22e60-9579-4ea8-9d4c-f32766c8ea5b</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Справка об отказе в направлении на медико-социальную экспертизу" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fias="urn:hl7-ru:fias" xmlns:address="urn:hl7-ru:address">
+	<bitLocalId УсловиеИспользования="*Ложь">
+		<nodeLocalId ТипДанных="ДокументСсылка.ДоговорСКлиентом" localid="ДоговорСКлиентом" localidСиноним="Договор с клиентом" Обязательное="*Истина"/>
+	</bitLocalId>
+	<!-- R [1..1] СЕКЦИЯ: СВЕДЕНИЯ О ДОКУМЕНТЕ (ОБЩИЕ СВЕДЕНИЯ)-->
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="DOCINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>Сведения о документе</title>
+			<!-- R [1..1] Человекочитаемое наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<content>Причина отказа</content>
+							</td>
+							<td>
+								<content>%ПричинаОтказа</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Документ-основание</content>
+							</td>
+							<td>
+								<content>%ДокументОснование</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Заключение</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%Заключение)</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..1] Причина отказа -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="12170" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Причина отказа -->
+					<value xsi:type="ST" localid="ПричинаОтказа">%ПричинаОтказа</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Документ-основание -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="12171" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Документ-основание -->
+					<value xsi:type="ST" localid="ДокументОснование">%ДокументОснование</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Заключение -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="837" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Заключение -->
+					<value xsi:type="CD" localid="Заключение" code="33" codeSystem="1.2.643.5.1.13.13.99.2.725" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+				</observation>
+			</entry>
+		</section>
+	</component>
+</Items>

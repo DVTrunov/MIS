@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Медицинское заключение по результатам медицинского осмотра работника для предоставления в подсистему ЭЛМК (CDA) Редакция 1" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fias="urn:hl7-ru:fias" xmlns:address="urn:hl7-ru:address" xmlns:identity="urn:hl7-ru:identity">
+	<!-- R [1..1] СЕКЦИЯ: Сведения о документе-->
+	<component>
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="DOCINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Сведения о номере личной медицинской книжки -->
+			<entry>
+				<!-- R [1..1]-->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Названия поля -->
+					<code code="12616" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [1..1] Номер личной медицинской книжки -->
+					<value xsi:type="ST" localid="НомерЛичнойМедицинскойКнижки" ПустоеЗначение="NI" СохранятьТипПриПустомЗначении="*Истина">%НомерЛичнойМедицинскойКнижки</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Сведения о виде медицинского осмотра -->
+			<entry>
+				<!-- R [1..1]-->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="8146" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- R [1..1] Вид медицинского осмотра -->
+					<value xsi:type="BL" Формат="БЛ=false; БИ=true" localid="МедосмотрПредварительный" value="%МедосмотрПредварительный"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Сведения о виде работы -->
+			<entry>
+				<!-- R [1..1]-->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="8086" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Наименование вида работы -->
+					<value xsi:type="CD" localid="ВредныйПроизводственныйФактор" code="#code" codeSystem="1.2.643.5.1.13.13.11.1060" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [0..1] Профиль работы -->
+					<entryRelationship typeCode="COMP" Обязательное="*Ложь">
+						<!-- R [1..1]-->
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="8138" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<!-- R [1..1] Профиль работы -->
+							<value xsi:type="BL" Формат="БЛ=false; БИ=true" localid="ПрофильРаботы" value="%ПрофильРаботы"/>
+						</observation>
+					</entryRelationship>
+				</observation>
+			</entry>
+			<!-- R [1..1] Сведения о перенесенных инфекционных заболеваниях -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="8007" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [0..1] Заключение в случае отсутствия перенесенных инфекционных заболеваний -->
+					<value xsi:type="CD" Обязательное="*Ложь" localid="ЗаключениеПеренесенныеЗаболевания" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.725" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- [0..*] Перенесенное инфекционное заболевание -->
+					<entryRelationship typeCode="COMP" Обязательное="*Ложь" Множественное="*Истина" localid="ПеренесенноеИнфекционноеЗаболевание">
+						<!-- R [1..1]-->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="809" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<!-- R [1..1] Дата перенесенного заболевания -->
+							<effectiveTime localid="ДатаПеренесенногоЗаболевания" ТипДанных="Дата" Формат="ДФ=гггг" value="%ДатаПеренесенногоЗаболевания"/>
+							<!-- R [1..1] Код по МКБ-10 -->
+							<value xsi:type="CD" localid="ПеренесенноеИнфекционноеЗаболевание" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+						</observation>
+					</entryRelationship>
+				</observation>
+			</entry>
+			<!-- R [1..1] Сведения о профилактических прививках -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="11060" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [0..1] Заключение в случае отсутствия профилактических прививок -->
+					<value xsi:type="CD" Обязательное="*Ложь" localid="ЗаключениеОтсутствиеВакцинаций" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.725" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- [0..*] Профилактическая прививка -->
+					<entryRelationship typeCode="COMP" Обязательное="*Ложь" Множественное="*Истина" localid="ГруппаЗаболеванияДляКоторойИспользуетсяИммунобиологическийПрепарат">
+						<!-- R [1..1]-->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="9021" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<!-- [0..1] Наименование профилактической прививки -->
+							<text ТипДанных="Строка" localid="НаименованиеПрофилактическойПрививки" Обязательное="*Ложь">%НаименованиеПрофилактическойПрививки</text>
+							<!-- R [1..1] Дата вакцинации -->
+							<effectiveTime localid="ДатаВакцинации" ТипДанных="Дата" Формат="ДФ=ггггММдд" value="%ДатаВакцинации"/>
+							<!-- R [1..1] Заболевание, против которого проведена профилактическая прививка -->
+							<value xsi:type="CD" localid="ГруппаЗаболеванияДляКоторойИспользуетсяИммунобиологическийПрепарат" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.1111" codeSystemName="#codesystemname" displayName='*ПолучитьПредставлениеАтрибутаПоLocalid(%ГруппаЗаболеванияДляКоторойИспользуетсяИммунобиологическийПрепарат, "NAME_EPMB")' codeSystemVersion="#version"/>
+							<!-- R [1..1] Признак повторной вакцинации (ревакцинации) -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1]-->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="9026" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+									<!-- R [1..1] Признак того, что вакцинация является повторной (ревакцинация) -->
+									<value xsi:type="BL" Формат="БЛ=false; БИ=true" localid="ВакцинацияЯвляетсяПовторной" value="%ВакцинацияЯвляетсяПовторной"/>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Порядковый номер вакцинации (ревакцинации) -->
+							<entryRelationship typeCode="COMP" Обязательное="*%ГруппаЗаболеванияДляКоторойИспользуетсяИммунобиологическийПрепарат.УИДЕГИСЗ=14">
+								<!-- R [1..1]-->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="8034" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+									<!-- R [1..1] Порядковый номер вакцинации -->
+									<value xsi:type="INT" localid="ПорядковыйНомерВакцинации" value="%ПорядковыйНомерВакцинации"/>
+								</observation>
+							</entryRelationship>
+						</observation>
+					</entryRelationship>
+				</observation>
+			</entry>
+			<!-- R [1..1] Заключение по результатам медицинского осмотра -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="837" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Заключение по результатам медицинского осмотра -->
+					<value xsi:type="CD" localid="Заключение" ДопустимыеЗначения="71;72" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.725" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Дата проведения очередного периодического медицинского осмотра -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="8087" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Дата проведения очередного периодического медицинского осмотра -->
+					<effectiveTime ТипДанных='Дата' localid="ДатаПроведенияОчередногоПериодическогоМедицинскогоОсмотра" Формат="ДФ=ггггММдд" value="%ДатаПроведенияОчередногоПериодическогоМедицинскогоОсмотра"/>
+				</observation>
+			</entry>
+			<!-- [0..1] Комментарий -->
+			<entry Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="10000" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Комментарий -->
+					<value xsi:type="ST" localid="Комментарий">%Комментарий</value>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<component>
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="EXAMINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Сведения о результате проведения осмотра дерматовенеролога -->
+			<entry>
+				<!-- R [1..1]-->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- [1..1]-->
+					<code nullFlavor="NI"/>
+					<!-- [0..1] Примечание -->
+					<text ТипДанных="Строка" localid="ПримечаниеДерматовенеролога" Обязательное="*Ложь">%ПримечаниеДерматовенеролога</text>
+					<!-- R [1..1] Дата осмотра -->
+					<effectiveTime ТипДанных="Дата" Формат="ДФ=ггггММдд" value="%ДатаОсмотраДерматовенеролога"/>
+					<!-- R [1..1] Заключение врача-специалиста -->
+					<value xsi:type="CD" localid="ЗаключениеДерматовенеролога" ДопустимыеЗначения="73;74" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.725" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Сведения о враче-специалисте -->
+					<performer ТипДанных="СправочникСсылка.Сотрудники" localid="Дерматовенеролог">
+						<!-- R [1..1]-->
+						<assignedEntity>
+							<!-- [1..1] Уникальный идентификатор медицинского работника в МИС -->
+							<id ПустоеЗначение="NI" root="%Организация$Сотрудник" extension="*УникальныйИдентификаторПоСсылке(%Дерматовенеролог)"/>
+							<!-- R [1..1] Код должности медицинского работника -->
+							<code localid="ДолжностьДерматовенеролога" code="#code" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<!-- [0..1] Адрес электронной почты (рабочий) -->
+							<telecom use="WP" Обязательное="*Ложь" value="*ПолучитьРабочуюПочту(%Дерматовенеролог)"/>
+							<!-- R [1..1]-->
+							<assignedPerson>
+								<!-- R [1..1] ФИО -->
+								<name>
+									<!-- R [1..1] Фамилия -->
+									<family>%Дерматовенеролог.Фамилия</family>
+									<!-- R [1..1] Имя -->
+									<given>%Дерматовенеролог.Имя</given>
+									<!-- [0..1] Отчество -->
+									<identity:Patronymic Обязательное="*Ложь">%Дерматовенеролог.Отчество</identity:Patronymic>
+								</name>
+							</assignedPerson>
+							<!-- [0..1] Сведения о медицинской организации, где работает врач-специалист -->
+							<representedOrganization classCode="ORG" Обязательное="*Ложь">
+								<!-- R [1..1] Уникальный идентификатор медицинской организации и (при наличии) уникальный идентификатор структурного подразделения -->
+								<id localid="ПодразделениеДерматовенеролога" localidСиноним="Структурная единица в подразделении дерматовенеролога" root="%ПодразделениеДерматовенеролога.MO_OID" extension="%ПодразделениеДерматовенеролога.OIDСтруктурногоПодразделения"/>
+								<!-- R [1..1] Наименование медицинской организации или ФИО ИП -->
+								<name ТипДанных="Строка" localid="ОрганизацияДерматовенеролога">%ОрганизацияДерматовенеролога</name>
+								<!-- [0..*] Контакты медицинской организации или ИП -->
+								<telecom localid="КонтактыОрганизацииДерматовенеролога" Множественное="*Истина" Обязательное="*Ложь" value="%КонтактыОрганизацииДерматовенеролога"/>
+								<!-- [0..1] Адрес медицинской организации или ИП -->
+								<addr Обязательное="*Ложь">
+									<!-- R [1..1] адрес текстом -->
+									<streetAddressLine>%АдресОрганизацииДерматовенеролога.Текст</streetAddressLine>
+									<!-- R [1..1] Код субъекта РФ -->
+									<address:stateCode code="%АдресОрганизацииДерматовенеролога.Регион" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									<!-- [1..1] Почтовый индекс -->
+									<postalCode ПустоеЗначение="NI">%АдресОрганизацииДерматовенеролога.ПочтовыйИндекс</postalCode>
+									<!-- [1..1] Идентификатор адреса по ФИАС -->
+									<fias:Address ПустоеЗначение="NI">
+										<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+										<fias:AOGUID>%АдресОрганизацииДерматовенеролога.AOGUID</fias:AOGUID>
+										<!-- [1..1] Глобальный уникальный идентификатор дома -->
+										<fias:HOUSEGUID ПустоеЗначение="NI">%АдресОрганизацииДерматовенеролога.HOUSEGUID</fias:HOUSEGUID>
+									</fias:Address>
+								</addr>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+					<!-- R [1..1] Ссылка на протокол осмотра врача-специалиста -->
+					<reference typeCode="REFR">
+						<!-- R [1..1]-->
+						<externalDocument classCode="DOCCLIN" moodCode="EVN">
+							<!-- [1..1] Уникальный идентификатор документа в МИС -->
+							<id ПустоеЗначение="NI" root="%Организация$СвязанныйДокумент" extension="%ИдентификаторМИСОсмотраДерматовенеролога"/>
+							<!-- [1..1] Уникальный идентификатор документа в РЭМД -->
+							<id ПустоеЗначение="NI" root="1.2.643.5.1.13.13.17.1.1" extension="%ИдентификаторРЭМДОсмотраДерматовенеролога"/>
+						</externalDocument>
+					</reference>
+				</observation>
+			</entry>
+			<!-- R [1..1] Сведения о результате проведения осмотра Оториноларинголога -->
+			<entry>
+				<!-- R [1..1]-->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- [1..1]-->
+					<code nullFlavor="NI"/>
+					<!-- [0..1] Примечание -->
+					<text ТипДанных="Строка" localid="ПримечаниеОториноларинголога" Обязательное="*Ложь">%ПримечаниеОториноларинголога</text>
+					<!-- R [1..1] Дата осмотра -->
+					<effectiveTime ТипДанных="Дата" Формат="ДФ=ггггММдд" value="%ДатаОсмотраОториноларинголога"/>
+					<!-- R [1..1] Заключение врача-специалиста -->
+					<value xsi:type="CD" localid="ЗаключениеОториноларинголога" ДопустимыеЗначения="73;74" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.725" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Сведения о враче-специалисте -->
+					<performer ТипДанных="СправочникСсылка.Сотрудники" localid="Оториноларинголог">
+						<!-- R [1..1]-->
+						<assignedEntity>
+							<!-- [1..1] Уникальный идентификатор медицинского работника в МИС -->
+							<id ПустоеЗначение="NI" root="%Организация$Сотрудник" extension="*УникальныйИдентификаторПоСсылке(%Оториноларинголог)"/>
+							<!-- R [1..1] Код должности медицинского работника -->
+							<code localid="ДолжностьОториноларинголога" code="#code" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<!-- [0..1] Адрес электронной почты (рабочий) -->
+							<telecom use="WP" Обязательное="*Ложь" value="*ПолучитьРабочуюПочту(%Оториноларинголог)"/>
+							<!-- R [1..1]-->
+							<assignedPerson>
+								<!-- R [1..1] ФИО -->
+								<name>
+									<!-- R [1..1] Фамилия -->
+									<family>%Оториноларинголог.Фамилия</family>
+									<!-- R [1..1] Имя -->
+									<given>%Оториноларинголог.Имя</given>
+									<!-- [0..1] Отчество -->
+									<identity:Patronymic Обязательное="*Ложь">%Оториноларинголог.Отчество</identity:Patronymic>
+								</name>
+							</assignedPerson>
+							<!-- [0..1] Сведения о медицинской организации, где работает врач-специалист -->
+							<representedOrganization classCode="ORG" Обязательное="*Ложь">
+								<!-- R [1..1] Уникальный идентификатор медицинской организации и (при наличии) уникальный идентификатор структурного подразделения -->
+								<id localid="ПодразделениеОториноларинголога" localidСиноним="Структурная единица в подразделении оториноларинголога" root="%ПодразделениеОториноларинголога.MO_OID" extension="%ПодразделениеОториноларинголога.OIDСтруктурногоПодразделения"/>
+								<!-- R [1..1] Наименование медицинской организации или ФИО ИП -->
+								<name ТипДанных="Строка" localid="ОрганизацияОториноларинголога">%ОрганизацияОториноларинголога</name>
+								<!-- [0..*] Контакты медицинской организации или ИП -->
+								<telecom localid="КонтактыОрганизацииОториноларинголога" Множественное="*Истина" Обязательное="*Ложь" value="%КонтактыОрганизацииОториноларинголога"/>
+								<!-- [0..1] Адрес медицинской организации или ИП -->
+								<addr Обязательное="*Ложь">
+									<!-- R [1..1] адрес текстом -->
+									<streetAddressLine>%АдресОрганизацииОториноларинголога.Текст</streetAddressLine>
+									<!-- R [1..1] Код субъекта РФ -->
+									<address:stateCode code="%АдресОрганизацииОториноларинголога.Регион" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									<!-- [1..1] Почтовый индекс -->
+									<postalCode ПустоеЗначение="NI">%АдресОрганизацииОториноларинголога.ПочтовыйИндекс</postalCode>
+									<!-- [1..1] Идентификатор адреса по ФИАС -->
+									<fias:Address ПустоеЗначение="NI">
+										<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+										<fias:AOGUID>%АдресОрганизацииОториноларинголога.AOGUID</fias:AOGUID>
+										<!-- [1..1] Глобальный уникальный идентификатор дома -->
+										<fias:HOUSEGUID ПустоеЗначение="NI">%АдресОрганизацииОториноларинголога.HOUSEGUID</fias:HOUSEGUID>
+									</fias:Address>
+								</addr>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+					<!-- R [1..1] Ссылка на протокол осмотра врача-специалиста -->
+					<reference typeCode="REFR">
+						<!-- R [1..1]-->
+						<externalDocument classCode="DOCCLIN" moodCode="EVN">
+							<!-- [1..1] Уникальный идентификатор документа в МИС -->
+							<id ПустоеЗначение="NI" root="%Организация$СвязанныйДокумент" extension="%ИдентификаторМИСОсмотраОториноларинголога"/>
+							<!-- [1..1] Уникальный идентификатор документа в РЭМД -->
+							<id ПустоеЗначение="NI" root="1.2.643.5.1.13.13.17.1.1" extension="%ИдентификаторРЭМДОсмотраОториноларинголога"/>
+						</externalDocument>
+					</reference>
+				</observation>
+			</entry>
+			<!-- R [1..1] Сведения о результате проведения осмотра Стоматолога -->
+			<entry>
+				<!-- R [1..1]-->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- [1..1]-->
+					<code nullFlavor="NI"/>
+					<!-- [0..1] Примечание -->
+					<text ТипДанных="Строка" localid="ПримечаниеСтоматолога" Обязательное="*Ложь">%ПримечаниеСтоматолога</text>
+					<!-- R [1..1] Дата осмотра -->
+					<effectiveTime ТипДанных="Дата" Формат="ДФ=ггггММдд" value="%ДатаОсмотраСтоматолога"/>
+					<!-- R [1..1] Заключение врача-специалиста -->
+					<value xsi:type="CD" localid="ЗаключениеСтоматолога" ДопустимыеЗначения="73;74" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.725" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Сведения о враче-специалисте -->
+					<performer ТипДанных="СправочникСсылка.Сотрудники" localid="Стоматолог">
+						<!-- R [1..1]-->
+						<assignedEntity>
+							<!-- [1..1] Уникальный идентификатор медицинского работника в МИС -->
+							<id ПустоеЗначение="NI" root="%Организация$Сотрудник" extension="*УникальныйИдентификаторПоСсылке(%Стоматолог)"/>
+							<!-- R [1..1] Код должности медицинского работника -->
+							<code localid="ДолжностьСтоматолога" code="#code" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<!-- [0..1] Адрес электронной почты (рабочий) -->
+							<telecom use="WP" Обязательное="*Ложь" value="*ПолучитьРабочуюПочту(%Стоматолог)"/>
+							<!-- R [1..1]-->
+							<assignedPerson>
+								<!-- R [1..1] ФИО -->
+								<name>
+									<!-- R [1..1] Фамилия -->
+									<family>%Стоматолог.Фамилия</family>
+									<!-- R [1..1] Имя -->
+									<given>%Стоматолог.Имя</given>
+									<!-- [0..1] Отчество -->
+									<identity:Patronymic Обязательное="*Ложь">%Стоматолог.Отчество</identity:Patronymic>
+								</name>
+							</assignedPerson>
+							<!-- [0..1] Сведения о медицинской организации, где работает врач-специалист -->
+							<representedOrganization classCode="ORG" Обязательное="*Ложь">
+								<!-- R [1..1] Уникальный идентификатор медицинской организации и (при наличии) уникальный идентификатор структурного подразделения -->
+								<id localid="ПодразделениеСтоматолога" localidСиноним="Структурная единица в подразделении стоматолога" root="%ПодразделениеСтоматолога.MO_OID" extension="%ПодразделениеСтоматолога.OIDСтруктурногоПодразделения"/>
+								<!-- R [1..1] Наименование медицинской организации или ФИО ИП -->
+								<name ТипДанных="Строка" localid="ОрганизацияСтоматолога">%ОрганизацияСтоматолога</name>
+								<!-- [0..*] Контакты медицинской организации или ИП -->
+								<telecom localid="КонтактыОрганизацииСтоматолога" Множественное="*Истина" Обязательное="*Ложь" value="%КонтактыОрганизацииСтоматолога"/>
+								<!-- [0..1] Адрес медицинской организации или ИП -->
+								<addr Обязательное="*Ложь">
+									<!-- R [1..1] адрес текстом -->
+									<streetAddressLine>%АдресОрганизацииСтоматолога.Текст</streetAddressLine>
+									<!-- R [1..1] Код субъекта РФ -->
+									<address:stateCode code="%АдресОрганизацииСтоматолога.Регион" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									<!-- [1..1] Почтовый индекс -->
+									<postalCode ПустоеЗначение="NI">%АдресОрганизацииСтоматолога.ПочтовыйИндекс</postalCode>
+									<!-- [1..1] Идентификатор адреса по ФИАС -->
+									<fias:Address ПустоеЗначение="NI">
+										<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+										<fias:AOGUID>%АдресОрганизацииСтоматолога.AOGUID</fias:AOGUID>
+										<!-- [1..1] Глобальный уникальный идентификатор дома -->
+										<fias:HOUSEGUID ПустоеЗначение="NI">%АдресОрганизацииСтоматолога.HOUSEGUID</fias:HOUSEGUID>
+									</fias:Address>
+								</addr>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+					<!-- R [1..1] Ссылка на протокол осмотра врача-специалиста -->
+					<reference typeCode="REFR">
+						<!-- R [1..1]-->
+						<externalDocument classCode="DOCCLIN" moodCode="EVN">
+							<!-- [1..1] Уникальный идентификатор документа в МИС -->
+							<id ПустоеЗначение="NI" root="%Организация$СвязанныйДокумент" extension="%ИдентификаторМИСОсмотраСтоматолога"/>
+							<!-- [1..1] Уникальный идентификатор документа в РЭМД -->
+							<id ПустоеЗначение="NI" root="1.2.643.5.1.13.13.17.1.1" extension="%ИдентификаторРЭМДОсмотраСтоматолога"/>
+						</externalDocument>
+					</reference>
+				</observation>
+			</entry>
+			<!-- R [1..1] Сведения о результате проведения осмотра Терапевта -->
+			<entry>
+				<!-- R [1..1]-->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- [1..1]-->
+					<code nullFlavor="NI"/>
+					<!-- [0..1] Примечание -->
+					<text ТипДанных="Строка" localid="ПримечаниеТерапевта" Обязательное="*Ложь">%ПримечаниеТерапевта</text>
+					<!-- R [1..1] Дата осмотра -->
+					<effectiveTime ТипДанных="Дата" Формат="ДФ=ггггММдд" value="%ДатаОсмотраТерапевта"/>
+					<!-- R [1..1] Заключение врача-специалиста -->
+					<value xsi:type="CD" localid="ЗаключениеТерапевта" ДопустимыеЗначения="73;74" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.725" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Сведения о враче-специалисте -->
+					<performer ТипДанных="СправочникСсылка.Сотрудники" localid="Терапевт">
+						<!-- R [1..1]-->
+						<assignedEntity>
+							<!-- [1..1] Уникальный идентификатор медицинского работника в МИС -->
+							<id ПустоеЗначение="NI" root="%Организация$Сотрудник" extension="*УникальныйИдентификаторПоСсылке(%Терапевт)"/>
+							<!-- R [1..1] Код должности медицинского работника -->
+							<code localid="ДолжностьТерапевта" code="#code" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<!-- [0..1] Адрес электронной почты (рабочий) -->
+							<telecom use="WP" Обязательное="*Ложь" value="*ПолучитьРабочуюПочту(%Терапевт)"/>
+							<!-- R [1..1]-->
+							<assignedPerson>
+								<!-- R [1..1] ФИО -->
+								<name>
+									<!-- R [1..1] Фамилия -->
+									<family>%Терапевт.Фамилия</family>
+									<!-- R [1..1] Имя -->
+									<given>%Терапевт.Имя</given>
+									<!-- [0..1] Отчество -->
+									<identity:Patronymic Обязательное="*Ложь">%Терапевт.Отчество</identity:Patronymic>
+								</name>
+							</assignedPerson>
+							<!-- [0..1] Сведения о медицинской организации, где работает врач-специалист -->
+							<representedOrganization classCode="ORG" Обязательное="*Ложь">
+								<!-- R [1..1] Уникальный идентификатор медицинской организации и (при наличии) уникальный идентификатор структурного подразделения -->
+								<id localid="ПодразделениеТерапевта" localidСиноним="Структурная единица в подразделении терапевта" root="%ПодразделениеТерапевта.MO_OID" extension="%ПодразделениеТерапевта.OIDСтруктурногоПодразделения"/>
+								<!-- R [1..1] Наименование медицинской организации или ФИО ИП -->
+								<name ТипДанных="Строка" localid="ОрганизацияТерапевта">%ОрганизацияТерапевта</name>
+								<!-- [0..*] Контакты медицинской организации или ИП -->
+								<telecom localid="КонтактыОрганизацииТерапевта" Множественное="*Истина" Обязательное="*Ложь" value="%КонтактыОрганизацииТерапевта"/>
+								<!-- [0..1] Адрес медицинской организации или ИП -->
+								<addr Обязательное="*Ложь">
+									<!-- R [1..1] адрес текстом -->
+									<streetAddressLine>%АдресОрганизацииТерапевта.Текст</streetAddressLine>
+									<!-- R [1..1] Код субъекта РФ -->
+									<address:stateCode code="%АдресОрганизацииТерапевта.Регион" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									<!-- [1..1] Почтовый индекс -->
+									<postalCode ПустоеЗначение="NI">%АдресОрганизацииТерапевта.ПочтовыйИндекс</postalCode>
+									<!-- [1..1] Идентификатор адреса по ФИАС -->
+									<fias:Address ПустоеЗначение="NI">
+										<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+										<fias:AOGUID>%АдресОрганизацииТерапевта.AOGUID</fias:AOGUID>
+										<!-- [1..1] Глобальный уникальный идентификатор дома -->
+										<fias:HOUSEGUID ПустоеЗначение="NI">%АдресОрганизацииТерапевта.HOUSEGUID</fias:HOUSEGUID>
+									</fias:Address>
+								</addr>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+					<!-- R [1..1] Ссылка на протокол осмотра врача-специалиста -->
+					<reference typeCode="REFR">
+						<!-- R [1..1]-->
+						<externalDocument classCode="DOCCLIN" moodCode="EVN">
+							<!-- [1..1] Уникальный идентификатор документа в МИС -->
+							<id ПустоеЗначение="NI" root="%Организация$СвязанныйДокумент" extension="%ИдентификаторМИСОсмотраТерапевта"/>
+							<!-- [1..1] Уникальный идентификатор документа в РЭМД -->
+							<id ПустоеЗначение="NI" root="1.2.643.5.1.13.13.17.1.1" extension="%ИдентификаторРЭМДОсмотраТерапевта"/>
+						</externalDocument>
+					</reference>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: "Результаты лабораторного исследования" -->
+	<component>
+		<!-- R [1..1]-->
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="RESLAB" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..*] Сведения о результатах проведения лабораторного обследования -->
+			<entry Множественное="*Истина" localid="ПрофильЛабораторногоИсследования">
+				<!-- R [1..1]-->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код профиля лабораторного обследования -->
+					<code localid="ПрофильЛабораторногоИсследования" ДопустимыеЗначения="10268;10479;10506;10507;10508;10509;10510" code="#code" codeSystem="1.2.643.5.1.13.13.11.1437" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [0..1] Примечание -->
+					<text ТипДанных="Строка" localid="ПримечаниеИсследования" Обязательное="*Ложь">%ПримечаниеИсследования</text>
+					<!-- R [1..1] Дата обследования -->
+					<effectiveTime localid="ДатаОбследования" ТипДанных="Дата" Формат="ДФ=ггггММдд" value="%ДатаОбследования"/>
+					<!-- R [1..1] Заключение лабораторного обследования -->
+					<value xsi:type="CD" localid="ЗаключениеЛабораторногоИсследования" ДопустимыеЗначения="54;55" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.725" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [0..1] Титр по результатам серологических обследований -->
+					<entryRelationship typeCode="COMP" Обязательное="*Ложь">
+						<!-- R [1..1]-->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="12615" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<value xsi:type="ST" localid="ТитрПоРезультатамСерологическихОбследований">%ТитрПоРезультатамСерологическихОбследований</value>
+						</observation>
+					</entryRelationship>
+					<!-- R [1..1] Ссылка на протокол лабораторного обследования -->
+					<reference typeCode="REFR">
+						<!-- R [1..1]-->
+						<externalDocument classCode="DOCCLIN" moodCode="EVN">
+							<!-- [1..1] Уникальный идентификатор документа в МИС -->
+							<id ПустоеЗначение="NI" root="%Организация$СвязанныйДокумент" extension="%ИдентификаторМИСЛабораторногоИсследования"/>
+							<!-- [1..1] Уникальный идентификатор документа в РЭМД -->
+							<id ПустоеЗначение="NI" root="1.2.643.5.1.13.13.17.1.1" extension="%ИдентификаторРЭМДЛабораторногоИсследования"/>
+						</externalDocument>
+					</reference>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: "Результаты инструментального исследования" -->
+	<component>
+		<!-- R [1..1]-->
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="RESINSTR" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Сведения о результатах проведения инструментального обследования -->
+			<entry>
+				<!-- R [1..1]-->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код профиля лабораторного обследования -->
+					<code localid="ИнструментальноеОбследование" ДопустимыеЗначения="7001894;7002892;7003288;7003320" code="#code" codeSystem="1.2.643.5.1.13.13.11.1471" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [0..1] Примечание -->
+					<text ТипДанных="Строка" localid="ПримечаниеИнструментальногоОбследования" Обязательное="*Ложь">%ПримечаниеИнструментальногоОбследования</text>
+					<!-- R [1..1] Дата обследования -->
+					<effectiveTime ТипДанных="Дата" localid="ДатаИнструментальногоОбследования" Формат="ДФ=ггггММдд" value="%ДатаИнструментальногоОбследования"/>
+					<!-- R [1..1] Заключение инструментального обследования -->
+					<value xsi:type="CD" localid="ЗаключениеИнструментальногоОбследования" ДопустимыеЗначения="56;57" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.725" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Ссылка на протокол инструментального обследования -->
+					<reference typeCode="REFR">
+						<!-- R [1..1]-->
+						<externalDocument classCode="DOCCLIN" moodCode="EVN">
+							<!-- [1..1] Уникальный идентификатор документа в МИС -->
+							<id ПустоеЗначение="NI" root="%Организация$СвязанныйДокумент" extension="%ИдентификаторМИСИнструментальногоОбследования"/>
+							<!-- [1..1] Уникальный идентификатор документа в РЭМД -->
+							<id ПустоеЗначение="NI" root="1.2.643.5.1.13.13.17.1.1" extension="%ИдентификаторРЭМДИнструментальногоОбследования"/>
+						</externalDocument>
+					</reference>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: "Связанные документы" (не поддерживается)-->
+</Items>

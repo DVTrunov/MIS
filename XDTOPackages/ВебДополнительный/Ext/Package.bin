@@ -1,0 +1,272 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="S2">
+	<objectType name="Сотрудники">
+		<property xmlns:d3p1="S2" name="Сотрудник" type="d3p1:Сотрудник" upperBound="-1" form="Element"/>
+	</objectType>
+	<objectType name="Сотрудник">
+		<property name="UID" type="xs:anyType"/>
+		<property name="Наименование" type="xs:string"/>
+		<property name="Фамилия" type="xs:string"/>
+		<property name="Имя" type="xs:string"/>
+		<property name="Отчество" type="xs:string"/>
+		<property name="Специализация" type="xs:string"/>
+		<property name="Организация" type="xs:string"/>
+		<property xmlns:d3p1="S2" name="ОсновныеУслуги" type="d3p1:ОсновныеУслуги"/>
+		<property name="ДлительностьПриема" type="xs:dateTime"/>
+		<property name="Фото" type="xs:base64Binary"/>
+		<property name="СреднийРейтинг" type="xs:string"/>
+		<property name="КраткоеОписание" type="xs:string"/>
+	</objectType>
+	<objectType name="Номенклатура1">
+		<property xmlns:d3p1="S2" name="Номенклатура" type="d3p1:Номенклатура" upperBound="-1" form="Element"/>
+	</objectType>
+	<objectType name="Номенклатура">
+		<property name="Наименование" type="xs:string"/>
+		<property name="Цена" type="xs:int"/>
+		<property name="ID" type="xs:anyType"/>
+	</objectType>
+	<objectType name="ЛистыОжидания">
+		<property xmlns:d3p1="S2" name="ЛистОжидания" type="d3p1:ЛистОжидания" upperBound="-1" form="Element"/>
+	</objectType>
+	<objectType name="ЛистОжидания">
+		<property name="ДатаВремяЗаписи" type="xs:dateTime" lowerBound="0" nillable="true" form="Element"/>
+		<property name="КлиентФамилия" type="xs:string" nillable="true" form="Element"/>
+		<property name="КлиентИмя" type="xs:string" nillable="true"/>
+		<property name="КлиентОтчество" type="xs:string" nillable="true"/>
+		<property name="КлиентДатаРождения" type="xs:dateTime" lowerBound="0" nillable="true"/>
+		<property name="КлиентПол" type="xs:string" nillable="true"/>
+		<property name="Описание" type="xs:string" nillable="true"/>
+		<property name="Филиал" type="xs:string" lowerBound="0"/>
+	</objectType>
+	<objectType name="Каталоги">
+		<property xmlns:d3p1="S2" name="Каталог" type="d3p1:Каталог" upperBound="-1" form="Element"/>
+	</objectType>
+	<objectType name="Каталог">
+		<property name="UID" type="xs:anyType"/>
+		<property name="Наименование" type="xs:string"/>
+		<property name="Артикул" type="xs:string"/>
+		<property name="БазоваяЕдиницаИзмерения" type="xs:string"/>
+		<property name="Цена" type="xs:float"/>
+		<property name="Продолжительность" type="xs:dateTime"/>
+		<property name="Вид" type="xs:string"/>
+		<property name="Родитель" type="xs:string"/>
+		<property name="ЭтоПапка" type="xs:boolean"/>
+	</objectType>
+	<objectType name="ОсновныеУслуги">
+		<property xmlns:d3p1="S2" name="ОсновнаяУслуга" type="d3p1:ОсновнаяУслуга" upperBound="-1"/>
+	</objectType>
+	<objectType name="ОсновнаяУслуга">
+		<property name="UID" type="xs:string"/>
+		<property name="Продолжительность" type="xs:dateTime"/>
+	</objectType>
+	<objectType name="СписокПортфолио">
+		<property xmlns:d3p1="S2" name="Портфолио" type="d3p1:Портфолио" upperBound="-1"/>
+	</objectType>
+	<objectType name="Портфолио">
+		<property name="ГУИДСотрудника" type="xs:string"/>
+		<property name="Описание" type="xs:string"/>
+		<property name="UID" type="xs:string"/>
+		<property name="Фото" type="xs:base64Binary"/>
+	</objectType>
+	<objectType name="Отзывы">
+		<property name="Отзыв" upperBound="-1"/>
+	</objectType>
+	<objectType name="Отзыв">
+		<property name="UID" type="xs:string"/>
+		<property name="Отзыв" type="xs:string"/>
+		<property name="Дата" type="xs:dateTime"/>
+		<property name="Клиент" type="xs:string"/>
+		<property name="УИДОрганизация" type="xs:string"/>
+	</objectType>
+	<objectType name="Пользователи">
+		<property name="Пользователь" upperBound="-1"/>
+	</objectType>
+	<objectType name="Пользователь">
+		<property name="Логин" type="xs:string"/>
+		<property name="Пароль" type="xs:string"/>
+		<property name="UID" type="xs:string"/>
+		<property name="УИДКлиента" type="xs:string"/>
+		<property name="ДатаПервойАктивности" type="xs:dateTime"/>
+		<property name="ДатаПоследнейАктивности" type="xs:dateTime"/>
+	</objectType>
+	<objectType name="Клиенты">
+		<property name="Клиент" upperBound="-1"/>
+	</objectType>
+	<objectType name="Клиент">
+		<property name="Фамилия" type="xs:string"/>
+		<property name="Имя" type="xs:string"/>
+		<property name="Отчество" type="xs:string"/>
+		<property name="Телефон" type="xs:string"/>
+		<property name="Email" type="xs:string"/>
+		<property name="UID" type="xs:string"/>
+	</objectType>
+	<objectType name="Delete">
+		<property name="UID" type="xs:string"/>
+	</objectType>
+	<objectType name="Objects">
+		<property xmlns:d3p1="S2" name="Delete" type="d3p1:Delete" upperBound="-1"/>
+	</objectType>
+	<objectType name="Новости">
+		<property xmlns:d3p1="S2" name="Новость" type="d3p1:Новость" upperBound="-1"/>
+	</objectType>
+	<objectType name="Новость">
+		<property name="Заголовок" type="xs:string"/>
+		<property name="Описание" type="xs:string"/>
+		<property name="ДатаПубликации" type="xs:dateTime"/>
+		<property name="Изображение" type="xs:base64Binary"/>
+		<property name="UID" type="xs:string"/>
+		<property name="ЭтоАкция" type="xs:boolean"/>
+		<property name="ДатаОкончания" type="xs:dateTime"/>
+	</objectType>
+	<objectType name="Скидки">
+		<property xmlns:d3p1="S2" name="Скидка" type="d3p1:Скидка" upperBound="-1"/>
+	</objectType>
+	<objectType name="Скидка">
+		<property name="UID" type="xs:string"/>
+		<property name="ТипСкидки" type="xs:int"/>
+		<property name="ВидСкидки" type="xs:string"/>
+		<property name="РазмерСкидки" type="xs:int"/>
+		<property name="Бонусы" type="xs:float"/>
+		<property name="СледующаяСкидка" type="xs:int"/>
+		<property name="НеобходимоДоСледующей" type="xs:string"/>
+		<property name="ДатаОкончания" type="xs:dateTime"/>
+	</objectType>
+	<objectType name="Сертификаты">
+		<property xmlns:d3p1="S2" name="Сертификат" type="d3p1:Сертификат" upperBound="-1"/>
+	</objectType>
+	<objectType name="Сертификат">
+		<property name="UID" type="xs:string"/>
+		<property name="Вид" type="xs:string"/>
+		<property name="Тип" type="xs:string"/>
+		<property name="Остаток" type="xs:int"/>
+	</objectType>
+	<objectType name="Напоминания">
+		<property xmlns:d3p1="S2" name="Напоминание" type="d3p1:Напоминание" upperBound="-1"/>
+	</objectType>
+	<objectType name="Напоминание">
+		<property name="UID" type="xs:string"/>
+		<property name="Клиент" type="xs:string"/>
+		<property name="Наименование" type="xs:string"/>
+		<property name="Дата" type="xs:dateTime"/>
+		<property name="Текст" type="xs:string"/>
+	</objectType>
+	<objectType name="Статьи">
+		<property xmlns:d3p1="S2" name="Статья" type="d3p1:Статья" upperBound="-1"/>
+	</objectType>
+	<objectType name="Статья">
+		<property name="UID" type="xs:string"/>
+		<property name="Родитель" type="xs:string"/>
+		<property name="Наименование" type="xs:string"/>
+		<property name="СсылкаНаСтатью" type="xs:string"/>
+		<property name="ЭтоГруппа" type="xs:boolean"/>
+	</objectType>
+	<objectType name="ОбъектыОценки">
+		<property xmlns:d3p1="S2" name="ОбъектОценки" type="d3p1:ОбъектОценки" upperBound="-1"/>
+	</objectType>
+	<objectType name="ОбъектОценки">
+		<property name="UID" type="xs:string"/>
+		<property name="Наименование" type="xs:string"/>
+	</objectType>
+	<objectType name="Настройки">
+		<property name="Логотип" type="xs:base64Binary"/>
+		<property name="Фон1" type="xs:base64Binary"/>
+		<property name="Фон2" type="xs:base64Binary"/>
+		<property name="Фон3" type="xs:base64Binary"/>
+		<property name="ЦветОсновной" type="xs:string"/>
+		<property name="ЦветТекстаМеню" type="xs:string"/>
+		<property name="ЦветДополнительногоТекста" type="xs:string"/>
+		<property name="ЦветВкладки" type="xs:string"/>
+		<property name="ЦветГрупповогоРазделителя" type="xs:string"/>
+		<property name="ЦветНеактивнойКнопки" type="xs:string"/>
+		<property name="ДатаПоследнегоИзмененияИзображений" type="xs:dateTime"/>
+		<property name="ОтображатьНовости" type="xs:boolean"/>
+		<property name="ОтображатьАкции" type="xs:boolean"/>
+		<property name="ОтображатьОценки" type="xs:boolean"/>
+		<property name="ОтображатьСтатьи" type="xs:boolean"/>
+		<property name="ОтображатьСкидки" type="xs:boolean"/>
+		<property name="ОтображатьСертификаты" type="xs:boolean"/>
+		<property name="ОтображатьПортфолио" type="xs:boolean"/>
+		<property name="ОтображатьНапоминания" type="xs:boolean"/>
+		<property name="ВебСервис" type="xs:string"/>
+		<property name="Логин" type="xs:string"/>
+		<property name="Пароль" type="xs:string"/>
+		<property name="ПутьБД" type="xs:string"/>
+		<property name="ПутьИзображения" type="xs:string"/>
+		<property name="AppID" type="xs:string"/>
+		<property name="APIKey" type="xs:string"/>
+		<property name="ОтображатьГалерею" type="xs:boolean"/>
+		<property name="GoogleProjectNumber" type="xs:string"/>
+		<property name="ОтображатьУслугиТолькоСЦеной" type="xs:boolean"/>
+		<property name="ЗаписьИзСпискаУслуг" type="xs:boolean"/>
+		<property name="ЦветЭлементовНаФоновыхИзображениях" type="xs:string"/>
+		<property name="ЦветФона" type="xs:string"/>
+		<property name="ПовышенныйПриоритетАктуальностиДанных" type="xs:boolean"/>
+		<property name="ЧастотаЗапросаПроверкиАктуальностиДанных" type="xs:int"/>
+	</objectType>
+	<objectType name="Пуш">
+		<property name="Текст" type="xs:string"/>
+		<property name="ПушID" type="xs:string"/>
+	</objectType>
+	<objectType name="ГруппыНоменклатуры">
+		<property xmlns:d3p1="S2" name="ГруппаНоменклатуры" type="d3p1:ГруппаНоменклатуры" upperBound="-1"/>
+	</objectType>
+	<objectType name="ГруппаНоменклатуры">
+		<property name="UID" type="xs:string"/>
+		<property name="Наименование" type="xs:string"/>
+		<property xmlns:d3p1="S2" name="Номенклатура" type="d3p1:UIDОбъекта" upperBound="-1"/>
+		<property name="Номер" type="xs:int"/>
+	</objectType>
+	<objectType name="UIDОбъекта">
+		<property name="UID" type="xs:string"/>
+	</objectType>
+	<objectType name="Галерея">
+		<property name="ЭлементГалереи" upperBound="-1"/>
+	</objectType>
+	<objectType name="ЭлементГалереи">
+		<property name="UID" type="xs:string"/>
+		<property name="Наименование" type="xs:string"/>
+		<property name="ЭтоГруппа" type="xs:boolean"/>
+		<property name="Родитель" type="xs:string"/>
+		<property name="Фото" type="xs:base64Binary"/>
+	</objectType>
+	<objectType name="ГруппыСотрудников">
+		<property xmlns:d3p1="S2" name="ГруппаСотрудников" type="d3p1:ГруппаСотрудников" upperBound="-1"/>
+	</objectType>
+	<objectType name="ГруппаСотрудников">
+		<property name="UID" type="xs:string"/>
+		<property name="Наименование" type="xs:string"/>
+		<property xmlns:d3p1="S2" name="Сотрудник" type="d3p1:UIDОбъекта" upperBound="-1"/>
+		<property name="Номер" type="xs:int"/>
+	</objectType>
+	<objectType name="ПользователиСотрудников">
+		<property xmlns:d3p1="S2" name="ПользовательСотрудника" type="d3p1:ПользовательСотрудника" upperBound="-1"/>
+	</objectType>
+	<objectType name="ПользовательСотрудника">
+		<property name="Логин" type="xs:string"/>
+		<property name="Пароль" type="xs:string"/>
+		<property name="UID" type="xs:string"/>
+		<property name="УИДСотрудника" type="xs:string"/>
+	</objectType>
+	<objectType name="Депозиты">
+		<property xmlns:d3p1="S2" name="Депозит" type="d3p1:Депозит" upperBound="-1"/>
+	</objectType>
+	<objectType name="Депозит">
+		<property name="UID" type="xs:string"/>
+		<property name="Остаток" type="xs:int"/>
+	</objectType>
+	<objectType name="ИсторииПриемов">
+		<property xmlns:d3p1="S2" name="ИсторияПриема" type="d3p1:ИсторияПриема" upperBound="-1"/>
+	</objectType>
+	<objectType name="ИсторияПриема">
+		<property name="UID"/>
+		<property name="ДатаНачала" type="xs:dateTime"/>
+		<property name="Тип" type="xs:string"/>
+		<property name="Филиал" type="xs:string"/>
+		<property name="Клиент"/>
+		<property name="Сотрудник" type="xs:string"/>
+		<property name="ДатаОкончания" type="xs:dateTime"/>
+		<property name="Итого" type="xs:string"/>
+		<property name="Услуга" type="xs:string" upperBound="-1"/>
+		<property name="Товар" type="xs:string" upperBound="-1"/>
+		<property name="Сертификат" type="xs:string" upperBound="-1"/>
+	</objectType>
+</package>

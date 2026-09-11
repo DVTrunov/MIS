@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Форма данных об изображении</v8:content>
+		</v8:item>
+	</Title>
+	<Width>57</Width>
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаКнопка1" id="18">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<ExtendedTooltip name="ФормаКнопка1ExtendedTooltip" id="20"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Объект" id="1">
+			<DataPath>Объект</DataPath>
+			<MarkRequiredComplete>true</MarkRequiredComplete>
+			<ChoiceButton>false</ChoiceButton>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<TextEdit>false</TextEdit>
+			<ContextMenu name="ОбъектКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ОбъектExtendedTooltip" id="21"/>
+			<Events>
+				<Event name="OnChange">ОбъектПриИзменении</Event>
+				<Event name="StartChoice">ОбъектНачалоВыбора</Event>
+			</Events>
+		</InputField>
+		<PictureField name="ПолеИзображения" id="3">
+			<DataPath>ПолеИзображения</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<Height>10</Height>
+			<PictureSize>Proportionally</PictureSize>
+			<Zoomable>true</Zoomable>
+			<NonselectedPictureText>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Фото</v8:content>
+				</v8:item>
+			</NonselectedPictureText>
+			<FileDragMode>AsFile</FileDragMode>
+			<ContextMenu name="ПолеИзображенияКонтекстноеМеню" id="4"/>
+			<ExtendedTooltip name="ПолеИзображенияExtendedTooltip" id="22"/>
+		</PictureField>
+		<UsualGroup name="ГруппаСодержаниеДиректории" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа содержание директории</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа содержание директории</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСодержаниеДиректорииExtendedTooltip" id="23"/>
+			<ChildItems>
+				<Table name="СодержаниеДиректории" id="6">
+					<Representation>List</Representation>
+					<RowSelectionMode>Cell</RowSelectionMode>
+					<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>СодержаниеДиректории</DataPath>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="СодержаниеДиректорииКонтекстноеМеню" id="7">
+						<Autofill>false</Autofill>
+					</ContextMenu>
+					<AutoCommandBar name="СодержаниеДиректорииКоманднаяПанель" id="8">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="СодержаниеДиректорииДобавить" id="13">
+								<Type>CommandBarButton</Type>
+								<Representation>PictureAndText</Representation>
+								<CommandName>Form.Command.Добавить</CommandName>
+								<Picture>
+									<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<ExtendedTooltip name="СодержаниеДиректорииДобавитьExtendedTooltip" id="24"/>
+							</Button>
+							<Button name="СодержаниеДиректорииОткрытьФайл" id="14">
+								<Type>CommandBarButton</Type>
+								<Representation>PictureAndText</Representation>
+								<CommandName>Form.Command.ОткрытьФайл</CommandName>
+								<ExtendedTooltip name="СодержаниеДиректорииОткрытьФайлExtendedTooltip" id="25"/>
+							</Button>
+							<Button name="СодержаниеДиректорииКнопкаУдалить" id="19">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.УдалитьФайл</CommandName>
+								<Picture>
+									<xr:Ref>StdPicture.Delete</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Удалить файл</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="СодержаниеДиректорииКнопкаУдалитьExtendedTooltip" id="26"/>
+							</Button>
+							<Button name="СодержаниеДиректорииОткрытьПапку" id="15">
+								<Type>CommandBarButton</Type>
+								<Representation>PictureAndText</Representation>
+								<CommandName>Form.Command.ОткрытьПапку</CommandName>
+								<Picture>
+									<xr:Ref>StdPicture.OpenFile</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<ExtendedTooltip name="СодержаниеДиректорииОткрытьПапкуExtendedTooltip" id="27"/>
+							</Button>
+							<Button name="СодержаниеДиректорииОбновить" id="16">
+								<Type>CommandBarButton</Type>
+								<Representation>PictureAndText</Representation>
+								<CommandName>Form.Command.Обновить</CommandName>
+								<Picture>
+									<xr:Ref>StdPicture.Refresh</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<ExtendedTooltip name="СодержаниеДиректорииОбновитьExtendedTooltip" id="28"/>
+							</Button>
+							<Button name="СодержаниеДиректорииОсновнаяФотография" id="17">
+								<Type>CommandBarButton</Type>
+								<Representation>PictureAndText</Representation>
+								<CommandName>Form.Command.ОсновнаяФотография</CommandName>
+								<Picture>
+									<xr:Ref>CommonPicture.ВыделитьОсновным</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+									<xr:TransparentPixel x="10" y="5"/>
+								</Picture>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Основная</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="СодержаниеДиректорииОсновнаяФотографияExtendedTooltip" id="29"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="СодержаниеДиректорииExtendedTooltip" id="30"/>
+					<SearchStringAddition name="СодержаниеДиректорииSearchString" id="31">
+						<AdditionSource>
+							<Item>СодержаниеДиректории</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СодержаниеДиректорииSearchStringContextMenu" id="32"/>
+						<ExtendedTooltip name="СодержаниеДиректорииSearchStringExtendedTooltip" id="33"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="СодержаниеДиректорииViewStatus" id="34">
+						<AdditionSource>
+							<Item>СодержаниеДиректории</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СодержаниеДиректорииViewStatusContextMenu" id="35"/>
+						<ExtendedTooltip name="СодержаниеДиректорииViewStatusExtendedTooltip" id="36"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="СодержаниеДиректорииSearchControl" id="37">
+						<AdditionSource>
+							<Item>СодержаниеДиректории</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="СодержаниеДиректорииSearchControlContextMenu" id="38"/>
+						<ExtendedTooltip name="СодержаниеДиректорииSearchControlExtendedTooltip" id="39"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="OnActivateRow">СодержаниеДиректорииПриАктивизацииСтроки</Event>
+					</Events>
+					<ChildItems>
+						<InputField name="СодержаниеДиректорииФайл" id="9">
+							<DataPath>СодержаниеДиректории.Файл</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="СодержаниеДиректорииФайлКонтекстноеМеню" id="10"/>
+							<ExtendedTooltip name="СодержаниеДиректорииФайлExtendedTooltip" id="40"/>
+						</InputField>
+						<InputField name="СодержаниеДиректорииПолныйПуть" id="11">
+							<DataPath>СодержаниеДиректории.ПолныйПуть</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="СодержаниеДиректорииПолныйПутьКонтекстноеМеню" id="12"/>
+							<ExtendedTooltip name="СодержаниеДиректорииПолныйПутьExtendedTooltip" id="41"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Клиенты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПолеИзображения" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поле изображения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СодержаниеДиректории" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Содержание директории</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Файл" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Файл</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ПолныйПуть" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Полный путь</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТекОснИзображение" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тек осн изображение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Добавить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Добавить</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОткрытьФайл" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть файл</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ЛупаБольшая</xr:Ref>
+				<xr:LoadTransparent>false</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьФайл</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОткрытьПапку" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть папку</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть папку</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьПапку</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="Обновить" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Обновить</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОсновнаяФотография" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основная фотография</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основная фотография</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОсновнаяФотография</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="УдалитьФайл" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить файл</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить файл</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УдалитьФайл</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

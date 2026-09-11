@@ -1,0 +1,536 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Пациент</dataPath>
+			<field>Пациент</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пациент</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>МедицинскаяКарта</dataPath>
+			<field>МедицинскаяКарта</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Медицинская карта</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидДействия</dataPath>
+			<field>ВидДействия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид действия</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДействиеСтационара</dataPath>
+			<field>ДействиеСтационара</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РазВДень</dataPath>
+			<field>РазВДень</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Раз в день</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дозировка</dataPath>
+			<field>Дозировка</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Выполнено</dataPath>
+			<field>Выполнено</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнено</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЕдиницаИзмерения</dataPath>
+			<field>ЕдиницаИзмерения</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Коэффициент</dataPath>
+			<field>Коэффициент</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВсегоНазначено</dataPath>
+			<field>ВсегоНазначено</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Всего назначено</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаВыполнения</dataPath>
+			<field>ДатаВыполнения</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата выполнения</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Документ</dataPath>
+			<field>Документ</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ выполнения</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДокументОтветственный</dataPath>
+			<field>ДокументОтветственный</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнение ответственный</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НазначениеОтветственный</dataPath>
+			<field>НазначениеОтветственный</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Назначение ответственный</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаНачала</dataPath>
+			<field>ДатаНачала</field>
+			<useRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаОкончания</dataPath>
+			<field>ДатаОкончания</field>
+			<useRestriction>
+				<field>true</field>
+				<condition>true</condition>
+				<group>true</group>
+				<order>true</order>
+			</useRestriction>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДеньВыполнения</dataPath>
+			<field>ДеньВыполнения</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>День выполнения</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоНазначенное</dataPath>
+			<field>КоличествоНазначенное</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество назначенное</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	НАЧАЛОПЕРИОДА(ВыполнениеДействийСтационара.ДатаВремяВыполнения, ДЕНЬ) КАК ДатаВыполнения,
+	ВыполнениеДействийСтационара.Документ КАК Документ,
+	ВыполнениеДействийСтационара.ИдентификаторЭлемента КАК ИдентификаторЭлемента,
+	СУММА(ВыполнениеДействийСтационара.Количество) КАК Количество,
+	ВыполнениеДействийСтационара.Регистратор.Ответственный КАК ДокументВыполненияДействияОтветственный,
+	ВыполнениеДействийСтационара.Регистратор КАК ДокументВыполненияДействия
+ПОМЕСТИТЬ ВыполнениеДействийСтационара
+ИЗ
+	РегистрСведений.ВыполнениеДействийСтационара КАК ВыполнениеДействийСтационара
+ГДЕ
+	ВыполнениеДействийСтационара.Документ ССЫЛКА Документ.Прием
+	И ВЫРАЗИТЬ(ВыполнениеДействийСтационара.Документ КАК Документ.Прием).МедицинскаяКарта = &amp;МедицинскаяКарта
+
+СГРУППИРОВАТЬ ПО
+	НАЧАЛОПЕРИОДА(ВыполнениеДействийСтационара.ДатаВремяВыполнения, ДЕНЬ),
+	ВыполнениеДействийСтационара.Документ,
+	ВыполнениеДействийСтационара.ИдентификаторЭлемента,
+	ВыполнениеДействийСтационара.Регистратор.Ответственный,
+	ВыполнениеДействийСтационара.Регистратор
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	&amp;Клиент КАК Пациент,
+	&amp;МедицинскаяКарта КАК МедицинскаяКарта,
+	ПланыЛечения.Комментарий КАК Комментарий,
+	ПланыЛечения.Дата КАК ДатаНачала,
+	ПланыЛечения.ДатаОкончания КАК ДатаОкончания,
+	ПланыЛечения.Количество КАК ВсегоНазначено,
+	ВЫБОР
+		КОГДА ПланыЛечения.Номенклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Материал)
+			ТОГДА ЗНАЧЕНИЕ(Перечисление.ВидыДействийСтационара.Медикаменты)
+		ИНАЧЕ ЗНАЧЕНИЕ(Перечисление.ВидыДействийСтационара.Процедуры)
+	КОНЕЦ КАК ВидыДействияСтационара,
+	ПланыЛечения.ИдентификаторЭлемента КАК ИдентификаторЭлемента,
+	ПланыЛечения.Номенклатура КАК ДействиеСтационара,
+	ВЫБОР
+		КОГДА ПланыЛечения.Номенклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Материал)
+			ТОГДА ПланыЛечения.ПриемовВДень
+		ИНАЧЕ ВЫБОР
+				КОГДА ПланыЛечения.ПриемовВДень = 0
+					ТОГДА 1
+				ИНАЧЕ ПланыЛечения.ПриемовВДень
+			КОНЕЦ
+	КОНЕЦ КАК РазВДень,
+	ПланыЛечения.Дозировка КАК Дозировка,
+	СУММА(ЕСТЬNULL(ВыполнениеДействийСтационара.Количество, 0)) КАК Выполнено,
+	ПланыЛечения.ЕдиницаИзмерения КАК ЕдиницаИзмерения,
+	ПланыЛечения.Коэффициент КАК Коэффициент,
+	ВыполнениеДействийСтационара.ДатаВыполнения КАК ДатаВыполнения,
+	ВыполнениеДействийСтационара.ДокументВыполненияДействия КАК ДокументВыполненияДействия,
+	ВыполнениеДействийСтационара.ДокументВыполненияДействияОтветственный КАК ДокументВыполненияДействияОтветственный,
+	ВыполнениеДействийСтационара.Документ.Ответственный КАК НазначениеОтветственный,
+	ПланыЛечения.Количество КАК КоличествоНазначенное
+ПОМЕСТИТЬ ПланыЛеченияИтог
+ИЗ
+	РегистрСведений.ПланыЛечения КАК ПланыЛечения
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			&amp;Клиент КАК Клиент) КАК КлиентыВСтационаре
+		ПО (ПланыЛечения.Номенклатура ССЫЛКА Справочник.Номенклатура)
+			И (ПланыЛечения.ПервичныйПрием.МедицинскаяКарта = &amp;МедицинскаяКарта)
+		ЛЕВОЕ СОЕДИНЕНИЕ ВыполнениеДействийСтационара КАК ВыполнениеДействийСтационара
+		ПО ПланыЛечения.ДокументРегистратор = ВыполнениеДействийСтационара.Документ
+			И ПланыЛечения.ИдентификаторЭлемента = ВыполнениеДействийСтационара.ИдентификаторЭлемента
+
+СГРУППИРОВАТЬ ПО
+	ПланыЛечения.ПервичныйПрием.Клиент,
+	ПланыЛечения.ПервичныйПрием.МедицинскаяКарта,
+	ПланыЛечения.Комментарий,
+	ПланыЛечения.ПервичныйПрием,
+	ПланыЛечения.Дата,
+	ПланыЛечения.ДатаОкончания,
+	ВЫБОР
+		КОГДА ПланыЛечения.Номенклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Материал)
+			ТОГДА ЗНАЧЕНИЕ(Перечисление.ВидыДействийСтационара.Медикаменты)
+		ИНАЧЕ ЗНАЧЕНИЕ(Перечисление.ВидыДействийСтационара.Процедуры)
+	КОНЕЦ,
+	ПланыЛечения.ИдентификаторЭлемента,
+	ПланыЛечения.Номенклатура,
+	ВЫБОР
+		КОГДА ПланыЛечения.Номенклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Материал)
+			ТОГДА ПланыЛечения.ПриемовВДень
+		ИНАЧЕ ВЫБОР
+				КОГДА ПланыЛечения.ПриемовВДень = 0
+					ТОГДА 1
+				ИНАЧЕ ПланыЛечения.ПриемовВДень
+			КОНЕЦ
+	КОНЕЦ,
+	ПланыЛечения.Дозировка,
+	ПланыЛечения.ЕдиницаИзмерения,
+	ПланыЛечения.Коэффициент,
+	ПланыЛечения.Количество,
+	ВыполнениеДействийСтационара.ДатаВыполнения,
+	ВыполнениеДействийСтационара.ДокументВыполненияДействия,
+	ВыполнениеДействийСтационара.ДокументВыполненияДействияОтветственный,
+	ВыполнениеДействийСтационара.Документ.Ответственный,
+	ПланыЛечения.Количество
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ПланыЛеченияИтог.Пациент КАК Пациент,
+	ПланыЛеченияИтог.МедицинскаяКарта КАК МедицинскаяКарта,
+	ПланыЛеченияИтог.ДатаНачала КАК ДатаНачала,
+	ПланыЛеченияИтог.ДатаОкончания КАК ДатаОкончания,
+	ПланыЛеченияИтог.ВидыДействияСтационара КАК ВидДействия,
+	ПланыЛеченияИтог.ДействиеСтационара КАК ДействиеСтационара,
+	ПланыЛеченияИтог.РазВДень КАК РазВДень,
+	ПланыЛеченияИтог.Дозировка КАК Дозировка,
+	ПланыЛеченияИтог.Выполнено КАК Выполнено,
+	ПланыЛеченияИтог.ДатаВыполнения КАК ДатаВыполнения,
+	НАЧАЛОПЕРИОДА(ПланыЛеченияИтог.ДатаВыполнения, ДЕНЬ) КАК ДеньВыполнения,
+	ПланыЛеченияИтог.ЕдиницаИзмерения КАК ЕдиницаИзмерения,
+	ПланыЛеченияИтог.Коэффициент КАК Коэффициент,
+	ПланыЛеченияИтог.ВсегоНазначено КАК ВсегоНазначено,
+	ПланыЛеченияИтог.ДокументВыполненияДействия КАК Документ,
+	ПланыЛеченияИтог.ДокументВыполненияДействияОтветственный КАК ДокументОтветственный,
+	ПланыЛеченияИтог.НазначениеОтветственный КАК НазначениеОтветственный,
+	ПланыЛеченияИтог.КоличествоНазначенное КАК КоличествоНазначенное
+ИЗ
+	ПланыЛеченияИтог КАК ПланыЛеченияИтог</query>
+	</dataSet>
+	<calculatedField>
+		<dataPath>ДатыНазначений</dataPath>
+		<expression>ОбщегоНазначенияБИТКлиентСервер.ВернутьСтрокойПериодДат(ДатаНачала, ДатаОкончания)</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Даты назначений</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ФактПлан</dataPath>
+		<expression>1</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Факт/План</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<totalField>
+		<dataPath>Выполнено</dataPath>
+		<expression>Сумма(Выполнено)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ФактПлан</dataPath>
+		<expression>Строка(Сумма(Выполнено)) + "/" + Строка(Сумма(ВычислитьВыражениеСГруппировкойМассив("ВсегоНазначено", "ДействиеСтационара,ДатыНазначений,НазначениеОтветственный")))</expression>
+		<group>ВидДействия</group>
+	</totalField>
+	<totalField>
+		<dataPath>ФактПлан</dataPath>
+		<expression>Строка(Сумма(Выполнено)) + "/" + Строка(ВсегоНазначено)</expression>
+		<group>ДействиеСтационара</group>
+		<group>ДействиеСтационара Иерархия</group>
+		<group>ДеньВыполнения</group>
+		<group>Документ</group>
+	</totalField>
+	<parameter>
+		<name>Клиент</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Клиент</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Клиенты</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>МедицинскаяКарта</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Медицинская карта</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.МедицинскиеКарты</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ВидДействия</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>ВсегоНазначено</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>Выполнено</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДействиеСтационара</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Дозировка</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ЕдиницаИзмерения</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Коэффициент</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>МедицинскаяКарта</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>Пациент</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>РазВДень</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ФактПлан</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Клиент</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:viewMode>Inaccessible</dcsset:viewMode>
+					<dcsset:userSettingID>a2451a6d-239c-4dae-a771-8cccaef05391</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>МакетОформления</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ОформлениеОтчетовКлассический</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьПараметрыДанных</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Auto</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ВидДействия</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ДействиеСтационара</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ДатыНазначений</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>НазначениеОтветственный</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>ДеньВыполнения</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+						<dcsset:item xsi:type="dcsset:StructureItemGroup">
+							<dcsset:groupItems>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>Документ</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>ДатаВыполнения</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>ДокументОтветственный</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+							</dcsset:groupItems>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">ДатаВыполнения</dcsset:left>
+									<dcsset:comparisonType>Filled</dcsset:comparisonType>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:order>
+								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							</dcsset:order>
+							<dcsset:selection>
+								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							</dcsset:selection>
+							<dcsset:outputParameters>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+									<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+								</dcscor:item>
+							</dcsset:outputParameters>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

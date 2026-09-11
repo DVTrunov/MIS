@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Направление на госпитализацию, восстановительное лечение, обследование, консультацию" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<bitDiagnosis УсловиеИспользования="*Ложь">
+		<nodeDiagnosisStructure Отбор="ВидНозологическойЕдиницы:*ИнтеграцияЕГИСЗОбщегоНазначенияПовтИсп.ВидыНозологическихЕдиниц(1)" Секция="DGN">
+			<nodeDiagnosis type="Диагноз"					localid="ОсновнойДиагноз"/>
+			<nodeDiagnosis type="ВидНозологическойЕдиницы"	localid="ВидНозологическойЕдиницы"/>
+		</nodeDiagnosisStructure>
+	</bitDiagnosis>
+	<!-- R [1..1] СЕКЦИЯ: Цель направления и медицинская организация, куда направлен пациент (с кодированными элементами) -->
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="SCOPORG" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>Направление</title>
+			<!-- R [1..1] наполнение секции -->
+			<text></text>
+			<!-- R [1..1] Кодирование цели направления и медицинской организации, куда направлен пациент -->
+			<entry>
+				<act classCode="ACT" moodCode="RQO">
+					<!-- R [1..1] Тип направления -->
+					<code localid="Направление" code="#code" codeSystem="1.2.643.5.1.13.13.11.1009" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<statusCode code="active"/>
+					<!-- R [1..1] Кодирование организации, куда направлен пациент -->
+					<performer>
+						<assignedEntity>
+							<!-- [1..1] Уникальный идентификатор человека-исполнителя, как правило он неизвестен - следует использовать nullFlavor -->
+							<id nullFlavor="NI"/>
+							<representedOrganization>
+								<!-- R [1..1] Идентификатор организации исполнителя -->
+								<id root="%OIDМедицинскойОрганизации"/>
+								<!-- R [1..1] Наименование направившего учреждения -->
+								<name>*НаименованиеОрганизации(%Организация)</name>
+								<!-- R [1..1] Телефон направившего учреждения -->
+								<telecom Обязательное="*Ложь" value="*ПолучитьТелефон(%Организация)" use="WP"/>
+								<!-- [1..1] Адрес организации -->
+								<addr Обязательное="*Ложь">
+									<!-- R [1..1] адрес текстом -->
+									<streetAddressLine>*ПроцедурыСпециализацииПоставки.ПолучитьРеквизитыОрганизации(%Организация).Адрес</streetAddressLine> 
+									<!-- R [1..1] Регион РФ -->
+									<state>*ПолучитьРегион(%Организация)</state> 
+								</addr>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+					<!-- [0..*] кодирование медицинских услуг. Для госпитализации их не будет, а для направления на обследование может быть несколько -->
+					<entryRelationship localid="Консультация" localidСиноним="Тип консультации" Множественное="*Истина" Обязательное="*Ложь" typeCode="COMP">
+						<!-- R [1..1] указание на то, что услуги только запрошены moodCode="RQO" -->
+						<act classCode="ACT" moodCode="RQO">
+							<!-- R [1..1] код медицинской услуги, в первую очередь кодирование осуществляется по справочникам ИЭМК -->
+							<code localid="Консультация" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.29" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+								<!-- [0..*] Потом указываются альтернативные системы кодирования, например, номенклатура медицинских услуг-->
+								<translation localid="КонсультацияУслуга" localidСиноним="Номенклатура мед. услуги" Множественное="*Истина" Обязательное="*Ложь" code="#code" codeSystem="1.2.643.5.1.13.13.11.1070" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							</code>
+							<statusCode code="active"/>
+						</act>
+					</entryRelationship>
+				</act>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: Коды льгот (с кодированными элементами) -->
+	<component>
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="BENEFITS" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Заголовок секции -->
+			<title>Коды льгот</title>
+			<!-- R [1..1] Наполнение секции -->
+			<text></text>
+			<!-- [1..*] Кодирование льгот -->
+			<entry localid="Льгота" Множественное="*Истина">
+				<!-- [1..1] Указание кода льготы -->
+				<observation classCode="OBS" moodCode="EVN">
+					<code localid="Льгота" ПустоеЗначение="OTH" code="#code" codeSystem="1.2.643.5.1.13.13.11.1050" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<statusCode code="completed"/>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: Место работы и должность (без кодированных элементов) -->
+	<component>
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="WORK" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Заголовок секции -->
+			<title>Место работы, должность</title>
+			<!-- [1..1] Наполнение секции -->
+			<text ТипДанных="Строка" localid="МестоРаботыДолжность" localidСиноним="Место работы и должность" Синоним="Место работы и должность">%МестоРаботыДолжность</text>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: Диагноз (с кодированными элементами) -->
+	<component ВозможноЗаполнениеИзТаблицыДиагнозов="true">
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="DGN" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Заголовок секции -->
+			<title>Код диагноза по МКБ</title>
+			<!-- R [1..1] Наполнение секции -->
+			<text></text>
+			<!-- R [1..1] кодирование диагноза -->
+			<entry>
+				<!-- R [1..1] кодирование типа и кода диагноза по МКБ10 -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] кодирование основного диагноза -->
+					<code localid="ВидНозологическойЕдиницы" code="#code" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<statusCode code="completed"/>
+					<!-- R [1..1] указание кода диагноза по МКБ10 -->
+					<value xsi:type="CD" localid="ОсновнойДиагноз" Синоним="Диагноз" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: Обоснование направления (без кодированных элементов) -->
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="ELU" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>Обоснование направления</title>
+			<!-- R [1..1] наполнение секции -->
+			<text ТипДанных="Строка" localid="Обоснование" localidСиноним="Обоснование направления">%Обоснование</text>
+		</section>
+	</component>
+</Items>

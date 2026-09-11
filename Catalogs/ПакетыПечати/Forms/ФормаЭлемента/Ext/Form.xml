@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Наименование" id="4">
+			<DataPath>Объект.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="60"/>
+		</InputField>
+		<InputField name="МестоВызова" id="7">
+			<DataPath>Объект.МестоВызоваПредставление</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Место вызова</v8:content>
+				</v8:item>
+			</Title>
+			<EditMode>EnterOnInput</EditMode>
+			<MarkRequiredComplete>true</MarkRequiredComplete>
+			<AutoEditMode>true</AutoEditMode>
+			<DropListButton>false</DropListButton>
+			<ChoiceButton>true</ChoiceButton>
+			<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<ContextMenu name="МестоВызоваКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="МестоВызоваРасширеннаяПодсказка" id="61"/>
+			<Events>
+				<Event name="OnChange">МестоВызоваПриИзменении</Event>
+				<Event name="StartChoice">МестоВызоваНачалоВыбора</Event>
+				<Event name="StartListChoice">МестоВызоваНачалоВыбораИзСписка</Event>
+				<Event name="ChoiceProcessing">МестоВызоваОбработкаВыбора</Event>
+			</Events>
+		</InputField>
+		<CheckBoxField name="НаПринтер" id="56">
+			<DataPath>Объект.НаПринтер</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Печатать сразу на принтер без предварительного просмотра</v8:content>
+				</v8:item>
+			</Title>
+			<TitleLocation>Right</TitleLocation>
+			<ContextMenu name="НаПринтерКонтекстноеМеню" id="57"/>
+			<ExtendedTooltip name="НаПринтерРасширеннаяПодсказка" id="62"/>
+		</CheckBoxField>
+		<LabelDecoration name="НадписьПечатьБезПредпросмотраНаСервере" id="77">
+			<Width>64</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<TextColor>style:ПоясняющийТекст</TextColor>
+			<Font italic="true" kind="AutoFont"/>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>В учетной политике установлено формирование печатных форм в формате WORD на сервере.
+Эти печатные формы пакета будут всё равно открываться на предварительный просмотр.</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="НадписьПечатьБезПредпросмотраНаСервереКонтекстноеМеню" id="78"/>
+			<ExtendedTooltip name="НадписьПечатьБезПредпросмотраНаСервереРасширеннаяПодсказка" id="79"/>
+		</LabelDecoration>
+		<Table name="СоставПакета" id="10">
+			<Width>64</Width>
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Объект.СоставПакета</DataPath>
+			<CommandSet>
+				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="СоставПакетаКонтекстноеМеню" id="11"/>
+			<AutoCommandBar name="СоставПакетаКоманднаяПанель" id="12"/>
+			<ExtendedTooltip name="СоставПакетаРасширеннаяПодсказка" id="63"/>
+			<SearchStringAddition name="СоставПакетаСтрокаПоиска" id="64">
+				<AdditionSource>
+					<Item>СоставПакета</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СоставПакетаСтрокаПоискаКонтекстноеМеню" id="65"/>
+				<ExtendedTooltip name="СоставПакетаСтрокаПоискаРасширеннаяПодсказка" id="66"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СоставПакетаСостояниеПросмотра" id="67">
+				<AdditionSource>
+					<Item>СоставПакета</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СоставПакетаСостояниеПросмотраКонтекстноеМеню" id="68"/>
+				<ExtendedTooltip name="СоставПакетаСостояниеПросмотраРасширеннаяПодсказка" id="69"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СоставПакетаУправлениеПоиском" id="70">
+				<AdditionSource>
+					<Item>СоставПакета</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СоставПакетаУправлениеПоискомКонтекстноеМеню" id="71"/>
+				<ExtendedTooltip name="СоставПакетаУправлениеПоискомРасширеннаяПодсказка" id="72"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="OnStartEdit">СоставПакетаПриНачалеРедактирования</Event>
+				<Event name="AfterDeleteRow">СоставПакетаПослеУдаления</Event>
+				<Event name="OnChange">СоставПакетаПриИзменении</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="СоставПакетаНомерСтроки" id="29">
+					<DataPath>Объект.СоставПакета.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>2</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="СоставПакетаНомерСтрокиКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="СоставПакетаНомерСтрокиРасширеннаяПодсказка" id="73"/>
+				</LabelField>
+				<InputField name="СоставПакетаВидПФ" id="58">
+					<DataPath>Объект.СоставПакета.ВидПФ</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>15</Width>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Печатная форма</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">ПечатнаяФорма</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Договор с клиентом</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">ВидДоговора</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="СоставПакетаВидПФКонтекстноеМеню" id="59"/>
+					<ExtendedTooltip name="СоставПакетаВидПФРасширеннаяПодсказка" id="74"/>
+					<Events>
+						<Event name="OnChange">СоставПакетаВидПФПриИзменении</Event>
+						<Event name="Clearing">СоставПакетаВидПФОчистка</Event>
+					</Events>
+				</InputField>
+				<InputField name="СоставПакетаПредставлениеОбъекта" id="32">
+					<DataPath>Объект.СоставПакета.ПредставлениеОбъекта</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Печатная форма</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ChoiceButton>true</ChoiceButton>
+					<ChooseType>false</ChooseType>
+					<ContextMenu name="СоставПакетаПредставлениеОбъектаКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="СоставПакетаПредставлениеОбъектаРасширеннаяПодсказка" id="75"/>
+					<Events>
+						<Event name="StartChoice">СоставПакетаПредставлениеОбъектаНачалоВыбора</Event>
+						<Event name="ChoiceProcessing">СоставПакетаПредставлениеОбъектаОбработкаВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="СоставПакетаКолЭкз" id="35">
+					<DataPath>Объект.СоставПакета.КолЭкз</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Кол. экз.</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Width>6</Width>
+					<ContextMenu name="СоставПакетаКолЭкзКонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="СоставПакетаКолЭкзРасширеннаяПодсказка" id="76"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ПакетыПечати</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<Columns>
+				<AdditionalColumns table="Объект.СоставПакета">
+					<Column name="ВидПФ" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Вид ПФ</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>20</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+	</Attributes>
+</Form>

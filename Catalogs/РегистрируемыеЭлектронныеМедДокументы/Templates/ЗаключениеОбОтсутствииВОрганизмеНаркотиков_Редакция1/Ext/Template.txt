@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Медицинское заключение об отсутствии в организме человека наркотических средств, психотропных веществ и их метаболитов" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<bitLocalId УсловиеИспользования="*Ложь">
+		<nodeLocalId ТипДанных="ДокументСсылка.ДоговорСКлиентом" localid="ДоговорСКлиентом" localidСиноним="Договор с клиентом" Обязательное="*Истина"/>
+	</bitLocalId>
+	<!-- R [1..1] СЕКЦИЯ: СВЕДЕНИЯ О ДОКУМЕНТЕ-->
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="DOCINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>Сведения о документе</title>
+			<!-- R [1..1] наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 11000)</content>
+							</td>
+							<td>
+								<content>%Серия</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 7000)</content>
+							</td>
+							<td>
+								<content>%Номер</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 837)</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%Заключение)</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 10000)</content>
+							</td>
+							<td>
+								<content>%Комментарий</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R[1..1] Серия медицинской справки -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="11000" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="Серия">%Серия</value>
+				</observation>
+			</entry>
+			<!-- R[1..1] Номер медицинской справки -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="7000" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="Номер">%Номер</value>
+				</observation>
+			</entry>
+			<!-- [0..1] Комментарий врача, выдавшего медицинской заключение -->
+			<entry Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="10000" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="Комментарий">%Комментарий</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Заключение -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="837" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="CD" localid="Заключение" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.725" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: СВЯЗАННЫЕ ДОКУМЕНТЫ -->
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="LINKDOCS" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>Связанные документы</title>
+			<!-- R [1..1] наполнение секции -->
+			<text>Справка о результатах химико-токсикологических исследований: указанные в направлении как цель исследования вещества (средства) не обнаружены на уровне предела обнаружения используемого метода</text>
+			<!-- R [1..1] Документ, на основании которого был выдан текущий документ -->
+			<entry>
+				<act classCode="ACT" moodCode="EVN">
+					<!-- R [1..1] Вид документа -->
+					<code code="89" codeSystem="1.2.643.5.1.13.13.11.1522" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<text>Справка о результатах химико-токсикологических исследований: указанные в направлении как цель исследования вещества (средства) не обнаружены на уровне предела обнаружения используемого метода</text>
+					<!-- R [1..1] Дата выдачи документа -->
+					<effectiveTime ТипДанных="Дата" localid="ДатаСправкиРезультата" Синоним="Дата выдачи справки о результатах химико-токсикологических исследований" localidСиноним="Дата выдачи справки о результатах химико-токсикологических исследований" Формат="ДФ=ггггММдд" value="%ДатаСправкиРезультата"/>
+					<!-- [1..1] Номер документа -->
+					<entryRelationship nullFlavor="NI" typeCode="COMP"/>
+					<!-- [1..1] Ссылка на электронный документ (уникальный идентификатор в МИС) -->
+					<reference nullFlavor="NI" typeCode="REFR"/>
+				</act>
+			</entry>
+		</section>
+	</component>
+</Items>

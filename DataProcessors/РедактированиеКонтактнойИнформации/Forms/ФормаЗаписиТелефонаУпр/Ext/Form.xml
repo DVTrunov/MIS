@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<Width>60</Width>
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаОсновныеДействияФормыДействиеОК" id="19">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ОсновныеДействияФормыДействиеОК</CommandName>
+				<Picture>
+					<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>ОК</v8:content>
+					</v8:item>
+				</Title>
+				<ButtonImportance>Main</ButtonImportance>
+				<ExtendedTooltip name="ФормаОсновныеДействияФормыДействиеОКExtendedTooltip" id="23"/>
+			</Button>
+			<Button name="ФормаОсновныеДействияФормыДействиеЗаписать" id="18">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.Command.ОсновныеДействияФормыДействиеЗаписать</CommandName>
+				<Picture>
+					<xr:Ref>StdPicture.Write</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Записать</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаОсновныеДействияФормыДействиеЗаписатьExtendedTooltip" id="24"/>
+			</Button>
+			<Button name="Закрыть" id="20">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<Picture>
+					<xr:Ref>StdPicture.Close</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="ЗакрытьExtendedTooltip" id="25"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Группа2" id="43">
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="44"/>
+			<ChildItems>
+				<InputField name="Вид" id="1">
+					<DataPath>Объект.Вид</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид телефона</v8:content>
+						</v8:item>
+					</Title>
+					<ClearButton>false</ClearButton>
+					<SpinButton>false</SpinButton>
+					<OpenButton>false</OpenButton>
+					<CreateButton>false</CreateButton>
+					<ChoiceForm>Catalog.ВидыКонтактнойИнформации.Form.ФормаВыбора</ChoiceForm>
+					<ChoiceListButton>true</ChoiceListButton>
+					<ContextMenu name="ВидКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="ВидExtendedTooltip" id="26"/>
+					<Events>
+						<Event name="OnChange">ВидПриИзменении</Event>
+						<Event name="StartChoice">ВидНачалоВыбора</Event>
+						<Event name="Clearing">ВидОчистка</Event>
+					</Events>
+				</InputField>
+				<UsualGroup name="ГруппаИспользоватьМаскуВвода" id="41">
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаИспользоватьМаскуВводаРасширеннаяПодсказка" id="42"/>
+					<ChildItems>
+						<CheckBoxField name="ИспользоватьМаскуВвода" id="35">
+							<DataPath>ВводПоМаске</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Использовать маску ввода</v8:content>
+								</v8:item>
+							</Title>
+							<TitleHeight>1</TitleHeight>
+							<ContextMenu name="ИспользоватьМаскуВводаКонтекстноеМеню" id="36"/>
+							<ExtendedTooltip name="ИспользоватьМаскуВводаРасширеннаяПодсказка" id="37"/>
+							<Events>
+								<Event name="OnChange">ИспользоватьМаскуВводаПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Группа1" id="3">
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа1ExtendedTooltip" id="27"/>
+			<ChildItems>
+				<InputField name="Поле1" id="4">
+					<DataPath>Объект.Поле1</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код страны</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Top</TitleLocation>
+					<Width>9</Width>
+					<ContextMenu name="Поле1КонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="Поле1ExtendedTooltip" id="28"/>
+					<Events>
+						<Event name="OnChange">Поле1ПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="Поле2" id="6">
+					<DataPath>Объект.Поле2</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код города</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Top</TitleLocation>
+					<ContextMenu name="Поле2КонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="Поле2ExtendedTooltip" id="29"/>
+					<Events>
+						<Event name="OnChange">Поле2ПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="Поле3" id="8">
+					<DataPath>Объект.Поле3</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Top</TitleLocation>
+					<ContextMenu name="Поле3КонтекстноеМеню" id="9"/>
+					<ExtendedTooltip name="Поле3ExtendedTooltip" id="30"/>
+					<Events>
+						<Event name="OnChange">Поле3ПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ПолеВводПоМаске" id="38">
+					<DataPath>ПолеВводПоМаске</DataPath>
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Left</TitleLocation>
+					<ContextMenu name="ПолеВводПоМаскеКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="ПолеВводПоМаскеРасширеннаяПодсказка" id="40"/>
+					<Events>
+						<Event name="OnChange">ПолеВводПоМаскеПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="Поле4" id="10">
+					<DataPath>Объект.Поле4</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Внутренний</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Top</TitleLocation>
+					<Width>4</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="Поле4КонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="Поле4ExtendedTooltip" id="31"/>
+					<Events>
+						<Event name="OnChange">Поле4ПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Представление" id="12">
+			<DataPath>Объект.Представление</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<ContextMenu name="ПредставлениеКонтекстноеМеню" id="13"/>
+			<ExtendedTooltip name="ПредставлениеExtendedTooltip" id="32"/>
+			<Events>
+				<Event name="OnChange">ПереформироватьНомер</Event>
+			</Events>
+		</InputField>
+		<InputField name="Комментарий" id="14">
+			<DataPath>Объект.Комментарий</DataPath>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="15"/>
+			<ExtendedTooltip name="КомментарийExtendedTooltip" id="33"/>
+			<Events>
+				<Event name="OnChange">ПереформироватьНомер</Event>
+			</Events>
+		</InputField>
+		<LabelField name="Объект" id="21">
+			<DataPath>Объект.Объект</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Владелец</v8:content>
+				</v8:item>
+			</Title>
+			<Hiperlink>true</Hiperlink>
+			<ContextMenu name="ОбъектКонтекстноеМеню" id="22"/>
+			<ExtendedTooltip name="ОбъектExtendedTooltip" id="34"/>
+		</LabelField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.РедактированиеКонтактнойИнформации</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="Редактирование" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Редактирование</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КлючЗаписи" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ключ записи</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ПолеВводПоМаске" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поле ввод по маске</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВводПоМаске" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ввод по маске</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОсновныеДействияФормыДействиеЗаписать" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основные действия формы действие записать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основные действия формы действие записать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОсновныеДействияФормыДействиеЗаписать</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ОсновныеДействияФормыДействиеОК" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основные действия формы действие ОК</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основные действия формы действие ОК</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОсновныеДействияФормыДействиеОК</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

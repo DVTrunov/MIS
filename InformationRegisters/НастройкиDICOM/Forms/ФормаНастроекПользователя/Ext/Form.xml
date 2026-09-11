@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Персональные настройки DICOM</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Пользователь" id="19">
+			<DataPath>Запись.Пользователь</DataPath>
+			<ContextMenu name="ПользовательКонтекстноеМеню" id="20"/>
+			<ExtendedTooltip name="ПользовательРасширеннаяПодсказка" id="35"/>
+		</InputField>
+		<UsualGroup name="ГруппаХранилищеDICOM" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>DICOM Storage\Query\Retrieve</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>DICOM Storage</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>WeakSeparation</Representation>
+			<ExtendedTooltip name="ГруппаХранилищеDICOMРасширеннаяПодсказка" id="36"/>
+			<ChildItems>
+				<InputField name="DCMTK_ЗапросыВызываемыйAETitle" id="12">
+					<DataPath>Запись.DCMTK_ЗапросыВызываемыйAETitle</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>PACS</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>PACS</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ContextMenu name="DCMTK_ЗапросыВызываемыйAETitleКонтекстноеМеню" id="13"/>
+					<ExtendedTooltip name="DCMTK_ЗапросыВызываемыйAETitleРасширеннаяПодсказка" id="37"/>
+				</InputField>
+				<InputField name="DCMTK_STORESCP_ИспользуемыйAETitle" id="5">
+					<DataPath>Запись.DCMTK_STORESCP_ИспользуемыйAETitle</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>AETitle</v8:content>
+						</v8:item>
+					</Title>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Пользователь</xr:Name>
+							<xr:DataPath xsi:type="xs:string">Запись.Пользователь</xr:DataPath>
+							<xr:ValueChange>DontChange</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
+					<ContextMenu name="DCMTK_STORESCP_ИспользуемыйAETitleКонтекстноеМеню" id="6"/>
+					<ExtendedTooltip name="DCMTK_STORESCP_ИспользуемыйAETitleРасширеннаяПодсказка" id="38"/>
+				</InputField>
+				<InputField name="DCMTK_STORESCP_КаталогФайлов" id="7">
+					<DataPath>Запись.DCMTK_STORESCP_КаталогФайлов</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Каталог файлов</v8:content>
+						</v8:item>
+					</Title>
+					<ChoiceButton>true</ChoiceButton>
+					<ContextMenu name="DCMTK_STORESCP_КаталогФайловКонтекстноеМеню" id="8"/>
+					<ExtendedTooltip name="DCMTK_STORESCP_КаталогФайловРасширеннаяПодсказка" id="39"/>
+					<Events>
+						<Event name="StartChoice">КаталогФайловНачалоВыбора</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Запись" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.НастройкиDICOM</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+	<Parameters>
+		<Parameter name="НастройкиТекущегоПользователя">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

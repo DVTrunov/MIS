@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Уведомление о выявлении противопоказаний или аннулировании медицинских заключений к владению оружием (CDA) Редакция 1" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fias="urn:hl7-ru:fias" xmlns:address="urn:hl7-ru:address">
+	<!-- R [1..1] СЕКЦИЯ: "Сведения о документе" -->
+	<component>
+		<!-- R [1..1]-->
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="DOCINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Название секции -->
+			<title>Сведения о случае выявления противопоказаний</title>
+			<!-- R [1..1] Человекочитаемое наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr>
+							<td colspan="2">
+								<content>Выявлено заболевание, при наличии которого противопоказано владение оружием.</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Комментарий: </content>
+							</td>
+							<td>
+								<content>*?(ЗначениеЗаполнено(%ОписаниеПротивопоказания), %ОписаниеПротивопоказания, "—")</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..1] Сведения о наличии противопоказаний к владению оружием -->
+			<entry>
+				<!-- R [1..1]-->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="11021" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- [0..1] Текстовое описание -->
+					<text ТипДанных="Строка" localid="ОписаниеПротивопоказания" Обязательное="*Ложь">%ОписаниеПротивопоказания</text>
+					<!-- R [1..1] Факт наличия противопоказаний к владению оружием -->
+					<value xsi:type="BL" value="true"/>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<bitOther>
+		<bitLocalId УсловиеИспользования="*Ложь">
+			<nodeLocalId ТипДанных="ДокументСсылка.Прием,ДокументСсылка.ПрохождениеМедосмотра" localid="СвязанныйДокумент" Множественное="*Истина" Обязательное="*Ложь"/>
+		</bitLocalId>
+		<!-- [0..1] СЕКЦИЯ: "Связанные документы" -->
+		<component localid="ДанныеСвязанногоДокумента" Обязательное="*Ложь">
+			<!-- R [1..1]-->
+			<section>
+				<!-- R [1..1] Код секции -->
+				<code code="LINKDOCS" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				<!-- R [1..1] Название секции -->
+				<title>Сведения об аннулируемых документах</title>
+				<!-- R [1..1] Человекочитаемое наполнение секции -->
+				<text></text>
+				<!-- R [1..*] Сведения об аннулируемом документе -->
+				<entry>
+					<!-- R [1..1]-->
+					<act classCode="ACT" moodCode="EVN">
+						<!-- R [1..1] Вид документа -->
+						<code localid="ДанныеСвязанногоДокумента.ВидСЭМД" code="#code" codeSystem="1.2.643.5.1.13.13.11.1522" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						<!-- [0..1] Примечание к документу -->
+						<text Обязательное="*Ложь">%ДанныеСвязанногоДокумента.Примечание</text>
+						<!-- R [1..1] Дата выдачи документа -->
+						<effectiveTime value="%ДанныеСвязанногоДокумента.ДатаДокумента"/>
+						<!-- R [1..1] Серия документа -->
+						<entryRelationship typeCode="COMP">
+							<!-- R [1..1]-->
+							<observation classCode="OBS" moodCode="EVN">
+								<!-- R [1..1] Код поля -->
+								<code code="11002" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+								<!-- R [1..1] Серия документа -->
+								<value xsi:type="ST">%ДанныеСвязанногоДокумента.Серия</value>
+							</observation>
+						</entryRelationship>
+						<!-- R [1..1] Номер документа -->
+						<entryRelationship typeCode="COMP">
+							<!-- R [1..1]-->
+							<observation classCode="OBS" moodCode="EVN">
+								<!-- R [1..1] Код поля -->
+								<code code="11003" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+								<!-- R [1..1] Номер документа -->
+								<value xsi:type="ST">%ДанныеСвязанногоДокумента.Номер</value>
+							</observation>
+						</entryRelationship>
+						<!-- R [1..1] Ссылка на внешний документ -->
+						<reference typeCode="REFR">
+							<!-- R [1..1]-->
+							<externalDocument classCode="DOCCLIN" moodCode="EVN">
+								<!-- R [1..1] Уникальный идентификатор документа в МИС -->
+								<id root="%Организация$СвязанныйДокумент" extension="*УникальныйИдентификаторПоСсылке(%ДанныеСвязанногоДокумента.Ссылка)"/>
+								<!-- [1..1] Уникальный идентификатор документа в РЭМД -->
+								<id ПустоеЗначение="NI" root="1.2.643.5.1.13.13.17.1.1" extension="*ИдентификаторРЭМДПоСсылке(%ДанныеСвязанногоДокумента.Ссылка)"/>
+								<!-- [1..1] Код зарегистрированного электронного медицинского документа -->
+								<code localid="ДанныеСвязанногоДокумента.ВидРЭМД" code="#code" codeSystem="1.2.643.5.1.13.13.11.1520" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							</externalDocument>
+						</reference>
+					</act>
+				</entry>
+			</section>
+		</component>
+	</bitOther>
+</Items>

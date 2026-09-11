@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗакрыть" id="4">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.StandardCommand.Close</CommandName>
+				<ButtonImportance>Main</ButtonImportance>
+				<ExtendedTooltip name="ФормаЗакрытьРасширеннаяПодсказка" id="5"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelField name="Сотрудник" id="1">
+			<DataPath>Сотрудник</DataPath>
+			<TitleFont ref="style:LargeTextFont" kind="StyleItem"/>
+			<TextColor>style:ПоясняющийТекст</TextColor>
+			<Font ref="style:LargeTextFont" kind="StyleItem"/>
+			<ContextMenu name="СотрудникКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="СотрудникРасширеннаяПодсказка" id="3"/>
+		</LabelField>
+		<UsualGroup name="ГруппаКалендариGoogle" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Календари Google</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа календари google</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>WeakSeparation</Representation>
+			<ExtendedTooltip name="ГруппаКалендариGoogleРасширеннаяПодсказка" id="7"/>
+			<ChildItems>
+				<UsualGroup name="СинхронизацияДанных" id="8">
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Синхронизация данных</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выполняется синхронизация</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Behavior>Usual</Behavior>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="СинхронизацияДанныхРасширеннаяПодсказка" id="9"/>
+					<ChildItems>
+						<PictureDecoration name="ДекорацияПрогресс" id="10">
+							<Width>2</Width>
+							<Height>1</Height>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Декорация прогресс</v8:content>
+								</v8:item>
+							</Title>
+							<Picture>
+								<xr:Ref>CommonPicture.СинхронизацияДанныхДлительнаяОперация</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<FileDragMode>AsFile</FileDragMode>
+							<ContextMenu name="ДекорацияПрогрессКонтекстноеМеню" id="11"/>
+							<ExtendedTooltip name="ДекорацияПрогрессРасширеннаяПодсказка" id="12"/>
+						</PictureDecoration>
+						<LabelDecoration name="ДекорацияИнфоСинхронизация" id="13">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Выполняется синхронизация</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекорацияИнфоСинхронизацияКонтекстноеМеню" id="14"/>
+							<ExtendedTooltip name="ДекорацияИнфоСинхронизацияРасширеннаяПодсказка" id="15"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<Table name="СинхронизацииСотрудника" id="16">
+					<Width>60</Width>
+					<AutoMaxHeight>false</AutoMaxHeight>
+					<HeightInTableRows>2</HeightInTableRows>
+					<RowSelectionMode>Cell</RowSelectionMode>
+					<VerticalStretch>false</VerticalStretch>
+					<EnableStartDrag>true</EnableStartDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>СинхронизацииСотрудника</DataPath>
+					<RowPictureDataPath>СинхронизацииСотрудника.DefaultPicture</RowPictureDataPath>
+					<AutoRefresh>false</AutoRefresh>
+					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<Period>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</Period>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<RestoreCurrentRow>false</RestoreCurrentRow>
+					<TopLevelParent xsi:nil="true"/>
+					<ShowRoot>true</ShowRoot>
+					<AllowRootChoice>false</AllowRootChoice>
+					<UpdateOnDataChange>Auto</UpdateOnDataChange>
+					<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+					<ContextMenu name="СинхронизацииСотрудникаКонтекстноеМеню" id="17">
+						<Autofill>false</Autofill>
+					</ContextMenu>
+					<AutoCommandBar name="СинхронизацииСотрудникаКоманднаяПанель" id="18">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="КалендариGoogle_Синхронизировать" id="41">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.Google_Синхронизировать</CommandName>
+								<ExtendedTooltip name="КалендариGoogle_СинхронизироватьРасширеннаяПодсказка" id="42"/>
+							</Button>
+							<Button name="КалендариGoogleУдалитьТекущуюСинхронизациюПользователя" id="43">
+								<Type>CommandBarButton</Type>
+								<Enabled>false</Enabled>
+								<CommandName>Form.Command.УдалитьТекущуюСинхронизациюПользователя</CommandName>
+								<ExtendedTooltip name="КалендариGoogleУдалитьТекущуюСинхронизациюПользователяРасширеннаяПодсказка" id="44"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="СинхронизацииСотрудникаРасширеннаяПодсказка" id="19"/>
+					<SearchStringAddition name="СинхронизацииСотрудникаСтрокаПоиска" id="20">
+						<AdditionSource>
+							<Item>СинхронизацииСотрудника</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СинхронизацииСотрудникаСтрокаПоискаКонтекстноеМеню" id="21"/>
+						<ExtendedTooltip name="СинхронизацииСотрудникаСтрокаПоискаРасширеннаяПодсказка" id="22"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="СинхронизацииСотрудникаСостояниеПросмотра" id="23">
+						<AdditionSource>
+							<Item>СинхронизацииСотрудника</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="СинхронизацииСотрудникаСостояниеПросмотраКонтекстноеМеню" id="24"/>
+						<ExtendedTooltip name="СинхронизацииСотрудникаСостояниеПросмотраРасширеннаяПодсказка" id="25"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="СинхронизацииСотрудникаУправлениеПоиском" id="26">
+						<AdditionSource>
+							<Item>СинхронизацииСотрудника</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="СинхронизацииСотрудникаУправлениеПоискомКонтекстноеМеню" id="27"/>
+						<ExtendedTooltip name="СинхронизацииСотрудникаУправлениеПоискомРасширеннаяПодсказка" id="28"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<CheckBoxField name="СинхронизацииСотрудникаdisabled" id="66">
+							<DataPath>СинхронизацииСотрудника.disabled</DataPath>
+							<ContextMenu name="СинхронизацииСотрудникаdisabledКонтекстноеМеню" id="67"/>
+							<ExtendedTooltip name="СинхронизацииСотрудникаdisabledРасширеннаяПодсказка" id="68"/>
+						</CheckBoxField>
+						<LabelField name="СинхронизацииСотрудникаaccess_token" id="69">
+							<DataPath>СинхронизацииСотрудника.access_token</DataPath>
+							<ContextMenu name="СинхронизацииСотрудникаaccess_tokenКонтекстноеМеню" id="70"/>
+							<ExtendedTooltip name="СинхронизацииСотрудникаaccess_tokenРасширеннаяПодсказка" id="71"/>
+						</LabelField>
+						<LabelField name="СинхронизацииСотрудникаrefresh_token" id="72">
+							<DataPath>СинхронизацииСотрудника.refresh_token</DataPath>
+							<ContextMenu name="СинхронизацииСотрудникаrefresh_tokenКонтекстноеМеню" id="73"/>
+							<ExtendedTooltip name="СинхронизацииСотрудникаrefresh_tokenРасширеннаяПодсказка" id="74"/>
+						</LabelField>
+						<LabelField name="СинхронизацииСотрудникаtoken_type" id="75">
+							<DataPath>СинхронизацииСотрудника.token_type</DataPath>
+							<ContextMenu name="СинхронизацииСотрудникаtoken_typeКонтекстноеМеню" id="76"/>
+							<ExtendedTooltip name="СинхронизацииСотрудникаtoken_typeРасширеннаяПодсказка" id="77"/>
+						</LabelField>
+					</ChildItems>
+				</Table>
+				<Table name="КалендариGoogle" id="45">
+					<Width>60</Width>
+					<HeightInTableRows>5</HeightInTableRows>
+					<RowSelectionMode>Cell</RowSelectionMode>
+					<EnableStartDrag>true</EnableStartDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>КалендариGoogle</DataPath>
+					<RowPictureDataPath>КалендариGoogle.DefaultPicture</RowPictureDataPath>
+					<AutoRefresh>false</AutoRefresh>
+					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<Period>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</Period>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<RestoreCurrentRow>false</RestoreCurrentRow>
+					<TopLevelParent xsi:nil="true"/>
+					<ShowRoot>true</ShowRoot>
+					<AllowRootChoice>false</AllowRootChoice>
+					<UpdateOnDataChange>Auto</UpdateOnDataChange>
+					<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+					<ContextMenu name="КалендариGoogleКонтекстноеМеню" id="46"/>
+					<AutoCommandBar name="КалендариGoogleКоманднаяПанель" id="47">
+						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="КалендариGoogle_ДобавитьКалендарь" id="64">
+								<Type>CommandBarButton</Type>
+								<Visible>false</Visible>
+								<CommandName>Form.Command.Google_ДобавитьКалендарь</CommandName>
+								<ExtendedTooltip name="КалендариGoogle_ДобавитьКалендарьРасширеннаяПодсказка" id="65"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="КалендариGoogleРасширеннаяПодсказка" id="48"/>
+					<SearchStringAddition name="КалендариGoogleСтрокаПоиска" id="49">
+						<AdditionSource>
+							<Item>КалендариGoogle</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="КалендариGoogleСтрокаПоискаКонтекстноеМеню" id="50"/>
+						<ExtendedTooltip name="КалендариGoogleСтрокаПоискаРасширеннаяПодсказка" id="51"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="КалендариGoogleСостояниеПросмотра" id="52">
+						<AdditionSource>
+							<Item>КалендариGoogle</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="КалендариGoogleСостояниеПросмотраКонтекстноеМеню" id="53"/>
+						<ExtendedTooltip name="КалендариGoogleСостояниеПросмотраРасширеннаяПодсказка" id="54"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="КалендариGoogleУправлениеПоиском" id="55">
+						<AdditionSource>
+							<Item>КалендариGoogle</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="КалендариGoogleУправлениеПоискомКонтекстноеМеню" id="56"/>
+						<ExtendedTooltip name="КалендариGoogleУправлениеПоискомРасширеннаяПодсказка" id="57"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<LabelField name="КалендариGoogleСсылка" id="78">
+							<DataPath>КалендариGoogle.Ref</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Календарь</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="КалендариGoogleСсылкаКонтекстноеМеню" id="79"/>
+							<ExtendedTooltip name="КалендариGoogleСсылкаРасширеннаяПодсказка" id="80"/>
+						</LabelField>
+						<CheckBoxField name="КалендариGoogleСинхронизироватьСGoogle" id="81">
+							<DataPath>КалендариGoogle.СинхронизироватьСGoogle</DataPath>
+							<ContextMenu name="КалендариGoogleСинхронизироватьСGoogleКонтекстноеМеню" id="82"/>
+							<ExtendedTooltip name="КалендариGoogleСинхронизироватьСGoogleРасширеннаяПодсказка" id="83"/>
+						</CheckBoxField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Сотрудник" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сотрудник</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Сотрудники</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КалендариGoogle" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Календари google</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	КалендариСотрудников.СинхронизироватьСGoogle,
+	КалендариСотрудников.Ссылка
+ИЗ
+	Справочник.КалендариСотрудников КАК КалендариСотрудников
+ГДЕ
+	КалендариСотрудников.ВладелецКалендаря = &amp;ВладелецКалендаря и НЕ ПометкаУдаления</QueryText>
+				<MainTable>Catalog.КалендариСотрудников</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="СинхронизацииСотрудника" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Синхронизации сотрудника</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	РегистрСведенийСеансовыеДанныеGoogle.Пользователь,
+	РегистрСведенийСеансовыеДанныеGoogle.ОбластьДоступа,
+	РегистрСведенийСеансовыеДанныеGoogle.access_token,
+	РегистрСведенийСеансовыеДанныеGoogle.token_type,
+	РегистрСведенийСеансовыеДанныеGoogle.refresh_token,
+	РегистрСведенийСеансовыеДанныеGoogle.disabled
+ИЗ
+	РегистрСведений.СеансовыеДанныеGoogle КАК РегистрСведенийСеансовыеДанныеGoogle
+Где Пользователь = &amp;Сотрудник</QueryText>
+				<MainTable>InformationRegister.СеансовыеДанныеGoogle</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="СеансовыеДанные" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сеансовые данные</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ПараметрыОбработчикаОжидания" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры обработчика ожидания</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="ИдентификаторЗадания" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор задания</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Google_Синхронизировать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Синхронизировать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Синхронизировать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.СинхронизацияДанныхКоллизия</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Google_Синхронизировать</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="Google_ДобавитьКалендарь" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить календарь</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить календарь</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Google_ДобавитьКалендарь</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПересчитатьЗаявкиGoogle" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пересчитать заявки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить записи в календаре согласно будущим заявкам</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ExecuteTask</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПересчитатьЗаявкиGoogle</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="УдалитьТекущуюСинхронизациюПользователя" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить текущую синхронизацию пользователя</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить текущую синхронизацию пользователя</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Delete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УдалитьТекущуюСинхронизациюПользователя</Action>
+			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+	<Parameters>
+		<Parameter name="Сотрудник">
+			<Type>
+				<v8:Type>cfg:CatalogRef.Сотрудники</v8:Type>
+			</Type>
+		</Parameter>
+	</Parameters>
+</Form>

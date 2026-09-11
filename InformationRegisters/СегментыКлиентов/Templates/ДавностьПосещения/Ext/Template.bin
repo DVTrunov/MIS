@@ -1,0 +1,288 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ФайлОбмена ВерсияФормата="2.0" ДатаВыгрузки="2020-01-13T20:47:38" НачалоПериодаВыгрузки="2009-01-01T00:00:00" ОкончаниеПериодаВыгрузки="0001-01-01T00:00:00" ИмяКонфигурацииИсточника="БИТУправлениеМедицинскимЦентром" ИмяКонфигурацииПриемника="БИТУправлениеМедицинскимЦентром" ИдПравилКонвертации="83c39bcc-a1dc-493b-a316-87329062ef32" Комментарий="">
+<ПравилаОбмена>
+	<ВерсияФормата>2.01</ВерсияФормата>
+	<Ид>83c39bcc-a1dc-493b-a316-87329062ef32</Ид>
+	<Наименование>Виды сегментации (для встроенных)</Наименование>
+	<ДатаВремяСоздания>2020-01-13T20:44:03</ДатаВремяСоздания>
+	<Источник>БИТУправлениеМедицинскимЦентром</Источник>
+	<Приемник>БИТУправлениеМедицинскимЦентром</Приемник>
+	<ПередЗагрузкойДанных>УИД = Новый УникальныйИдентификатор();
+НоваяСсылка = Справочники.ВидыСегментации.ПолучитьСсылку(УИД);
+Параметры.ВидСегментацииЗагруженный = НоваяСсылка;</ПередЗагрузкойДанных>
+	<Параметры>
+		<Параметр Имя="ВидСегментацииЗагруженный" Наименование="Вид сегментации загруженный"  УстанавливатьВДиалоге="false" ТипЗначения="СправочникСсылка.ВидыСегментации" ИспользуетсяПриЗагрузке="true"/>
+	</Параметры>
+	<Обработки/>
+	<ПравилаКонвертацииОбъектов>
+		<Правило>
+			<Код>СегментационныеРегистраторы</Код>
+			<Источник>ПеречислениеСсылка.СегментационныеРегистраторы</Источник>
+			<Приемник>ПеречислениеСсылка.СегментационныеРегистраторы</Приемник>
+		</Правило>
+		<Правило>
+			<Код>ВидыСегментации</Код>
+			<ПослеЗагрузки>Объект.УстановитьСсылкуНового(Параметры.ВидСегментацииЗагруженный);
+Объект.Записать();
+
+СООБЩИТЬ("1");
+СООБЩИТЬ(Объект.Ссылка);
+СООБЩИТЬ(Параметры.ВидСегментацииЗагруженный);
+СООБЩИТЬ(ТипЗнч(Параметры.ВидСегментацииЗагруженный));</ПослеЗагрузки>
+			<НеЗамещать>true</НеЗамещать>
+			<ГенерироватьНовыйНомерИлиКодЕслиНеУказан>true</ГенерироватьНовыйНомерИлиКодЕслиНеУказан>
+			<Источник>СправочникСсылка.ВидыСегментации</Источник>
+			<Приемник>СправочникСсылка.ВидыСегментации</Приемник>
+		</Правило>
+		<Правило>
+			<Код>Сегменты</Код>
+			<ПослеЗагрузки>Объект.Владелец = Параметры.ВидСегментацииЗагруженный;
+Объект.Записать();</ПослеЗагрузки>
+			<НеЗамещать>true</НеЗамещать>
+			<ГенерироватьНовыйНомерИлиКодЕслиНеУказан>true</ГенерироватьНовыйНомерИлиКодЕслиНеУказан>
+			<Источник>СправочникСсылка.Сегменты</Источник>
+			<Приемник>СправочникСсылка.Сегменты</Приемник>
+		</Правило>
+		<Правило>
+			<Код>СегментационныеСвязиДанных</Код>
+			<ПослеЗагрузки>СООБЩИТЬ("2");
+СООБЩИТЬ(Параметры.ВидСегментацииЗагруженный);
+
+Объект.ВидСегментации = Параметры.ВидСегментацииЗагруженный;</ПослеЗагрузки>
+			<Источник>РегистрСведенийЗапись.СегментационныеСвязиДанных</Источник>
+			<Приемник>РегистрСведенийЗапись.СегментационныеСвязиДанных</Приемник>
+		</Правило>
+	</ПравилаКонвертацииОбъектов>
+	<ПравилаОчисткиДанных/>
+	<Алгоритмы/>
+	<Запросы/>
+</ПравилаОбмена>
+<Объект Нпп="2" Тип="СправочникСсылка.Сегменты" ИмяПравила="Сегменты" НеЗамещать="true"><Ссылка Нпп="2"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Ни разу не был</Значение>
+	</Свойство>
+</Ссылка>
+</Объект>
+<Объект Нпп="3" Тип="СправочникСсылка.Сегменты" ИмяПравила="Сегменты" НеЗамещать="true"><Ссылка Нпп="3"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Активный</Значение>
+	</Свойство>
+</Ссылка>
+</Объект>
+<Объект Нпп="4" Тип="СправочникСсылка.Сегменты" ИмяПравила="Сегменты" НеЗамещать="true"><Ссылка Нпп="4"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Потенциально потерянный</Значение>
+	</Свойство>
+</Ссылка>
+</Объект>
+<Объект Нпп="5" Тип="СправочникСсылка.Сегменты" ИмяПравила="Сегменты" НеЗамещать="true"><Ссылка Нпп="5"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Потерянный</Значение>
+	</Свойство>
+</Ссылка>
+</Объект>
+<Объект Нпп="1" Тип="СправочникСсылка.ВидыСегментации" ИмяПравила="ВидыСегментации" НеЗамещать="true">
+	<Свойство Имя="АлгоритмФормированияТаблицыПолейОтбора" Тип="Строка">
+		<Пусто/>
+	</Свойство><Свойство Имя="ЗначениеПоУмолчанию" Тип="СправочникСсылка.Сегменты"><Ссылка Нпп="2"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Ни разу не был</Значение>
+	</Свойство>
+</Ссылка>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Давность посещения</Значение>
+	</Свойство>
+	<Свойство Имя="ПерерассчитыватьПриИзмененииДанных" Тип="Булево">
+		<Значение>true</Значение>
+	</Свойство>
+	<Свойство Имя="ПерерассчитыватьРегламентнымЗаданием" Тип="Булево">
+		<Значение>true</Значение>
+	</Свойство>
+	<Свойство Имя="ПерерассчитыватьРегламентнымЗаданиемТолькоПриИзмененииДанных" Тип="Булево">
+		<Значение>false</Значение>
+	</Свойство>
+	<Свойство Имя="ПометкаУдаления" Тип="Булево">
+		<Значение>false</Значение>
+	</Свойство>
+	<Свойство Имя="ХранитьИсториюСегментов" Тип="Булево">
+		<Значение>true</Значение>
+	</Свойство><ТабличнаяЧасть Имя="ПравилаСегментации">
+	<Запись>
+		<Свойство Имя="Комментарий" Тип="Строка">
+			<Пусто/>
+		</Свойство><Свойство Имя="Отбор" Тип="ХранилищеЗначения">
+	<Значение>AQE1AAAAAAAAAO+7v3siIyIsM2M3MmZmNTYtN2UwNC00Mzg1LWJjMDMtOTJkNGJk
+NmMzNTFjLA0KezB9DQp9AAAAAPYFAAAAAAAA77u/PD94bWwgdmVyc2lvbj0iMS4w
+IiBlbmNvZGluZz0iVVRGLTgiPz4NCjxTZXR0aW5ncyB4bWxucz0iaHR0cDovL3Y4
+LjFjLnJ1LzguMS9kYXRhLWNvbXBvc2l0aW9uLXN5c3RlbS9zZXR0aW5ncyIgeG1s
+bnM6ZGNzY29yPSJodHRwOi8vdjguMWMucnUvOC4xL2RhdGEtY29tcG9zaXRpb24t
+c3lzdGVtL2NvcmUiIHhtbG5zOnN0eWxlPSJodHRwOi8vdjguMWMucnUvOC4xL2Rh
+dGEvdWkvc3R5bGUiIHhtbG5zOnN5cz0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRh
+L3VpL2ZvbnRzL3N5c3RlbSIgeG1sbnM6djg9Imh0dHA6Ly92OC4xYy5ydS84LjEv
+ZGF0YS9jb3JlIiB4bWxuczp2OHVpPSJodHRwOi8vdjguMWMucnUvOC4xL2RhdGEv
+dWkiIHhtbG5zOndlYj0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRhL3VpL2NvbG9y
+cy93ZWIiIHhtbG5zOndpbj0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRhL3VpL2Nv
+bG9ycy93aW5kb3dzIiB4bWxuczp4cz0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9Y
+TUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxT
+Y2hlbWEtaW5zdGFuY2UiPg0KCTxzZWxlY3Rpb24+DQoJCTxpdGVtIHhzaTp0eXBl
+PSJTZWxlY3RlZEl0ZW1GaWVsZCI+DQoJCQk8ZmllbGQ+0JrQu9C40LXQvdGCPC9m
+aWVsZD4NCgkJPC9pdGVtPg0KCTwvc2VsZWN0aW9uPg0KCTxmaWx0ZXI+DQoJCTxp
+dGVtIHhzaTp0eXBlPSJGaWx0ZXJJdGVtQ29tcGFyaXNvbiI+DQoJCQk8bGVmdCB4
+c2k6dHlwZT0iZGNzY29yOkZpZWxkIj7QmtC+0LvQuNGH0LXRgdGC0LLQvtCU0L3Q
+tdC50KHQn9C+0YHQu9C10LTQvdC10LPQvtCf0L7RgdC10YnQtdC90LjRjzwvbGVm
+dD4NCgkJCTxjb21wYXJpc29uVHlwZT5MZXNzT3JFcXVhbDwvY29tcGFyaXNvblR5
+cGU+DQoJCQk8cmlnaHQgeHNpOnR5cGU9InhzOmRlY2ltYWwiPjkwPC9yaWdodD4N
+CgkJPC9pdGVtPg0KCTwvZmlsdGVyPg0KCTxpdGVtIHhzaTp0eXBlPSJTdHJ1Y3R1
+cmVJdGVtR3JvdXAiPg0KCQk8Z3JvdXBJdGVtcz4NCgkJCTxpdGVtIHhzaTp0eXBl
+PSJHcm91cEl0ZW1GaWVsZCI+DQoJCQkJPGZpZWxkPtCa0LvQuNC10L3RgjwvZmll
+bGQ+DQoJCQkJPGdyb3VwVHlwZT5JdGVtczwvZ3JvdXBUeXBlPg0KCQkJCTxwZXJp
+b2RBZGRpdGlvblR5cGU+Tm9uZTwvcGVyaW9kQWRkaXRpb25UeXBlPg0KCQkJCTxw
+ZXJpb2RBZGRpdGlvbkJlZ2luIHhzaTp0eXBlPSJ4czpkYXRlVGltZSI+MDAwMS0w
+MS0wMVQwMDowMDowMDwvcGVyaW9kQWRkaXRpb25CZWdpbj4NCgkJCQk8cGVyaW9k
+QWRkaXRpb25FbmQgeHNpOnR5cGU9InhzOmRhdGVUaW1lIj4wMDAxLTAxLTAxVDAw
+OjAwOjAwPC9wZXJpb2RBZGRpdGlvbkVuZD4NCgkJCTwvaXRlbT4NCgkJPC9ncm91
+cEl0ZW1zPg0KCQk8b3JkZXI+DQoJCQk8aXRlbSB4c2k6dHlwZT0iT3JkZXJJdGVt
+QXV0byIvPg0KCQk8L29yZGVyPg0KCQk8c2VsZWN0aW9uPg0KCQkJPGl0ZW0geHNp
+OnR5cGU9IlNlbGVjdGVkSXRlbUF1dG8iLz4NCgkJPC9zZWxlY3Rpb24+DQoJPC9p
+dGVtPg0KPC9TZXR0aW5ncz4=</Значение>
+</Свойство>
+		<Свойство Имя="ПредставлениеОтбора" Тип="Строка">
+			<Значение>КоличествоДнейСПоследнегоПосещения Меньше или равно "90"</Значение>
+		</Свойство><Свойство Имя="Сегмент" Тип="СправочникСсылка.Сегменты"><Ссылка Нпп="3"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Активный</Значение>
+	</Свойство>
+</Ссылка>
+</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Комментарий" Тип="Строка">
+			<Пусто/>
+		</Свойство><Свойство Имя="Отбор" Тип="ХранилищеЗначения">
+	<Значение>AQE1AAAAAAAAAO+7v3siIyIsM2M3MmZmNTYtN2UwNC00Mzg1LWJjMDMtOTJkNGJk
+NmMzNTFjLA0KezB9DQp9AAAAAPcFAAAAAAAA77u/PD94bWwgdmVyc2lvbj0iMS4w
+IiBlbmNvZGluZz0iVVRGLTgiPz4NCjxTZXR0aW5ncyB4bWxucz0iaHR0cDovL3Y4
+LjFjLnJ1LzguMS9kYXRhLWNvbXBvc2l0aW9uLXN5c3RlbS9zZXR0aW5ncyIgeG1s
+bnM6ZGNzY29yPSJodHRwOi8vdjguMWMucnUvOC4xL2RhdGEtY29tcG9zaXRpb24t
+c3lzdGVtL2NvcmUiIHhtbG5zOnN0eWxlPSJodHRwOi8vdjguMWMucnUvOC4xL2Rh
+dGEvdWkvc3R5bGUiIHhtbG5zOnN5cz0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRh
+L3VpL2ZvbnRzL3N5c3RlbSIgeG1sbnM6djg9Imh0dHA6Ly92OC4xYy5ydS84LjEv
+ZGF0YS9jb3JlIiB4bWxuczp2OHVpPSJodHRwOi8vdjguMWMucnUvOC4xL2RhdGEv
+dWkiIHhtbG5zOndlYj0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRhL3VpL2NvbG9y
+cy93ZWIiIHhtbG5zOndpbj0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRhL3VpL2Nv
+bG9ycy93aW5kb3dzIiB4bWxuczp4cz0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9Y
+TUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxT
+Y2hlbWEtaW5zdGFuY2UiPg0KCTxzZWxlY3Rpb24+DQoJCTxpdGVtIHhzaTp0eXBl
+PSJTZWxlY3RlZEl0ZW1GaWVsZCI+DQoJCQk8ZmllbGQ+0JrQu9C40LXQvdGCPC9m
+aWVsZD4NCgkJPC9pdGVtPg0KCTwvc2VsZWN0aW9uPg0KCTxmaWx0ZXI+DQoJCTxp
+dGVtIHhzaTp0eXBlPSJGaWx0ZXJJdGVtQ29tcGFyaXNvbiI+DQoJCQk8bGVmdCB4
+c2k6dHlwZT0iZGNzY29yOkZpZWxkIj7QmtC+0LvQuNGH0LXRgdGC0LLQvtCU0L3Q
+tdC50KHQn9C+0YHQu9C10LTQvdC10LPQvtCf0L7RgdC10YnQtdC90LjRjzwvbGVm
+dD4NCgkJCTxjb21wYXJpc29uVHlwZT5MZXNzT3JFcXVhbDwvY29tcGFyaXNvblR5
+cGU+DQoJCQk8cmlnaHQgeHNpOnR5cGU9InhzOmRlY2ltYWwiPjEyMDwvcmlnaHQ+
+DQoJCTwvaXRlbT4NCgk8L2ZpbHRlcj4NCgk8aXRlbSB4c2k6dHlwZT0iU3RydWN0
+dXJlSXRlbUdyb3VwIj4NCgkJPGdyb3VwSXRlbXM+DQoJCQk8aXRlbSB4c2k6dHlw
+ZT0iR3JvdXBJdGVtRmllbGQiPg0KCQkJCTxmaWVsZD7QmtC70LjQtdC90YI8L2Zp
+ZWxkPg0KCQkJCTxncm91cFR5cGU+SXRlbXM8L2dyb3VwVHlwZT4NCgkJCQk8cGVy
+aW9kQWRkaXRpb25UeXBlPk5vbmU8L3BlcmlvZEFkZGl0aW9uVHlwZT4NCgkJCQk8
+cGVyaW9kQWRkaXRpb25CZWdpbiB4c2k6dHlwZT0ieHM6ZGF0ZVRpbWUiPjAwMDEt
+MDEtMDFUMDA6MDA6MDA8L3BlcmlvZEFkZGl0aW9uQmVnaW4+DQoJCQkJPHBlcmlv
+ZEFkZGl0aW9uRW5kIHhzaTp0eXBlPSJ4czpkYXRlVGltZSI+MDAwMS0wMS0wMVQw
+MDowMDowMDwvcGVyaW9kQWRkaXRpb25FbmQ+DQoJCQk8L2l0ZW0+DQoJCTwvZ3Jv
+dXBJdGVtcz4NCgkJPG9yZGVyPg0KCQkJPGl0ZW0geHNpOnR5cGU9Ik9yZGVySXRl
+bUF1dG8iLz4NCgkJPC9vcmRlcj4NCgkJPHNlbGVjdGlvbj4NCgkJCTxpdGVtIHhz
+aTp0eXBlPSJTZWxlY3RlZEl0ZW1BdXRvIi8+DQoJCTwvc2VsZWN0aW9uPg0KCTwv
+aXRlbT4NCjwvU2V0dGluZ3M+</Значение>
+</Свойство>
+		<Свойство Имя="ПредставлениеОтбора" Тип="Строка">
+			<Значение>КоличествоДнейСПоследнегоПосещения Меньше или равно "120"</Значение>
+		</Свойство><Свойство Имя="Сегмент" Тип="СправочникСсылка.Сегменты"><Ссылка Нпп="4"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Потенциально потерянный</Значение>
+	</Свойство>
+</Ссылка>
+</Свойство>
+	</Запись>
+	<Запись>
+		<Свойство Имя="Комментарий" Тип="Строка">
+			<Пусто/>
+		</Свойство><Свойство Имя="Отбор" Тип="ХранилищеЗначения">
+	<Значение>AQE1AAAAAAAAAO+7v3siIyIsM2M3MmZmNTYtN2UwNC00Mzg1LWJjMDMtOTJkNGJk
+NmMzNTFjLA0KezB9DQp9AAAAAAsHAAAAAAAA77u/PD94bWwgdmVyc2lvbj0iMS4w
+IiBlbmNvZGluZz0iVVRGLTgiPz4NCjxTZXR0aW5ncyB4bWxucz0iaHR0cDovL3Y4
+LjFjLnJ1LzguMS9kYXRhLWNvbXBvc2l0aW9uLXN5c3RlbS9zZXR0aW5ncyIgeG1s
+bnM6ZGNzY29yPSJodHRwOi8vdjguMWMucnUvOC4xL2RhdGEtY29tcG9zaXRpb24t
+c3lzdGVtL2NvcmUiIHhtbG5zOnN0eWxlPSJodHRwOi8vdjguMWMucnUvOC4xL2Rh
+dGEvdWkvc3R5bGUiIHhtbG5zOnN5cz0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRh
+L3VpL2ZvbnRzL3N5c3RlbSIgeG1sbnM6djg9Imh0dHA6Ly92OC4xYy5ydS84LjEv
+ZGF0YS9jb3JlIiB4bWxuczp2OHVpPSJodHRwOi8vdjguMWMucnUvOC4xL2RhdGEv
+dWkiIHhtbG5zOndlYj0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRhL3VpL2NvbG9y
+cy93ZWIiIHhtbG5zOndpbj0iaHR0cDovL3Y4LjFjLnJ1LzguMS9kYXRhL3VpL2Nv
+bG9ycy93aW5kb3dzIiB4bWxuczp4cz0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9Y
+TUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxT
+Y2hlbWEtaW5zdGFuY2UiPg0KCTxzZWxlY3Rpb24+DQoJCTxpdGVtIHhzaTp0eXBl
+PSJTZWxlY3RlZEl0ZW1GaWVsZCI+DQoJCQk8ZmllbGQ+0JrQu9C40LXQvdGCPC9m
+aWVsZD4NCgkJPC9pdGVtPg0KCTwvc2VsZWN0aW9uPg0KCTxmaWx0ZXI+DQoJCTxp
+dGVtIHhzaTp0eXBlPSJGaWx0ZXJJdGVtQ29tcGFyaXNvbiI+DQoJCQk8bGVmdCB4
+c2k6dHlwZT0iZGNzY29yOkZpZWxkIj7QmtC+0LvQuNGH0LXRgdGC0LLQvtCU0L3Q
+tdC50KHQn9C+0YHQu9C10LTQvdC10LPQvtCf0L7RgdC10YnQtdC90LjRjzwvbGVm
+dD4NCgkJCTxjb21wYXJpc29uVHlwZT5HcmVhdGVyT3JFcXVhbDwvY29tcGFyaXNv
+blR5cGU+DQoJCQk8cmlnaHQgeHNpOnR5cGU9InhzOmRlY2ltYWwiPjEyMDwvcmln
+aHQ+DQoJCTwvaXRlbT4NCgkJPGl0ZW0geHNpOnR5cGU9IkZpbHRlckl0ZW1Db21w
+YXJpc29uIj4NCgkJCTx1c2U+ZmFsc2U8L3VzZT4NCgkJCTxsZWZ0IHhzaTp0eXBl
+PSJkY3Njb3I6RmllbGQiPtCa0L7Qu9C40YfQtdGB0YLQstC+0JTQvdC10LnQodCf
+0L7RgdC70LXQtNC90LXQs9C+0J/QvtGB0LXRidC10L3QuNGPPC9sZWZ0Pg0KCQkJ
+PGNvbXBhcmlzb25UeXBlPkxlc3M8L2NvbXBhcmlzb25UeXBlPg0KCQkJPHJpZ2h0
+IHhzaTp0eXBlPSJ4czpkZWNpbWFsIj4xMDAwMDwvcmlnaHQ+DQoJCTwvaXRlbT4N
+Cgk8L2ZpbHRlcj4NCgk8aXRlbSB4c2k6dHlwZT0iU3RydWN0dXJlSXRlbUdyb3Vw
+Ij4NCgkJPGdyb3VwSXRlbXM+DQoJCQk8aXRlbSB4c2k6dHlwZT0iR3JvdXBJdGVt
+RmllbGQiPg0KCQkJCTxmaWVsZD7QmtC70LjQtdC90YI8L2ZpZWxkPg0KCQkJCTxn
+cm91cFR5cGU+SXRlbXM8L2dyb3VwVHlwZT4NCgkJCQk8cGVyaW9kQWRkaXRpb25U
+eXBlPk5vbmU8L3BlcmlvZEFkZGl0aW9uVHlwZT4NCgkJCQk8cGVyaW9kQWRkaXRp
+b25CZWdpbiB4c2k6dHlwZT0ieHM6ZGF0ZVRpbWUiPjAwMDEtMDEtMDFUMDA6MDA6
+MDA8L3BlcmlvZEFkZGl0aW9uQmVnaW4+DQoJCQkJPHBlcmlvZEFkZGl0aW9uRW5k
+IHhzaTp0eXBlPSJ4czpkYXRlVGltZSI+MDAwMS0wMS0wMVQwMDowMDowMDwvcGVy
+aW9kQWRkaXRpb25FbmQ+DQoJCQk8L2l0ZW0+DQoJCTwvZ3JvdXBJdGVtcz4NCgkJ
+PG9yZGVyPg0KCQkJPGl0ZW0geHNpOnR5cGU9Ik9yZGVySXRlbUF1dG8iLz4NCgkJ
+PC9vcmRlcj4NCgkJPHNlbGVjdGlvbj4NCgkJCTxpdGVtIHhzaTp0eXBlPSJTZWxl
+Y3RlZEl0ZW1BdXRvIi8+DQoJCTwvc2VsZWN0aW9uPg0KCTwvaXRlbT4NCjwvU2V0
+dGluZ3M+</Значение>
+</Свойство>
+		<Свойство Имя="ПредставлениеОтбора" Тип="Строка">
+			<Значение>КоличествоДнейСПоследнегоПосещения Больше или равно "120"</Значение>
+		</Свойство><Свойство Имя="Сегмент" Тип="СправочникСсылка.Сегменты"><Ссылка Нпп="5"><Свойство Имя="Владелец" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство>
+	<Свойство Имя="Наименование" Тип="Строка">
+		<Значение>Потерянный</Значение>
+	</Свойство>
+</Ссылка>
+</Свойство>
+	</Запись>
+</ТабличнаяЧасть>
+</Объект>
+<Объект Нпп="6" Тип="РегистрСведенийЗапись.СегментационныеСвязиДанных" ИмяПравила="СегментационныеСвязиДанных">
+	<Свойство Имя="Активность" Тип="Булево">
+		<Пусто/>
+	</Свойство><Свойство Имя="ВидСегментации" Тип="СправочникСсылка.ВидыСегментации">
+	<Нпп>1</Нпп>
+</Свойство><Свойство Имя="СегментационныйРегистратор" Тип="ПеречислениеСсылка.СегментационныеРегистраторы">
+	<Значение>ДокументыОказаниеУслуг</Значение>
+</Свойство>
+</Объект>
+</ФайлОбмена>

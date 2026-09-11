@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Направление к месту лечения для получения медицинской помощи" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:address="urn:hl7-ru:address" xmlns:fias="urn:hl7-ru:fias">
+	<bitLocalId УсловиеИспользования="*Ложь">
+		<nodeLocalId ТипДанных="ДокументСсылка.ДоговорСКлиентом" localid="ДоговорСКлиентом" localidСиноним="Договор с клиентом" Обязательное="*Истина"/>
+		<nodeLocalId ТипДанных="Строка" localid="ОрганизацияПолучательДокумента" localidСиноним="Организация-получатель документа" Множественное="*Истина" Обязательное="*Ложь"/>
+	</bitLocalId>
+	<!-- R [1..1] СЕКЦИЯ: СВЕДЕНИЯ О ДОКУМЕНТЕ (ОБЩИЕ СВЕДЕНИЯ)-->
+	<component>
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="DOCINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Заголовок секции -->
+			<title>Сведения о документе</title>
+			<!-- R [1..1] Наполнение секции -->
+			<text>
+				<table>
+					<caption>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 12008)</caption>
+					<tbody>
+						<tr>
+							<td>
+								<content>%Номер</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table>
+					<caption>Ответ МУ</caption>
+					<tbody>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 12009)</content>
+							</td>
+							<td>
+								<content>%НомерОтветаМУ</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 12010)</content>
+							</td>
+							<td>
+								<content>*Формат(%ДатаОтветаМУ, "ДФ=dd.MM.yyyy")</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 12011)</content>
+							</td>
+							<td>
+								<content>*Формат(%ДатаГоспитализацииМУ, "ДФ=dd.MM.yyyy")</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table>
+					<caption>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 12016)</caption>
+					<tbody>
+						<tr>
+							<td>
+								<content>Наименование медицинской организации</content>
+							</td>
+							<td>
+								<content>%ОрганизацияИсполнитель</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Адрес медицинской организации</content>
+							</td>
+							<td>
+								<content>%АдресОрганизацииИсполнителя</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table>
+					<caption>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 12088)</caption>
+					<tbody>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%СоциальнаяГруппа)</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..1] Номер направления-->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Кодирование ... номер направления-->
+					<code code="12008" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname"  displayName="#name"/>
+					<!-- R [1..1] Значение ... номер направления-->
+					<value xsi:type="ST" localid="Номер">%Номер</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Номер ответа МУ-->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Кодирование ... номер ответа МУ-->
+					<code code="12009" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname"  displayName="#name"/>
+					<!--   [1..1] Значение ... номер ответа МУ-->
+					<value xsi:type="ST" localid="НомерОтветаМУ">%НомерОтветаМУ</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Дата ответа МУ-->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Кодирование ... дата ответа МУ-->
+					<code code="12010" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname"  displayName="#name"/>
+					<!--   [1..1] Значение ... дата ответа МУ-->
+					<value xsi:type="TS" localid="ДатаОтветаМУ" value='*Формат(%ДатаОтветаМУ, "ДФ=ггггММдд")'/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Дата госпитализации в МУ-->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Кодирование ... дата госпитализации в МУ-->
+					<code code="12011" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname"  displayName="#name"/>
+					<!--   [1..1] Значение ... дата госпитализации в МУ-->
+					<value xsi:type="TS" localid="ДатаГоспитализацииМУ" value='*Формат(%ДатаГоспитализацииМУ, "ДФ=ггггММдд")'/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Медицинская организация, оказывающая медицинскую помощь  -->
+			<!-- Кодируется медицинская организация, в которой пациент будет получать медицинскую помощь -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Кодирование ... медицинская организация в месте лечения -->
+					<code code="12016" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<performer>
+						<assignedEntity>
+							<!-- [1..1] Требуется использовать элемент с атрибутом nullFlavor -->
+							<id nullFlavor="NI"/>
+							<!-- R [1..1] Медицинская организация-исполнитель -->
+							<representedOrganization classCode="ORG">
+								<!-- [1..1] Уникальный идентификатор отделения, куда направляется -->
+								<!-- по справочнику НСИ "ФРМО. Справочник структурных подразделений" (OID: 1.2.643.5.1.13.13.99.2.114), поле "Наименование структурного подразделения" -->
+								<id ТипДанных="СправочникСсылка.СтруктураПодразделений" localid="ОтделениеОрганизацииИсполнителя" localidСиноним="Организация-исполнитель (куда направлен)" ПустоеЗначение="NI" root="%ОтделениеОрганизацииИсполнителя.OIDСтруктурногоПодразделения"/>
+								<!-- R [1..1] Наименование организации исполнителя -->
+								<name ТипДанных="Строка" localid="ОрганизацияИсполнитель" localidСиноним="Наименование организации-исполнителя">%ОрганизацияИсполнитель</name>
+								<!-- [0..*] Контакты организации исполнителя -->
+								<!--<telecom localid="Телефон" use="WP" value="%Телефон"/>-->
+								<!-- [1..1] Адрес организации-исполнителя -->
+								<addr localid="АдресОрганизацииИсполнителя" ПустоеЗначение="NI">
+									<!-- R [1..1] Адрес текстом -->
+									<streetAddressLine ТипДанных="Строка" localid="АдресОрганизацииИсполнителя" localidСиноним="Адрес организации-исполнителя">%АдресОрганизацииИсполнителя</streetAddressLine>
+									<!-- R [1..1] Кодирование субъекта РФ (Код региона в ФНС по справочнику "Субъекты Российской Федерации" (OID: 1.2.643.5.1.13.13.99.2.206)) -->
+									<address:stateCode xsi:type="CD" localid="СубъектРФОрганизацииИсполнителя" localidСиноним="Адрес организации-исполнителя (субъект РФ)" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									<!-- [1..1] Почтовый индекс -->
+									<postalCode ТипДанных="Число" localid="ИндексОрганизацииИсполнителя" localidСиноним="Адрес организации-исполнителя (индекс)" ПустоеЗначение="NI">%ИндексОрганизацииИсполнителя</postalCode>
+									<!-- [1..1] Кодирование адреса по ФИАС -->
+									<fias:Address nullFlavor="NI"/>
+								</addr>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+				</observation>
+			</entry>
+			<!-- R [1..1] Социальный статус -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="12088" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname"  displayName="#name"/>
+					<!-- R [1..1] Кодирование ... социальный статус -->
+					<value localid="СоциальнаяГруппа" code="#code" codeSystem="1.2.643.5.1.13.13.11.1038" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!--R [1..1] СЕКЦИЯ: ИНВАЛИДНОСТЬ -->
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="DISABILITY" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>ИНВАЛИДНОСТЬ</title>
+			<!-- R [1..1] наполнение секции -->
+			<text>
+				<table>
+					<caption>Инвалидность</caption>
+					<tbody>
+						<tr>
+							<td>
+								<content>Наличие инвалидности</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%НаличиеИнвалидности)</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Группа инвалидности</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%ГруппаИнвалидности)</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Порядок установления инвалидности</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%ТипУстановления)</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Дата установления инвалидности</content>
+							</td>
+							<td>
+								<content>*Формат(%ДатаУстановления, "ДФ=дд.ММ.гггг")</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Инвалид с детства</content>
+							</td>
+							<td>
+								<content>*Формат(%ИнвалидСДетства,"БЛ=Нет; БИ=Да")</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 12013)</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%СтепеньИнвалидности)</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..1] Инвалидность -->
+			<entry>
+				<!-- R [1..1] Наличие инвалидности -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Кодирование ... наличие инвалидности -->
+					<!-- ЕСЛИ поле "Наличие инвалидности" имеет значение "Инвалидность имеется", ТО поля "Группа инвалидности", "Порядок установления инвалидности", "Дата установления инвалидности", "Инвалид с детства", "Степень инвалидности" должны иметь не пустое значение -->
+					<code code="12012" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname"  displayName="#name"/>
+					<value xsi:type="CD" localid="НаличиеИнвалидности" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.772" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Кодирование инвалидности -->
+					<entryRelationship typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- [1..1] Кодирование ... группа инвалидности -->
+							<code localid="ГруппаИнвалидности" ПустоеЗначение="NI" code="#code" codeSystem="1.2.643.5.1.13.13.11.1053" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+								<!-- R [1..1] Уточнение порядка установления инвалидности -->
+								<qualifier>
+									<!-- [1..1] Порядок установления инвалидности -->
+									<value xsi:type="CD" localid="ТипУстановления" localidСиноним="Порядок установления инвалидности" code="#code" codeSystem="1.2.643.5.1.13.13.11.1041" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+								</qualifier>
+							</code>
+							<!-- R [1..1] Дата установления инвалидности -->
+							<effectiveTime>
+								<!-- [1..1] Дата установления инвалидности -->
+								<low ТипДанных="Дата" localid="ДатаУстановления" localidСиноним="Дата установления инвалидности" ПустоеЗначение="NI" value='*Формат(%ДатаУстановления, "ДФ=ггггММдд")'/>
+							</effectiveTime>
+						</observation>
+					</entryRelationship>
+					<!-- R [1..1] Инвалид с детства -->
+					<entryRelationship typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Кодирование ... инвалид с детства -->
+							<code code="816" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname"  displayName="#name"/>
+							<!--   [1..1] Значение ... инвалид с детства -->
+							<value xsi:type="ST" ТипДанных="Булево" localid="ИнвалидСДетства" localidСиноним="Инвалид с детства" ПустоеЗначение="NI">*Формат(%ИнвалидСДетства,"БЛ=Нет; БИ=Да")</value>
+						</observation>
+					</entryRelationship>
+					<!-- R [1..1] Степень инвалидности -->
+					<entryRelationship typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Кодирование ... степень инвалидности -->
+							<code code="12013" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname"  displayName="#name"/>
+							<!--   [0..1] Кодирование ... степень инвалидности -->
+							<value xsi:type="CD" localid="СтепеньИнвалидности" Обязательное="*Ложь" code="#code" codeSystem="1.2.643.5.1.13.13.11.1056" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						</observation>
+					</entryRelationship>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!--R [1..1] СЕКЦИЯ: ЛЬГОТЫ -->
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="BENEFITS" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>ЛЬГОТЫ</title>
+			<!-- R [1..1] наполнение секции -->
+			<text>
+				<table>
+					<caption>Код категории льготы</caption>
+					<tbody>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%Льготы,,,"code")</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%Льготы)</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..1] Код категории льготы -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Кодирование ... код категории льготы -->
+					<code code="811" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="CD" localid="Льготы" localidСиноним="Льгота" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.713" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: ЗАКЛЮЧЕНИЕ -->
+	<component>
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="RESINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version"  codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Заголовок секции -->
+			<title>ЗАКЛЮЧЕНИЕ</title>
+			<!-- R [1..1] наполнение секции -->
+			<text>
+				<table>
+					<caption>Диагноз по МКБ-10</caption>
+					<tbody>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%Диагноз,,,"code")</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%Диагноз)</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table>
+					<caption>Характер заболевания</caption>
+					<tbody>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%ХарактерЗаболевания)</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..1] Заключение Комиссии субъекта РФ -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Кодирование ... заключение Комиссии субъекта РФ -->
+					<code code="837" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Диагноз (код по МКБ-10) -->
+					<value xsi:type="CD" localid="Диагноз" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Характер заболевания -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Кодирование ... характер заболевания -->
+					<code code="12014" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="CD" localid="ХарактерЗаболевания" ДопустимыеЗначения="12;14" code="#code" codeSystem="1.2.643.5.1.13.13.11.1062" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+		</section>
+	</component>
+</Items>

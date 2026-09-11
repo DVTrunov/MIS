@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Направление на консультацию и во вспомогательные кабинеты" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:address="urn:hl7-ru:address" xmlns:fias="urn:hl7-ru:fias">
+	<bitLocalId УсловиеИспользования="*Ложь">
+		<nodeLocalId ТипДанных="ДокументСсылка.ДоговорСКлиентом" localid="ДоговорСКлиентом" localidСиноним="Договор с клиентом" Обязательное="*Истина"/>
+		<nodeLocalId ТипДанных="Строка" localid="ОрганизацияПолучательДокумента" localidСиноним="Организация-получатель документа" Множественное="*Истина" Обязательное="*Ложь"/>
+	</bitLocalId>
+	<bitDiagnosis УсловиеИспользования="*Ложь">
+		<nodeDiagnosisStructure Множественное="*Истина" ГруппирующееПоле="Диагноз">
+			<nodeDiagnosis type="Описание"	localid="Описание"/>
+			<nodeDiagnosis type="Диагноз"	localid="Диагноз"/>
+		</nodeDiagnosisStructure>
+	</bitDiagnosis>
+	<!-- R [1..1] СЕКЦИЯ: Цель направления и медицинская организация, куда направлен (Направлен) -->
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="SCOPORG" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>Направлен</title>
+			<!-- R [1..1] наполнение секции -->
+			<table>
+				<tbody>
+					<tr>
+						<td>
+							<content>Наименование организации исполнителя</content>
+						</td>
+						<td>
+							<content>%ОрганизацияИсполнитель</content>
+						</td>
+					</tr>
+					<tr Обязательное="*Ложь">
+						<td>
+							<content>Адрес организации-исполнителя</content>
+						</td>
+						<td>
+							<content>%АдресОрганизацииИсполнителя</content>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 833)</content>
+						</td>
+						<td>
+							<content>*ЗначениеЭлементаКлассификатора(%МедицинскаяУслуга)</content>
+						</td>
+					</tr>
+					<tr Обязательное="*Ложь">
+						<td>
+							<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 10000)</content>
+						</td>
+						<td>
+							<content>*ЗначениеЭлементаКлассификатора(%Комментарий)</content>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- R [1..1] Цель направления и медицинская организация, куда направлен пациент -->
+			<entry>
+				<act classCode="ACT" moodCode="RQO">
+					<!-- R [1..1] Тип направления -->
+					<code localid="ВидНаправления" code="#code" codeSystem="1.2.643.5.1.13.13.11.1009" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Статус направления -->
+					<statusCode code="active"/>
+					<!-- R [1..1] Кодирование организации, куда направлен пациент -->
+					<performer>
+						<assignedEntity>
+							<!-- [1..1] Требуется использовать элемент с атрибутом nullFlavor -->
+							<id nullFlavor="NI"/>
+							<!-- R [1..1] Медицинская организация-исполнитель -->
+							<representedOrganization classCode="ORG">
+								<!-- [1..1] Уникальный идентификатор отделения, куда направляется -->
+								<!-- по справочнику НСИ "ФРМО. Справочник структурных подразделений" (OID: 1.2.643.5.1.13.13.99.2.114), поле "Наименование структурного подразделения" -->
+								<id ТипДанных="СправочникСсылка.СтруктураПодразделений" localid="ОтделениеОрганизацииИсполнителя" localidСиноним="Организация-исполнитель (куда направлен)" ПустоеЗначение="NI" root="%ОтделениеОрганизацииИсполнителя.OIDСтруктурногоПодразделения"/>
+								<!-- R [1..1] Наименование организации исполнителя -->
+								<name ТипДанных="Строка" localid="ОрганизацияИсполнитель" localidСиноним="Наименование организации-исполнителя">%ОрганизацияИсполнитель</name>
+								<!-- [0..*] Контакты организации исполнителя -->
+								<!--<telecom localid="Телефон" use="WP" value="%Телефон"/>-->
+								<!-- [1..1] Адрес организации-исполнителя -->
+								<addr ПустоеЗначение="NI">
+									<!-- R [1..1] Адрес текстом -->
+									<streetAddressLine ТипДанных="Строка" localid="АдресОрганизацииИсполнителя" localidСиноним="Адрес организации-исполнителя">%АдресОрганизацииИсполнителя</streetAddressLine>
+									<!-- R [1..1] Кодирование субъекта РФ (Код региона в ФНС по справочнику "Субъекты Российской Федерации" (OID: 1.2.643.5.1.13.13.99.2.206)) -->
+									<address:stateCode xsi:type="CD" localid="СубъектРФОрганизацииИсполнителя" localidСиноним="Адрес организации-исполнителя (субъект РФ)" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.206" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									<!-- [1..1] Почтовый индекс -->
+									<postalCode ТипДанных="Число" localid="ИндексОрганизацииИсполнителя" localidСиноним="Адрес организации-исполнителя (индекс)" ПустоеЗначение="NI">%ИндексОрганизацииИсполнителя</postalCode>
+									<!-- [1..1] Кодирование адреса по ФИАС -->
+									<fias:Address nullFlavor="NI"/>
+								</addr>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+					<!-- R [1..1] Медицинская услуга, для получения которой направлен -->
+					<entryRelationship typeCode="COMP">
+						<!-- R [1..1] указание на то, что услуга только запрошена moodCode="RQO" -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Наименование поля -->
+							<code code="833" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] Код медицинской услуги -->
+							<value xsi:type="CD" localid="МедицинскаяУслуга" Классификация="1.2.643.5.1.13.13.11.1471,1.2.643.5.1.13.13.99.2.785,1.2.643.5.1.13.13.11.1070" code="#code" codeSystem="#codesystem" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						</observation>
+					</entryRelationship>
+					<!-- [0..1] Кодирование ... Комментарий -->
+					<entryRelationship Обязательное="*Ложь" typeCode="COMP">
+						<observation classCode="OBS"
+									moodCode="EVN">
+							<!-- R [1..1] Наименование поля -->
+							<code code="10000" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] Значение поля -->
+							<value xsi:type="ST" localid="Комментарий">%Комментарий</value>
+						</observation>
+					</entryRelationship>
+				</act>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: Диагнозы (Диагноз) -->
+	<component ВозможноЗаполнениеИзТаблицыДиагнозов="true">
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="DGN" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Заголовок секции -->
+			<title>Диагноз</title>
+			<!-- R [1..1] Человекочитаемое наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr localid="Диагноз" Множественное="*Истина">
+							<td>
+								<content>%Диагноз<br/></content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..*] Описание объекта ... Диагноз заболевания -->
+			<entry localid="Диагноз" Множественное="*Истина">
+				<!-- R [1..1] Информация об объекте -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Наименование поля -->
+					<code code="838" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Компонент ... Врачебное описание нозологической единицы -->
+					<entryRelationship typeCode="COMP">
+						<!-- R [1..1] Информация о компоненте -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Наименование поля -->
+							<code code="9010" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] Значение поля -->
+							<value xsi:type="ST" localid="Описание" localidСиноним="Врачебное описание нозологической единицы">%Описание</value>
+						</observation>
+					</entryRelationship>
+					<!-- [1..1] Компонент ... Шифр МКБ -->
+					<entryRelationship typeCode="COMP">
+						<!-- R [1..1] Информация о компоненте -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Наименование поля -->
+							<code code="809" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- [1..1] Значение поля -->
+							<value xsi:type="CD" localid="Диагноз" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						</observation>
+					</entryRelationship>
+				</observation>
+			</entry>
+		</section>
+	</component>
+</Items>

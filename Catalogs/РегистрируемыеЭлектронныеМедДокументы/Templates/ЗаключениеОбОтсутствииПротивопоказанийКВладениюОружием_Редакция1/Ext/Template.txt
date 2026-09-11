@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Медицинское заключение об отсутствии медицинских противопоказаний к владению оружием (CDA) Редакция 1" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fias="urn:hl7-ru:fias" xmlns:address="urn:hl7-ru:address">
+	<bitLocalId УсловиеИспользования="*Ложь">
+		<nodeLocalId localid="Договор" ТипДанных="СправочникСсылка.СоглашенияСтрахования,ДокументСсылка.ДоговорСКлиентом"/>
+	</bitLocalId>
+	<!-- R [1..1] СЕКЦИЯ: СВЕДЕНИЯ О ДОКУМЕНТЕ (Сведения о медицинском заключении)-->
+	<component>
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="DOCINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Заголовок секции -->
+			<title>Сведения о документе</title>
+			<!-- R [1..1] Наполнение секции -->
+			<text>
+				<paragraph>*СтрШаблон("Серия: %1",%Серия)</paragraph>
+				<paragraph>*СтрШаблон("Номер: %1",%Номер)</paragraph>
+				<paragraph>*СтрШаблон("Медицинское заключение: %1", ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.725", 22))</paragraph>
+				<paragraph>*СтрШаблон("Комментарий: %1",%Комментарий)</paragraph>
+			</text>
+			<!-- R [1..1] Серия медицинского заключения -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="11000" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="Серия">%Серия</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Номер медицинского заключения -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="7000" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="Номер">%Номер</value>
+				</observation>
+			</entry>
+			<!-- [0..1] Комментарий врача, выдавшего медицинской заключение -->
+			<entry localid="Комментарий" Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="10000" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="Комментарий">%Комментарий</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Заключение -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="837" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="CD" code="22" codeSystem="1.2.643.5.1.13.13.99.2.725" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<bitOther>
+		<bitLocalId УсловиеИспользования="*Ложь">
+			<nodeLocalId ТипДанных="ДокументСсылка.Прием,ДокументСсылка.ПрохождениеМедосмотра" localid="СвязанныйДокумент" Множественное="*Истина" Обязательное="*Ложь"/>
+		</bitLocalId>
+		<!-- [0..1] СЕКЦИЯ: СВЯЗАННЫЕ ДОКУМЕНТЫ -->
+		<component localid="ДанныеСвязанногоДокумента" Обязательное="*Ложь">
+			<section>
+				<!-- R [1..1] Код секции -->
+				<code code="LINKDOCS" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				<!-- R [1..1] Заголовок секции -->
+				<title>Связанные документы</title>
+				<!-- R [1..1] Наполнение секции -->
+				<text></text>
+				<!-- R[1..*] Документ, на основании которого был выдан текущий документ (Справка по результатам осмотра врачом-психиатром) -->
+				<entry localid="ДанныеСвязанногоДокумента" Множественное="*Истина">
+					<act classCode="ACT" moodCode="EVN">
+						<!-- R[1..1] Вид документа -->
+						<code localid="ДанныеСвязанногоДокумента.ВидСЭМД" code="#code" codeSystem="1.2.643.5.1.13.13.11.1522" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+						<text></text>
+						<!-- R[1..1] Дата выдачи документа -->
+						<effectiveTime value="%ДанныеСвязанногоДокумента.ДатаДокумента"/>
+						<!-- [0..1] Серия документа -->
+						<entryRelationship localid="ДанныеСвязанногоДокумента.Серия" Обязательное="*Ложь" typeCode="COMP">
+							<observation classCode="OBS" moodCode="EVN">
+								<code code="11002" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version"
+								codeSystemName="#codesystemname" displayName="#name"/>
+								<value xsi:type="ST">%ДанныеСвязанногоДокумента.Серия</value>
+							</observation>
+						</entryRelationship>
+						<!-- [0..1] Номер документа -->
+						<entryRelationship localid="ДанныеСвязанногоДокумента.Номер" Обязательное="*Ложь" typeCode="COMP">
+							<observation classCode="OBS" moodCode="EVN">
+								<code code="11003" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+								<value xsi:type="ST">%ДанныеСвязанногоДокумента.Номер</value>
+							</observation>
+						</entryRelationship>
+						<!-- [1..1] Ссылка на электронный документ (уникальный идентификатор в МИС) -->
+						<reference typeCode="REFR">
+							<externalDocument classCode="DOCCLIN" moodCode="EVN">
+								<id root="%Организация$СвязанныйДокумент" extension="*УникальныйИдентификаторПоСсылке(%ДанныеСвязанногоДокумента.Ссылка)"/>
+							</externalDocument>
+						</reference>
+					</act>
+				</entry>
+			</section>
+		</component>
+	</bitOther>
+</Items>

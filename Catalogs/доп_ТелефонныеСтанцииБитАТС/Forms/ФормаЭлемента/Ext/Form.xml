@@ -1,0 +1,512 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Код" id="1">
+			<DataPath>Объект.Code</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="КодКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="КодРасширеннаяПодсказка" id="76"/>
+		</InputField>
+		<InputField name="Наименование" id="3">
+			<DataPath>Объект.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="77"/>
+		</InputField>
+		<InputField name="Адрес" id="5">
+			<DataPath>Объект.Адрес</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="АдресКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="АдресРасширеннаяПодсказка" id="78"/>
+		</InputField>
+		<InputField name="Пользователь" id="7">
+			<DataPath>Объект.Пользователь</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="ПользовательКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ПользовательРасширеннаяПодсказка" id="79"/>
+		</InputField>
+		<InputField name="Пароль" id="9">
+			<DataPath>Объект.Пароль</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="ПарольКонтекстноеМеню" id="10"/>
+			<ExtendedTooltip name="ПарольРасширеннаяПодсказка" id="80"/>
+		</InputField>
+		<InputField name="IDКлиента" id="74">
+			<DataPath>Объект.IDКлиента</DataPath>
+			<ContextMenu name="IDКлиентаКонтекстноеМеню" id="75"/>
+			<ExtendedTooltip name="IDКлиентаРасширеннаяПодсказка" id="81"/>
+		</InputField>
+		<InputField name="ВебСервис" id="123">
+			<DataPath>Объект.ВебСервис</DataPath>
+			<ContextMenu name="ВебСервисКонтекстноеМеню" id="124"/>
+			<ExtendedTooltip name="ВебСервисРасширеннаяПодсказка" id="125"/>
+		</InputField>
+		<InputField name="АдресАналитики" id="126">
+			<DataPath>Объект.АдресАналитики</DataPath>
+			<OpenButton>true</OpenButton>
+			<ContextMenu name="АдресАналитикиКонтекстноеМеню" id="127"/>
+			<ExtendedTooltip name="АдресАналитикиРасширеннаяПодсказка" id="128"/>
+			<Events>
+				<Event name="Opening">АдресАналитикиОткрытие</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="ГруппаПроверка" id="73">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа проверка</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа проверка АТС</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПроверкаРасширеннаяПодсказка" id="82"/>
+			<ChildItems>
+				<Button name="ПроверитьПодключение" id="49">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ПроверитьПодключение</CommandName>
+					<ExtendedTooltip name="ПроверитьПодключениеРасширеннаяПодсказка" id="83"/>
+				</Button>
+				<Button name="ПроверитьТранкиАТС" id="56">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.ПроверитьТранкиАТС</CommandName>
+					<ExtendedTooltip name="ПроверитьТранкиАТСРасширеннаяПодсказка" id="84"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Страницы" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="85"/>
+			<ChildItems>
+				<Page name="ГруппаНомераАТС" id="16">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номера АТС</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ГруппаНомераАТСРасширеннаяПодсказка" id="86"/>
+					<ChildItems>
+						<Table name="Номера" id="39">
+							<RowSelectionMode>Row</RowSelectionMode>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Номера</DataPath>
+							<RowPictureDataPath>Номера.DefaultPicture</RowPictureDataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="НомераКонтекстноеМеню" id="40">
+								<ChildItems>
+									<Button name="НомераКонтекстноеМенюЗадатьГруппуДоступа" id="52">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ЗадатьГруппуДоступа</CommandName>
+										<ExtendedTooltip name="НомераКонтекстноеМенюЗадатьГруппуДоступаРасширеннаяПодсказка" id="87"/>
+									</Button>
+									<Button name="НомераКонтекстноеМенюОчиститьГруппуДоступа" id="53">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ОчиститьГруппуДоступа</CommandName>
+										<ExtendedTooltip name="НомераКонтекстноеМенюОчиститьГруппуДоступаРасширеннаяПодсказка" id="88"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="НомераКоманднаяПанель" id="41"/>
+							<ExtendedTooltip name="НомераРасширеннаяПодсказка" id="89"/>
+							<SearchStringAddition name="НомераСтрокаПоиска" id="90">
+								<AdditionSource>
+									<Item>Номера</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НомераСтрокаПоискаКонтекстноеМеню" id="91"/>
+								<ExtendedTooltip name="НомераСтрокаПоискаРасширеннаяПодсказка" id="92"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="НомераСостояниеПросмотра" id="93">
+								<AdditionSource>
+									<Item>Номера</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НомераСостояниеПросмотраКонтекстноеМеню" id="94"/>
+								<ExtendedTooltip name="НомераСостояниеПросмотраРасширеннаяПодсказка" id="95"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="НомераУправлениеПоиском" id="96">
+								<AdditionSource>
+									<Item>Номера</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="НомераУправлениеПоискомКонтекстноеМеню" id="97"/>
+								<ExtendedTooltip name="НомераУправлениеПоискомРасширеннаяПодсказка" id="98"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="ChoiceProcessing">НомераОбработкаВыбора</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="НомераКод" id="46">
+									<DataPath>Номера.Code</DataPath>
+									<Width>1</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="НомераКодКонтекстноеМеню" id="47"/>
+									<ExtendedTooltip name="НомераКодРасширеннаяПодсказка" id="99"/>
+								</LabelField>
+								<LabelField name="НомераНаименование" id="42">
+									<DataPath>Номера.Description</DataPath>
+									<ContextMenu name="НомераНаименованиеКонтекстноеМеню" id="43"/>
+									<ExtendedTooltip name="НомераНаименованиеРасширеннаяПодсказка" id="100"/>
+								</LabelField>
+								<LabelField name="НомераНомер" id="44">
+									<DataPath>Номера.Номер</DataPath>
+									<ContextMenu name="НомераНомерКонтекстноеМеню" id="45"/>
+									<ExtendedTooltip name="НомераНомерРасширеннаяПодсказка" id="101"/>
+								</LabelField>
+								<LabelField name="НомераГруппаДоступа" id="50">
+									<DataPath>Номера.ГруппаДоступа</DataPath>
+									<ContextMenu name="НомераГруппаДоступаКонтекстноеМеню" id="51"/>
+									<ExtendedTooltip name="НомераГруппаДоступаРасширеннаяПодсказка" id="102"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+						<UsualGroup name="ГруппаЗагрузкаНомеров" id="54">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа загрузка номеров</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа загрузка номеров с АТС</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаЗагрузкаНомеровРасширеннаяПодсказка" id="103"/>
+							<ChildItems>
+								<Button name="ЗагрузитьНомераСАТС" id="38">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.ЗагрузитьНомераСАТС</CommandName>
+									<ExtendedTooltip name="ЗагрузитьНомераСАТСРасширеннаяПодсказка" id="104"/>
+								</Button>
+								<Button name="ЗагрузитьНомераИзАналитикиАТС" id="55">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.ЗагрузитьНомераИзАналитикиАТС</CommandName>
+									<ExtendedTooltip name="ЗагрузитьНомераИзАналитикиАТСРасширеннаяПодсказка" id="105"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаКлиентскиеГруппы" id="57">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Клиентские группы</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа клиентские группы</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ГруппаКлиентскиеГруппыРасширеннаяПодсказка" id="106"/>
+					<ChildItems>
+						<Table name="КлиентскиеГруппы" id="58">
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.КлиентскиеГруппы</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="КлиентскиеГруппыКонтекстноеМеню" id="59"/>
+							<AutoCommandBar name="КлиентскиеГруппыКоманднаяПанель" id="60"/>
+							<ExtendedTooltip name="КлиентскиеГруппыРасширеннаяПодсказка" id="107"/>
+							<SearchStringAddition name="КлиентскиеГруппыСтрокаПоиска" id="108">
+								<AdditionSource>
+									<Item>КлиентскиеГруппы</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="КлиентскиеГруппыСтрокаПоискаКонтекстноеМеню" id="109"/>
+								<ExtendedTooltip name="КлиентскиеГруппыСтрокаПоискаРасширеннаяПодсказка" id="110"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="КлиентскиеГруппыСостояниеПросмотра" id="111">
+								<AdditionSource>
+									<Item>КлиентскиеГруппы</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="КлиентскиеГруппыСостояниеПросмотраКонтекстноеМеню" id="112"/>
+								<ExtendedTooltip name="КлиентскиеГруппыСостояниеПросмотраРасширеннаяПодсказка" id="113"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="КлиентскиеГруппыУправлениеПоиском" id="114">
+								<AdditionSource>
+									<Item>КлиентскиеГруппы</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="КлиентскиеГруппыУправлениеПоискомКонтекстноеМеню" id="115"/>
+								<ExtendedTooltip name="КлиентскиеГруппыУправлениеПоискомРасширеннаяПодсказка" id="116"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="КлиентскиеГруппыНомерСтроки" id="61">
+									<DataPath>Объект.КлиентскиеГруппы.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="КлиентскиеГруппыНомерСтрокиКонтекстноеМеню" id="62"/>
+									<ExtendedTooltip name="КлиентскиеГруппыНомерСтрокиРасширеннаяПодсказка" id="117"/>
+								</LabelField>
+								<InputField name="КлиентскиеГруппыНомер" id="65">
+									<DataPath>Объект.КлиентскиеГруппы.Номер</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="КлиентскиеГруппыНомерКонтекстноеМеню" id="66"/>
+									<ExtendedTooltip name="КлиентскиеГруппыНомерРасширеннаяПодсказка" id="118"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаСинхронизация" id="70">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Синхронизация номеров со справочником сотрудников</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа синхронизация</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ГруппаСинхронизацияРасширеннаяПодсказка" id="119"/>
+					<ChildItems>
+						<CheckBoxField name="СинхронизацияССотрудниками" id="71">
+							<DataPath>Объект.СинхронизацияССотрудниками</DataPath>
+							<ContextMenu name="СинхронизацияССотрудникамиКонтекстноеМеню" id="72"/>
+							<ExtendedTooltip name="СинхронизацияССотрудникамиРасширеннаяПодсказка" id="120"/>
+							<Events>
+								<Event name="OnChange">СинхронизацияССотрудникамиПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<InputField name="ГруппаСинхронизацииСотрудников" id="68">
+							<DataPath>Объект.ГруппаСинхронизацииСотрудников</DataPath>
+							<ChoiceButton>true</ChoiceButton>
+							<ClearButton>true</ClearButton>
+							<OpenButton>false</OpenButton>
+							<ChoiceFoldersAndItems>Folders</ChoiceFoldersAndItems>
+							<ContextMenu name="ГруппаСинхронизацииСотрудниковКонтекстноеМеню" id="69"/>
+							<ExtendedTooltip name="ГруппаСинхронизацииСотрудниковРасширеннаяПодсказка" id="121"/>
+						</InputField>
+						<Button name="ЗагрузитьНомераСотрудников" id="67">
+							<Type>UsualButton</Type>
+							<CommandName>Form.Command.ЗагрузитьНомераСотрудников</CommandName>
+							<ExtendedTooltip name="ЗагрузитьНомераСотрудниковРасширеннаяПодсказка" id="122"/>
+						</Button>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.доп_ТелефонныеСтанцииБитАТС</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="Номера" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номера</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>Catalog.доп_НомераБитАТС</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗагрузитьНомераСАТС" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить номера с АТС</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузка номеров c АТС</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗагрузитьНомераСАТС</Action>
+		</Command>
+		<Command name="ПроверитьПодключение" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить подключение</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить подключение</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПроверитьПодключение</Action>
+		</Command>
+		<Command name="ЗадатьГруппуДоступа" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Задать группу доступа</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Задать группу доступа</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗадатьГруппуДоступа</Action>
+		</Command>
+		<Command name="ОчиститьГруппуДоступа" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить группу доступа</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить группу доступа</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОчиститьГруппуДоступа</Action>
+		</Command>
+		<Command name="ЗагрузитьНомераИзАналитикиАТС" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить номера из Аналитики АТС</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузка номеров из Аналитики ОЛИМП.АТС</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗагрузитьНомераИзАналитикиАТС</Action>
+		</Command>
+		<Command name="ПроверитьТранкиАТС" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить транки АТС</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверить транки АТС</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПроверитьТранкиАТС</Action>
+		</Command>
+		<Command name="ЗагрузитьНомераСотрудников" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить номера сотрудников</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить номера сотрудников</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗагрузитьНомераСотрудников</Action>
+		</Command>
+	</Commands>
+</Form>

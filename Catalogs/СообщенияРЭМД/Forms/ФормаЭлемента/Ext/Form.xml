@@ -1,0 +1,1019 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<ButtonGroup name="ГруппаПосмотретьСохранитьФайл" id="158">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Группа посмотреть сохранить файл</v8:content>
+					</v8:item>
+				</Title>
+				<Representation>Compact</Representation>
+				<ExtendedTooltip name="ГруппаПосмотретьСохранитьФайлРасширеннаяПодсказка" id="159"/>
+				<ChildItems>
+					<Button name="ФормаПосмотретьФайл" id="91">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ПосмотретьФайл</CommandName>
+						<ExtendedTooltip name="ФормаПосмотретьФайлРасширеннаяПодсказка" id="92"/>
+					</Button>
+					<Popup name="ГруппаСохранитьФайл" id="160">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content> </v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ГруппаСохранитьФайлРасширеннаяПодсказка" id="161"/>
+						<ChildItems>
+							<Button name="ФормаСохранитьФайл" id="162">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.СохранитьФайл</CommandName>
+								<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+								<ExtendedTooltip name="ФормаСохранитьФайлРасширеннаяПодсказка" id="163"/>
+							</Button>
+						</ChildItems>
+					</Popup>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="ФормаПосмотретьПредставлениеФайла" id="151">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.Command.ПосмотретьПредставлениеФайла</CommandName>
+				<ExtendedTooltip name="ФормаПосмотретьПредставлениеФайлаРасширеннаяПодсказка" id="152"/>
+			</Button>
+			<Button name="ФормаОбновитьПодписьМО" id="140">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ОбновитьПодписьМО</CommandName>
+				<ExtendedTooltip name="ФормаОбновитьПодписьМОРасширеннаяПодсказка" id="141"/>
+			</Button>
+			<Button name="ФормаОтзывЭМД" id="226">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ОтзывЭМД</CommandName>
+				<ExtendedTooltip name="ФормаОтзывЭМДРасширеннаяПодсказка" id="227"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelDecoration name="СостояниеСообщения" id="142">
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<TextColor>style:ПоясняющийТекст</TextColor>
+			<ContextMenu name="СостояниеСообщенияКонтекстноеМеню" id="143"/>
+			<ExtendedTooltip name="СостояниеСообщенияРасширеннаяПодсказка" id="144"/>
+		</LabelDecoration>
+		<UsualGroup name="ДанныеШапки" id="85">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные шапки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные шапки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>WeakSeparation</Representation>
+			<ExtendedTooltip name="ДанныеШапкиРасширеннаяПодсказка" id="86"/>
+			<ChildItems>
+				<InputField name="Документ" id="7">
+					<DataPath>Объект.Документ</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ДокументКонтекстноеМеню" id="8"/>
+					<ExtendedTooltip name="ДокументРасширеннаяПодсказка" id="9"/>
+				</InputField>
+				<InputField name="ВидДокумента" id="34">
+					<DataPath>Объект.ВидДокумента</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ВидДокументаКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="ВидДокументаРасширеннаяПодсказка" id="36"/>
+				</InputField>
+				<InputField name="Клиент" id="10">
+					<DataPath>Объект.Клиент</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="КлиентКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="КлиентРасширеннаяПодсказка" id="12"/>
+				</InputField>
+				<InputField name="ДатаСоздания" id="13">
+					<DataPath>Объект.ДатаСоздания</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ДатаСозданияКонтекстноеМеню" id="14"/>
+					<ExtendedTooltip name="ДатаСозданияРасширеннаяПодсказка" id="15"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="СлужебнаяИнформация" id="87">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Служебная информация</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Служебная информация</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Collapsible</Behavior>
+			<Collapsed>true</Collapsed>
+			<Representation>WeakSeparation</Representation>
+			<ExtendedTooltip name="СлужебнаяИнформацияРасширеннаяПодсказка" id="88"/>
+			<ChildItems>
+				<InputField name="ИдентификаторДокумента" id="28">
+					<DataPath>Объект.ИдентификаторДокумента</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ИдентификаторДокументаКонтекстноеМеню" id="29"/>
+					<ExtendedTooltip name="ИдентификаторДокументаРасширеннаяПодсказка" id="30"/>
+				</InputField>
+				<InputField name="РегистрационныйНомерЭМД" id="74">
+					<DataPath>Объект.ИдентификаторШаблонаЭМД</DataPath>
+					<TitleHeight>1</TitleHeight>
+					<ContextMenu name="РегистрационныйНомерЭМДКонтекстноеМеню" id="75"/>
+					<ExtendedTooltip name="РегистрационныйНомерЭМДРасширеннаяПодсказка" id="76"/>
+				</InputField>
+				<InputField name="НомерДокумента" id="25">
+					<DataPath>Объект.НомерДокумента</DataPath>
+					<TitleHeight>1</TitleHeight>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="НомерДокументаКонтекстноеМеню" id="26"/>
+					<ExtendedTooltip name="НомерДокументаРасширеннаяПодсказка" id="27"/>
+				</InputField>
+				<InputField name="ПутьКФайлуЭМД" id="16">
+					<DataPath>Объект.ПутьКФайлуЭМД</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ПутьКФайлуЭМДКонтекстноеМеню" id="17"/>
+					<ExtendedTooltip name="ПутьКФайлуЭМДРасширеннаяПодсказка" id="18"/>
+				</InputField>
+				<UsualGroup name="НомерВерсииКоличествоПереотправок" id="153">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер версии количество переотправок</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер версии количество переотправок</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>HorizontalIfPossible</Group>
+					<Representation>WeakSeparation</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ThroughAlign>Use</ThroughAlign>
+					<ExtendedTooltip name="НомерВерсииКоличествоПереотправокРасширеннаяПодсказка" id="154"/>
+					<ChildItems>
+						<InputField name="НомерВерсии" id="37">
+							<DataPath>Объект.НомерВерсии</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<Width>5</Width>
+							<ContextMenu name="НомерВерсииКонтекстноеМеню" id="38"/>
+							<ExtendedTooltip name="НомерВерсииРасширеннаяПодсказка" id="39"/>
+						</InputField>
+						<InputField name="КоличествоПереотправок" id="155">
+							<DataPath>Объект.КоличествоПереотправок</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<ContextMenu name="КоличествоПереотправокКонтекстноеМеню" id="156"/>
+							<ExtendedTooltip name="КоличествоПереотправокРасширеннаяПодсказка" id="157"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ДанныеРЭМД" id="89">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные РЭМД</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные РЭМД</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>WeakSeparation</Representation>
+			<ExtendedTooltip name="ДанныеРЭМДРасширеннаяПодсказка" id="90"/>
+			<ChildItems>
+				<InputField name="ХранитьДо" id="43">
+					<DataPath>Объект.ХранитьДо</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ХранитьДоКонтекстноеМеню" id="44"/>
+					<ExtendedTooltip name="ХранитьДоРасширеннаяПодсказка" id="45"/>
+				</InputField>
+				<InputField name="ИдентификаторРЭМД" id="40">
+					<DataPath>Объект.ИдентификаторРЭМД</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ИдентификаторРЭМДКонтекстноеМеню" id="41"/>
+					<ExtendedTooltip name="ИдентификаторРЭМДРасширеннаяПодсказка" id="42"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ОбновлениеДанных" id="83">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновление данных</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновление данных</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>HorizontalIfPossible</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>WeakSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ОбновлениеДанныхРасширеннаяПодсказка" id="84"/>
+			<ChildItems>
+				<CheckBoxField name="Отправить" id="19">
+					<DataPath>Объект.Отправить</DataPath>
+					<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ОтправитьКонтекстноеМеню" id="20"/>
+					<ExtendedTooltip name="ОтправитьРасширеннаяПодсказка" id="21"/>
+					<Events>
+						<Event name="OnChange">ОтправитьПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<CheckBoxField name="Обновить" id="22">
+					<DataPath>Объект.Обновить</DataPath>
+					<Visible>false</Visible>
+					<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ОбновитьКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="ОбновитьРасширеннаяПодсказка" id="24"/>
+				</CheckBoxField>
+				<CheckBoxField name="ВПроцессеРегистрации" id="223">
+					<DataPath>Объект.ВПроцессеРегистрации</DataPath>
+					<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem" scale="100"/>
+					<ContextMenu name="ВПроцессеРегистрацииКонтекстноеМеню" id="224"/>
+					<ExtendedTooltip name="ВПроцессеРегистрацииРасширеннаяПодсказка" id="225"/>
+					<Events>
+						<Event name="OnChange">ВПроцессеРегистрацииПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="Закладки" id="77">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закладки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закладки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="ЗакладкиРасширеннаяПодсказка" id="78"/>
+			<ChildItems>
+				<Page name="Подписи" id="79">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подписи</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подписи</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ПодписиРасширеннаяПодсказка" id="80"/>
+					<ChildItems>
+						<Table name="ЭлектронныеПодписиЭМД" id="46">
+							<Representation>List</Representation>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.ЭлектронныеПодписиЭМД</DataPath>
+							<CommandSet>
+								<ExcludedCommand>Delete</ExcludedCommand>
+							</CommandSet>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ЭлектронныеПодписиЭМДКонтекстноеМеню" id="47">
+								<ChildItems>
+									<Button name="ЭлектронныеПодписиЭМДКонтекстноеМенюУдалитьПодпись" id="221">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.УдалитьПодпись</CommandName>
+										<ExtendedTooltip name="ЭлектронныеПодписиЭМДКонтекстноеМенюУдалитьПодписьРасширеннаяПодсказка" id="222"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="ЭлектронныеПодписиЭМДКоманднаяПанель" id="48">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="ЭлектронныеПодписиЭМДУдалитьПодпись" id="219">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.УдалитьПодпись</CommandName>
+										<ExtendedTooltip name="ЭлектронныеПодписиЭМДУдалитьПодписьРасширеннаяПодсказка" id="220"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ЭлектронныеПодписиЭМДРасширеннаяПодсказка" id="49"/>
+							<SearchStringAddition name="ЭлектронныеПодписиЭМДСтрокаПоиска" id="50">
+								<AdditionSource>
+									<Item>ЭлектронныеПодписиЭМД</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ЭлектронныеПодписиЭМДСтрокаПоискаКонтекстноеМеню" id="51"/>
+								<ExtendedTooltip name="ЭлектронныеПодписиЭМДСтрокаПоискаРасширеннаяПодсказка" id="52"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ЭлектронныеПодписиЭМДСостояниеПросмотра" id="53">
+								<AdditionSource>
+									<Item>ЭлектронныеПодписиЭМД</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ЭлектронныеПодписиЭМДСостояниеПросмотраКонтекстноеМеню" id="54"/>
+								<ExtendedTooltip name="ЭлектронныеПодписиЭМДСостояниеПросмотраРасширеннаяПодсказка" id="55"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ЭлектронныеПодписиЭМДУправлениеПоиском" id="56">
+								<AdditionSource>
+									<Item>ЭлектронныеПодписиЭМД</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ЭлектронныеПодписиЭМДУправлениеПоискомКонтекстноеМеню" id="57"/>
+								<ExtendedTooltip name="ЭлектронныеПодписиЭМДУправлениеПоискомРасширеннаяПодсказка" id="58"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ЭлектронныеПодписиЭМДНомерСтроки" id="59">
+									<DataPath>Объект.ЭлектронныеПодписиЭМД.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ЭлектронныеПодписиЭМДНомерСтрокиКонтекстноеМеню" id="60"/>
+									<ExtendedTooltip name="ЭлектронныеПодписиЭМДНомерСтрокиРасширеннаяПодсказка" id="61"/>
+								</LabelField>
+								<InputField name="ЭлектронныеПодписиЭМДПутьКФайлуПодписиЭМД" id="62">
+									<DataPath>Объект.ЭлектронныеПодписиЭМД.ПутьКФайлуПодписиЭМД</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ЭлектронныеПодписиЭМДПутьКФайлуПодписиЭМДКонтекстноеМеню" id="63"/>
+									<ExtendedTooltip name="ЭлектронныеПодписиЭМДПутьКФайлуПодписиЭМДРасширеннаяПодсказка" id="64"/>
+								</InputField>
+								<InputField name="ЭлектронныеПодписиЭМДСотрудник" id="65">
+									<DataPath>Объект.ЭлектронныеПодписиЭМД.Сотрудник</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ЭлектронныеПодписиЭМДСотрудникКонтекстноеМеню" id="66"/>
+									<ExtendedTooltip name="ЭлектронныеПодписиЭМДСотрудникРасширеннаяПодсказка" id="67"/>
+								</InputField>
+								<InputField name="ЭлектронныеПодписиЭМДРольРЭМД" id="68">
+									<DataPath>Объект.ЭлектронныеПодписиЭМД.РольРЭМД</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ЭлектронныеПодписиЭМДРольРЭМДКонтекстноеМеню" id="69"/>
+									<ExtendedTooltip name="ЭлектронныеПодписиЭМДРольРЭМДРасширеннаяПодсказка" id="70"/>
+								</InputField>
+								<InputField name="ЭлектронныеПодписиЭМДДолжностьМинздрава" id="145">
+									<DataPath>Объект.ЭлектронныеПодписиЭМД.ДолжностьМинздрава</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ChoiceFoldersAndItems>FoldersAndItems</ChoiceFoldersAndItems>
+									<ContextMenu name="ЭлектронныеПодписиЭМДДолжностьМинздраваКонтекстноеМеню" id="146"/>
+									<ExtendedTooltip name="ЭлектронныеПодписиЭМДДолжностьМинздраваРасширеннаяПодсказка" id="147"/>
+								</InputField>
+								<InputField name="ЭлектронныеПодписиЭМДСпециальностьМинздрава" id="148">
+									<DataPath>Объект.ЭлектронныеПодписиЭМД.СпециальностьМинздрава</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ЭлектронныеПодписиЭМДСпециальностьМинздраваКонтекстноеМеню" id="149"/>
+									<ExtendedTooltip name="ЭлектронныеПодписиЭМДСпециальностьМинздраваРасширеннаяПодсказка" id="150"/>
+								</InputField>
+								<CheckBoxField name="ЭлектронныеПодписиЭМДЭтоПодписьМО" id="71">
+									<DataPath>Объект.ЭлектронныеПодписиЭМД.ЭтоПодписьМО</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ЭлектронныеПодписиЭМДЭтоПодписьМОКонтекстноеМеню" id="72"/>
+									<ExtendedTooltip name="ЭлектронныеПодписиЭМДЭтоПодписьМОРасширеннаяПодсказка" id="73"/>
+								</CheckBoxField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ЗакладкаВерсии" id="172">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Версии</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Версии</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ЗакладкаВерсииРасширеннаяПодсказка" id="173"/>
+					<ChildItems>
+						<Table name="Версии" id="174">
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.Версии</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ВерсииКонтекстноеМеню" id="175"/>
+							<AutoCommandBar name="ВерсииКоманднаяПанель" id="176">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<ButtonGroup name="ВерсииГруппаПосмотретьСохранитьФайлВерсии" id="207">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Версии группа посмотреть сохранить файл версии</v8:content>
+											</v8:item>
+										</Title>
+										<Representation>Compact</Representation>
+										<ExtendedTooltip name="ВерсииГруппаПосмотретьСохранитьФайлВерсииРасширеннаяПодсказка" id="208"/>
+										<ChildItems>
+											<Button name="ВерсииПосмотретьФайлВерсии" id="205">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ПосмотретьФайлВерсии</CommandName>
+												<ExtendedTooltip name="ВерсииПосмотретьФайлВерсииРасширеннаяПодсказка" id="206"/>
+											</Button>
+											<Popup name="ВерсииГруппаСохранитьФайлВерсии" id="211">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content> </v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="ВерсииГруппаСохранитьФайлВерсииРасширеннаяПодсказка" id="212"/>
+												<ChildItems>
+													<Button name="ВерсииСохранитьФайлВерсии" id="215">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СохранитьФайлВерсии</CommandName>
+														<ExtendedTooltip name="ВерсииСохранитьФайлВерсииРасширеннаяПодсказка" id="216"/>
+													</Button>
+												</ChildItems>
+											</Popup>
+										</ChildItems>
+									</ButtonGroup>
+									<Button name="ВерсииПосмотретьПредставлениеФайлаВерсии" id="217">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПосмотретьПредставлениеФайлаВерсии</CommandName>
+										<ExtendedTooltip name="ВерсииПосмотретьПредставлениеФайлаВерсииРасширеннаяПодсказка" id="218"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ВерсииРасширеннаяПодсказка" id="177"/>
+							<SearchStringAddition name="ВерсииСтрокаПоиска" id="178">
+								<AdditionSource>
+									<Item>Версии</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ВерсииСтрокаПоискаКонтекстноеМеню" id="179"/>
+								<ExtendedTooltip name="ВерсииСтрокаПоискаРасширеннаяПодсказка" id="180"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ВерсииСостояниеПросмотра" id="181">
+								<AdditionSource>
+									<Item>Версии</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ВерсииСостояниеПросмотраКонтекстноеМеню" id="182"/>
+								<ExtendedTooltip name="ВерсииСостояниеПросмотраРасширеннаяПодсказка" id="183"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ВерсииУправлениеПоиском" id="184">
+								<AdditionSource>
+									<Item>Версии</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ВерсииУправлениеПоискомКонтекстноеМеню" id="185"/>
+								<ExtendedTooltip name="ВерсииУправлениеПоискомРасширеннаяПодсказка" id="186"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="ВерсииНомерВерсии" id="190">
+									<DataPath>Объект.Версии.НомерВерсии</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ВерсииНомерВерсииКонтекстноеМеню" id="191"/>
+									<ExtendedTooltip name="ВерсииНомерВерсииРасширеннаяПодсказка" id="192"/>
+								</InputField>
+								<InputField name="ВерсииПутьКФайлуЭМД" id="193">
+									<DataPath>Объект.Версии.ПутьКФайлуЭМД</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ВерсииПутьКФайлуЭМДКонтекстноеМеню" id="194"/>
+									<ExtendedTooltip name="ВерсииПутьКФайлуЭМДРасширеннаяПодсказка" id="195"/>
+								</InputField>
+								<InputField name="ВерсииИдентификаторДокумента" id="196">
+									<DataPath>Объект.Версии.ИдентификаторДокумента</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ВерсииИдентификаторДокументаКонтекстноеМеню" id="197"/>
+									<ExtendedTooltip name="ВерсииИдентификаторДокументаРасширеннаяПодсказка" id="198"/>
+								</InputField>
+								<InputField name="ВерсииДатаОтправки" id="202">
+									<DataPath>Объект.Версии.ДатаОтправки</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ВерсииДатаОтправкиКонтекстноеМеню" id="203"/>
+									<ExtendedTooltip name="ВерсииДатаОтправкиРасширеннаяПодсказка" id="204"/>
+								</InputField>
+								<InputField name="ВерсииИдентификаторСообщения" id="199">
+									<DataPath>Объект.Версии.ИдентификаторСообщения</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ВерсииИдентификаторСообщенияКонтекстноеМеню" id="200"/>
+									<ExtendedTooltip name="ВерсииИдентификаторСообщенияРасширеннаяПодсказка" id="201"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="Ошибки" id="81">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ошибки</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ошибки</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ОшибкиРасширеннаяПодсказка" id="82"/>
+					<ChildItems>
+						<InputField name="ТекстПоследнейОшибки" id="31">
+							<DataPath>Объект.ТекстПоследнейОшибки</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<Width>60</Width>
+							<AutoMaxWidth>false</AutoMaxWidth>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="ТекстПоследнейОшибкиКонтекстноеМеню" id="32"/>
+							<ExtendedTooltip name="ТекстПоследнейОшибкиРасширеннаяПодсказка" id="33"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="ЗакладкаОтправленныеСообщения" id="93">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отправленные сообщения</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ошибки</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ЗакладкаОтправленныеСообщенияРасширеннаяПодсказка" id="94"/>
+					<ChildItems>
+						<Table name="ОтправленныеСообщения" id="95">
+							<ReadOnly>true</ReadOnly>
+							<HeightInTableRows>3</HeightInTableRows>
+							<HeightControlVariant>UseHeightInTableRows</HeightControlVariant>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>ОтправленныеСообщения</DataPath>
+							<RowPictureDataPath>ОтправленныеСообщения.DefaultPicture</RowPictureDataPath>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="ОтправленныеСообщенияКонтекстноеМеню" id="96"/>
+							<AutoCommandBar name="ОтправленныеСообщенияКоманднаяПанель" id="97">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<ButtonGroup name="ГруппаСохранениеЛога" id="164">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Группа сохранение лога</v8:content>
+											</v8:item>
+										</Title>
+										<Representation>Compact</Representation>
+										<ExtendedTooltip name="ГруппаСохранениеЛогаРасширеннаяПодсказка" id="165"/>
+										<ChildItems>
+											<Button name="ОтправленныеСообщенияСохранитьЛог" id="135">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.СохранитьЛог</CommandName>
+												<ExtendedTooltip name="ОтправленныеСообщенияСохранитьЛогРасширеннаяПодсказка" id="136"/>
+											</Button>
+											<Popup name="ГруппаСохранениеЛогаИФайла" id="166">
+												<Title>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content> </v8:content>
+													</v8:item>
+												</Title>
+												<ExtendedTooltip name="ГруппаСохранениеЛогаИФайлаРасширеннаяПодсказка" id="167"/>
+												<ChildItems>
+													<Button name="ОтправленныеСообщенияСохранитьЛогИФайл" id="170">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.СохранитьЛогИФайл</CommandName>
+														<ExtendedTooltip name="ОтправленныеСообщенияСохранитьЛогИФайлРасширеннаяПодсказка" id="171"/>
+													</Button>
+												</ChildItems>
+											</Popup>
+										</ChildItems>
+									</ButtonGroup>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ОтправленныеСообщенияРасширеннаяПодсказка" id="98"/>
+							<SearchStringAddition name="ОтправленныеСообщенияСтрокаПоиска" id="99">
+								<AdditionSource>
+									<Item>ОтправленныеСообщения</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОтправленныеСообщенияСтрокаПоискаКонтекстноеМеню" id="100"/>
+								<ExtendedTooltip name="ОтправленныеСообщенияСтрокаПоискаРасширеннаяПодсказка" id="101"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ОтправленныеСообщенияСостояниеПросмотра" id="102">
+								<AdditionSource>
+									<Item>ОтправленныеСообщения</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОтправленныеСообщенияСостояниеПросмотраКонтекстноеМеню" id="103"/>
+								<ExtendedTooltip name="ОтправленныеСообщенияСостояниеПросмотраРасширеннаяПодсказка" id="104"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ОтправленныеСообщенияУправлениеПоиском" id="105">
+								<AdditionSource>
+									<Item>ОтправленныеСообщения</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ОтправленныеСообщенияУправлениеПоискомКонтекстноеМеню" id="106"/>
+								<ExtendedTooltip name="ОтправленныеСообщенияУправлениеПоискомРасширеннаяПодсказка" id="107"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ОтправленныеСообщенияУИДСообщения" id="108">
+									<DataPath>ОтправленныеСообщения.УИДСообщения</DataPath>
+									<ContextMenu name="ОтправленныеСообщенияУИДСообщенияКонтекстноеМеню" id="109"/>
+									<ExtendedTooltip name="ОтправленныеСообщенияУИДСообщенияРасширеннаяПодсказка" id="110"/>
+								</LabelField>
+								<LabelField name="ОтправленныеСообщенияДатаСообщения" id="111">
+									<DataPath>ОтправленныеСообщения.ДатаСообщения</DataPath>
+									<ContextMenu name="ОтправленныеСообщенияДатаСообщенияКонтекстноеМеню" id="112"/>
+									<ExtendedTooltip name="ОтправленныеСообщенияДатаСообщенияРасширеннаяПодсказка" id="113"/>
+								</LabelField>
+								<LabelField name="ОтправленныеСообщенияДатаОтвета" id="114">
+									<DataPath>ОтправленныеСообщения.ДатаОтвета</DataPath>
+									<ContextMenu name="ОтправленныеСообщенияДатаОтветаКонтекстноеМеню" id="115"/>
+									<ExtendedTooltip name="ОтправленныеСообщенияДатаОтветаРасширеннаяПодсказка" id="116"/>
+								</LabelField>
+								<LabelField name="ОтправленныеСообщенияИдентификаторРЭМД" id="117">
+									<DataPath>ОтправленныеСообщения.ИдентификаторРЭМД</DataPath>
+									<ContextMenu name="ОтправленныеСообщенияИдентификаторРЭМДКонтекстноеМеню" id="118"/>
+									<ExtendedTooltip name="ОтправленныеСообщенияИдентификаторРЭМДРасширеннаяПодсказка" id="119"/>
+								</LabelField>
+								<LabelField name="ОтправленныеСообщенияТекстОшибки" id="120">
+									<DataPath>ОтправленныеСообщения.ТекстОшибки</DataPath>
+									<ContextMenu name="ОтправленныеСообщенияТекстОшибкиКонтекстноеМеню" id="121"/>
+									<ExtendedTooltip name="ОтправленныеСообщенияТекстОшибкиРасширеннаяПодсказка" id="122"/>
+								</LabelField>
+								<LabelField name="ОтправленныеСообщенияПутьКФайлу" id="123">
+									<DataPath>ОтправленныеСообщения.ПутьКФайлу</DataPath>
+									<ContextMenu name="ОтправленныеСообщенияПутьКФайлуКонтекстноеМеню" id="124"/>
+									<ExtendedTooltip name="ОтправленныеСообщенияПутьКФайлуРасширеннаяПодсказка" id="125"/>
+								</LabelField>
+								<LabelField name="ОтправленныеСообщенияТипВызова" id="129">
+									<DataPath>ОтправленныеСообщения.ТипВызова</DataPath>
+									<ContextMenu name="ОтправленныеСообщенияТипВызоваКонтекстноеМеню" id="130"/>
+									<ExtendedTooltip name="ОтправленныеСообщенияТипВызоваРасширеннаяПодсказка" id="131"/>
+								</LabelField>
+								<LabelField name="ОтправленныеСообщенияОбъект" id="132">
+									<DataPath>ОтправленныеСообщения.Объект</DataPath>
+									<ContextMenu name="ОтправленныеСообщенияОбъектКонтекстноеМеню" id="133"/>
+									<ExtendedTooltip name="ОтправленныеСообщенияОбъектРасширеннаяПодсказка" id="134"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.СообщенияРЭМД</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ОтправленныеСообщения" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправленные сообщения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>ОтправленныеСообщения.ИдентификаторДокумента</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>InformationRegister.ИнтеграцияЕГИСЗСообщенияРЭМД</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ФилиалДокумента" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Филиал документа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Филиалы</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПосмотретьФайл" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Посмотреть файл ЭМД</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть на клиенте копию файла ЭМД с серверного архива</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Предпросмотр</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПосмотретьФайл</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="СохранитьЛог" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить лог</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить лог</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.SaveFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СохранитьЛог</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ОбновитьПодписьМО" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить подпись МО</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить подпись МО</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ExecuteTask</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОбновитьПодписьМО</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ПосмотретьПредставлениеФайла" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление файла ЭМД</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Посмотреть представление файла</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Предпросмотр</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПосмотретьПредставлениеФайла</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="СохранитьФайл" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить файл ЭМД</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить файл</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.SaveFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СохранитьФайл</Action>
+		</Command>
+		<Command name="СохранитьЛогИФайл" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить лог и файл ЭМД</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить лог и файл</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.SaveFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СохранитьЛогИФайл</Action>
+		</Command>
+		<Command name="ПосмотретьФайлВерсии" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Посмотреть файл ЭМД</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть на клиенте копию файла ЭМД с серверного архива</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Предпросмотр</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПосмотретьФайл</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="СохранитьФайлВерсии" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить файл ЭМД</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить файл</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.SaveFile</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СохранитьФайл</Action>
+		</Command>
+		<Command name="ПосмотретьПредставлениеФайлаВерсии" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление файла ЭМД</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Посмотреть представление файла</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Предпросмотр</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПосмотретьПредставлениеФайла</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="УдалитьПодпись" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить подпись</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить подпись</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Delete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>УдалитьПодпись</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ОтзывЭМД" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отзыв ЭМД</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отзыв ЭМД</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОтзывЭМД</Action>
+		</Command>
+	</Commands>
+</Form>

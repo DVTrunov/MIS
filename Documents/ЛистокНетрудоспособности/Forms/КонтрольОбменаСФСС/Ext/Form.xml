@@ -1,0 +1,1508 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<Group>Vertical</Group>
+	<CommandBarLocation>None</CommandBarLocation>
+	<ShowCommandBar>false</ShowCommandBar>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="КомандыФормы" id="142">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команды формы</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Команды формы</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>HorizontalIfPossible</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>WeakSeparation</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="КомандыФормыРасширеннаяПодсказка" id="143"/>
+			<ChildItems>
+				<Button name="Обновить" id="156">
+					<Type>UsualButton</Type>
+					<DefaultItem>true</DefaultItem>
+					<CommandName>Form.Command.Обновить</CommandName>
+					<ExtendedTooltip name="ОбновитьРасширеннаяПодсказка" id="157"/>
+				</Button>
+				<Button name="ФормаЗакрыть" id="35">
+					<Type>UsualButton</Type>
+					<CommandName>Form.StandardCommand.Close</CommandName>
+					<ExtendedTooltip name="ФормаЗакрытьРасширеннаяПодсказка" id="36"/>
+				</Button>
+				<InputField name="Филиал" id="161">
+					<DataPath>Филиал</DataPath>
+					<ContextMenu name="ФилиалКонтекстноеМеню" id="162"/>
+					<ExtendedTooltip name="ФилиалРасширеннаяПодсказка" id="163"/>
+					<Events>
+						<Event name="OnChange">ФилиалПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ОГРН" id="158">
+					<DataPath>ОГРН</DataPath>
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ОГРН ЛПУ</v8:content>
+						</v8:item>
+					</Title>
+					<MarkRequiredComplete>true</MarkRequiredComplete>
+					<ChoiceButton>true</ChoiceButton>
+					<AutoMarkIncomplete>true</AutoMarkIncomplete>
+					<ContextMenu name="ОГРНКонтекстноеМеню" id="159"/>
+					<ExtendedTooltip name="ОГРНРасширеннаяПодсказка" id="160"/>
+					<Events>
+						<Event name="StartChoice">ОГРННачалоВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="СертификатПодписиМО" id="1">
+					<DataPath>СертификатПодписиМО</DataPath>
+					<ContextMenu name="СертификатПодписиМОКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="СертификатПодписиМОРасширеннаяПодсказка" id="3"/>
+				</InputField>
+				<CheckBoxField name="АвтоЭЦП" id="164">
+					<DataPath>АвтоЭЦП</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Автоматическая подстановка сертификата ЭЦП при изменении филиала</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<ContextMenu name="АвтоЭЦПКонтекстноеМеню" id="165"/>
+					<ExtendedTooltip name="АвтоЭЦПРасширеннаяПодсказка" id="166"/>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<Pages name="ГруппаРазделы" id="46">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа разделы</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа разделы</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="ГруппаРазделыРасширеннаяПодсказка" id="47"/>
+			<ChildItems>
+				<Page name="ТаблицаОшибок" id="48">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ошибки отправки</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Таблица ошибок</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ТаблицаОшибокРасширеннаяПодсказка" id="49"/>
+					<ChildItems>
+						<Table name="ТаблицаОбмена" id="4">
+							<Representation>List</Representation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ТаблицаОшибок</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТаблицаОбменаКонтекстноеМеню" id="5"/>
+							<AutoCommandBar name="ТаблицаОбменаКоманднаяПанель" id="6">
+								<ChildItems>
+									<Button name="ФормаВыполнитьОбменДляСтроки" id="40">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ВыполнитьОбменДляСтроки</CommandName>
+										<ExtendedTooltip name="ФормаВыполнитьОбменДляСтрокиРасширеннаяПодсказка" id="41"/>
+									</Button>
+									<Button name="ФормаВыполнитьОбменДляВсех" id="42">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ВыполнитьОбменДляВсех</CommandName>
+										<ExtendedTooltip name="ФормаВыполнитьОбменДляВсехРасширеннаяПодсказка" id="43"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ТаблицаОбменаРасширеннаяПодсказка" id="7"/>
+							<SearchStringAddition name="ТаблицаОбменаСтрокаПоиска" id="8">
+								<AdditionSource>
+									<Item>ТаблицаОбмена</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаОбменаСтрокаПоискаКонтекстноеМеню" id="9"/>
+								<ExtendedTooltip name="ТаблицаОбменаСтрокаПоискаРасширеннаяПодсказка" id="10"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТаблицаОбменаСостояниеПросмотра" id="11">
+								<AdditionSource>
+									<Item>ТаблицаОбмена</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаОбменаСостояниеПросмотраКонтекстноеМеню" id="12"/>
+								<ExtendedTooltip name="ТаблицаОбменаСостояниеПросмотраРасширеннаяПодсказка" id="13"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТаблицаОбменаУправлениеПоиском" id="14">
+								<AdditionSource>
+									<Item>ТаблицаОбмена</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаОбменаУправлениеПоискомКонтекстноеМеню" id="15"/>
+								<ExtendedTooltip name="ТаблицаОбменаУправлениеПоискомРасширеннаяПодсказка" id="16"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ТаблицаОбменаВыбор</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="ТаблицаОбменаДата" id="26">
+									<DataPath>ТаблицаОшибок.Дата</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаОбменаДатаКонтекстноеМеню" id="27"/>
+									<ExtendedTooltip name="ТаблицаОбменаДатаРасширеннаяПодсказка" id="28"/>
+								</InputField>
+								<InputField name="ТаблицаОбменаОперация" id="29">
+									<DataPath>ТаблицаОшибок.Операция</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаОбменаОперацияКонтекстноеМеню" id="30"/>
+									<ExtendedTooltip name="ТаблицаОбменаОперацияРасширеннаяПодсказка" id="31"/>
+								</InputField>
+								<InputField name="ТаблицаОбменаРезультат" id="37">
+									<DataPath>ТаблицаОшибок.Результат</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаОбменаРезультатКонтекстноеМеню" id="38"/>
+									<ExtendedTooltip name="ТаблицаОбменаРезультатРасширеннаяПодсказка" id="39"/>
+								</InputField>
+								<InputField name="ТаблицаОбменаСтатус" id="20">
+									<DataPath>ТаблицаОшибок.Статус</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаОбменаСтатусКонтекстноеМеню" id="21"/>
+									<ExtendedTooltip name="ТаблицаОбменаСтатусРасширеннаяПодсказка" id="22"/>
+								</InputField>
+								<InputField name="ТаблицаОбменаСтатусФСС" id="23">
+									<DataPath>ТаблицаОшибок.СтатусФСС</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаОбменаСтатусФССКонтекстноеМеню" id="24"/>
+									<ExtendedTooltip name="ТаблицаОбменаСтатусФССРасширеннаяПодсказка" id="25"/>
+								</InputField>
+								<InputField name="ТаблицаОбменаЛистНетрудоспособности" id="17">
+									<DataPath>ТаблицаОшибок.ЛистНетрудоспособности</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<OpenButton>true</OpenButton>
+									<ContextMenu name="ТаблицаОбменаЛистНетрудоспособностиКонтекстноеМеню" id="18"/>
+									<ExtendedTooltip name="ТаблицаОбменаЛистНетрудоспособностиРасширеннаяПодсказка" id="19"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ЧерновикиПодписанные" id="50">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подписанные, но не отправленные</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Черновики подписанные</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ЧерновикиПодписанныеРасширеннаяПодсказка" id="51"/>
+					<ChildItems>
+						<Table name="ТаблицаЧерновиков" id="52">
+							<Representation>List</Representation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ТаблицаЧерновиковПодписанных</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТаблицаЧерновиковКонтекстноеМеню" id="53"/>
+							<AutoCommandBar name="ТаблицаЧерновиковКоманднаяПанель" id="54">
+								<ChildItems>
+									<Button name="ФормаВыполнитьОбменДляПодписанных" id="126">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ВыполнитьОбменДляПодписанных</CommandName>
+										<ExtendedTooltip name="ФормаВыполнитьОбменДляПодписанныхРасширеннаяПодсказка" id="127"/>
+									</Button>
+									<Button name="ФормаВыполнитьОбменДляВсехПодписанных" id="128">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ВыполнитьОбменДляВсехПодписанных</CommandName>
+										<ExtendedTooltip name="ФормаВыполнитьОбменДляВсехПодписанныхРасширеннаяПодсказка" id="129"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ТаблицаЧерновиковРасширеннаяПодсказка" id="55"/>
+							<SearchStringAddition name="ТаблицаЧерновиковСтрокаПоиска" id="56">
+								<AdditionSource>
+									<Item>ТаблицаЧерновиков</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаЧерновиковСтрокаПоискаКонтекстноеМеню" id="57"/>
+								<ExtendedTooltip name="ТаблицаЧерновиковСтрокаПоискаРасширеннаяПодсказка" id="58"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТаблицаЧерновиковСостояниеПросмотра" id="59">
+								<AdditionSource>
+									<Item>ТаблицаЧерновиков</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаЧерновиковСостояниеПросмотраКонтекстноеМеню" id="60"/>
+								<ExtendedTooltip name="ТаблицаЧерновиковСостояниеПросмотраРасширеннаяПодсказка" id="61"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТаблицаЧерновиковУправлениеПоиском" id="62">
+								<AdditionSource>
+									<Item>ТаблицаЧерновиков</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаЧерновиковУправлениеПоискомКонтекстноеМеню" id="63"/>
+								<ExtendedTooltip name="ТаблицаЧерновиковУправлениеПоискомРасширеннаяПодсказка" id="64"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ТаблицаЧерновиковВыбор</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="ТаблицаЧерновиковСтатусФСС" id="121">
+									<DataPath>ТаблицаЧерновиковПодписанных.СтатусФСС</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаЧерновиковСтатусФССКонтекстноеМеню" id="122"/>
+									<ExtendedTooltip name="ТаблицаЧерновиковСтатусФССРасширеннаяПодсказка" id="123"/>
+								</InputField>
+								<InputField name="ТаблицаЧерновиковСтатус" id="68">
+									<DataPath>ТаблицаЧерновиковПодписанных.Статус</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<Width>12</Width>
+									<ContextMenu name="ТаблицаЧерновиковСтатусКонтекстноеМеню" id="69"/>
+									<ExtendedTooltip name="ТаблицаЧерновиковСтатусРасширеннаяПодсказка" id="70"/>
+								</InputField>
+								<InputField name="ТаблицаЧерновиковЛистНетрудоспособности" id="65">
+									<DataPath>ТаблицаЧерновиковПодписанных.ЛистНетрудоспособности</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаЧерновиковЛистНетрудоспособностиКонтекстноеМеню" id="66"/>
+									<ExtendedTooltip name="ТаблицаЧерновиковЛистНетрудоспособностиРасширеннаяПодсказка" id="67"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ЧерновикиНеподписанные" id="71">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Черновики неподписанные</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Черновики неподписанные</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ЧерновикиНеподписанныеРасширеннаяПодсказка" id="72"/>
+					<ChildItems>
+						<Table name="ТаблицаЧерновиковНеподписанные" id="73">
+							<Representation>List</Representation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ТаблицаЧерновиковНеподписанные</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТаблицаЧерновиковНеподписанныеКонтекстноеМеню" id="74"/>
+							<AutoCommandBar name="ТаблицаЧерновиковНеподписанныеКоманднаяПанель" id="75">
+								<ChildItems>
+									<Button name="ТаблицаЧерновиковНеподписанныеОткрытьЧерновик" id="152">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ОткрытьЧерновик</CommandName>
+										<ExtendedTooltip name="ТаблицаЧерновиковНеподписанныеОткрытьЧерновикРасширеннаяПодсказка" id="153"/>
+									</Button>
+									<Button name="ТаблицаЧерновиковНеподписанныеПометитьНаУдалениеЧерновик" id="154">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПометитьНаУдалениеЧерновик</CommandName>
+										<ExtendedTooltip name="ТаблицаЧерновиковНеподписанныеПометитьНаУдалениеЧерновикРасширеннаяПодсказка" id="155"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ТаблицаЧерновиковНеподписанныеРасширеннаяПодсказка" id="76"/>
+							<SearchStringAddition name="ТаблицаЧерновиковНеподписанныеСтрокаПоиска" id="77">
+								<AdditionSource>
+									<Item>ТаблицаЧерновиковНеподписанные</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаЧерновиковНеподписанныеСтрокаПоискаКонтекстноеМеню" id="78"/>
+								<ExtendedTooltip name="ТаблицаЧерновиковНеподписанныеСтрокаПоискаРасширеннаяПодсказка" id="79"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТаблицаЧерновиковНеподписанныеСостояниеПросмотра" id="80">
+								<AdditionSource>
+									<Item>ТаблицаЧерновиковНеподписанные</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаЧерновиковНеподписанныеСостояниеПросмотраКонтекстноеМеню" id="81"/>
+								<ExtendedTooltip name="ТаблицаЧерновиковНеподписанныеСостояниеПросмотраРасширеннаяПодсказка" id="82"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТаблицаЧерновиковНеподписанныеУправлениеПоиском" id="83">
+								<AdditionSource>
+									<Item>ТаблицаЧерновиковНеподписанные</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаЧерновиковНеподписанныеУправлениеПоискомКонтекстноеМеню" id="84"/>
+								<ExtendedTooltip name="ТаблицаЧерновиковНеподписанныеУправлениеПоискомРасширеннаяПодсказка" id="85"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ТаблицаЧерновиковНеподписанныеВыбор</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="ТаблицаЧерновиковНеподписанныеЛистНетрудоспособности" id="86">
+									<DataPath>ТаблицаЧерновиковНеподписанные.ЛистНетрудоспособности</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаЧерновиковНеподписанныеЛистНетрудоспособностиКонтекстноеМеню" id="87"/>
+									<ExtendedTooltip name="ТаблицаЧерновиковНеподписанныеЛистНетрудоспособностиРасширеннаяПодсказка" id="88"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ЧерновикиПродленыНеПодписаны" id="167">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Продленные не подписанные</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Черновики продлены не подписаны</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ЧерновикиПродленыНеПодписаныРасширеннаяПодсказка" id="168"/>
+					<ChildItems>
+						<Table name="ТаблицаЧерновиковПродленныхНеподписанных" id="169">
+							<Representation>List</Representation>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ТаблицаЧерновиковПродленныхНеподписанных</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТаблицаЧерновиковПродленныхНеподписанныхКонтекстноеМеню" id="170"/>
+							<AutoCommandBar name="ТаблицаЧерновиковПродленныхНеподписанныхКоманднаяПанель" id="171">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="ТаблицаЧерновиковПродленныхНеподписанныхОткрытьЧерновик" id="185">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ОткрытьЧерновик</CommandName>
+										<ExtendedTooltip name="ТаблицаЧерновиковПродленныхНеподписанныхОткрытьЧерновикРасширеннаяПодсказка" id="186"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ТаблицаЧерновиковПродленныхНеподписанныхРасширеннаяПодсказка" id="172"/>
+							<SearchStringAddition name="ТаблицаЧерновиковПродленныхНеподписанныхСтрокаПоиска" id="173">
+								<AdditionSource>
+									<Item>ТаблицаЧерновиковПродленныхНеподписанных</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаЧерновиковПродленныхНеподписанныхСтрокаПоискаКонтекстноеМеню" id="174"/>
+								<ExtendedTooltip name="ТаблицаЧерновиковПродленныхНеподписанныхСтрокаПоискаРасширеннаяПодсказка" id="175"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТаблицаЧерновиковПродленныхНеподписанныхСостояниеПросмотра" id="176">
+								<AdditionSource>
+									<Item>ТаблицаЧерновиковПродленныхНеподписанных</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаЧерновиковПродленныхНеподписанныхСостояниеПросмотраКонтекстноеМеню" id="177"/>
+								<ExtendedTooltip name="ТаблицаЧерновиковПродленныхНеподписанныхСостояниеПросмотраРасширеннаяПодсказка" id="178"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТаблицаЧерновиковПродленныхНеподписанныхУправлениеПоиском" id="179">
+								<AdditionSource>
+									<Item>ТаблицаЧерновиковПродленныхНеподписанных</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаЧерновиковПродленныхНеподписанныхУправлениеПоискомКонтекстноеМеню" id="180"/>
+								<ExtendedTooltip name="ТаблицаЧерновиковПродленныхНеподписанныхУправлениеПоискомРасширеннаяПодсказка" id="181"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ТаблицаЧерновиковПродленныхНеподписанныхВыбор</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="ТаблицаЧерновиковПродленныхНеподписанныхЛистНетрудоспособности" id="182">
+									<DataPath>ТаблицаЧерновиковПродленныхНеподписанных.ЛистНетрудоспособности</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаЧерновиковПродленныхНеподписанныхЛистНетрудоспособностиКонтекстноеМеню" id="183"/>
+									<ExtendedTooltip name="ТаблицаЧерновиковПродленныхНеподписанныхЛистНетрудоспособностиРасширеннаяПодсказка" id="184"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ДолгоНеЗакрытые" id="92">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Долго не закрытые</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Долго не закрытые</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ДолгоНеЗакрытыеРасширеннаяПодсказка" id="93"/>
+					<ChildItems>
+						<UsualGroup name="КомандыНезакрытых" id="137">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Команды незакрытых</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Команды незакрытых</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>HorizontalIfPossible</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>WeakSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="КомандыНезакрытыхРасширеннаяПодсказка" id="138"/>
+							<ChildItems>
+								<CommandBar name="Группа1" id="150">
+									<HorizontalStretch>false</HorizontalStretch>
+									<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="151"/>
+									<ChildItems>
+										<Button name="ТаблицаНезакрытыеВыполнитьОбменОбновлениеНезакрытых" id="133">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.ВыполнитьОбменОбновлениеНезакрытых</CommandName>
+											<ExtendedTooltip name="ТаблицаНезакрытыеВыполнитьОбменОбновлениеНезакрытыхРасширеннаяПодсказка" id="134"/>
+										</Button>
+										<Button name="ТаблицаНезакрытыеВыполнитьОбменОбновлениеВсехНезакрытых" id="135">
+											<Type>CommandBarButton</Type>
+											<CommandName>Form.Command.ВыполнитьОбменОбновлениеВсехНезакрытых</CommandName>
+											<ExtendedTooltip name="ТаблицаНезакрытыеВыполнитьОбменОбновлениеВсехНезакрытыхРасширеннаяПодсказка" id="136"/>
+										</Button>
+									</ChildItems>
+								</CommandBar>
+								<InputField name="ПериодВДняхДляНезакрытых" id="147">
+									<DataPath>ПериодВДняхДляНезакрытых</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Через сколько дней с окончания периода отслеживать</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ПериодВДняхДляНезакрытыхКонтекстноеМеню" id="148"/>
+									<ExtendedTooltip name="ПериодВДняхДляНезакрытыхРасширеннаяПодсказка" id="149"/>
+									<Events>
+										<Event name="OnChange">ПериодВДняхДляНезакрытыхПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="ТаблицаНезакрытые" id="94">
+							<Representation>List</Representation>
+							<CommandBarLocation>Top</CommandBarLocation>
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ТаблицаНезакрытые</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТаблицаНезакрытыеКонтекстноеМеню" id="95"/>
+							<AutoCommandBar name="ТаблицаНезакрытыеКоманднаяПанель" id="96">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ТаблицаНезакрытыеРасширеннаяПодсказка" id="97"/>
+							<SearchStringAddition name="ТаблицаНезакрытыеСтрокаПоиска" id="98">
+								<AdditionSource>
+									<Item>ТаблицаНезакрытые</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаНезакрытыеСтрокаПоискаКонтекстноеМеню" id="99"/>
+								<ExtendedTooltip name="ТаблицаНезакрытыеСтрокаПоискаРасширеннаяПодсказка" id="100"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТаблицаНезакрытыеСостояниеПросмотра" id="101">
+								<AdditionSource>
+									<Item>ТаблицаНезакрытые</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаНезакрытыеСостояниеПросмотраКонтекстноеМеню" id="102"/>
+								<ExtendedTooltip name="ТаблицаНезакрытыеСостояниеПросмотраРасширеннаяПодсказка" id="103"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТаблицаНезакрытыеУправлениеПоиском" id="104">
+								<AdditionSource>
+									<Item>ТаблицаНезакрытые</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаНезакрытыеУправлениеПоискомКонтекстноеМеню" id="105"/>
+								<ExtendedTooltip name="ТаблицаНезакрытыеУправлениеПоискомРасширеннаяПодсказка" id="106"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ТаблицаНезакрытыеВыбор</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="ТаблицаНезакрытыеЛистНетрудоспособности" id="107">
+									<DataPath>ТаблицаНезакрытые.ЛистНетрудоспособности</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаНезакрытыеЛистНетрудоспособностиКонтекстноеМеню" id="108"/>
+									<ExtendedTooltip name="ТаблицаНезакрытыеЛистНетрудоспособностиРасширеннаяПодсказка" id="109"/>
+								</InputField>
+								<InputField name="ТаблицаНезакрытыеДатаОкончания" id="116">
+									<DataPath>ТаблицаНезакрытые.ДатаОкончания</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаНезакрытыеДатаОкончанияКонтекстноеМеню" id="117"/>
+									<ExtendedTooltip name="ТаблицаНезакрытыеДатаОкончанияРасширеннаяПодсказка" id="118"/>
+								</InputField>
+								<InputField name="ТаблицаНезакрытыеСтатус" id="110">
+									<DataPath>ТаблицаНезакрытые.Статус</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаНезакрытыеСтатусКонтекстноеМеню" id="111"/>
+									<ExtendedTooltip name="ТаблицаНезакрытыеСтатусРасширеннаяПодсказка" id="112"/>
+								</InputField>
+								<InputField name="ТаблицаНезакрытыеСтатусФСС" id="113">
+									<DataPath>ТаблицаНезакрытые.СтатусФСС</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="ТаблицаНезакрытыеСтатусФССКонтекстноеМеню" id="114"/>
+									<ExtendedTooltip name="ТаблицаНезакрытыеСтатусФССРасширеннаяПодсказка" id="115"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="СертификатПодписиМО" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ЭЦП мед.организации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.СертификатыКлючейЭлектроннойПодписиИШифрования</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТаблицаОшибок" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица ошибок</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ЛистНетрудоспособности" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Лист нетрудоспособности</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.ЛистокНетрудоспособности</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Статус" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СтатусФСС" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус ФСС</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Дата" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Операция" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Операция</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Результат" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Результат</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Номер" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СНИЛС" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>СНИЛС</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ОГРН" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ОГРН</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ТаблицаЧерновиковПодписанных" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица ошибок</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ЛистНетрудоспособности" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Лист нетрудоспособности</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.ЛистокНетрудоспособности</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Статус" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СтатусФСС" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус ФСС</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Дата" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Операция" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Операция</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Результат" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Результат</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Номер" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СНИЛС" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>СНИЛС</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТаблицаЧерновиковНеподписанные" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица ошибок</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ЛистНетрудоспособности" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Лист нетрудоспособности</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.ЛистокНетрудоспособности</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Статус" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СтатусФСС" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус ФСС</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Дата" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Операция" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Операция</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Результат" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Результат</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Номер" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СНИЛС" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>СНИЛС</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТаблицаНезакрытые" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица ошибок</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ЛистНетрудоспособности" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Лист нетрудоспособности</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.ЛистокНетрудоспособности</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Статус" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СтатусФСС" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус ФСС</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Дата" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Операция" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Операция</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Результат" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Результат</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Номер" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СНИЛС" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>СНИЛС</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ДатаОкончания" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата окончания</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ПериодВДняхДляНезакрытых" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период в днях отображения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>3</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<Save>
+				<Field>ПериодВДняхДляНезакрытых</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="Филиал" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Филиал</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Филиалы</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АвтоЭЦП" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Авто ЭЦП</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<Save>
+				<Field>АвтоЭЦП</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ТаблицаЧерновиковПродленныхНеподписанных" id="1">
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ЛистНетрудоспособности" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Лист нетрудоспособности</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.ЛистокНетрудоспособности</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Статус" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СтатусФСС" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус ФСС</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Дата" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Операция" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Операция</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Результат" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Результат</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Номер" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="СНИЛС" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>СНИЛС</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ВыполнитьОбменДляСтроки" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить обмен для строки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыполнитьОбменДляСтроки</Action>
+		</Command>
+		<Command name="ВыполнитьОбменДляВсех" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить все</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить обмен для всех</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыполнитьОбменДляВсех</Action>
+		</Command>
+		<Command name="ВыполнитьОбменДляПодписанных" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить обмен для подписанных</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыполнитьОбменДляПодписанных</Action>
+		</Command>
+		<Command name="ВыполнитьОбменДляВсехПодписанных" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отправить все</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить обмен для всех подписанных</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыполнитьОбменДляВсехПодписанных</Action>
+		</Command>
+		<Command name="ВыполнитьОбменОбновлениеНезакрытых" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить из ФСС</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить из ФСС статус незакрытых (текущая строка)</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыполнитьОбменОбновлениеНезакрытых</Action>
+		</Command>
+		<Command name="ВыполнитьОбменОбновлениеВсехНезакрытых" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить все из ФСС</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить из ФСС статус незакрытых (все строки)</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыполнитьОбменОбновлениеВсехНезакрытых</Action>
+		</Command>
+		<Command name="ОткрытьЧерновик" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть черновик</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьЧерновик</Action>
+		</Command>
+		<Command name="ПометитьНаУдалениеЧерновик" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пометить на удаление</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пометить на удаление черновик</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПометитьНаУдалениеЧерновик</Action>
+		</Command>
+		<Command name="Обновить" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Refresh</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Обновить</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

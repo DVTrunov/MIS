@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Протокол консультации" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<bitLocalId УсловиеИспользования="*Ложь">
+		<nodeLocalId localid="ВидКонсультации" Классификация="1.2.643.5.1.13.13.11.1463"/>
+	</bitLocalId>
+	<bitDiagnosis УсловиеИспользования="*Ложь">
+		<nodeDiagnosisStructure Отбор="ВидНозологическойЕдиницы:*НозологическаяЕдиницаОсновногоДиагноза()" Секция="RESINFO">
+			<nodeDiagnosis type="Диагноз"	localid="ОсновнойДиагноз"/>
+		</nodeDiagnosisStructure>
+		<nodeDiagnosisStructure Отбор="*ТаблицаНеОсновныхДиагнозов(ТаблицаДиагнозовПриема)" Секция="RESINFO">
+			<nodeDiagnosis type="Диагноз"	localid="ДиагнозВыявленнойПатологии"/>
+		</nodeDiagnosisStructure>
+	</bitDiagnosis>
+	<!-- R [1..1] СЕКЦИЯ: Документ-->
+	<component>
+		<section>
+			<code code="DOCINFO" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<title>Сведения о консультации</title>
+			<text></text>
+			<!-- R [1..1] кодирование ... Вид обращения -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="800" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"></code>
+					<value xsi:type="CD" localid="ПорядокОбращения" code="#code" codeSystem="1.2.643.5.1.13.13.11.1007" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<!--<originalText>
+							<reference value="*ПорядокОбращения"/>
+						</originalText>-->
+					</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] кодирование ... Место оказания медицинской помощи -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="801" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+					</code>
+					<value xsi:type="CD" localid="МестоОказания" code="#code" codeSystem="1.2.643.5.1.13.13.11.1008" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<!--<originalText>
+							<reference value="*МестоОказания"/>
+						</originalText>-->
+					</value>
+				</observation>
+			</entry>
+			<!-- [0..*] кодирование ... Дополнительные манипуляции -->
+			<entry localid="ДопМанипуляции" localidСиноним="Доп. манипуляция" Множественное="*Истина" Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="802" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+					</code>
+					<value xsi:type="CD" localid="ДопМанипуляции" code="#code" codeSystem="1.2.643.5.1.13.2.1.1.473" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<!--<originalText>
+							<reference value="*ДопМанипуляции"/>
+						</originalText>-->
+					</value>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<component localid="ВитальныйПараметр" Обязательное="*Ложь">
+		<section>
+			<code code="VITALPARAM" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<title>Витальные параметры</title>
+			<text></text>
+			<!-- R [0..*] кодирование ... Витальные параметры -->
+			<entry localid="ВитальныйПараметр" Множественное="*Истина">
+				<organizer classCode="CLUSTER" moodCode="EVN">
+					<!-- R [1..1] Статус измерения - выполнено -->
+					<statusCode code="completed"/>
+					<!-- R [1..1] Дата измерения -->
+					<effectiveTime value="%ДатаДокумента"/>
+					<!-- R [1..2] кодирование витального параметра -->
+					<component typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN">
+							<code localid="ВитальныйПараметр.КлассификацияПоля" code="#code" codeSystem="1.2.643.5.1.13.13.11.1010" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+								<!--<originalText>
+									<reference value="*ВитальныйПараметр"/>
+								</originalText>-->
+							</code>
+							<value xsi:type="PQ" value="%ВитальныйПараметр" unit="*ПредставлениеЕдиницыИзмеренияВитальногоПараметра(%ВитальныйПараметр.КлассификацияПоля)"/>
+						</observation>
+					</component>
+				</organizer>
+			</entry>
+		</section>
+	</component>
+	<component>
+		<section>
+			<code code="RESINFO" codeSystem="1.2.643.5.1.13.13.11.1379" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<title>Заключение</title>
+			<text></text>
+			<!-- R [1..1] кодирование ... Состояние пациента -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="804" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+					</code>
+					<value xsi:type="CD" localid="СостояниеПациента" code="#code" codeSystem="1.2.643.5.1.13.13.11.1006" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<!--<originalText>
+							<reference value="*СостояниеПациента"/>
+						</originalText>-->
+					</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] кодирование ... Протокол консультации -->
+			<entry>
+				<observation localid="ПротоколКонсультации" classCode="OBS" moodCode="EVN">
+					<code code="805" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!--<text>
+						<reference value="*ПротоколКонсультации"/>
+					</text>-->
+					<value xsi:type="ST" localid="ПротоколКонсультации">%ПротоколКонсультации</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] кодирование ... Заключение -->
+			<entry>
+				<observation localid="Заключение" classCode="OBS" moodCode="EVN">
+					<code code="806" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!--<text>
+						<reference value="*Заключение"/>
+					</text>-->
+					<value xsi:type="ST" localid="Заключение">%Заключение</value>
+				</observation>
+			</entry>
+			<!-- [0..1] кодирование ... Рекомендации -->
+			<entry localid="Рекомендации" Обязательное="*Ложь">
+				<observation localid="Рекомендации" classCode="OBS" moodCode="EVN">
+					<code code="807" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!--<text>
+						<reference value="*Рекомендации"/>
+					</text>-->
+					<value xsi:type="ST" localid="Рекомендации">%Рекомендации</value>
+				</observation>
+			</entry>
+			<!-- [0..1] кодирование ... Выявленные патологии -->
+			<entry localid="ДиагнозВыявленнойПатологии" Обязательное="*Ложь" ВозможноЗаполнениеИзТаблицыДиагнозов="true">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="808" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+					</code>
+					<value xsi:type="CD" localid="ДиагнозВыявленнойПатологии" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<!--<originalText>
+							<reference value="*ДиагнозВыявленнойПатологии"/>
+						</originalText>-->
+					</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] кодирование ... Шифр по МКБ-10 -->
+			<entry ВозможноЗаполнениеИзТаблицыДиагнозов="true">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="809" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+					</code>
+					<value xsi:type="CD" localid="ОсновнойДиагноз" Синоним="Основной диагноз" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<!--<originalText>
+							<reference value="*ОсновнойДиагноз"/>
+						</originalText>-->
+					</value>
+				</observation>
+			</entry>
+			<!-- [0..1] кодирование ... Результат консультации -->
+			<entry localid="Направление" Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="810" codeSystem="1.2.643.5.1.13.13.11.1380" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+					</code>
+					<value xsi:type="CD" localid="Направление" code="#code" codeSystem="1.2.643.5.1.13.13.11.1009" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<!--<originalText>
+							<reference value="*Направление"/>
+						</originalText>-->
+					</value>
+				</observation>
+			</entry>
+		</section>
+	</component>
+</Items>

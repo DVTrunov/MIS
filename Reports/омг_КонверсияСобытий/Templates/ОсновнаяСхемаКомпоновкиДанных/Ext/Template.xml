@@ -1,0 +1,623 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоСобытий</dataPath>
+			<field>КоличествоСобытий</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество событий</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоЗаявок</dataPath>
+			<field>КоличествоЗаявок</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество заявок</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Филиал</dataPath>
+			<field>Филиал</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дата</dataPath>
+			<field>Дата</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=MMMM.yyyy</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Клиент</dataPath>
+			<field>Клиент</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ответственный</dataPath>
+			<field>Ответственный</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Организация</dataPath>
+			<field>Организация</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТипЗвонка</dataPath>
+			<field>ТипЗвонка</field>
+			<presentationExpression>ВЫБОР КОГДА ТипЗвонка = ЗНАЧЕНИЕ(Справочник.ТипыЗвонков.ПустаяСсылка) ТОГДА "Нет события" ИНАЧЕ ТипЗвонка КОНЕЦ</presentationExpression>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Событие</dataPath>
+			<field>Событие</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Событие</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Продажа</dataPath>
+			<field>Продажа</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Продажа</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Заявка</dataPath>
+			<field>Заявка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заявка</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаПродажи</dataPath>
+			<field>СуммаПродажи</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма продажи</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоРабот</dataPath>
+			<field>КоличествоРабот</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество визитов</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОказаниеУслуг</dataPath>
+			<field>ОказаниеУслуг</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оказание услуг</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	Событие.омг_Организация КАК омг_Организация,
+	Событие.Филиал КАК Филиал,
+	Событие.Клиент КАК Клиент,
+	Событие.Ответственный КАК Ответственный,
+	Событие.ТипЗвонка КАК ТипЗвонка,
+	Событие.Ссылка КАК Событие,
+	Событие.Дата КАК Дата
+ПОМЕСТИТЬ ВТ_События
+ИЗ
+	Документ.Событие КАК Событие
+ГДЕ
+	Событие.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+	И НЕ Событие.ПометкаУдаления
+{ГДЕ
+	Событие.Ссылка.* КАК Событие}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ_События.Событие КАК Событие,
+	Заявка.Ссылка КАК Заявка
+ПОМЕСТИТЬ ВТ_Заявки
+ИЗ
+	ВТ_События КАК ВТ_События
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.Заявка КАК Заявка
+		ПО ВТ_События.Событие = Заявка.Основание
+ГДЕ
+	НЕ Заявка.ПометкаУдаления
+{ГДЕ
+	Заявка.Ссылка.* КАК Заявка}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ЗНАЧЕНИЕ(Документ.СОбытие.ПустаяСсылка) КАК Событие,
+	Заявка.Ссылка КАК Заявка,
+	Заявка.Филиал КАК Филиал,
+	Заявка.Клиент КАК Клиент,
+	Заявка.Ответственный КАК Ответственный,
+	Заявка.Дата КАК Дата
+ПОМЕСТИТЬ ВТ_ЗаявкиБезСобытий
+ИЗ
+	Документ.Заявка КАК Заявка
+ГДЕ
+	(Заявка.Основание = НЕОПРЕДЕЛЕНО
+			ИЛИ Заявка.Основание = ЗНАЧЕНИЕ(Документ.Событие.ПустаяСсылка))
+	И Заявка.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+	И НЕ Заявка.ПометкаУдаления
+{ГДЕ
+	Заявка.Ссылка.* КАК Заявка}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ_Заявки.Событие КАК Событие,
+	ВТ_Заявки.Заявка КАК Заявка,
+	ОказаниеУслуг.Ссылка КАК Продажа,
+	ОказаниеУслуг.СуммаДокумента КАК СуммаПродажи
+ПОМЕСТИТЬ ВТ_Продажи
+ИЗ
+	ВТ_Заявки КАК ВТ_Заявки
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ОказаниеУслуг КАК ОказаниеУслуг
+		ПО ВТ_Заявки.Заявка = ОказаниеУслуг.ДокументОснование
+ГДЕ
+	ОказаниеУслуг.Проведен
+{ГДЕ
+	ОказаниеУслуг.Ссылка.* КАК Продажа}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ_ЗаявкиБезСобытий.Событие КАК Событие,
+	ВТ_ЗаявкиБезСобытий.Заявка КАК Заявка,
+	ОказаниеУслуг.Ссылка КАК Продажа,
+	ОказаниеУслуг.СуммаДокумента КАК СуммаПродажи,
+	ОказаниеУслуг.Филиал КАК Филиал,
+	ОказаниеУслуг.Клиент КАК Клиент,
+	ОказаниеУслуг.Ответственный КАК Ответственный,
+	ОказаниеУслуг.Дата КАК Дата
+ПОМЕСТИТЬ ВТ_ПродажиБезСобытий
+ИЗ
+	ВТ_ЗаявкиБезСобытий КАК ВТ_ЗаявкиБезСобытий
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ Документ.ОказаниеУслуг КАК ОказаниеУслуг
+		ПО ВТ_ЗаявкиБезСобытий.Заявка = ОказаниеУслуг.ДокументОснование
+ГДЕ
+	ОказаниеУслуг.Проведен
+{ГДЕ
+	ОказаниеУслуг.Ссылка.* КАК Продажа}
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ЗНАЧЕНИЕ(Документ.Событие.ПустаяСсылка),
+	ЗНАЧЕНИЕ(Документ.Заявка.ПустаяСсылка),
+	ОказаниеУслуг.Ссылка,
+	ОказаниеУслуг.СуммаДокумента,
+	ОказаниеУслуг.Филиал,
+	ОказаниеУслуг.Клиент,
+	ОказаниеУслуг.Ответственный,
+	ОказаниеУслуг.Дата
+ИЗ
+	Документ.ОказаниеУслуг КАК ОказаниеУслуг
+ГДЕ
+	(ОказаниеУслуг.ДокументОснование = НЕОПРЕДЕЛЕНО
+			ИЛИ ОказаниеУслуг.ДокументОснование = ЗНАЧЕНИЕ(Документ.Заявка.ПустаяСсылка))
+	И ОказаниеУслуг.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+	И ОказаниеУслуг.Проведен
+{ГДЕ
+	ОказаниеУслуг.Ссылка.* КАК Продажа}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВложенныйЗапрос.Событие КАК Событие,
+	ВложенныйЗапрос.Организация КАК омг_Организация,
+	ВложенныйЗапрос.Филиал КАК Филиал,
+	ВложенныйЗапрос.Клиент КАК Клиент,
+	ВложенныйЗапрос.Ответственный КАК Ответственный,
+	ВложенныйЗапрос.Дата КАК Дата,
+	ВложенныйЗапрос.ТипЗвонка КАК ТипЗвонка
+ПОМЕСТИТЬ ВТ_ДанныеБезСобытий
+ИЗ
+	(ВЫБРАТЬ РАЗЛИЧНЫЕ
+		ВТ_ЗаявкиБезСобытий.Событие КАК Событие,
+		ВТ_ЗаявкиБезСобытий.Заявка.Филиал.Организация КАК Организация,
+		ВТ_ЗаявкиБезСобытий.Заявка.Филиал КАК Филиал,
+		ВТ_ЗаявкиБезСобытий.Заявка.Клиент КАК Клиент,
+		ВТ_ЗаявкиБезСобытий.Заявка.Ответственный КАК Ответственный,
+		ВТ_ЗаявкиБезСобытий.Заявка.Дата КАК Дата,
+		ЗНАЧЕНИЕ(Справочник.ТипыЗвонков.ПустаяСсылка) КАК ТипЗвонка
+	ИЗ
+		ВТ_ЗаявкиБезСобытий КАК ВТ_ЗаявкиБезСобытий
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ РАЗЛИЧНЫЕ
+		ВТ_ПродажиБезСобытий.Событие,
+		ВТ_ПродажиБезСобытий.Продажа.Организация,
+		ВТ_ПродажиБезСобытий.Продажа.Филиал,
+		ВТ_ПродажиБезСобытий.Продажа.Клиент,
+		ВТ_ПродажиБезСобытий.Продажа.Ответственный,
+		ВТ_ПродажиБезСобытий.Продажа.Дата,
+		ЗНАЧЕНИЕ(Справочник.ТипыЗвонков.ПустаяСсылка)
+	ИЗ
+		ВТ_ПродажиБезСобытий КАК ВТ_ПродажиБезСобытий) КАК ВложенныйЗапрос
+
+СГРУППИРОВАТЬ ПО
+	ВложенныйЗапрос.Филиал,
+	ВложенныйЗапрос.Событие,
+	ВложенныйЗапрос.Организация,
+	ВложенныйЗапрос.Дата,
+	ВложенныйЗапрос.Ответственный,
+	ВложенныйЗапрос.Клиент,
+	ВложенныйЗапрос.ТипЗвонка
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВТ_ДанныеБезСобытий.омг_Организация КАК Организация,
+	ВТ_ДанныеБезСобытий.Филиал КАК Филиал,
+	ВТ_ДанныеБезСобытий.Клиент КАК Клиент,
+	ВТ_ДанныеБезСобытий.Ответственный КАК Ответственный,
+	ВТ_ДанныеБезСобытий.ТипЗвонка КАК ТипЗвонка,
+	ВТ_ДанныеБезСобытий.Событие КАК Событие,
+	ВТ_ДанныеБезСобытий.Дата КАК Дата,
+	0 КАК КоличествоСобытий,
+	Заявки.КоличествоЗаявок КАК КоличествоЗаявок,
+	Продажи.СуммаПродажи КАК СуммаПродажи,
+	Продажи.КоличествоРабот КАК КоличествоРабот,
+	Заявки.КоличествоЗаявок КАК Заявка,
+	Продажи.КоличествоРабот КАК ОказаниеУслуг
+ИЗ
+	ВТ_ДанныеБезСобытий КАК ВТ_ДанныеБезСобытий
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ВТ_ЗаявкиБезСобытий.Событие КАК Событие,
+			ВТ_ЗаявкиБезСобытий.Заявка КАК КоличествоЗаявок,
+			ВТ_ЗаявкиБезСобытий.Филиал КАК Филиал,
+			ВТ_ЗаявкиБезСобытий.Клиент КАК Клиент,
+			ВТ_ЗаявкиБезСобытий.Ответственный КАК Ответственный,
+			ВТ_ЗаявкиБезСобытий.Дата КАК Дата
+		ИЗ
+			ВТ_ЗаявкиБезСобытий КАК ВТ_ЗаявкиБезСобытий) КАК Заявки
+		ПО ВТ_ДанныеБезСобытий.Событие = Заявки.Событие
+			И ВТ_ДанныеБезСобытий.Филиал = Заявки.Филиал
+			И ВТ_ДанныеБезСобытий.Клиент = Заявки.Клиент
+			И ВТ_ДанныеБезСобытий.Ответственный = Заявки.Ответственный
+			И ВТ_ДанныеБезСобытий.Дата = Заявки.Дата
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ВТ_ПродажиБезСобытий.Событие КАК Событие,
+			ВТ_ПродажиБезСобытий.Продажа КАК КоличествоРабот,
+			ВТ_ПродажиБезСобытий.СуммаПродажи КАК СуммаПродажи,
+			ВТ_ПродажиБезСобытий.Филиал КАК Филиал,
+			ВТ_ПродажиБезСобытий.Клиент КАК Клиент,
+			ВТ_ПродажиБезСобытий.Ответственный КАК Ответственный,
+			ВТ_ПродажиБезСобытий.Дата КАК Дата
+		ИЗ
+			ВТ_ПродажиБезСобытий КАК ВТ_ПродажиБезСобытий) КАК Продажи
+		ПО ВТ_ДанныеБезСобытий.Событие = Продажи.Событие
+			И ВТ_ДанныеБезСобытий.Филиал = Продажи.Филиал
+			И ВТ_ДанныеБезСобытий.Клиент = Продажи.Клиент
+			И ВТ_ДанныеБезСобытий.Ответственный = Продажи.Ответственный
+			И ВТ_ДанныеБезСобытий.Дата = Продажи.Дата
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВТ_События.омг_Организация,
+	ВТ_События.Филиал,
+	ВТ_События.Клиент,
+	ВТ_События.Ответственный,
+	ВТ_События.ТипЗвонка,
+	ВТ_События.Событие,
+	ВТ_События.Дата,
+	1,
+	Заявки.КоличествоЗаявок,
+	Продажи.СуммаПродажи,
+	Продажи.КоличествоРабот,
+	Заявки.КоличествоЗаявок,
+	Продажи.КоличествоРабот
+ИЗ
+	ВТ_События КАК ВТ_События
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ВТ_Заявки.Событие КАК Событие,
+			ВТ_Заявки.Заявка КАК КоличествоЗаявок
+		ИЗ
+			ВТ_Заявки КАК ВТ_Заявки) КАК Заявки
+		ПО ВТ_События.Событие = Заявки.Событие
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ВТ_Продажи.Событие КАК Событие,
+			ВТ_Продажи.Продажа КАК КоличествоРабот,
+			ВТ_Продажи.СуммаПродажи КАК СуммаПродажи
+		ИЗ
+			ВТ_Продажи КАК ВТ_Продажи) КАК Продажи
+		ПО ВТ_События.Событие = Продажи.Событие</query>
+	</dataSet>
+	<calculatedField>
+		<dataPath>КонверсияЗаявок</dataPath>
+		<expression>0</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конверсия звонок-заявка</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>КонверсияРабот</dataPath>
+		<expression>0</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конверсия заявка-визит</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>Месяц</dataPath>
+		<expression>НАЧАЛОПЕРИОДА(Дата, "МЕСЯЦ")</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Месяц</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>ДФ='ММММ гггг'</v8:content>
+					</v8:item>
+				</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>КонверсияЗвонокВизит</dataPath>
+		<expression>0</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конверсия звонок- визит</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<totalField>
+		<dataPath>КоличествоЗаявок</dataPath>
+		<expression>КОЛИЧЕСТВО(РАЗЛИЧНЫЕ КоличествоЗаявок)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоСобытий</dataPath>
+		<expression>Сумма(КоличествоСобытий)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КонверсияЗаявок</dataPath>
+		<expression>ВЫБОР КОГДА Сумма(КоличествоСобытий) = 0 ТОГДА 0 ИНАЧЕ ОКР(КОЛИЧЕСТВО(РАЗЛИЧНЫЕ КоличествоЗаявок) / Сумма(КоличествоСобытий) * 100, 2) КОНЕЦ</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КонверсияРабот</dataPath>
+		<expression>ВЫБОР КОГДА КОЛИЧЕСТВО(РАЗЛИЧНЫЕ КоличествоЗаявок) = 0 ТОГДА 0 ИНАЧЕ  Окр(КОЛИЧЕСТВО(РАЗЛИЧНЫЕ КоличествоРабот)/ КОЛИЧЕСТВО(РАЗЛИЧНЫЕ КоличествоЗаявок) * 100, 2) КОНЕЦ</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоРабот</dataPath>
+		<expression>КОЛИЧЕСТВО(РАЗЛИЧНЫЕ КоличествоРабот)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаПродажи</dataPath>
+		<expression>Сумма(СуммаПродажи)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КонверсияЗвонокВизит</dataPath>
+		<expression>ВЫБОР КОГДА Сумма(КоличествоСобытий) = 0 ТОГДА 0 ИНАЧЕ  Окр(КОЛИЧЕСТВО(РАЗЛИЧНЫЕ КоличествоРабот)/ Сумма(КоличествоСобытий) * 100, 2) КОНЕЦ</expression>
+	</totalField>
+	<parameter>
+		<name>ДатаНачала</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата начала</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>ДатаОкончания</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата окончания</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+		<denyIncompleteValues>true</denyIncompleteValues>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>КонверсияСобытий</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конверсия событий</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Ответственный</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоСобытий</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоЗаявок</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоРабот</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КонверсияЗаявок</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КонверсияРабот</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КонверсияЗвонокВизит</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаПродажи</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">ТипЗвонка</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>cfee5047-5086-4542-860e-15ff35b99cfe</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:userSettingID>dca6aca1-1d41-46db-9969-894036bc5c48</dcsset:userSettingID>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>d4d941c6-1bec-42eb-b1a5-616a284db959</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:userSettingID>fef4dad1-96d8-49f1-b801-36c6d070d7d9</dcsset:userSettingID>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:userSettingID>e1755c41-2cfb-45d5-bf99-1f9097cbbbff</dcsset:userSettingID>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МакетОформления</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">Зеленый</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemTable">
+				<dcsset:column>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Месяц</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:column>
+				<dcsset:row>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Организация</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item>
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Филиал</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:row>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

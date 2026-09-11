@@ -1,0 +1,1540 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<Group>Vertical</Group>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаСохранить" id="17">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Сохранить</CommandName>
+				<LocationInCommandBar>InCommandBar</LocationInCommandBar>
+				<ButtonImportance>Main</ButtonImportance>
+				<ExtendedTooltip name="ФормаСохранитьРасширеннаяПодсказка" id="18"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<CheckBoxField name="ИсследованияВыполнены" id="81">
+			<DataPath>ИсследованияВыполнены</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исследования</v8:content>
+				</v8:item>
+			</Title>
+			<CheckBoxType>Tumbler</CheckBoxType>
+			<EditFormat>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>БЛ=Отменены; БИ=Выполнены</v8:content>
+				</v8:item>
+			</EditFormat>
+			<ContextMenu name="ИсследованияВыполненыКонтекстноеМеню" id="82"/>
+			<ExtendedTooltip name="ИсследованияВыполненыРасширеннаяПодсказка" id="83"/>
+			<Events>
+				<Event name="OnChange">ИсследованиеВыполненоПриИзменении</Event>
+			</Events>
+		</CheckBoxField>
+		<InputField name="ПричинаОтменыВыполненияИсследований" id="84">
+			<DataPath>ПричинаОтменыВыполненияИсследований</DataPath>
+			<MarkRequiredComplete>true</MarkRequiredComplete>
+			<DropListButton>true</DropListButton>
+			<ChoiceButton>true</ChoiceButton>
+			<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+			<OpenButton>false</OpenButton>
+			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+			<ChoiceParameters>
+				<app:item name="Отбор.ВидКлассификатора">
+					<app:value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation/>
+						<Value xsi:type="xr:DesignTimeRef">Enum.ВидыКлассификаторовМинЗдрава.EnumValue.ПричиныОтменыВыполненияЛабораторногоИсследования</Value>
+					</app:value>
+				</app:item>
+			</ChoiceParameters>
+			<ContextMenu name="ПричинаОтменыВыполненияИсследованийКонтекстноеМеню" id="85"/>
+			<ExtendedTooltip name="ПричинаОтменыВыполненияИсследованийРасширеннаяПодсказка" id="86"/>
+		</InputField>
+		<UsualGroup name="ОписаниеИсследований" id="180">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание исследований</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Описание исследований</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>WeakSeparation</Representation>
+			<ExtendedTooltip name="ОписаниеИсследованийРасширеннаяПодсказка" id="181"/>
+			<ChildItems>
+				<Table name="Исследования" id="21">
+					<Representation>List</Representation>
+					<HeightControlVariant>UseContentHeight</HeightControlVariant>
+					<RowSelectionMode>Cell</RowSelectionMode>
+					<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>Исследования</DataPath>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="ИсследованияКонтекстноеМеню" id="22"/>
+					<AutoCommandBar name="ИсследованияКоманднаяПанель" id="23"/>
+					<ExtendedTooltip name="ИсследованияРасширеннаяПодсказка" id="24"/>
+					<SearchStringAddition name="ИсследованияСтрокаПоиска" id="25">
+						<AdditionSource>
+							<Item>Исследования</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ИсследованияСтрокаПоискаКонтекстноеМеню" id="26"/>
+						<ExtendedTooltip name="ИсследованияСтрокаПоискаРасширеннаяПодсказка" id="27"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="ИсследованияСостояниеПросмотра" id="28">
+						<AdditionSource>
+							<Item>Исследования</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="ИсследованияСостояниеПросмотраКонтекстноеМеню" id="29"/>
+						<ExtendedTooltip name="ИсследованияСостояниеПросмотраРасширеннаяПодсказка" id="30"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="ИсследованияУправлениеПоиском" id="31">
+						<AdditionSource>
+							<Item>Исследования</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="ИсследованияУправлениеПоискомКонтекстноеМеню" id="32"/>
+						<ExtendedTooltip name="ИсследованияУправлениеПоискомРасширеннаяПодсказка" id="33"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="OnActivateRow">ПрофилиЛабораторныхИсследованийПриАктивизацииСтроки</Event>
+						<Event name="OnChange">ПрофилиЛабораторныхИсследованийПриИзменении</Event>
+					</Events>
+					<ChildItems>
+						<InputField name="ИсследованияИсследованиеПрофиль" id="34">
+							<DataPath>Исследования.ИсследованиеПрофиль</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ChoiceButton>true</ChoiceButton>
+							<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+							<ClearButton>true</ClearButton>
+							<OpenButton>false</OpenButton>
+							<ChooseType>false</ChooseType>
+							<ChoiceParameters>
+								<app:item name="Отбор.ВидКлассификатора">
+									<app:value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xr:DesignTimeRef">Enum.ВидыКлассификаторовМинЗдрава.EnumValue.ПрофилиЛабораторныхИсследований</Value>
+									</app:value>
+								</app:item>
+							</ChoiceParameters>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отдельные лабораторные тесты</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="ИсследованияИсследованиеПрофильКонтекстноеМеню" id="35"/>
+							<ExtendedTooltip name="ИсследованияИсследованиеПрофильРасширеннаяПодсказка" id="36"/>
+							<Events>
+								<Event name="OnChange">ПрофильЛабораторногоИсследованияПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</Table>
+				<UsualGroup name="ОписаниеИсследованияПоПрофилю" id="19">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание исследования по профилю</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Описание исследования по профилю</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>WeakSeparation</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ОписаниеИсследованияПоПрофилюРасширеннаяПодсказка" id="20"/>
+					<ChildItems>
+						<UsualGroup name="ЛабораторныеТестыПоПрофилю" id="77">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Лабораторные тесты по профилю</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Лабораторные тесты по профилю</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>StrongSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ЛабораторныеТестыПоПрофилюРасширеннаяПодсказка" id="78"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаТаблицаЛабораторныхТестов" id="182">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Лабораторные тесты</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Лабораторные тесты</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>HorizontalIfPossible</Group>
+									<Representation>WeakSeparation</Representation>
+									<ExtendedTooltip name="ГруппаТаблицаЛабораторныхТестовРасширеннаяПодсказка" id="183"/>
+									<ChildItems>
+										<Table name="ЛабораторныеТесты" id="99">
+											<Representation>List</Representation>
+											<HeightControlVariant>UseContentHeight</HeightControlVariant>
+											<RowSelectionMode>Cell</RowSelectionMode>
+											<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+											<EnableStartDrag>true</EnableStartDrag>
+											<EnableDrag>true</EnableDrag>
+											<DataPath>Items.Исследования.CurrentData.ЛабораторныеТесты</DataPath>
+											<RowFilter xsi:nil="true"/>
+											<ContextMenu name="ЛабораторныеТестыКонтекстноеМеню" id="100"/>
+											<AutoCommandBar name="ЛабораторныеТестыКоманднаяПанель" id="101"/>
+											<ExtendedTooltip name="ЛабораторныеТестыРасширеннаяПодсказка" id="102"/>
+											<SearchStringAddition name="ЛабораторныеТестыСтрокаПоиска" id="103">
+												<AdditionSource>
+													<Item>ЛабораторныеТесты</Item>
+													<Type>SearchStringRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ЛабораторныеТестыСтрокаПоискаКонтекстноеМеню" id="104"/>
+												<ExtendedTooltip name="ЛабораторныеТестыСтрокаПоискаРасширеннаяПодсказка" id="105"/>
+											</SearchStringAddition>
+											<ViewStatusAddition name="ЛабораторныеТестыСостояниеПросмотра" id="106">
+												<AdditionSource>
+													<Item>ЛабораторныеТесты</Item>
+													<Type>ViewStatusRepresentation</Type>
+												</AdditionSource>
+												<ContextMenu name="ЛабораторныеТестыСостояниеПросмотраКонтекстноеМеню" id="107"/>
+												<ExtendedTooltip name="ЛабораторныеТестыСостояниеПросмотраРасширеннаяПодсказка" id="108"/>
+											</ViewStatusAddition>
+											<SearchControlAddition name="ЛабораторныеТестыУправлениеПоиском" id="109">
+												<AdditionSource>
+													<Item>ЛабораторныеТесты</Item>
+													<Type>SearchControl</Type>
+												</AdditionSource>
+												<ContextMenu name="ЛабораторныеТестыУправлениеПоискомКонтекстноеМеню" id="110"/>
+												<ExtendedTooltip name="ЛабораторныеТестыУправлениеПоискомРасширеннаяПодсказка" id="111"/>
+											</SearchControlAddition>
+											<Events>
+												<Event name="OnActivateRow">ЛабораторныеТестыПриАктивизацииСтроки</Event>
+												<Event name="OnChange">ЛабораторныеТестыПриИзменении</Event>
+											</Events>
+											<ChildItems>
+												<PictureField name="ЛабораторныеТестыЛабораторныйТестВыполненКолонка" id="186">
+													<DataPath>Items.Исследования.CurrentData.ЛабораторныеТесты.ЛабораторныйТестВыполнен</DataPath>
+													<Enabled>false</Enabled>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Выполнен</v8:content>
+														</v8:item>
+													</ToolTip>
+													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<AutoEditMode>true</AutoEditMode>
+													<ValuesPicture>
+														<xr:Ref>CommonPicture.Успешно</xr:Ref>
+														<xr:LoadTransparent>false</xr:LoadTransparent>
+													</ValuesPicture>
+													<ContextMenu name="ЛабораторныеТестыЛабораторныйТестВыполненКолонкаКонтекстноеМеню" id="187"/>
+													<ExtendedTooltip name="ЛабораторныеТестыЛабораторныйТестВыполненКолонкаРасширеннаяПодсказка" id="188"/>
+												</PictureField>
+												<InputField name="ЛабораторныеТестыЛабораторныйТест" id="112">
+													<DataPath>Items.Исследования.CurrentData.ЛабораторныеТесты.ЛабораторныйТест</DataPath>
+													<EditMode>EnterOnInput</EditMode>
+													<AutoEditMode>true</AutoEditMode>
+													<ChoiceButton>true</ChoiceButton>
+													<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+													<OpenButton>false</OpenButton>
+													<ContextMenu name="ЛабораторныеТестыЛабораторныйТестКонтекстноеМеню" id="113"/>
+													<ExtendedTooltip name="ЛабораторныеТестыЛабораторныйТестРасширеннаяПодсказка" id="114"/>
+													<Events>
+														<Event name="OnChange">ЛабораторныйТестПриИзменении</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</Table>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ПараметрыЛабораторногоТеста" id="79">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Параметры лабораторного теста</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Параметры лабораторного теста</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>AlwaysHorizontal</Group>
+									<Representation>WeakSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ПараметрыЛабораторногоТестаРасширеннаяПодсказка" id="80"/>
+									<ChildItems>
+										<UsualGroup name="ВыполнениеИПараметры" id="200">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Описание лабораторного теста</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Описание лабораторного теста</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>WeakSeparation</Representation>
+											<ExtendedTooltip name="ВыполнениеИПараметрыРасширеннаяПодсказка" id="201"/>
+											<ChildItems>
+												<UsualGroup name="ВыполнениеТеста" id="198">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Выполнение теста</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Выполнение теста</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>AlwaysHorizontal</Group>
+													<Representation>WeakSeparation</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ThroughAlign>Use</ThroughAlign>
+													<ExtendedTooltip name="ВыполнениеТестаРасширеннаяПодсказка" id="199"/>
+													<ChildItems>
+														<CheckBoxField name="ЛабораторныеТестыЛабораторныйТестВыполнен" id="118">
+															<DataPath>Items.ЛабораторныеТесты.CurrentData.ЛабораторныйТестВыполнен</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Тест</v8:content>
+																</v8:item>
+															</Title>
+															<CheckBoxType>Tumbler</CheckBoxType>
+															<EditFormat>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>БЛ=Отменен; БИ=Выполнен</v8:content>
+																</v8:item>
+															</EditFormat>
+															<ContextMenu name="ЛабораторныеТестыЛабораторныйТестВыполненКонтекстноеМеню" id="119"/>
+															<ExtendedTooltip name="ЛабораторныеТестыЛабораторныйТестВыполненРасширеннаяПодсказка" id="120"/>
+															<Events>
+																<Event name="OnChange">ТестВыполненПриИзменении</Event>
+															</Events>
+														</CheckBoxField>
+														<InputField name="ЛабораторныеТестыЛабораторныйТестПричинаОтмены" id="189">
+															<DataPath>Items.ЛабораторныеТесты.CurrentData.ЛабораторныйТестПричинаОтмены</DataPath>
+															<MarkRequiredComplete>true</MarkRequiredComplete>
+															<DropListButton>true</DropListButton>
+															<ChoiceButton>true</ChoiceButton>
+															<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+															<OpenButton>false</OpenButton>
+															<AutoMarkIncomplete>true</AutoMarkIncomplete>
+															<ChoiceParameters>
+																<app:item name="Отбор.ВидКлассификатора">
+																	<app:value xsi:type="FormChoiceListDesTimeValue">
+																		<Presentation/>
+																		<Value xsi:type="xr:DesignTimeRef">Enum.ВидыКлассификаторовМинЗдрава.EnumValue.ПричиныОтменыВыполненияЛабораторногоИсследования</Value>
+																	</app:value>
+																</app:item>
+															</ChoiceParameters>
+															<ContextMenu name="ЛабораторныеТестыЛабораторныйТестПричинаОтменыКонтекстноеМеню" id="190"/>
+															<ExtendedTooltip name="ЛабораторныеТестыЛабораторныйТестПричинаОтменыРасширеннаяПодсказка" id="191"/>
+														</InputField>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="ОбщиеПараметрыТеста" id="205">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Общие параметры теста</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Общие параметры теста</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ThroughAlign>Use</ThroughAlign>
+													<ExtendedTooltip name="ОбщиеПараметрыТестаРасширеннаяПодсказка" id="206"/>
+													<ChildItems>
+														<InputField name="ЛабораторныеТестыЛабораторныйТестДатаВыполнения" id="124">
+															<DataPath>Items.ЛабораторныеТесты.CurrentData.ЛабораторныйТестДатаВыполнения</DataPath>
+															<MarkRequiredComplete>true</MarkRequiredComplete>
+															<EditFormat>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>ДФ='dd.MM.yyyy HH:mm'</v8:content>
+																</v8:item>
+															</EditFormat>
+															<AutoMarkIncomplete>true</AutoMarkIncomplete>
+															<ContextMenu name="ЛабораторныеТестыЛабораторныйТестДатаВыполненияКонтекстноеМеню" id="125"/>
+															<ExtendedTooltip name="ЛабораторныеТестыЛабораторныйТестДатаВыполненияРасширеннаяПодсказка" id="126"/>
+														</InputField>
+														<UsualGroup name="СотрудникДолжностьТест" id="144">
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Сотрудник должность тест</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Сотрудник должность тест</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>AlwaysHorizontal</Group>
+															<Representation>WeakSeparation</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ThroughAlign>Use</ThroughAlign>
+															<ExtendedTooltip name="СотрудникДолжностьТестРасширеннаяПодсказка" id="145"/>
+															<ChildItems>
+																<InputField name="ЛабораторныеТестыЛабораторныйТестСотрудник" id="138">
+																	<DataPath>Items.ЛабораторныеТесты.CurrentData.ЛабораторныйТестСотрудник</DataPath>
+																	<TitleHeight>2</TitleHeight>
+																	<MarkRequiredComplete>true</MarkRequiredComplete>
+																	<DropListButton>false</DropListButton>
+																	<ChoiceButton>true</ChoiceButton>
+																	<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+																	<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																	<ContextMenu name="ЛабораторныеТестыЛабораторныйТестСотрудникКонтекстноеМеню" id="139"/>
+																	<ExtendedTooltip name="ЛабораторныеТестыЛабораторныйТестСотрудникРасширеннаяПодсказка" id="140"/>
+																	<Events>
+																		<Event name="OnChange">ЛабораторныеТестыЛабораторныйТестСотрудникПриИзменении</Event>
+																	</Events>
+																</InputField>
+																<InputField name="ЛабораторныеТестыЛабораторныйТестДолжностьСотрудника" id="141">
+																	<DataPath>Items.ЛабораторныеТесты.CurrentData.ЛабораторныйТестДолжностьСотрудника</DataPath>
+																	<MarkRequiredComplete>true</MarkRequiredComplete>
+																	<DropListButton>true</DropListButton>
+																	<ChoiceButton>true</ChoiceButton>
+																	<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+																	<OpenButton>false</OpenButton>
+																	<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																	<TextEdit>false</TextEdit>
+																	<ChoiceParameters>
+																		<app:item name="Отбор.ВидКлассификатора">
+																			<app:value xsi:type="FormChoiceListDesTimeValue">
+																				<Presentation/>
+																				<Value xsi:type="xr:DesignTimeRef">Enum.ВидыКлассификаторовМинЗдрава.EnumValue.ДолжностиРаботниковМедОрганизаций</Value>
+																			</app:value>
+																		</app:item>
+																	</ChoiceParameters>
+																	<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+																	<ContextMenu name="ЛабораторныеТестыЛабораторныйТестДолжностьСотрудникаКонтекстноеМеню" id="142"/>
+																	<ExtendedTooltip name="ЛабораторныеТестыЛабораторныйТестДолжностьСотрудникаРасширеннаяПодсказка" id="143"/>
+																	<Events>
+																		<Event name="AutoComplete">ЛабораторныеТестыЛабораторныйТестДолжностьСотрудникаАвтоПодбор</Event>
+																		<Event name="StartChoice">ЛабораторныеТестыЛабораторныйТестДолжностьСотрудникаНачалоВыбора</Event>
+																	</Events>
+																</InputField>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="ПараметрыВыполненногоТеста" id="184">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Параметры выполненного теста</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Параметры выполненного теста</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ThroughAlign>Use</ThroughAlign>
+													<ExtendedTooltip name="ПараметрыВыполненногоТестаРасширеннаяПодсказка" id="185"/>
+													<ChildItems>
+														<InputField name="ЛабораторныеТестыЛабораторныйТестЗначение" id="129">
+															<DataPath>Items.ЛабораторныеТесты.CurrentData.ЛабораторныйТестЗначение</DataPath>
+															<MarkRequiredComplete>true</MarkRequiredComplete>
+															<AutoMarkIncomplete>true</AutoMarkIncomplete>
+															<ContextMenu name="ЛабораторныеТестыЛабораторныйТестЗначениеКонтекстноеМеню" id="130"/>
+															<ExtendedTooltip name="ЛабораторныеТестыЛабораторныйТестЗначениеРасширеннаяПодсказка" id="131"/>
+														</InputField>
+														<InputField name="ЛабораторныеТестыЛабораторныйТестИнтерпретацияРезультата" id="132">
+															<DataPath>Items.ЛабораторныеТесты.CurrentData.ЛабораторныйТестИнтерпретацияРезультата</DataPath>
+															<TitleHeight>2</TitleHeight>
+															<DropListButton>false</DropListButton>
+															<ChoiceButton>true</ChoiceButton>
+															<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+															<ChoiceParameters>
+																<app:item name="Отбор.ВидКлассификатора">
+																	<app:value xsi:type="FormChoiceListDesTimeValue">
+																		<Presentation/>
+																		<Value xsi:type="xr:DesignTimeRef">Enum.ВидыКлассификаторовМинЗдрава.EnumValue.СправочникКодовИнтерпретацииРезультатов</Value>
+																	</app:value>
+																</app:item>
+															</ChoiceParameters>
+															<ContextMenu name="ЛабораторныеТестыЛабораторныйТестИнтерпретацияРезультатаКонтекстноеМеню" id="133"/>
+															<ExtendedTooltip name="ЛабораторныеТестыЛабораторныйТестИнтерпретацияРезультатаРасширеннаяПодсказка" id="134"/>
+														</InputField>
+														<InputField name="ЛабораторныеТестыЛабораторныйТестШтрихкод" id="135">
+															<DataPath>Items.ЛабораторныеТесты.CurrentData.ЛабораторныйТестШтрихкод</DataPath>
+															<MarkRequiredComplete>true</MarkRequiredComplete>
+															<AutoMarkIncomplete>true</AutoMarkIncomplete>
+															<ContextMenu name="ЛабораторныеТестыЛабораторныйТестШтрихкодКонтекстноеМеню" id="136"/>
+															<ExtendedTooltip name="ЛабораторныеТестыЛабораторныйТестШтрихкодРасширеннаяПодсказка" id="137"/>
+														</InputField>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="КомментарийКТесту" id="164">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Комментарий к тесту</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Комментарий к тесту</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Vertical</Group>
+													<Behavior>Collapsible</Behavior>
+													<Collapsed>true</Collapsed>
+													<Representation>StrongSeparation</Representation>
+													<ExtendedTooltip name="КомментарийКТестуРасширеннаяПодсказка" id="165"/>
+													<ChildItems>
+														<InputField name="ЛабораторныеТестыЛабораторныйТестКомментарий" id="166">
+															<DataPath>Items.ЛабораторныеТесты.CurrentData.ЛабораторныйТестКомментарий</DataPath>
+															<TitleLocation>None</TitleLocation>
+															<AutoMaxWidth>false</AutoMaxWidth>
+															<MultiLine>true</MultiLine>
+															<ContextMenu name="ЛабораторныеТестыЛабораторныйТестКомментарийКонтекстноеМеню" id="167"/>
+															<ExtendedTooltip name="ЛабораторныеТестыЛабораторныйТестКомментарийРасширеннаяПодсказка" id="168"/>
+															<Events>
+																<Event name="OnChange">ЛабораторныеТестыЛабораторныйТестКомментарийПриИзменении</Event>
+															</Events>
+														</InputField>
+														<UsualGroup name="ПараметрыПримечанияЛабТеста" id="209">
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Параметры примечания лабораторного теста</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Параметры примечания лабораторного теста</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Group>Vertical</Group>
+															<Representation>WeakSeparation</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="ПараметрыПримечанияЛабТестаРасширеннаяПодсказка" id="210"/>
+															<ChildItems>
+																<InputField name="ЛабораторныеТестыЛабораторныйТестДатаКомментария" id="169">
+																	<DataPath>Items.ЛабораторныеТесты.CurrentData.ЛабораторныйТестДатаКомментария</DataPath>
+																	<MarkRequiredComplete>true</MarkRequiredComplete>
+																	<EditFormat>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>ДФ='dd.MM.yyyy HH:mm'</v8:content>
+																		</v8:item>
+																	</EditFormat>
+																	<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																	<ContextMenu name="ЛабораторныеТестыЛабораторныйТестДатаКомментарияКонтекстноеМеню" id="170"/>
+																	<ExtendedTooltip name="ЛабораторныеТестыЛабораторныйТестДатаКомментарияРасширеннаяПодсказка" id="171"/>
+																</InputField>
+																<UsualGroup name="АвторДолжностьКомментария" id="178">
+																	<Title>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Автор должность комментария</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Автор должность комментария</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<Group>HorizontalIfPossible</Group>
+																	<Representation>WeakSeparation</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ThroughAlign>Use</ThroughAlign>
+																	<ExtendedTooltip name="АвторДолжностьКомментарияРасширеннаяПодсказка" id="179"/>
+																	<ChildItems>
+																		<InputField name="ЛабораторныеТестыЛабораторныйТестАвторКомментария" id="172">
+																			<DataPath>Items.ЛабораторныеТесты.CurrentData.ЛабораторныйТестАвторКомментария</DataPath>
+																			<MarkRequiredComplete>true</MarkRequiredComplete>
+																			<DropListButton>false</DropListButton>
+																			<ChoiceButton>true</ChoiceButton>
+																			<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+																			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																			<ContextMenu name="ЛабораторныеТестыЛабораторныйТестАвторКомментарияКонтекстноеМеню" id="173"/>
+																			<ExtendedTooltip name="ЛабораторныеТестыЛабораторныйТестАвторКомментарияРасширеннаяПодсказка" id="174"/>
+																			<Events>
+																				<Event name="OnChange">ЛабораторныеТестыЛабораторныйТестАвторКомментарияПриИзменении</Event>
+																			</Events>
+																		</InputField>
+																		<InputField name="ЛабораторныеТестыЛабораторныйТестДолжностьАвтораКомментария" id="175">
+																			<DataPath>Items.ЛабораторныеТесты.CurrentData.ЛабораторныйТестДолжностьАвтораКомментария</DataPath>
+																			<MarkRequiredComplete>true</MarkRequiredComplete>
+																			<DropListButton>true</DropListButton>
+																			<ChoiceButton>true</ChoiceButton>
+																			<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+																			<OpenButton>false</OpenButton>
+																			<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																			<TextEdit>false</TextEdit>
+																			<ChoiceParameters>
+																				<app:item name="Отбор.ВидКлассификатора">
+																					<app:value xsi:type="FormChoiceListDesTimeValue">
+																						<Presentation/>
+																						<Value xsi:type="xr:DesignTimeRef">Enum.ВидыКлассификаторовМинЗдрава.EnumValue.ДолжностиРаботниковМедОрганизаций</Value>
+																					</app:value>
+																				</app:item>
+																			</ChoiceParameters>
+																			<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+																			<ContextMenu name="ЛабораторныеТестыЛабораторныйТестДолжностьАвтораКомментарияКонтекстноеМеню" id="176"/>
+																			<ExtendedTooltip name="ЛабораторныеТестыЛабораторныйТестДолжностьАвтораКомментарияРасширеннаяПодсказка" id="177"/>
+																			<Events>
+																				<Event name="AutoComplete">ЛабораторныеТестыЛабораторныйТестДолжностьАвтораКомментарияАвтоПодбор</Event>
+																				<Event name="StartChoice">ЛабораторныеТестыЛабораторныйТестДолжностьАвтораКомментарияНачалоВыбора</Event>
+																			</Events>
+																		</InputField>
+																	</ChildItems>
+																</UsualGroup>
+															</ChildItems>
+														</UsualGroup>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="ГруппаИспользованноеОборудование" id="162">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Использованное оборудование</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа использованное оборудование</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>HorizontalIfPossible</Group>
+											<Representation>WeakSeparation</Representation>
+											<ExtendedTooltip name="ГруппаИспользованноеОборудованиеРасширеннаяПодсказка" id="163"/>
+											<ChildItems>
+												<Table name="ИспользованноеОборудование" id="146">
+													<Representation>List</Representation>
+													<RowSelectionMode>Cell</RowSelectionMode>
+													<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+													<EnableStartDrag>true</EnableStartDrag>
+													<EnableDrag>true</EnableDrag>
+													<DataPath>Items.ЛабораторныеТесты.CurrentData.ИспользованноеОборудование</DataPath>
+													<RowFilter xsi:nil="true"/>
+													<ContextMenu name="ИспользованноеОборудованиеКонтекстноеМеню" id="147"/>
+													<AutoCommandBar name="ИспользованноеОборудованиеКоманднаяПанель" id="148"/>
+													<ExtendedTooltip name="ИспользованноеОборудованиеРасширеннаяПодсказка" id="149"/>
+													<SearchStringAddition name="ИспользованноеОборудованиеСтрокаПоиска" id="150">
+														<AdditionSource>
+															<Item>ИспользованноеОборудование</Item>
+															<Type>SearchStringRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="ИспользованноеОборудованиеСтрокаПоискаКонтекстноеМеню" id="151"/>
+														<ExtendedTooltip name="ИспользованноеОборудованиеСтрокаПоискаРасширеннаяПодсказка" id="152"/>
+													</SearchStringAddition>
+													<ViewStatusAddition name="ИспользованноеОборудованиеСостояниеПросмотра" id="153">
+														<AdditionSource>
+															<Item>ИспользованноеОборудование</Item>
+															<Type>ViewStatusRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="ИспользованноеОборудованиеСостояниеПросмотраКонтекстноеМеню" id="154"/>
+														<ExtendedTooltip name="ИспользованноеОборудованиеСостояниеПросмотраРасширеннаяПодсказка" id="155"/>
+													</ViewStatusAddition>
+													<SearchControlAddition name="ИспользованноеОборудованиеУправлениеПоиском" id="156">
+														<AdditionSource>
+															<Item>ИспользованноеОборудование</Item>
+															<Type>SearchControl</Type>
+														</AdditionSource>
+														<ContextMenu name="ИспользованноеОборудованиеУправлениеПоискомКонтекстноеМеню" id="157"/>
+														<ExtendedTooltip name="ИспользованноеОборудованиеУправлениеПоискомРасширеннаяПодсказка" id="158"/>
+													</SearchControlAddition>
+													<Events>
+														<Event name="OnChange">ИспользованноеОборудованиеПриИзменении</Event>
+													</Events>
+													<ChildItems>
+														<InputField name="ИспользованноеОборудованиеОборудование" id="202">
+															<DataPath>Items.ЛабораторныеТесты.CurrentData.ИспользованноеОборудование.Оборудование</DataPath>
+															<EditMode>EnterOnInput</EditMode>
+															<AutoEditMode>true</AutoEditMode>
+															<ChoiceButton>true</ChoiceButton>
+															<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+															<OpenButton>false</OpenButton>
+															<ContextMenu name="ИспользованноеОборудованиеОборудованиеКонтекстноеМеню" id="203"/>
+															<ExtendedTooltip name="ИспользованноеОборудованиеОборудованиеРасширеннаяПодсказка" id="204"/>
+														</InputField>
+													</ChildItems>
+												</Table>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ОказанныеУслугиПоПрофилю" id="211">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оказанные услуги</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оказанные услуги</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Behavior>Collapsible</Behavior>
+							<Representation>StrongSeparation</Representation>
+							<ExtendedTooltip name="ОказанныеУслугиПоПрофилюРасширеннаяПодсказка" id="212"/>
+							<ChildItems>
+								<Table name="ИсследованияОказанныеУслуги" id="213">
+									<Representation>List</Representation>
+									<HeightControlVariant>UseContentHeight</HeightControlVariant>
+									<RowSelectionMode>Cell</RowSelectionMode>
+									<Header>false</Header>
+									<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+									<EnableStartDrag>true</EnableStartDrag>
+									<EnableDrag>true</EnableDrag>
+									<DataPath>Items.Исследования.CurrentData.ОказанныеУслуги</DataPath>
+									<RowFilter xsi:nil="true"/>
+									<ContextMenu name="ИсследованияОказанныеУслугиКонтекстноеМеню" id="214"/>
+									<AutoCommandBar name="ИсследованияОказанныеУслугиКоманднаяПанель" id="215"/>
+									<ExtendedTooltip name="ИсследованияОказанныеУслугиРасширеннаяПодсказка" id="216"/>
+									<SearchStringAddition name="ИсследованияОказанныеУслугиСтрокаПоиска" id="217">
+										<AdditionSource>
+											<Item>ИсследованияОказанныеУслуги</Item>
+											<Type>SearchStringRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ИсследованияОказанныеУслугиСтрокаПоискаКонтекстноеМеню" id="218"/>
+										<ExtendedTooltip name="ИсследованияОказанныеУслугиСтрокаПоискаРасширеннаяПодсказка" id="219"/>
+									</SearchStringAddition>
+									<ViewStatusAddition name="ИсследованияОказанныеУслугиСостояниеПросмотра" id="220">
+										<AdditionSource>
+											<Item>ИсследованияОказанныеУслуги</Item>
+											<Type>ViewStatusRepresentation</Type>
+										</AdditionSource>
+										<ContextMenu name="ИсследованияОказанныеУслугиСостояниеПросмотраКонтекстноеМеню" id="221"/>
+										<ExtendedTooltip name="ИсследованияОказанныеУслугиСостояниеПросмотраРасширеннаяПодсказка" id="222"/>
+									</ViewStatusAddition>
+									<SearchControlAddition name="ИсследованияОказанныеУслугиУправлениеПоиском" id="223">
+										<AdditionSource>
+											<Item>ИсследованияОказанныеУслуги</Item>
+											<Type>SearchControl</Type>
+										</AdditionSource>
+										<ContextMenu name="ИсследованияОказанныеУслугиУправлениеПоискомКонтекстноеМеню" id="224"/>
+										<ExtendedTooltip name="ИсследованияОказанныеУслугиУправлениеПоискомРасширеннаяПодсказка" id="225"/>
+									</SearchControlAddition>
+									<Events>
+										<Event name="OnChange">ИсследованияОказанныеУслугиПриИзменении</Event>
+									</Events>
+									<ChildItems>
+										<InputField name="ИсследованияОказанныеУслугиОказаннаяУслугаДата" id="229">
+											<DataPath>Items.Исследования.CurrentData.ОказанныеУслуги.ОказаннаяУслугаДата</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
+											<Format>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>ДФ='dd.MM.yyyy HH:mm'</v8:content>
+												</v8:item>
+											</Format>
+											<EditFormat>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>ДФ='dd.MM.yyyy HH:mm'</v8:content>
+												</v8:item>
+											</EditFormat>
+											<ContextMenu name="ИсследованияОказанныеУслугиОказаннаяУслугаДатаКонтекстноеМеню" id="230"/>
+											<ExtendedTooltip name="ИсследованияОказанныеУслугиОказаннаяУслугаДатаРасширеннаяПодсказка" id="231"/>
+										</InputField>
+										<InputField name="ИсследованияОказанныеУслугиОказаннаяУслуга" id="226">
+											<DataPath>Items.Исследования.CurrentData.ОказанныеУслуги.ОказаннаяУслуга</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
+											<ContextMenu name="ИсследованияОказанныеУслугиОказаннаяУслугаКонтекстноеМеню" id="227"/>
+											<ExtendedTooltip name="ИсследованияОказанныеУслугиОказаннаяУслугаРасширеннаяПодсказка" id="228"/>
+										</InputField>
+									</ChildItems>
+								</Table>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ПримечаниеПоПрофилю" id="54">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Примечание к результату исследования</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Примечание по профилю</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Behavior>Collapsible</Behavior>
+							<Representation>StrongSeparation</Representation>
+							<ExtendedTooltip name="ПримечаниеПоПрофилюРасширеннаяПодсказка" id="55"/>
+							<ChildItems>
+								<InputField name="ИсследованияИсследованиеПримечаниеКРезультату" id="87">
+									<DataPath>Items.Исследования.CurrentData.ИсследованиеПримечаниеКРезультату</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<MultiLine>true</MultiLine>
+									<ContextMenu name="ИсследованияИсследованиеПримечаниеКРезультатуКонтекстноеМеню" id="88"/>
+									<ExtendedTooltip name="ИсследованияИсследованиеПримечаниеКРезультатуРасширеннаяПодсказка" id="89"/>
+									<Events>
+										<Event name="OnChange">ИсследованияИсследованиеПримечаниеКРезультатуПриИзменении</Event>
+									</Events>
+								</InputField>
+								<UsualGroup name="ПараметрыПримечанияИсследования" id="207">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Параметры примечания исследования</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Параметры примечания исследования</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Representation>WeakSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ПараметрыПримечанияИсследованияРасширеннаяПодсказка" id="208"/>
+									<ChildItems>
+										<InputField name="ИсследованияИсследованиеДатаПримечания" id="90">
+											<DataPath>Items.Исследования.CurrentData.ИсследованиеДатаПримечания</DataPath>
+											<MarkRequiredComplete>true</MarkRequiredComplete>
+											<EditFormat>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>ДФ='dd.MM.yyyy HH:mm'</v8:content>
+												</v8:item>
+											</EditFormat>
+											<AutoMarkIncomplete>true</AutoMarkIncomplete>
+											<ContextMenu name="ИсследованияИсследованиеДатаПримечанияКонтекстноеМеню" id="91"/>
+											<ExtendedTooltip name="ИсследованияИсследованиеДатаПримечанияРасширеннаяПодсказка" id="92"/>
+										</InputField>
+										<UsualGroup name="АвторДолжностьПримечания" id="59">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Автор должность примечания</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Автор должность примечания</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>HorizontalIfPossible</Group>
+											<Representation>WeakSeparation</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ThroughAlign>Use</ThroughAlign>
+											<ExtendedTooltip name="АвторДолжностьПримечанияРасширеннаяПодсказка" id="60"/>
+											<ChildItems>
+												<InputField name="ИсследованияИсследованиеАвторПримечания" id="93">
+													<DataPath>Items.Исследования.CurrentData.ИсследованиеАвторПримечания</DataPath>
+													<MarkRequiredComplete>true</MarkRequiredComplete>
+													<DropListButton>false</DropListButton>
+													<ChoiceButton>true</ChoiceButton>
+													<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<ContextMenu name="ИсследованияИсследованиеАвторПримечанияКонтекстноеМеню" id="94"/>
+													<ExtendedTooltip name="ИсследованияИсследованиеАвторПримечанияРасширеннаяПодсказка" id="95"/>
+													<Events>
+														<Event name="OnChange">ИсследованияИсследованиеАвторПримечанияПриИзменении</Event>
+													</Events>
+												</InputField>
+												<InputField name="ИсследованияИсследованиеДолжностьАвтораПримечания" id="96">
+													<DataPath>Items.Исследования.CurrentData.ИсследованиеДолжностьАвтораПримечания</DataPath>
+													<MarkRequiredComplete>true</MarkRequiredComplete>
+													<DropListButton>true</DropListButton>
+													<ChoiceButton>true</ChoiceButton>
+													<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+													<OpenButton>false</OpenButton>
+													<AutoMarkIncomplete>true</AutoMarkIncomplete>
+													<TextEdit>false</TextEdit>
+													<ChoiceParameters>
+														<app:item name="Отбор.ВидКлассификатора">
+															<app:value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation/>
+																<Value xsi:type="xr:DesignTimeRef">Enum.ВидыКлассификаторовМинЗдрава.EnumValue.ДолжностиРаботниковМедОрганизаций</Value>
+															</app:value>
+														</app:item>
+													</ChoiceParameters>
+													<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+													<ContextMenu name="ИсследованияИсследованиеДолжностьАвтораПримечанияКонтекстноеМеню" id="97"/>
+													<ExtendedTooltip name="ИсследованияИсследованиеДолжностьАвтораПримечанияРасширеннаяПодсказка" id="98"/>
+													<Events>
+														<Event name="AutoComplete">ИсследованияИсследованиеДолжностьАвтораПримечанияАвтоПодбор</Event>
+														<Event name="StartChoice">ИсследованияИсследованиеДолжностьАвтораПримечанияНачалоВыбора</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ИнтерфейсыЗаполненияПараметровШаблоновПриема</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="Исследования" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исследования</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ИсследованиеПрофиль" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Профиль лабораторного исследования</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:Type>cfg:CatalogRef.КлассификаторыМинЗдрава</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИсследованиеПримечаниеКРезультату" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Примечание к результату исследования</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИсследованиеДатаПримечания" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата указания примечания</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="ИсследованиеАвторПримечания" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Автор примечания</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Сотрудники</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИсследованиеДолжностьАвтораПримечания" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Должность</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.КлассификаторыМинЗдрава</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ЛабораторныеТесты" id="9">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Лабораторные тесты</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:ValueTable</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИдентификаторСтроки" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор строки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:DefinedType.УникальныйИдентификаторСтрокой</v8:TypeSet>
+					</Type>
+				</Column>
+				<Column name="ОказанныеУслуги" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оказанные услуги</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>v8:ValueTable</v8:Type>
+					</Type>
+				</Column>
+				<AdditionalColumns table="Исследования.ОказанныеУслуги">
+					<Column name="ОказаннаяУслуга" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Оказанная услуга</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:CatalogRef.НоменклатураМедицинскихУслуг</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ОказаннаяУслугаДата" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Дата оказанной услуги</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:dateTime</v8:Type>
+							<v8:DateQualifiers>
+								<v8:DateFractions>DateTime</v8:DateFractions>
+							</v8:DateQualifiers>
+						</Type>
+					</Column>
+					<Column name="ИдентификаторСтроки" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Идентификатор строки</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:TypeSet>cfg:DefinedType.УникальныйИдентификаторСтрокой</v8:TypeSet>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Исследования.ЛабораторныеТесты">
+					<Column name="ЛабораторныйТест" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Лабораторный тест</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:CatalogRef.ЛабораторныеТесты</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ЛабораторныйТестВыполнен" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Лабораторный тест выполнен</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ЛабораторныйТестПричинаОтмены" id="4">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Причина отмены</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:CatalogRef.КлассификаторыМинЗдрава</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ЛабораторныйТестДатаВыполнения" id="5">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Дата выполнения</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:dateTime</v8:Type>
+							<v8:DateQualifiers>
+								<v8:DateFractions>DateTime</v8:DateFractions>
+							</v8:DateQualifiers>
+						</Type>
+					</Column>
+					<Column name="ЛабораторныйТестЗначение" id="6">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Значение</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ЛабораторныйТестИнтерпретацияРезультата" id="7">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Интерпретация результата</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:CatalogRef.КлассификаторыМинЗдрава</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ЛабораторныйТестШтрихкод" id="8">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Штрихкод</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ЛабораторныйТестСотрудник" id="9">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Сотрудник, проводивший исследование</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:CatalogRef.Сотрудники</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ЛабораторныйТестДолжностьСотрудника" id="10">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Должность</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:CatalogRef.КлассификаторыМинЗдрава</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ЛабораторныйТестКомментарий" id="12">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Комментарий</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ЛабораторныйТестДатаКомментария" id="13">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Дата указаний комментария</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:dateTime</v8:Type>
+							<v8:DateQualifiers>
+								<v8:DateFractions>DateTime</v8:DateFractions>
+							</v8:DateQualifiers>
+						</Type>
+					</Column>
+					<Column name="ЛабораторныйТестАвторКомментария" id="14">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Автор комментария</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:CatalogRef.Сотрудники</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ЛабораторныйТестДолжностьАвтораКомментария" id="15">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Должность</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:CatalogRef.КлассификаторыМинЗдрава</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ИспользованноеОборудование" id="16">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Использованное оборудование</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>v8:ValueTable</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ИдентификаторСтроки" id="17">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Идентификатор строки</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:TypeSet>cfg:DefinedType.УникальныйИдентификаторСтрокой</v8:TypeSet>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Исследования.ЛабораторныеТесты.ИспользованноеОборудование">
+					<Column name="Оборудование" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Оборудование</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>cfg:CatalogRef.МедицинскоеОборудование</v8:Type>
+						</Type>
+					</Column>
+					<Column name="ИдентификаторСтроки" id="3">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Идентификатор строки</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:TypeSet>cfg:DefinedType.УникальныйИдентификаторСтрокой</v8:TypeSet>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="ИсследованияВыполнены" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исследования выполнены</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПричинаОтменыВыполненияИсследований" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Причина отмены</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.КлассификаторыМинЗдрава</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДанныеПараметровПоИменам" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные параметров по именам</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Параметр" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Параметр</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:ChartOfCharacteristicTypesRef.ПараметрыHTML</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ИмяПоля" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя поля</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ДанныеТаблицПоИменам" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные таблиц по именам</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ИмяТаблицы" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя таблицы</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ТаблицаШаблонов" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Таблица шаблонов</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ТаблицыШаблоновПриема</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ИдентификаторИнтерфейса" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор интерфейса</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:TypeSet>cfg:DefinedType.УникальныйИдентификаторСтрокой</v8:TypeSet>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекущийСотрудник" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий сотрудник</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Сотрудники</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДолжностьТекущегоСотрудника" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Должность текущего сотрудника</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.КлассификаторыМинЗдрава</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДопустимыеДолжности" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Допустимые должности</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидимостьПримечанияПоПрофилю" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Видимость примечания по профилю</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидимостьИнтерпретацииРезультата" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Видимость интерпретации результата</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидимостьКомментарияТеста" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Видимость комментария теста</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидимостьОказанныхУслуг" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Видимость оказанных услуг</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ИсследованияИсследованиеПрофиль</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Исследования.ИсследованиеПрофиль</dcsset:left>
+						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Отдельные лабораторные тесты</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+	<Commands>
+		<Command name="Сохранить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Сохранить</Action>
+		</Command>
+	</Commands>
+</Form>

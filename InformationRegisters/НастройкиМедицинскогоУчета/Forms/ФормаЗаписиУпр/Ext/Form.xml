@@ -1,0 +1,1847 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>Abort</ExcludedCommand>
+		<ExcludedCommand>Cancel</ExcludedCommand>
+		<ExcludedCommand>Close</ExcludedCommand>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>CustomizeForm</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+		<ExcludedCommand>Ignore</ExcludedCommand>
+		<ExcludedCommand>No</ExcludedCommand>
+		<ExcludedCommand>OK</ExcludedCommand>
+		<ExcludedCommand>RestoreValues</ExcludedCommand>
+		<ExcludedCommand>Retry</ExcludedCommand>
+		<ExcludedCommand>SaveValues</ExcludedCommand>
+		<ExcludedCommand>WriteAndClose</ExcludedCommand>
+		<ExcludedCommand>Yes</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаЗаписать" id="161">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.StandardCommand.Write</CommandName>
+				<ButtonImportance>Main</ButtonImportance>
+				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="1019"/>
+			</Button>
+			<Button name="ФормаПеречитать" id="162">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Reread</CommandName>
+				<ExtendedTooltip name="ФормаПеречитатьРасширеннаяПодсказка" id="1020"/>
+			</Button>
+			<Button name="ФормаСправка" id="163">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="1021"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnWriteAtServer">ПриЗаписиНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="ГруппаСтраницы" id="91">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа страницы</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа страницы</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>TabsOnLeftHorizontal</PagesRepresentation>
+			<ExtendedTooltip name="ГруппаСтраницыРасширеннаяПодсказка" id="1022"/>
+			<ChildItems>
+				<Page name="ГруппаЖурналЗаписи" id="206">
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Стационар: Журнал записи</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа журнал записи</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ГруппаЖурналЗаписиРасширеннаяПодсказка" id="1023"/>
+					<ChildItems>
+						<InputField name="ОсновнойЦветСвободногоКойкоМеста" id="1005">
+							<DataPath>ОсновнойЦветСвободногоКойкоМеста</DataPath>
+							<ContextMenu name="ОсновнойЦветСвободногоКойкоМестаКонтекстноеМеню" id="1006"/>
+							<ExtendedTooltip name="ОсновнойЦветСвободногоКойкоМестаРасширеннаяПодсказка" id="1024"/>
+						</InputField>
+						<InputField name="ОсновнойЦветПациентПродолжаетЛечение" id="1011">
+							<DataPath>ОсновнойЦветПациентВСтационаре</DataPath>
+							<ContextMenu name="ОсновнойЦветПациентПродолжаетЛечениеКонтекстноеМеню" id="1012"/>
+							<ExtendedTooltip name="ОсновнойЦветПациентПродолжаетЛечениеРасширеннаяПодсказка" id="1025"/>
+						</InputField>
+						<InputField name="КоличествоИнтерваловВДне" id="1017">
+							<Width>4</Width>
+							<ContextMenu name="КоличествоИнтерваловВДнеКонтекстноеМеню" id="1018"/>
+							<ExtendedTooltip name="КоличествоИнтерваловВДнеРасширеннаяПодсказка" id="1026"/>
+						</InputField>
+						<InputField name="ВысотаСтрокиЖурналаЗаписи" id="1014">
+							<Width>4</Width>
+							<ContextMenu name="ВысотаСтрокиЖурналаЗаписиКонтекстноеМеню" id="1015"/>
+							<ExtendedTooltip name="ВысотаСтрокиЖурналаЗаписиРасширеннаяПодсказка" id="1027"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="ОсновнаяДеятельность" id="94">
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Стационар: Общие настройки</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основная деятельность</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ОсновнаяДеятельностьРасширеннаяПодсказка" id="1028"/>
+					<ChildItems>
+						<InputField name="ОсновнойВидМедКарт" id="166">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Основной вид медицинских карт</v8:content>
+								</v8:item>
+							</Title>
+							<QuickChoice>false</QuickChoice>
+							<ContextMenu name="ОсновнойВидМедКартКонтекстноеМеню" id="167"/>
+							<ExtendedTooltip name="ОсновнойВидМедКартРасширеннаяПодсказка" id="1032"/>
+						</InputField>
+						<InputField name="ОсновнойПрейскурант" id="27">
+							<ContextMenu name="ОсновнойПрейскурантКонтекстноеМеню" id="28"/>
+							<ExtendedTooltip name="ОсновнойПрейскурантРасширеннаяПодсказка" id="1029"/>
+						</InputField>
+						<InputField name="ОсновнойШаблонОсмотра" id="994">
+							<ContextMenu name="ОсновнойШаблонОсмотраКонтекстноеМеню" id="995"/>
+							<ExtendedTooltip name="ОсновнойШаблонОсмотраРасширеннаяПодсказка" id="1031"/>
+						</InputField>
+						<UsualGroup name="ГруппаВрач" id="1037">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа врача</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ChildItemsWidth>LeftWide</ChildItemsWidth>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаВрачРасширеннаяПодсказка" id="1038"/>
+							<ChildItems>
+								<InputField name="ВрачПоУмолчанию" id="1034">
+									<ContextMenu name="ВрачПоУмолчаниюКонтекстноеМеню" id="1035"/>
+									<ExtendedTooltip name="ВрачПоУмолчаниюРасширеннаяПодсказка" id="1036"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаГинекология" id="1039">
+					<Visible>false</Visible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Гинекология</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ГруппаГинекологияРасширеннаяПодсказка" id="1040"/>
+					<ChildItems>
+						<Table name="СписокСпециализацийГинекологии" id="1098">
+							<Representation>List</Representation>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>СписокСпециализацийГинекологии</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="СписокСпециализацийГинекологииКонтекстноеМеню" id="1099"/>
+							<AutoCommandBar name="СписокСпециализацийГинекологииКоманднаяПанель" id="1100"/>
+							<ExtendedTooltip name="СписокСпециализацийГинекологииРасширеннаяПодсказка" id="1101"/>
+							<SearchStringAddition name="СписокСпециализацийГинекологииСтрокаПоиска" id="1102">
+								<AdditionSource>
+									<Item>СписокСпециализацийГинекологии</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокСпециализацийГинекологииСтрокаПоискаКонтекстноеМеню" id="1103"/>
+								<ExtendedTooltip name="СписокСпециализацийГинекологииСтрокаПоискаРасширеннаяПодсказка" id="1104"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокСпециализацийГинекологииСостояниеПросмотра" id="1105">
+								<AdditionSource>
+									<Item>СписокСпециализацийГинекологии</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокСпециализацийГинекологииСостояниеПросмотраКонтекстноеМеню" id="1106"/>
+								<ExtendedTooltip name="СписокСпециализацийГинекологииСостояниеПросмотраРасширеннаяПодсказка" id="1107"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокСпециализацийГинекологииУправлениеПоиском" id="1108">
+								<AdditionSource>
+									<Item>СписокСпециализацийГинекологии</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокСпециализацийГинекологииУправлениеПоискомКонтекстноеМеню" id="1109"/>
+								<ExtendedTooltip name="СписокСпециализацийГинекологииУправлениеПоискомРасширеннаяПодсказка" id="1110"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="СписокСпециализацийГинекологии1Специализация" id="1111">
+									<DataPath>СписокСпециализацийГинекологии.Специализация</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<ContextMenu name="СписокСпециализацийГинекологии1СпециализацияКонтекстноеМеню" id="1112"/>
+									<ExtendedTooltip name="СписокСпециализацийГинекологии1СпециализацияРасширеннаяПодсказка" id="1113"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаЛаборатории" id="1117">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Лаборатории</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="СтраницаЛабораторииРасширеннаяПодсказка" id="1118"/>
+					<ChildItems>
+						<CheckBoxField name="ИспользоватьЛабораторныеИсследования" id="1142">
+							<DataPath>Запись.ИспользоватьЛабораторныеИсследования</DataPath>
+							<ContextMenu name="ИспользоватьЛабораторныеИсследованияКонтекстноеМеню" id="1143"/>
+							<ExtendedTooltip name="ИспользоватьЛабораторныеИсследованияРасширеннаяПодсказка" id="1144"/>
+						</CheckBoxField>
+						<Button name="ОткрытьНастройкиСхемыМаршрутаЛабораторныхИсследований" id="1140">
+							<Type>Hyperlink</Type>
+							<Representation>PictureAndText</Representation>
+							<Width>43</Width>
+							<CommandName>Form.Command.ОткрытьНастройкиСхемыЛабораторныхИсследований</CommandName>
+							<ExtendedTooltip name="ОткрытьНастройкиСхемыМаршрутаЛабораторныхИсследованийРасширеннаяПодсказка" id="1141"/>
+						</Button>
+						<UsualGroup name="ГруппаСхемаРаботыЛаборатории" id="1148">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа схема работы лаборатории</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа схема работы лаборатории</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>HorizontalIfPossible</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ChildItemsWidth>LeftWidest</ChildItemsWidth>
+							<ShowTitle>false</ShowTitle>
+							<ThroughAlign>DontUse</ThroughAlign>
+							<ExtendedTooltip name="ГруппаСхемаРаботыЛабораторииРасширеннаяПодсказка" id="1149"/>
+							<ChildItems>
+								<InputField name="СхемаРаботыЛаборатории" id="1145">
+									<DataPath>СхемаРаботыЛаборатории</DataPath>
+									<HorizontalStretch>true</HorizontalStretch>
+									<ListChoiceMode>true</ListChoiceMode>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Упрощенный учет забора и состояний анализов</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">0</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Только внешние лаборатории с заполнением данных для механизмов интеграции</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">1</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Только внутренняя лаборатория с использованием учета по контейнерам</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">2</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Внешние лаборатории и внутренняя расширенная с учетом контейнеров</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">3</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Внешние лаборатории и внутренняя упрощенная</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">4</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="СхемаРаботыЛабораторииКонтекстноеМеню" id="1146"/>
+									<ExtendedTooltip name="СхемаРаботыЛабораторииРасширеннаяПодсказка" id="1147"/>
+									<Events>
+										<Event name="OnChange">СхемаРаботыЛабораторииПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаИнтегрированныеЛаборатории" id="1150">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа интегрированные лаборатории</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа интегрированные лаборатории</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ChildItemsWidth>LeftWidest</ChildItemsWidth>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаИнтегрированныеЛабораторииРасширеннаяПодсказка" id="1151"/>
+							<ChildItems>
+								<CheckBoxField name="Helix_ИспользуетсяИнтеграцияСHelix" id="1122">
+									<DataPath>Запись.Helix_ИспользуетсяИнтеграцияСHelix</DataPath>
+									<ContextMenu name="Helix_ИспользуетсяИнтеграцияСHelixКонтекстноеМеню" id="1123"/>
+									<ExtendedTooltip name="Helix_ИспользуетсяИнтеграцияСHelixРасширеннаяПодсказка" id="1124"/>
+								</CheckBoxField>
+								<CheckBoxField name="Invitro_ИспользуетсяИнтеграцияСInvitro" id="1175">
+									<DataPath>Запись.Invitro_ИспользуетсяИнтеграцияСInvitro</DataPath>
+									<ContextMenu name="Invitro_ИспользуетсяИнтеграцияСInvitroКонтекстноеМеню" id="1176"/>
+									<ExtendedTooltip name="Invitro_ИспользуетсяИнтеграцияСInvitroРасширеннаяПодсказка" id="1177"/>
+								</CheckBoxField>
+								<CheckBoxField name="СитиЛаб_ИспользуетсяИнтеграцияССитиЛаб" id="1197">
+									<DataPath>Запись.СитиЛаб_ИспользуетсяИнтеграцияССитиЛаб</DataPath>
+									<ContextMenu name="СитиЛаб_ИспользуетсяИнтеграцияССитиЛабКонтекстноеМеню" id="1198"/>
+									<ExtendedTooltip name="СитиЛаб_ИспользуетсяИнтеграцияССитиЛабРасширеннаяПодсказка" id="1199"/>
+								</CheckBoxField>
+								<CheckBoxField name="КДЛ_ИспользуетсяИнтеграцияСКДЛ" id="1200">
+									<DataPath>Запись.КДЛ_ИспользуетсяИнтеграцияСКДЛ</DataPath>
+									<ContextMenu name="КДЛ_ИспользуетсяИнтеграцияСКДЛКонтекстноеМеню" id="1201"/>
+									<ExtendedTooltip name="КДЛ_ИспользуетсяИнтеграцияСКДЛРасширеннаяПодсказка" id="1202"/>
+								</CheckBoxField>
+								<CheckBoxField name="Гемотест_ИспользуетсяИнтеграцияСГемотест" id="1293">
+									<DataPath>Запись.Гемотест_ИспользуетсяИнтеграцияСГемотест</DataPath>
+									<ContextMenu name="Гемотест_ИспользуетсяИнтеграцияСГемотестКонтекстноеМеню" id="1294"/>
+									<ExtendedTooltip name="Гемотест_ИспользуетсяИнтеграцияСГемотестРасширеннаяПодсказка" id="1295"/>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаАвтоотправка" id="1157">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа автоотправка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа автоотправка</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>false</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаАвтоотправкаРасширеннаяПодсказка" id="1158"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаАвтоотправкаНастройки" id="1162">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа автоотправка настройки</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа автоотправка настройки</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>HorizontalIfPossible</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаАвтоотправкаНастройкиРасширеннаяПодсказка" id="1163"/>
+									<ChildItems>
+										<CheckBoxField name="ОтправлятьРезультатыВнешнихЛабораторийПоЭлектроннойПочте" id="1152">
+											<DataPath>Запись.ОтправлятьРезультатыВнешнихЛабораторийПоЭлектроннойПочте</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Отправка клиентам через регламентное задание</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ContextMenu name="ОтправлятьРезультатыВнешнихЛабораторийПоЭлектроннойПочтеКонтекстноеМеню" id="1153"/>
+											<ExtendedTooltip name="ОтправлятьРезультатыВнешнихЛабораторийПоЭлектроннойПочтеРасширеннаяПодсказка" id="1154"/>
+										</CheckBoxField>
+										<Button name="ИзменитьРасписание" id="1155">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.ИзменитьРасписание</CommandName>
+											<ExtendedTooltip name="ИзменитьРасписаниеРасширеннаяПодсказка" id="1156"/>
+										</Button>
+										<LabelDecoration name="ГиперссылкаНастройкиЭП" id="1302">
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Настройки почты</v8:content>
+												</v8:item>
+											</Title>
+											<Hyperlink>true</Hyperlink>
+											<ContextMenu name="ГиперссылкаНастройкиЭПКонтекстноеМеню" id="1303"/>
+											<ExtendedTooltip name="ГиперссылкаНастройкиЭПРасширеннаяПодсказка" id="1304"/>
+											<Events>
+												<Event name="Click">ГиперссылкаНастройкиЭПНажатие</Event>
+											</Events>
+										</LabelDecoration>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаЛабораторияПоПостоплатеПрименяется" id="1254">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа лаборатория по постоплате применяется</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа лаборатория по постоплате применяется</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>HorizontalIfPossible</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ThroughAlign>DontUse</ThroughAlign>
+							<ExtendedTooltip name="ГруппаЛабораторияПоПостоплатеПрименяетсяРасширеннаяПодсказка" id="1255"/>
+							<ChildItems>
+								<CheckBoxField name="ЛабораторияПоПостоплатеПрименяется" id="1256">
+									<DataPath>Запись.ЛабораторияПоПостоплатеПрименяется</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отображать в журнале записи команду ввода продажи по заборам (постоплата)</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ЛабораторияПоПостоплатеПрименяетсяКонтекстноеМеню" id="1257"/>
+									<ExtendedTooltip name="ЛабораторияПоПостоплатеПрименяетсяРасширеннаяПодсказка" id="1258"/>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаЭтикеткаВнутреннейЛаборатории" id="1351">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа этикетка внутренней лаборатории</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ThroughAlign>DontUse</ThroughAlign>
+							<ExtendedTooltip name="ГруппаЭтикеткаВнутреннейЛабораторииРасширеннаяПодсказка" id="1352"/>
+							<ChildItems>
+								<InputField name="ЭтикеткаВнутреннейЛаборатории" id="1348">
+									<DataPath>Запись.ЭтикеткаВнутреннейЛаборатории</DataPath>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Применяется при подключении принтера этикеток через "Подключаемое оборудование". При указании пустого поля в данном пункте, этикетка для внутренней лаборатории печататься не будет.</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<DropListButton>false</DropListButton>
+									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+									<ClearButton>true</ClearButton>
+									<ContextMenu name="ЭтикеткаВнутреннейЛабораторииКонтекстноеМеню" id="1349"/>
+									<ExtendedTooltip name="ЭтикеткаВнутреннейЛабораторииРасширеннаяПодсказка" id="1350"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаЭлектроннаяПочта" id="1173">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Электронная почта</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Электронная почта в отношении медицинских данных</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>HorizontalIfPossible</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ГруппаЭлектроннаяПочтаРасширеннаяПодсказка" id="1174"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаАвтоотправкаДопНастройки" id="1167">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки отправки приёмов</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ExtendedTooltip name="ГруппаАвтоотправкаДопНастройкиРасширеннаяПодсказка" id="1168"/>
+							<ChildItems>
+								<CheckBoxField name="ОтправлятьПриемыВАрхивеСПаролем" id="1159">
+									<DataPath>Запись.ОтправлятьПриемыВАрхивеСПаролем</DataPath>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>В качестве пароля используется код клиента в карточке (включая лидирующие нули)</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<ContextMenu name="ОтправлятьПриемыВАрхивеСПаролемКонтекстноеМеню" id="1160"/>
+									<ExtendedTooltip name="ОтправлятьПриемыВАрхивеСПаролемРасширеннаяПодсказка" id="1161"/>
+								</CheckBoxField>
+								<UsualGroup name="ГруппаУчетнаяЗаписьПочты" id="1171">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа учетная запись почты</v8:content>
+										</v8:item>
+									</Title>
+									<Group>AlwaysHorizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаУчетнаяЗаписьПочтыРасширеннаяПодсказка" id="1172"/>
+									<ChildItems>
+										<InputField name="ЭлектроннаяПочтаДляРассылки" id="1164">
+											<DataPath>Запись.ЭлектроннаяПочтаДляРассылки</DataPath>
+											<DropListButton>true</DropListButton>
+											<QuickChoice>true</QuickChoice>
+											<ContextMenu name="ЭлектроннаяПочтаДляРассылкиКонтекстноеМеню" id="1165"/>
+											<ExtendedTooltip name="ЭлектроннаяПочтаДляРассылкиРасширеннаяПодсказка" id="1166"/>
+										</InputField>
+										<Button name="ОткрытьПомощникНастройки" id="1169">
+											<Type>UsualButton</Type>
+											<Representation>Picture</Representation>
+											<CommandName>Form.Command.ОткрытьПомощникНастройки</CommandName>
+											<Picture>
+												<xr:Ref>CommonPicture.Редактирование</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ExtendedTooltip name="ОткрытьПомощникНастройкиРасширеннаяПодсказка" id="1170"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаОтправкаМедДокументовВФорматеPDF" id="1240">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Отправка медицинских документов в формате PDF</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа отправка мед документов в формате PDF</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ExtendedTooltip name="ГруппаОтправкаМедДокументовВФорматеPDFРасширеннаяПодсказка" id="1241"/>
+									<ChildItems>
+										<UsualGroup name="Группа3" id="1242">
+											<Group>AlwaysHorizontal</Group>
+											<Behavior>Usual</Behavior>
+											<Representation>WeakSeparation</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="1243"/>
+											<ChildItems>
+												<CheckBoxField name="Использоватьwkhtmltopdf" id="1244">
+													<DataPath>Запись.Использоватьwkhtmltopdf</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Отправлять в PDF (требуется программа)</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Для отправки требуется установленная программа wkhtmltopdf на сервере.</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ToolTipRepresentation>Button</ToolTipRepresentation>
+													<ContextMenu name="ИспользоватьwkhtmltopdfКонтекстноеМеню" id="1245"/>
+													<ExtendedTooltip name="ИспользоватьwkhtmltopdfРасширеннаяПодсказка" id="1246"/>
+												</CheckBoxField>
+												<Button name="Скачатьwkhtmltopdf" id="1247">
+													<Type>UsualButton</Type>
+													<CommandName>Form.Command.Скачатьwkhtmltopdf</CommandName>
+													<ExtendedTooltip name="СкачатьwkhtmltopdfРасширеннаяПодсказка" id="1248"/>
+												</Button>
+												<Button name="ОткрытьСправку" id="1249">
+													<Type>UsualButton</Type>
+													<Representation>PictureAndText</Representation>
+													<Width>11</Width>
+													<Height>1</Height>
+													<CommandName>Form.StandardCommand.Help</CommandName>
+													<Picture>
+														<xr:Ref>CommonPicture.СправкаЧеки</xr:Ref>
+														<xr:LoadTransparent>true</xr:LoadTransparent>
+													</Picture>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Справка</v8:content>
+														</v8:item>
+													</Title>
+													<PictureLocation>Left</PictureLocation>
+													<ExtendedTooltip name="ОткрытьСправкуРасширеннаяПодсказка" id="1250"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<InputField name="Адресwkhtmltopdf" id="1251">
+											<DataPath>Запись.Адресwkhtmltopdf</DataPath>
+											<ToolTipRepresentation>Button</ToolTipRepresentation>
+											<ChoiceButton>true</ChoiceButton>
+											<InputHint>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe</v8:content>
+												</v8:item>
+											</InputHint>
+											<ContextMenu name="АдресwkhtmltopdfКонтекстноеМеню" id="1252"/>
+											<ExtendedTooltip name="АдресwkhtmltopdfРасширеннаяПодсказка" id="1253">
+												<Title formatted="false">
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Если у пользователя, под которым запущен сервер 1С, нет прав администратора, то необходимо указать полный путь до исполняемого файла wkhtmltopdf, установленного на сервере, и дать разрешение соответствующему пользователю на работу с приложением и директорией wkhtmltopdf.</v8:content>
+													</v8:item>
+												</Title>
+											</ExtendedTooltip>
+											<Events>
+												<Event name="StartChoice">АдресwkhtmltopdfНачалоВыбора</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаОбменФСС" id="1203">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЛН и обмен с СФР</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="СтраницаОбменФССРасширеннаяПодсказка" id="1204"/>
+					<ChildItems>
+						<CheckBoxField name="ИспользоватьЛистыНетрудоспособности" id="1299">
+							<DataPath>Запись.ИспользоватьЛистыНетрудоспособности</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<ContextMenu name="ИспользоватьЛистыНетрудоспособностиКонтекстноеМеню" id="1300"/>
+							<ExtendedTooltip name="ИспользоватьЛистыНетрудоспособностиРасширеннаяПодсказка" id="1301"/>
+						</CheckBoxField>
+						<CheckBoxField name="РежимОбменаСФСС" id="1205">
+							<DataPath>Запись.РабочийРежимОбменаСФСС</DataPath>
+							<CheckBoxType>Tumbler</CheckBoxType>
+							<EditFormat>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>БЛ=Тестовый; БИ=Рабочий</v8:content>
+								</v8:item>
+							</EditFormat>
+							<ContextMenu name="РежимОбменаСФССКонтекстноеМеню" id="1206"/>
+							<ExtendedTooltip name="РежимОбменаСФССРасширеннаяПодсказка" id="1207"/>
+						</CheckBoxField>
+						<CheckBoxField name="ОтключитьКонтрольСертификатовФСС" id="1296">
+							<DataPath>Запись.ОтключитьКонтрольСертификатовФСС</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<ContextMenu name="ОтключитьКонтрольСертификатовФССКонтекстноеМеню" id="1297"/>
+							<ExtendedTooltip name="ОтключитьКонтрольСертификатовФССРасширеннаяПодсказка" id="1298"/>
+						</CheckBoxField>
+						<CheckBoxField name="СертификатыМОДоступныВсемПользователям" id="1355">
+							<DataPath>Запись.СертификатыМОДоступныВсемПользователям</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<TitleHeight>2</TitleHeight>
+							<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+							<ContextMenu name="СертификатыМОДоступныВсемПользователямКонтекстноеМеню" id="1356"/>
+							<ExtendedTooltip name="СертификатыМОДоступныВсемПользователямРасширеннаяПодсказка" id="1357"/>
+						</CheckBoxField>
+						<UsualGroup name="ДанныеСертификатов" id="1208">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Данные сертификата уполномоченного лица СФР</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ФСС требует, чтобы в шифрованном обмене сообщениями применялись также сертификаты ЭЦП от ФСС (сертификаты уполномоченного лица ФСС) - помимо сертификата ЭЦП медицинской организации.
+Их берут с сайтов lk-test.fss.ru/cert.html (тестовый) и lk.fss.ru/cert.html (рабочий).</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>WeakSeparation</Representation>
+							<ExtendedTooltip name="ДанныеСертификатовРасширеннаяПодсказка" id="1209"/>
+							<ChildItems>
+								<UsualGroup name="РабочийСервер" id="1212">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Рабочий сервер</v8:content>
+										</v8:item>
+									</Title>
+									<TitleFont ref="style:NormalTextFont" height="10" kind="StyleItem"/>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Рабочий сервер</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>StrongSeparation</Representation>
+									<ExtendedTooltip name="РабочийСерверРасширеннаяПодсказка" id="1213"/>
+									<ChildItems>
+										<LabelDecoration name="РабочийСерийныйНомер" id="1223">
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>true</HorizontalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Рабочий серийный номер</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="РабочийСерийныйНомерКонтекстноеМеню" id="1224"/>
+											<ExtendedTooltip name="РабочийСерийныйНомерРасширеннаяПодсказка" id="1225"/>
+										</LabelDecoration>
+										<LabelDecoration name="РабочийСрокДействия" id="1278">
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>true</HorizontalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Рабочий срок действия</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="РабочийСрокДействияКонтекстноеМеню" id="1279"/>
+											<ExtendedTooltip name="РабочийСрокДействияРасширеннаяПодсказка" id="1222"/>
+										</LabelDecoration>
+										<UsualGroup name="ГруппаФССОперацииРабочий" id="1280">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа ФСС операции (рабочий)</v8:content>
+												</v8:item>
+											</Title>
+											<Group>HorizontalIfPossible</Group>
+											<Behavior>Usual</Behavior>
+											<Representation>WeakSeparation</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаФССОперацииРабочийРасширеннаяПодсказка" id="1281"/>
+											<ChildItems>
+												<LabelDecoration name="ДекорацияЛКФССРабочий" id="1236">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Открыть lk.fss.ru/cert.html</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>http://lk.fss.ru/cert.html</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Hyperlink>true</Hyperlink>
+													<ContextMenu name="ДекорацияЛКФССРабочийКонтекстноеМеню" id="1282"/>
+													<ExtendedTooltip name="ДекорацияЛКФССРабочийРасширеннаяПодсказка" id="1283"/>
+													<Events>
+														<Event name="Click">ДекорацияЛКФССНажатие</Event>
+													</Events>
+												</LabelDecoration>
+												<Button name="СохранитьИУстановитьСертификатРабочегоСервера" id="1284">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.ФСС_СохранитьИУстановитьСертификатРабочегоСервера</CommandName>
+													<ExtendedTooltip name="СохранитьИУстановитьСертификатРабочегоСервераРасширеннаяПодсказка" id="1285"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<Button name="ИзменитьСертификатРабочегоСервера" id="1232">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.ФСС_ИзменитьСертификатРабочегоСервера</CommandName>
+											<ExtendedTooltip name="ИзменитьСертификатРабочегоСервераРасширеннаяПодсказка" id="1233"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ТестовыйСервер" id="1210">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Тестовый сервер</v8:content>
+										</v8:item>
+									</Title>
+									<TitleFont ref="style:NormalTextFont" height="10" kind="StyleItem"/>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Тестовый сервер</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>StrongSeparation</Representation>
+									<ExtendedTooltip name="ТестовыйСерверРасширеннаяПодсказка" id="1211"/>
+									<ChildItems>
+										<LabelDecoration name="ТестовыйСерийныйНомер" id="1214">
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>true</HorizontalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Тестовый серийный номер</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ТестовыйСерийныйНомерКонтекстноеМеню" id="1215"/>
+											<ExtendedTooltip name="ТестовыйСерийныйНомерРасширеннаяПодсказка" id="1216"/>
+										</LabelDecoration>
+										<LabelDecoration name="ТестовыйСрокДействия" id="1217">
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<HorizontalStretch>true</HorizontalStretch>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Тестовый срок действия</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="ТестовыйСрокДействияКонтекстноеМеню" id="1218"/>
+											<ExtendedTooltip name="ТестовыйСрокДействияРасширеннаяПодсказка" id="1219"/>
+										</LabelDecoration>
+										<UsualGroup name="ГруппаФССОперацииТестовый" id="1286">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа ФСС операции (тестовый)</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа ФССОперации тестовый</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>HorizontalIfPossible</Group>
+											<Behavior>Usual</Behavior>
+											<Representation>WeakSeparation</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаФССОперацииТестовыйРасширеннаяПодсказка" id="1287"/>
+											<ChildItems>
+												<LabelDecoration name="ДекорацияЛКФССТестовый" id="1288">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Открыть lk-test.fss.ru/cert.html</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>http://lk-test.fss.ru/cert.html</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Hyperlink>true</Hyperlink>
+													<ContextMenu name="ДекорацияЛКФССТестовыйКонтекстноеМеню" id="1289"/>
+													<ExtendedTooltip name="ДекорацияЛКФССТестовыйРасширеннаяПодсказка" id="1290"/>
+													<Events>
+														<Event name="Click">ДекорацияЛКФССНажатие</Event>
+													</Events>
+												</LabelDecoration>
+												<Button name="СохранитьИУстановитьСертификатТестовогоСервера" id="1291">
+													<Type>Hyperlink</Type>
+													<CommandName>Form.Command.ФСС_СохранитьИУстановитьСертификатТестовогоСервера</CommandName>
+													<ExtendedTooltip name="СохранитьИУстановитьСертификатТестовогоСервераРасширеннаяПодсказка" id="1292"/>
+												</Button>
+											</ChildItems>
+										</UsualGroup>
+										<Button name="ИзменитьСертификатТестовогоСервера" id="1230">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.ФСС_ИзменитьСертификатТестовогоСервера</CommandName>
+											<ExtendedTooltip name="ИзменитьСертификатТестовогоСервераРасширеннаяПодсказка" id="1231"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="ЕГИСЗ" id="1187">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЕГИСЗ</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ЕГИСЗРасширеннаяПодсказка" id="1188"/>
+					<ChildItems>
+						<UsualGroup name="Общее" id="1220">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Общее</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Общее</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ThroughAlign>Use</ThroughAlign>
+							<ExtendedTooltip name="ОбщееРасширеннаяПодсказка" id="1221"/>
+							<ChildItems>
+								<CheckBoxField name="ИспользоватьЕГИСЗ" id="1237">
+									<DataPath>Запись.ИспользоватьЕГИСЗ</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<ContextMenu name="ИспользоватьЕГИСЗКонтекстноеМеню" id="1238"/>
+									<ExtendedTooltip name="ИспользоватьЕГИСЗРасширеннаяПодсказка" id="1239"/>
+									<Events>
+										<Event name="OnChange">ИспользоватьЕГИСЗПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<InputField name="ИнтеграцияЕГИСЗПутьККонвертеруPDFAGhostScript" id="1275">
+									<DataPath>Запись.ПутьККонвертеруPDFAGhostScript</DataPath>
+									<ChoiceButton>true</ChoiceButton>
+									<InputHint>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>C:\Program Files\gs\gs9.50\bin\gswin64c.exe</v8:content>
+										</v8:item>
+									</InputHint>
+									<ContextMenu name="ИнтеграцияЕГИСЗПутьККонвертеруPDFAGhostScriptКонтекстноеМеню" id="1276"/>
+									<ExtendedTooltip name="ИнтеграцияЕГИСЗПутьККонвертеруPDFAGhostScriptРасширеннаяПодсказка" id="1277"/>
+									<Events>
+										<Event name="StartChoice">ИнтеграцияЕГИСЗПутьККонвертеруPDFAGhostScriptНачалоВыбора</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="АдресаФедеральныхСервисов" id="1273">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Адреса федеральных сервисов</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Адреса федеральных сервисов</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>WeakSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ThroughAlign>Use</ThroughAlign>
+							<ExtendedTooltip name="АдресаФедеральныхСервисовРасширеннаяПодсказка" id="1274"/>
+							<ChildItems>
+								<UsualGroup name="АдресРЭМД" id="1259">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Адрес РЭМД</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Адрес РЭМД</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>HorizontalIfPossible</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>WeakSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ThroughAlign>Use</ThroughAlign>
+									<ExtendedTooltip name="АдресРЭМДРасширеннаяПодсказка" id="1260"/>
+									<ChildItems>
+										<InputField name="ИнтеграцияЕГИСЗАдресФедеральногоСервисаРЭМД" id="1261">
+											<DataPath>Запись.АдресФедеральногоСервисаРЭМД</DataPath>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>https://ips.test.egisz.rosminzdrav.ru/598c424055f7d</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">https://ips.test.egisz.rosminzdrav.ru/598c424055f7d</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>https://ips.rosminzdrav.ru/59a6aa9dcd045</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">https://ips.rosminzdrav.ru/59a6aa9dcd045</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<InputHint>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>https://ips.test.egisz.rosminzdrav.ru/598c424055f7d</v8:content>
+												</v8:item>
+											</InputHint>
+											<ContextMenu name="ИнтеграцияЕГИСЗАдресФедеральногоСервисаРЭМДКонтекстноеМеню" id="1262"/>
+											<ExtendedTooltip name="ИнтеграцияЕГИСЗАдресФедеральногоСервисаРЭМДРасширеннаяПодсказка" id="1263"/>
+											<Events>
+												<Event name="OnChange">ИнтеграцияЕГИСЗАдресФедеральногоСервисаРЭМДПриИзменении</Event>
+											</Events>
+										</InputField>
+										<Button name="ПроверкаРЭМД" id="1264">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.ПроверкаРЭМД</CommandName>
+											<ExtendedTooltip name="ПроверкаРЭМДРасширеннаяПодсказка" id="1265"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="АдресГИП" id="1266">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Адрес ГИП</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Адрес РЭМД</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>HorizontalIfPossible</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>WeakSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ThroughAlign>Use</ThroughAlign>
+									<ExtendedTooltip name="АдресГИПРасширеннаяПодсказка" id="1267"/>
+									<ChildItems>
+										<InputField name="ИнтеграцияЕГИСЗАдресФедеральногоСервисаГИП" id="1268">
+											<DataPath>Запись.АдресФедеральногоСервисаГИП</DataPath>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>https://ips.test.egisz.rosminzdrav.ru/52d76ffc06419</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">https://ips.test.egisz.rosminzdrav.ru/52d76ffc06419</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>https://ips.rosminzdrav.ru/52dd1bfaca6c5</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xs:string">https://ips.rosminzdrav.ru/52dd1bfaca6c5</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<InputHint>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>https://ips.test.egisz.rosminzdrav.ru/123456789</v8:content>
+												</v8:item>
+											</InputHint>
+											<ContextMenu name="ИнтеграцияЕГИСЗАдресФедеральногоСервисаГИПКонтекстноеМеню" id="1269"/>
+											<ExtendedTooltip name="ИнтеграцияЕГИСЗАдресФедеральногоСервисаГИПРасширеннаяПодсказка" id="1270"/>
+											<Events>
+												<Event name="OnChange">ИнтеграцияЕГИСЗАдресФедеральногоСервисаГИППриИзменении</Event>
+											</Events>
+										</InputField>
+										<Button name="ПроверкаГИП" id="1271">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.ПроверкаГИП</CommandName>
+											<ExtendedTooltip name="ПроверкаГИПРасширеннаяПодсказка" id="1272"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<CheckBoxField name="ОтладочныйРежимРаботыСЕГИСЗ" id="1305">
+							<DataPath>Запись.ОтладочныйРежимРаботыЕГИСЗ</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Доступен только в тестовом контуре. Позволяет при отправке документа использовать сертификат ЭЦП, выданный не аккредитованным или тестовым удостоверяющим центром.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ОтладочныйРежимРаботыСЕГИСЗКонтекстноеМеню" id="1306"/>
+							<ExtendedTooltip name="ОтладочныйРежимРаботыСЕГИСЗРасширеннаяПодсказка" id="1307"/>
+						</CheckBoxField>
+					</ChildItems>
+				</Page>
+				<Page name="ЭМД" id="1308">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЭМД</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="ЭМДРасширеннаяПодсказка" id="1309"/>
+					<ChildItems>
+						<UsualGroup name="ЭМДВФорматеPDF" id="1310">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Формирование медицинских документов в формате PDF</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Формирование медицинских документов в формате PDF</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ExtendedTooltip name="ЭМДВФорматеPDFРасширеннаяПодсказка" id="1311"/>
+							<ChildItems>
+								<UsualGroup name="ЭМДКнопкиWkhtmltopdf" id="1312">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ЭМДКнопки wkhtmltopdf</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ЭМДКнопки wkhtmltopdf</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>AlwaysHorizontal</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>WeakSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ЭМДКнопкиWkhtmltopdfРасширеннаяПодсказка" id="1313"/>
+									<ChildItems>
+										<Button name="ЭМДСкачатьwkhtmltopdf" id="1317">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.Скачатьwkhtmltopdf</CommandName>
+											<ExtendedTooltip name="ЭМДСкачатьwkhtmltopdfРасширеннаяПодсказка" id="1318"/>
+										</Button>
+										<Button name="ЭМДОткрытьСправку" id="1319">
+											<Type>UsualButton</Type>
+											<Representation>PictureAndText</Representation>
+											<Width>11</Width>
+											<Height>1</Height>
+											<CommandName>Form.StandardCommand.Help</CommandName>
+											<Picture>
+												<xr:Ref>CommonPicture.СправкаЧеки</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Справка</v8:content>
+												</v8:item>
+											</Title>
+											<PictureLocation>Left</PictureLocation>
+											<ExtendedTooltip name="ЭМДОткрытьСправкуРасширеннаяПодсказка" id="1320"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
+								<InputField name="ЭМДАдресwkhtmltopdf" id="1321">
+									<DataPath>Запись.Адресwkhtmltopdf</DataPath>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<ChoiceButton>true</ChoiceButton>
+									<InputHint>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe</v8:content>
+										</v8:item>
+									</InputHint>
+									<ContextMenu name="ЭМДАдресwkhtmltopdfКонтекстноеМеню" id="1322"/>
+									<ExtendedTooltip name="ЭМДАдресwkhtmltopdfРасширеннаяПодсказка" id="1323">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Если у пользователя, под которым запущен сервер 1С, нет прав администратора, то необходимо указать полный путь до исполняемого файла wkhtmltopdf, установленного на сервере, и дать разрешение соответствующему пользователю на работу с приложением и директорией wkhtmltopdf.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="StartChoice">АдресwkhtmltopdfНачалоВыбора</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="АрхивМедицинскихДокументов" id="1330">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Архив медицинских документов</v8:content>
+								</v8:item>
+							</Title>
+							<Group>HorizontalIfPossible</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ThroughAlign>DontUse</ThroughAlign>
+							<ExtendedTooltip name="АрхивМедицинскихДокументовРасширеннаяПодсказка" id="1331"/>
+							<ChildItems>
+								<CheckBoxField name="ХранитьФайлыЭМДВоВнешнемАрхиве" id="1324">
+									<DataPath>Запись.ХранитьФайлыЭМДВоВнешнемАрхиве</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<ContextMenu name="ХранитьФайлыЭМДВоВнешнемАрхивеКонтекстноеМеню" id="1325"/>
+									<ExtendedTooltip name="ХранитьФайлыЭМДВоВнешнемАрхивеРасширеннаяПодсказка" id="1326"/>
+								</CheckBoxField>
+								<InputField name="ПутьКАрхивуЭМД" id="1327">
+									<DataPath>Запись.ПутьКАрхивуЭМД</DataPath>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<ChoiceButton>true</ChoiceButton>
+									<InputHint>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>D:\ЭМД</v8:content>
+										</v8:item>
+									</InputHint>
+									<ContextMenu name="ПутьКАрхивуЭМДКонтекстноеМеню" id="1328"/>
+									<ExtendedTooltip name="ПутьКАрхивуЭМДРасширеннаяПодсказка" id="1329">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>У пользователя, под которым запущен сервер 1С, должен быть доступ к указанной директории с правами на просмотр и изменение файлов в ней.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">ПутьКАрхивуЭМДПриИзменении</Event>
+										<Event name="StartChoice">ПутьКАрхивуЭМДНачалоВыбора</Event>
+									</Events>
+								</InputField>
+								<Button name="ВыгрузитьВсеФайлы" id="1332">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.ВыгрузитьВсеФайлы</CommandName>
+									<ExtendedTooltip name="ВыгрузитьВсеФайлыРасширеннаяПодсказка" id="1333"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаАрхивИзображенийШаблоновПриема" id="1346">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Архив изображений шаблонов приема</v8:content>
+								</v8:item>
+							</Title>
+							<Group>HorizontalIfPossible</Group>
+							<Representation>None</Representation>
+							<ThroughAlign>DontUse</ThroughAlign>
+							<ExtendedTooltip name="ГруппаАрхивИзображенийШаблоновПриемаРасширеннаяПодсказка" id="1347"/>
+							<ChildItems>
+								<InputField name="ПутьКАрхивуИзображений" id="1337">
+									<DataPath>Запись.ПутьКАрхивуИзображений</DataPath>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<ChoiceButton>true</ChoiceButton>
+									<InputHint>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>D:\Изображения приёмов</v8:content>
+										</v8:item>
+									</InputHint>
+									<ContextMenu name="ПутьКАрхивуИзображенийКонтекстноеМеню" id="1338"/>
+									<ExtendedTooltip name="ПутьКАрхивуИзображенийРасширеннаяПодсказка" id="1339">
+										<Title formatted="false">
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>У пользователя, под которым запущен сервер 1С, должен быть доступ к указанной директории с правами на просмотр и изменение файлов в ней.</v8:content>
+											</v8:item>
+										</Title>
+									</ExtendedTooltip>
+									<Events>
+										<Event name="OnChange">ПутьКАрхивуИзображенийПриИзменении</Event>
+										<Event name="StartChoice">ПутьКАрхивуИзображенийНачалоВыбора</Event>
+									</Events>
+								</InputField>
+								<Button name="ВыгрузитьВсеИзображения" id="1340">
+									<Type>UsualButton</Type>
+									<CommandName>Form.Command.ВыгрузитьВсеИзображения</CommandName>
+									<ExtendedTooltip name="ВыгрузитьВсеИзображенияРасширеннаяПодсказка" id="1341"/>
+								</Button>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="DICOM" id="1044">
+					<EnableContentChange>true</EnableContentChange>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>DICOM</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="DICOMРасширеннаяПодсказка" id="1045"/>
+					<ChildItems>
+						<CheckBoxField name="ИспользоватьDICOM" id="1077">
+							<DataPath>ИспользоватьDICOM</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Использовать функционал DICOM</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ИспользоватьDICOMКонтекстноеМеню" id="1078"/>
+							<ExtendedTooltip name="ИспользоватьDICOMРасширеннаяПодсказка" id="1079"/>
+						</CheckBoxField>
+						<Button name="ОткрытьнастройкиDICOM" id="1353">
+							<Type>UsualButton</Type>
+							<CommandName>InformationRegister.DICOMНастройкаСистемы.Command.ОткрытьНастройкиDICOM</CommandName>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Открыть настройки DICOM</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ОткрытьнастройкиDICOMРасширеннаяПодсказка" id="1354"/>
+						</Button>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Запись" id="1">
+			<Type>
+				<v8:Type>cfg:InformationRegisterRecordManager.НастройкиМедицинскогоУчета</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ОсновнойЦветСвободногоКойкоМеста" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основной цвет свободного койко места</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Color</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ОсновнойЦветПациентВСтационаре" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основной цвет пациент в стационаре</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8ui:Color</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СписокСпециализацийГинекологии" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список специализаций гинекологии</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+			<Columns>
+				<Column name="Специализация" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Специализация</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.КатегорииВыработки</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="DICOM_КаталогЗапускаСлужб" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>DICOM каталог запуска служб</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>1000</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="STORESCP_КаталогФайлов" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>STORESCP каталог файлов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>1000</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="STORESCP_ИспользуемыйAETitle" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>STORESCP используемый AETitle</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.AETitles</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="STORESCP_АвтоматическийЗапуск" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>STORESCP автоматический запуск</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="MWLSCP_КаталогФайлов" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>MWLSCP каталог файлов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>1000</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="MWLSCP_ИспользуемыйAETitle" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>MWLSCP используемый AETitle</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.AETitles</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="MWLSCP_АвтоматическийЗапуск" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>MWLSCP автоматический запуск</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗапросыDICOM_ВызываемыйAETitle" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запросы DICOM вызываемый AETitle</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.AETitles</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИспользоватьDICOM" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать DICOM</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="DICOM_LogCatalog" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>DICOM log catalog</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СхемаРаботыЛаборатории" id="23">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Схема работы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресВременногоХранилищаСертификатаФССТестовый" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес временного хранилища сертификата ФССТестовый</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресВременногоХранилищаСертификатаФССРабочий" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес временного хранилища сертификата ФССРабочий</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОткрытьНастройкиСхемыЛабораторныхИсследований" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть настройки схем маршрутов лабораторных исследований</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть настройки схемы лабораторных исследований</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьНастройкиСхемыЛабораторныхИсследований</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ИзменитьРасписание" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расписание</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить расписание</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.ScheduledJob</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ИзменитьРасписание</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ОткрытьПомощникНастройки" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть помощник настройки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть помощник настройки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьПомощникНастройки</Action>
+		</Command>
+		<Command name="Скачатьwkhtmltopdf" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скачать программу</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скачатьwkhtmltopdf</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Скачатьwkhtmltopdf</Action>
+		</Command>
+		<Command name="ПроверкаРЭМД" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверка подключения</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверка РЭМД</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПроверкаРЭМД</Action>
+		</Command>
+		<Command name="ПроверкаГИП" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверка подключения</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Проверка ГИП</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПроверкаГИП</Action>
+		</Command>
+		<Command name="ФСС_ИзменитьСертификатТестовогоСервера" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить сертификат тестового сервера</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить сертификат тестового сервера ФСС</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ИзменитьСертификат</Action>
+		</Command>
+		<Command name="ФСС_ИзменитьСертификатРабочегоСервера" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить сертификат рабочего сервера</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изменить сертификат рабочего сервера ФСС</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ИзменитьСертификат</Action>
+		</Command>
+		<Command name="ФСС_СохранитьИУстановитьСертификатРабочегоСервера" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить и установить сертификат</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить и установить сертификат рабочего сервера ФСС</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СохранитьИУстановитьСертификат</Action>
+		</Command>
+		<Command name="ФСС_СохранитьИУстановитьСертификатТестовогоСервера" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить и установить сертификат</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить и установить сертификат тестового сервера ФСС</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СохранитьИУстановитьСертификат</Action>
+		</Command>
+		<Command name="ВыгрузитьВсеФайлы" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Переместить все файлы ЭМД в архив/базу</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить все файлы</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыгрузитьВсеФайлы</Action>
+		</Command>
+		<Command name="ВыгрузитьВсеИзображения" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Переместить все изображения приёмов в архив</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выгрузить все изображения</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыгрузитьВсеИзображения</Action>
+		</Command>
+	</Commands>
+</Form>

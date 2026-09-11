@@ -1,0 +1,650 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Медицинская справка 086" xmlns:fias="urn:hl7-ru:fias" xmlns:identity="urn:hl7-ru:identity" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!-- R [1..1] СЕКЦИЯ: Сведения о документе -->
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="DOCINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>Сведения о документе</title>
+			<!-- R [1..1] наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 7000)</content>
+							</td>
+							<td>
+								<content>%НомерСправки</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..1] Номер медицинской справки -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Кодирование позиции номера медицинской справки -->
+					<code code="7000" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Кодирование номера медицинской справки -->
+					<value xsi:type="ST" localid="НомерСправки">%НомерСправки</value>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: Место работы и должность, условия труда -->
+	<component>
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="WORK" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Заголовок секции -->
+			<title>Место работы и должность, условия труда</title>
+			<!-- [1..1] Наполнение секции -->
+			<text>%РаботаНаименованиеОрганизации</text>
+			<!-- R [1..1] Кодирование места учебы или работы -->
+			<entry>
+				<organizer classCode="CLUSTER" moodCode="EVN">
+					<code code="4073" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<statusCode code="completed"/>
+					<!-- [1..1] Место работы -->
+					<participant typeCode="LOC">
+						<!-- R [1..1] Место работы (роль) -->
+						<participantRole classCode="SDLOC">
+							<!-- R [1..1] Адрес места работы -->
+							<addr>
+								<!-- R [1..1] адрес текстом -->
+								<streetAddressLine ТипДанных="Строка" localid="РаботаАдрес">%РаботаАдрес</streetAddressLine>
+								<!-- R [1..1] Кодирование субъекта РФ (Код ФНС по справочнику "Субъекты Российской Федерации" (OID:1.2.643.5.1.13.13.99.2.206)) -->
+								<state ТипДанных="Строка" localid="РаботаРегион">%РаботаРегион</state>
+								<!-- [1..1] Кодирование адреса по ФИАС -->
+								<fias:Address nullFlavor="NI"/>
+							</addr>
+							<!-- R [1..1] Место работы (сущность) -->
+							<playingEntity>
+								<!-- R [1..1] Место работы (наименование организации) -->
+								<name ТипДанных="Строка" localid="РаботаНаименованиеОрганизации">%РаботаНаименованиеОрганизации</name>
+								<!-- R [1..1] Код ОГРН организации -->
+								<identity:Ogrn xsi:type="ST" localid="РаботаОГРНОрганизации">%РаботаОГРНОрганизации</identity:Ogrn>
+							</playingEntity>
+						</participantRole>
+					</participant>
+				</organizer>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] Объективные данные и состояние здоровья пациента. Врачи: -терапевт, -хирург, -невролог, -отоларинголог, -офтальмолог и др.-->
+	<component>
+		<section>
+			<!-- R [1..1] Код -->
+			<code code="RESCONS" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Заголовок секции -->
+			<title>Объективные данные и состояние здоровья пациента.</title>
+			<!-- [1..1] Наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<content>Врач-терапевт</content>
+							</td>
+							<td>
+								<content>%ЗаключениеТерапевта</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Врач-хирург</content>
+							</td>
+							<td>
+								<content>%ЗаключениеХирурга</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Врач-невролог</content>
+							</td>
+							<td>
+								<content>%ЗаключениеНевролога</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Врач-отоларинголог</content>
+							</td>
+							<td>
+								<content>%ЗаключениеОториноларинголога</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Врач-офтальмолог</content>
+							</td>
+							<td>
+								<content>%ЗаключениеОфтальмолога</content>
+							</td>
+						</tr>
+						<tr localid="Гинеколог" Обязательное="*Ложь">
+							<td>
+								<content>Врач-акушер-гинеколог</content>
+							</td>
+							<td>
+								<content>%ЗаключениеГинеколога</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [5..*] Кодирование консультации -->
+			<entry ТипДанных="СправочникСсылка.Сотрудники" localid="Терапевт">
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- [1..1] Тип консультации -->
+					<code nullFlavor = "NI"/>
+					<!-- R [1..1] Статус консультации -->
+					<statusCode code="completed"/>
+					<!-- R [1..1] Время выполнения консультации -->
+					<effectiveTime value="%ДатаДокумента"/>
+					<!-- R [1..1] Текст результатов и\или заключения -->
+					<value xsi:type="ST" localid="ЗаключениеТерапевта">%ЗаключениеТерапевта</value>
+					<performer>
+						<assignedEntity>
+							<!-- R [1..1] Уникальный идентификатор автора в МИС -->
+							<id root="%Организация$Терапевт" extension="*УникальныйИдентификаторПоСсылке(%Терапевт)"/>
+							<!-- [1..1] СНИЛС автора -->
+							<id nullFlavor="NI"/>
+							<!-- R [1..1] Код должности автора-->
+							<code code="109" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] АВТОР (человек) -->
+							<assignedPerson>
+								<!-- R [1..1] Фамилия, Имя, Отчество автора -->
+								<name>
+									<!-- R [1..1] Фамилия -->
+									<family>%Терапевт.Фамилия</family>
+									<!-- R [1..1] Имя -->
+									<given>%Терапевт.Имя</given>
+								</name>
+							</assignedPerson>
+							<!-- R [1..1] Место работы автора -->
+							<representedOrganization>
+								<!-- [1..1] Уникальный идентификатор организации -->
+								<!-- организации - по справочнику «Реестр медицинских организаций Российской Федерации» (OID: 1.2.643.5.1.13.13.11.1461) -->
+								<!-- индивидуальные предприниматели - указание на отсутствие кода, nullFlavor="OTH" -->
+								<id ПустоеЗначение="OTH" root="%OIDМедицинскойОрганизации_50"/>
+								<!-- R [1..1] Код ОГРН организации -->
+								<identity:Ogrn xsi:type="ST">%ОГРН_50</identity:Ogrn>
+								<!-- R [1..1] Наименование организации -->
+								<name>%НаименованиеОрганизации_50</name>
+								<!-- R [1..1] Адрес организации -->
+								<addr>
+									<!-- R [1..1] Адрес текстом -->
+									<streetAddressLine>%АдресОрганизации_50.Текст</streetAddressLine>
+									<!-- R [1..1] Кодирование субъекта РФ (Код ФНС по справочнику "Субъекты Российской Федерации" (OID:1.2.643.5.1.13.13.99.2.206)) -->
+									<state>%АдресОрганизации_50.Регион</state>
+									<!-- [1..1] Кодирование адреса по ФИАС -->
+									<fias:Address ПустоеЗначение="NI">
+										<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+										<fias:AOGUID>%АдресОрганизации_50.AOGUID</fias:AOGUID>
+										<!-- [1..1] Глобальный уникальный идентификатор дома  -->
+										<fias:HOUSEGUID ПустоеЗначение="NI">%АдресОрганизации_50.HOUSEGUID</fias:HOUSEGUID>
+									</fias:Address>
+								</addr>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+					<!-- R [1..1] кодирование ... Шифр по МКБ-10 -->
+					<entryRelationship typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="809" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<value xsi:type="CD" ТипДанных="СправочникСсылка.Диагнозы" localid="ДиагнозТерапевта" ПустоеЗначение="NI" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+							</value>
+						</observation>
+					</entryRelationship>
+				</observation>
+			</entry>
+			<entry ТипДанных="СправочникСсылка.Сотрудники" localid="Хирург">
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- [1..1] Тип консультации -->
+					<code nullFlavor = "NI"/>
+					<!-- R [1..1] Статус консультации -->
+					<statusCode code="completed"/>
+					<!-- R [1..1] Время выполнения консультации -->
+					<effectiveTime value="%ДатаДокумента"/>
+					<!-- R [1..1] Текст результатов и\или заключения -->
+					<value xsi:type="ST" localid="ЗаключениеХирурга">%ЗаключениеХирурга</value>
+					<performer>
+						<assignedEntity>
+							<!-- R [1..1] Уникальный идентификатор автора в МИС -->
+							<id root="%Организация$Хирург" extension="*УникальныйИдентификаторПоСсылке(%Хирург)"/>
+							<!-- [1..1] СНИЛС автора -->
+							<id nullFlavor="NI"/>
+							<!-- R [1..1] Код должности автора-->
+							<code code="122" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] АВТОР (человек) -->
+							<assignedPerson>
+								<!-- R [1..1] Фамилия, Имя, Отчество автора -->
+								<name>
+									<!-- R [1..1] Фамилия -->
+									<family>%Хирург.Фамилия</family>
+									<!-- R [1..1] Имя -->
+									<given>%Хирург.Имя</given>
+								</name>
+							</assignedPerson>
+							<!-- R [1..1] Место работы автора -->
+							<representedOrganization>
+								<!-- [1..1] Уникальный идентификатор организации -->
+								<!-- организации - по справочнику «Реестр медицинских организаций Российской Федерации» (OID: 1.2.643.5.1.13.13.11.1461) -->
+								<!-- индивидуальные предприниматели - указание на отсутствие кода, nullFlavor="OTH" -->
+								<id ПустоеЗначение="OTH" root="%OIDМедицинскойОрганизации_50"/>
+								<!-- R [1..1] Код ОГРН организации -->
+								<identity:Ogrn xsi:type="ST">%ОГРН_50</identity:Ogrn>
+								<!-- R [1..1] Наименование организации -->
+								<name>%НаименованиеОрганизации_50</name>
+								<!-- R [1..1] Адрес организации -->
+								<addr>
+									<!-- R [1..1] Адрес текстом -->
+									<streetAddressLine>%АдресОрганизации_50.Текст</streetAddressLine>
+									<!-- R [1..1] Кодирование субъекта РФ (Код ФНС по справочнику "Субъекты Российской Федерации" (OID:1.2.643.5.1.13.13.99.2.206)) -->
+									<state>%АдресОрганизации_50.Регион</state>
+									<!-- [1..1] Кодирование адреса по ФИАС -->
+									<fias:Address ПустоеЗначение="NI">
+										<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+										<fias:AOGUID>%АдресОрганизации_50.AOGUID</fias:AOGUID>
+										<!-- [1..1] Глобальный уникальный идентификатор дома  -->
+										<fias:HOUSEGUID ПустоеЗначение="NI">%АдресОрганизации_50.HOUSEGUID</fias:HOUSEGUID>
+									</fias:Address>
+								</addr>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+					<!-- R [1..1] кодирование ... Шифр по МКБ-10 -->
+					<entryRelationship typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="809" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<value xsi:type="CD" ТипДанных="СправочникСсылка.Диагнозы" localid="ДиагнозХирурга" ПустоеЗначение="NI" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+							</value>
+						</observation>
+					</entryRelationship>
+				</observation>
+			</entry>
+			<entry ТипДанных="СправочникСсылка.Сотрудники" localid="Невролог">
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- [1..1] Тип консультации -->
+					<code nullFlavor = "NI"/>
+					<!-- R [1..1] Статус консультации -->
+					<statusCode code="completed"/>
+					<!-- R [1..1] Время выполнения консультации -->
+					<effectiveTime value="%ДатаДокумента"/>
+					<!-- R [1..1] Текст результатов и\или заключения -->
+					<value xsi:type="ST" localid="ЗаключениеНевролога">%ЗаключениеНевролога</value>
+					<performer>
+						<assignedEntity>
+							<!-- R [1..1] Уникальный идентификатор автора в МИС -->
+							<id root="%Организация$Невролог" extension="*УникальныйИдентификаторПоСсылке(%Невролог)"/>
+							<!-- [1..1] СНИЛС автора -->
+							<id nullFlavor="NI"/>
+							<!-- R [1..1] Код должности автора-->
+							<code code="45" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] АВТОР (человек) -->
+							<assignedPerson>
+								<!-- R [1..1] Фамилия, Имя, Отчество автора -->
+								<name>
+									<!-- R [1..1] Фамилия -->
+									<family>%Невролог.Фамилия</family>
+									<!-- R [1..1] Имя -->
+									<given>%Невролог.Имя</given>
+								</name>
+							</assignedPerson>
+							<!-- R [1..1] Место работы автора -->
+							<representedOrganization>
+								<!-- [1..1] Уникальный идентификатор организации -->
+								<!-- организации - по справочнику «Реестр медицинских организаций Российской Федерации» (OID: 1.2.643.5.1.13.13.11.1461) -->
+								<!-- индивидуальные предприниматели - указание на отсутствие кода, nullFlavor="OTH" -->
+								<id ПустоеЗначение="OTH" root="%OIDМедицинскойОрганизации_50"/>
+								<!-- R [1..1] Код ОГРН организации -->
+								<identity:Ogrn xsi:type="ST">%ОГРН_50</identity:Ogrn>
+								<!-- R [1..1] Наименование организации -->
+								<name>%НаименованиеОрганизации_50</name>
+								<!-- R [1..1] Адрес организации -->
+								<addr>
+									<!-- R [1..1] Адрес текстом -->
+									<streetAddressLine>%АдресОрганизации_50.Текст</streetAddressLine>
+									<!-- R [1..1] Кодирование субъекта РФ (Код ФНС по справочнику "Субъекты Российской Федерации" (OID:1.2.643.5.1.13.13.99.2.206)) -->
+									<state>%АдресОрганизации_50.Регион</state>
+									<!-- [1..1] Кодирование адреса по ФИАС -->
+									<fias:Address ПустоеЗначение="NI">
+										<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+										<fias:AOGUID>%АдресОрганизации_50.AOGUID</fias:AOGUID>
+										<!-- [1..1] Глобальный уникальный идентификатор дома  -->
+										<fias:HOUSEGUID ПустоеЗначение="NI">%АдресОрганизации_50.HOUSEGUID</fias:HOUSEGUID>
+									</fias:Address>
+								</addr>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+					<!-- R [1..1] кодирование ... Шифр по МКБ-10 -->
+					<entryRelationship typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="809" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<value xsi:type="CD" ТипДанных="СправочникСсылка.Диагнозы" localid="ДиагнозНевролога" ПустоеЗначение="NI" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+							</value>
+						</observation>
+					</entryRelationship>
+				</observation>
+			</entry>
+			<entry ТипДанных="СправочникСсылка.Сотрудники" localid="Оториноларинголог">
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- [1..1] Тип консультации -->
+					<code nullFlavor = "NI"/>
+					<!-- R [1..1] Статус консультации -->
+					<statusCode code="completed"/>
+					<!-- R [1..1] Время выполнения консультации -->
+					<effectiveTime value="%ДатаДокумента"/>
+					<!-- R [1..1] Текст результатов и\или заключения -->
+					<value xsi:type="ST" localid="ЗаключениеОториноларинголога">%ЗаключениеОториноларинголога</value>
+					<performer>
+						<assignedEntity>
+							<!-- R [1..1] Уникальный идентификатор автора в МИС -->
+							<id root="%Организация$Оториноларинголог" extension="*УникальныйИдентификаторПоСсылке(%Оториноларинголог)"/>
+							<!-- [1..1] СНИЛС автора -->
+							<id nullFlavor="NI"/>
+							<!-- R [1..1] Код должности автора-->
+							<code code="53" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] АВТОР (человек) -->
+							<assignedPerson>
+								<!-- R [1..1] Фамилия, Имя, Отчество автора -->
+								<name>
+									<!-- R [1..1] Фамилия -->
+									<family>%Оториноларинголог.Фамилия</family>
+									<!-- R [1..1] Имя -->
+									<given>%Оториноларинголог.Имя</given>
+								</name>
+							</assignedPerson>
+							<!-- R [1..1] Место работы автора -->
+							<representedOrganization>
+								<!-- [1..1] Уникальный идентификатор организации -->
+								<!-- организации - по справочнику «Реестр медицинских организаций Российской Федерации» (OID: 1.2.643.5.1.13.13.11.1461) -->
+								<!-- индивидуальные предприниматели - указание на отсутствие кода, nullFlavor="OTH" -->
+								<id ПустоеЗначение="OTH" root="%OIDМедицинскойОрганизации_50"/>
+								<!-- R [1..1] Код ОГРН организации -->
+								<identity:Ogrn xsi:type="ST">%ОГРН_50</identity:Ogrn>
+								<!-- R [1..1] Наименование организации -->
+								<name>%НаименованиеОрганизации_50</name>
+								<!-- R [1..1] Адрес организации -->
+								<addr>
+									<!-- R [1..1] Адрес текстом -->
+									<streetAddressLine>%АдресОрганизации_50.Текст</streetAddressLine>
+									<!-- R [1..1] Кодирование субъекта РФ (Код ФНС по справочнику "Субъекты Российской Федерации" (OID:1.2.643.5.1.13.13.99.2.206)) -->
+									<state>%АдресОрганизации_50.Регион</state>
+									<!-- [1..1] Кодирование адреса по ФИАС -->
+									<fias:Address ПустоеЗначение="NI">
+										<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+										<fias:AOGUID>%АдресОрганизации_50.AOGUID</fias:AOGUID>
+										<!-- [1..1] Глобальный уникальный идентификатор дома  -->
+										<fias:HOUSEGUID ПустоеЗначение="NI">%АдресОрганизации_50.HOUSEGUID</fias:HOUSEGUID>
+									</fias:Address>
+								</addr>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+					<!-- R [1..1] кодирование ... Шифр по МКБ-10 -->
+					<entryRelationship typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="809" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<value xsi:type="CD" ТипДанных="СправочникСсылка.Диагнозы" localid="ДиагнозОториноларинголога" ПустоеЗначение="NI" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+							</value>
+						</observation>
+					</entryRelationship>
+				</observation>
+			</entry>
+			<entry ТипДанных="СправочникСсылка.Сотрудники" localid="Офтальмолог">
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- [1..1] Тип консультации -->
+					<code nullFlavor = "NI"/>
+					<!-- R [1..1] Статус консультации -->
+					<statusCode code="completed"/>
+					<!-- R [1..1] Время выполнения консультации -->
+					<effectiveTime value="%ДатаДокумента"/>
+					<!-- R [1..1] Текст результатов и\или заключения -->
+					<value xsi:type="ST" localid="ЗаключениеОфтальмолога">%ЗаключениеОфтальмолога</value>
+					<performer>
+						<assignedEntity>
+							<!-- R [1..1] Уникальный идентификатор автора в МИС -->
+							<id root="%Организация$Офтальмолог" extension="*УникальныйИдентификаторПоСсылке(%Офтальмолог)"/>
+							<!-- [1..1] СНИЛС автора -->
+							<id nullFlavor="NI"/>
+							<!-- R [1..1] Код должности автора-->
+							<code code="54" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] АВТОР (человек) -->
+							<assignedPerson>
+								<!-- R [1..1] Фамилия, Имя, Отчество автора -->
+								<name>
+									<!-- R [1..1] Фамилия -->
+									<family>%Офтальмолог.Фамилия</family>
+									<!-- R [1..1] Имя -->
+									<given>%Офтальмолог.Имя</given>
+								</name>
+							</assignedPerson>
+							<!-- R [1..1] Место работы автора -->
+							<representedOrganization>
+								<!-- [1..1] Уникальный идентификатор организации -->
+								<!-- организации - по справочнику «Реестр медицинских организаций Российской Федерации» (OID: 1.2.643.5.1.13.13.11.1461) -->
+								<!-- индивидуальные предприниматели - указание на отсутствие кода, nullFlavor="OTH" -->
+								<id ПустоеЗначение="OTH" root="%OIDМедицинскойОрганизации_50"/>
+								<!-- R [1..1] Код ОГРН организации -->
+								<identity:Ogrn xsi:type="ST">%ОГРН_50</identity:Ogrn>
+								<!-- R [1..1] Наименование организации -->
+								<name>%НаименованиеОрганизации_50</name>
+								<!-- R [1..1] Адрес организации -->
+								<addr>
+									<!-- R [1..1] Адрес текстом -->
+									<streetAddressLine>%АдресОрганизации_50.Текст</streetAddressLine>
+									<!-- R [1..1] Кодирование субъекта РФ (Код ФНС по справочнику "Субъекты Российской Федерации" (OID:1.2.643.5.1.13.13.99.2.206)) -->
+									<state>%АдресОрганизации_50.Регион</state>
+									<!-- [1..1] Кодирование адреса по ФИАС -->
+									<fias:Address ПустоеЗначение="NI">
+										<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+										<fias:AOGUID>%АдресОрганизации_50.AOGUID</fias:AOGUID>
+										<!-- [1..1] Глобальный уникальный идентификатор дома  -->
+										<fias:HOUSEGUID ПустоеЗначение="NI">%АдресОрганизации_50.HOUSEGUID</fias:HOUSEGUID>
+									</fias:Address>
+								</addr>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+					<!-- R [1..1] кодирование ... Шифр по МКБ-10 -->
+					<entryRelationship typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="809" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<value xsi:type="CD" ТипДанных="СправочникСсылка.Диагнозы" localid="ДиагнозОфтальмолога" ПустоеЗначение="NI" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+							</value>
+						</observation>
+					</entryRelationship>
+				</observation>
+			</entry>
+			<entry ТипДанных="СправочникСсылка.Сотрудники" localid="Гинеколог" Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- [1..1] Тип консультации -->
+					<code nullFlavor = "NI"/>
+					<!-- R [1..1] Статус консультации -->
+					<statusCode code="completed"/>
+					<!-- R [1..1] Время выполнения консультации -->
+					<effectiveTime value="%ДатаДокумента"/>
+					<!-- R [1..1] Текст результатов и\или заключения -->
+					<value xsi:type="ST" localid="ЗаключениеГинеколога">%ЗаключениеГинеколога</value>
+					<performer>
+						<assignedEntity>
+							<!-- R [1..1] Уникальный идентификатор автора в МИС -->
+							<id root="%Организация$Гинеколог" extension="*УникальныйИдентификаторПоСсылке(%Гинеколог)"/>
+							<!-- [1..1] СНИЛС автора -->
+							<id nullFlavor="NI"/>
+							<!-- R [1..1] Код должности автора-->
+							<code code="13" codeSystem="1.2.643.5.1.13.13.11.1002" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] АВТОР (человек) -->
+							<assignedPerson>
+								<!-- R [1..1] Фамилия, Имя, Отчество автора -->
+								<name>
+									<!-- R [1..1] Фамилия -->
+									<family>%Гинеколог.Фамилия</family>
+									<!-- R [1..1] Имя -->
+									<given>%Гинеколог.Имя</given>
+								</name>
+							</assignedPerson>
+							<!-- R [1..1] Место работы автора -->
+							<representedOrganization>
+								<!-- [1..1] Уникальный идентификатор организации -->
+								<!-- организации - по справочнику «Реестр медицинских организаций Российской Федерации» (OID: 1.2.643.5.1.13.13.11.1461) -->
+								<!-- индивидуальные предприниматели - указание на отсутствие кода, nullFlavor="OTH" -->
+								<id ПустоеЗначение="OTH" root="%OIDМедицинскойОрганизации_50"/>
+								<!-- R [1..1] Код ОГРН организации -->
+								<identity:Ogrn xsi:type="ST">%ОГРН_50</identity:Ogrn>
+								<!-- R [1..1] Наименование организации -->
+								<name>%НаименованиеОрганизации_50</name>
+								<!-- R [1..1] Адрес организации -->
+								<addr>
+									<!-- R [1..1] Адрес текстом -->
+									<streetAddressLine>%АдресОрганизации_50.Текст</streetAddressLine>
+									<!-- R [1..1] Кодирование субъекта РФ (Код ФНС по справочнику "Субъекты Российской Федерации" (OID:1.2.643.5.1.13.13.99.2.206)) -->
+									<state>%АдресОрганизации_50.Регион</state>
+									<!-- [1..1] Кодирование адреса по ФИАС -->
+									<fias:Address ПустоеЗначение="NI">
+										<!-- R [1..1] Глобальный уникальный идентификатор адресного объекта -->
+										<fias:AOGUID>%АдресОрганизации_50.AOGUID</fias:AOGUID>
+										<!-- [1..1] Глобальный уникальный идентификатор дома  -->
+										<fias:HOUSEGUID ПустоеЗначение="NI">%АдресОрганизации_50.HOUSEGUID</fias:HOUSEGUID>
+									</fias:Address>
+								</addr>
+							</representedOrganization>
+						</assignedEntity>
+					</performer>
+					<!-- R [1..1] кодирование ... Шифр по МКБ-10 -->
+					<entryRelationship typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="809" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<value xsi:type="CD" ТипДанных="СправочникСсылка.Диагнозы" localid="ДиагнозГинеколога" ПустоеЗначение="NI" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+							</value>
+						</observation>
+					</entryRelationship>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<component>
+		<section>
+			<!-- R [1..1] код -->
+			<code code="RESINSTR" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок -->
+			<title>Данные рентгененологического метода исследования грудной клетки пациента.</title>
+			<!-- [1..1] наполнение -->
+			<text>
+				<table>
+					<tbody>
+						<tr>
+							<th>Дата</th>
+							<th>Исследование</th>
+							<th>Результаты</th>
+						</tr>
+						<tr>
+							<td>*Формат(%ДатаДокументаБезСмещения, "ДФ='dd.MM.yyyy HH:mm'")</td>
+							<td>%ТипИнструментальногоИсследования</td>
+							<td>%ФлюорографияРезультат</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<entry>
+				<!-- R [1..1] Кодирование инстументального исследования (Рентгенография флюорография легких) -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Тип инструментального исследования -->
+					<code localid="ТипИнструментальногоИсследования" ДопустимыеЗначения="7000441;7003320;7006018;7006026;7006034;7000441;7006018;7002892;7003304" code="#code" codeSystem="1.2.643.5.1.13.13.11.1471" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Статус инструментального исследования -->
+					<statusCode code="completed"/>
+					<!-- R [1..1] Время выполения инструментального исследования -->
+					<effectiveTime value="%ДатаДокумента"/>
+					<!-- R [1..1] Текст результатов и\или заключения -->
+					<value xsi:type="ST" localid="ФлюорографияРезультат" localidСиноним="Результаты проведенного инструментального исследования грудной клетки пациента">%ФлюорографияРезультат</value>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="RESLAB" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>Результаты лабораторных исследований.</title>
+			<!-- [1..1] наполнение секции -->
+			<text>
+				<table localid="ГруппаИсследований" Множественное="*Истина">
+					<caption>%ГруппаИсследований</caption>
+					<thead>
+						<tr>
+							<th>Лабораторный тест</th>
+							<th>Значение</th>
+							<th>Единицы измерения</th>
+							<th>Дата</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr localid="ЗначениеЛабораторногоИсследования" Множественное="*Истина">
+							<td>*ЗначениеЭлементаКлассификатора(%ЗначениеЛабораторногоИсследования.КлассификацияПоля)</td>
+							<td>%ЗначениеЛабораторногоИсследования</td>
+							<td>%ЕдиницаИзмеренияРезультатаЛабораторногоИсследования</td>
+							<td>*Формат(%ДатаДокументаБезСмещения, "ДФ='dd.MM.yyyy HH:mm'")</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- [1..*] Кодирование лабораторного исследования -->
+			<entry ТипДанных="Строка" localid="ГруппаИсследований" Множественное="*Истина">
+				<organizer classCode="CLUSTER" moodCode="EVN">
+					<!-- R [1..1] Кодирование статуса всего исследования -->
+					<statusCode code="completed"/>
+					<!-- R [1..1] Кодирование группы показателей лабораторного исследования -->
+					<component>
+						<!-- R [1..1] Группа показателей -->
+						<organizer classCode="BATTERY" moodCode="EVN">
+							<!-- R [1..1] Указание произвольной группировки исследований -->
+							<code>
+								<originalText>%ГруппаИсследований</originalText>
+							</code>
+							<!-- R [1..1] Кодирование статуса исследования группы показателей -->
+							<statusCode code="completed"/>
+							<!-- R [1..*] Кодирование лабораторного показателя -->
+							<component localid="ЗначениеЛабораторногоИсследования" Множественное="*Истина">
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Лабораторный показатель -->
+									<code localid="ЗначениеЛабораторногоИсследования.КлассификацияПоля" code="#code" codeSystem="1.2.643.5.1.13.13.11.1080" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									<!-- R [1..1] Кодирование статуса исследования показателя -->
+									<statusCode code="completed"/>
+									<!-- R [1..1] Время выполнения исследования показателя -->
+									<effectiveTime ТипДанных="Дата" value="%ДатаДокумента"/>
+									<!-- R [1..1] Кодирование результата -->
+									<value xsi:type="PQ" localid="ЗначениеЛабораторногоИсследования" value="%ЗначениеЛабораторногоИсследования" unit="*ПредставлениеЕдиницыИзмерения(%ЕдиницаИзмеренияРезультатаЛабораторногоИсследования.УИДЕГИСЗ)">
+										<translation localid="ЕдиницаИзмеренияРезультатаЛабораторногоИсследования" value="%ЗначениеЛабораторногоИсследования" code="#code" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									</value>
+								</observation>
+							</component>
+						</organizer>
+					</component>
+				</organizer>
+			</entry>
+		</section>
+	</component>
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="RESINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>Заключение о профессиональной годности.</title>
+			<!-- [1..1] наполнение секции -->
+			<text>*Формат(%ПрофессиональнаяГодность, "БЛ='Не годен'; БИ='Годен без ограничений'")</text>
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+				<code code="7001" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Кодирование годности -->
+					<value localid="ПрофессиональнаяГодность" xsi:type="BL" value='*Формат(%ПрофессиональнаяГодность, "БЛ=false; БИ=true")'/>
+				</observation>
+			</entry>
+		</section>
+	</component>
+</Items>

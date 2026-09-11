@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Наименование" id="3">
+			<DataPath>Объект.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="9"/>
+		</InputField>
+		<InputField name="ТипЗначения" id="5">
+			<DataPath>Объект.ValueType</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="ТипЗначенияКонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="ТипЗначенияРасширеннаяПодсказка" id="10"/>
+			<Events>
+				<Event name="OnChange">ТипЗначенияПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="Комментарий" id="7">
+			<DataPath>Объект.Комментарий</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="11"/>
+		</InputField>
+		<UsualGroup name="ГруппаСрокАктуальностиПрошлогоЗначения" id="52">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа срок актуальности прошлого значения</v8:content>
+				</v8:item>
+			</Title>
+			<Group>HorizontalIfPossible</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ThroughAlign>DontUse</ThroughAlign>
+			<ExtendedTooltip name="ГруппаСрокАктуальностиПрошлогоЗначенияРасширеннаяПодсказка" id="53"/>
+			<ChildItems>
+				<InputField name="СрокАктуальностиПрошлогоЗначения" id="49">
+					<DataPath>Объект.СрокАктуальностиПрошлогоЗначения</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
+					<ContextMenu name="СрокАктуальностиПрошлогоЗначенияКонтекстноеМеню" id="50"/>
+					<ExtendedTooltip name="СрокАктуальностиПрошлогоЗначенияРасширеннаяПодсказка" id="51"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаЗначениеПоУмолчанию" id="41">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Настройки использования значения по-умолчанию</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа значение по умолчанию</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>HorizontalIfPossible</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>WeakSeparation</Representation>
+			<ChildItemsWidth>LeftWide</ChildItemsWidth>
+			<ExtendedTooltip name="ГруппаЗначениеПоУмолчаниюРасширеннаяПодсказка" id="42"/>
+			<ChildItems>
+				<CheckBoxField name="ИспользуетсяВычисляемоеЗначениеПоУмолчанию" id="46">
+					<DataPath>ИспользуетсяВычисляемоеЗначениеПоУмолчанию</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выч.</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Значение по умолчанию рассчитывается с помощью сохраненного алгоритма</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ContextMenu name="ИспользуетсяВычисляемоеЗначениеПоУмолчаниюКонтекстноеМеню" id="47"/>
+					<ExtendedTooltip name="ИспользуетсяВычисляемоеЗначениеПоУмолчаниюРасширеннаяПодсказка" id="48"/>
+					<Events>
+						<Event name="OnChange">ИспользуетсяВычисляемоеЗначениеПоУмолчаниюПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<InputField name="ЗначениеПоУмолчанию" id="38">
+					<DataPath>Объект.ЗначениеПоУмолчанию</DataPath>
+					<ClearButton>true</ClearButton>
+					<ChooseType>false</ChooseType>
+					<ContextMenu name="ЗначениеПоУмолчаниюКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="ЗначениеПоУмолчаниюРасширеннаяПодсказка" id="40"/>
+					<Events>
+						<Event name="StartChoice">ЗначениеПоУмолчаниюНачалоВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="ЗначенияПоУмолчаниюУсловиеПримененияПол" id="43">
+					<DataPath>Объект.ЗначенияПоУмолчаниюУсловиеПримененияПол</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Только для пола клиента</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ЗначенияПоУмолчаниюУсловиеПримененияПолКонтекстноеМеню" id="44"/>
+					<ExtendedTooltip name="ЗначенияПоУмолчаниюУсловиеПримененияПолРасширеннаяПодсказка" id="45"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаИдентификаторыПараметраВЛабораториях" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификаторы параметра в лабораториях</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа идентификаторы параметра в лабораториях</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>WeakSeparation</Representation>
+			<ExtendedTooltip name="ГруппаИдентификаторыПараметраВЛабораторияхРасширеннаяПодсказка" id="37"/>
+			<ChildItems>
+				<Table name="IDПараметров" id="12">
+					<RowSelectionMode>Cell</RowSelectionMode>
+					<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<FileDragMode>AsFile</FileDragMode>
+					<DataPath>Объект.IDПараметров</DataPath>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="IDПараметровКонтекстноеМеню" id="13"/>
+					<AutoCommandBar name="IDПараметровКоманднаяПанель" id="14"/>
+					<ExtendedTooltip name="IDПараметровРасширеннаяПодсказка" id="15"/>
+					<SearchStringAddition name="IDПараметровСтрокаПоиска" id="16">
+						<AdditionSource>
+							<Item>IDПараметров</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="IDПараметровСтрокаПоискаКонтекстноеМеню" id="17"/>
+						<ExtendedTooltip name="IDПараметровСтрокаПоискаРасширеннаяПодсказка" id="18"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="IDПараметровСостояниеПросмотра" id="19">
+						<AdditionSource>
+							<Item>IDПараметров</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="IDПараметровСостояниеПросмотраКонтекстноеМеню" id="20"/>
+						<ExtendedTooltip name="IDПараметровСостояниеПросмотраРасширеннаяПодсказка" id="21"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="IDПараметровУправлениеПоиском" id="22">
+						<AdditionSource>
+							<Item>IDПараметров</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="IDПараметровУправлениеПоискомКонтекстноеМеню" id="23"/>
+						<ExtendedTooltip name="IDПараметровУправлениеПоискомРасширеннаяПодсказка" id="24"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<LabelField name="IDПараметровНомерСтроки" id="25">
+							<DataPath>Объект.IDПараметров.LineNumber</DataPath>
+							<Visible>false</Visible>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<Width>1</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="IDПараметровНомерСтрокиКонтекстноеМеню" id="26"/>
+							<ExtendedTooltip name="IDПараметровНомерСтрокиРасширеннаяПодсказка" id="27"/>
+						</LabelField>
+						<InputField name="IDПараметровВидЛаборатории" id="28">
+							<DataPath>Объект.IDПараметров.ВидЛаборатории</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="IDПараметровВидЛабораторииКонтекстноеМеню" id="29"/>
+							<ExtendedTooltip name="IDПараметровВидЛабораторииРасширеннаяПодсказка" id="30"/>
+						</InputField>
+						<InputField name="IDПараметровID" id="31">
+							<DataPath>Объект.IDПараметров.ID</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="IDПараметровIDКонтекстноеМеню" id="32"/>
+							<ExtendedTooltip name="IDПараметровIDРасширеннаяПодсказка" id="33"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:ChartOfCharacteristicTypesObject.ПараметрыЗабораАнализов</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="ИспользуетсяВычисляемоеЗначениеПоУмолчанию" id="2">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ЗначениеПоУмолчанию</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ЗначениеПоУмолчанию</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:НедоступныеДанныеЦвет</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Текст</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Не задано</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
+	</Attributes>
+</Form>

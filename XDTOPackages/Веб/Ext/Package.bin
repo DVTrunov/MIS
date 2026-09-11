@@ -1,0 +1,91 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="S1">
+	<objectType name="ПериодГрафика">
+		<property name="ВремяНачала" type="xs:dateTime"/>
+		<property name="ВремяОкончания" type="xs:dateTime"/>
+	</objectType>
+	<objectType name="ГрафикиРаботы">
+		<property xmlns:d3p1="S1" name="СвободноеВремя" type="d3p1:СвободноеВремя" upperBound="1"/>
+		<property xmlns:d3p1="S1" name="ЗанятоеВремя" type="d3p1:ЗанятоеВремя" upperBound="1"/>
+	</objectType>
+	<objectType name="ПериодГрафикаУкрупненного">
+		<property name="Клиника" type="xs:string"/>
+		<property name="Дата" type="xs:dateTime"/>
+		<property name="ВремяНачала" type="xs:dateTime"/>
+		<property name="ВремяОкончания" type="xs:dateTime"/>
+		<property name="ВидВремени" type="xs:string"/>
+		<property name="Цвет" type="xs:string"/>
+		<property name="Заявка" type="xs:string"/>
+	</objectType>
+	<objectType name="СвободноеВремя">
+		<property xmlns:d3p1="S1" name="ПериодГрафика" type="d3p1:ПериодГрафикаУкрупненного" upperBound="-1"/>
+	</objectType>
+	<objectType name="ЗанятоеВремя">
+		<property xmlns:d3p1="S1" name="ПериодГрафика" type="d3p1:ПериодГрафикаУкрупненного" upperBound="-1"/>
+	</objectType>
+	<objectType name="ОтветНаЗаписьССайта">
+		<property name="Результат" type="xs:boolean"/>
+		<property name="ОписаниеОшибки" type="xs:string"/>
+		<property name="УИД" type="xs:string"/>
+	</objectType>
+	<objectType name="ГрафикДляСайта">
+		<property name="Клиника" type="xs:string"/>
+		<property name="СотрудникФИО" type="xs:string"/>
+		<property name="СотрудникID" type="xs:string"/>
+		<property name="Специализация" type="xs:string"/>
+		<property xmlns:d3p1="S1" name="ПериодыГрафика" type="d3p1:ПериодыГрафика"/>
+		<property name="ДлительностьПриема" type="xs:dateTime"/>
+	</objectType>
+	<objectType name="ГрафикиДляСайта">
+		<property xmlns:d3p1="S1" name="ГрафикДляСайта" type="d3p1:ГрафикДляСайта" upperBound="-1"/>
+		<property name="ОшибкаПараметров" type="xs:string"/>
+	</objectType>
+	<objectType name="ПериодыГрафика">
+		<property xmlns:d3p1="S1" name="СвободноеВремя" type="d3p1:СвободноеВремя"/>
+		<property xmlns:d3p1="S1" name="ЗанятоеВремя" type="d3p1:ЗанятоеВремя"/>
+	</objectType>
+	<objectType name="СписокКлиник">
+		<property xmlns:d3p1="S1" name="Клиника" type="d3p1:Клиника" upperBound="-1"/>
+	</objectType>
+	<objectType name="Клиника">
+		<property name="Наименование" type="xs:string"/>
+		<property name="UID" type="xs:string"/>
+		<property name="Описание" type="xs:string"/>
+		<property name="Телефон" type="xs:string"/>
+		<property name="Email" type="xs:string"/>
+		<property name="Сайт" type="xs:string"/>
+		<property name="Фото" type="xs:base64Binary"/>
+		<property name="Широта" type="xs:string"/>
+		<property name="Долгота" type="xs:string"/>
+		<property xmlns:d3p1="S1" name="Сотрудники" type="d3p1:UIDОбъекта" upperBound="-1"/>
+	</objectType>
+	<objectType name="UIDОбъекта">
+		<property name="UID" type="xs:string"/>
+	</objectType>
+	<objectType name="Заявки">
+		<property xmlns:d3p1="S1" name="Заявка" type="d3p1:Заявка" upperBound="-1"/>
+	</objectType>
+	<objectType name="Заявка">
+		<property name="UID" type="xs:string"/>
+		<property name="Клиент" type="xs:string"/>
+		<property name="Комментарий" type="xs:string"/>
+		<property name="КомментарийКлиента" type="xs:string"/>
+		<property name="Состояние" type="xs:string"/>
+		<property name="Цвет" type="xs:string"/>
+		<property name="Услуги" type="xs:string"/>
+		<property name="Сотрудник" type="xs:string"/>
+		<property name="Дата" type="xs:dateTime"/>
+		<property name="ВремяНачала" type="xs:dateTime"/>
+		<property name="ВремяОкончания" type="xs:dateTime"/>
+		<property name="Клиника" type="xs:string"/>
+		<property name="UIDЗаявки" type="xs:string"/>
+	</objectType>
+	<objectType name="РезультатВыполнения">
+		<property name="Результат" type="xs:boolean"/>
+		<property name="ОписаниеОшибки" type="xs:string"/>
+		<property name="УИД" type="xs:string"/>
+	</objectType>
+	<objectType name="ОтветНаЗапросСтатусаЗаявки">
+		<property name="Результат" type="xs:byte"/>
+		<property name="ОписаниеРезультата" type="xs:string"/>
+	</objectType>
+</package>

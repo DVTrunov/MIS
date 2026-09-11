@@ -1,0 +1,576 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Клиент</dataPath>
+			<field>Клиент</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дата</dataPath>
+			<field>Дата</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=dd.MM.yyyy</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Филиал</dataPath>
+			<field>Филиал</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Филиал</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТипСобытия</dataPath>
+			<field>ТипСобытия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип события</v8:content>
+				</v8:item>
+			</title>
+			<presentationExpression>Выбор Когда ТипСобытия = 0 Тогда "Первый контакт" Когда ТипСобытия = 1 Тогда "Первая запись" Когда ТипСобытия = 2 Тогда "Первая продажа" Иначе "Вторая продажа" Конец</presentationExpression>
+			<valueType>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</valueType>
+			<availableValue>
+				<value xsi:nil="true"/>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Первый контакт</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:decimal">1</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Первая запись</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:decimal">2</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Первая продажа</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+			<availableValue>
+				<value xsi:type="xs:decimal">3</value>
+				<presentation xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Вторая продажа</v8:content>
+					</v8:item>
+				</presentation>
+			</availableValue>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Документ</dataPath>
+			<field>Документ</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Заявка.Филиал КАК Филиал,
+	Заявка.Ссылка КАК Документ,
+	Заявка.Клиент КАК Клиент,
+	Заявка.Дата КАК ДатаСобытия,
+	Заявка.Состояние.ТипСостояния КАК ТипСостояния
+ПОМЕСТИТЬ ЗаявкиКлиентов
+ИЗ
+	Документ.Заявка КАК Заявка
+ГДЕ
+	Дата &lt;= &amp;КонецПериода И 
+	НЕ Заявка.ПометкаУдаления
+
+ИНДЕКСИРОВАТЬ ПО
+	Филиал,
+	Клиент,
+	ДатаСобытия
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Событие.Филиал КАК Филиал,
+	Событие.Ссылка КАК Документ,
+	Событие.Клиент КАК Клиент,
+	ВЫБОР
+		КОГДА Событие.ДатаФакт &lt;&gt; ДАТАВРЕМЯ(1, 1, 1)
+			ТОГДА Событие.ДатаФакт
+		ИНАЧЕ Событие.Дата
+	КОНЕЦ КАК ДатаСобытия
+ПОМЕСТИТЬ СобытияКлиентов
+ИЗ
+	Документ.Событие КАК Событие
+ГДЕ
+	ВЫБОР
+		КОГДА Событие.ДатаФакт &lt;&gt; ДАТАВРЕМЯ(1, 1, 1)
+			ТОГДА Событие.ДатаФакт
+		ИНАЧЕ Событие.Дата
+	КОНЕЦ &lt;= &amp;КонецПериода И 
+	НЕ Событие.ПометкаУдаления
+	И Событие.Клиент &lt;&gt; ЗНАЧЕНИЕ(Справочник.Клиенты.ПустаяСсылка)
+
+ИНДЕКСИРОВАТЬ ПО
+	Филиал,
+	Клиент,
+	ДатаСобытия
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ РАЗЛИЧНЫЕ
+	Продажи.Филиал КАК Филиал,
+	Продажи.Регистратор КАК Документ,
+	Продажи.Клиент КАК Клиент,
+	Продажи.Период КАК ДатаСобытия
+ПОМЕСТИТЬ ПродажиКлиентов
+ИЗ
+	РегистрНакопления.Продажи КАК Продажи
+ГДЕ
+	Период &lt;= &amp;КонецПериода И 
+	Продажи.Регистратор ССЫЛКА Документ.ОказаниеУслуг
+	И ВЫРАЗИТЬ(Продажи.Регистратор КАК Документ.ОказаниеУслуг).ВидОперации = ЗНАЧЕНИЕ(Перечисление.ВидыОперацийОказанияУслуг.ПродажаКлиенту)
+
+ИНДЕКСИРОВАТЬ ПО
+	Филиал,
+	Клиент,
+	ДатаСобытия
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ЛистОжидания.Филиал КАК Филиал,
+	ЛистОжидания.Ссылка КАК Документ,
+	ЛистОжидания.Клиент КАК Клиент,
+	ЛистОжидания.Дата КАК ДатаСобытия
+ПОМЕСТИТЬ ЛистыОжидания
+ИЗ
+	Документ.ЛистОжидания КАК ЛистОжидания
+ГДЕ
+	Дата &lt;= &amp;КонецПериода И 
+	НЕ ЛистОжидания.ПометкаУдаления
+	И ЛистОжидания.Клиент &lt;&gt; ЗНАЧЕНИЕ(Справочник.Клиенты.)
+
+ИНДЕКСИРОВАТЬ ПО
+	Филиал,
+	Клиент,
+	ДатаСобытия
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ЗаявкиКлиентов.Филиал КАК Филиал,
+	ЗаявкиКлиентов.Документ КАК Документ,
+	ЗаявкиКлиентов.Клиент КАК Клиент,
+	ЗаявкиКлиентов.ДатаСобытия КАК ДатаСобытия
+ПОМЕСТИТЬ СобытияКлиентовВместе
+ИЗ
+	ЗаявкиКлиентов КАК ЗаявкиКлиентов
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	СобытияКлиентов.Филиал,
+	СобытияКлиентов.Документ,
+	СобытияКлиентов.Клиент,
+	СобытияКлиентов.ДатаСобытия
+ИЗ
+	СобытияКлиентов КАК СобытияКлиентов
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ПродажиКлиентов.Филиал,
+	ПродажиКлиентов.Документ,
+	ПродажиКлиентов.Клиент,
+	ПродажиКлиентов.ДатаСобытия
+ИЗ
+	ПродажиКлиентов КАК ПродажиКлиентов
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ЛистыОжидания.Филиал,
+	ЛистыОжидания.Документ,
+	ЛистыОжидания.Клиент,
+	ЛистыОжидания.ДатаСобытия
+ИЗ
+	ЛистыОжидания КАК ЛистыОжидания
+
+ИНДЕКСИРОВАТЬ ПО
+	ЗаявкиКлиентов.Филиал,
+	Клиент,
+	ДатаСобытия
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ СобытияКлиентов
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ ЛистыОжидания
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СобытияКлиентовВместе.Клиент КАК Клиент,
+	МИНИМУМ(СобытияКлиентовВместе.ДатаСобытия) КАК ДатаПервогоСобытия
+ПОМЕСТИТЬ ДатыПервогоОбщения
+ИЗ
+	СобытияКлиентовВместе КАК СобытияКлиентовВместе
+
+СГРУППИРОВАТЬ ПО
+	СобытияКлиентовВместе.Клиент
+
+ИМЕЮЩИЕ
+	МИНИМУМ(СобытияКлиентовВместе.ДатаСобытия) МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+
+ИНДЕКСИРОВАТЬ ПО
+	Клиент,
+	ДатаПервогоСобытия
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ЗаявкиКлиентов.Клиент КАК Клиент,
+	ЗаявкиКлиентов.ДатаСобытия КАК ДатаЗаписи,
+	ЗаявкиКлиентов.Филиал КАК Филиал,
+	ЗаявкиКлиентов.Документ КАК Документ
+ПОМЕСТИТЬ ЗаписавшиесяКлиенты
+ИЗ
+	ЗаявкиКлиентов КАК ЗаявкиКлиентов
+ГДЕ
+	ЗаявкиКлиентов.ТипСостояния &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ТипыСостоянийЗаявок.Отменена)
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ПродажиКлиентов.Клиент,
+	ПродажиКлиентов.ДатаСобытия,
+	ПродажиКлиентов.Филиал,
+	ПродажиКлиентов.Документ
+ИЗ
+	ПродажиКлиентов КАК ПродажиКлиентов
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ ЗаявкиКлиентов
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ЗаписавшиесяКлиенты.Клиент КАК Клиент,
+	МИНИМУМ(ЗаписавшиесяКлиенты.ДатаЗаписи) КАК ДатаПервойЗаписи
+ПОМЕСТИТЬ ДатыПервойЗаписи
+ИЗ
+	ЗаписавшиесяКлиенты КАК ЗаписавшиесяКлиенты
+
+СГРУППИРОВАТЬ ПО
+	ЗаписавшиесяКлиенты.Клиент
+
+ИМЕЮЩИЕ
+	МИНИМУМ(ЗаписавшиесяКлиенты.ДатаЗаписи) МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ПродажиКлиентов.Клиент КАК Клиент,
+	МИНИМУМ(ПродажиКлиентов.ДатаСобытия) КАК ДатаПервойПродажи
+ПОМЕСТИТЬ ДатыПервойПродажи
+ИЗ
+	ПродажиКлиентов КАК ПродажиКлиентов
+
+СГРУППИРОВАТЬ ПО
+	ПродажиКлиентов.Клиент
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ПродажиКлиентов.Филиал КАК Филиал,
+	ПродажиКлиентов.Документ КАК Документ,
+	ПродажиКлиентов.Клиент КАК Клиент,
+	ПродажиКлиентов.ДатаСобытия КАК ДатаПервойПродажи
+ПОМЕСТИТЬ ПервыеПродажиКлиентов
+ИЗ
+	ДатыПервойПродажи КАК ДатыПервойПродажи
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ПродажиКлиентов КАК ПродажиКлиентов
+		ПО ДатыПервойПродажи.Клиент = ПродажиКлиентов.Клиент
+			И ДатыПервойПродажи.ДатаПервойПродажи = ПродажиКлиентов.ДатаСобытия
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ ДатыПервойПродажи
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ПродажиКлиентов.Клиент КАК Клиент,
+	МИНИМУМ(ПродажиКлиентов.ДатаСобытия) КАК ДатаВторойПродажи
+ПОМЕСТИТЬ ДатыВторойПродажи
+ИЗ
+	ПродажиКлиентов КАК ПродажиКлиентов
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ПервыеПродажиКлиентов КАК ПервыеПродажиКлиентов
+		ПО ПродажиКлиентов.Клиент = ПервыеПродажиКлиентов.Клиент
+			И (НАЧАЛОПЕРИОДА(ПродажиКлиентов.ДатаСобытия, ДЕНЬ) &gt; НАЧАЛОПЕРИОДА(ПервыеПродажиКлиентов.ДатаПервойПродажи, ДЕНЬ))
+
+СГРУППИРОВАТЬ ПО
+	ПродажиКлиентов.Клиент
+
+ИМЕЮЩИЕ
+	МИНИМУМ(ПродажиКлиентов.ДатаСобытия) МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СобытияКлиентовВместе.Филиал КАК Филиал,
+	СобытияКлиентовВместе.Клиент КАК Клиент,
+	СобытияКлиентовВместе.Документ КАК Документ,
+	СобытияКлиентовВместе.ДатаСобытия КАК Дата,
+	0 КАК ТипСобытия
+ИЗ
+	ДатыПервогоОбщения КАК ДатыПервогоОбщения
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ СобытияКлиентовВместе КАК СобытияКлиентовВместе
+		ПО ДатыПервогоОбщения.Клиент = СобытияКлиентовВместе.Клиент
+			И ДатыПервогоОбщения.ДатаПервогоСобытия = СобытияКлиентовВместе.ДатаСобытия
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ЗаписавшиесяКлиенты.Филиал,
+	ЗаписавшиесяКлиенты.Клиент,
+	ЗаписавшиесяКлиенты.Документ,
+	ЗаписавшиесяКлиенты.ДатаЗаписи,
+	1
+ИЗ
+	ДатыПервойЗаписи КАК ДатыПервойЗаписи
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ЗаписавшиесяКлиенты КАК ЗаписавшиесяКлиенты
+		ПО ДатыПервойЗаписи.Клиент = ЗаписавшиесяКлиенты.Клиент
+			И ДатыПервойЗаписи.ДатаПервойЗаписи = ЗаписавшиесяКлиенты.ДатаЗаписи
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ПервыеПродажиКлиентов.Филиал,
+	ПервыеПродажиКлиентов.Клиент,
+	ПервыеПродажиКлиентов.Документ,
+	ПервыеПродажиКлиентов.ДатаПервойПродажи,
+	2
+ИЗ
+	ПервыеПродажиКлиентов КАК ПервыеПродажиКлиентов
+
+СГРУППИРОВАТЬ ПО
+	ПервыеПродажиКлиентов.Филиал,
+	ПервыеПродажиКлиентов.Документ,
+	ПервыеПродажиКлиентов.Клиент,
+	ПервыеПродажиКлиентов.ДатаПервойПродажи
+
+ИМЕЮЩИЕ
+	МИНИМУМ(ПервыеПродажиКлиентов.ДатаПервойПродажи) МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ПродажиКлиентов.Филиал,
+	ПродажиКлиентов.Клиент,
+	ПродажиКлиентов.Документ,
+	ПродажиКлиентов.ДатаСобытия,
+	3
+ИЗ
+	ДатыВторойПродажи КАК ДатыВторойПродажи
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ ПродажиКлиентов КАК ПродажиКлиентов
+		ПО ДатыВторойПродажи.Клиент = ПродажиКлиентов.Клиент
+			И ДатыВторойПродажи.ДатаВторойПродажи = ПродажиКлиентов.ДатаСобытия</query>
+	</dataSet>
+	<totalField>
+		<dataPath>Документ</dataPath>
+		<expression>Количество(Различные Документ)</expression>
+	</totalField>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+		<denyIncompleteValues>true</denyIncompleteValues>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>ПоТипамСобытий</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>По типам событий</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Клиент</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Дата</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Документ</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisYear</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>6af74702-0a87-47c3-8925-9b972223bb34</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Дата</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>ТипСобытия</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ТипСобытия</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Филиал</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							<dcsset:item xsi:type="dcsset:OrderItemField">
+								<dcsset:field>Клиент</dcsset:field>
+								<dcsset:orderType>Asc</dcsset:orderType>
+							</dcsset:item>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

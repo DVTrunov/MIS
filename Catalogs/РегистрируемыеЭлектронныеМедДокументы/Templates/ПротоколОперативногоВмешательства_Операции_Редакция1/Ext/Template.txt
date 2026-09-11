@@ -1,0 +1,800 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Протокол оперативного вмешательства (операции) (CDA) Редакция 1" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fias="urn:hl7-ru:fias" xmlns:address="urn:hl7-ru:address" xmlns:identity="urn:hl7-ru:identity">
+	<bitLocalId УсловиеИспользования="*Ложь">
+		<nodeLocalId ТипДанных="СправочникСсылка.Сотрудники" localid="ЧленОперационнойБригады" Множественное="*Истина" Обязательное="*Ложь">
+			<nodeLocalId localid="ДолжностьЧленаОперационнойБригады" Классификация="1.2.643.5.1.13.13.11.1002"/>
+			<nodeLocalId ТипДанных="СправочникСсылка.РолиПриПодписиМедДокументов" localid="РольЧленаОперационнойБригады"/>
+		</nodeLocalId>
+		<nodeLocalId ТипДанных="Дата" localid="ДатаНачалаОперации" Обязательное="*Ложь"/>
+		<nodeLocalId ТипДанных="Дата" localid="ДатаОкончанияОперации" Обязательное="*Ложь"/>
+	</bitLocalId>
+	<bitDiagnosis УсловиеИспользования="*Ложь">
+		<nodeDiagnosisStructure Множественное="*Истина" ГруппирующееПоле="Диагноз" Секция="DGN">
+			<nodeDiagnosis type="СтепеньОбоснованности"		localid="СтепеньОбоснованностиДиагнозаДоОперации"				Обязательное="*Ложь"/>
+			<nodeDiagnosis type="ВидНозологическойЕдиницы"	localid="НозологическаяЕдиницаДиагнозаДоОперации"				Обязательное="*Истина"/>
+			<nodeDiagnosis type="Диагноз"					localid="ЗаболеваниеДоОперации"									Обязательное="*Истина"/>
+			<nodeDiagnosis type="УточнениеХарактера"		localid="УточнениеХарактераЗаболеванияДоОперации"				Обязательное="*Ложь"/>
+		</nodeDiagnosisStructure>
+	</bitDiagnosis>
+	<!-- R [1..1] СЕКЦИЯ: "Информация о пациенте" -->
+	<component>
+		<!-- R [1..1]-->
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="PATINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+			<!-- R [1..1] Название секции -->
+			<title>Информация о пациенте</title>
+			<!-- R [1..1] Человекочитаемое наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr>
+							<th>Групповая принадлежность крови</th>
+						</tr>
+						<tr localid="ГрупповаяПринадлежностьКрови" Множественное="*Истина" Обязательное="*Ложь">
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%ГрупповаяПринадлежностьКрови)</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..*] Сведения о групповой принадлежности крови  -->
+			<entry localid="ГрупповаяПринадлежностьКрови" Множественное="*Истина">
+				<!-- R [1..1]-->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="11052" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- [0..1] Комментарий -->
+					<text ТипДанных="Строка" localid="КомментарийКГрупповойПринадлежностиКрови" Обязательное="*Ложь" localidСиноним="Комментарий к групповой принадлежности крови">%КомментарийКГрупповойПринадлежностиКрови</text>
+					<!-- [1..1] Значение поля -->
+					<value xsi:type="CD" localid="ГрупповаяПринадлежностьКрови" ПустоеЗначение="NI" СохранятьТипПриПустомЗначении="*Истина" code="#code" codeSystem="1.2.643.5.1.13.13.11.1061" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: "Сведения о состоянии пациента и проведенных мероприятиях до оперативного вмешательства" -->
+	<component>
+		<!-- R [1..1]-->
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="BEFORESUR" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+			<!-- R [1..1] Название секции -->
+			<title>Сведения о состоянии пациента и проведенных мероприятиях до оперативного вмешательства</title>
+			<!-- R [1..1] Человекочитаемое наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr>
+							<th>Наименование мероприятия</th>
+							<th>Проведено</th>
+							<th>Описание</th>
+						</tr>
+						<tr>
+							<td>
+								<content>Премедикация</content>
+							</td>
+							<td>
+								<content>*Формат(%ПремедикацияПроведена, "БЛ=Нет; БИ=Да")</content>
+							</td>
+							<td>
+								<content Обязательное='*Ложь'>%ОписаниеПроведеннойПремедикации</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Периоперационная антибиотикопрофилактика</content>
+							</td>
+							<td>
+								<content>*Формат(%ПериоперационнаяАнтибиотикопрофилактикаПроведена, "БЛ=Нет; БИ=Да")</content>
+							</td>
+							<td>
+								<content Обязательное='*Ложь'>%ОписаниеПериоперационнойАнтибиотикопрофилактики</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..1] Сведения о премедикации -->
+			<entry>
+				<!-- R [1..1]-->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="12387" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- [0..1] Описание проведенной премедикации -->
+					<text ТипДанных="Строка" localid="ОписаниеПроведеннойПремедикации" Обязательное='*%ПремедикацияПроведена = Истина' УсловиеОбязательное="*Ложь">%ОписаниеПроведеннойПремедикации</text>
+					<!-- R [1..1] Факт проведения премедикации -->
+					<value localid="ПремедикацияПроведена" xsi:type="BL" НеОтображатьВШаблоне="*Истина" value='*Формат(%ПремедикацияПроведена, "БЛ=false; БИ=true")'/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Сведения о периоперационной антибиотикопрофилактике -->
+			<entry>
+				<!-- R [1..1]-->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="11053" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- [0..1] Описание проведенной периоперационной антибиотикопрофилактики -->
+					<text ТипДанных="Строка" localid="ОписаниеПериоперационнойАнтибиотикопрофилактики" Обязательное='*%АнтибиотикопрофилактикаПроведена = Истина' УсловиеОбязательное="*Ложь">%ОписаниеПериоперационнойАнтибиотикопрофилактики</text>
+					<!-- [1..1] Значение поля -->
+					<value localid="ПериоперационнаяАнтибиотикопрофилактикаПроведена" xsi:type="BL" НеОтображатьВШаблоне="*Истина" value='*Формат(%ПериоперационнаяАнтибиотикопрофилактикаПроведена, "БЛ=false; БИ=true")'/>
+				</observation>
+			</entry>
+			<!-- R [1..1] СЕКЦИЯ: "Диагнозы" ("Диагноз до оперативного вмешательства") -->
+			<component ВозможноЗаполнениеИзТаблицыДиагнозов="true">
+				<!-- R [1..1]-->
+				<section>
+					<!-- R [1..1] Код секции -->
+					<code code="DGN" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- R [1..1] Название секции -->
+					<title>Предварительный диагноз (диагноз при поступлении)</title>
+					<!-- R [1..1] Человекочитаемое наполнение секции -->
+					<text>
+						<table>
+							<tbody>
+								<tr>
+									<th>Нозологическая единица</th>
+									<th>Клиническая формулировка диагноза</th>
+								</tr>
+								<tr Множественное="*Истина" localid="ЗаболеваниеДоОперации">
+									<td>
+										<content>*ЗначениеЭлементаКлассификатора(%НозологическаяЕдиницаДиагнозаДоОперации)</content>
+									</td>
+									<td>
+										<content>*ПредставлениеДиагнозаСКодом(%ЗаболеваниеДоОперации)</content>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</text>
+					<!-- R [1..*] Диагноз с указанием нозологической единицы -->
+					<entry Множественное="*Истина" localid="ЗаболеваниеДоОперации">
+						<!-- R [1..1]-->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Вид нозологической единицы диагноза -->
+							<code localid="НозологическаяЕдиницаДиагнозаДоОперации" code="#code" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<!-- [0..1] Клинический диагноз -->
+							<text Обязательное="*Ложь">*ПредставлениеДиагнозаСКодом(%ЗаболеваниеДоОперации)</text>
+							<!-- [0..1] Дата установки диагноза -->
+							<effectiveTime Обязательное="*Ложь" ТипДанных="Дата" Формат="ДФ=ггггММдд" value="%ДатаДиагнозаДоОперации"/>
+							<!-- R [1..1] Код диагноза по МКБ-10 -->
+							<value xsi:type="CD" localid="ЗаболеваниеДоОперации" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<!-- [0..1] Степень обоснованности диагноза -->
+							<entryRelationship typeCode="COMP" Обязательное="*(%НозологическаяЕдиницаДиагнозаДоОперации.УИДЕГИСЗ)=1">
+								<!-- R [1..1]-->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="7026" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+									<!-- R [1..1] Значение поля -->
+									<value xsi:type="CD" localid="СтепеньОбоснованностиДиагнозаДоОперации" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.795" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Уточнение характера заболевания -->
+							<entryRelationship typeCode="COMP" Обязательное="*(%НозологическаяЕдиницаДиагнозаДоОперации.УИДЕГИСЗ)=1">
+								<!-- R [1..1]-->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="12014" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+									<!-- [1..1] Значение поля -->
+									<value xsi:type="CD" localid="УточнениеХарактераЗаболеванияДоОперации" ПустоеЗначение="NI" СохранятьТипПриПустомЗначении="*Истина" code="#code" codeSystem="1.2.643.5.1.13.13.11.1049" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Уточнение внешней причины -->
+							<entryRelationship typeCode="COMP" Обязательное="*Ложь">
+								<!-- R [1..1]-->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="823" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+									<!-- R [1..1] Значение поля -->
+									<value xsi:type="CD" localid="УточнениеВнешнейПричиныДиагнозаДоОперации" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Уточнение вида травмы по способу получения -->
+							<entryRelationship typeCode="COMP" Обязательное="*Ложь">
+								<!-- R [1..1]-->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="824" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+									<!-- [1..1] Значение поля -->
+									<value xsi:type="CD" localid="УточнениеВидаТравмыДиагнозаДоОперации" code="#code" codeSystem="1.2.643.5.1.13.13.11.1036" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Сведения об установлении диагноза впервые в жизни -->
+							<entryRelationship typeCode="COMP" Обязательное="*Ложь">
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="12120" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+									<!-- [0..1] Значение поля -->
+									<effectiveTime Обязательное="*Ложь" ТипДанных="Дата" localid="ДатаУстановленияДиагнозаДоОперацииВпервыеВЖизни" Формат="ггггММдд" value="%ДатаУстановленияДиагнозаДоОперацииПриПоступленииВпервыеВЖизни"/>
+									<!-- R [1..1] Достоверность подтверждения даты установления диагноза впервые в жизни -->
+									<value xsi:type="CD" localid="ДостоверностьПодтвержденияДатыУстановленияДиагнозаДоОперацииВпервыеВЖизни" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.770" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+									<!-- [0..1] Возраст пациента на дату установления диагноза -->
+									<entryRelationship typeCode="COMP" Обязательное="*Ложь">
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] Код поля -->
+											<code code="12393" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+											<!-- R [1..1] Значение поля -->
+											<value xsi:type="INT" value="%ВозрастПациентаНаДатуУстановленияДиагнозаДоОперацииПриПоступленииВпервыеВЖизни"/>
+										</observation>
+									</entryRelationship>
+								</observation>
+							</entryRelationship>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!-- [0..1] СЕКЦИЯ: "Объективизированная оценка состояния пациента" -->
+			<component Обязательное="*Ложь">
+				<!-- R [1..1]-->
+				<section>
+					<!-- R [1..1] Код секции -->
+					<code code="SCORES" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- R [1..1] Название секции -->
+					<title>Объективизированная оценка состояния больного</title>
+					<!-- R [1..1] Человекочитаемое наполнение секции -->
+					<text>
+						<table Обязательное="*Ложь" localid="ТипКлиническойШкалы" Множественное="*Истина">
+							<tbody>
+								<tr>
+									<th>*ЗначениеЭлементаКлассификатора(%ТипКлиническойШкалы)</th>
+								</tr>
+								<tr>
+									<td>
+										<content>*ЗначениеЭлементаКлассификатора(%ИнтерпретацияРезультатаШкалы)</content>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</text>
+					<!-- R [1..*] Сведения о расчете клинической шкалы или опросника -->
+					<entry localid="ТипКлиническойШкалы" Множественное="*Истина">
+						<!-- R [1..1]-->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Тип клинической шкалы или опросника -->
+							<code localid="ТипКлиническойШкалы" localidСиноним="Тип клинической шкалы или опросника" code="#code" codeSystem="1.2.643.5.1.13.13.11.1514" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<!-- R [1..1] Дата и время расчета клинической шкалы или опросника -->
+							<effectiveTime value="%ДатаДокумента"/>
+							<bitOther>
+								<!-- [0..1] Результат расчета клинической шкалы или опросника -->
+								<value xsi:type="PQ" localid="РезультатРасчетаШкалы" value="%РезультатРасчетаШкалы" unit="*ПредставлениеЕдиницыИзмерения(%ЕдиницаИзмеренияРезультатаРасчетаШкалы.УИДЕГИСЗ)">
+									<!-- R [1..1] Единицы измерения результата расчета клинической шкалы или опросника -->
+									<translation localid="ЕдиницаИзмеренияРезультатаРасчетаШкалы" value="%РезультатРасчетаШкалы" code="#code" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+								</value>
+								<!-- [0..*] Сведения о медицинском работнике, проводившем оценку по клинической шкале или опроснику -->
+								<performer ТипДанных="СправочникСсылка.Сотрудники" localid="СотрудникПроводившийОценкуПоШкале" Множественное="*Истина" Обязательное="*Ложь">
+									<!-- [0..1] -->
+									<modeCode localid="РольСотрудникаПроводившийОценкуПоШкале" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.368" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+									<!-- R [1..1] -->
+									<assignedEntity>
+										<!-- R [1..1] -->
+										<id root="%Организация$Сотрудник" extension="*УникальныйИдентификаторПоСсылке(%СотрудникПроводившийОценкуПоШкале)"/>
+									</assignedEntity>
+								</performer>
+								<!-- [0..*] Параметр клинической шкалы или опросника -->
+								<entryRelationship localid="ПараметрКлиническойШкалы" Множественное="*Истина" Обязательное="*Ложь" typeCode="COMP">
+									<!-- R [1..1] -->
+									<observation classCode="OBS" moodCode="EVN">
+										<!-- R [1..1] -->
+										<code code="8020" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+										<!-- [1..1] -->
+										<effectiveTime ПустоеЗначение="NI" value="%ДатаДокумента"/>
+										<!-- R [1..1] -->
+										<value xsi:type="CD" localid="ПараметрКлиническойШкалы" code="#code" codeSystem="1.2.643.5.1.13.13.11.1514" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+										<!-- [0..*] -->
+										<entryRelationship localid="УникальныйИдентификаторКомпонентаШкалыПараметра" Множественное="*Истина" Обязательное="*Ложь" typeCode="REFR" inversionInd="false">
+											<!-- R [1..1] -->
+											<act classCode="ACT" moodCode="EVN">
+												<!-- R [1..1] -->
+												<id root="%Организация$Компонент" extension="%УникальныйИдентификаторКомпонентаШкалыПараметра"/>
+												<!-- R [1..1] -->
+												<code code="VITALPARAM" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+											</act>
+										</entryRelationship>
+									</observation>
+								</entryRelationship>
+							</bitOther>
+							<!-- [0..1] Интерпретация результата расчета клинической шкалы или опросника -->
+							<!-- R [1..1] Т.к. параметр клинической шкалы не реализован - интерпретация результата обязательна -->
+							<entryRelationship typeCode="COMP">
+								<!-- R [1..1]-->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="8019" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+									<!-- [0..1] Комментарий к интерпретации результата -->
+									<text ТипДанных="Строка" localid="КомментарийКИнтерпретацииРезультатаШкалы" localidСиноним="Комментарий к интерпретации" Обязательное="*Ложь">%КомментарийКИнтерпретацииРезультатаШкалы</text>
+									<!-- R [1..1] Значение поля -->
+									<value xsi:type="CD" localid="ИнтерпретацияРезультатаШкалы" code="#code" codeSystem="1.2.643.5.1.13.13.11.1516" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+								</observation>
+							</entryRelationship>
+						</observation>
+					</entry>
+				</section>
+			</component>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: "Хирургические операции" ("Проведенное оперативное вмешательство") -->
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="SUR" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>Проведенное оперативное вмешательство</title>
+			<!-- R [1..1] наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr>
+							<th>Дата и время начала оперативного вмешательства (операции):</th>
+						</tr>
+						<tr>
+							<td>
+								<content>*ПолучитьДатуИзСтрокиВТребуемомФормате(%ДатаНачалаСобытия, "ДФ='dd.MM.yyyy HH:mm'")</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table>
+					<tbody>
+						<tr>
+							<th>Дата и время окончания оперативного вмешательства (операции):</th>
+						</tr>
+						<tr>
+							<td>
+								<content>*ПолучитьДатуИзСтрокиВТребуемомФормате(%ДатаОкончанияСобытия, "ДФ='dd.MM.yyyy HH:mm'")</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table>
+					<tbody>
+						<tr>
+							<th>Наименование оперативного вмешательства (операции):</th>
+						</tr>
+						<tr>
+							<td>
+								<content>%НаименованиеХирургическойОперации</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table>
+					<tbody>
+						<tr>
+							<th>Описание оперативного вмешательства (операции):</th>
+						</tr>
+						<tr>
+							<td>
+								<content>%ОписаниеХирургическойОперации</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table>
+					<tbody>
+						<tr>
+							<th>Осложнения, возникшие в ходе оперативного вмешательства (операции):</th>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>%ИнтраоперационныеОсложнения</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table>
+					<tbody>
+						<tr>
+							<th>Использование медицинских изделий (оборудования):</th>
+						</tr>
+						<tr Обязательное="*Ложь" Множественное="*Истина" localid="ХирургическаяОперацияОборудование">
+							<td УсловиеИспользования='*Не ПараметрУказанногоТипа(%ХирургическаяОперацияОборудование, "Строка")'>
+								<content>*ЗначениеЭлементаКлассификатора(%ХирургическаяОперацияОборудование)</content>
+							</td>
+							<td УсловиеИспользования='*ПараметрУказанногоТипа(%ХирургическаяОперацияОборудование, "Строка")'>
+								<content>%ХирургическаяОперацияОборудование</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table>
+					<tbody>
+						<tr>
+							<th colspan="2">Подсчет операционного материала:</th>
+						</tr>
+						<tr>
+							<td>
+								<content>Инструменты:</content>
+							</td>
+							<td Обязательное="*Ложь">
+								<content>%КоличествоИспользованныхИнструментов</content><content>шт.</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Салфетки:</content>
+							</td>
+							<td Обязательное="*Ложь">
+								<content>%КоличествоИспользованныхСалфеток</content><content>шт.</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table>
+					<tbody>
+						<tr>
+							<th>Кровопотеря во время операционного вмешательства (операции):</th>
+						</tr>
+						<tr>
+							<td>
+								<content>%ОбъемКровопотери</content><content>мл.</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table>
+					<tbody>
+						<tr>
+							<th>Вид анестезиологического пособия:</th>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>%ВидИспользованнойАнестезии</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table>
+					<tbody>
+						<tr>
+							<th>Имплантированные медицинские изделия:</th>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>%ХирургическаяОперацияУстройствоИмплант</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table>
+					<tbody>
+						<tr>
+							<th>Операционный материал, взятый для проведения морфологического исследования:</th>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>%СведенияОБиоматериалеВзятомНаПатоморфологическоеИсследование</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Операционный материал направлен:</content><content>%НаименованиеОрганизацииКудаНаправленБиоматериал</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..1] Сведения о проведенной хирургической операции -->
+			<entry>
+				<procedure classCode="PROC" moodCode="EVN">
+					<!-- [1..1] Код хирургической операции (особое заполнение прописанное в ДополнитьПараметрамиПоРЭМД_189, развилка, чтобы параметр был составного типа)-->
+					<code localid="ХирургическаяОперация" УсловиеИспользования='*ПараметрУказанногоТипа(%ХирургическаяОперация, "СправочникСсылка.НоменклатураМедицинскихУслуг")' УсловиеОбязательное="*Истина" code="#code" displayName="#name" codeSystem="1.2.643.5.1.13.13.11.1070" codeSystemVersion="#version" codeSystemName="#codesystemname"/>
+					<code ТипДанных="Строка" localid="ХирургическаяОперация" УсловиеИспользования='*Не ПараметрУказанногоТипа(%ХирургическаяОперация, "СправочникСсылка.НоменклатураМедицинскихУслуг")' nullFlavor="OTH"/>
+					<!-- R [1..1] Наименование хирургической операции -->
+					<text localid="НаименованиеХирургическойОперации" ТипДанных="Строка" НеОтображатьВШаблоне="*Истина">%НаименованиеХирургическойОперации</text>
+					<!-- [0..*] Сведения об использованной аппаратуре -->
+					<participant typeCode="DEV" Обязательное="*Ложь" Множественное="*Истина" localid="ХирургическаяОперацияОборудование">
+						<participantRole classCode="MNT">
+							<playingDevice>
+								<!-- [1..1] Тип использованной аппаратуры -->
+								<code localid="ХирургическаяОперацияОборудование" УсловиеИспользования='*Не ПараметрУказанногоТипа(%ХирургическаяОперацияОборудование, "Строка")' code="#code" codeSystem="1.2.643.5.1.13.13.11.1048" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+								<code УсловиеИспользования='*ПараметрУказанногоТипа(%ХирургическаяОперацияОборудование, "Строка")' nullFlavor="OTH">
+									<!-- [0..1] Текстовое описание -->
+									<originalText ТипДанных="Строка" localid="ХирургическаяОперацияОборудование">%ХирургическаяОперацияОборудование</originalText>
+								</code>
+							</playingDevice>
+						</participantRole>
+					</participant>
+					<!-- [0..*] Сведения об использованном устройстве, имплантате -->
+					<participant typeCode="DEV" Обязательное="*Ложь" Множественное="*Истина" localid="ХирургическаяОперацияУстройствоИмплант">
+						<participantRole classCode="MANU">
+							<playingDevice>
+								<!-- [1..1] Тип использованного устройства, имплантата -->
+								<code localid="ХирургическаяОперацияУстройствоИмплант" УсловиеИспользования='*Не ПараметрУказанногоТипа(%ХирургическаяОперацияУстройствоИмплант, "Строка")' code="#code" codeSystem="1.2.643.5.1.13.13.11.1079" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+								<code УсловиеИспользования='*ПараметрУказанногоТипа(%ХирургическаяОперацияУстройствоИмплант, "Строка")' nullFlavor="OTH">
+									<!-- [0..1] Текстовое описание -->
+									<originalText ТипДанных="Строка" localid="ХирургическаяОперацияУстройствоИмплант">%ХирургическаяОперацияУстройствоИмплант</originalText>
+								</code>
+							</playingDevice>
+						</participantRole>
+					</participant>
+					<!-- R [1..1] Описание хирургической операции -->
+					<entryRelationship typeCode="COMP">
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="6033" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] Значение поля -->
+							<value xsi:type="ST" localid="ОписаниеХирургическойОперации">%ОписаниеХирургическойОперации</value>
+						</observation>
+					</entryRelationship>
+					<!-- [0..*] Сведения о выявленной патологии -->
+					<entryRelationship typeCode="COMP" Множественное="*Истина" Обязательное="*Ложь" localid="ВыявленнаяПатология">
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="808" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<value xsi:type="CD" localid="ВыявленнаяПатология" УсловиеИспользования="*ЭтоЭлементКлассификатора(%ВыявленнаяПатология)" code="#code" codeSystem="1.2.643.5.1.13.13.11.1473" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<value nullFlavor="OTH" СохранятьДочерниеУзлы="*Истина" УсловиеИспользования='*Не ЭтоЭлементКлассификатора(%ВыявленнаяПатология)'>
+								<originalText ТипДанных="Строка" localid="ВыявленнаяПатология">%ВыявленнаяПатология</originalText>
+							</value>
+						</observation>
+					</entryRelationship>
+					<!-- [0..*] Сведения о расходных материалах -->
+					<entryRelationship typeCode="COMP" Обязательное="*Ложь" Множественное="*Истина" localid="НаименованиеРасходногоМатериала">
+						<!-- R [1..1] -->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="12177" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<value xsi:type="INT" localid="КоличествоРасходныхМатериалов" value="%КоличествоРасходныхМатериалов"/>
+							<!-- Добавлена обязательность и убрана множественность для сохранения логики -->
+							<participant typeCode="CSM">
+								<participantRole ПустоеЗначение="NI" classCode="ROL">
+									<id nullFlavor="NI"/>
+									<playingDevice>
+										<manufacturerModelName ТипДанных="Строка" localid="НаименованиеРасходногоМатериала">%НаименованиеРасходногоМатериала</manufacturerModelName>
+									</playingDevice>
+								</participantRole>
+							</participant>
+						</observation>
+					</entryRelationship>
+					<!-- R [1..1] Сведения о результатах подсчета операционного материала (салфетки) -->
+					<entryRelationship typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="11054" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- [1..1] Значение поля -->
+							<value xsi:type="INT" localid="КоличествоИспользованныхСалфеток" ПустоеЗначение="NI" СохранятьТипПриПустомЗначении="*Истина" value="%КоличествоИспользованныхСалфеток"/>
+						</observation>
+					</entryRelationship>
+					<!-- R [1..1] Сведения о результатах подсчета операционного материала (инструменты) -->
+					<entryRelationship typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN">
+							<code code="11055" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] Значение поля -->
+							<value xsi:type="INT" localid="КоличествоИспользованныхИнструментов" ПустоеЗначение="NI" СохранятьТипПриПустомЗначении="*Истина" value="%КоличествоИспользованныхИнструментов"/>
+						</observation>
+					</entryRelationship>
+					<!-- R [1..1] Сведения о кровопотере во время операции -->
+					<entryRelationship typeCode="COMP">
+						<!-- R [1..1]-->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="6063" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<!-- [1..1] Значение поля -->
+							<value xsi:type="PQ" localid="ОбъемКровопотери" value="%ОбъемКровопотери" ПустоеЗначение="NI" localidСиноним="Объем кровопотери в миллилитрах" unit="ml">
+								<!-- R [1..1]-->
+								<translation value="%ОбъемКровопотери" Формат="ЧРД=." code="16" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							</value>
+						</observation>
+					</entryRelationship>
+					<!-- [0..*] Описание операционного биоматериала, взятого на патоморфологическое исследование -->
+					<entryRelationship typeCode="COMP" Обязательное="*Ложь" Множественное="*Истина" localid="СведенияОБиоматериалеВзятомНаПатоморфологическоеИсследование">
+						<!-- R [1..1]-->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="12388" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<!-- R [1..1] Сведения о биоматериале -->
+							<value xsi:type="ST" localid="СведенияОБиоматериалеВзятомНаПатоморфологическоеИсследование" localidСиноним="Описание операционного биоматериала, взятого на патоморфологическое исследование">%СведенияОБиоматериалеВзятомНаПатоморфологическоеИсследование</value>
+							<!-- R [1..1] Сведения об организации, куда направлен биоматериал -->
+							<performer>
+								<assignedEntity>
+									<id nullFlavor="NI"/>
+									<!-- R [1..1] Сведения об организации, куда направлен биоматериал -->
+									<representedOrganization classCode="ORG">
+										<!-- R [1..1] Наименование медицинской организации или ФИО ИП -->
+										<name ТипДанных='Строка' localid="НаименованиеОрганизацииКудаНаправленБиоматериал" localidСиноним="Наименование организации, куда направлен биоматериал">%НаименованиеОрганизацииКудаНаправленБиоматериал</name>
+									</representedOrganization>
+								</assignedEntity>
+							</performer>
+						</observation>
+					</entryRelationship>
+					<!-- [0..*] Сведения об осложнении хирургической операции -->
+					<entryRelationship typeCode="COMP" Обязательное="*Ложь" Множественное="*Истина" localid="ИнтраоперационныеОсложнения">
+						<!-- R [1..1]-->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="12383" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<!-- [0..1] Наименование осложнения (Обязательное, т.к. онкологии не поддерживаются)-->
+							<text ТипДанных="Строка" localid="ИнтраоперационныеОсложнения">%ИнтраоперационныеОсложнения</text>
+							<!-- [1..1] Код осложнения (справочник: Осложнения лечения онкологических заболеваний)-->
+							<value xsi:type="CD" nullFlavor="OTH" СохранятьТипПриПустомЗначении="*Истина"/>
+						</observation>
+					</entryRelationship>
+					<!-- R [1..*] Сведения об анестезии -->
+					<entryRelationship typeCode="COMP" Множественное="*Истина" localid="ВидИспользованнойАнестезии">
+						<!-- R [1..1]-->
+						<substanceAdministration classCode="SBADM" moodCode="EVN">
+							<!-- R [1..1]-->
+							<consumable typeCode="CSM">
+								<!-- R [1..1]-->
+								<manufacturedProduct classCode="MANU">
+									<!-- R [1..1]-->
+									<manufacturedLabeledDrug>
+										<!-- [1..1] Код вида анестезии -->
+										<code localid="ВидИспользованнойАнестезии" ПустоеЗначение="NI" code="#code" codeSystem="1.2.643.5.1.13.13.11.1033" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+									</manufacturedLabeledDrug>
+								</manufacturedProduct>
+							</consumable>
+						</substanceAdministration>
+					</entryRelationship>
+				</procedure>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: "Сведения о состоянии пациента и назначениях после оперативного вмешательства" -->
+	<component>
+		<!-- R [1..1]-->
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="AFTERSUR" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+			<!-- R [1..1] Название секции -->
+			<title>Сведения о состоянии пациента и назначениях после оперативного вмешательства</title>
+			<!-- [0..1] Человекочитаемое наполнение секции (текст убран, т.к. необязательный и нечем заполнять)-->
+			<!-- R [1..1] СЕКЦИЯ: "Диагнозы" ("Диагноз после оперативного вмешательства") -->
+			<component>
+				<!-- R [1..1]-->
+				<section>
+					<!-- R [1..1] Код секции -->
+					<code code="DGN" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- R [1..1] Название секции -->
+					<title>Диагноз после оперативного вмешательства</title>
+					<!-- R [1..1] Человекочитаемое наполнение секции -->
+					<text>
+						<table>
+							<tbody>
+								<tr>
+									<th>Нозологическая единица</th>
+									<th>Клиническая формулировка диагноза</th>
+								</tr>
+								<tr Множественное="*Истина" localid="ЗаболеваниеПослеОперации">
+									<td>
+										<content>*ЗначениеЭлементаКлассификатора(%НозологическаяЕдиницаДиагнозаПослеОперации)</content>
+									</td>
+									<td>
+										<content>*ПредставлениеДиагнозаСКодом(%ЗаболеваниеПослеОперации)</content>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</text>
+					<!-- R [1..*] Диагноз с указанием нозологической единицы -->
+					<entry Множественное="*Истина" localid="ЗаболеваниеПослеОперации">
+						<!-- R [1..1]-->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Вид нозологической единицы диагноза -->
+							<code localid="НозологическаяЕдиницаДиагнозаПослеОперации" code="#code" codeSystem="1.2.643.5.1.13.13.11.1077" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<!-- [0..1] Клинический диагноз -->
+							<text Обязательное="*Ложь">*ПредставлениеДиагнозаСКодом(%ЗаболеваниеПослеОперации)</text>
+							<!-- [0..1] Дата установки диагноза -->
+							<effectiveTime Обязательное="*Ложь" ТипДанных="Дата" Формат="ДФ=ггггММдд" value="%ДатаДиагнозаПослеОперации"/>
+							<!-- R [1..1] Код диагноза по МКБ-10 -->
+							<value xsi:type="CD" localid="ЗаболеваниеПослеОперации" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<!-- [0..1] Степень обоснованности диагноза -->
+							<entryRelationship typeCode="COMP" Обязательное="*(%НозологическаяЕдиницаДиагнозаПослеОперации.УИДЕГИСЗ)=1">
+								<!-- R [1..1]-->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="7026" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+									<!-- R [1..1] Значение поля -->
+									<value xsi:type="CD" localid="СтепеньОбоснованностиДиагнозаПослеОперации" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.795" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Уточнение характера заболевания -->
+							<entryRelationship typeCode="COMP" Обязательное="*(%НозологическаяЕдиницаДиагнозаПослеОперации.УИДЕГИСЗ)=1">
+								<!-- R [1..1]-->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="12014" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+									<!-- [1..1] Значение поля -->
+									<value xsi:type="CD" localid="УточнениеХарактераЗаболеванияПослеОперации" ПустоеЗначение="NI" СохранятьТипПриПустомЗначении="*Истина" code="#code" codeSystem="1.2.643.5.1.13.13.11.1049" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Уточнение внешней причины -->
+							<entryRelationship typeCode="COMP" Обязательное="*Ложь">
+								<!-- R [1..1]-->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="823" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+									<!-- R [1..1] Значение поля -->
+									<value xsi:type="CD" localid="УточнениеВнешнейПричиныДиагнозаПослеОперации" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Уточнение вида травмы по способу получения -->
+							<entryRelationship typeCode="COMP" Обязательное="*Ложь">
+								<!-- R [1..1]-->
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="824" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+									<!-- [1..1] Значение поля -->
+									<value xsi:type="CD" localid="УточнениеВидаТравмыДиагнозаПослеОперации" code="#code" codeSystem="1.2.643.5.1.13.13.11.1036" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+								</observation>
+							</entryRelationship>
+							<!-- [0..1] Сведения об установлении диагноза впервые в жизни -->
+							<entryRelationship typeCode="COMP" Обязательное="*Ложь">
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- R [1..1] Код поля -->
+									<code code="12120" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+									<!-- [0..1] Значение поля -->
+									<effectiveTime Обязательное="*Ложь" ТипДанных="Дата" localid="ДатаУстановленияДиагнозаПослеОперацииПриПоступленииВпервыеВЖизни" Формат="ггггММдд" localidСиноним="Дата установления диагноза после операции впервые в жизни" value="%ДатаУстановленияДиагнозаПослеОперацииПриПоступленииВпервыеВЖизни"/>
+									<!-- R [1..1] Достоверность подтверждения даты установления диагноза впервые в жизни -->
+									<value xsi:type="CD" localid="ДостоверностьПодтвержденияДатыУстановленияДиагнозаПослеОперацииПриПоступленииВпервыеВЖизни" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.770" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+									<!-- [0..1] Возраст пациента на дату установления диагноза -->
+									<entryRelationship typeCode="COMP" Обязательное="*Ложь">
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- R [1..1] Код поля -->
+											<code code="12393" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+											<!-- R [1..1] Значение поля -->
+											<value xsi:type="INT" value="%ВозрастПациентаНаДатуУстановленияДиагнозаПослеОперацииПриПоступленииВпервыеВЖизни"/>
+										</observation>
+									</entryRelationship>
+								</observation>
+							</entryRelationship>
+						</observation>
+					</entry>
+				</section>
+			</component>
+			<!-- [0..1] СЕКЦИЯ: "Назначения" -->
+			<component Обязательное="*Ложь">
+				<section>
+					<!-- R [1..1] Код секции -->
+					<code code="PRESCRIBE" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] заголовок секции -->
+					<title>Назначения</title>
+					<!-- R [1..1] Человекочитаемое наполнение секции -->
+					<text ТипДанных="Строка" localid="НазначенияПослеОперации">%НазначенияПослеОперации</text>
+				</section>
+			</component>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: Оказанные услуги-->
+	<component Обязательное="*Ложь">
+		<section>
+			<code code="SERVICES" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<title>Оказанные услуги</title>
+			<!-- [0..1] Человекочитаемое наполнение секции (Убрано, чтобы не заполнялось лишним) -->
+			<!-- R [1..1] Сведения об оказанных медицинских услугах -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="6035" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Количество выполненных медицинских услуг -->
+					<value xsi:type="INT" localid="КоличествоОказанныхУслуг" value="%КоличествоОказанныхУслуг" НеОтображатьВШаблоне="*Истина"/>
+					<!-- R [1..*] Сведения о выполненной медицинской услуге -->
+					<entryRelationship typeCode="COMP" localid="ОказаннаяУслуга" Множественное="*Истина">
+						<!-- R [1..1]-->
+						<act classCode="ACT" moodCode="EVN">
+							<!-- [1..1] Код выполненной медицинской услуги (Добавлена обязательность для упрощения)-->
+							<code localid="ОказаннаяУслуга" code="#code" codeSystem="1.2.643.5.1.13.13.11.1070" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							<!-- [0..1] Комментарий -->
+							<text ТипДанных="Строка" localid="КомментарийКУслуге" Обязательное="*Ложь" localidСиноним="Комментарий к оказанной услуге">%КомментарийКУслуге</text>
+							<!-- R [1..1] Дата и время выполнения услуги -->
+							<effectiveTime ТипДанных='Дата' localid="ДатаОказанияУслуги" value='*ДатаСоСмещением(%ДатаОказанияУслуги, "ДФ=ггггММддЧЧмм")'/>
+						</act>
+					</entryRelationship>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<bitOther>
+		<!-- [0..1] СЕКЦИЯ: "Связанные документы" -->
+	</bitOther>
+</Items>

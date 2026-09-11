@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>ЛистыОжиданияЗаПериод</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеЛО.ДокументВыполнения</dataPath>
+			<field>ДокументВыполнения</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеЛО.ЛистОжидания</dataPath>
+			<field>ЛистОжидания</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеЛО.Специализация</dataPath>
+			<field>Специализация</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеЛО.ПричинаЗаписи</dataPath>
+			<field>ПричинаЗаписи</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеЛО.Дата</dataPath>
+			<field>Дата</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Клиент</dataPath>
+			<field>Клиент</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеЛО.Филиал</dataPath>
+			<field>Филиал</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеЛО.Сотрудник</dataPath>
+			<field>Сотрудник</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеЛО.ДатаНачалаПлан</dataPath>
+			<field>ДатаНачалаПлан</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеЛО.ДатаОкончанияПлан</dataPath>
+			<field>ДатаОкончанияПлан</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеЛО.Ответственный</dataPath>
+			<field>Ответственный</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеЛО.Основание</dataPath>
+			<field>Основание</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеЛО.Выполнен</dataPath>
+			<field>Выполнен</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеЛО.КраткоеСодержание</dataPath>
+			<field>КраткоеСодержание</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеЛО.ПоследнееСообщение</dataPath>
+			<field>ПоследнееСообщение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеЛО.НетПериодаЗаписи</dataPath>
+			<field>НетПериодаЗаписи</field>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>ДанныеЛО</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные очереди</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеЛО.ЕстьЛистыОжидания</dataPath>
+			<field>ЕстьЛистыОжидания</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	Клиенты.Ссылка КАК Клиент
+ПОМЕСТИТЬ ВсеКлиенты
+ИЗ
+	Справочник.Клиенты КАК Клиенты
+
+ИНДЕКСИРОВАТЬ ПО
+	Клиент
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВсеКлиенты.Клиент,
+	ЛистОжидания.Ссылка КАК ЛистОжидания,
+	ЛистОжидания.Дата,
+	ЛистОжидания.Сотрудник КАК Сотрудник,
+	ЛистОжидания.Специализация,
+	ЛистОжидания.ДатаНачалаПлан,
+	ЛистОжидания.ДатаОкончанияПлан,
+	ЛистОжидания.Ответственный,
+	ЛистОжидания.ДокументВыполнения,
+	ЛистОжидания.Основание,
+	ЛистОжидания.Выполнен,
+	ЛистОжидания.КраткоеСодержание,
+	ЛистОжидания.ПричинаЗаписи,
+	ЛистОжидания.ПоследнееСообщение,
+	ЛистОжидания.Филиал,
+	ЛистОжидания.ДатаНачалаПлан = ДАТАВРЕМЯ(1, 1, 1)
+		И ЛистОжидания.ДатаОкончанияПлан = ДАТАВРЕМЯ(1, 1, 1) КАК НетПериодаЗаписи,
+	ВЫБОР
+		КОГДА ЛистОжидания.Ссылка ЕСТЬ NULL
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ ИСТИНА
+	КОНЕЦ КАК ЕстьЛистыОжидания
+ИЗ
+	ВсеКлиенты КАК ВсеКлиенты
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ЛистОжидания КАК ЛистОжидания
+		ПО ВсеКлиенты.Клиент = ЛистОжидания.Клиент
+{ГДЕ
+	(ЛистОжидания.ДатаНачалаПлан &gt;= &amp;ЛОДатаНачала
+				И (&amp;ЛОДатаОкончания = ДАТАВРЕМЯ(1, 1, 1)
+					ИЛИ ЛистОжидания.ДатаНачалаПлан &lt;= &amp;ЛОДатаОкончания)
+			ИЛИ ЛистОжидания.ДатаОкончанияПлан &gt;= &amp;ЛОДатаНачала
+				И (&amp;ЛОДатаОкончания = ДАТАВРЕМЯ(1, 1, 1)
+					ИЛИ ЛистОжидания.ДатаОкончанияПлан &lt;= &amp;ЛОДатаОкончания))}</query>
+	</dataSet>
+	<calculatedField>
+		<dataPath>ДанныеЛО.ИмяРазделаДанных</dataPath>
+		<expression>"Данные очереди"</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Данные очереди (Имя раздела)</v8:content>
+			</v8:item>
+		</title>
+	</calculatedField>
+	<totalField>
+		<dataPath>ДанныеЛО.ЕстьЛистыОжидания</dataPath>
+		<expression>Максимум(ДанныеЛО.ЕстьЛистыОжидания)</expression>
+	</totalField>
+	<parameter>
+		<name>ЛОДатаНачала</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>ЛОДата начала</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;ЛОПериод.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>ЛОДатаОкончания</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>ЛОДата окончания</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>КонецПериода(&amp;ЛОПериод.ДатаОкончания, "День")</expression>
+	</parameter>
+	<parameter>
+		<name>ЛОПериод</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период, в котором идёт поиск по выбранным отборам (по периоду листов ожидания)</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДанныеЛО.ЕстьЛистыОжидания</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					<dcsset:presentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Есть листы ожидания в периоде</v8:content>
+						</v8:item>
+					</dcsset:presentation>
+					<dcsset:userSettingID>c22242f7-2676-4e9a-9de9-cb51d1fd3246</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДанныеЛО.ЕстьЛистыОжидания</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					<dcsset:presentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Нет листов ожидания в периоде</v8:content>
+						</v8:item>
+					</dcsset:presentation>
+					<dcsset:userSettingID>c8217e8f-3433-4d2d-91e0-fcf70dc06982</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДанныеЛО.Сотрудник</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>496c9915-3a9f-45d8-9422-0095cce0f191</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДанныеЛО.Специализация</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>267e0334-3948-4835-8216-3d049f21ce9c</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДанныеЛО.ПричинаЗаписи</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>4c0f7a94-302f-4fc5-b11e-b1a8f94bc379</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДанныеЛО.НетПериодаЗаписи</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					<dcsset:userSettingID>e2029a59-2f1a-4a0c-b6a7-d07b3d9887e5</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ЛОПериод</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>3108a98c-bcb2-42fc-9b02-130c18e6f447</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:use>false</dcsset:use>
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ДанныеЛО.ИмяРазделаДанных</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ДанныеЛО.Выполнен</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ДанныеЛО.ЛистОжидания</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ДанныеЛО.ДатаНачалаПлан</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ДанныеЛО.ДатаОкончанияПлан</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ДанныеЛО.КраткоеСодержание</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ДанныеЛО.ЛистОжидания</dcsset:left>
+							<dcsset:comparisonType>Filled</dcsset:comparisonType>
+							<dcsset:viewMode>Inaccessible</dcsset:viewMode>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:outputParameters>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+							<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+						</dcscor:item>
+					</dcsset:outputParameters>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

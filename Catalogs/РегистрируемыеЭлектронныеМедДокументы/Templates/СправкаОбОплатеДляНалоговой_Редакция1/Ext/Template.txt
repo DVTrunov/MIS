@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Справка об оплате медицинских услуг для предоставления в налоговые органы Российской Федерации (Редакция 1)" xmlns:identity="urn:hl7-ru:identity" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fias="urn:hl7-ru:fias" xmlns:address="urn:hl7-ru:address">
+	<bitLocalId УсловиеИспользования="*Ложь">
+		<nodeLocalId ТипДанных="ДокументСсылка.ДоговорСКлиентом" localid="ДоговорСКлиентом" localidСиноним="Договор с клиентом" Обязательное="*Истина"/>
+		<nodeLocalId ТипДанных="Строка" localid="ОрганизацияПолучательДокумента" localidСиноним="Организация-получатель документа" Множественное="*Истина" Обязательное="*Ложь"/>
+	</bitLocalId>
+	<!-- R [1..1] СЕКЦИЯ: "Сведения о документе" -->
+	<component>
+		<!-- R [1..1]-->
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="DOCINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] Название секции -->
+			<title>Сведения о документе</title>
+			<!-- R [1..1] Человекочитаемое наполнение секции -->
+			<text>
+				<table>
+					<tbody>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 7000)</content>
+							</td>
+							<td>
+								<content>%НомерСправки</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 12166)</content>
+							</td>
+							<td>
+								<content>*Формат(%УслугаОказанаНалогоплательщику, "БЛ='Нет'; БИ='Да'")</content>
+							</td>
+						</tr>
+						<tr УсловиеИспользования='*Не %УслугаОказанаНалогоплательщику'>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 12167)</content>
+							</td>
+							<td>
+								<content>%КемПриходитсяПациентНалогоплательщику</content>
+							</td>
+						</tr>
+						<tr УсловиеИспользования='*Не %УслугаОказанаНалогоплательщику'>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 8008)</content>
+							</td>
+							<td>
+								<content>*СтрШаблон("%1 %2 %3", %ФамилияНалогоплательщика, %ИмяНалогоплательщика, %ОтчествоНалогоплательщика)</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 12168)</content>
+							</td>
+							<td>
+								<content>%ОказаннаяУслуга</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(,"1.2.643.5.1.13.13.99.2.166", 6015)</content>
+							</td>
+							<td>
+								<content>*ОбщегоНазначения.СформироватьСуммуПрописью(%СтоимостьОказанныхУслуг, Справочники.Валюты.Рубль)</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..1] Номер справки -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Кодирование ... номер документа -->
+					<code code="7000" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Номер документа (текстовое поле) -->
+					<value xsi:type="ST" localid="НомерСправки">%НомерСправки</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Услуга оказана налогоплательщику -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Кодирование поля -->
+					<code code="12166" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Значение поля -->
+					<value xsi:type="BL" localid="УслугаОказанаНалогоплательщику" value='*Формат(%УслугаОказанаНалогоплательщику,"БЛ=false; БИ=true")'/>
+				</observation>
+			</entry>
+			<!-- [0..1] Тип родственной связи (кем приходится пациент налогоплательщику) -->
+			<entry УсловиеИспользования='*Не %УслугаОказанаНалогоплательщику' УсловиеОбязательное='*Не %УслугаОказанаНалогоплательщику'>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Кодирование поля -->
+					<code code="12167" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Тип родственной связи -->
+					<value xsi:type="CD" localid="КемПриходитсяПациентНалогоплательщику" localidСиноним="Кем приходится пациент налогоплательщику (если услуга оказана не налогоплательщику)" codeSystem="1.2.643.5.1.13.13.11.1021" code="#code" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- [0..1] Налогоплательщик -->
+			<entry УсловиеИспользования='*Не %УслугаОказанаНалогоплательщику' УсловиеОбязательное='*Не %УслугаОказанаНалогоплательщику'>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Кодирование ... налогоплательщик -->
+					<code code="8008" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Налогоплательщик -->
+					<subject>
+						<!-- R [1..1] -->
+						<relatedSubject classCode="PRS">
+							<!-- R [1..1] -->
+							<subject>
+								<!-- R [1..1] ФИО налогоплательщика -->
+								<name>
+									<!-- R [1..1] Фамилия -->
+									<family ТипДанных="Строка" localid="ФамилияНалогоплательщика" localidСиноним="Фамилия налогоплательщика (если услуга оказана не налогоплательщику)">%ФамилияНалогоплательщика</family>
+									<!-- R [1..1] Имя -->
+									<given ТипДанных="Строка" localid="ИмяНалогоплательщика" localidСиноним="Имя налогоплательщика (если услуга оказана не налогоплательщику)">%ИмяНалогоплательщика</given>
+									<!-- [0..1] Отчество -->
+									<identity:Patronymic ТипДанных="Строка" localid="ОтчествоНалогоплательщика" localidСиноним="Отчество налогоплательщика (если услуга оказана не налогоплательщику)" Обязательное="*Ложь">%ОтчествоНалогоплательщика</identity:Patronymic>
+								</name>
+							</subject>
+						</relatedSubject>
+					</subject>
+				</observation>
+			</entry>
+			<!-- R [1..1] Код услуги -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Кодирование ... услуги -->
+					<code code="12168" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] -->
+					<value xsi:type="CD" localid="ОказаннаяУслуга" codeSystem="1.2.643.5.1.13.13.99.2.847" code="#code" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Стоимость медицинских услуг -->
+			<entry>
+				<!-- R [1..1] -->
+				<observation classCode="OBS" moodCode="EVN">
+				<!-- R [1..1] Название поля -->
+					<code code="6015" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Дата оплаты медицинской услуги -->
+					<effectiveTime ТипДанных="Дата" localid="ДатаОплаты" value='*ДатаСоСмещением(%ДатаОплаты, "ДФ=ггггММддЧЧмм")'/>
+					<!-- R [1..1] Значение поля -->
+					<value xsi:type="ST" ТипДанных="Число" localid="СтоимостьОказанныхУслуг">*ОбщегоНазначения.СформироватьСуммуПрописью(%СтоимостьОказанныхУслуг, Справочники.Валюты.Рубль)</value>
+				</observation>
+			</entry>
+		</section>
+	</component>
+</Items>

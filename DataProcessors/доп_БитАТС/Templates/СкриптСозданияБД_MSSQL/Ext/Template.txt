@@ -1,0 +1,54 @@
+﻿CREATE DATABASE [Test]
+GO
+
+USE [Test]
+GO
+
+CREATE TABLE [dbo].[Exchange1c_Clients](
+	[id] [char](36) NOT NULL,
+	[DatabaseID] [int] NOT NULL,
+	[Name] [nvarchar](100) NULL,
+	[ManagerID] [char](36) NULL,
+ CONSTRAINT [PK_Clients] PRIMARY KEY CLUSTERED 
+(
+	[id], [DatabaseID]
+)
+)
+GO
+
+CREATE TABLE [dbo].[Exchange1c_Managers](
+	[id] [char](36) NOT NULL,
+	[DatabaseID] [int] NOT NULL,
+	[Number] [char](20) NULL,
+ CONSTRAINT [PK_Managers] PRIMARY KEY CLUSTERED 
+(
+	[id], [DatabaseID]
+)
+)
+GO
+
+CREATE TABLE [dbo].[Exchange1c_Numbers](
+	[Number] [char](20) NOT NULL,
+	[DatabaseID] [int] NOT NULL,
+	[ClientID] [char](36) NULL,
+ CONSTRAINT [PK_Numbers] PRIMARY KEY CLUSTERED 
+(
+	[Number], [DatabaseID]
+)
+)
+GO
+
+ALTER TABLE [dbo].[Exchange1c_Clients]  WITH CHECK ADD  CONSTRAINT [FK_Clients_Managers] FOREIGN KEY([ManagerID], [DatabaseID])
+REFERENCES [dbo].[Exchange1c_Managers] ([id], [DatabaseID])
+GO
+
+ALTER TABLE [dbo].[Exchange1c_Clients] CHECK CONSTRAINT [FK_Clients_Managers]
+GO
+
+ALTER TABLE [dbo].[Exchange1c_Numbers]  WITH CHECK ADD  CONSTRAINT [FK_Numbers_Clients] FOREIGN KEY([ClientID], [DatabaseID])
+REFERENCES [dbo].[Exchange1c_Clients] ([id], [DatabaseID])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[Exchange1c_Numbers] CHECK CONSTRAINT [FK_Numbers_Clients]
+GO

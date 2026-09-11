@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Список индивидуальных секций по шаблону Протокол телемедицинской консультации" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<bitOther>
+		<bitLocalId УсловиеИспользования="*Ложь">
+			<nodeLocalId ТипДанных="СправочникСсылка.Сотрудники" localid="ВторойСотрудникУстановившийПодпись" localidСиноним="Второй сотрудник, установивший подпись" Множественное="*Ложь" Обязательное="*Истина"/>
+		</bitLocalId>
+	</bitOther>
+	<bitDiagnosis УсловиеИспользования="*Ложь">
+		<nodeDiagnosisStructure Отбор="ВидНозологическойЕдиницы:*НозологическаяЕдиницаОсновногоДиагноза()" Секция="DOCINFO">
+			<nodeDiagnosis type="Диагноз"	localid="ОсновнойДиагноз"/>
+		</nodeDiagnosisStructure>
+		<nodeDiagnosisStructure Множественное="*Истина" Отбор="*ТаблицаНеОсновныхДиагнозов(ТаблицаДиагнозовПриема)" Секция="RESINFO">
+			<nodeDiagnosis type="Диагноз"	localid="ДиагнозВыявленнойПатологии"/>
+		</nodeDiagnosisStructure>
+	</bitDiagnosis>
+	<!-- R [1..1] СЕКЦИЯ: ОБЩИЕ СВЕДЕНИЯ -->
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="DOCINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>ОБЩИЕ СВЕДЕНИЯ</title>
+			<!-- R [1..1] наполнение секции -->
+			<text></text>
+			<!-- [0..1] кодирование ... Шифр по МКБ-10 -->
+			<entry localid="ОсновнойДиагноз" Обязательное="*Ложь" ВозможноЗаполнениеИзТаблицыДиагнозов="true">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="809" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+					</code>
+					<value xsi:type="CD" localid="ОсновнойДиагноз" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<!--<originalText>
+							<reference value="*ОсновнойДиагноз"/>
+						</originalText>-->
+					</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] кодирование ... Тип консультации -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="4071" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="CD" localid="ВидКонсультации" code="#code" codeSystem="1.2.643.5.1.13.13.11.1463" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<!--<originalText>
+							<reference value="*ВидКонсультации"/>
+						</originalText>-->
+					</value>
+				</observation>
+			</entry>
+			<!-- [0..1] кодирование ... Вид обращения -->
+			<entry localid="ПорядокОбращения" Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="800" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="CD" localid="ПорядокОбращения" code="#code" codeSystem="1.2.643.5.1.13.13.11.1007" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<!--<originalText>
+							<reference value="*ПорядокОбращения"/>
+						</originalText>-->
+					</value>
+				</observation>
+			</entry>
+			<!-- [0..*] кодирование ссылок на предыдущие протоколы телемедицинских консультаций -->
+			<entry localid="ВнешнийДокумент" Множественное="*Истина" Обязательное="*Ложь">
+				<act classCode="ACT" moodCode="EVN">
+					<code code="4070" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<!--<originalText>
+							<reference value="*ВнешнийДокумент"/>
+						</originalText>-->
+					</code>
+					<!-- [0..1] Ссылка на документ - протоколы телемедицинских консультаций -->
+					<reference localid="ВнешнийДокумент" typeCode="REFR">
+						<externalDocument>
+							<id root="%Организация$ВнешнийДокумент" extension="*УникальныйИдентификаторПоСсылке(%ВнешнийДокумент)"/>
+						</externalDocument>
+					</reference>
+				</act>
+			</entry>
+			<!-- R [1..1] кодирование ... Место оказания медицинской помощи -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="801" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+					</code>
+					<value xsi:type="CD" localid="МестоОказания" code="#code" codeSystem="1.2.643.5.1.13.13.11.1008" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<!--<originalText>
+							<reference value="*МестоОказания"/>
+						</originalText>-->
+					</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] кодирование ... Цель консультации -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="4067" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+					</code>
+					<value xsi:type="CD" localid="ЦельКонсультации" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.46" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<!--<originalText>
+							<reference value="*ЦельКонсультации"/>
+						</originalText>-->
+					</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] кодирование ... Дата проведения -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="4068" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="IVL_TS">
+						<!-- [1..1] Дата начала консультации -->
+						<low value="%ДатаДокумента"/>
+						<!-- [0..1] Дата окончания консультации -->
+						<!-- <high value="%ДатаДокументаОкончание"/> -->
+					</value>
+				</observation>
+			</entry>
+			<!-- [0..1] кодирование ... Ссылка на документ-направление -->
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: ОПИСАНИЕ СЛУЧАЯ -->
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="AMBS" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>ОПИСАНИЕ СЛУЧАЯ</title>
+			<!-- R [1..1] наполнение секции -->
+			<text></text>
+			<!-- R [1..1] кодирование ... Жалобы пациента -->
+			<entry>
+				<observation localid="Жалобы" classCode="OBS" moodCode="EVN">
+					<code code="835" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!--<text>
+						<reference value="*Жалобы"/>
+					</text>-->
+					<value xsi:type="ST" localid="Жалобы">%Жалобы</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] кодирование ... Анамнез -->
+			<entry>
+				<observation localid="Анамнез" classCode="OBS" moodCode="EVN">
+					<code code="4069" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!--<text>
+						<reference value="*Анамнез"/>
+					</text>-->
+					<value xsi:type="ST" localid="Анамнез">%Анамнез</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] кодирование ... Объективные данные -->
+			<entry>
+				<observation localid="ОбъективныеДанные" classCode="OBS" moodCode="EVN">
+					<code code="836" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!--<text>
+						<reference value="*ОбъективныеДанные"/>
+					</text>-->
+					<value xsi:type="ST" localid="ОбъективныеДанные">%ОбъективныеДанные</value>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: ВИТАЛЬНЫЕ ПАРАМЕТРЫ -->
+	<component localid="ВитальныйПараметр" Обязательное="*Ложь">
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="VITALPARAM" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>ВИТАЛЬНЫЕ ПАРАМЕТРЫ</title>
+			<!-- R [1..1] наполнение секции -->
+			<text></text>
+			<!-- R [0..*] кодирование ... Витальные параметры -->
+			<entry localid="ВитальныйПараметр" Множественное="*Истина" Обязательное="*Ложь">
+				<!-- [1..1] кодирование ... Пульс -->
+				<organizer classCode="CLUSTER" moodCode="EVN">
+					<!-- R [1..1] Статус измерения - выполнено -->
+					<statusCode code="completed"/>
+					<!-- R [1..1] Дата измерения -->
+					<effectiveTime value="%ДатаДокумента"/>
+					<!-- R [1..2] кодирование витального параметра -->
+					<component typeCode="COMP">
+						<observation classCode="OBS" moodCode="EVN">
+							<code localid="ВитальныйПараметр.КлассификацияПоля" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.262" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+								<!--<originalText>
+									<reference value="*ВитальныйПараметр"/>
+								</originalText>-->
+							</code>
+							<value xsi:type="PQ" value="%ВитальныйПараметр" unit="*ПредставлениеЕдиницыИзмеренияВитальногоПараметра(%ВитальныйПараметр.КлассификацияПоля)"/>
+						</observation>
+					</component>
+				</organizer>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: РЕЗУЛЬТАТ КОНСУЛЬТАЦИИ -->
+	<component>
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="RESINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>РЕЗУЛЬТАТ КОНСУЛЬТАЦИИ</title>
+			<!-- R [1..1] наполнение секции -->
+			<text></text>
+			<!-- [0..*] кодирование ... Выявленные патологии -->
+			<entry localid="ДиагнозВыявленнойПатологии" Множественное="*Истина" Обязательное="*Ложь" ВозможноЗаполнениеИзТаблицыДиагнозов="true">
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="808" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+					</code>
+					<value xsi:type="CD" localid="ДиагнозВыявленнойПатологии" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name">
+						<!--<originalText>
+							<reference value="*ДиагнозВыявленнойПатологии"/>
+						</originalText>-->
+					</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] кодирование ... Заключение -->
+			<entry>
+				<observation localid="Заключение" classCode="OBS" moodCode="EVN">
+					<code code="806" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!--<text>
+						<reference value="*Заключение"/>
+					</text>-->
+					<value xsi:type="ST" localid="Заключение">%Заключение</value>
+				</observation>
+			</entry>
+			<!-- [0..1] кодирование ... Рекомендации -->
+			<entry localid="Рекомендации" Обязательное="*Ложь">
+				<observation localid="Рекомендации" classCode="OBS" moodCode="EVN">
+					<code code="807" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!--<text>
+						<reference value="*Рекомендации"/>
+					</text>-->
+					<value xsi:type="ST" localid="Рекомендации">%Рекомендации</value>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: ДОПОЛНИТЕЛЬНЫЕ КОНСУЛЬТАЦИИ -->
+	<component localid="ДопКонсультация" localidСиноним="Доп. консультация" Обязательное="*Ложь">
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="RESCONS" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>ДОПОЛНИТЕЛЬНЫЕ КОНСУЛЬТАЦИИ</title>
+			<!-- R [1..1] наполнение секции -->
+			<text></text>
+			<!-- [0..*] Кодирование консультации приглашённого консультанта -->
+			<entry localid="ДопКонсультация" Множественное="*Истина" Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- [1..1] Тип консультации -->
+					<code localid="ДопКонсультация" ПустоеЗначение="NI" code="#code" codeSystem="1.2.643.5.1.13.13.11.1463" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Статус консультации -->
+					<statusCode code="completed"/>
+					<!-- R [1..1] Время выполнения консультации -->
+					<effectiveTime value="%ДопКонсультация.Дата"/>
+					<!-- R [1..1] Текст результатов и\или заключения -->
+					<value xsi:type="ST" localid="ДопКонсультацияОписание" localidСиноним="Доп. консультация: описание">%ДопКонсультацияОписание</value>
+					<!-- R [1..1] исполнитель (роль) -->
+					<author>
+						<time value="%ДопКонсультация.Дата"/>
+						<assignedAuthor>
+							<!-- R [1..1] Уникальный идентификатор приглашённого консультанта -->
+							<id root="%ВнешОрганизация$ВнешСотрудник" extension="*УникальныйИдентификаторПоСсылке(%ВнешСотрудник)"/>
+						</assignedAuthor>
+					</author>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- [0..1] СЕКЦИЯ: МЕДИЦИНСКИЕ ПРОЦЕДУРЫ -->
+	<component localid="ДопМедУслуга" localidСиноним="Доп. мед. услуга" Обязательное="*Ложь">
+		<section>
+			<!-- R [1..1] код секции -->
+			<code code="PROCEDURE" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<!-- R [1..1] заголовок секции -->
+			<title>МЕДИЦИНСКИЕ ПРОЦЕДУРЫ</title>
+			<!-- [1..1] наполнение секции -->
+			<text></text>
+			<!-- [0..*] кодирование процедуры -->
+			<entry localid="ДопМедУслуга" Множественное="*Истина">
+				<procedure classCode="PROC" moodCode="EVN">
+					<!-- [0..1] код процедуры -->
+					<code localid="ДопМедУслуга" code="#code" codeSystem="1.2.643.5.1.13.13.11.1070" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Текстовое описание процедуры -->
+					<text ТипДанных="Строка" localid="ДопМедУслугаОписание" localidСиноним="Доп. мед. услуга: описание">%ДопМедУслугаОписание</text>
+					<!-- R [1..1] Статус процедуры -->
+					<statusCode code="completed"/>
+					<!-- [0..1] дата процедуры -->
+					<effectiveTime value="%ДатаДокумента"/>
+					<!-- [0..1] исполнитель (роль) -->
+					<performer localid="Сотрудник" Обязательное="*Ложь">
+						<assignedEntity>
+							<!-- R [1..1] Уникальный идентификатор исполнителя процедуры - ссылка на автора телемедицинской консультации -->
+							<id root="%Организация$Сотрудник" extension="*УникальныйИдентификаторПоСсылке(%Сотрудник)"/>
+						</assignedEntity>
+					</performer>
+				</procedure>
+			</entry>
+		</section>
+	</component>
+</Items>

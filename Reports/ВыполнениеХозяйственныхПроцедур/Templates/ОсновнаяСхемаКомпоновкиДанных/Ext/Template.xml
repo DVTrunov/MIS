@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Процедура</dataPath>
+			<field>Процедура</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Филиал</dataPath>
+			<field>Филиал</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Срок</dataPath>
+			<field>Срок</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=HH:mm</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВремяПлан</dataPath>
+			<field>ВремяПлан</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Время отсчета</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=HH:mm</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВремяФакт</dataPath>
+			<field>ВремяФакт</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=HH:mm</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Отклонение</dataPath>
+			<field>Отклонение</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отклонение, мин</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Left</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ РАЗЛИЧНЫЕ
+	АктуальныеГрафикиХозяйственныхПроцедур.Дата КАК ДатаНачалаДействияГрафика,
+	ГрафикиХозяйственныхПроцедурГрафикПроцедур.Время КАК ВремяПлан,
+	ГрафикиХозяйственныхПроцедурГрафикПроцедур.Процедура КАК Процедура,
+	АктуальныеГрафикиХозяйственныхПроцедур.Филиал КАК Филиал
+ПОМЕСТИТЬ ГрафикиПроцедур
+ИЗ
+	Справочник.ГрафикиХозяйственныхПроцедур.ГрафикПроцедур КАК ГрафикиХозяйственныхПроцедурГрафикПроцедур
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.АктуальныеГрафикиХозяйственныхПроцедур КАК АктуальныеГрафикиХозяйственныхПроцедур
+		ПО ГрафикиХозяйственныхПроцедурГрафикПроцедур.Ссылка = АктуальныеГрафикиХозяйственныхПроцедур.ГрафикПроцедур
+ГДЕ
+	АктуальныеГрафикиХозяйственныхПроцедур.ДеньНедели = &amp;ДеньНедели
+	И ВЫБОР
+			КОГДА АктуальныеГрафикиХозяйственныхПроцедур.ДатаОкончания &lt;&gt; ДАТАВРЕМЯ(1, 1, 1)
+				ТОГДА &amp;НачалоПериода МЕЖДУ АктуальныеГрафикиХозяйственныхПроцедур.Дата И АктуальныеГрафикиХозяйственныхПроцедур.ДатаОкончания
+			ИНАЧЕ АктуальныеГрафикиХозяйственныхПроцедур.Дата &lt;= &amp;НачалоПериода
+		КОНЕЦ
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	МАКСИМУМ(ГрафикиПроцедур.ДатаНачалаДействияГрафика) КАК ДатаНачалаДействияАктуальногоГрафика,
+	ГрафикиПроцедур.Филиал КАК Филиал
+ПОМЕСТИТЬ НачалоДействияАктуальногоГрафика
+ИЗ
+	ГрафикиПроцедур КАК ГрафикиПроцедур
+
+СГРУППИРОВАТЬ ПО
+	ГрафикиПроцедур.Филиал
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ДОБАВИТЬКДАТЕ(&amp;НачалоПериода, СЕКУНДА, РАЗНОСТЬДАТ(ДАТАВРЕМЯ(1, 1, 1), ГрафикиПроцедур.ВремяПлан, СЕКУНДА)) КАК ВремяСДатой,
+	ГрафикиПроцедур.Процедура КАК Процедура,
+	ГрафикиПроцедур.Филиал КАК Филиал
+ПОМЕСТИТЬ АктуальныеПроцедуры
+ИЗ
+	ГрафикиПроцедур КАК ГрафикиПроцедур
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ НачалоДействияАктуальногоГрафика КАК НачалоДействияАктуальногоГрафика
+		ПО ГрафикиПроцедур.ДатаНачалаДействияГрафика = НачалоДействияАктуальногоГрафика.ДатаНачалаДействияАктуальногоГрафика
+			И ГрафикиПроцедур.Филиал = НачалоДействияАктуальногоГрафика.Филиал
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ ГрафикиПроцедур
+;
+
+////////////////////////////////////////////////////////////////////////////////
+УНИЧТОЖИТЬ НачалоДействияАктуальногоГрафика
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ВыполненныеХозяйственныеПроцедуры.Процедура КАК Процедура,
+	ВыполненныеХозяйственныеПроцедуры.ВремяПлан КАК ВремяПлан,
+	ВыполненныеХозяйственныеПроцедуры.ВремяФакт КАК ВремяФакт,
+	ВыполненныеХозяйственныеПроцедуры.Срок КАК Срок,
+	ВыполненныеХозяйственныеПроцедуры.Филиал КАК Филиал
+ПОМЕСТИТЬ Факт
+ИЗ
+	РегистрСведений.ВыполненныеХозяйственныеПроцедуры КАК ВыполненныеХозяйственныеПроцедуры
+ГДЕ
+	ВыполненныеХозяйственныеПроцедуры.ВремяФакт МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	АктуальныеПроцедуры.Филиал КАК Филиал,
+	АктуальныеПроцедуры.Процедура КАК Процедура,
+	ВЫБОР
+		КОГДА Факт.ВремяПлан ЕСТЬ NULL
+			ТОГДА АктуальныеПроцедуры.ВремяСДатой
+		ИНАЧЕ Факт.ВремяПлан
+	КОНЕЦ КАК ВремяПлан,
+	Факт.ВремяФакт КАК ВремяФакт,
+	ВЫБОР
+		КОГДА Факт.Срок ЕСТЬ NULL
+			ТОГДА ДОБАВИТЬКДАТЕ(АктуальныеПроцедуры.ВремяСДатой, МИНУТА, АктуальныеПроцедуры.Процедура.НормаСрокаВыполнения)
+		ИНАЧЕ Факт.Срок
+	КОНЕЦ КАК Срок,
+	ВЫБОР
+		КОГДА НЕ Факт.ВремяФакт ЕСТЬ NULL
+			ТОГДА ВЫБОР
+					КОГДА РАЗНОСТЬДАТ(Факт.Срок, Факт.ВремяФакт, МИНУТА) = 0
+						ТОГДА 1
+					ИНАЧЕ РАЗНОСТЬДАТ(Факт.Срок, Факт.ВремяФакт, МИНУТА)
+				КОНЕЦ
+	КОНЕЦ КАК Отклонение
+ИЗ
+	АктуальныеПроцедуры КАК АктуальныеПроцедуры
+		ЛЕВОЕ СОЕДИНЕНИЕ Факт КАК Факт
+		ПО АктуальныеПроцедуры.ВремяСДатой = Факт.ВремяПлан
+			И АктуальныеПроцедуры.Процедура = Факт.Процедура
+			И АктуальныеПроцедуры.Филиал = Факт.Филиал</query>
+	</dataSet>
+	<parameter>
+		<name>ДеньНедели</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>День недели</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ДниНедели</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<expression>ОбщегоНазначенияСервер.ПолучитьДатуВремя(&amp;Дата, "День")</expression>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>КонецПериода(&amp;Дата, "День")</expression>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Дата</expression>
+	</parameter>
+	<parameter>
+		<name>Дата</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<denyIncompleteValues>true</denyIncompleteValues>
+		<use>Always</use>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>ПоФилиалу</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>По филиалу</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Процедура</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ВремяПлан</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Срок</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ВремяФакт</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Отклонение</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Филиал</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>a3a378c0-4cf3-40dc-bca7-a3dc524d87b3</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Дата</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>5c04a9b6-cba2-49bb-ae15-a209d9198178</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>ВремяФакт</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ВремяФакт</dcsset:left>
+							<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:use>false</dcscor:use>
+							<dcscor:parameter>ЦветТекста</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">style:SpecialTextColor</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>Текст</dcscor:parameter>
+							<dcscor:value xsi:type="v8:LocalStringType">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Не выполнена</v8:content>
+								</v8:item>
+							</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+					<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+					<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+					<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+					<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+				</dcsset:item>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>Отклонение</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">Отклонение</dcsset:left>
+							<dcsset:comparisonType>LessOrEqual</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>Текст</dcscor:parameter>
+							<dcscor:value xsi:type="v8:LocalStringType">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Нет</v8:content>
+								</v8:item>
+							</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+					<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+					<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+					<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+					<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+				</dcsset:item>
+			</dcsset:conditionalAppearance>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Филиал</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>ВремяПлан</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

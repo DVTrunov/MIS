@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Items Description="Льготный рецепт на лекарственный препарат, изделие медицинского назначения и специализированный продукт лечебного питания (CDA) Редакция 4" item_name="component" xmlns="urn:hl7-org:v3" xsi:schemaLocation="urn:hl7-org:v3 CDA.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fias="urn:hl7-ru:fias" xmlns:address="urn:hl7-ru:address" xmlns:identity="urn:hl7-ru:identity">
+	<bitLocalId УсловиеИспользования="*Ложь">
+		<nodeLocalId localid="ИсточикФинансирования" Классификация="1.2.643.5.1.13.13.99.2.602"/>
+	</bitLocalId>
+	<!-- R [1..1] СЕКЦИЯ: "Сведения о документе" ("Сведения об электронном рецепте") -->
+	<component>
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="DOCINFO" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<title>Сведения об электронном рецепте</title>
+			<text>
+				<table>
+					<tbody>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Приоритет исполнения рецепта</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%ПриоритетИсполненияРецепта)</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Серия рецепта</content>
+							</td>
+							<td>
+								<content>%СерияРецепта</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Номер рецепта</content>
+							</td>
+							<td>
+								<content>%НомерРецепта</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Срок действия рецепта</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%СрокДействияРецепта)</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>По специальному назначению</content>
+							</td>
+							<td>
+								<content>*Формат(%СпециальноеНазначение, "ru='БЛ=Нет; БИ=Да'")</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Диагноз</content>
+							</td>
+							<td>
+								<content>*ПредставлениеДиагнозаСКодом(%Диагноз)</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- [0..1] Приоритет исполнения рецепта -->
+			<entry Обязательное="*Ложь">
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="6000" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Приоритет исполнения рецепта -->
+					<value xsi:type="CD" localid="ПриоритетИсполненияРецепта" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.609" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Серия рецепта -->
+			<entry>
+				<!-- R [1..1]-->
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="6001" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="СерияРецепта">%СерияРецепта</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Номер рецепта -->
+			<entry>
+				<!-- R [1..1]-->
+				<observation classCode="OBS" moodCode="EVN">
+					<code code="6002" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<value xsi:type="ST" localid="НомерРецепта">%НомерРецепта</value>
+				</observation>
+			</entry>
+			<!-- R [1..1] Срок действия рецепта -->
+			<!-- Доступные сроки действия рецепта на лекарственный препарат или специализированный продукт лечебного питания: 15 дней, 30 дней и 90 дней -->
+			<!-- Доступные сроки действия рецепта на медицинское изделие: 1 месяц, 3 месяца (не поддерживается) -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="6004" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- R [1..1] Дата окончания действия рецепта -->
+					<effectiveTime ТипДанных="Дата" localid="ДатаОкончанияДействияРецепта" Формат="ДФ=ггггММдд" value="%ДатаОкончанияДействияРецепта"/>
+					<!-- R [1..1] Срок действия рецепта -->
+					<value xsi:type="CD" localid="СрокДействияРецепта" ДопустимыеЗначения="1;2;4" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.608" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] По специальному назначению (Отметка) -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="6006" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- R [1..1] Специальное назначение -->
+					<value xsi:type="BL" Формат="БЛ=false; БИ=true" localid="СпециальноеНазначение" value="%СпециальноеНазначение"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Наличие хронических заболеваний (Отметка) (Имеется\Отсутствует) -->
+			<!-- Данная отметка может иметь значение true в случае назначения медицинского изделия (не поддерживается)-->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="11001" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- R [1..1] Специальное назначение -->
+					<value xsi:type="BL" Формат="БЛ=false; БИ=true" localid="НаличиеХроническихЗаболеваний" value="%НаличиеХроническихЗаболеваний"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Кодирование диагноза -->
+			<entry>
+				<!-- R [1..1]-->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="809" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- R [1..1] Код по МКБ-10 -->
+					<value xsi:type="CD" localid="Диагноз" code="#code" codeSystem="1.2.643.5.1.13.13.11.1005" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: "Льготы" ("Информация о льготах") -->
+	<component>
+		<section>
+			<code code="BENEFITS" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<title>Информация о льготах</title>
+			<text>
+				<table>
+					<tbody>
+						<tr localid="ЛьготнаяКатегория" Множественное="*Истина">
+							<td>
+								<content>Льготная категория</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%ЛьготнаяКатегория)</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Источник финансирования</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%ИсточикФинансирования)</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Размер льготы (%)</content>
+							</td>
+							<td>
+								<content>%РазмерЛьготы</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<!-- R [1..*] Кодирование льгот -->
+			<entry localid="ЛьготнаяКатегория" Множественное="*Истина">
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Названия поля -->
+					<code code="811" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Значение поля -->
+					<value xsi:type="CD" localid="ЛьготнаяКатегория" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.541" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Размер льготы (код) -->
+			<entry>
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Названия поля -->
+					<code code="6009" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+					<!-- R [1..1] Значение поля -->
+					<value xsi:type="CD" localid="ВидПредоставляемойЛьготы" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.605" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+				</observation>
+			</entry>
+			<!-- R [1..1] Размер льготы (значение в процентах) -->
+			<entry>
+				<!-- R [1..1]-->
+				<observation classCode="OBS" moodCode="EVN">
+					<!-- R [1..1] Код поля -->
+					<code code="6010" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- R [1..1] Значение поля -->
+					<value xsi:type="PQ" localid="РазмерЛьготы" value="%РазмерЛьготы" unit="*Символ(37)">
+						<!-- R [1..1]-->
+						<translation value="%РазмерЛьготы" code="53" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemName="#codesystemname" displayName="*Символ(37)" codeSystemVersion="#version"/>
+					</value>
+				</observation>
+			</entry>
+		</section>
+	</component>
+	<!-- R [1..1] СЕКЦИЯ: "Рецепт" -->
+	<component>
+		<section>
+			<!-- R [1..1] Код секции -->
+			<code code="RECIPE" codeSystem="1.2.643.5.1.13.13.99.2.197" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+			<title>Общие сведения</title>
+			<text>
+				<table>
+					<tbody>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Наименование лекарственного препарата</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%ЛекарственныйПрепарат)</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Наименование лекарственного препарата</content>
+							</td>
+							<td>
+								<content>%ЛекарственныйПрепаратСтрокой</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Длительность приема препарата (в днях)</content>
+							</td>
+							<td>
+								<content>%ДлительностьПриемаПрепарата</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Путь введения препарата</content>
+							</td>
+							<td>
+								<content>*ЗначениеЭлементаКлассификатора(%ПутьВведенияПрепарата)</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Кратность приема препарата</content>
+							</td>
+							<td>
+								<content>%ЧастотаПриемаПрепарата</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Разовая доза препарата</content>
+							</td>
+							<td>
+								<content>%РазоваяДозаПрепарата</content>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<content>Количество назначенных доз</content>
+							</td>
+							<td>
+								<content>%КоличествоНазначенныхДоз</content>
+							</td>
+						</tr>
+						<tr Обязательное="*Ложь">
+							<td>
+								<content>Особые указания</content>
+							</td>
+							<td>
+								<content>%ОсобыеУказания</content>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</text>
+			<entry>
+				<substanceAdministration classCode="SBADM" moodCode="RQO">
+					<code nullFlavor="NI"/>
+					<!-- [1..1] Общая длительность приема препарата -->
+					<effectiveTime xsi:type="IVL_TS" ПустоеЗначение="NI">
+						<!-- [0..1] Длительность приема препарата -->
+						<width ТипДанных="Число" localid="ДлительностьПриемаПрепарата" value="%ДлительностьПриемаПрепарата" unit="%ЕдиницаИзмеренияСуткиПоКлассификатору.UCUM">
+							<!-- R [1..1]-->
+							<translation ТипДанных="Число" localid="ЕдиницаИзмеренияСуткиПоКлассификатору" code="#code" value="%ДлительностьПриемаПрепарата" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="%ЕдиницаИзмеренияСуткиПоКлассификатору.PRINTNAME"/>
+						</width>
+					</effectiveTime>
+					<!-- [1..1] Путь введения препарата -->
+					<routeCode localid="ПутьВведенияПрепарата" ПустоеЗначение="NI" code="#code" codeSystem="1.2.643.5.1.13.13.11.1468" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+					<!-- R [1..1] Назначенный препарат -->
+					<consumable typeCode="CSM">
+						<!-- R [1..1]-->
+						<manufacturedProduct classCode="MANU">
+							<!-- R [1..1]-->
+							<manufacturedMaterial classCode="MMAT" determinerCode="KIND">
+								<!-- [1..1] Кодирование назначенного лекарственного препарата -->
+								<code localid="ЛекарственныйПрепарат" Обязательное="*Не ЗначениеЗаполнено(%ЛекарственныйПрепаратСтрокой)" ПустоеЗначение="OTH" code="#code" codeSystem="1.2.643.5.1.13.13.99.2.611" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+								<!-- [0..1] Торговое наименование -->
+								<name ТипДанных="Строка" Обязательное="*Ложь" localid="ЛекарственныйПрепаратСтрокой">%ЛекарственныйПрепаратСтрокой</name>
+							</manufacturedMaterial>
+						</manufacturedProduct>
+					</consumable>
+					<!-- [0..*] Инструкция по применению препарата --><!-- Множественность не поддерживается -->
+					<entryRelationship typeCode="COMP" Обязательное="*Ложь">
+						<!-- R [1..1]-->
+						<substanceAdministration classCode="SBADM" moodCode="RQO">
+							<!-- [1..1] Длительность приема препарата -->
+							<effectiveTime xsi:type="IVL_TS" ПустоеЗначение="NI">
+								<!-- [0..1] Длительность приема препарата -->
+								<width ТипДанных="Число" localid="ДлительностьПриемаПрепарата" value="%ДлительностьПриемаПрепарата" unit="%ЕдиницаИзмеренияСуткиПоКлассификатору.UCUM">
+									<!-- R [1..1]-->
+									<translation ТипДанных="Число" localid="ЕдиницаИзмеренияСуткиПоКлассификатору" code="#code" value="%ДлительностьПриемаПрепарата" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="%ЕдиницаИзмеренияСуткиПоКлассификатору.PRINTNAME"/>
+								</width>
+							</effectiveTime>
+							<!-- [1..1] Кратность приема препарата -->
+							<effectiveTime ПустоеЗначение="NI" xsi:type="PIVL_TS" institutionSpecified="true">
+								<!-- R [1..1]-->
+								<period ТипДанных="Число" localid="ЧастотаПриемаПрепарата" Формат="ЧРД=." value="%ЧастотаПриемаПрепарата" unit="%ЕдиницаИзмеренияСуткиПоКлассификатору.UCUM">
+									<!-- R [1..1]-->
+									<translation ТипДанных="Число" localid="ЕдиницаИзмеренияСуткиПоКлассификатору" Формат="ЧРД=." code="#code" value="%ЧастотаПриемаПрепарата" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="%ЕдиницаИзмеренияСуткиПоКлассификатору.PRINTNAME"/>
+								</period>
+							</effectiveTime>
+							<!-- R [1..1] Разовая доза -->
+							<doseQuantity localid="РазоваяДозаПрепарата" ТипДанных="Число" УсловиеИспользования='*ЗначениеЗаполнено(%ЛекарственныйПрепарат)' value="%РазоваяДозаПрепарата"/>
+							<!-- R [1..1] Разовая доза -->
+							<doseQuantity localid="РазоваяДозаПрепарата" ТипДанных="Число" УсловиеИспользования='*ЗначениеЗаполнено(%ЛекарственныйПрепаратСтрокой)' value="%РазоваяДозаПрепарата" unit="%ЕдиницаИзмеренияДозыПрепарата.UCUM">
+								<translation localid="ЕдиницаИзмеренияДозыПрепарата" Обязательное="*ЗначениеЗаполнено(%ЛекарственныйПрепаратСтрокой)" value="%РазоваяДозаПрепарата" code="#code" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemName="#codesystemname" displayName="%ЕдиницаИзмеренияДозыПрепарата.PRINTNAME" codeSystemVersion="#version"/>
+							</doseQuantity>
+							<!-- R [1..1]-->
+							<consumable typeCode="CSM">
+								<!-- R [1..1]-->
+								<manufacturedProduct classCode="MANU">
+									<!-- [1..1]-->
+									<manufacturedMaterial nullFlavor="NA"/>
+								</manufacturedProduct>
+							</consumable>
+						</substanceAdministration>
+					</entryRelationship>
+					<!-- R [1..1] Количество назначенных доз -->
+					<entryRelationship typeCode="COMP">
+						<!-- R [1..1]-->
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- R [1..1] Код поля -->
+							<code code="6011" codeSystem="1.2.643.5.1.13.13.99.2.166" codeSystemVersion="#version" codeSystemName="#codesystemname" displayName="#name"/>
+							<!-- R [1..1] Общее количество назначенных доз -->
+							<value xsi:type="PQ" value="%КоличествоНазначенныхДоз" unit="U">
+								<translation value="%КоличествоНазначенныхДоз" code="128" codeSystem="1.2.643.5.1.13.13.11.1358" codeSystemName="#codesystemname" displayName="#name" codeSystemVersion="#version"/>
+							</value>
+							<!-- [0..1] Периодический отпуск --> <!-- Не поддерживается -->
+						</observation>
+					</entryRelationship>
+					<!-- [0..*] Особые указания -->
+					<precondition typeCode="PRCN" Обязательное="*Ложь" Множественное="*Истина" localid="ОсобыеУказания">
+						<criterion>
+							<code code="ASSERTION" codeSystem="2.16.840.1.113883.5.4"/>
+							<value xsi:type="ST" localid="ОсобыеУказания">%ОсобыеУказания</value>
+						</criterion>
+					</precondition>
+				</substanceAdministration>
+			</entry>
+		</section>
+	</component>
+</Items>

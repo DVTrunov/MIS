@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Наименование" id="1">
+			<DataPath>Объект.Description</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<InputField name="СпособРаспределения" id="4">
+			<DataPath>Объект.СпособРаспределения</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<AutoEditMode>true</AutoEditMode>
+			<ContextMenu name="СпособРаспределенияКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="СпособРаспределенияРасширеннаяПодсказка" id="6"/>
+			<Events>
+				<Event name="OnChange">СпособРаспределенияПриИзменении</Event>
+			</Events>
+		</InputField>
+		<UsualGroup name="ГруппаНастройкаРедактирования" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа настройка редактирования</v8:content>
+				</v8:item>
+			</Title>
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНастройкаРедактированияРасширеннаяПодсказка" id="36"/>
+			<ChildItems>
+				<CheckBoxField name="РедактироватьВСписке" id="29">
+					<DataPath>РедактироватьВСписке</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<CheckBoxType>Tumbler</CheckBoxType>
+					<EditFormat>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>БЛ='На все специализации'; БИ=Список</v8:content>
+						</v8:item>
+					</EditFormat>
+					<ContextMenu name="РедактироватьВСпискеКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="РедактироватьВСпискеРасширеннаяПодсказка" id="31"/>
+					<Events>
+						<Event name="OnChange">РедактироватьВСпискеПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ПолучателиЗатрат" id="7">
+			<Representation>List</Representation>
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<Footer>true</Footer>
+			<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Объект.ПолучателиЗатрат</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ПолучателиЗатратКонтекстноеМеню" id="8"/>
+			<AutoCommandBar name="ПолучателиЗатратКоманднаяПанель" id="9">
+				<ChildItems>
+					<Button name="ПолучателиЗатратПодбор" id="37">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.Подбор</CommandName>
+						<ExtendedTooltip name="ПолучателиЗатратПодборРасширеннаяПодсказка" id="38"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ПолучателиЗатратРасширеннаяПодсказка" id="10"/>
+			<SearchStringAddition name="ПолучателиЗатратСтрокаПоиска" id="11">
+				<AdditionSource>
+					<Item>ПолучателиЗатрат</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПолучателиЗатратСтрокаПоискаКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="ПолучателиЗатратСтрокаПоискаРасширеннаяПодсказка" id="13"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ПолучателиЗатратСостояниеПросмотра" id="14">
+				<AdditionSource>
+					<Item>ПолучателиЗатрат</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПолучателиЗатратСостояниеПросмотраКонтекстноеМеню" id="15"/>
+				<ExtendedTooltip name="ПолучателиЗатратСостояниеПросмотраРасширеннаяПодсказка" id="16"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ПолучателиЗатратУправлениеПоиском" id="17">
+				<AdditionSource>
+					<Item>ПолучателиЗатрат</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ПолучателиЗатратУправлениеПоискомКонтекстноеМеню" id="18"/>
+				<ExtendedTooltip name="ПолучателиЗатратУправлениеПоискомРасширеннаяПодсказка" id="19"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="ChoiceProcessing">ПолучателиЗатратОбработкаВыбора</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ПолучателиЗатратПолучатель" id="23">
+					<DataPath>Объект.ПолучателиЗатрат.Получатель</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ChoiceButton>true</ChoiceButton>
+					<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+					<ContextMenu name="ПолучателиЗатратПолучательКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ПолучателиЗатратПолучательРасширеннаяПодсказка" id="25"/>
+				</InputField>
+				<InputField name="ПолучателиЗатратКоэффициент" id="26">
+					<DataPath>Объект.ПолучателиЗатрат.Коэффициент</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<FooterDataPath>Объект.ПолучателиЗатрат.TotalКоэффициент</FooterDataPath>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ПолучателиЗатратКоэффициентКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="ПолучателиЗатратКоэффициентРасширеннаяПодсказка" id="28"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ПравилаРаспределенияЗатрат</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+		<Attribute name="РедактироватьВСписке" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Редактировать в списке</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Подбор" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Подбор</Action>
+		</Command>
+	</Commands>
+</Form>

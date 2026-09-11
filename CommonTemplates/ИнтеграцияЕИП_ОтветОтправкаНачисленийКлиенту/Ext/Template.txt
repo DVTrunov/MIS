@@ -1,0 +1,40 @@
+﻿<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Envelope">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="MethodResponse">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Result">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Errors">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Item">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute type="xs:byte" name="Severity"/>
+                                  <xs:attribute type="xs:string" name="Message"/>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="Name"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute type="xs:float" name="ProtocolVersion"/>
+      <xs:attribute type="xs:short" name="BuildNumber"/>
+      <xs:attribute type="xs:string" name="Date"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,533 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://v8.1c.ru/8.2/data/spreadsheet" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<languageSettings>
+		<currentLanguage>ru</currentLanguage>
+		<defaultLanguage>ru</defaultLanguage>
+		<languageInfo>
+			<id>ru</id>
+			<code>Русский</code>
+			<description>Русский</description>
+		</languageInfo>
+	</languageSettings>
+	<columns>
+		<size>3</size>
+		<columnsItem>
+			<index>0</index>
+			<column>
+				<formatIndex>1</formatIndex>
+			</column>
+		</columnsItem>
+		<columnsItem>
+			<index>1</index>
+			<column>
+				<formatIndex>2</formatIndex>
+			</column>
+		</columnsItem>
+		<columnsItem>
+			<index>2</index>
+			<column>
+				<formatIndex>2</formatIndex>
+			</column>
+		</columnsItem>
+	</columns>
+	<rowsItem>
+		<index>0</index>
+		<row>
+			<c>
+				<c>
+					<f>3</f>
+					<tl>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>UID</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>3</f>
+					<tl>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ТекстКЗамене</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>3</f>
+					<tl>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ТекстДляЗамены</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+		</row>
+	</rowsItem>
+	<rowsItem>
+		<index>1</index>
+		<row>
+			<c>
+				<c>
+					<f>3</f>
+					<tl>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>53cd1b54-05d9-43d4-ad74-bc00949c1b31</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>4</f>
+					<tl>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>// Шапка
+Текст = "&lt;TABLE border=1 cellspacing='0'&gt;
+  |&lt;TBODY&gt;
+  |&lt;TR&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Наименование услуги&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Дата&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Назначено&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Комментарий&lt;/P&gt;&lt;/TD&gt;&lt;/TR&gt;";
+
+Для Каждого Строка Из ПланЛечения Цикл
+ 
+ Текст = Текст + "&lt;TR&gt;";
+ 
+ Если Строка.ВидЭлемента = Перечисления.ВидыНазначений.Прием Тогда
+  Услуга = "Консультация врача специализации """ + Строка.Номенклатура.Наименование + """";
+ ИначеЕсли ЗначениеЗаполнено(Строка.Номенклатура) Тогда
+  Услуга = Строка.Номенклатура.Наименование;
+ Иначе
+  Услуга = "";
+ КонецЕсли;
+ 
+ Дата = ?(Строка.Дата = НачалоДня(Строка.Дата), Формат(Строка.Дата, "ДФ=dd.MM.yyyy"), Строка(Строка.Дата));
+ Если Строка.Дата = Дата(1,1,1) Тогда
+  Дата = "&amp;nbsp;";
+ КонецЕсли;
+ 
+ Назначено = ?(Строка.Количество = 0, "&amp;nbsp;", Строка(Строка.Количество));
+ Комментарий = ?(ПустаяСтрока(Строка.Комментарий), "&amp;nbsp;", Строка.Комментарий);
+ 
+ Текст = Текст + "&lt;TD style='WORD-WRAP: break-word'&gt;&lt;P&gt;" + Услуга + "&lt;/TD&gt;";
+ Текст = Текст + "&lt;TD align=center&gt;" + Дата + "&lt;/TD&gt;";
+ Текст = Текст + "&lt;TD style='WORD-WRAP: break-word' align=center&gt;" + Назначено + "&lt;/TD&gt;";
+ Текст = Текст + "&lt;TD style='WORD-WRAP: break-word' align=center&gt;" + Комментарий + "&lt;/TD&gt;&lt;/TR&gt;";
+ 
+КонецЦикла;
+
+Текст = Текст + "&lt;/TBODY&gt;&lt;/TABLE&gt;";
+
+Результат = Текст;</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>4</f>
+					<tl>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>// Шапка
+Текст = "&lt;TABLE border=""1"" cellpadding=""3"" style=""border-color: inherit; border-style: solid; border-collapse: collapse; width: 100%;""&gt;
+  |&lt;TBODY&gt;
+  |&lt;TR&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Наименование услуги&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Дата&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Назначено&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Комментарий&lt;/P&gt;&lt;/TD&gt;&lt;/TR&gt;";
+
+Для Каждого СтрокаПлана Из ПланЛечения Цикл
+ 
+ Текст = Текст + "&lt;TR&gt;";
+ 
+ Услуга = Строка(СтрокаПлана.Номенклатура);
+ 
+ Дата = ?(СтрокаПлана.Дата = НачалоДня(СтрокаПлана.Дата), Формат(СтрокаПлана.Дата, "ДФ=dd.MM.yyyy"), Строка(СтрокаПлана.Дата));
+ Если СтрокаПлана.Дата = Дата(1,1,1) Тогда
+  Дата = "&amp;nbsp;";
+ КонецЕсли;
+ 
+ Назначено = ?(СтрокаПлана.Количество = 0, "&amp;nbsp;", Строка(СтрокаПлана.Количество));
+ Комментарий = ?(ПустаяСтрока(СтрокаПлана.Комментарий), "&amp;nbsp;", СтрокаПлана.Комментарий);
+ 
+ Текст = Текст + "&lt;TD style='WORD-WRAP: break-word'&gt;&lt;P&gt;" + Услуга + "&lt;/TD&gt;";
+ Текст = Текст + "&lt;TD align=center&gt;" + Дата + "&lt;/TD&gt;";
+ Текст = Текст + "&lt;TD style='WORD-WRAP: break-word' align=center&gt;" + Назначено + "&lt;/TD&gt;";
+ Текст = Текст + "&lt;TD style='WORD-WRAP: break-word' align=center&gt;" + Комментарий + "&lt;/TD&gt;&lt;/TR&gt;";
+ 
+КонецЦикла;
+
+Текст = Текст + "&lt;/TBODY&gt;&lt;/TABLE&gt;";
+
+Результат = Текст;</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+		</row>
+	</rowsItem>
+	<rowsItem>
+		<index>2</index>
+		<row>
+			<c>
+				<c>
+					<f>3</f>
+					<tl>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>5cb664c5-0a38-11e7-828e-40167e631f2e</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>4</f>
+					<tl>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>// Заголовок над таблицей
+ЗаголовокТаблицы = "Назначения";
+
+// Текст над таблицей и шапка таблицы
+ТекстШапки = ЗаголовокТаблицы + "
+   |&lt;TABLE border=1 cellspacing='0'&gt;
+   |&lt;TBODY&gt;
+   |&lt;TR&gt;
+   |&lt;TD style='WORD-WRAP: break-word'&gt;
+   |&lt;P align=center&gt;Наименование услуги&lt;/P&gt;&lt;/TD&gt;
+   |&lt;TD style='WORD-WRAP: break-word'&gt;
+   |&lt;P align=center&gt;Дата&lt;/P&gt;&lt;/TD&gt;
+   |&lt;TD style='WORD-WRAP: break-word'&gt;
+   |&lt;P align=center&gt;Комментарий&lt;/P&gt;&lt;/TD&gt;&lt;/TR&gt;";
+
+ТекстШапкиДобавлен = Ложь;
+
+Текст = "";
+
+// Строки таблицы
+Для Каждого Строка Из ПланЛечения Цикл   
+
+ Если Не (ТипЗнч(Строка.Номенклатура) = Тип("СправочникСсылка.Номенклатура")
+    И РаботаСФормамиСервер.ЭтоМатериал(Строка.Номенклатура)
+    ИЛИ ТипЗнч(Строка.Номенклатура) = Тип("СправочникСсылка.СправочникМеждународныхНепатентованныхНаименований"))
+ Тогда
+  Текст = Текст + "&lt;TR&gt;";
+  Если Строка.ВидЭлемента = Перечисления.ВидыНазначений Тогда
+   Услуга = "Консультация врача специализации """ + Строка.Номенклатура.Наименование + """";
+  ИначеЕсли ЗначениеЗаполнено(Строка.Номенклатура) Тогда
+   Услуга = Строка.Номенклатура.Наименование;
+  Иначе
+   Услуга = "";
+  КонецЕсли;
+  
+  Дата = ?(Строка.Дата = НачалоДня(Строка.Дата), Формат(Строка.Дата, "ДФ=dd.MM.yyyy"), Строка(Строка.Дата));
+  Если Строка.Дата = Дата(1,1,1) Тогда
+   Дата = "&amp;nbsp;";
+  КонецЕсли;       
+  Комментарий = ?(ПустаяСтрока(Строка.Комментарий), "&amp;nbsp;", Строка.Комментарий);
+  
+  ТекстСтроки = "";
+  ТекстСтроки = ТекстСтроки + "&lt;TD style='WORD-WRAP: break-word'&gt;&lt;P&gt;" + Услуга + "&lt;/TD&gt;";
+  ТекстСтроки = ТекстСтроки + "&lt;TD align=center&gt;" + Дата + "&lt;/TD&gt;";
+  ТекстСтроки = ТекстСтроки + "&lt;TD style='WORD-WRAP: break-word' align=center&gt;" + Комментарий + "&lt;/TD&gt;&lt;/TR&gt;";
+
+  Если Не ТекстШапкиДобавлен Тогда
+   Текст = Текст + ТекстШапки;
+   ТекстШапкиДобавлен = Истина;
+  КонецЕсли;
+  Текст = Текст + ТекстСтроки;
+ КонецЕсли;
+ 
+КонецЦикла;
+
+Если ТекстШапкиДобавлен Тогда
+ Текст = Текст + "&lt;/TBODY&gt;&lt;/TABLE&gt;";
+КонецЕсли;
+
+Результат = Текст;
+</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>4</f>
+					<tl>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>// Шапка
+Текст = "&lt;TABLE border=""1"" cellpadding=""3"" style=""border-color: inherit; border-style: solid; border-collapse: collapse; width: 100%;""&gt;
+  |&lt;TBODY&gt;
+  |&lt;TR&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Наименование услуги&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Дата&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Назначено&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Комментарий&lt;/P&gt;&lt;/TD&gt;&lt;/TR&gt;";
+
+Для Каждого СтрокаПлана Из ПланЛечения Цикл
+ 
+ Если СтрокаПлана.ВидЭлемента = ПредопределенноеЗначение("Перечисление.ВидыНазначений.Медикаменты") Тогда
+  Продолжить;
+ КонецЕсли;
+
+ Текст = Текст + "&lt;TR&gt;";
+ 
+ Услуга = Строка(СтрокаПлана.Номенклатура);
+ 
+ Дата = ?(СтрокаПлана.Дата = НачалоДня(СтрокаПлана.Дата), Формат(СтрокаПлана.Дата, "ДФ=dd.MM.yyyy"), Строка(СтрокаПлана.Дата));
+ Если СтрокаПлана.Дата = Дата(1,1,1) Тогда
+  Дата = "&amp;nbsp;";
+ КонецЕсли;
+ 
+ Назначено = ?(СтрокаПлана.Количество = 0, "&amp;nbsp;", Строка(СтрокаПлана.Количество));
+ Комментарий = ?(ПустаяСтрока(СтрокаПлана.Комментарий), "&amp;nbsp;", СтрокаПлана.Комментарий);
+ 
+ Текст = Текст + "&lt;TD style='WORD-WRAP: break-word'&gt;&lt;P&gt;" + Услуга + "&lt;/TD&gt;";
+ Текст = Текст + "&lt;TD align=center&gt;" + Дата + "&lt;/TD&gt;";
+ Текст = Текст + "&lt;TD style='WORD-WRAP: break-word' align=center&gt;" + Назначено + "&lt;/TD&gt;";
+ Текст = Текст + "&lt;TD style='WORD-WRAP: break-word' align=center&gt;" + Комментарий + "&lt;/TD&gt;&lt;/TR&gt;";
+ 
+КонецЦикла;
+
+Текст = Текст + "&lt;/TBODY&gt;&lt;/TABLE&gt;";
+
+Результат = Текст;
+</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+		</row>
+	</rowsItem>
+	<rowsItem>
+		<index>3</index>
+		<row>
+			<c>
+				<c>
+					<f>3</f>
+					<tl>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>5cb664c3-0a38-11e7-828e-40167e631f2e</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>4</f>
+					<tl>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>// Заголовок над таблицей
+ЗаголовокТаблицы = "Медикаментозное лечение";
+
+// Текст над таблицей и шапка таблицы
+ТекстШапки = ЗаголовокТаблицы + "
+  |&lt;TABLE border=1 cellspacing='0'&gt;
+  |&lt;TBODY&gt;
+  |&lt;TR&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Медикаменты&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Период с&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;До&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Разовая доза&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+//  |&lt;P align=center&gt;Ед. изм.&lt;/P&gt;&lt;/TD&gt;
+//  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Приемов в день&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Комментарий&lt;/P&gt;&lt;/TD&gt;&lt;/TR&gt;";
+
+ТекстШапкиДобавлен = Ложь;
+
+Текст = "";
+
+Для Каждого Строка Из ПланЛечения Цикл   
+ 
+ Если (ТипЗнч(Строка.Номенклатура) = Тип("СправочникСсылка.Номенклатура") 
+  И РаботаСФормамиСервер.ЭтоМатериал(Строка.Номенклатура))
+  ИЛИ ТипЗнч(Строка.Номенклатура) = Тип("СправочникСсылка.СправочникМеждународныхНепатентованныхНаименований")
+ Тогда
+  Текст = Текст + "&lt;TR&gt;";
+  Медикамент = ?(ПустаяСтрока(Строка.Номенклатура.Наименование), "&amp;nbsp;", Строка.Номенклатура.Наименование);
+  Дата = ?(Строка.Дата = НачалоДня(Строка.Дата), Формат(Строка.Дата, "ДФ=dd.MM.yyyy"), Строка(Строка.Дата));
+  Если Строка.Дата = Дата(1,1,1) Тогда
+   Дата = "&amp;nbsp;";
+  КонецЕсли;
+  ДатаОкончания = ?(Строка.ДатаОкончания = НачалоДня(Строка.ДатаОкончания), Формат(Строка.ДатаОкончания, "ДФ=dd.MM.yyyy"), Строка(Строка.ДатаОкончания));
+  Если Строка.ДатаОкончания = Дата(1,1,1) Тогда
+   ДатаОкончания = "&amp;nbsp;";
+  КонецЕсли;
+  Дозировка = ?(Строка.Дозировка = 0, "&amp;nbsp;", Строка(Строка.Дозировка));
+  ЕдиницаИзмерения = Строка(Строка.ЕдиницаИзмерения);
+  ПриемовВДень = ?(ПустаяСтрока(Строка.ПриемовВДень), "&amp;nbsp;", Строка.ПриемовВДень);
+  Комментарий = ?(ПустаяСтрока(Строка.Комментарий), "&amp;nbsp;", Строка.Комментарий);
+  
+  ТекстСтроки = "";
+  ТекстСтроки = ТекстСтроки + "&lt;TD style='WORD-WRAP: break-word'&gt;&lt;P&gt;" + Медикамент + "&lt;/TD&gt;";
+  ТекстСтроки = ТекстСтроки + "&lt;TD align=center&gt;" + Дата + "&lt;/TD&gt;";
+  ТекстСтроки = ТекстСтроки + "&lt;TD align=center&gt;" + ДатаОкончания + "&lt;/TD&gt;";
+  ТекстСтроки = ТекстСтроки + "&lt;TD style='WORD-WRAP: break-word' align=center&gt;" + Дозировка + " " + ЕдиницаИзмерения + "&lt;/TD&gt;";
+//  ТекстСтроки = ТекстСтроки + "&lt;TD style='WORD-WRAP: break-word' align=center&gt;" + ЕдиницаИзмерения + "&lt;/TD&gt;";
+  ТекстСтроки = ТекстСтроки + "&lt;TD style='WORD-WRAP: break-word' align=center&gt;" + ПриемовВДень + "&lt;/TD&gt;";
+  ТекстСтроки = ТекстСтроки + "&lt;TD style='WORD-WRAP: break-word' align=center&gt;" + Комментарий + "&lt;/TD&gt;&lt;/TR&gt;";
+  
+  Если Не ТекстШапкиДобавлен Тогда
+   Текст = Текст + ТекстШапки;
+   ТекстШапкиДобавлен = Истина;
+  КонецЕсли;
+  Текст = Текст + ТекстСтроки;
+ КонецЕсли;
+ 
+КонецЦикла;
+
+Если ТекстШапкиДобавлен Тогда
+ Текст = Текст + "&lt;/TBODY&gt;&lt;/TABLE&gt;";
+КонецЕсли;
+
+Результат = Текст;
+</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+			<c>
+				<c>
+					<f>4</f>
+					<tl>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>// Заголовок над таблицей
+ЗаголовокТаблицы = "Медикаментозное лечение";
+
+// Текст над таблицей и шапка таблицы
+ТекстШапки = ЗаголовокТаблицы + "
+  |&lt;TABLE border=""1"" cellpadding=""3"" style=""border-color: inherit; border-style: solid; border-collapse: collapse; width: 100%;""&gt;
+  |&lt;TBODY&gt;
+  |&lt;TR&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Медикаменты&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Период с&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;До&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Разовая доза&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+//  |&lt;P align=center&gt;Ед. изм.&lt;/P&gt;&lt;/TD&gt;
+//  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Приемов в день&lt;/P&gt;&lt;/TD&gt;
+  |&lt;TD style='WORD-WRAP: break-word'&gt;
+  |&lt;P align=center&gt;Комментарий&lt;/P&gt;&lt;/TD&gt;&lt;/TR&gt;";
+
+ТекстШапкиДобавлен = Ложь;
+
+Текст = "";
+
+Для Каждого СтрокаПлана Из ПланЛечения Цикл   
+ 
+ Если СтрокаПлана.ВидЭлемента &lt;&gt; ПредопределенноеЗначение("Перечисление.ВидыНазначений.Медикаменты") Тогда
+  Продолжить;
+ КонецЕсли;
+ 
+ Текст = Текст + "&lt;TR&gt;";
+ Медикамент = Строка(СтрокаПлана.Номенклатура);
+ Медикамент = ?(ПустаяСтрока(Медикамент), "&amp;nbsp;", Медикамент);
+ 
+ Дата = ?(СтрокаПлана.Дата = НачалоДня(СтрокаПлана.Дата), Формат(СтрокаПлана.Дата, "ДФ=dd.MM.yyyy"), Строка(СтрокаПлана.Дата));
+ Если СтрокаПлана.Дата = Дата(1,1,1) Тогда
+  Дата = "&amp;nbsp;";
+ КонецЕсли;
+ ДатаОкончания = ?(СтрокаПлана.ДатаОкончания = НачалоДня(СтрокаПлана.ДатаОкончания), Формат(СтрокаПлана.ДатаОкончания, "ДФ=dd.MM.yyyy"), Строка(СтрокаПлана.ДатаОкончания));
+ Если СтрокаПлана.ДатаОкончания = Дата(1,1,1) Тогда
+  ДатаОкончания = "&amp;nbsp;";
+ КонецЕсли;
+ Дозировка = ?(СтрокаПлана.Дозировка = 0, "&amp;nbsp;", Строка(СтрокаПлана.Дозировка));
+ ЕдиницаИзмерения = Строка(СтрокаПлана.ЕдиницаИзмерения);
+ ПриемовВДень = ?(ПустаяСтрока(СтрокаПлана.ПриемовВДень), "&amp;nbsp;", СтрокаПлана.ПриемовВДень);
+ Комментарий = ?(ПустаяСтрока(СтрокаПлана.Комментарий), "&amp;nbsp;", СтрокаПлана.Комментарий);
+ 
+ ТекстСтроки = "";
+ ТекстСтроки = ТекстСтроки + "&lt;TD style='WORD-WRAP: break-word'&gt;&lt;P&gt;" + Медикамент + "&lt;/TD&gt;";
+ ТекстСтроки = ТекстСтроки + "&lt;TD align=center&gt;" + Дата + "&lt;/TD&gt;";
+ ТекстСтроки = ТекстСтроки + "&lt;TD align=center&gt;" + ДатаОкончания + "&lt;/TD&gt;";
+ ТекстСтроки = ТекстСтроки + "&lt;TD style='WORD-WRAP: break-word' align=center&gt;" + Дозировка + " " + ЕдиницаИзмерения + "&lt;/TD&gt;";
+// ТекстСтроки = ТекстСтроки + "&lt;TD style='WORD-WRAP: break-word' align=center&gt;" + ЕдиницаИзмерения + "&lt;/TD&gt;";
+ ТекстСтроки = ТекстСтроки + "&lt;TD style='WORD-WRAP: break-word' align=center&gt;" + ПриемовВДень + "&lt;/TD&gt;";
+ ТекстСтроки = ТекстСтроки + "&lt;TD style='WORD-WRAP: break-word' align=center&gt;" + Комментарий + "&lt;/TD&gt;&lt;/TR&gt;";
+ 
+ Если Не ТекстШапкиДобавлен Тогда
+  Текст = Текст + ТекстШапки;
+  ТекстШапкиДобавлен = Истина;
+ КонецЕсли;
+ Текст = Текст + ТекстСтроки;
+ 
+КонецЦикла;
+
+Если ТекстШапкиДобавлен Тогда
+ Текст = Текст + "&lt;/TBODY&gt;&lt;/TABLE&gt;";
+КонецЕсли;
+
+Результат = Текст;
+</v8:content>
+						</v8:item>
+					</tl>
+				</c>
+			</c>
+		</row>
+	</rowsItem>
+	<templateMode>true</templateMode>
+	<defaultFormatIndex>5</defaultFormatIndex>
+	<height>4</height>
+	<vgRows>4</vgRows>
+	<font faceName="Arial" height="8" bold="false" italic="false" underline="false" strikeout="false" kind="Absolute" scale="100"/>
+	<format>
+		<width>193</width>
+	</format>
+	<format>
+		<width>344</width>
+	</format>
+	<format>
+		<font>0</font>
+		<horizontalAlignment>Left</horizontalAlignment>
+		<verticalAlignment>Bottom</verticalAlignment>
+		<textPlacement>Auto</textPlacement>
+	</format>
+	<format>
+		<font>0</font>
+		<horizontalAlignment>Left</horizontalAlignment>
+		<verticalAlignment>Bottom</verticalAlignment>
+		<textPlacement>Wrap</textPlacement>
+	</format>
+	<format>
+		<width>72</width>
+	</format>
+</document>

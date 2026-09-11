@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"><html><head><meta content="text/html;charset=utf-8" http-equiv="content-type"></meta><link rel="stylesheet" type="text/css" href="v8help://service_book/service_style"></link><meta name="GENERATOR" content="MSHTML 11.00.9600.17037"></meta></head><body>
+<h1><font color="#000080">Регистр сведений "Настройки медицинского учета" </font></h1>
+<p class="Usual">Данный регистр сведений предназначен для хранения параметров программы, относящихся к специализированным областям медицинского учета. </p>
+<p class="Usual"><br></p>
+<h2><font color="#000080">Установка программы wkhtmltopdf для отправки приёмов в PDF</font></h2>
+<p>Для отправки приёмов в PDF используется программа <a href="http://wkhtmltopdf.org/" target="_blank">wkhtmltopdf</a>, распространяемая по лицензии GPL. Её необходимо установить на сервер (при работе в клиент-серверном варианте) или на локальную машину, при работе с файловой базой.</p>
+<h4>Windows</h4>
+<p><strong><a href="https://wkhtmltopdf.org/downloads.html">Загрузите и запустите установщик wkhtmltopdf</a>.</strong> Прочитайте и согласитесь с лицензионным соглашением. Согласитесь с папкой установки по умолчанию (желательно). <br>После установки конвертер wkhtmltopdf будет доступен в любой папке (благодаря добавлению в переменную окружения <b>%PATH%</b> его папки). <br>Информацию по добавлению местоположений (папок) программ в системную переменную среды PATH смотрите в документации для вашей операционной системы.</p>
+<p>Параметр "<b>Расположение программы wkhtmltopdf</b>" обязательно следует указать при клиент-серверном варианте базы, если у пользователя, под которым выполняется процесс сервера 1С, нет права использования утилиты командной строки. Указывается полный путь до исполняемого файла wkhtmltopdf на сервере (например, "C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"). Также следует обеспечить право пользователя сервера на работу с каталогом установки wkhtmltopdf.</p>
+<h4>Linux</h4>
+<p>Для ОС Linux предпочтительней устанавливать wkhtmltopdf через сборку из исходных текстов. Ниже приведен перевод инструкции того, как выполняется такая установка. Оригинал инструкции был взят с официального сайта.</p>
+<p>Перед компиляцией необходимо установить программы и библиотеки, от которых зависит конвертор: X11, gcc, git и openssl. На Debian/Ubuntu это можно сделать следующим образом:</p><pre>sudo apt-get build-dep libqt4-gui libqt4-network libqt4-webkit
+sudo apt-get install openssl build-essential xorg git-core git-doc libssl-dev</pre>
+<p>На других системах вам нужно использовать свой менеджер пакетов, в котором пакеты должны называться похожим образом.</p>
+<p>Вначале необходимо получить модифицированную версию QT:</p><pre>git clone git://gitorious.org/+wkhtml2pdf/qt/wkhtmltopdf-qt.git wkhtmltopdf-qt</pre>
+<p>Затем следует сконфигурировать, скомпилировать и установить QT. Отметим, что это займет некоторое время, в зависимости от того, какие аргументы используются для конфигурации QT.</p><pre>cd wkhtmltopdf-qt
+./configure -nomake tools,examples,demos,docs,translations -opensource -prefix ../wkqt
+make -j3
+make install
+cd ..</pre>
+<p>Это все, что необходимо для компиляции программы wkhtmltopdf.</p><pre>git clone git://github.com/antialize/wkhtmltopdf.git wkhtmltopdf
+cd wkhtmltopdf
+../wkqt/bin/qmake
+make -j3</pre>
+<p>В результате должен сформироваться бинарный файл с именем wkhtmltopdf в текущей директории. <strong>Для нормальной работы необходимо сделать полную установку.</strong></p><pre>sudo make install</pre>
+<p class="Usual"></p>
+<p>После установки станет доступна команда <strong>wkhtmltopdf</strong>, которая преобразует html-файл в pdf-файл.</p></body></html>

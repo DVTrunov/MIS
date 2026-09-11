@@ -1,0 +1,1748 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Забор анализов</v8:content>
+		</v8:item>
+	</Title>
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<Group>Vertical</Group>
+	<ShowTitle>false</ShowTitle>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="ExternalEvent">ВнешнееСобытие</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Номер" id="363">
+			<DataPath>Объект.Number</DataPath>
+			<Visible>false</Visible>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="НомерКонтекстноеМеню" id="364"/>
+			<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="365"/>
+		</InputField>
+		<UsualGroup name="ГруппаПоискПоШтрихкоду" id="389">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа поиск по штрихкоду</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа поиск по штрихкоду</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>AlwaysHorizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПоискПоШтрихкодуРасширеннаяПодсказка" id="390"/>
+			<ChildItems>
+				<Button name="ВвестиШтрихкод" id="379">
+					<Type>UsualButton</Type>
+					<Height>2</Height>
+					<CommandName>Form.Command.ВвестиШтрихкод</CommandName>
+					<TextColor>style:FieldSelectedTextColor</TextColor>
+					<BackColor>style:FieldSelectionBackColor</BackColor>
+					<Font ref="style:NormalTextFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem" scale="100"/>
+					<Shape>Oval</Shape>
+					<ExtendedTooltip name="ВвестиШтрихкодРасширеннаяПодсказка" id="380"/>
+				</Button>
+				<InputField name="Поиск" id="386">
+					<DataPath>Поиск</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<TitleFont ref="style:NormalTextFont" height="13" kind="StyleItem" scale="100"/>
+					<TitleLocation>None</TitleLocation>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<Font ref="style:NormalTextFont" height="13" kind="StyleItem" scale="100"/>
+					<InputHint>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПОИСК...</v8:content>
+						</v8:item>
+					</InputHint>
+					<ContextMenu name="ПоискКонтекстноеМеню" id="387"/>
+					<ExtendedTooltip name="ПоискРасширеннаяПодсказка" id="388"/>
+					<Events>
+						<Event name="OnChange">ПоискПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаНомерЗаявкиИДата" id="101">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа номер заявки и дата</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа номер заявки и дата</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>AlwaysHorizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНомерЗаявкиИДатаРасширеннаяПодсказка" id="102"/>
+			<ChildItems>
+				<LabelField name="НомерЗаявки" id="1">
+					<DataPath>Объект.НомерЗаявки</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Заявка №</v8:content>
+						</v8:item>
+					</Title>
+					<TitleFont ref="style:NormalTextFont" height="13" kind="StyleItem" scale="100"/>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Font ref="style:NormalTextFont" height="13" kind="StyleItem" scale="100"/>
+					<ContextMenu name="НомерЗаявкиКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="НомерЗаявкиРасширеннаяПодсказка" id="3"/>
+					<Events>
+						<Event name="OnChange">НомерЗаявкиПриИзменении</Event>
+					</Events>
+				</LabelField>
+				<LabelField name="Дата" id="4">
+					<DataPath>Объект.Date</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>от</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<Font ref="style:NormalTextFont" height="13" kind="StyleItem" scale="100"/>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаМедсестраПациент" id="404">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа медсестра пациент</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа медсестра пациент</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>AlwaysHorizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаМедсестраПациентРасширеннаяПодсказка" id="405"/>
+		</UsualGroup>
+		<UsualGroup name="ГруппаКнопкиЗабораИЗакрытия" id="398">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа кнопки забора и закрытия</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа кнопки забора и закрытия</v8:content>
+				</v8:item>
+			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>HorizontalIfPossible</Group>
+			<HorizontalAlign>Center</HorizontalAlign>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКнопкиЗабораИЗакрытияРасширеннаяПодсказка" id="399"/>
+			<ChildItems>
+				<UsualGroup name="Группа1" id="400">
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="401"/>
+					<ChildItems>
+						<UsualGroup name="Группа3" id="406">
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Vertical</Group>
+							<HorizontalAlign>Left</HorizontalAlign>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="407"/>
+							<ChildItems>
+								<LabelField name="ПредставлениеПациента" id="410">
+									<DataPath>ПредставлениеПациента</DataPath>
+									<TitleFont ref="style:NormalTextFont" height="13" kind="StyleItem" scale="100"/>
+									<MaxWidth>34</MaxWidth>
+									<Font ref="style:NormalTextFont" height="13" kind="StyleItem" scale="100"/>
+									<ContextMenu name="ПредставлениеПациентаКонтекстноеМеню" id="411"/>
+									<ExtendedTooltip name="ПредставлениеПациентаРасширеннаяПодсказка" id="412"/>
+								</LabelField>
+								<LabelDecoration name="Декорация3" id="395">
+									<Font ref="style:NormalTextFont" height="14" kind="StyleItem" scale="100"/>
+									<ContextMenu name="Декорация3КонтекстноеМеню" id="396"/>
+									<ExtendedTooltip name="Декорация3РасширеннаяПодсказка" id="397"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<Button name="ФормаПроизвестиЗаборМатериалов" id="278">
+							<Type>UsualButton</Type>
+							<TitleHeight>2</TitleHeight>
+							<Enabled>false</Enabled>
+							<Width>40</Width>
+							<Height>5</Height>
+							<CommandName>Form.Command.ПроизвестиЗаборБиоматериалов</CommandName>
+							<BackColor>style:ActivityColor</BackColor>
+							<Font ref="style:NormalTextFont" height="20" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem" scale="100"/>
+							<Shape>Oval</Shape>
+							<ExtendedTooltip name="ФормаПроизвестиЗаборМатериаловРасширеннаяПодсказка" id="279"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Группа2" id="402">
+					<HorizontalStretch>true</HorizontalStretch>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="403"/>
+					<ChildItems>
+						<UsualGroup name="Группа21" id="393">
+							<Group>Vertical</Group>
+							<HorizontalAlign>Left</HorizontalAlign>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Группа21РасширеннаяПодсказка" id="394"/>
+							<ChildItems>
+								<LabelField name="Медсестра" id="76">
+									<DataPath>Объект.Медсестра</DataPath>
+									<TitleFont ref="style:NormalTextFont" height="13" kind="StyleItem" scale="100"/>
+									<TitleLocation>Left</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
+									<Font ref="style:NormalTextFont" height="13" kind="StyleItem" scale="100"/>
+									<ContextMenu name="МедсестраКонтекстноеМеню" id="77"/>
+									<ExtendedTooltip name="МедсестраРасширеннаяПодсказка" id="78"/>
+								</LabelField>
+								<LabelField name="ВремяЗабораМатериала" id="366">
+									<DataPath>Объект.ВремяЗабораМатериала</DataPath>
+									<TitleFont ref="style:NormalTextFont" height="13" kind="StyleItem" scale="100"/>
+									<TitleLocation>Left</TitleLocation>
+									<Font ref="style:NormalTextFont" height="13" kind="StyleItem" scale="100"/>
+									<ContextMenu name="ВремяЗабораМатериалаКонтекстноеМеню" id="367"/>
+									<ExtendedTooltip name="ВремяЗабораМатериалаРасширеннаяПодсказка" id="368"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
+						<Button name="Закрыть" id="377">
+							<Type>UsualButton</Type>
+							<Width>40</Width>
+							<Height>5</Height>
+							<CommandName>Form.Command.ЗакрытьЗаявку</CommandName>
+							<TextColor>style:FieldSelectedTextColor</TextColor>
+							<BackColor>style:SpecialTextColor</BackColor>
+							<Font ref="style:NormalTextFont" height="20" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem" scale="100"/>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Закрыть заявку</v8:content>
+								</v8:item>
+							</Title>
+							<Shape>Oval</Shape>
+							<ExtendedTooltip name="ЗакрытьРасширеннаяПодсказка" id="378"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОсновная" id="371">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа основная</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа основная</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>AlwaysHorizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОсновнаяРасширеннаяПодсказка" id="372"/>
+			<ChildItems>
+				<Table name="Биоматериалы" id="215">
+					<CommandBarLocation>None</CommandBarLocation>
+					<Width>71</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<RowSelectionMode>Cell</RowSelectionMode>
+					<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<HorizontalStretch>false</HorizontalStretch>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>Объект.Биоматериалы</DataPath>
+					<Font ref="style:NormalTextFont" height="13" kind="StyleItem" scale="100"/>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="БиоматериалыКонтекстноеМеню" id="216"/>
+					<AutoCommandBar name="БиоматериалыКоманднаяПанель" id="217">
+						<ChildItems>
+							<Button name="КонтейнерыПодобратьКонтейнеры" id="273">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ПодобратьКонтейнеры</CommandName>
+								<ExtendedTooltip name="КонтейнерыПодобратьКонтейнерыРасширеннаяПодсказка" id="274"/>
+							</Button>
+						</ChildItems>
+					</AutoCommandBar>
+					<ExtendedTooltip name="БиоматериалыРасширеннаяПодсказка" id="218"/>
+					<SearchStringAddition name="БиоматериалыСтрокаПоиска" id="219">
+						<AdditionSource>
+							<Item>Биоматериалы</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="БиоматериалыСтрокаПоискаКонтекстноеМеню" id="220"/>
+						<ExtendedTooltip name="БиоматериалыСтрокаПоискаРасширеннаяПодсказка" id="221"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="БиоматериалыСостояниеПросмотра" id="222">
+						<AdditionSource>
+							<Item>Биоматериалы</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="БиоматериалыСостояниеПросмотраКонтекстноеМеню" id="223"/>
+						<ExtendedTooltip name="БиоматериалыСостояниеПросмотраРасширеннаяПодсказка" id="224"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="БиоматериалыУправлениеПоиском" id="225">
+						<AdditionSource>
+							<Item>Биоматериалы</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="БиоматериалыУправлениеПоискомКонтекстноеМеню" id="226"/>
+						<ExtendedTooltip name="БиоматериалыУправлениеПоискомРасширеннаяПодсказка" id="227"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">БиоматериалыВыбор</Event>
+						<Event name="BeforeAddRow">БиоматериалыПередНачаломДобавления</Event>
+						<Event name="BeforeDeleteRow">БиоматериалыПередУдалением</Event>
+					</Events>
+					<ChildItems>
+						<LabelField name="БиоматериалыНомерСтроки" id="228">
+							<DataPath>Объект.Биоматериалы.LineNumber</DataPath>
+							<Visible>false</Visible>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ContextMenu name="БиоматериалыНомерСтрокиКонтекстноеМеню" id="229"/>
+							<ExtendedTooltip name="БиоматериалыНомерСтрокиРасширеннаяПодсказка" id="230"/>
+						</LabelField>
+						<InputField name="БиоматериалыПроба" id="240">
+							<DataPath>Объект.Биоматериалы.Проба</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<Width>15</Width>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="БиоматериалыПробаКонтекстноеМеню" id="241"/>
+							<ExtendedTooltip name="БиоматериалыПробаРасширеннаяПодсказка" id="242"/>
+						</InputField>
+						<InputField name="БиоматериалыБиоматериал" id="234">
+							<DataPath>Объект.Биоматериалы.Биоматериал</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<Height>3</Height>
+							<MultiLine>true</MultiLine>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="БиоматериалыБиоматериалКонтекстноеМеню" id="235"/>
+							<ExtendedTooltip name="БиоматериалыБиоматериалРасширеннаяПодсказка" id="236"/>
+						</InputField>
+						<InputField name="БиоматериалыКонтейнер" id="231">
+							<DataPath>Объект.Биоматериалы.Контейнер</DataPath>
+							<Visible>false</Visible>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="БиоматериалыКонтейнерКонтекстноеМеню" id="232"/>
+							<ExtendedTooltip name="БиоматериалыКонтейнерРасширеннаяПодсказка" id="233"/>
+						</InputField>
+						<LabelField name="БиоматериалыСостав" id="275">
+							<DataPath>Объект.Биоматериалы.Состав</DataPath>
+							<Visible>false</Visible>
+							<EditMode>EnterOnInput</EditMode>
+							<CellHyperlink>true</CellHyperlink>
+							<AutoEditMode>true</AutoEditMode>
+							<CellHyperlinkRepresentation>Show</CellHyperlinkRepresentation>
+							<CellHyperlinkDisplayVariant>Always</CellHyperlinkDisplayVariant>
+							<Hiperlink>true</Hiperlink>
+							<ContextMenu name="БиоматериалыСоставКонтекстноеМеню" id="276"/>
+							<ExtendedTooltip name="БиоматериалыСоставРасширеннаяПодсказка" id="277"/>
+						</LabelField>
+					</ChildItems>
+				</Table>
+				<Table name="Контейнеры" id="282">
+					<CommandBarLocation>None</CommandBarLocation>
+					<ReadOnly>true</ReadOnly>
+					<RowSelectionMode>Cell</RowSelectionMode>
+					<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>Объект.Биоматериалы</DataPath>
+					<Font ref="style:NormalTextFont" height="13" kind="StyleItem" scale="100"/>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="КонтейнерыКонтекстноеМеню" id="283"/>
+					<AutoCommandBar name="КонтейнерыКоманднаяПанель" id="284"/>
+					<ExtendedTooltip name="КонтейнерыРасширеннаяПодсказка" id="285"/>
+					<SearchStringAddition name="КонтейнерыСтрокаПоиска" id="286">
+						<AdditionSource>
+							<Item>Контейнеры</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="КонтейнерыСтрокаПоискаКонтекстноеМеню" id="287"/>
+						<ExtendedTooltip name="КонтейнерыСтрокаПоискаРасширеннаяПодсказка" id="288"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="КонтейнерыСостояниеПросмотра" id="289">
+						<AdditionSource>
+							<Item>Контейнеры</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="КонтейнерыСостояниеПросмотраКонтекстноеМеню" id="290"/>
+						<ExtendedTooltip name="КонтейнерыСостояниеПросмотраРасширеннаяПодсказка" id="291"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="КонтейнерыУправлениеПоиском" id="292">
+						<AdditionSource>
+							<Item>Контейнеры</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="КонтейнерыУправлениеПоискомКонтекстноеМеню" id="293"/>
+						<ExtendedTooltip name="КонтейнерыУправлениеПоискомРасширеннаяПодсказка" id="294"/>
+					</SearchControlAddition>
+					<Events>
+						<Event name="BeforeAddRow">КонтейнерыПередНачаломДобавления</Event>
+						<Event name="BeforeDeleteRow">КонтейнерыПередУдалением</Event>
+					</Events>
+					<ChildItems>
+						<InputField name="КонтейнерыКонтейнер" id="416">
+							<DataPath>Объект.Биоматериалы.Контейнер</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
+							<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+							<ContextMenu name="КонтейнерыКонтейнерКонтекстноеМеню" id="417"/>
+							<ExtendedTooltip name="КонтейнерыКонтейнерРасширеннаяПодсказка" id="418"/>
+						</InputField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Объект.АнализыПоКонтейнерам"/>
+				<AdditionalColumns table="Объект.Биоматериалы">
+					<Column name="Состав" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Состав</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+				<AdditionalColumns table="Объект.Журнал">
+					<Column name="ТекстОтвета" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Текст ответа</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+					<Column name="ТекстЗапроса" id="2">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Текст запроса</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:string</v8:Type>
+							<v8:StringQualifiers>
+								<v8:Length>0</v8:Length>
+								<v8:AllowedLength>Variable</v8:AllowedLength>
+							</v8:StringQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
+		</Attribute>
+		<Attribute name="Подбор" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>~Подбор.Ссылка</Field>
+				<Field>Подбор.Номенклатура</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	УчетнаяПолитикаФилиалов.Филиал КАК Филиал,
+	УчетнаяПолитикаФилиалов.ОсновнойПрейскурант КАК ОсновнойПрейскурант,
+	УчетнаяПолитикаФилиалов.ПрефиксМедицинскойКарты КАК ПрефиксМедицинскойКарты,
+	УчетнаяПолитикаФилиалов.ОсновнаяЛаборатория КАК ОсновнаяЛаборатория,
+	УчетнаяПолитикаФилиалов.НастройкаСводногоОтчетаЗаСутки КАК НастройкаСводногоОтчетаЗаСутки,
+	УчетнаяПолитикаФилиалов.АвторРеестраФСС_ЭЛН КАК АвторРеестраФСС_ЭЛН
+ПОМЕСТИТЬ ВТ_УчетнаяПолитика
+ИЗ
+	РегистрСведений.УчетнаяПолитикаФилиалов КАК УчетнаяПолитикаФилиалов
+ГДЕ
+	УчетнаяПолитикаФилиалов.Филиал = &amp;Филиал
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗЛИЧНЫЕ
+	СправочникНоменклатура.Ссылка КАК Номенклатура,
+	СправочникНоменклатура.ПометкаУдаления КАК ПометкаУдаления,
+	СправочникНоменклатура.Родитель КАК Родитель,
+	СправочникНоменклатура.ЭтоГруппа КАК ЭтоГруппа,
+	СправочникНоменклатура.Код КАК Код,
+	СправочникНоменклатура.Наименование КАК Наименование,
+	СправочникНоменклатура.ВидНоменклатуры КАК ВидНоменклатуры,
+	СправочникНоменклатура.Артикул КАК Артикул,
+	СправочникНоменклатура.омг_СрокИсполненияЛаб КАК омг_СрокИсполненияЛаб,
+	МАКСИМУМ(ЦеныНоменклатурыСрезПоследних.Цена) КАК Цена
+ИЗ
+	Справочник.Номенклатура КАК СправочникНоменклатура
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних(
+				,
+				омг_Филиал = &amp;Филиал
+					И Прейскурант = &amp;ОсновнойПрейскурант) КАК ЦеныНоменклатурыСрезПоследних
+		ПО (ЦеныНоменклатурыСрезПоследних.Номенклатура = СправочникНоменклатура.Ссылка)
+ГДЕ
+	СправочникНоменклатура.Ссылка В ИЕРАРХИИ
+			(ВЫБРАТЬ
+				омг_ГруппаЛабораторныхИсследований.Значение КАК Значение
+			ИЗ
+				Константа.омг_ГруппаЛабораторныхИсследований КАК омг_ГруппаЛабораторныхИсследований) И НЕ ЭтоГруппа
+
+СГРУППИРОВАТЬ ПО
+	СправочникНоменклатура.Ссылка,
+	СправочникНоменклатура.ПометкаУдаления,
+	СправочникНоменклатура.Родитель,
+	СправочникНоменклатура.ЭтоГруппа,
+	СправочникНоменклатура.Код,
+	СправочникНоменклатура.Наименование,
+	СправочникНоменклатура.ВидНоменклатуры,
+	СправочникНоменклатура.Артикул,
+	СправочникНоменклатура.омг_СрокИсполненияЛаб</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Код</dcssch:dataPath>
+					<dcssch:field>Код</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Родитель</dcssch:dataPath>
+					<dcssch:field>Родитель</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидНоменклатуры</dcssch:dataPath>
+					<dcssch:field>ВидНоменклатуры</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЭтоГруппа</dcssch:dataPath>
+					<dcssch:field>ЭтоГруппа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Наименование</dcssch:dataPath>
+					<dcssch:field>Наименование</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Артикул</dcssch:dataPath>
+					<dcssch:field>Артикул</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_СрокИсполненияЛаб</dcssch:dataPath>
+					<dcssch:field>омг_СрокИсполненияЛаб</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Номенклатура</dcssch:dataPath>
+					<dcssch:field>Номенклатура</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Цена</dcssch:dataPath>
+					<dcssch:field>Цена</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Прейскурант</dcssch:dataPath>
+					<dcssch:field>Прейскурант</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ХарактеристикаНоменклатуры</dcssch:dataPath>
+					<dcssch:field>ХарактеристикаНоменклатуры</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЕдиницаИзмерения</dcssch:dataPath>
+					<dcssch:field>ЕдиницаИзмерения</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_Филиал</dcssch:dataPath>
+					<dcssch:field>омг_Филиал</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КатегорияВыработки</dcssch:dataPath>
+					<dcssch:field>КатегорияВыработки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаименованиеПолное</dcssch:dataPath>
+					<dcssch:field>НаименованиеПолное</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>URL</dcssch:dataPath>
+					<dcssch:field>URL</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВестиУчетПоХарактеристикам</dcssch:dataPath>
+					<dcssch:field>ВестиУчетПоХарактеристикам</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МедосмотрСправка</dcssch:dataPath>
+					<dcssch:field>МедосмотрСправка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>БазоваяЕдиницаИзмерения</dcssch:dataPath>
+					<dcssch:field>БазоваяЕдиницаИзмерения</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЕдиницаХраненияОстатков</dcssch:dataPath>
+					<dcssch:field>ЕдиницаХраненияОстатков</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>REGDATE</dcssch:dataPath>
+					<dcssch:field>REGDATE</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПродолжительностьЧас</dcssch:dataPath>
+					<dcssch:field>ПродолжительностьЧас</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ДеньЗабора5</dcssch:dataPath>
+					<dcssch:field>омг_ДеньЗабора5</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПланируетсяБезСотрудника</dcssch:dataPath>
+					<dcssch:field>ПланируетсяБезСотрудника</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>FIRM_MANUFACTOR</dcssch:dataPath>
+					<dcssch:field>FIRM_MANUFACTOR</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПродолжительностьМин</dcssch:dataPath>
+					<dcssch:field>ПродолжительностьМин</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПланируетсяБезОборудования</dcssch:dataPath>
+					<dcssch:field>ПланируетсяБезОборудования</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЕдиницаТоваров</dcssch:dataPath>
+					<dcssch:field>ЕдиницаТоваров</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>STATUS</dcssch:dataPath>
+					<dcssch:field>STATUS</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТолькоДляПланирования</dcssch:dataPath>
+					<dcssch:field>ТолькоДляПланирования</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВнешнийКод</dcssch:dataPath>
+					<dcssch:field>ВнешнийКод</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>FIRM_REGISTRATOR</dcssch:dataPath>
+					<dcssch:field>FIRM_REGISTRATOR</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ДеньЗабора3</dcssch:dataPath>
+					<dcssch:field>омг_ДеньЗабора3</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Анализ</dcssch:dataPath>
+					<dcssch:field>Анализ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИндивидуальныйШаблонОсмотра</dcssch:dataPath>
+					<dcssch:field>ИндивидуальныйШаблонОсмотра</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>удалитьСтавкаНДС</dcssch:dataPath>
+					<dcssch:field>удалитьСтавкаНДС</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>TRADENAME</dcssch:dataPath>
+					<dcssch:field>TRADENAME</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>LATNAME</dcssch:dataPath>
+					<dcssch:field>LATNAME</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>REGNUM</dcssch:dataPath>
+					<dcssch:field>REGNUM</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>COUNTRY_REGISTRATOR</dcssch:dataPath>
+					<dcssch:field>COUNTRY_REGISTRATOR</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>COUNTRY_MANUFACTOR</dcssch:dataPath>
+					<dcssch:field>COUNTRY_MANUFACTOR</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>PHARMGROUP</dcssch:dataPath>
+					<dcssch:field>PHARMGROUP</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>NDV</dcssch:dataPath>
+					<dcssch:field>NDV</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПодготовкаКлиентаКСдачеАнализа</dcssch:dataPath>
+					<dcssch:field>ПодготовкаКлиентаКСдачеАнализа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>REGCERTID</dcssch:dataPath>
+					<dcssch:field>REGCERTID</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВредныйФакторСправки</dcssch:dataPath>
+					<dcssch:field>ВредныйФакторСправки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>PHARMAACTIONS</dcssch:dataPath>
+					<dcssch:field>PHARMAACTIONS</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидМаркированнойПродукции</dcssch:dataPath>
+					<dcssch:field>ВидМаркированнойПродукции</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>STRONG</dcssch:dataPath>
+					<dcssch:field>STRONG</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>JNVLS</dcssch:dataPath>
+					<dcssch:field>JNVLS</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>NARCO</dcssch:dataPath>
+					<dcssch:field>NARCO</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Архив</dcssch:dataPath>
+					<dcssch:field>Архив</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НоменклатураМедицинскихУслуг</dcssch:dataPath>
+					<dcssch:field>НоменклатураМедицинскихУслуг</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПродолжительностьЕдиницыУслуги</dcssch:dataPath>
+					<dcssch:field>ПродолжительностьЕдиницыУслуги</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Комментарий</dcssch:dataPath>
+					<dcssch:field>Комментарий</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>DICOMModality</dcssch:dataPath>
+					<dcssch:field>DICOMModality</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидСтавкиНДС</dcssch:dataPath>
+					<dcssch:field>ВидСтавкиНДС</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ДеньЗабора7</dcssch:dataPath>
+					<dcssch:field>омг_ДеньЗабора7</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>УдалитьЦенаМедосмотраИзДействийМедосмотра</dcssch:dataPath>
+					<dcssch:field>УдалитьЦенаМедосмотраИзДействийМедосмотра</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ДеньЗабора6</dcssch:dataPath>
+					<dcssch:field>омг_ДеньЗабора6</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Упаковка</dcssch:dataPath>
+					<dcssch:field>Упаковка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_НеОтправлятьРезультатыПочтой</dcssch:dataPath>
+					<dcssch:field>омг_НеОтправлятьРезультатыПочтой</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВестиУчетПоСериям</dcssch:dataPath>
+					<dcssch:field>ВестиУчетПоСериям</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КЛП</dcssch:dataPath>
+					<dcssch:field>КЛП</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>АТХ</dcssch:dataPath>
+					<dcssch:field>АТХ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КодМедУслуги</dcssch:dataPath>
+					<dcssch:field>КодМедУслуги</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КодТРУ</dcssch:dataPath>
+					<dcssch:field>КодТРУ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НормализованнаяФорма</dcssch:dataPath>
+					<dcssch:field>НормализованнаяФорма</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СпособФомированияЦеныМедосмотра</dcssch:dataPath>
+					<dcssch:field>СпособФомированияЦеныМедосмотра</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ТипУслуги</dcssch:dataPath>
+					<dcssch:field>омг_ТипУслуги</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИнструментальноеИсследование</dcssch:dataPath>
+					<dcssch:field>ИнструментальноеИсследование</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КонтрагентПринципал</dcssch:dataPath>
+					<dcssch:field>КонтрагентПринципал</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИсполнительВСтационаре</dcssch:dataPath>
+					<dcssch:field>ИсполнительВСтационаре</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ДеньЗабора2</dcssch:dataPath>
+					<dcssch:field>омг_ДеньЗабора2</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ОказываетсяТолькоПоCITO</dcssch:dataPath>
+					<dcssch:field>омг_ОказываетсяТолькоПоCITO</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ДеньЗабора4</dcssch:dataPath>
+					<dcssch:field>омг_ДеньЗабора4</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ТребуетсяОтдельнаяЗаявка</dcssch:dataPath>
+					<dcssch:field>омг_ТребуетсяОтдельнаяЗаявка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ДеньЗабора1</dcssch:dataPath>
+					<dcssch:field>омг_ДеньЗабора1</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ШаблонНаправления</dcssch:dataPath>
+					<dcssch:field>омг_ШаблонНаправления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_СпособЗабораБиоматериала</dcssch:dataPath>
+					<dcssch:field>омг_СпособЗабораБиоматериала</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ТиповаяДозоваяНагрузка</dcssch:dataPath>
+					<dcssch:field>омг_ТиповаяДозоваяНагрузка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КомплектующиеНоменклатуры</dcssch:dataPath>
+					<dcssch:field>КомплектующиеНоменклатуры</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СопутствующиеТовары</dcssch:dataPath>
+					<dcssch:field>СопутствующиеТовары</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Оборудования</dcssch:dataPath>
+					<dcssch:field>Оборудования</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОборудованиеDICOM</dcssch:dataPath>
+					<dcssch:field>ОборудованиеDICOM</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Предопределенный</dcssch:dataPath>
+					<dcssch:field>Предопределенный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИмяПредопределенныхДанных</dcssch:dataPath>
+					<dcssch:field>ИмяПредопределенныхДанных</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СтавкаНДС</dcssch:dataPath>
+					<dcssch:field>СтавкаНДС</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ДатаПоследнегоОбновленияЛИС</dcssch:dataPath>
+					<dcssch:field>омг_ДатаПоследнегоОбновленияЛИС</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидНДСПриИмпорте</dcssch:dataPath>
+					<dcssch:field>ВидНДСПриИмпорте</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НоменклатурнаяГруппа</dcssch:dataPath>
+					<dcssch:field>НоменклатурнаяГруппа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Услуга</dcssch:dataPath>
+					<dcssch:field>Услуга</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СтавкаАкциза</dcssch:dataPath>
+					<dcssch:field>СтавкаАкциза</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КодКПВЭД</dcssch:dataPath>
+					<dcssch:field>КодКПВЭД</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КоэффициентРасчетаОблагаемойБазыАкциза</dcssch:dataPath>
+					<dcssch:field>КоэффициентРасчетаОблагаемойБазыАкциза</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидПодакцизногоТМЗ</dcssch:dataPath>
+					<dcssch:field>ВидПодакцизногоТМЗ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КодТНВЭД</dcssch:dataPath>
+					<dcssch:field>КодТНВЭД</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИдентификаторТовараЭСФ</dcssch:dataPath>
+					<dcssch:field>ИдентификаторТовараЭСФ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ОсобенностьУчета</dcssch:dataPath>
+					<dcssch:field>ОсобенностьУчета</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Описание</dcssch:dataPath>
+					<dcssch:field>Описание</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КодНацКаталога</dcssch:dataPath>
+					<dcssch:field>КодНацКаталога</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВесНетто</dcssch:dataPath>
+					<dcssch:field>ВесНетто</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_Тег</dcssch:dataPath>
+					<dcssch:field>омг_Тег</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_Теги</dcssch:dataPath>
+					<dcssch:field>омг_Теги</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_СписокТегов</dcssch:dataPath>
+					<dcssch:field>омг_СписокТегов</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_Набор</dcssch:dataPath>
+					<dcssch:field>омг_Набор</dcssch:field>
+				</Field>
+				<Parameter>
+					<dcssch:name>Период</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Период</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>DateTime</v8:DateFractions>
+						</v8:DateQualifiers>
+					</dcssch:valueType>
+					<dcssch:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcssch:value>
+					<dcssch:useRestriction>false</dcssch:useRestriction>
+				</Parameter>
+				<Parameter>
+					<dcssch:name>Филиал</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Филиал</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>cfg:CatalogRef.Филиалы</v8:Type>
+					</dcssch:valueType>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<Parameter>
+					<dcssch:name>ОсновнойПрейскурант</dcssch:name>
+					<dcssch:title xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Основной прейскурант</v8:content>
+						</v8:item>
+					</dcssch:title>
+					<dcssch:valueType>
+						<v8:Type>cfg:CatalogRef.Прейскуранты</v8:Type>
+						<v8:Type>cfg:CatalogRef.СоглашенияСтрахования</v8:Type>
+						<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
+					</dcssch:valueType>
+					<dcssch:value xsi:nil="true"/>
+					<dcssch:useRestriction>true</dcssch:useRestriction>
+				</Parameter>
+				<MainTable>Catalog.Номенклатура</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>Наименование</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">ЭтоГруппа</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Шрифт</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ИтогоСоСкидкой" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итого со скидкой</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="СуммаСкидки" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма скидки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПодборИерархия" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор иерархия</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	СправочникНоменклатура.Ссылка КАК Ссылка,
+	СправочникНоменклатура.ПометкаУдаления КАК ПометкаУдаления,
+	СправочникНоменклатура.Родитель КАК Родитель,
+	СправочникНоменклатура.ЭтоГруппа КАК ЭтоГруппа,
+	СправочникНоменклатура.Код КАК Код,
+	СправочникНоменклатура.Наименование КАК Наименование,
+	СправочникНоменклатура.НаименованиеПолное КАК НаименованиеПолное,
+	СправочникНоменклатура.Предопределенный КАК Предопределенный,
+	СправочникНоменклатура.ИмяПредопределенныхДанных КАК ИмяПредопределенныхДанных
+ИЗ
+	Справочник.Номенклатура КАК СправочникНоменклатура
+ГДЕ
+	СправочникНоменклатура.Ссылка В ИЕРАРХИИ
+			(ВЫБРАТЬ
+				омг_ГруппаЛабораторныхИсследований.Значение КАК Значение
+			ИЗ
+				Константа.омг_ГруппаЛабораторныхИсследований КАК омг_ГруппаЛабораторныхИсследований)</QueryText>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПланируетсяБезСотрудника</dcssch:dataPath>
+					<dcssch:field>ПланируетсяБезСотрудника</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Ссылка</dcssch:dataPath>
+					<dcssch:field>Ссылка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПометкаУдаления</dcssch:dataPath>
+					<dcssch:field>ПометкаУдаления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Код</dcssch:dataPath>
+					<dcssch:field>Код</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Упаковка</dcssch:dataPath>
+					<dcssch:field>Упаковка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Родитель</dcssch:dataPath>
+					<dcssch:field>Родитель</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ТребуетсяОтдельнаяЗаявка</dcssch:dataPath>
+					<dcssch:field>омг_ТребуетсяОтдельнаяЗаявка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидНоменклатуры</dcssch:dataPath>
+					<dcssch:field>ВидНоменклатуры</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЭтоГруппа</dcssch:dataPath>
+					<dcssch:field>ЭтоГруппа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Наименование</dcssch:dataPath>
+					<dcssch:field>Наименование</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КатегорияВыработки</dcssch:dataPath>
+					<dcssch:field>КатегорияВыработки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НаименованиеПолное</dcssch:dataPath>
+					<dcssch:field>НаименованиеПолное</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>URL</dcssch:dataPath>
+					<dcssch:field>URL</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВестиУчетПоХарактеристикам</dcssch:dataPath>
+					<dcssch:field>ВестиУчетПоХарактеристикам</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>МедосмотрСправка</dcssch:dataPath>
+					<dcssch:field>МедосмотрСправка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>БазоваяЕдиницаИзмерения</dcssch:dataPath>
+					<dcssch:field>БазоваяЕдиницаИзмерения</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПродолжительностьЧас</dcssch:dataPath>
+					<dcssch:field>ПродолжительностьЧас</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>FIRM_MANUFACTOR</dcssch:dataPath>
+					<dcssch:field>FIRM_MANUFACTOR</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПродолжительностьМин</dcssch:dataPath>
+					<dcssch:field>ПродолжительностьМин</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЕдиницаХраненияОстатков</dcssch:dataPath>
+					<dcssch:field>ЕдиницаХраненияОстатков</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>REGDATE</dcssch:dataPath>
+					<dcssch:field>REGDATE</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ЕдиницаТоваров</dcssch:dataPath>
+					<dcssch:field>ЕдиницаТоваров</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПланируетсяБезОборудования</dcssch:dataPath>
+					<dcssch:field>ПланируетсяБезОборудования</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>STATUS</dcssch:dataPath>
+					<dcssch:field>STATUS</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ТолькоДляПланирования</dcssch:dataPath>
+					<dcssch:field>ТолькоДляПланирования</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВнешнийКод</dcssch:dataPath>
+					<dcssch:field>ВнешнийКод</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Артикул</dcssch:dataPath>
+					<dcssch:field>Артикул</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ДеньЗабора3</dcssch:dataPath>
+					<dcssch:field>омг_ДеньЗабора3</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>FIRM_REGISTRATOR</dcssch:dataPath>
+					<dcssch:field>FIRM_REGISTRATOR</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Анализ</dcssch:dataPath>
+					<dcssch:field>Анализ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИндивидуальныйШаблонОсмотра</dcssch:dataPath>
+					<dcssch:field>ИндивидуальныйШаблонОсмотра</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>удалитьСтавкаНДС</dcssch:dataPath>
+					<dcssch:field>удалитьСтавкаНДС</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>TRADENAME</dcssch:dataPath>
+					<dcssch:field>TRADENAME</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>LATNAME</dcssch:dataPath>
+					<dcssch:field>LATNAME</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>REGNUM</dcssch:dataPath>
+					<dcssch:field>REGNUM</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>COUNTRY_REGISTRATOR</dcssch:dataPath>
+					<dcssch:field>COUNTRY_REGISTRATOR</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>COUNTRY_MANUFACTOR</dcssch:dataPath>
+					<dcssch:field>COUNTRY_MANUFACTOR</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>PHARMGROUP</dcssch:dataPath>
+					<dcssch:field>PHARMGROUP</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>NDV</dcssch:dataPath>
+					<dcssch:field>NDV</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПодготовкаКлиентаКСдачеАнализа</dcssch:dataPath>
+					<dcssch:field>ПодготовкаКлиентаКСдачеАнализа</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>REGCERTID</dcssch:dataPath>
+					<dcssch:field>REGCERTID</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВредныйФакторСправки</dcssch:dataPath>
+					<dcssch:field>ВредныйФакторСправки</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>PHARMAACTIONS</dcssch:dataPath>
+					<dcssch:field>PHARMAACTIONS</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидМаркированнойПродукции</dcssch:dataPath>
+					<dcssch:field>ВидМаркированнойПродукции</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>STRONG</dcssch:dataPath>
+					<dcssch:field>STRONG</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>JNVLS</dcssch:dataPath>
+					<dcssch:field>JNVLS</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>NARCO</dcssch:dataPath>
+					<dcssch:field>NARCO</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Архив</dcssch:dataPath>
+					<dcssch:field>Архив</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НоменклатураМедицинскихУслуг</dcssch:dataPath>
+					<dcssch:field>НоменклатураМедицинскихУслуг</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ПродолжительностьЕдиницыУслуги</dcssch:dataPath>
+					<dcssch:field>ПродолжительностьЕдиницыУслуги</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Комментарий</dcssch:dataPath>
+					<dcssch:field>Комментарий</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>DICOMModality</dcssch:dataPath>
+					<dcssch:field>DICOMModality</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВидСтавкиНДС</dcssch:dataPath>
+					<dcssch:field>ВидСтавкиНДС</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>УдалитьЦенаМедосмотраИзДействийМедосмотра</dcssch:dataPath>
+					<dcssch:field>УдалитьЦенаМедосмотраИзДействийМедосмотра</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ВестиУчетПоСериям</dcssch:dataPath>
+					<dcssch:field>ВестиУчетПоСериям</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КЛП</dcssch:dataPath>
+					<dcssch:field>КЛП</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>АТХ</dcssch:dataPath>
+					<dcssch:field>АТХ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КодМедУслуги</dcssch:dataPath>
+					<dcssch:field>КодМедУслуги</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КодТРУ</dcssch:dataPath>
+					<dcssch:field>КодТРУ</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>НормализованнаяФорма</dcssch:dataPath>
+					<dcssch:field>НормализованнаяФорма</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>СпособФомированияЦеныМедосмотра</dcssch:dataPath>
+					<dcssch:field>СпособФомированияЦеныМедосмотра</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ТипУслуги</dcssch:dataPath>
+					<dcssch:field>омг_ТипУслуги</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИнструментальноеИсследование</dcssch:dataPath>
+					<dcssch:field>ИнструментальноеИсследование</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>КонтрагентПринципал</dcssch:dataPath>
+					<dcssch:field>КонтрагентПринципал</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИсполнительВСтационаре</dcssch:dataPath>
+					<dcssch:field>ИсполнительВСтационаре</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ОказываетсяТолькоПоCITO</dcssch:dataPath>
+					<dcssch:field>омг_ОказываетсяТолькоПоCITO</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_НеОтправлятьРезультатыПочтой</dcssch:dataPath>
+					<dcssch:field>омг_НеОтправлятьРезультатыПочтой</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_СрокИсполненияЛаб</dcssch:dataPath>
+					<dcssch:field>омг_СрокИсполненияЛаб</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ДеньЗабора1</dcssch:dataPath>
+					<dcssch:field>омг_ДеньЗабора1</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ДеньЗабора2</dcssch:dataPath>
+					<dcssch:field>омг_ДеньЗабора2</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ДеньЗабора4</dcssch:dataPath>
+					<dcssch:field>омг_ДеньЗабора4</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ДеньЗабора5</dcssch:dataPath>
+					<dcssch:field>омг_ДеньЗабора5</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ДеньЗабора6</dcssch:dataPath>
+					<dcssch:field>омг_ДеньЗабора6</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ДеньЗабора7</dcssch:dataPath>
+					<dcssch:field>омг_ДеньЗабора7</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ШаблонНаправления</dcssch:dataPath>
+					<dcssch:field>омг_ШаблонНаправления</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_СпособЗабораБиоматериала</dcssch:dataPath>
+					<dcssch:field>омг_СпособЗабораБиоматериала</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>омг_ТиповаяДозоваяНагрузка</dcssch:dataPath>
+					<dcssch:field>омг_ТиповаяДозоваяНагрузка</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldNestedDataSet">
+					<dcssch:dataPath>КомплектующиеНоменклатуры</dcssch:dataPath>
+					<dcssch:field>КомплектующиеНоменклатуры</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldNestedDataSet">
+					<dcssch:dataPath>СопутствующиеТовары</dcssch:dataPath>
+					<dcssch:field>СопутствующиеТовары</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldNestedDataSet">
+					<dcssch:dataPath>Оборудования</dcssch:dataPath>
+					<dcssch:field>Оборудования</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldNestedDataSet">
+					<dcssch:dataPath>ОборудованиеDICOM</dcssch:dataPath>
+					<dcssch:field>ОборудованиеDICOM</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>Предопределенный</dcssch:dataPath>
+					<dcssch:field>Предопределенный</dcssch:field>
+				</Field>
+				<Field xsi:type="dcssch:DataSetFieldField">
+					<dcssch:dataPath>ИмяПредопределенныхДанных</dcssch:dataPath>
+					<dcssch:field>ИмяПредопределенныхДанных</dcssch:field>
+				</Field>
+				<MainTable>Catalog.Номенклатура</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ЭтоГруппа</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						</dcsset:item>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="мУчетнаяПолитика" id="6">
+			<Type/>
+		</Attribute>
+		<Attribute name="Поиск" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>13</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПредставлениеПациента" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пациент</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>150</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПоискПоИИН" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по ИИН</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск по ИИН</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DataSearch</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПоискПоИИН</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="Чек" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Чек</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Чек</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Чек</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+		<Command name="ПодобратьКонтейнеры" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать контейнеры</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать контейнеры</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодобратьБиоматериалы</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ПроизвестиЗаборБиоматериалов" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Произвести забор биоматериалов</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Произвести забор биоматериалов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПроизвестиЗаборМатериалов</Action>
+		</Command>
+		<Command name="ПоказатьБланк" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать бланк</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать бланк</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПоказатьБланк</Action>
+		</Command>
+		<Command name="ОбновитьСостояниеПоДаннымЛИС" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить состояние по данным ЛИС</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить состояние по данным ЛИС</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОбновитьСостояниеПоДаннымЛИС</Action>
+		</Command>
+		<Command name="ОтменитьЗаявку" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить заявку</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить заявку</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОтменитьЗаявку</Action>
+		</Command>
+		<Command name="СканироватьКодПробы" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сканировать код пробы</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сканировать код пробы</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.Штрихкод</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СканироватьКодПробы</Action>
+		</Command>
+		<Command name="ВвестиШтрихкод" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ввести штрихкод</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ввести штрихкод</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВвестиШтрихкод</Action>
+		</Command>
+		<Command name="ЗакрытьЗаявку" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть заявку</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть заявку</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗакрытьЗаявку</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>Document.омг_ЗаявкаНаЛабораторноеИсследованиеВЛИС.Command.Печать</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Report.омг_ДвиженияДокумента.Command.ДвиженияДокумента</Command>
+				<Type>Auto</Type>
+				<CommandGroup>FormCommandBarImportant</CommandGroup>
+				<Index>1</Index>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
+</Form>

@@ -1,0 +1,954 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Редактирование реквизитов чека ККТ</v8:content>
+		</v8:item>
+	</Title>
+	<Width>90</Width>
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<AutoTitle>false</AutoTitle>
+	<Group>Vertical</Group>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="Сохранить" id="90">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СохранитьИЗакрыть</CommandName>
+				<ExtendedTooltip name="СохранитьРасширеннаяПодсказка" id="91"/>
+			</Button>
+			<Button name="ФормаОтмена" id="92">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Отмена</CommandName>
+				<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="93"/>
+			</Button>
+			<Button name="ФормаУдалить" id="111">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>Form.Command.Удалить</CommandName>
+				<Picture>
+					<xr:Ref>StdPicture.Delete</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="ФормаУдалитьРасширеннаяПодсказка" id="112"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Pages name="СтраницыРеквизитов" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы реквизитов</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы реквизитов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>TabsOnTop</PagesRepresentation>
+			<ExtendedTooltip name="СтраницыРеквизитовРасширеннаяПодсказка" id="2"/>
+			<ChildItems>
+				<Page name="СтраницаПерсональныеДанныеПокупателя" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ПерсональныеДанныеПокупателя (Тэг 1256)</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница персональные данные покупателя</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="СтраницаПерсональныеДанныеПокупателяРасширеннаяПодсказка" id="4"/>
+					<ChildItems>
+						<UsualGroup name="ФизЮрЛица" id="97">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Физ юр лица</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Физ юр лица</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>HorizontalIfPossible</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ФизЮрЛицаРасширеннаяПодсказка" id="98"/>
+							<ChildItems>
+								<CheckBoxField name="ЭтоЮрЛицо" id="94">
+									<DataPath>ЭтоФизЛицо</DataPath>
+									<CheckBoxType>Tumbler</CheckBoxType>
+									<EditFormat>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>БЛ='Юр. Лицо'; БИ='Физ. Лицо'</v8:content>
+										</v8:item>
+									</EditFormat>
+									<ContextMenu name="ЭтоЮрЛицоКонтекстноеМеню" id="95"/>
+									<ExtendedTooltip name="ЭтоЮрЛицоРасширеннаяПодсказка" id="96"/>
+									<Events>
+										<Event name="OnChange">ЭтоФизЛицоПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ПоляДаннныхОКлиенте" id="109">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Поля даннных о клиенте</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Поля даннных о клиенте</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Height>15</Height>
+							<VerticalStretch>false</VerticalStretch>
+							<Group>AlwaysHorizontal</Group>
+							<Behavior>Usual</Behavior>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ПоляДаннныхОКлиентеРасширеннаяПодсказка" id="110"/>
+							<ChildItems>
+								<UsualGroup name="ПоляФизЛица" id="107">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Поля физ лица</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Поля физ лица</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Width>50</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ПоляФизЛицаРасширеннаяПодсказка" id="108"/>
+									<ChildItems>
+										<InputField name="Клиент" id="5">
+											<DataPath>Клиент</DataPath>
+											<DropListButton>false</DropListButton>
+											<ChoiceButton>true</ChoiceButton>
+											<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
+											<ContextMenu name="КлиентКонтекстноеМеню" id="6"/>
+											<ExtendedTooltip name="КлиентРасширеннаяПодсказка" id="7"/>
+											<Events>
+												<Event name="OnChange">КлиентПриИзменении</Event>
+											</Events>
+										</InputField>
+										<InputField name="КлиентФИО" id="125">
+											<DataPath>КлиентФИО</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>ФИО Клиента  (тэг: 1227)</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ContextMenu name="КлиентФИОКонтекстноеМеню" id="126"/>
+											<ExtendedTooltip name="КлиентФИОРасширеннаяПодсказка" id="127"/>
+										</InputField>
+										<InputField name="ДатаРождения" id="11">
+											<DataPath>ДатаРождения</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дата рождения покупателя (клиента) (тэг: 1243)</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ContextMenu name="ДатаРожденияКонтекстноеМеню" id="12"/>
+											<ExtendedTooltip name="ДатаРожденияРасширеннаяПодсказка" id="13"/>
+										</InputField>
+										<InputField name="Гражданство" id="17">
+											<DataPath>Гражданство</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Реквизит "гражданство" (тег 1244) включается в состав ФД только в случае, если лицо (покупатель, клиент), не является гражданином РФ</v8:content>
+												</v8:item>
+											</ToolTip>
+											<InputHint>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>указывается, если не гражданин РФ</v8:content>
+												</v8:item>
+											</InputHint>
+											<ContextMenu name="ГражданствоКонтекстноеМеню" id="18"/>
+											<ExtendedTooltip name="ГражданствоРасширеннаяПодсказка" id="19"/>
+										</InputField>
+										<UsualGroup name="ГруппаДокументУдостоверяющийЛичность" id="131">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Документ, удостоверяющий личность</v8:content>
+												</v8:item>
+											</Title>
+											<Group>HorizontalIfPossible</Group>
+											<Behavior>Usual</Behavior>
+											<Representation>None</Representation>
+											<ExtendedTooltip name="ГруппаДокументУдостоверяющийЛичностьРасширеннаяПодсказка" id="132"/>
+											<ChildItems>
+												<InputField name="ВидДокумента" id="8">
+													<DataPath>ВидДокумента</DataPath>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Вид (код вида) документа, удоствоверяющего личность  (тэг: 1245)</v8:content>
+														</v8:item>
+													</ToolTip>
+													<ContextMenu name="ВидДокументаКонтекстноеМеню" id="9"/>
+													<ExtendedTooltip name="ВидДокументаРасширеннаяПодсказка" id="10"/>
+													<Events>
+														<Event name="OnChange">ВидДокументаПриИзменении</Event>
+													</Events>
+												</InputField>
+												<InputField name="ДанныеДокумента" id="20">
+													<DataPath>ДанныеДокумента</DataPath>
+													<TitleLocation>Left</TitleLocation>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Данные документа, удостоверяющего личность  (тэг: 1246)</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Height>6</Height>
+													<MultiLine>true</MultiLine>
+													<InputHint>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Не более 64 символов</v8:content>
+														</v8:item>
+													</InputHint>
+													<ContextMenu name="ДанныеДокументаКонтекстноеМеню" id="21"/>
+													<ExtendedTooltip name="ДанныеДокументаРасширеннаяПодсказка" id="22"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ПоляЮрЛица" id="105">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Поля юр лица</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Поля юр лица</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Width>50</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Group>Vertical</Group>
+									<Behavior>Usual</Behavior>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ПоляЮрЛицаРасширеннаяПодсказка" id="106"/>
+									<ChildItems>
+										<InputField name="Контрагент" id="118">
+											<DataPath>Контрагент</DataPath>
+											<ChoiceButton>true</ChoiceButton>
+											<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+											<ContextMenu name="КонтрагентКонтекстноеМеню" id="119"/>
+											<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="120"/>
+											<Events>
+												<Event name="OnChange">КонтрагентПриИзменении</Event>
+											</Events>
+										</InputField>
+										<InputField name="ПредставлениеКонтрагента" id="128">
+											<DataPath>ПредставлениеКонтрагента</DataPath>
+											<TitleHeight>2</TitleHeight>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Наименование контрагента  (тэг: 1227)</v8:content>
+												</v8:item>
+											</ToolTip>
+											<InputHint>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Наименование контрагента</v8:content>
+												</v8:item>
+											</InputHint>
+											<ContextMenu name="ПредставлениеКонтрагентаКонтекстноеМеню" id="129"/>
+											<ExtendedTooltip name="ПредставлениеКонтрагентаРасширеннаяПодсказка" id="130"/>
+										</InputField>
+										<InputField name="ИНН" id="14">
+											<DataPath>ИНН</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>ИНН контрагента  (тэг: 1228)</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ContextMenu name="ИННКонтекстноеМеню" id="15"/>
+											<ExtendedTooltip name="ИННРасширеннаяПодсказка" id="16"/>
+											<Events>
+												<Event name="OnChange">ИННПриИзменении</Event>
+											</Events>
+										</InputField>
+										<InputField name="Адрес" id="102">
+											<DataPath>Адрес</DataPath>
+											<TitleLocation>Left</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Адрес контрагента  (тэг: 1254)</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Width>10</Width>
+											<MultiLine>true</MultiLine>
+											<InputHint>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Не более 256 символов</v8:content>
+												</v8:item>
+											</InputHint>
+											<ContextMenu name="АдресКонтекстноеМеню" id="103"/>
+											<ExtendedTooltip name="АдресРасширеннаяПодсказка" id="104"/>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+							</ChildItems>
+						</UsualGroup>
+						<Table name="ПаспортныеДанные" id="23">
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>ПаспортныеДанные</DataPath>
+							<RowPictureDataPath>ПаспортныеДанные.DefaultPicture</RowPictureDataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+							<ContextMenu name="ПаспортныеДанныеКонтекстноеМеню" id="24">
+								<Autofill>false</Autofill>
+							</ContextMenu>
+							<AutoCommandBar name="ПаспортныеДанныеКоманднаяПанель" id="25">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="ПаспортныеДанныеЗаполнитьСведенияПоПаспортнымДанным" id="51">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ЗаполнитьСведенияПоПаспортнымДанным</CommandName>
+										<ExtendedTooltip name="ПаспортныеДанныеЗаполнитьСведенияПоПаспортнымДаннымРасширеннаяПодсказка" id="52"/>
+									</Button>
+									<Button name="ПаспортныеДанныеСоздать" id="133">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.ПаспортныеДанные.StandardCommand.Create</CommandName>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Добавить</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ПаспортныеДанныеСоздатьРасширеннаяПодсказка" id="134"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ПаспортныеДанныеРасширеннаяПодсказка" id="26"/>
+							<SearchStringAddition name="ПаспортныеДанныеСтрокаПоиска" id="27">
+								<AdditionSource>
+									<Item>ПаспортныеДанные</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПаспортныеДанныеСтрокаПоискаКонтекстноеМеню" id="28"/>
+								<ExtendedTooltip name="ПаспортныеДанныеСтрокаПоискаРасширеннаяПодсказка" id="29"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ПаспортныеДанныеСостояниеПросмотра" id="30">
+								<AdditionSource>
+									<Item>ПаспортныеДанные</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ПаспортныеДанныеСостояниеПросмотраКонтекстноеМеню" id="31"/>
+								<ExtendedTooltip name="ПаспортныеДанныеСостояниеПросмотраРасширеннаяПодсказка" id="32"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ПаспортныеДанныеУправлениеПоиском" id="33">
+								<AdditionSource>
+									<Item>ПаспортныеДанные</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ПаспортныеДанныеУправлениеПоискомКонтекстноеМеню" id="34"/>
+								<ExtendedTooltip name="ПаспортныеДанныеУправлениеПоискомРасширеннаяПодсказка" id="35"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ПаспортныеДанныеПериод" id="36">
+									<DataPath>ПаспортныеДанные.Period</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Применяется с</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ПаспортныеДанныеПериодКонтекстноеМеню" id="37"/>
+									<ExtendedTooltip name="ПаспортныеДанныеПериодРасширеннаяПодсказка" id="38"/>
+								</LabelField>
+								<LabelField name="ПаспортныеДанныеДокументНомер" id="48">
+									<DataPath>ПаспортныеДанные.ДокументНомер</DataPath>
+									<ContextMenu name="ПаспортныеДанныеДокументНомерКонтекстноеМеню" id="49"/>
+									<ExtendedTooltip name="ПаспортныеДанныеДокументНомерРасширеннаяПодсказка" id="50"/>
+								</LabelField>
+								<LabelField name="ПаспортныеДанныеДокументСерия" id="45">
+									<DataPath>ПаспортныеДанные.ДокументСерия</DataPath>
+									<ContextMenu name="ПаспортныеДанныеДокументСерияКонтекстноеМеню" id="46"/>
+									<ExtendedTooltip name="ПаспортныеДанныеДокументСерияРасширеннаяПодсказка" id="47"/>
+								</LabelField>
+								<LabelField name="ПаспортныеДанныеДокументВид" id="42">
+									<DataPath>ПаспортныеДанные.ДокументВид</DataPath>
+									<ContextMenu name="ПаспортныеДанныеДокументВидКонтекстноеМеню" id="43"/>
+									<ExtendedTooltip name="ПаспортныеДанныеДокументВидРасширеннаяПодсказка" id="44"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаОтраслевойРеквизит" id="65">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отраслевой реквизит (Тэг 1261)</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница отраслевой реквизит</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="СтраницаОтраслевойРеквизитРасширеннаяПодсказка" id="66"/>
+					<ChildItems>
+						<InputField name="ИдентификаторФОИВ" id="67">
+							<DataPath>ИдентификаторФОИВ</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Строка[3],Необязательно - Тэг 1262 - Идентификатор ФОИВ.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ContextMenu name="ИдентификаторФОИВКонтекстноеМеню" id="68"/>
+							<ExtendedTooltip name="ИдентификаторФОИВРасширеннаяПодсказка" id="69"/>
+						</InputField>
+						<InputField name="ДатаДокументаОснования" id="70">
+							<DataPath>ДатаДокументаОснования</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дата нормативного акта федерального органа исполнительной власти, регламентирующего порядок заполнения реквизита "значение отраслевого реквизита" (тег 1265)</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ContextMenu name="ДатаДокументаОснованияКонтекстноеМеню" id="71"/>
+							<ExtendedTooltip name="ДатаДокументаОснованияРасширеннаяПодсказка" id="72"/>
+						</InputField>
+						<InputField name="НомерДокументаОснования" id="73">
+							<DataPath>НомерДокументаОснования</DataPath>
+							<TitleLocation>Left</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номер нормативного акта федерального органа исполнительной власти, регламентирующего порядок заполнения реквизита "значение отраслевого реквизита" (тег 1265)</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Height>2</Height>
+							<VerticalStretch>false</VerticalStretch>
+							<ContextMenu name="НомерДокументаОснованияКонтекстноеМеню" id="74"/>
+							<ExtendedTooltip name="НомерДокументаОснованияРасширеннаяПодсказка" id="75"/>
+						</InputField>
+						<InputField name="ЗначениеРеквизита" id="76">
+							<DataPath>ЗначениеРеквизита</DataPath>
+							<TitleLocation>Left</TitleLocation>
+							<Height>12</Height>
+							<VerticalStretch>false</VerticalStretch>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="ЗначениеРеквизитаКонтекстноеМеню" id="77"/>
+							<ExtendedTooltip name="ЗначениеРеквизитаРасширеннаяПодсказка" id="78"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаОперационныйРеквизит" id="79">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Операционный реквизит (Тэг 1270)</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница операционный реквизит</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
+					<ExtendedTooltip name="СтраницаОперационныйРеквизитРасширеннаяПодсказка" id="80"/>
+					<ChildItems>
+						<InputField name="ДатаВремяОперации" id="81">
+							<DataPath>ДатаВремяОперации</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дата,Необязательно - Тэг 1273 - Дата, время операции</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ContextMenu name="ДатаВремяОперацииКонтекстноеМеню" id="82"/>
+							<ExtendedTooltip name="ДатаВремяОперацииРасширеннаяПодсказка" id="83"/>
+						</InputField>
+						<InputField name="ИдентификаторОперации" id="87">
+							<DataPath>ИдентификаторОперации</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Целое,Необязательно - Тэг 1271 - Идентификатор операции.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ContextMenu name="ИдентификаторОперацииКонтекстноеМеню" id="88"/>
+							<ExtendedTooltip name="ИдентификаторОперацииРасширеннаяПодсказка" id="89"/>
+						</InputField>
+						<InputField name="ДанныеОперации" id="84">
+							<DataPath>ДанныеОперации</DataPath>
+							<TitleLocation>Left</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Строка[64],Необязательно - Тэг 1272 - Данные операции.</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Height>6</Height>
+							<VerticalStretch>false</VerticalStretch>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="ДанныеОперацииКонтекстноеМеню" id="85"/>
+							<ExtendedTooltip name="ДанныеОперацииРасширеннаяПодсказка" id="86"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="ИНН" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ИНН</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>12</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаРождения" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата рождения</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Гражданство" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Гражданство</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидДокумента" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид документа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ВидДокументаУдостоверяющегоЛичностьККТ</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ДанныеДокумента" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные документа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>64</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Клиент" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Клиент</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Клиенты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПаспортныеДанные" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Паспортные данные</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<UseAlways>
+				<Field>ПаспортныеДанные.Period</Field>
+				<Field>ПаспортныеДанные.ДатаРегистрацииПоМестуЖительства</Field>
+				<Field>ПаспортныеДанные.ДокументВид</Field>
+				<Field>ПаспортныеДанные.ДокументДатаВыдачи</Field>
+				<Field>ПаспортныеДанные.ДокументКемВыдан</Field>
+				<Field>ПаспортныеДанные.ДокументКодПодразделения</Field>
+				<Field>ПаспортныеДанные.ДокументНомер</Field>
+				<Field>ПаспортныеДанные.ДокументСерия</Field>
+			</UseAlways>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>InformationRegister.ПаспортныеДанные</MainTable>
+				<AutoSaveUserSettings>false</AutoSaveUserSettings>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ИдентификаторФОИВ" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор ФОИВ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>3</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаДокументаОснования" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата документа основания</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>Date</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НомерДокументаОснования" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер документа основания</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>64</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗначениеРеквизита" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Значение реквизита</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>256</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДатаВремяОперации" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата время операции</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИдентификаторОперации" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Идентификатор операции</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДанныеОперации" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные операции</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>64</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="НазваниеРеквизитаККТ" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Название реквизита ККТ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоФизЛицо" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тип клиента</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Адрес" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>256</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Контрагент" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контрагент</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="КлиентФИО" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ФИО клиента</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПредставлениеКонтрагента" id="20">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаполнитьСведенияПоПаспортнымДанным" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить сведения по паспортным данным</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить сведения по паспортным данным</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.AppearanceUpArrowGreen</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗаполнитьСведенияПоПаспортнымДанным</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="СохранитьИЗакрыть" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сохранить и закрыть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.EndEdit</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Сохранить</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Отмена" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отмена</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Закрыть форму без сохранения данных на ней</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ОтменитьРедактированиеМакета</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Отмена</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="Удалить" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить данные текущего тэга. Если кнопка недоступна, значит данные реквизита документа пустые</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Удалить</Action>
+		</Command>
+	</Commands>
+</Form>

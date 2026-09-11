@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаВыполнитьЗамену" id="86">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ВыполнитьЗамену</CommandName>
+				<ButtonImportance>Main</ButtonImportance>
+				<ExtendedTooltip name="ФормаВыполнитьЗаменуРасширеннаяПодсказка" id="87"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаПериод" id="88">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа период</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа период</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПериодРасширеннаяПодсказка" id="89"/>
+			<ChildItems>
+				<InputField name="ДатаНачала" id="90">
+					<DataPath>ДатаНачала</DataPath>
+					<Width>14</Width>
+					<EditFormat>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ='dd.MM.yyyy HH:mm'</v8:content>
+						</v8:item>
+					</EditFormat>
+					<ContextMenu name="ДатаНачалаКонтекстноеМеню" id="91"/>
+					<ExtendedTooltip name="ДатаНачалаРасширеннаяПодсказка" id="92"/>
+					<Events>
+						<Event name="OnChange">ДатаПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ДатаОкончания" id="93">
+					<DataPath>ДатаОкончания</DataPath>
+					<Width>14</Width>
+					<EditFormat>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ='dd.MM.yyyy HH:mm'</v8:content>
+						</v8:item>
+					</EditFormat>
+					<ContextMenu name="ДатаОкончанияКонтекстноеМеню" id="94"/>
+					<ExtendedTooltip name="ДатаОкончанияРасширеннаяПодсказка" id="95"/>
+					<Events>
+						<Event name="OnChange">ДатаПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="ИсходныйСотрудник" id="77">
+			<DataPath>ИсходныйСотрудник</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий сотрудник</v8:content>
+				</v8:item>
+			</Title>
+			<ChoiceButton>true</ChoiceButton>
+			<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+			<ContextMenu name="ИсходныйСотрудникКонтекстноеМеню" id="78"/>
+			<ExtendedTooltip name="ИсходныйСотрудникРасширеннаяПодсказка" id="79"/>
+			<Events>
+				<Event name="OnChange">ИсходныйСотрудникПриИзменении</Event>
+			</Events>
+		</InputField>
+		<InputField name="НовыйСотрудник" id="80">
+			<DataPath>НовыйСотрудник</DataPath>
+			<ChoiceButton>true</ChoiceButton>
+			<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
+			<ContextMenu name="НовыйСотрудникКонтекстноеМеню" id="81"/>
+			<ExtendedTooltip name="НовыйСотрудникРасширеннаяПодсказка" id="82"/>
+		</InputField>
+		<Table name="Заявки" id="1">
+			<TitleLocation>Top</TitleLocation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<EnableStartDrag>true</EnableStartDrag>
+			<FileDragMode>AsFile</FileDragMode>
+			<DataPath>Заявки</DataPath>
+			<RowPictureDataPath>Заявки.DefaultPicture</RowPictureDataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заявки сотрудника за период</v8:content>
+				</v8:item>
+			</Title>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+			<ContextMenu name="ЗаявкиКонтекстноеМеню" id="2"/>
+			<AutoCommandBar name="ЗаявкиКоманднаяПанель" id="3">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ЗаявкиРасширеннаяПодсказка" id="4"/>
+			<SearchStringAddition name="ЗаявкиСтрокаПоиска" id="5">
+				<AdditionSource>
+					<Item>Заявки</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ЗаявкиСтрокаПоискаКонтекстноеМеню" id="6"/>
+				<ExtendedTooltip name="ЗаявкиСтрокаПоискаРасширеннаяПодсказка" id="7"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ЗаявкиСостояниеПросмотра" id="8">
+				<AdditionSource>
+					<Item>Заявки</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ЗаявкиСостояниеПросмотраКонтекстноеМеню" id="9"/>
+				<ExtendedTooltip name="ЗаявкиСостояниеПросмотраРасширеннаяПодсказка" id="10"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ЗаявкиУправлениеПоиском" id="11">
+				<AdditionSource>
+					<Item>Заявки</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ЗаявкиУправлениеПоискомКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="ЗаявкиУправлениеПоискомРасширеннаяПодсказка" id="13"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="ЗаявкиДата" id="14">
+					<DataPath>Заявки.Date</DataPath>
+					<Width>14</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ЗаявкиДатаКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="ЗаявкиДатаРасширеннаяПодсказка" id="16"/>
+				</LabelField>
+				<LabelField name="ЗаявкиНомер" id="17">
+					<DataPath>Заявки.Number</DataPath>
+					<ContextMenu name="ЗаявкиНомерКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ЗаявкиНомерРасширеннаяПодсказка" id="19"/>
+				</LabelField>
+				<LabelField name="ЗаявкиКлиент" id="20">
+					<DataPath>Заявки.Клиент</DataPath>
+					<ContextMenu name="ЗаявкиКлиентКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ЗаявкиКлиентРасширеннаяПодсказка" id="22"/>
+				</LabelField>
+				<LabelField name="ЗаявкиСотрудник" id="23">
+					<DataPath>Заявки.Сотрудник</DataPath>
+					<ContextMenu name="ЗаявкиСотрудникКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ЗаявкиСотрудникРасширеннаяПодсказка" id="25"/>
+				</LabelField>
+				<LabelField name="ЗаявкиДатаНачала" id="26">
+					<DataPath>Заявки.ДатаНачала</DataPath>
+					<ContextMenu name="ЗаявкиДатаНачалаКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="ЗаявкиДатаНачалаРасширеннаяПодсказка" id="28"/>
+				</LabelField>
+				<LabelField name="ЗаявкиВремяНачала" id="32">
+					<DataPath>Заявки.ВремяНачала</DataPath>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=ЧЧ:мм</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="ЗаявкиВремяНачалаКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="ЗаявкиВремяНачалаРасширеннаяПодсказка" id="34"/>
+				</LabelField>
+				<LabelField name="ЗаявкиВремяОкончания" id="35">
+					<DataPath>Заявки.ВремяОкончания</DataPath>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=ЧЧ:мм</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="ЗаявкиВремяОкончанияКонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="ЗаявкиВремяОкончанияРасширеннаяПодсказка" id="37"/>
+				</LabelField>
+				<LabelField name="ЗаявкиПримечание" id="38">
+					<DataPath>Заявки.Примечание</DataPath>
+					<ContextMenu name="ЗаявкиПримечаниеКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="ЗаявкиПримечаниеРасширеннаяПодсказка" id="40"/>
+				</LabelField>
+				<LabelField name="ЗаявкиФилиал" id="53">
+					<DataPath>~Заявки.Салон</DataPath>
+					<ContextMenu name="ЗаявкиФилиалКонтекстноеМеню" id="54"/>
+					<ExtendedTooltip name="ЗаявкиФилиалРасширеннаяПодсказка" id="55"/>
+				</LabelField>
+				<LabelField name="ЗаявкиСостояние" id="56">
+					<DataPath>Заявки.Состояние</DataPath>
+					<ContextMenu name="ЗаявкиСостояниеКонтекстноеМеню" id="57"/>
+					<ExtendedTooltip name="ЗаявкиСостояниеРасширеннаяПодсказка" id="58"/>
+				</LabelField>
+				<LabelField name="ЗаявкиКабинет" id="62">
+					<DataPath>Заявки.Кабинет</DataPath>
+					<ContextMenu name="ЗаявкиКабинетКонтекстноеМеню" id="63"/>
+					<ExtendedTooltip name="ЗаявкиКабинетРасширеннаяПодсказка" id="64"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ПереносЗаявокНаДругогоСотрудника</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="Заявки" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заявки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>Document.Заявка</MainTable>
+				<AutoSaveUserSettings>false</AutoSaveUserSettings>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>911b6018-f537-43e8-a417-da56b22f9aec</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="ИсходныйСотрудник" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Исходный сотрудник</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Сотрудники</v8:Type>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="НовыйСотрудник" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Новый сотрудник</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Сотрудники</v8:Type>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="ДатаНачала" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заявки за период</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="ДатаОкончания" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>по</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:dateTime</v8:Type>
+				<v8:DateQualifiers>
+					<v8:DateFractions>DateTime</v8:DateFractions>
+				</v8:DateQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ВыполнитьЗамену" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить замену</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выполнить замену</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыполнитьЗамену</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
+		</Command>
+	</Commands>
+</Form>

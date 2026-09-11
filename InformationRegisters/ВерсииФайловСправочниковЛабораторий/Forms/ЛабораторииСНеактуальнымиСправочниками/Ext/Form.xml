@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<Width>55</Width>
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
+	<CommandBarLocation>None</CommandBarLocation>
+	<ShowCommandBar>false</ShowCommandBar>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаДекорацииФормы" id="51">
+			<Group>AlwaysHorizontal</Group>
+			<Behavior>Usual</Behavior>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаДекорацииФормыРасширеннаяПодсказка" id="52"/>
+			<ChildItems>
+				<PictureDecoration name="ДекорацияИнформация" id="53">
+					<Picture>
+						<xr:Ref>CommonPicture.Информация32</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ContextMenu name="ДекорацияИнформацияКонтекстноеМеню" id="54"/>
+					<ExtendedTooltip name="ДекорацияИнформацияРасширеннаяПодсказка" id="55"/>
+				</PictureDecoration>
+				<LabelDecoration name="ДекорацияСообщение" id="44">
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<HorizontalStretch>true</HorizontalStretch>
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<Font ref="style:NormalTextFont" height="12" kind="StyleItem"/>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Справочники указанных лабораторий неактуальны.
+Выполните загрузку справочников лабораторий.</v8:content>
+						</v8:item>
+					</Title>
+					<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<ContextMenu name="ДекорацияСообщениеКонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="ДекорацияСообщениеРасширеннаяПодсказка" id="46"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<CommandBar name="ГруппаКомандыФормы" id="49">
+			<CommandSource>Form</CommandSource>
+			<ExtendedTooltip name="ГруппаКомандыФормыРасширеннаяПодсказка" id="50"/>
+			<ChildItems>
+				<Button name="ФормаОткрытьЗагрузкуСправочников" id="42">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Command.ОткрытьЗагрузкуСправочников</CommandName>
+					<ExtendedTooltip name="ФормаОткрытьЗагрузкуСправочниковРасширеннаяПодсказка" id="43"/>
+				</Button>
+				<Button name="ФормаЗакрыть" id="40">
+					<Type>CommandBarButton</Type>
+					<Representation>PictureAndText</Representation>
+					<CommandName>Form.StandardCommand.Close</CommandName>
+					<ExtendedTooltip name="ФормаЗакрытьРасширеннаяПодсказка" id="41"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
+		<Table name="Лаборатории" id="9">
+			<Representation>List</Representation>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<Header>false</Header>
+			<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Лаборатории</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ЛабораторииКонтекстноеМеню" id="10"/>
+			<AutoCommandBar name="ЛабораторииКоманднаяПанель" id="11">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ЛабораторииРасширеннаяПодсказка" id="12"/>
+			<SearchStringAddition name="ЛабораторииСтрокаПоиска" id="13">
+				<AdditionSource>
+					<Item>Лаборатории</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ЛабораторииСтрокаПоискаКонтекстноеМеню" id="14"/>
+				<ExtendedTooltip name="ЛабораторииСтрокаПоискаРасширеннаяПодсказка" id="15"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ЛабораторииСостояниеПросмотра" id="16">
+				<AdditionSource>
+					<Item>Лаборатории</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ЛабораторииСостояниеПросмотраКонтекстноеМеню" id="17"/>
+				<ExtendedTooltip name="ЛабораторииСостояниеПросмотраРасширеннаяПодсказка" id="18"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ЛабораторииУправлениеПоиском" id="19">
+				<AdditionSource>
+					<Item>Лаборатории</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ЛабораторииУправлениеПоискомКонтекстноеМеню" id="20"/>
+				<ExtendedTooltip name="ЛабораторииУправлениеПоискомРасширеннаяПодсказка" id="21"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ЛабораторииВыбор</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ЛабораторииЛаборатория" id="22">
+					<DataPath>Лаборатории.Лаборатория</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ЛабораторииЛабораторияКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="ЛабораторииЛабораторияРасширеннаяПодсказка" id="24"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Лаборатории" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Лаборатории</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Лаборатория" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Лаборатория</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Лаборатории</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ФормаЗагрузкиОткрыта" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Форма загрузки открыта</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ОткрытьЗагрузкуСправочников" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть загрузку справочников</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть обработки загрузки справочников лабораторий</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DataProcessor</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ОткрытьЗагрузкуСправочников</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
+</Form>

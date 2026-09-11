@@ -1,0 +1,901 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>СобытияНабор</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Клиент</dataPath>
+			<field>Клиент</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеСобытий.Просрочено</dataPath>
+			<field>Просрочено</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные событий.Просрочено</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеСобытий.Плановое</dataPath>
+			<field>Плановое</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные событий.Плановое</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеСобытий.Событие</dataPath>
+			<field>Событие</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные событий.Событие</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеСобытий.ДатаПоследнейПродажи</dataPath>
+			<field>ДатаПоследнейПродажи</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные событий.Дата последней продажи</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ДФ='dd.MM.yyyy ЧЧ:mm'</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеСобытий.Выполнено</dataPath>
+			<field>Выполнено</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные событий.Выполнено</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Клиент.ЕстьЗаявки</dataPath>
+			<field>ЕстьЗаявки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Есть заявки</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">БЛ='Нет заявок'; БИ='Есть заявки'</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеСобытий.ДатаПоследнейЗаявки</dataPath>
+			<field>ДатаПоследнейЗаявки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные событий.Дата последней заявки</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ДФ='dd.MM.yyyy ЧЧ:mm'</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Клиент.ЕстьПросроченныеСобытия</dataPath>
+			<field>ЕстьПросроченныеСобытия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Есть просроченные события</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">БЛ='Нет просроченных'; БИ='Есть просроченные'</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Клиент.ЕстьПродажи</dataPath>
+			<field>ЕстьПродажи</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Есть продажи</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">БЛ='Нет продаж'; БИ='Есть продажи'</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Клиент.ЕстьПлановыеНеПросроченныеСобытия</dataPath>
+			<field>ЕстьПлановыеНеПросроченныеСобытия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Есть плановые не просроченные события</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеСобытий.ДатаПлан</dataPath>
+			<field>ДатаПлан</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ДФ='dd.MM.yyyy ЧЧ:mm'</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеСобытий.ВидСобытия</dataPath>
+			<field>ВидСобытия</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеСобытий.ДатаФакт</dataPath>
+			<field>ДатаФакт</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ДФ='dd.MM.yyyy ЧЧ:mm'</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Клиент.ЕстьПлановыеСобытия</dataPath>
+			<field>ЕстьПлановыеСобытия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Есть плановые события</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">БЛ='Нет запланированных событий'; БИ='Есть запланированные события'</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтатусКлиента</dataPath>
+			<field>СтатусКлиента</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус клиента</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДанныеСобытий.Комментарий</dataPath>
+			<field>Комментарий</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Клиент.ЕстьСобытия</dataPath>
+			<field>ЕстьСобытия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Есть события</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Клиент.ОсновнойСотрудник</dataPath>
+			<field>ОсновнойСотрудник</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Клиент.Ответственный</dataPath>
+			<field>Ответственный</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ответственный за клиента</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldFolder">
+			<dataPath>ДанныеСобытий</dataPath>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Данные событий</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	Клиенты.Ссылка КАК Клиент,
+	Клиенты.Статус
+ПОМЕСТИТЬ ВсеКлиенты
+ИЗ
+	Справочник.Клиенты КАК Клиенты
+
+ИНДЕКСИРОВАТЬ ПО
+	Клиент
+;
+
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Событие.Ссылка,
+	Событие.Филиал,
+	Событие.Клиент,
+	Событие.ВидСобытия,
+	Событие.ДатаПлан,
+	Событие.ДатаФакт,
+	Событие.Цель,
+	Событие.Комментарий
+ПОМЕСТИТЬ СобытияЗаПериод
+ИЗ
+	Документ.Событие КАК Событие
+ГДЕ
+	НЕ Событие.ПометкаУдаления
+{ГДЕ
+	(Событие.Дата МЕЖДУ &amp;СобытияДатаНачала И &amp;СобытияДатаОкончания)}
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	Клиенты.Клиент КАК Клиент,
+	СобытияЗаПериод.Ссылка КАК Событие,
+	ЕСТЬNULL(ВЫБОР
+			КОГДА СобытияЗаПериод.ДатаФакт = ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)
+					И СобытияЗаПериод.ДатаПлан &lt;&gt; ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)
+				ТОГДА ИСТИНА
+			ИНАЧЕ ЛОЖЬ
+		КОНЕЦ, ЛОЖЬ) КАК Плановое,
+	ЕСТЬNULL(ВЫБОР
+			КОГДА СобытияЗаПериод.ДатаФакт &lt;&gt; ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)
+				ТОГДА ИСТИНА
+			ИНАЧЕ ЛОЖЬ
+		КОНЕЦ, ЛОЖЬ) КАК Выполнено,
+	ЕСТЬNULL(ВЫБОР
+			КОГДА СобытияЗаПериод.ДатаПлан &lt;&gt; ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)
+					И (СобытияЗаПериод.ДатаФакт = ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)
+							И НАЧАЛОПЕРИОДА(СобытияЗаПериод.ДатаПлан, ДЕНЬ) &lt; НАЧАЛОПЕРИОДА(&amp;СобытияТекущаяДата, ДЕНЬ)
+						ИЛИ СобытияЗаПериод.ДатаПлан &lt;&gt; ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)
+							И СобытияЗаПериод.ДатаФакт &lt;&gt; ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0)
+							И НАЧАЛОПЕРИОДА(СобытияЗаПериод.ДатаПлан, ДЕНЬ) &lt; НАЧАЛОПЕРИОДА(СобытияЗаПериод.ДатаФакт, ДЕНЬ))
+				ТОГДА ИСТИНА
+			ИНАЧЕ ЛОЖЬ
+		КОНЕЦ, ЛОЖЬ) КАК Просрочено,
+	Клиенты.Статус КАК СтатусКлиента,
+	СобытияЗаПериод.ВидСобытия,
+	СобытияЗаПериод.ДатаПлан,
+	СобытияЗаПериод.ДатаФакт,
+	СобытияЗаПериод.Комментарий,
+	ВЫБОР
+		КОГДА СобытияЗаПериод.Ссылка ЕСТЬ NULL
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ ИСТИНА
+	КОНЕЦ КАК ЕстьСобытие
+ПОМЕСТИТЬ СобытияКлиентов
+ИЗ
+	ВсеКлиенты КАК Клиенты
+		ЛЕВОЕ СОЕДИНЕНИЕ СобытияЗаПериод КАК СобытияЗаПериод
+		ПО (СобытияЗаПериод.Клиент = Клиенты.Клиент)
+
+ИНДЕКСИРОВАТЬ ПО
+	Клиент
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СобытияКлиентов.Клиент КАК Клиент,
+	МАКСИМУМ(СобытияКлиентов.Просрочено) КАК ЕстьПросроченныеСобытия,
+	МАКСИМУМ(СобытияКлиентов.Плановое) КАК ЕстьПлановыеСобытия,
+	МАКСИМУМ(ВЫБОР
+			КОГДА СобытияКлиентов.Плановое
+					И НЕ СобытияКлиентов.Просрочено
+				ТОГДА ИСТИНА
+			ИНАЧЕ ЛОЖЬ
+		КОНЕЦ) КАК ЕстьПлановыеНеПросроченныеСобытия,
+	МАКСИМУМ(СобытияКлиентов.ЕстьСобытие) КАК ЕстьСобытия
+ПОМЕСТИТЬ СгруппированныеКлиенты
+ИЗ
+	СобытияКлиентов КАК СобытияКлиентов
+
+СГРУППИРОВАТЬ ПО
+	СобытияКлиентов.Клиент
+
+ИНДЕКСИРОВАТЬ ПО
+	Клиент
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СгруппированныеКлиенты.Клиент,
+	СгруппированныеКлиенты.ЕстьПлановыеСобытия,
+	СгруппированныеКлиенты.ЕстьПросроченныеСобытия,
+	СгруппированныеКлиенты.ЕстьПлановыеНеПросроченныеСобытия,
+	СгруппированныеКлиенты.ЕстьСобытия,
+	МАКСИМУМ(ЕСТЬNULL(Заявка.ДатаНачала, ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0))) КАК ДатаПоследнейЗаявки,
+	МАКСИМУМ(ЕСТЬNULL(Продажи.Период, ДАТАВРЕМЯ(1, 1, 1, 0, 0, 0))) КАК ДатаПоследнейПродажи,
+	МАКСИМУМ(ВЫБОР
+			КОГДА Заявка.Ссылка ЕСТЬ NULL
+				ТОГДА ЛОЖЬ
+			ИНАЧЕ ИСТИНА
+		КОНЕЦ) КАК ЕстьЗаявки,
+	МАКСИМУМ(ВЫБОР
+			КОГДА Продажи.Регистратор ЕСТЬ NULL
+				ТОГДА ЛОЖЬ
+			ИНАЧЕ ИСТИНА
+		КОНЕЦ) КАК ЕстьПродажи
+ПОМЕСТИТЬ КлиентыЗаявкиПродажи
+ИЗ
+	СгруппированныеКлиенты КАК СгруппированныеКлиенты
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Заявка КАК Заявка
+		ПО СгруппированныеКлиенты.Клиент = Заявка.Клиент
+			И (НЕ Заявка.ПометкаУдаления)
+			И (Заявка.Состояние &lt;&gt; ЗНАЧЕНИЕ(Справочник.ВидыСостоянийЗаявок.Отменена))
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.Продажи КАК Продажи
+		ПО СгруппированныеКлиенты.Клиент = Продажи.Клиент
+
+СГРУППИРОВАТЬ ПО
+	СгруппированныеКлиенты.Клиент,
+	СгруппированныеКлиенты.ЕстьПлановыеСобытия,
+	СгруппированныеКлиенты.ЕстьПросроченныеСобытия,
+	СгруппированныеКлиенты.ЕстьПлановыеНеПросроченныеСобытия,
+	СгруппированныеКлиенты.ЕстьСобытия
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СобытияКлиентов.Клиент,
+	СобытияКлиентов.Событие,
+	СобытияКлиентов.Плановое,
+	СобытияКлиентов.Просрочено,
+	СобытияКлиентов.Выполнено,
+	СобытияКлиентов.ВидСобытия,
+	СобытияКлиентов.ДатаПлан,
+	СобытияКлиентов.ДатаФакт,
+	СобытияКлиентов.СтатусКлиента,
+	КлиентыЗаявкиПродажи.ЕстьПлановыеСобытия,
+	КлиентыЗаявкиПродажи.ЕстьПросроченныеСобытия,
+	КлиентыЗаявкиПродажи.ЕстьПлановыеНеПросроченныеСобытия,
+	КлиентыЗаявкиПродажи.ЕстьСобытия,
+	КлиентыЗаявкиПродажи.ЕстьЗаявки,
+	КлиентыЗаявкиПродажи.ЕстьПродажи,
+	КлиентыЗаявкиПродажи.ДатаПоследнейЗаявки,
+	КлиентыЗаявкиПродажи.ДатаПоследнейПродажи,
+	СобытияКлиентов.Комментарий,
+	КлиентыЗаявкиПродажи.Клиент.Ответственный КАК Ответственный,
+	КлиентыЗаявкиПродажи.Клиент.ОсновнойСотрудник КАК ОсновнойСотрудник
+ИЗ
+	СобытияКлиентов КАК СобытияКлиентов
+		ЛЕВОЕ СОЕДИНЕНИЕ КлиентыЗаявкиПродажи КАК КлиентыЗаявкиПродажи
+		ПО СобытияКлиентов.Клиент = КлиентыЗаявкиПродажи.Клиент</query>
+	</dataSet>
+	<calculatedField>
+		<dataPath>ДанныеСобытий.СтатусСобытия</dataPath>
+		<expression>Выбор Когда ДанныеСобытий.Плановое Тогда
+     "Запланировано"
+Иначе
+   Выбор Когда ДанныеСобытий.Выполнено Тогда 
+      "Совершено" 
+    Иначе
+         "-" 
+    Конец
+Конец + Выбор Когда ДанныеСобытий.Просрочено Тогда " (просрочено)" Иначе "" Конец</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Данные событий.Статус события</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>0</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ДанныеСобытий.КоличествоСобытий</dataPath>
+		<expression>1</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Данные событий.Количество событий</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>10</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ДанныеСобытий.КоличествоПросроченных</dataPath>
+		<expression>Выбор когда 
+	ДанныеСобытий.Событие.ДатаПлан &lt;&gt; ДАТАВРЕМЯ(1, 1, 1,0,0,0)
+					И   (ДанныеСобытий.Событие.ДатаФакт = ДАТАВРЕМЯ(1, 1, 1,0,0,0)
+					И НАЧАЛОПЕРИОДА(ДанныеСобытий.Событие.ДатаПлан, "ДЕНЬ") &lt; НАЧАЛОПЕРИОДА(&amp;СобытияТекущаяДата, "ДЕНЬ")
+	ИЛИ ДанныеСобытий.Событие.ДатаПлан &lt;&gt; ДАТАВРЕМЯ(1, 1, 1,0,0,0)
+					И ДанныеСобытий.Событие.ДатаФакт &lt;&gt; ДАТАВРЕМЯ(1, 1, 1,0,0,0)
+					И НАЧАЛОПЕРИОДА(ДанныеСобытий.Событие.ДатаПлан, "ДЕНЬ") &lt; НАЧАЛОПЕРИОДА(ДанныеСобытий.Событие.ДатаФакт, "ДЕНЬ"))
+					            тогда 1 иначе 0 конец
+</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Просрочено событий</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>10</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ДанныеСобытий.ИмяРазделаДанных</dataPath>
+		<expression>"Данные событий"</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Данные событий (Имя раздела)</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:string</v8:Type>
+			<v8:StringQualifiers>
+				<v8:Length>0</v8:Length>
+				<v8:AllowedLength>Variable</v8:AllowedLength>
+			</v8:StringQualifiers>
+		</valueType>
+	</calculatedField>
+	<totalField>
+		<dataPath>ДанныеСобытий.КоличествоСобытий</dataPath>
+		<expression>Количество(Различные ДанныеСобытий.Событие)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ДанныеСобытий.КоличествоПросроченных</dataPath>
+		<expression>Сумма(ДанныеСобытий.КоличествоПросроченных)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Клиент.ЕстьЗаявки</dataPath>
+		<expression>Максимум(Клиент.ЕстьЗаявки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Клиент.ЕстьПлановыеНеПросроченныеСобытия</dataPath>
+		<expression>Максимум(Клиент.ЕстьПлановыеНеПросроченныеСобытия)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Клиент.ЕстьПлановыеСобытия</dataPath>
+		<expression>Максимум(Клиент.ЕстьПлановыеСобытия)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Клиент.ЕстьПродажи</dataPath>
+		<expression>Максимум(Клиент.ЕстьПродажи)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Клиент.ЕстьПросроченныеСобытия</dataPath>
+		<expression>Максимум(Клиент.ЕстьПросроченныеСобытия)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Клиент.ЕстьСобытия</dataPath>
+		<expression>Максимум(Клиент.ЕстьСобытия)</expression>
+	</totalField>
+	<parameter>
+		<name>СобытияПериод</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период, в котором идёт поиск по выбранным отборам (даты событий)</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>СобытияДатаНачала</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>События дата начала</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;СобытияПериод.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>СобытияДатаОкончания</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>События дата окончания</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>КонецПериода(&amp;СобытияПериод.ДатаОкончания, "День")</expression>
+	</parameter>
+	<parameter>
+		<name>СобытияТекущаяДата</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>События текущая дата</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>ТекущаяДата()</expression>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Общий</dcsset:name>
+		<dcsset:presentation xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Общий отчет</v8:content>
+			</v8:item>
+		</dcsset:presentation>
+		<dcsset:settings xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Клиент.ЕстьСобытия</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					<dcsset:userSettingID>92b06d84-0f23-4fec-abc6-1d68e5f01278</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">СтатусКлиента</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>4a36dce3-c224-4314-900d-f0da0333f79e</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Клиент.ЕстьПлановыеСобытия</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					<dcsset:userSettingID>23c11574-a293-4256-9c9a-b3fd1bdf266a</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Клиент.ЕстьПросроченныеСобытия</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					<dcsset:userSettingID>42e6008f-354a-4e24-834b-5033cbc644a3</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Клиент.ЕстьПлановыеНеПросроченныеСобытия</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+					<dcsset:userSettingID>117c8a81-ffd1-4871-b774-254f95c28721</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДанныеСобытий.ДатаПоследнейЗаявки</dcsset:left>
+					<dcsset:comparisonType>Less</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfLastMonth</v8:variant>
+					</dcsset:right>
+					<dcsset:userSettingID>566ce871-0e9c-4705-a33f-0ad73a0ec431</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">ДанныеСобытий.ДатаПоследнейПродажи</dcsset:left>
+					<dcsset:comparisonType>Less</dcsset:comparisonType>
+					<dcsset:right xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfLastMonth</v8:variant>
+					</dcsset:right>
+					<dcsset:userSettingID>8ce9d338-5cf0-4101-8bb9-d5f0bbea5bc5</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>СобытияПериод</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>d6a2dd8b-e56c-4ff7-b4ae-73918172f48a</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>ДанныеСобытий.ДатаФакт</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>ДанныеСобытий.ДатаПлан</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection/>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ДанныеСобытий.Просрочено</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветТекста</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:Salmon</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>ДанныеСобытий.СтатусСобытия</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ДанныеСобытий.Просрочено</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ДанныеСобытий.Плановое</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ДанныеСобытий.ДатаФакт</dcsset:left>
+							<dcsset:comparisonType>Filled</dcsset:comparisonType>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветТекста</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:MediumSeaGreen</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>Клиент.Ответственный</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">Клиент.Ответственный</dcsset:left>
+							<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>Текст</dcscor:parameter>
+							<dcscor:value xsi:type="v8:LocalStringType">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Не указан ответственный за клиента</v8:content>
+								</v8:item>
+							</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>РасположениеРеквизитов</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionAttributesPlacement">WithOwnerField</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:use>false</dcsset:use>
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ДанныеСобытий.ИмяРазделаДанных</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДанныеСобытий.ИмяРазделаДанных</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДанныеСобытий.КоличествоСобытий</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДанныеСобытий.КоличествоПросроченных</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Клиент.Ответственный</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>СтатусКлиента</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ДанныеСобытий.ДатаПоследнейЗаявки</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ДанныеСобытий.ДатаПоследнейПродажи</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Клиент</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>СтатусКлиента</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Клиент.ЕстьПлановыеСобытия</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Плановые</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Клиент.ЕстьПросроченныеСобытия</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Просроченые</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Клиент.ЕстьЗаявки</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Заявки</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Клиент.ЕстьПродажи</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Продажи</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ДанныеСобытий.ДатаПоследнейЗаявки</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ДанныеСобытий.ДатаПоследнейПродажи</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:filter>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">Событие</dcsset:left>
+								<dcsset:comparisonType>Filled</dcsset:comparisonType>
+								<dcsset:viewMode>Inaccessible</dcsset:viewMode>
+							</dcsset:item>
+						</dcsset:filter>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>ДанныеСобытий.Событие</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>ДанныеСобытий.ВидСобытия</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>ДанныеСобытий.СтатусСобытия</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>ДанныеСобытий.ДатаПлан</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>ДанныеСобытий.ДатаФакт</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>ДанныеСобытий.Комментарий</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>ДанныеСобытий.КоличествоСобытий</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>ДанныеСобытий.КоличествоПросроченных</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:outputParameters>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ВыводитьОтбор</dcscor:parameter>
+								<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">DontOutput</dcscor:value>
+							</dcscor:item>
+						</dcsset:outputParameters>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>
