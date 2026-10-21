@@ -1,15 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
 			<v8:content>Загрузка файлов </v8:content>
 		</v8:item>
 	</Title>
-	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
+	<Group>Vertical</Group>
 	<Customizable>false</Customizable>
 	<CommandBarLocation>None</CommandBarLocation>
+	<ShowCommandBar>false</ShowCommandBar>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
@@ -37,6 +39,7 @@
 							<v8:content>Заголовок</v8:content>
 						</v8:item>
 					</Title>
+					<Group>HorizontalIfPossible</Group>
 					<Behavior>Usual</Behavior>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
@@ -60,7 +63,9 @@
 					<CommandBarLocation>None</CommandBarLocation>
 					<SkipOnInput>false</SkipOnInput>
 					<Height>6</Height>
+					<RowSelectionMode>Cell</RowSelectionMode>
 					<Header>false</Header>
+					<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
 					<AutoInsertNewRow>true</AutoInsertNewRow>
 					<EnableStartDrag>true</EnableStartDrag>
 					<EnableDrag>true</EnableDrag>
@@ -116,7 +121,7 @@
 								<CheckBoxField name="ДеревоФайловПометка" id="41">
 									<DataPath>ДеревоФайлов.Пометка</DataPath>
 									<EditMode>EnterOnInput</EditMode>
-									<CheckBoxType>Auto</CheckBoxType>
+									<AutoEditMode>true</AutoEditMode>
 									<ContextMenu name="ДеревоФайловПометкаКонтекстноеМеню" id="42"/>
 									<ExtendedTooltip name="ДеревоФайловПометкаExtendedTooltip" id="52"/>
 									<Events>
@@ -126,6 +131,7 @@
 								<PictureField name="ДеревоФайловИндексКартинки" id="38">
 									<DataPath>ДеревоФайлов.ИндексКартинки</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<ValuesPicture>
 										<xr:Ref>CommonPicture.КоллекцияПиктограммФайлов</xr:Ref>
 										<xr:LoadTransparent>false</xr:LoadTransparent>
@@ -138,6 +144,7 @@
 									<DataPath>ДеревоФайлов.ИмяФайла</DataPath>
 									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<TextEdit>false</TextEdit>
 									<ContextMenu name="ДеревоФайловИмяФайлаКонтекстноеМеню" id="35"/>
 									<ExtendedTooltip name="ДеревоФайловИмяФайлаExtendedTooltip" id="54"/>
@@ -166,7 +173,6 @@
 			<DataPath>УдалятьФайлыПослеДобавления</DataPath>
 			<TitleLocation>Right</TitleLocation>
 			<FooterHorizontalAlign>Left</FooterHorizontalAlign>
-			<CheckBoxType>Auto</CheckBoxType>
 			<ContextMenu name="УдалятьПослеДобавленияКонтекстноеМеню" id="10"/>
 			<ExtendedTooltip name="УдалятьПослеДобавленияExtendedTooltip" id="56"/>
 		</CheckBoxField>
@@ -203,7 +209,6 @@
 					<DataPath>ХранитьВерсии</DataPath>
 					<TitleLocation>Right</TitleLocation>
 					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
-					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ХранитьВерсииКонтекстноеМеню" id="22"/>
 					<ExtendedTooltip name="ХранитьВерсииExtendedTooltip" id="59"/>
 				</CheckBoxField>
@@ -216,6 +221,7 @@
 					<v8:content>Кодировка</v8:content>
 				</v8:item>
 			</Title>
+			<Group>HorizontalIfPossible</Group>
 			<Behavior>Usual</Behavior>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -258,6 +264,7 @@
 					<TextColor>style:ButtonTextColor</TextColor>
 					<BackColor>style:ButtonBackColor</BackColor>
 					<BorderColor>style:BorderColor</BorderColor>
+					<ButtonImportance>Main</ButtonImportance>
 					<ExtendedTooltip name="ДобавитьExtendedTooltip" id="64"/>
 				</Button>
 				<Button name="Отмена" id="20">

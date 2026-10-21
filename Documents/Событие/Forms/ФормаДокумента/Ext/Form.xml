@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoTime>CurrentOrLast</AutoTime>
 	<UsePostingMode>Auto</UsePostingMode>
@@ -41,7 +43,6 @@
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="BeforeClose">ПередЗакрытием</Event>
-		<Event name="BeforeWrite">ПередЗаписью</Event>
 		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="ActivationProcessing">ОбработкаАктивизации</Event>
@@ -61,6 +62,7 @@
 				</v8:item>
 			</ToolTip>
 			<Group>AlwaysHorizontal</Group>
+			<Representation>WeakSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаОбщаяРасширеннаяПодсказка" id="213"/>
 			<ChildItems>
@@ -78,6 +80,7 @@
 						</v8:item>
 					</ToolTip>
 					<Group>Vertical</Group>
+					<Representation>WeakSeparation</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаЛеваяРасширеннаяПодсказка" id="211"/>
 					<ChildItems>
@@ -104,6 +107,7 @@
 									<DataPath>Объект.Number</DataPath>
 									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<Width>9</Width>
 									<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
 									<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="80"/>
@@ -112,6 +116,7 @@
 									<DataPath>Объект.Date</DataPath>
 									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<Width>14</Width>
 									<ContextMenu name="ДатаКонтекстноеМеню" id="4"/>
 									<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="81"/>
@@ -139,6 +144,7 @@
 											<DataPath>Объект.ВидСобытия</DataPath>
 											<TitleLocation>None</TitleLocation>
 											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
 											<RadioButtonType>Tumbler</RadioButtonType>
 											<ColumnsCount>3</ColumnsCount>
 											<ChoiceList>
@@ -227,7 +233,9 @@
 											<v8:content>Обращение</v8:content>
 										</v8:item>
 									</ToolTip>
+									<Group>HorizontalIfPossible</Group>
 									<Behavior>PopUp</Behavior>
+									<Representation>WeakSeparation</Representation>
 									<ExtendedTooltip name="ОбращениеРасширеннаяПодсказка" id="137"/>
 									<ChildItems>
 										<InputField name="UTM_MEDIUM" id="150">
@@ -291,6 +299,7 @@
 								<InputField name="Клиент" id="9">
 									<DataPath>Объект.Клиент</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<Width>26</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<DropListButton>false</DropListButton>
@@ -350,6 +359,8 @@
 													<v8:content>Страница кнопка комментарий</v8:content>
 												</v8:item>
 											</Title>
+											<Group>Vertical</Group>
+											<ScrollOnCompress>false</ScrollOnCompress>
 											<ExtendedTooltip name="СтраницаКнопкаКомментарийРасширеннаяПодсказка" id="163"/>
 											<ChildItems>
 												<Button name="ОткрытьКомментарийКлиента" id="158">
@@ -366,6 +377,8 @@
 													<v8:content>Страница гиперссылка комментарий</v8:content>
 												</v8:item>
 											</Title>
+											<Group>Vertical</Group>
+											<ScrollOnCompress>false</ScrollOnCompress>
 											<ExtendedTooltip name="СтраницаГиперссылкаКомментарийРасширеннаяПодсказка" id="165"/>
 											<ChildItems>
 												<LabelDecoration name="ДекорацияПодсказкаКлиента" id="153">
@@ -661,7 +674,6 @@
 									<ChildItems>
 										<CheckBoxField name="омг_ЭтоПервичныйПрием" id="177">
 											<DataPath>Объект.омг_ЭтоПервичныйПрием</DataPath>
-											<Visible>false</Visible>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -679,39 +691,8 @@
 											<ContextMenu name="омг_ЭтоПервичныйПриемКонтекстноеМеню" id="178"/>
 											<ExtendedTooltip name="омг_ЭтоПервичныйПриемРасширеннаяПодсказка" id="179"/>
 										</CheckBoxField>
-										<RadioButtonField name="ВидПриема" id="244">
-											<DataPath>Объект.ВидПриема</DataPath>
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Прием</v8:content>
-												</v8:item>
-											</Title>
-											<RadioButtonType>Tumbler</RadioButtonType>
-											<ChoiceList>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation/>
-														<Value xsi:type="xr:DesignTimeRef">Enum.ВидыПриемов.EnumValue.Первичный</Value>
-													</xr:Value>
-												</xr:Item>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation/>
-														<Value xsi:type="xr:DesignTimeRef">Enum.ВидыПриемов.EnumValue.Вторичный</Value>
-													</xr:Value>
-												</xr:Item>
-											</ChoiceList>
-											<ContextMenu name="ВидПриемаКонтекстноеМеню" id="245"/>
-											<ExtendedTooltip name="ВидПриемаРасширеннаяПодсказка" id="246"/>
-										</RadioButtonField>
 										<CheckBoxField name="Направление" id="180">
 											<DataPath>Объект.Направление</DataPath>
-											<Visible>false</Visible>
 											<CheckBoxType>Tumbler</CheckBoxType>
 											<EditFormat>
 												<v8:item>
@@ -722,30 +703,6 @@
 											<ContextMenu name="НаправлениеКонтекстноеМеню" id="181"/>
 											<ExtendedTooltip name="НаправлениеРасширеннаяПодсказка" id="182"/>
 										</CheckBoxField>
-										<RadioButtonField name="НаправлениеНовый" id="247">
-											<DataPath>Объект.НаправлениеНовый</DataPath>
-											<RadioButtonType>Tumbler</RadioButtonType>
-											<ChoiceList>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation/>
-														<Value xsi:type="xr:DesignTimeRef">Enum.ВидыНаправлений.EnumValue.Платно</Value>
-													</xr:Value>
-												</xr:Item>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation/>
-														<Value xsi:type="xr:DesignTimeRef">Enum.ВидыНаправлений.EnumValue.Страховка</Value>
-													</xr:Value>
-												</xr:Item>
-											</ChoiceList>
-											<ContextMenu name="НаправлениеНовыйКонтекстноеМеню" id="248"/>
-											<ExtendedTooltip name="НаправлениеНовыйРасширеннаяПодсказка" id="249"/>
-										</RadioButtonField>
 										<LabelDecoration name="Декорация2" id="189">
 											<Title formatted="false">
 												<v8:item>
@@ -762,7 +719,6 @@
 										</LabelDecoration>
 										<Button name="РаботыПодбор" id="208">
 											<Type>UsualButton</Type>
-											<Visible>false</Visible>
 											<Representation>PictureAndText</Representation>
 											<AutoMaxWidth>false</AutoMaxWidth>
 											<MaxWidth>30</MaxWidth>
@@ -828,7 +784,6 @@
 										<CheckBoxField name="УслугиНетВПрайсе" id="197">
 											<DataPath>Объект.УслугиНетВПрайсе</DataPath>
 											<Visible>false</Visible>
-											<CheckBoxType>Auto</CheckBoxType>
 											<ContextMenu name="УслугиНетВПрайсеКонтекстноеМеню" id="198"/>
 											<ExtendedTooltip name="УслугиНетВПрайсеРасширеннаяПодсказка" id="199"/>
 										</CheckBoxField>
@@ -928,6 +883,7 @@
 						<InputField name="Комментарий" id="11">
 							<DataPath>Объект.Комментарий</DataPath>
 							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
 							<AutoMaxWidth>false</AutoMaxWidth>
 							<Height>5</Height>
 							<MultiLine>true</MultiLine>
@@ -951,6 +907,7 @@
 								<InputField name="Ответственный" id="7">
 									<DataPath>Объект.Ответственный</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<ContextMenu name="ОтветственныйКонтекстноеМеню" id="8"/>
 									<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="106"/>
 								</InputField>
@@ -967,6 +924,7 @@
 				</UsualGroup>
 				<UsualGroup name="Группа1" id="242">
 					<Group>Vertical</Group>
+					<Representation>WeakSeparation</Representation>
 					<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="243"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаПодбор" id="206">
@@ -985,6 +943,8 @@
 						<Table name="Работы" id="214">
 							<Visible>false</Visible>
 							<TitleLocation>Auto</TitleLocation>
+							<RowSelectionMode>Cell</RowSelectionMode>
+							<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
@@ -1027,12 +987,14 @@
 								<LabelField name="РаботыНомерСтроки" id="227">
 									<DataPath>Объект.Работы.LineNumber</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<ContextMenu name="РаботыНомерСтрокиКонтекстноеМеню" id="228"/>
 									<ExtendedTooltip name="РаботыНомерСтрокиРасширеннаяПодсказка" id="229"/>
 								</LabelField>
 								<InputField name="РаботыНоменклатура" id="230">
 									<DataPath>Объект.Работы.Номенклатура</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
 									<ContextMenu name="РаботыНоменклатураКонтекстноеМеню" id="231"/>
 									<ExtendedTooltip name="РаботыНоменклатураРасширеннаяПодсказка" id="232"/>
@@ -1040,6 +1002,7 @@
 								<InputField name="Работыомг_Набор" id="233">
 									<DataPath>Объект.Работы.омг_Набор</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
 									<ContextMenu name="Работыомг_НаборКонтекстноеМеню" id="234"/>
 									<ExtendedTooltip name="Работыомг_НаборРасширеннаяПодсказка" id="235"/>
@@ -1047,6 +1010,7 @@
 								<InputField name="Работыомг_НаборУровень" id="236">
 									<DataPath>Объект.Работы.омг_НаборУровень</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
 									<ContextMenu name="Работыомг_НаборУровеньКонтекстноеМеню" id="237"/>
 									<ExtendedTooltip name="Работыомг_НаборУровеньРасширеннаяПодсказка" id="238"/>
@@ -1054,6 +1018,7 @@
 								<InputField name="Работыомг_НаборЛИС" id="239">
 									<DataPath>Объект.Работы.омг_НаборЛИС</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
 									<ContextMenu name="Работыомг_НаборЛИСКонтекстноеМеню" id="240"/>
 									<ExtendedTooltip name="Работыомг_НаборЛИСРасширеннаяПодсказка" id="241"/>

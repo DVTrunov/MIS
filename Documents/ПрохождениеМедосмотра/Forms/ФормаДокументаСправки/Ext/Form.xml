@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoTime>CurrentOrLast</AutoTime>
 	<UsePostingMode>Auto</UsePostingMode>
@@ -78,6 +80,7 @@
 								<InputField name="Номер" id="1">
 									<DataPath>Объект.Number</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<Width>8</Width>
 									<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
 									<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="1153"/>
@@ -85,6 +88,7 @@
 								<InputField name="Дата" id="3">
 									<DataPath>Объект.Date</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<Width>15</Width>
 									<HorizontalStretch>true</HorizontalStretch>
 									<ContextMenu name="ДатаКонтекстноеМеню" id="4"/>
@@ -105,6 +109,7 @@
 									<v8:content>Группа клиент</v8:content>
 								</v8:item>
 							</ToolTip>
+							<Group>HorizontalIfPossible</Group>
 							<Behavior>Usual</Behavior>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -114,6 +119,7 @@
 									<DataPath>Объект.Клиент</DataPath>
 									<TitleLocation>Left</TitleLocation>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<DropListButton>false</DropListButton>
 									<ChoiceButton>true</ChoiceButton>
 									<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
@@ -199,6 +205,7 @@
 									<v8:content>Группа ЭЦП</v8:content>
 								</v8:item>
 							</ToolTip>
+							<Group>HorizontalIfPossible</Group>
 							<Behavior>Usual</Behavior>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
@@ -237,6 +244,7 @@
 							<ChildItems>
 								<InputField name="МедицинскаяКарта" id="1422">
 									<DataPath>Объект.МедицинскаяКарта</DataPath>
+									<MarkRequiredComplete>true</MarkRequiredComplete>
 									<DropListButton>true</DropListButton>
 									<ChoiceButton>true</ChoiceButton>
 									<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
@@ -293,6 +301,7 @@
 						</v8:item>
 					</ToolTip>
 					<Group>AlwaysHorizontal</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
 					<ExtendedTooltip name="ГруппаРабочаяОбластьРасширеннаяПодсказка" id="1244"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаОсмотр" id="50">
@@ -330,10 +339,13 @@
 									</ToolTip>
 									<Group>Vertical</Group>
 									<Behavior>Usual</Behavior>
+									<Representation>WeakSeparation</Representation>
 									<ExtendedTooltip name="ГруппаСоставМОРасширеннаяПодсказка" id="1210"/>
 									<ChildItems>
 										<Table name="ДействияМедосмотра" id="7">
 											<Representation>List</Representation>
+											<RowSelectionMode>Cell</RowSelectionMode>
+											<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
 											<AutoInsertNewRow>true</AutoInsertNewRow>
 											<EnableStartDrag>true</EnableStartDrag>
 											<EnableDrag>true</EnableDrag>
@@ -388,6 +400,7 @@
 												<LabelField name="ДействияМедосмотраНомерСтроки" id="10">
 													<DataPath>Объект.ДействияМедосмотра.LineNumber</DataPath>
 													<EditMode>EnterOnInput</EditMode>
+													<AutoEditMode>true</AutoEditMode>
 													<Width>3</Width>
 													<HorizontalStretch>false</HorizontalStretch>
 													<ContextMenu name="ДействияМедосмотраНомерСтрокиКонтекстноеМеню" id="11"/>
@@ -396,7 +409,7 @@
 												<CheckBoxField name="ДействияМедосмотраВыполнено" id="947">
 													<DataPath>Объект.ДействияМедосмотра.Выполнено</DataPath>
 													<EditMode>EnterOnInput</EditMode>
-													<CheckBoxType>Auto</CheckBoxType>
+													<AutoEditMode>true</AutoEditMode>
 													<ContextMenu name="ДействияМедосмотраВыполненоКонтекстноеМеню" id="948"/>
 													<ExtendedTooltip name="ДействияМедосмотраВыполненоРасширеннаяПодсказка" id="1226"/>
 													<Events>
@@ -406,6 +419,7 @@
 												<LabelField name="ДействияМедосмотраДействиеМедосмотраВид" id="17">
 													<DataPath>Объект.ДействияМедосмотра.Действие.Вид</DataPath>
 													<EditMode>EnterOnInput</EditMode>
+													<AutoEditMode>true</AutoEditMode>
 													<Width>11</Width>
 													<HorizontalStretch>false</HorizontalStretch>
 													<ContextMenu name="ДействияМедосмотраДействиеМедосмотраВидКонтекстноеМеню" id="18"/>
@@ -414,6 +428,7 @@
 												<InputField name="ДействияМедосмотраДействиеМедосмотра" id="12">
 													<DataPath>Объект.ДействияМедосмотра.Действие</DataPath>
 													<EditMode>EnterOnInput</EditMode>
+													<AutoEditMode>true</AutoEditMode>
 													<ContextMenu name="ДействияМедосмотраДействиеМедосмотраКонтекстноеМеню" id="13"/>
 													<ExtendedTooltip name="ДействияМедосмотраДействиеМедосмотраРасширеннаяПодсказка" id="1224"/>
 													<Events>
@@ -435,6 +450,7 @@
 													<v8:content>Группа заключение параметры</v8:content>
 												</v8:item>
 											</ToolTip>
+											<Group>HorizontalIfPossible</Group>
 											<Behavior>Usual</Behavior>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
@@ -443,6 +459,8 @@
 												<Table name="ПараметрыПриема" id="1259">
 													<ChangeRowSet>false</ChangeRowSet>
 													<ChangeRowOrder>false</ChangeRowOrder>
+													<RowSelectionMode>Cell</RowSelectionMode>
+													<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
 													<AutoInsertNewRow>true</AutoInsertNewRow>
 													<EnableStartDrag>true</EnableStartDrag>
 													<EnableDrag>true</EnableDrag>
@@ -510,6 +528,7 @@
 															<DataPath>Объект.ПараметрыПриема.Параметр</DataPath>
 															<ReadOnly>true</ReadOnly>
 															<EditMode>EnterOnInput</EditMode>
+															<AutoEditMode>true</AutoEditMode>
 															<Width>18</Width>
 															<HorizontalStretch>false</HorizontalStretch>
 															<ContextMenu name="ПараметрыПриемаПараметрКонтекстноеМеню" id="1276"/>
@@ -519,6 +538,8 @@
 															<DataPath>Объект.ПараметрыПриема.Значение</DataPath>
 															<EditMode>EnterOnInput</EditMode>
 															<AutoCellHeight>true</AutoCellHeight>
+															<MarkRequiredComplete>true</MarkRequiredComplete>
+															<AutoEditMode>true</AutoEditMode>
 															<Width>30</Width>
 															<MultiLine>true</MultiLine>
 															<ChoiceButton>true</ChoiceButton>
@@ -554,6 +575,7 @@
 							<HorizontalStretch>true</HorizontalStretch>
 							<Group>Vertical</Group>
 							<Behavior>Usual</Behavior>
+							<Representation>WeakSeparation</Representation>
 							<ExtendedTooltip name="ГруппаЗаключениеПечатьРасширеннаяПодсказка" id="1246"/>
 							<ChildItems>
 								<Button name="СделатьЗаключение" id="1247">
@@ -645,6 +667,7 @@
 									</ToolTip>
 									<Group>Vertical</Group>
 									<Behavior>Usual</Behavior>
+									<Representation>WeakSeparation</Representation>
 									<ExtendedTooltip name="ГруппаПредпросмотрСправкиРасширеннаяПодсказка" id="1303"/>
 									<ChildItems>
 										<CommandBar name="КоманднаяПанельСправкаТабличныйДокумент" id="1284">
@@ -723,6 +746,8 @@
 							<v8:content>Группа ЭП</v8:content>
 						</v8:item>
 					</ToolTip>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
 					<ExtendedTooltip name="ГруппаЭПРасширеннаяПодсказка" id="1319"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаКомандЭП" id="1411">
@@ -738,7 +763,9 @@
 									<v8:content>Группа команд ЭП</v8:content>
 								</v8:item>
 							</ToolTip>
+							<Group>HorizontalIfPossible</Group>
 							<Behavior>Usual</Behavior>
+							<Representation>WeakSeparation</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаКомандЭПРасширеннаяПодсказка" id="1412"/>
 							<ChildItems>
@@ -767,6 +794,7 @@
 									</ToolTip>
 									<Group>AlwaysHorizontal</Group>
 									<Behavior>Usual</Behavior>
+									<Representation>WeakSeparation</Representation>
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="ГруппаРЭМДРасширеннаяПодсказка" id="1410"/>
 									<ChildItems>
@@ -774,7 +802,6 @@
 											<DataPath>Объект.Тестовый</DataPath>
 											<TitleLocation>Right</TitleLocation>
 											<ToolTipRepresentation>Button</ToolTipRepresentation>
-											<CheckBoxType>Auto</CheckBoxType>
 											<ContextMenu name="ТестовыйКонтекстноеМеню" id="1416"/>
 											<ExtendedTooltip name="ТестовыйРасширеннаяПодсказка" id="1417"/>
 										</CheckBoxField>

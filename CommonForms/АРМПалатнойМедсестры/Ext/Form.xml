@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<Group>Vertical</Group>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<ScaleVariant>Compact</ScaleVariant>
 	<CommandSet>
 		<ExcludedCommand>Abort</ExcludedCommand>
 		<ExcludedCommand>Cancel</ExcludedCommand>
@@ -164,6 +167,7 @@
 					</ToolTip>
 					<Group>Horizontal</Group>
 					<Behavior>Usual</Behavior>
+					<Representation>WeakSeparation</Representation>
 					<ExtendedTooltip name="ГруппаСортировкиРасширеннаяПодсказка" id="254"/>
 					<ChildItems>
 						<CheckBoxField name="СортировкаВидДействия" id="196">
@@ -176,7 +180,6 @@
 								</v8:item>
 							</Title>
 							<TitleLocation>Left</TitleLocation>
-							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="СортировкаВидДействияКонтекстноеМеню" id="197"/>
 							<ExtendedTooltip name="СортировкаВидДействияРасширеннаяПодсказка" id="255"/>
 							<Events>
@@ -191,7 +194,6 @@
 									<v8:content>Действие</v8:content>
 								</v8:item>
 							</Title>
-							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="СортировкаДействиеСтационараКонтекстноеМеню" id="194"/>
 							<ExtendedTooltip name="СортировкаДействиеСтационараРасширеннаяПодсказка" id="256"/>
 							<Events>
@@ -206,7 +208,6 @@
 									<v8:content>Пациент</v8:content>
 								</v8:item>
 							</Title>
-							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="СортировкаПациентКонтекстноеМеню" id="191"/>
 							<ExtendedTooltip name="СортировкаПациентРасширеннаяПодсказка" id="257"/>
 							<Events>
@@ -276,7 +277,7 @@
 							<ExtendedTooltip name="ГруппаПациентыРасширеннаяПодсказка" id="260"/>
 							<ChildItems>
 								<Table name="СписокПациентов" id="74">
-									<UseAlternationRowColor>true</UseAlternationRowColor>
+									<RowSelectionMode>Cell</RowSelectionMode>
 									<EnableStartDrag>true</EnableStartDrag>
 									<FileDragMode>AsFile</FileDragMode>
 									<DataPath>СписокПациентов</DataPath>
@@ -351,6 +352,7 @@
 										<InputField name="СписокПациентовПалата" id="307">
 											<DataPath>СписокПациентов.Палата</DataPath>
 											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
 											<Width>10</Width>
 											<ContextMenu name="СписокПациентовПалатаКонтекстноеМеню" id="308"/>
 											<ExtendedTooltip name="СписокПациентовПалатаРасширеннаяПодсказка" id="309"/>
@@ -492,6 +494,8 @@
 									<Representation>List</Representation>
 									<ReadOnly>true</ReadOnly>
 									<SelectionMode>SingleRow</SelectionMode>
+									<RowSelectionMode>Cell</RowSelectionMode>
+									<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
 									<AutoInsertNewRow>true</AutoInsertNewRow>
 									<EnableStartDrag>true</EnableStartDrag>
 									<EnableDrag>true</EnableDrag>
@@ -603,6 +607,7 @@
 												</v8:item>
 											</Title>
 											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
 											<Width>25</Width>
 											<ContextMenu name="СписокДействийДействиеСтационараКонтекстноеМеню" id="140"/>
 											<ExtendedTooltip name="СписокДействийДействиеСтационараРасширеннаяПодсказка" id="295"/>
@@ -610,6 +615,7 @@
 										<InputField name="СписокДействийПациент" id="142">
 											<DataPath>СписокДействий.Пациент</DataPath>
 											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
 											<Width>25</Width>
 											<ContextMenu name="СписокДействийПациентКонтекстноеМеню" id="143"/>
 											<ExtendedTooltip name="СписокДействийПациентРасширеннаяПодсказка" id="296"/>
@@ -620,6 +626,7 @@
 												<InputField name="СписокДействийФилиал" id="337">
 													<DataPath>СписокДействий.Филиал</DataPath>
 													<EditMode>EnterOnInput</EditMode>
+													<AutoEditMode>true</AutoEditMode>
 													<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
 													<ContextMenu name="СписокДействийФилиалКонтекстноеМеню" id="338"/>
 													<ExtendedTooltip name="СписокДействийФилиалРасширеннаяПодсказка" id="339"/>
@@ -631,6 +638,7 @@
 														<InputField name="СписокДействийОтделение" id="340">
 															<DataPath>СписокДействий.Отделение</DataPath>
 															<EditMode>EnterOnInput</EditMode>
+															<AutoEditMode>true</AutoEditMode>
 															<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
 															<ContextMenu name="СписокДействийОтделениеКонтекстноеМеню" id="341"/>
 															<ExtendedTooltip name="СписокДействийОтделениеРасширеннаяПодсказка" id="342"/>
@@ -644,6 +652,7 @@
 																</v8:item>
 															</Title>
 															<EditMode>EnterOnInput</EditMode>
+															<AutoEditMode>true</AutoEditMode>
 															<Width>10</Width>
 															<ContextMenu name="СписокДействийМедицинскаяКартаКонтекстноеМеню" id="146"/>
 															<ExtendedTooltip name="СписокДействийМедицинскаяКартаРасширеннаяПодсказка" id="297"/>
@@ -661,6 +670,7 @@
 												</v8:item>
 											</Title>
 											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
 											<Width>9</Width>
 											<ContextMenu name="СписокДействийДатаНачалаКонтекстноеМеню" id="152"/>
 											<ExtendedTooltip name="СписокДействийДатаНачалаРасширеннаяПодсказка" id="298"/>
@@ -674,6 +684,7 @@
 												</v8:item>
 											</Title>
 											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
 											<Width>9</Width>
 											<ContextMenu name="СписокДействийДатаОкончанияКонтекстноеМеню" id="155"/>
 											<ExtendedTooltip name="СписокДействийДатаОкончанияРасширеннаяПодсказка" id="299"/>
@@ -688,6 +699,7 @@
 												</v8:item>
 											</Title>
 											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
 											<Width>3</Width>
 											<HorizontalStretch>false</HorizontalStretch>
 											<ContextMenu name="СписокДействийСколькоРазВДеньКонтекстноеМеню" id="161"/>
@@ -702,6 +714,7 @@
 												</v8:item>
 											</Title>
 											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
 											<Width>3</Width>
 											<HorizontalStretch>false</HorizontalStretch>
 											<ContextMenu name="СписокДействийВыполненоИтогКонтекстноеМеню" id="240"/>
@@ -716,6 +729,7 @@
 												</v8:item>
 											</Title>
 											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
 											<Width>3</Width>
 											<HorizontalStretch>false</HorizontalStretch>
 											<ContextMenu name="СписокДействийДозировкаКонтекстноеМеню" id="188"/>
@@ -724,6 +738,7 @@
 										<InputField name="СписокДействийомг_ДозировкаОбщая" id="346">
 											<DataPath>СписокДействий.омг_ДозировкаОбщая</DataPath>
 											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
 											<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
 											<ContextMenu name="СписокДействийомг_ДозировкаОбщаяКонтекстноеМеню" id="347"/>
 											<ExtendedTooltip name="СписокДействийомг_ДозировкаОбщаяРасширеннаяПодсказка" id="348"/>
@@ -731,6 +746,7 @@
 										<InputField name="СписокДействийомг_Введено" id="343">
 											<DataPath>СписокДействий.омг_Введено</DataPath>
 											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
 											<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
 											<ContextMenu name="СписокДействийомг_ВведеноКонтекстноеМеню" id="344"/>
 											<ExtendedTooltip name="СписокДействийомг_ВведеноРасширеннаяПодсказка" id="345"/>
@@ -738,6 +754,7 @@
 										<InputField name="СписокДействийКомментарий" id="163">
 											<DataPath>СписокДействий.Комментарий</DataPath>
 											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
 											<Width>15</Width>
 											<ContextMenu name="СписокДействийКомментарийКонтекстноеМеню" id="164"/>
 											<ExtendedTooltip name="СписокДействийКомментарийРасширеннаяПодсказка" id="303"/>
@@ -785,6 +802,7 @@
 				</InputField>
 				<InputField name="СкладСписания" id="245">
 					<DataPath>СкладСписания</DataPath>
+					<MarkRequiredComplete>true</MarkRequiredComplete>
 					<ChoiceButton>true</ChoiceButton>
 					<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
 					<AutoMarkIncomplete>true</AutoMarkIncomplete>

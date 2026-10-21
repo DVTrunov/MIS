@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
 			<v8:content>Редактирование табличного вопроса</v8:content>
 		</v8:item>
 	</Title>
-	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
+	<Group>Vertical</Group>
 	<CommandBarLocation>None</CommandBarLocation>
 	<CommandSet>
 		<ExcludedCommand>Abort</ExcludedCommand>
@@ -21,6 +22,7 @@
 		<ExcludedCommand>SaveValues</ExcludedCommand>
 		<ExcludedCommand>Yes</ExcludedCommand>
 	</CommandSet>
+	<ShowCommandBar>false</ShowCommandBar>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -30,6 +32,7 @@
 	<ChildItems>
 		<InputField name="Формулировка" id="141">
 			<DataPath>Формулировка</DataPath>
+			<MarkRequiredComplete>true</MarkRequiredComplete>
 			<AutoMaxWidth>false</AutoMaxWidth>
 			<MultiLine>true</MultiLine>
 			<ExtendedEdit>true</ExtendedEdit>
@@ -55,6 +58,7 @@
 			</Title>
 			<Group>Vertical</Group>
 			<Behavior>Usual</Behavior>
+			<Representation>WeakSeparation</Representation>
 			<ExtendedTooltip name="ГруппаОсновныеСтраницыРасширеннаяПодсказка" id="209"/>
 			<ChildItems>
 				<Pages name="Страницы" id="1">
@@ -75,6 +79,7 @@
 								</v8:item>
 							</Title>
 							<Group>HorizontalIfPossible</Group>
+							<ScrollOnCompress>false</ScrollOnCompress>
 							<ExtendedTooltip name="СтраницаТипТабличногоВопросаExtendedTooltip" id="150"/>
 							<ChildItems>
 								<RadioButtonField name="ТипТабличногоВопроса" id="3">
@@ -106,8 +111,10 @@
 													<v8:content>Страница картинка составной</v8:content>
 												</v8:item>
 											</Title>
+											<Group>Vertical</Group>
 											<HorizontalAlign>Center</HorizontalAlign>
 											<VerticalAlign>Center</VerticalAlign>
+											<ScrollOnCompress>false</ScrollOnCompress>
 											<ExtendedTooltip name="СтраницаКартинкаСоставнойExtendedTooltip" id="153"/>
 											<ChildItems>
 												<PictureDecoration name="КартинкаСоставной" id="81">
@@ -139,6 +146,8 @@
 													<v8:content>Страница картинка ответы в строках</v8:content>
 												</v8:item>
 											</Title>
+											<Group>Vertical</Group>
+											<ScrollOnCompress>false</ScrollOnCompress>
 											<ExtendedTooltip name="СтраницаКартинкаОтветыВСтрокахExtendedTooltip" id="155"/>
 											<ChildItems>
 												<PictureDecoration name="КартинкаОтветыВСтроках" id="84">
@@ -168,6 +177,8 @@
 													<v8:content>Страница картинка ответы в колонках</v8:content>
 												</v8:item>
 											</Title>
+											<Group>Vertical</Group>
+											<ScrollOnCompress>false</ScrollOnCompress>
 											<ExtendedTooltip name="СтраницаКартинкаОтветыВКолонкахExtendedTooltip" id="157"/>
 											<ChildItems>
 												<PictureDecoration name="КартинкаОтветыВКолонках" id="87">
@@ -197,6 +208,8 @@
 													<v8:content>Страница картинка ответы в строках и колонках</v8:content>
 												</v8:item>
 											</Title>
+											<Group>Vertical</Group>
+											<ScrollOnCompress>false</ScrollOnCompress>
 											<ExtendedTooltip name="СтраницаКартинкаОтветыВСтрокахИКолонкахExtendedTooltip" id="159"/>
 											<ChildItems>
 												<PictureDecoration name="КартинкаОтветыВСтрокахИКолонках" id="90">
@@ -226,6 +239,8 @@
 													<v8:content>Страница картинка пустая</v8:content>
 												</v8:item>
 											</Title>
+											<Group>Vertical</Group>
+											<ScrollOnCompress>false</ScrollOnCompress>
 											<ExtendedTooltip name="СтраницаКартинкаПустаяExtendedTooltip" id="161"/>
 											<ChildItems>
 												<PictureDecoration name="КартинкаПустая" id="93">
@@ -253,6 +268,8 @@
 									<v8:content>Страница предопределенные ответы в строках и колонках</v8:content>
 								</v8:item>
 							</Title>
+							<Group>Vertical</Group>
+							<ScrollOnCompress>false</ScrollOnCompress>
 							<ExtendedTooltip name="СтраницаПредопределенныеОтветыВСтрокахИКолонкахExtendedTooltip" id="163"/>
 							<ChildItems>
 								<UsualGroup name="ГруппаОбщаяОтветыВСтрокахИКолонках" id="67">
@@ -262,6 +279,7 @@
 											<v8:content>Общая ответы в строках и колонках</v8:content>
 										</v8:item>
 									</Title>
+									<Group>HorizontalIfPossible</Group>
 									<Behavior>Usual</Behavior>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
@@ -289,9 +307,11 @@
 												<Table name="ОтветыКолонкиОтветыВСтрокахИКолонках" id="22">
 													<Representation>List</Representation>
 													<SkipOnInput>false</SkipOnInput>
+													<RowSelectionMode>Cell</RowSelectionMode>
 													<Header>false</Header>
-													<HorizontalLines>false</HorizontalLines>
-													<VerticalLines>false</VerticalLines>
+													<HorizontalLinesBWA>false</HorizontalLinesBWA>
+													<VerticalLinesBWA>false</VerticalLinesBWA>
+													<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
 													<EnableStartDrag>true</EnableStartDrag>
 													<EnableDrag>true</EnableDrag>
 													<FileDragMode>AsFile</FileDragMode>
@@ -349,6 +369,7 @@
 														<InputField name="ОтветыКолонкиОтветыВСтрокахИКолонкахОтвет" id="117">
 															<DataPath>Ответы.Ответ</DataPath>
 															<EditMode>EnterOnInput</EditMode>
+															<AutoEditMode>true</AutoEditMode>
 															<TypeLink>
 																<xr:DataPath>ВопросДляКолонок</xr:DataPath>
 																<xr:LinkItem>0</xr:LinkItem>
@@ -391,9 +412,11 @@
 												<Table name="ОтветыСтрокиОтветыВСтрокахИКолонках" id="27">
 													<Representation>List</Representation>
 													<SkipOnInput>false</SkipOnInput>
+													<RowSelectionMode>Cell</RowSelectionMode>
 													<Header>false</Header>
-													<HorizontalLines>false</HorizontalLines>
-													<VerticalLines>false</VerticalLines>
+													<HorizontalLinesBWA>false</HorizontalLinesBWA>
+													<VerticalLinesBWA>false</VerticalLinesBWA>
+													<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
 													<EnableStartDrag>true</EnableStartDrag>
 													<EnableDrag>true</EnableDrag>
 													<FileDragMode>AsFile</FileDragMode>
@@ -451,6 +474,7 @@
 														<InputField name="ОтветыСтрокиОтветыВСтрокахИКолонкахОтвет" id="121">
 															<DataPath>Ответы.Ответ</DataPath>
 															<EditMode>EnterOnInput</EditMode>
+															<AutoEditMode>true</AutoEditMode>
 															<TypeLink>
 																<xr:DataPath>ВопросДляСтрок</xr:DataPath>
 																<xr:LinkItem>0</xr:LinkItem>
@@ -477,6 +501,7 @@
 								</v8:item>
 							</Title>
 							<Group>HorizontalIfPossible</Group>
+							<ScrollOnCompress>false</ScrollOnCompress>
 							<ExtendedTooltip name="СтраницаВопросыExtendedTooltip" id="175"/>
 							<ChildItems>
 								<UsualGroup name="ГруппаВопросы" id="68">
@@ -495,6 +520,8 @@
 										<Table name="Вопросы" id="136">
 											<Representation>List</Representation>
 											<SkipOnInput>false</SkipOnInput>
+											<RowSelectionMode>Cell</RowSelectionMode>
+											<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
 											<EnableStartDrag>true</EnableStartDrag>
 											<EnableDrag>true</EnableDrag>
 											<FileDragMode>AsFile</FileDragMode>
@@ -546,6 +573,7 @@
 														</v8:item>
 													</Title>
 													<EditMode>EnterOnInput</EditMode>
+													<AutoEditMode>true</AutoEditMode>
 													<DropListButton>false</DropListButton>
 													<ChoiceButton>true</ChoiceButton>
 													<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
@@ -570,6 +598,7 @@
 								</v8:item>
 							</Title>
 							<Group>HorizontalIfPossible</Group>
+							<ScrollOnCompress>false</ScrollOnCompress>
 							<ExtendedTooltip name="СтраницаПредопределенныеОтветыВКолонкахExtendedTooltip" id="179"/>
 							<ChildItems>
 								<UsualGroup name="ГруппаСоставКолонокОтветыВКолонках" id="47">
@@ -594,9 +623,11 @@
 										<Table name="ОтветыКолонкиОтветыВКолонках" id="42">
 											<Representation>List</Representation>
 											<SkipOnInput>false</SkipOnInput>
+											<RowSelectionMode>Cell</RowSelectionMode>
 											<Header>false</Header>
-											<HorizontalLines>false</HorizontalLines>
-											<VerticalLines>false</VerticalLines>
+											<HorizontalLinesBWA>false</HorizontalLinesBWA>
+											<VerticalLinesBWA>false</VerticalLinesBWA>
+											<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
 											<EnableStartDrag>true</EnableStartDrag>
 											<EnableDrag>true</EnableDrag>
 											<FileDragMode>AsFile</FileDragMode>
@@ -654,6 +685,7 @@
 												<InputField name="ОтветыКолонкиОтветыВКолонкахОтвет" id="113">
 													<DataPath>Ответы.Ответ</DataPath>
 													<EditMode>EnterOnInput</EditMode>
+													<AutoEditMode>true</AutoEditMode>
 													<TypeLink>
 														<xr:DataPath>ВопросДляКолонок</xr:DataPath>
 														<xr:LinkItem>0</xr:LinkItem>
@@ -684,6 +716,7 @@
 								</v8:item>
 							</Title>
 							<Group>HorizontalIfPossible</Group>
+							<ScrollOnCompress>false</ScrollOnCompress>
 							<ExtendedTooltip name="СтраницаПредопределенныеОтветыВСтрокахExtendedTooltip" id="186"/>
 							<ChildItems>
 								<UsualGroup name="ГруппаСоставСтрокОтветыВСтроках" id="53">
@@ -708,10 +741,10 @@
 										<Table name="ОтветыСтрокиОтветыВСтроках" id="54">
 											<Representation>List</Representation>
 											<SkipOnInput>false</SkipOnInput>
+											<RowSelectionMode>Cell</RowSelectionMode>
 											<Header>false</Header>
-											<HorizontalLines>false</HorizontalLines>
-											<VerticalLines>false</VerticalLines>
-											<UseAlternationRowColor>true</UseAlternationRowColor>
+											<HorizontalLinesBWA>false</HorizontalLinesBWA>
+											<VerticalLinesBWA>false</VerticalLinesBWA>
 											<AutoInsertNewRow>true</AutoInsertNewRow>
 											<EnableStartDrag>true</EnableStartDrag>
 											<EnableDrag>true</EnableDrag>
@@ -770,6 +803,7 @@
 												<InputField name="ОтветыСтрокиОтветыВСтрокахОтвет" id="107">
 													<DataPath>Ответы.Ответ</DataPath>
 													<EditMode>EnterOnInput</EditMode>
+													<AutoEditMode>true</AutoEditMode>
 													<DropListButton>false</DropListButton>
 													<ChoiceButton>true</ChoiceButton>
 													<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
@@ -805,6 +839,8 @@
 									<v8:content>Страница результирующая таблица</v8:content>
 								</v8:item>
 							</Title>
+							<Group>Vertical</Group>
+							<ScrollOnCompress>false</ScrollOnCompress>
 							<ExtendedTooltip name="СтраницаРезультирующаяТаблицаExtendedTooltip" id="193"/>
 							<ChildItems>
 								<Table name="РезультирующаяТаблица" id="76">
@@ -812,6 +848,8 @@
 									<CommandBarLocation>None</CommandBarLocation>
 									<ReadOnly>true</ReadOnly>
 									<SkipOnInput>false</SkipOnInput>
+									<RowSelectionMode>Cell</RowSelectionMode>
+									<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
 									<AutoInsertNewRow>true</AutoInsertNewRow>
 									<EnableStartDrag>true</EnableStartDrag>
 									<EnableDrag>true</EnableDrag>
@@ -903,6 +941,7 @@
 				</v8:item>
 			</Title>
 			<VerticalStretch>false</VerticalStretch>
+			<Group>HorizontalIfPossible</Group>
 			<Behavior>Usual</Behavior>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -947,6 +986,7 @@
 									<v8:content>Далее &gt;</v8:content>
 								</v8:item>
 							</Title>
+							<ButtonImportance>Main</ButtonImportance>
 							<ExtendedTooltip name="КнопкаВпередExtendedTooltip" id="200"/>
 						</Button>
 						<Button name="КнопкаОтмена" id="11">

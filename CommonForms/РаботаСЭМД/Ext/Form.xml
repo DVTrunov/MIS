@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -7,12 +7,15 @@
 		</v8:item>
 	</Title>
 	<Width>100</Width>
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
 			<Button name="ФормаПодписатьВсе" id="318">
 				<Type>CommandBarButton</Type>
 				<DefaultButton>true</DefaultButton>
 				<CommandName>Form.Command.ПодписатьВсе</CommandName>
+				<ButtonImportance>Main</ButtonImportance>
 				<ExtendedTooltip name="ФормаПодписатьВсеРасширеннаяПодсказка" id="319"/>
 			</Button>
 			<Button name="ФормаСохранитьЭМД" id="382">
@@ -54,6 +57,7 @@
 			</ToolTip>
 			<Group>Vertical</Group>
 			<Behavior>Usual</Behavior>
+			<Representation>WeakSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ThroughAlign>Use</ThroughAlign>
 			<ExtendedTooltip name="ШапкаРасширеннаяПодсказка" id="385"/>
@@ -71,7 +75,9 @@
 							<v8:content>Шапка верх</v8:content>
 						</v8:item>
 					</ToolTip>
+					<Group>HorizontalIfPossible</Group>
 					<Behavior>Usual</Behavior>
+					<Representation>WeakSeparation</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ThroughAlign>Use</ThroughAlign>
 					<ExtendedTooltip name="ШапкаВерхРасширеннаяПодсказка" id="329"/>
@@ -112,6 +118,8 @@
 			<Representation>Tree</Representation>
 			<ChangeRowSet>false</ChangeRowSet>
 			<ChangeRowOrder>false</ChangeRowOrder>
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
 			<DataPath>ДанныеНаФорме</DataPath>
@@ -157,7 +165,7 @@
 						<xr:Ref>StdPicture.AppearanceCheckIcon</xr:Ref>
 						<xr:LoadTransparent>true</xr:LoadTransparent>
 					</HeaderPicture>
-					<CheckBoxType>Auto</CheckBoxType>
+					<AutoEditMode>true</AutoEditMode>
 					<ContextMenu name="ДанныеНаФормеВыбранКонтекстноеМеню" id="349"/>
 					<ExtendedTooltip name="ДанныеНаФормеВыбранРасширеннаяПодсказка" id="350"/>
 					<Events>
@@ -174,6 +182,7 @@
 						<xr:Ref>StdPicture.AppearanceCheckIcon</xr:Ref>
 						<xr:LoadTransparent>true</xr:LoadTransparent>
 					</HeaderPicture>
+					<AutoEditMode>true</AutoEditMode>
 					<ValuesPicture>
 						<xr:Ref>CommonPicture.ПодписанЭП</xr:Ref>
 						<xr:LoadTransparent>true</xr:LoadTransparent>
@@ -200,6 +209,7 @@
 							<DataPath>ДанныеНаФорме.ПредставлениеТипаПодписания</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="ДанныеНаФормеПредставлениеТипаПодписанияКонтекстноеМеню" id="374"/>
 							<ExtendedTooltip name="ДанныеНаФормеПредставлениеТипаПодписанияРасширеннаяПодсказка" id="375"/>
@@ -208,6 +218,7 @@
 							<DataPath>ДанныеНаФорме.ПодписываемыеДанные</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="ДанныеНаФормеПодписываемыеДанныеКонтекстноеМеню" id="367"/>
 							<ExtendedTooltip name="ДанныеНаФормеПодписываемыеДанныеРасширеннаяПодсказка" id="368"/>
@@ -216,6 +227,7 @@
 							<DataPath>ДанныеНаФорме.ВидДокументаЭМД</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="ДанныеНаФормеВидДокументаЭМДКонтекстноеМеню" id="358"/>
 							<ExtendedTooltip name="ДанныеНаФормеВидДокументаЭМДРасширеннаяПодсказка" id="359"/>
@@ -240,6 +252,7 @@
 									<DataPath>ДанныеНаФорме.РольСотрудника</DataPath>
 									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<HorizontalStretch>false</HorizontalStretch>
 									<DropListButton>true</DropListButton>
 									<ChoiceButton>false</ChoiceButton>
@@ -252,6 +265,7 @@
 								<InputField name="ДанныеНаФормеДолжностьМинздрава" id="465">
 									<DataPath>ДанныеНаФорме.ДолжностьМинздрава</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<ChoiceButton>true</ChoiceButton>
 									<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
 									<OpenButton>false</OpenButton>
@@ -269,6 +283,7 @@
 								<InputField name="ДанныеНаФормеСпециальностьМинздрава" id="471">
 									<DataPath>ДанныеНаФорме.СпециальностьМинздрава</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<ChoiceButton>true</ChoiceButton>
 									<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
 									<OpenButton>false</OpenButton>
@@ -283,6 +298,7 @@
 								<InputField name="ДанныеНаФормеПредставлениеСубРоли" id="468">
 									<DataPath>ДанныеНаФорме.ПредставлениеСубРоли</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<Width>20</Width>
 									<ListChoiceMode>true</ListChoiceMode>
 									<ContextMenu name="ДанныеНаФормеПредставлениеСубРолиКонтекстноеМеню" id="469"/>
@@ -297,6 +313,7 @@
 									<DataPath>ДанныеНаФорме.ШаблонЭМД</DataPath>
 									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<ContextMenu name="ДанныеНаФормеШаблонЭМДКонтекстноеМеню" id="361"/>
 									<ExtendedTooltip name="ДанныеНаФормеШаблонЭМДРасширеннаяПодсказка" id="362"/>
 								</InputField>
@@ -311,6 +328,7 @@
 									</ToolTip>
 									<EditMode>EnterOnInput</EditMode>
 									<FixingInTable>Right</FixingInTable>
+									<AutoEditMode>true</AutoEditMode>
 									<Width>2</Width>
 									<MaxWidth>2</MaxWidth>
 									<HorizontalStretch>false</HorizontalStretch>
@@ -340,6 +358,7 @@
 									</ToolTip>
 									<EditMode>EnterOnInput</EditMode>
 									<FixingInTable>Right</FixingInTable>
+									<AutoEditMode>true</AutoEditMode>
 									<Width>2</Width>
 									<MaxWidth>2</MaxWidth>
 									<HorizontalStretch>false</HorizontalStretch>
@@ -369,6 +388,7 @@
 									</ToolTip>
 									<EditMode>EnterOnInput</EditMode>
 									<FixingInTable>Right</FixingInTable>
+									<AutoEditMode>true</AutoEditMode>
 									<Width>2</Width>
 									<MaxWidth>2</MaxWidth>
 									<HorizontalStretch>false</HorizontalStretch>
@@ -406,8 +426,10 @@
 					<v8:content>Группа электронные подписи</v8:content>
 				</v8:item>
 			</ToolTip>
+			<Group>HorizontalIfPossible</Group>
 			<Behavior>Collapsible</Behavior>
 			<Collapsed>true</Collapsed>
+			<Representation>WeakSeparation</Representation>
 			<ExtendedTooltip name="ГруппаЭлектронныеПодписиРасширеннаяПодсказка" id="331"/>
 			<ChildItems>
 				<Table name="ЭлектронныеПодписи" id="112">
@@ -416,6 +438,8 @@
 					<ChangeRowSet>false</ChangeRowSet>
 					<ChangeRowOrder>false</ChangeRowOrder>
 					<HeightControlVariant>UseContentHeight</HeightControlVariant>
+					<RowSelectionMode>Cell</RowSelectionMode>
+					<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
 					<EnableStartDrag>true</EnableStartDrag>
 					<EnableDrag>true</EnableDrag>
 					<FileDragMode>AsFile</FileDragMode>
@@ -539,6 +563,7 @@
 							<DataPath>ЭлектронныеПодписи.УстановившийПодпись</DataPath>
 							<EditMode>EnterOnInput</EditMode>
 							<AutoCellHeight>true</AutoCellHeight>
+							<AutoEditMode>true</AutoEditMode>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="ЭлектронныеПодписиУстановившийПодписьКонтекстноеМеню" id="458"/>
 							<ExtendedTooltip name="ЭлектронныеПодписиУстановившийПодписьРасширеннаяПодсказка" id="459"/>
@@ -547,6 +572,7 @@
 							<DataPath>ЭлектронныеПодписи.КомуВыданСертификатИСтатус</DataPath>
 							<EditMode>EnterOnInput</EditMode>
 							<AutoCellHeight>true</AutoCellHeight>
+							<AutoEditMode>true</AutoEditMode>
 							<ContextMenu name="ЭлектронныеПодписиКомуВыданСертификатИСтатусКонтекстноеМеню" id="260"/>
 							<ExtendedTooltip name="ЭлектронныеПодписиКомуВыданСертификатИСтатусРасширеннаяПодсказка" id="261"/>
 						</InputField>
@@ -554,6 +580,7 @@
 							<DataPath>ЭлектронныеПодписи.ДатаПодписиИКомментарий</DataPath>
 							<EditMode>EnterOnInput</EditMode>
 							<AutoCellHeight>true</AutoCellHeight>
+							<AutoEditMode>true</AutoEditMode>
 							<Width>16</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="ЭлектронныеПодписиДатаПодписиИКомментарийКонтекстноеМеню" id="263"/>
@@ -562,6 +589,7 @@
 						<InputField name="ЭлектронныеПодписиСтатус" id="315">
 							<DataPath>ЭлектронныеПодписи.Статус</DataPath>
 							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="ЭлектронныеПодписиСтатусКонтекстноеМеню" id="316"/>
 							<ExtendedTooltip name="ЭлектронныеПодписиСтатусРасширеннаяПодсказка" id="317"/>
@@ -584,7 +612,7 @@
 							<HorizontalAlign>Center</HorizontalAlign>
 							<EditMode>EnterOnInput</EditMode>
 							<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
-							<CheckBoxType>Auto</CheckBoxType>
+							<AutoEditMode>true</AutoEditMode>
 							<ContextMenu name="ЭлектронныеПодписиПодписанФайлЭМДКонтекстноеМеню" id="308"/>
 							<ExtendedTooltip name="ЭлектронныеПодписиПодписанФайлЭМДРасширеннаяПодсказка" id="309"/>
 						</CheckBoxField>
@@ -609,7 +637,7 @@
 									<HorizontalAlign>Center</HorizontalAlign>
 									<EditMode>EnterOnInput</EditMode>
 									<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
-									<CheckBoxType>Auto</CheckBoxType>
+									<AutoEditMode>true</AutoEditMode>
 									<ContextMenu name="ЭлектронныеПодписиЭтоПодписьМОКонтекстноеМеню" id="392"/>
 									<ExtendedTooltip name="ЭлектронныеПодписиЭтоПодписьМОРасширеннаяПодсказка" id="393"/>
 								</CheckBoxField>
@@ -618,7 +646,7 @@
 									<HorizontalAlign>Center</HorizontalAlign>
 									<EditMode>EnterOnInput</EditMode>
 									<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
-									<CheckBoxType>Auto</CheckBoxType>
+									<AutoEditMode>true</AutoEditMode>
 									<ContextMenu name="ЭлектронныеПодписиЭтоПодписьВрачаКонтекстноеМеню" id="395"/>
 									<ExtendedTooltip name="ЭлектронныеПодписиЭтоПодписьВрачаРасширеннаяПодсказка" id="396"/>
 								</CheckBoxField>
@@ -630,7 +658,7 @@
 							<HorizontalAlign>Center</HorizontalAlign>
 							<EditMode>EnterOnInput</EditMode>
 							<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
-							<CheckBoxType>Auto</CheckBoxType>
+							<AutoEditMode>true</AutoEditMode>
 							<ContextMenu name="ЭлектронныеПодписиПодписьДокументаКонтекстноеМеню" id="323"/>
 							<ExtendedTooltip name="ЭлектронныеПодписиПодписьДокументаРасширеннаяПодсказка" id="324"/>
 						</CheckBoxField>
@@ -638,6 +666,7 @@
 							<DataPath>ЭлектронныеПодписи.ОписаниеОшибки</DataPath>
 							<Visible>false</Visible>
 							<EditMode>EnterOnInput</EditMode>
+							<AutoEditMode>true</AutoEditMode>
 							<ContextMenu name="ЭлектронныеПодписиОписаниеОшибкиКонтекстноеМеню" id="269"/>
 							<ExtendedTooltip name="ЭлектронныеПодписиОписаниеОшибкиРасширеннаяПодсказка" id="270"/>
 						</InputField>

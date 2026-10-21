@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<Group>Vertical</Group>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoTime>CurrentOrLast</AutoTime>
 	<UsePostingMode>Auto</UsePostingMode>
@@ -81,6 +83,7 @@
 									<DataPath>Объект.Number</DataPath>
 									<Enabled>false</Enabled>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
 									<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="155"/>
 								</InputField>
@@ -98,6 +101,7 @@
 								<InputField name="Дата" id="4">
 									<DataPath>Объект.Date</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<AutoEditMode>true</AutoEditMode>
 									<Width>16</Width>
 									<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
 									<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="156"/>
@@ -152,6 +156,7 @@
 										<InputField name="Клиент" id="10">
 											<DataPath>Объект.Клиент</DataPath>
 											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
 											<DropListButton>false</DropListButton>
 											<ChoiceButton>true</ChoiceButton>
 											<ChoiceButtonRepresentation>ShowInInputField</ChoiceButtonRepresentation>
@@ -161,7 +166,6 @@
 										<CheckBoxField name="Анонимно" id="217">
 											<DataPath>Объект.Анонимно</DataPath>
 											<Visible>false</Visible>
-											<CheckBoxType>Auto</CheckBoxType>
 											<ContextMenu name="АнонимноКонтекстноеМеню" id="218"/>
 											<ExtendedTooltip name="АнонимноРасширеннаяПодсказка" id="219"/>
 										</CheckBoxField>
@@ -199,6 +203,7 @@
 										<InputField name="Состояние" id="13">
 											<DataPath>Объект.Состояние</DataPath>
 											<EditMode>EnterOnInput</EditMode>
+											<AutoEditMode>true</AutoEditMode>
 											<Width>20</Width>
 											<HorizontalStretch>false</HorizontalStretch>
 											<ContextMenu name="СостояниеКонтекстноеМеню" id="14"/>
@@ -237,10 +242,14 @@
 											<v8:content>Группа исследования</v8:content>
 										</v8:item>
 									</ToolTip>
+									<Group>Vertical</Group>
+									<ScrollOnCompress>false</ScrollOnCompress>
 									<ExtendedTooltip name="ГруппаИсследованияРасширеннаяПодсказка" id="160"/>
 									<ChildItems>
 										<Table name="Исследования" id="19">
 											<Representation>List</Representation>
+											<RowSelectionMode>Cell</RowSelectionMode>
+											<UseAlternationRowColorBWA>false</UseAlternationRowColorBWA>
 											<AutoInsertNewRow>true</AutoInsertNewRow>
 											<EnableStartDrag>true</EnableStartDrag>
 											<EnableDrag>true</EnableDrag>
@@ -297,18 +306,21 @@
 												<LabelField name="ИсследованияНомерСтроки" id="38">
 													<DataPath>Объект.Исследования.LineNumber</DataPath>
 													<EditMode>EnterOnInput</EditMode>
+													<AutoEditMode>true</AutoEditMode>
 													<ContextMenu name="ИсследованияНомерСтрокиКонтекстноеМеню" id="39"/>
 													<ExtendedTooltip name="ИсследованияНомерСтрокиРасширеннаяПодсказка" id="171"/>
 												</LabelField>
 												<InputField name="ИсследованияКодПробы" id="41">
 													<DataPath>Объект.Исследования.КодПробы</DataPath>
 													<EditMode>EnterOnInput</EditMode>
+													<AutoEditMode>true</AutoEditMode>
 													<ContextMenu name="ИсследованияКодПробыКонтекстноеМеню" id="42"/>
 													<ExtendedTooltip name="ИсследованияКодПробыРасширеннаяПодсказка" id="172"/>
 												</InputField>
 												<InputField name="ИсследованияНоменклатура" id="44">
 													<DataPath>Объект.Исследования.Номенклатура</DataPath>
 													<EditMode>EnterOnInput</EditMode>
+													<AutoEditMode>true</AutoEditMode>
 													<ChoiceButton>true</ChoiceButton>
 													<ChoiceButtonRepresentation>ShowInDropListAndInInputField</ChoiceButtonRepresentation>
 													<ContextMenu name="ИсследованияНоменклатураКонтекстноеМеню" id="45"/>
@@ -317,6 +329,7 @@
 												<InputField name="ИсследованияСостояние" id="150">
 													<DataPath>Объект.Исследования.Состояние</DataPath>
 													<EditMode>EnterOnInput</EditMode>
+													<AutoEditMode>true</AutoEditMode>
 													<ContextMenu name="ИсследованияСостояниеКонтекстноеМеню" id="151"/>
 													<ExtendedTooltip name="ИсследованияСостояниеРасширеннаяПодсказка" id="174"/>
 												</InputField>
@@ -337,13 +350,15 @@
 											<v8:content>Группа приемы</v8:content>
 										</v8:item>
 									</ToolTip>
+									<Group>Vertical</Group>
+									<ScrollOnCompress>false</ScrollOnCompress>
 									<ExtendedTooltip name="ГруппаПриемыРасширеннаяПодсказка" id="175"/>
 									<ChildItems>
 										<Table name="Приемы" id="69">
 											<ChangeRowSet>false</ChangeRowSet>
 											<ChangeRowOrder>false</ChangeRowOrder>
+											<RowSelectionMode>Cell</RowSelectionMode>
 											<Header>false</Header>
-											<UseAlternationRowColor>true</UseAlternationRowColor>
 											<EnableStartDrag>true</EnableStartDrag>
 											<FileDragMode>AsFile</FileDragMode>
 											<DataPath>Приемы</DataPath>
@@ -416,10 +431,12 @@
 											<v8:content>Группа штрих коды</v8:content>
 										</v8:item>
 									</ToolTip>
+									<Group>Vertical</Group>
+									<ScrollOnCompress>false</ScrollOnCompress>
 									<ExtendedTooltip name="ГруппаШтрихКодыРасширеннаяПодсказка" id="187"/>
 									<ChildItems>
 										<Table name="ШтрихКода" id="128">
-											<UseAlternationRowColor>true</UseAlternationRowColor>
+											<RowSelectionMode>Cell</RowSelectionMode>
 											<AutoInsertNewRow>true</AutoInsertNewRow>
 											<EnableStartDrag>true</EnableStartDrag>
 											<EnableDrag>true</EnableDrag>
@@ -456,11 +473,12 @@
 												<ExtendedTooltip name="ШтрихКодаУправлениеПоискомРасширеннаяПодсказка" id="197"/>
 											</SearchControlAddition>
 											<Events>
-												<Event name="BeforeAddRow">ШтрихКодыПередНачаломДобавления</Event>
+												<Event name="2391e7b8-7235-45d7-ab7e-6ff3dc086396">ШтрихКодыПередНачаломДобавления</Event>
 											</Events>
 											<ChildItems>
 												<InputField name="ШтрихКодаШтрихКод" id="147">
 													<EditMode>EnterOnInput</EditMode>
+													<AutoEditMode>true</AutoEditMode>
 													<ContextMenu name="ШтрихКодаШтрихКодКонтекстноеМеню" id="148"/>
 													<ExtendedTooltip name="ШтрихКодаШтрихКодРасширеннаяПодсказка" id="198"/>
 												</InputField>
@@ -487,6 +505,7 @@
 					<v8:content>Группа подвал</v8:content>
 				</v8:item>
 			</ToolTip>
+			<Group>HorizontalIfPossible</Group>
 			<Behavior>Usual</Behavior>
 			<Representation>None</Representation>
 			<ChildItemsWidth>LeftWidest</ChildItemsWidth>

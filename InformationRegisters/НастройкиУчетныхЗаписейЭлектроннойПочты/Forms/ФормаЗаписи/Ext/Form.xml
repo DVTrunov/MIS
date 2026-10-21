@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.16">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
 			<v8:content>Настройки учетной записи</v8:content>
 		</v8:item>
 	</Title>
-	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<WindowOpeningMode>LockOwner</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
+	<Group>Vertical</Group>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<CommandSet>
 		<ExcludedCommand>Copy</ExcludedCommand>
@@ -22,6 +23,7 @@
 				<Representation>PictureAndText</Representation>
 				<DefaultButton>true</DefaultButton>
 				<CommandName>Form.StandardCommand.Write</CommandName>
+				<ButtonImportance>Main</ButtonImportance>
 				<ExtendedTooltip name="ФормаЗаписатьExtendedTooltip" id="78"/>
 			</Button>
 		</ChildItems>
@@ -53,6 +55,8 @@
 							<v8:content>Основное</v8:content>
 						</v8:item>
 					</Title>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
 					<ExtendedTooltip name="СтраницаОбщиеExtendedTooltip" id="80"/>
 					<ChildItems>
 						<UsualGroup name="ВидУчетнойЗаписи" id="66">
@@ -129,7 +133,6 @@
 								<CheckBoxField name="ВПредставлениеВключатьИмяПользователя" id="67">
 									<DataPath>Запись.ВПредставлениеВключатьИмяПользователя</DataPath>
 									<TitleLocation>Right</TitleLocation>
-									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="ВПредставлениеВключатьИмяПользователяКонтекстноеМеню" id="68"/>
 									<ExtendedTooltip name="ВПредставлениеВключатьИмяПользователяExtendedTooltip" id="98"/>
 								</CheckBoxField>
@@ -138,7 +141,6 @@
 						<CheckBoxField name="УдалятьПисьмаПослеОтправки" id="60">
 							<DataPath>Запись.УдалятьПисьмаПослеОтправки</DataPath>
 							<TitleLocation>Right</TitleLocation>
-							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="УдалятьПисьмаПослеОтправкиКонтекстноеМеню" id="61"/>
 							<ExtendedTooltip name="УдалятьПисьмаПослеОтправкиExtendedTooltip" id="91"/>
 						</CheckBoxField>
@@ -152,6 +154,8 @@
 							<v8:content>Обработка писем</v8:content>
 						</v8:item>
 					</Title>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
 					<ExtendedTooltip name="ОбработкаПисемРасширеннаяПодсказка" id="123"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаОтветственные" id="134">
@@ -169,6 +173,7 @@
 							<ChildItems>
 								<InputField name="ОтветственныйЗаОбработкуПисем" id="51">
 									<DataPath>Запись.ОтветственныйЗаОбработкуПисем</DataPath>
+									<MarkRequiredComplete>true</MarkRequiredComplete>
 									<Width>35</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<OpenButton>false</OpenButton>
@@ -178,6 +183,7 @@
 								</InputField>
 								<InputField name="ОтветственныйЗаВедениеПапок" id="53">
 									<DataPath>Запись.ОтветственныйЗаВедениеПапок</DataPath>
+									<MarkRequiredComplete>true</MarkRequiredComplete>
 									<Width>35</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<OpenButton>false</OpenButton>
@@ -210,7 +216,6 @@
 										</v8:item>
 									</Title>
 									<TitleLocation>Right</TitleLocation>
-									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="ПомещатьПисьмоВПапкуПисьмаОснованияКонтекстноеМеню" id="63"/>
 									<ExtendedTooltip name="ПомещатьПисьмоВПапкуПисьмаОснованияExtendedTooltip" id="96"/>
 								</CheckBoxField>
@@ -330,6 +335,7 @@
 						</v8:item>
 					</Title>
 					<Group>Horizontal</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
 					<ExtendedTooltip name="СтраницаПодписьДляНовогоРасширеннаяПодсказка" id="99"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаДляНовыхСообщений" id="17">
@@ -367,7 +373,6 @@
 												</v8:item>
 											</Title>
 											<TitleLocation>Right</TitleLocation>
-											<CheckBoxType>Auto</CheckBoxType>
 											<ContextMenu name="ВключатьПодписьДляНовыйСообщенийКонтекстноеМеню" id="2"/>
 											<ExtendedTooltip name="ВключатьПодписьДляНовыйСообщенийExtendedTooltip" id="102"/>
 											<Events>
@@ -410,6 +415,8 @@
 													<v8:content>Страница новое сообщение простой текст</v8:content>
 												</v8:item>
 											</Title>
+											<Group>Vertical</Group>
+											<ScrollOnCompress>false</ScrollOnCompress>
 											<ExtendedTooltip name="СтраницаНовоеСообщениеПростойТекстExtendedTooltip" id="105"/>
 											<ChildItems>
 												<InputField name="ПодписьДляНовыхСообщенийПростойТекст" id="5">
@@ -429,6 +436,8 @@
 													<v8:content>Страница новое сообщение форматированный текст</v8:content>
 												</v8:item>
 											</Title>
+											<Group>Vertical</Group>
+											<ScrollOnCompress>false</ScrollOnCompress>
 											<ExtendedTooltip name="СтраницаНовоеСообщениеФорматированныйТекстExtendedTooltip" id="107"/>
 											<ChildItems>
 												<CommandBar name="ГруппаКомандыФорматированныйДокумент" id="15">
@@ -465,6 +474,8 @@
 							<v8:content>Подпись при ответе</v8:content>
 						</v8:item>
 					</Title>
+					<Group>Vertical</Group>
+					<ScrollOnCompress>false</ScrollOnCompress>
 					<ExtendedTooltip name="СтраницаПодписьПриОтветеРасширеннаяПодсказка" id="121"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаПриОтветеПересылке" id="18">
@@ -503,7 +514,6 @@
 												</v8:item>
 											</Title>
 											<TitleLocation>Right</TitleLocation>
-											<CheckBoxType>Auto</CheckBoxType>
 											<ContextMenu name="ВключатьПодписьПриОтветеПересылкеКонтекстноеМеню" id="21"/>
 											<ExtendedTooltip name="ВключатьПодписьПриОтветеПересылкеExtendedTooltip" id="112"/>
 											<Events>
@@ -545,6 +555,8 @@
 													<v8:content>Страница при ответе пересылке простой текст</v8:content>
 												</v8:item>
 											</Title>
+											<Group>Vertical</Group>
+											<ScrollOnCompress>false</ScrollOnCompress>
 											<ExtendedTooltip name="СтраницаПриОтветеПересылкеПростойТекстExtendedTooltip" id="115"/>
 											<ChildItems>
 												<InputField name="ПодписьПриОтветеПересылкеПростойТекст" id="27">
@@ -564,6 +576,8 @@
 													<v8:content>Страница при ответе пересылке простой текст</v8:content>
 												</v8:item>
 											</Title>
+											<Group>Vertical</Group>
+											<ScrollOnCompress>false</ScrollOnCompress>
 											<ExtendedTooltip name="СтраницаПриОтветеПересылкеФорматированныйДокументExtendedTooltip" id="117"/>
 											<ChildItems>
 												<CommandBar name="ГруппаКомандыПриОтветеПересылкеФорматированныйДокумент" id="31">
