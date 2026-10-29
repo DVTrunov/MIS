@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcssch="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:pal="http://v8.1c.ru/8.1/data/ui/colors/palette" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.21">
+	<WindowOpeningMode>DontBlock</WindowOpeningMode>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="13">
+			<Group>HorizontalIfPossible</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="14"/>
+			<ChildItems>
+				<InputField name="Номер" id="1">
+					<DataPath>Объект.Number</DataPath>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+				</InputField>
+				<InputField name="Дата" id="4">
+					<DataPath>Объект.Date</DataPath>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+				</InputField>
+				<InputField name="Организация" id="7">
+					<DataPath>Объект.Организация</DataPath>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ОрганизацияКонтекстноеМеню" id="8"/>
+					<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="9"/>
+				</InputField>
+				<InputField name="Филиал" id="10">
+					<DataPath>Объект.Филиал</DataPath>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ФилиалКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="ФилиалРасширеннаяПодсказка" id="12"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<LabelDecoration name="ДекорацияРежимНеУпрощенный" id="15">
+			<Visible>false</Visible>
+			<AutoMaxWidth>false</AutoMaxWidth>
+			<TextColor>style:ПоясняющийОшибкуТекст</TextColor>
+			<Title formatted="false">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сейчас в учетной политике выбран полный режим расчета зарплаты. Проценты из этого документа начнут применяться после включения упрощенного режима.</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ДекорацияРежимНеУпрощенныйКонтекстноеМеню" id="16"/>
+			<ExtendedTooltip name="ДекорацияРежимНеУпрощенныйРасширеннаяПодсказка" id="17"/>
+		</LabelDecoration>
+		<Table name="Проценты" id="18">
+			<RowSelectionMode>Cell</RowSelectionMode>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Объект.Проценты</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ПроцентыКонтекстноеМеню" id="19"/>
+			<AutoCommandBar name="ПроцентыКоманднаяПанель" id="20">
+				<ChildItems>
+					<Button name="ПроцентыЗаполнитьПоГруппе" id="22">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ЗаполнитьПоГруппе</CommandName>
+						<ExtendedTooltip name="ПроцентыЗаполнитьПоГруппеРасширеннаяПодсказка" id="23"/>
+					</Button>
+					<Button name="ПроцентыЗаполнитьПоТипу" id="24">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ЗаполнитьПоТипу</CommandName>
+						<ExtendedTooltip name="ПроцентыЗаполнитьПоТипуРасширеннаяПодсказка" id="25"/>
+					</Button>
+					<Button name="ПроцентыУстановитьПроцент" id="26">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.УстановитьПроцент</CommandName>
+						<ExtendedTooltip name="ПроцентыУстановитьПроцентРасширеннаяПодсказка" id="27"/>
+					</Button>
+					<Button name="ПроцентыОтметитьАссистирование" id="28">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ОтметитьАссистирование</CommandName>
+						<ExtendedTooltip name="ПроцентыОтметитьАссистированиеРасширеннаяПодсказка" id="29"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ПроцентыРасширеннаяПодсказка" id="21"/>
+			<SearchStringAddition name="ПроцентыСтрокаПоиска" id="30">
+				<AdditionSource>
+					<Item>Проценты</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПроцентыСтрокаПоискаКонтекстноеМеню" id="31"/>
+				<ExtendedTooltip name="ПроцентыСтрокаПоискаРасширеннаяПодсказка" id="32"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ПроцентыСостояниеПросмотра" id="33">
+				<AdditionSource>
+					<Item>Проценты</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ПроцентыСостояниеПросмотраКонтекстноеМеню" id="34"/>
+				<ExtendedTooltip name="ПроцентыСостояниеПросмотраРасширеннаяПодсказка" id="35"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ПроцентыУправлениеПоиском" id="36">
+				<AdditionSource>
+					<Item>Проценты</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ПроцентыУправлениеПоискомКонтекстноеМеню" id="37"/>
+				<ExtendedTooltip name="ПроцентыУправлениеПоискомРасширеннаяПодсказка" id="38"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="ПроцентыНомерСтроки" id="39">
+					<DataPath>Объект.Проценты.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ПроцентыНомерСтрокиКонтекстноеМеню" id="40"/>
+					<ExtendedTooltip name="ПроцентыНомерСтрокиРасширеннаяПодсказка" id="41"/>
+				</LabelField>
+				<InputField name="ПроцентыДолжность" id="42">
+					<DataPath>Объект.Проценты.Должность</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ПроцентыДолжностьКонтекстноеМеню" id="43"/>
+					<ExtendedTooltip name="ПроцентыДолжностьРасширеннаяПодсказка" id="44"/>
+				</InputField>
+				<InputField name="ПроцентыСотрудник" id="45">
+					<DataPath>Объект.Проценты.Сотрудник</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ПроцентыСотрудникКонтекстноеМеню" id="46"/>
+					<ExtendedTooltip name="ПроцентыСотрудникРасширеннаяПодсказка" id="47"/>
+					<Events>
+						<Event name="OnChange">ПроцентыСотрудникПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="ПроцентыНоменклатура" id="48">
+					<DataPath>Объект.Проценты.Номенклатура</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ПроцентыНоменклатураКонтекстноеМеню" id="49"/>
+					<ExtendedTooltip name="ПроцентыНоменклатураРасширеннаяПодсказка" id="50"/>
+				</InputField>
+				<InputField name="ПроцентыПроцент" id="51">
+					<DataPath>Объект.Проценты.Процент</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+					<ContextMenu name="ПроцентыПроцентКонтекстноеМеню" id="52"/>
+					<ExtendedTooltip name="ПроцентыПроцентРасширеннаяПодсказка" id="53"/>
+				</InputField>
+				<CheckBoxField name="ПроцентыАссистирование" id="54">
+					<DataPath>Объект.Проценты.Ассистирование</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<AutoEditMode>true</AutoEditMode>
+					<ContextMenu name="ПроцентыАссистированиеКонтекстноеМеню" id="55"/>
+					<ExtendedTooltip name="ПроцентыАссистированиеРасширеннаяПодсказка" id="56"/>
+				</CheckBoxField>
+			</ChildItems>
+		</Table>
+		<InputField name="Комментарий" id="57">
+			<DataPath>Объект.Комментарий</DataPath>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="58"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="59"/>
+		</InputField>
+		<InputField name="Автор" id="60">
+			<DataPath>Объект.Автор</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<ExtendedEditMultipleValues>true</ExtendedEditMultipleValues>
+			<ContextMenu name="АвторКонтекстноеМеню" id="61"/>
+			<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="62"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.омг_УстановкаРасчетаЗарплаты</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаполнитьПоГруппе" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить группу номенклатуры</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить группу номенклатуры</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьПоГруппе</Action>
+		</Command>
+		<Command name="ЗаполнитьПоТипу" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить тип услуги</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить тип услуги</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьПоТипу</Action>
+		</Command>
+		<Command name="УстановитьПроцент" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить процент</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Установить процент</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УстановитьПроцент</Action>
+		</Command>
+		<Command name="ОтметитьАссистирование" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>За ассистирование</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>За ассистирование</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОтметитьАссистирование</Action>
+		</Command>
+	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>InformationRegister.омг_ПроцентыРасчетаЗарплаты.StandardCommand.OpenByRecorder</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>
