@@ -6,11 +6,13 @@
 <title>Протокол</title>
 <style>
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; background: #f4f6f9; color: #1f2733;
+html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #f4f6f9; color: #1f2733;
   font: 14px/1.45 "Segoe UI", Arial, sans-serif; }
-.layout { display: flex; align-items: flex-start; max-width: 1100px; margin: 0 auto; padding: 16px; }
-.main { flex: 1 1 auto; min-width: 0; }
-.nav { flex: 0 0 210px; position: sticky; top: 16px; margin-left: 20px; }
+/* Прокручивается сама страница (колонка .main), а не форма 1С вокруг неё: иначе в веб-клиенте
+   переход по разделам не работает - поле HTML растягивается по содержимому. */
+.layout { display: flex; height: 100%; max-width: 1140px; margin: 0 auto; }
+.main { position: relative; flex: 1 1 auto; min-width: 0; height: 100%; overflow-y: auto; padding: 16px; }
+.nav { flex: 0 0 210px; height: 100%; overflow-y: auto; padding: 16px 16px 16px 4px; }
 .nav a { display: block; padding: 6px 10px; margin-bottom: 2px; color: #3c4656; text-decoration: none;
   border-left: 3px solid transparent; border-radius: 0 6px 6px 0; }
 .nav a:hover { background: #e9eef6; }
@@ -281,6 +283,13 @@ table.grid td.act { width: 28px; text-align: center; }
     return row;
   }
 
+  // Прокрутка колонки .main к блоку (offsetTop считается от .main, у неё position: relative).
+  function scrollToBox(node) {
+    var main = document.getElementById('main'), top = 0;
+    while (node && node !== main) { top += node.offsetTop; node = node.offsetParent; }
+    main.scrollTop = Math.max(0, top - 8);
+  }
+
   function build() {
     var main = document.getElementById('main');
     var nav = document.getElementById('nav');
@@ -319,7 +328,7 @@ table.grid td.act { width: 28px; text-align: center; }
         on(a, 'click', function (e) {
           if (e && e.preventDefault) { e.preventDefault(); }
           toggleClass(box, 'collapsed', false);
-          if (box.scrollIntoView) { box.scrollIntoView(true); }
+          scrollToBox(box);
           var links = nav.getElementsByTagName('a'), k;
           for (k = 0; k < links.length; k++) { toggleClass(links[k], 'active', links[k] === a); }
         });
@@ -369,7 +378,7 @@ table.grid td.act { width: 28px; text-align: center; }
       toggleClass(c.row, 'missing', miss);
       if (miss) { res.push(c.field.title); if (!first) { first = c.row; } }
     }
-    if (first && first.scrollIntoView) { first.scrollIntoView(true); }
+    if (first) { scrollToBox(first); }
     return res.join('\n');
   };
   window.omgIsDirty = function () { return dirty ? 'true' : 'false'; };
