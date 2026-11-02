@@ -20,7 +20,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; background: 
 .nav .badge { float: right; color: #8a94a6; font-weight: 400; font-size: 12px; }
 .head { background: #fff; border-radius: 10px; padding: 14px 18px; margin-bottom: 14px; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
 .head h1 { font-size: 18px; margin: 0 0 6px; }
-.head img { max-height: 48px; float: right; }
+.head img { max-height: 48px; float: right; margin-top: 26px; }
 .head .org { font-weight: 600; color: #1f2733; }
 .head .orgline { font-size: 12px; color: #5b6575; }
 .head .org + .orgline, .head .orgline + h1, .head .org + h1 { margin-top: 2px; }
@@ -59,6 +59,11 @@ table.grid td.act { width: 28px; text-align: center; }
 .btn:hover { border-color: #1a66d9; color: #1a66d9; }
 .del { border: none; background: none; color: #a3adbd; cursor: pointer; font-size: 16px; }
 .del:hover { color: #d93025; }
+.layout.nonav .nav { display: none; }
+.navtoggle { position: absolute; top: 10px; right: 10px; border: 1px solid #cfd6e0; background: #fff; color: #5b6575;
+  border-radius: 6px; padding: 2px 8px; cursor: pointer; font: inherit; font-size: 12px; }
+.navtoggle:hover { border-color: #1a66d9; color: #1a66d9; }
+.head { position: relative; padding-right: 110px; }
 .empty { color: #8a94a6; padding: 30px; text-align: center; }
 @media (max-width: 760px) {
   .nav { display: none; }
@@ -68,7 +73,7 @@ table.grid td.act { width: 28px; text-align: center; }
 </style>
 </head>
 <body>
-<div class="layout">
+<div class="layout" id="layout">
   <div class="main" id="main"></div>
   <div class="nav" id="nav"></div>
 </div>
@@ -331,6 +336,22 @@ table.grid td.act { width: 28px; text-align: center; }
       meta.appendChild(s);
     }
     head.appendChild(meta);
+
+    // Боковая панель разделов скрывается кнопкой; выбор запоминается в браузере врача.
+    var layout = document.getElementById('layout');
+    var toggle = el('button', 'navtoggle');
+    toggle.type = 'button';
+    function setNav(show) {
+      toggleClass(layout, 'nonav', !show);
+      toggle.innerHTML = '';
+      toggle.appendChild(document.createTextNode(show ? 'Скрыть разделы' : 'Разделы'));
+      try { window.localStorage.setItem('omgProtocolNav', show ? '1' : '0'); } catch (x) { }
+    }
+    var showNav = true;
+    try { showNav = window.localStorage.getItem('omgProtocolNav') !== '0'; } catch (x) { }
+    on(toggle, 'click', function () { setNav(hasClass(layout, 'nonav')); });
+    setNav(showNav);
+    head.appendChild(toggle);
     main.appendChild(head);
 
     for (i = 0; i < MODEL.sections.length; i++) {
