@@ -258,9 +258,28 @@ table.grid td.act { width: 28px; text-align: center; }
     } };
   }
 
+  // Оформление шаблона (размер в пунктах, как в печатной форме).
+  function px(pt) { return Math.round(pt * 4 / 3) + 'px'; }
+  var ALIGN = { 'Центр': 'center', 'Право': 'right', 'Ширина': 'justify', 'Лево': 'left' };
+  function applyStyle(node, f) {
+    if (f.bold) { node.style.fontWeight = '700'; }
+    if (f.italic) { node.style.fontStyle = 'italic'; }
+    if (f.size) { node.style.fontSize = px(f.size); }
+    if (f.align && ALIGN[f.align]) { node.style.textAlign = ALIGN[f.align]; }
+  }
+  function styleControls(box, f) {
+    var tags = ['input', 'textarea', 'select'], i, j, list;
+    for (i = 0; i < tags.length; i++) {
+      list = box.getElementsByTagName(tags[i]);
+      for (j = 0; j < list.length; j++) { applyStyle(list[j], f); }
+    }
+  }
+
   function buildField(f) {
     if (f.type === 'Пояснение') {
-      return el('div', 'field note', f.value);
+      var note = el('div', 'field note', f.value);
+      applyStyle(note, f);
+      return note;
     }
     var row = el('div', 'field');
     var lab = el('label', 'title', f.title);
@@ -279,6 +298,7 @@ table.grid td.act { width: 28px; text-align: center; }
       default: c = textControl(f, true);
     }
     ctlBox.appendChild(c.el);
+    styleControls(ctlBox, f);
     row.appendChild(ctlBox);
     controls.push({ field: f, get: c.get, row: row });
     return row;
@@ -295,6 +315,8 @@ table.grid td.act { width: 28px; text-align: center; }
     var main = document.getElementById('main');
     var nav = document.getElementById('nav');
     if (!MODEL) { main.appendChild(el('div', 'empty', 'Выберите шаблон протокола')); return; }
+    if (MODEL.font) { document.body.style.fontFamily = '"' + MODEL.font + '", "Segoe UI", Arial, sans-serif'; }
+    if (MODEL.size) { document.body.style.fontSize = px(MODEL.size + 1); }
 
     var head = el('div', 'head');
     if (MODEL.logo) { var img = el('img'); img.src = MODEL.logo; head.appendChild(img); }
@@ -316,6 +338,7 @@ table.grid td.act { width: 28px; text-align: center; }
         var box = el('div', 'section');
         box.id = 'sec' + idx;
         var h = el('h2', null, sec.title);
+        applyStyle(h, { size: sec.size, align: sec.align });
         on(h, 'click', function () { toggleClass(box, 'collapsed'); });
         box.appendChild(h);
         var fields = el('div', 'fields');

@@ -86,6 +86,34 @@
 					<ContextMenu name="ЗаголовокПечатиКонтекстноеМеню" id="108"/>
 					<ExtendedTooltip name="ЗаголовокПечатиРасширеннаяПодсказка" id="109"/>
 				</InputField>
+				<UsualGroup name="ГруппаОформление" id="197">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Оформление</v8:content>
+						</v8:item>
+					</Title>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОформлениеРасширеннаяПодсказка" id="198"/>
+					<ChildItems>
+						<InputField name="Шрифт" id="199">
+							<DataPath>Объект.Шрифт</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>20</Width>
+							<ContextMenu name="ШрифтКонтекстноеМеню" id="200"/>
+							<ExtendedTooltip name="ШрифтРасширеннаяПодсказка" id="201"/>
+						</InputField>
+						<InputField name="РазмерШрифта" id="202">
+							<DataPath>Объект.РазмерШрифта</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>4</Width>
+							<ContextMenu name="РазмерШрифтаКонтекстноеМеню" id="203"/>
+							<ExtendedTooltip name="РазмерШрифтаРасширеннаяПодсказка" id="204"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
 				<InputField name="ИмяИсходногоФайла" id="110">
 					<DataPath>Объект.ИмяИсходногоФайла</DataPath>
 					<EditMode>EnterOnInput</EditMode>
@@ -101,7 +129,7 @@
 				<Title>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
-						<v8:content>Шаблон можно загрузить из Word (.docx): заголовки (стиль «Заголовок 1/2») становятся разделами, метки {{Название | значение по умолчанию | тип}} — полями (тип: текст, строка, число, дата, флажок, список, несколько; варианты списка через «;»). Подходят и элементы управления содержимым Word (текст, список, дата, флажок). Таблица Word: первая строка — колонки. Строка «Название: значение» без меток станет текстовым полем. Картинка в верхнем колонтитуле — логотип. Общую шапку (логотип, название клиники, адрес, лицензия) заводят один раз: отдельный шаблон с флажком «Это общая шапка», строки шапки — пояснения, а поля с названиями Пациент, Дата рождения, Врач, Дата приёма, Филиал, Специализация заполняются из приёма автоматически.</v8:content>
+						<v8:content>Шаблон можно загрузить из Word (.docx): заголовки (стиль «Заголовок 1/2») становятся разделами, метки {{Название | значение по умолчанию | тип}} — полями (тип: текст, строка, число, дата, флажок, список, несколько; варианты списка через «;»). Подходят и элементы управления содержимым Word (текст, список, дата, флажок). Таблица Word: первая строка — колонки. Строка «Название: значение» без меток станет текстовым полем. Картинка в верхнем колонтитуле — логотип. Оформление (жирный, курсив, размер шрифта, выравнивание) берётся из Word и меняется в колонках «Оформление»; шрифт и базовый размер — у шаблона. Общую шапку (логотип, название клиники, адрес, лицензия) заводят один раз: отдельный шаблон с флажком «Это общая шапка», строки шапки — пояснения, а поля с названиями Пациент, Дата рождения, Врач, Дата приёма, Филиал, Специализация заполняются из приёма автоматически.</v8:content>
 					</v8:item>
 				</Title>
 				<ContextMenu name="ПодсказкаКонтекстноеМеню" id="114"/>
@@ -176,6 +204,26 @@
 							<ContextMenu name="РазделыПечататьЗаголовокКонтекстноеМеню" id="136"/>
 							<ExtendedTooltip name="РазделыПечататьЗаголовокРасширеннаяПодсказка" id="137"/>
 						</CheckBoxField>
+						<InputField name="РазделыРазмерШрифта" id="205">
+							<DataPath>Объект.Разделы.РазмерШрифта</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Размер</v8:content>
+								</v8:item>
+							</Title>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>4</Width>
+							<ContextMenu name="РазделыРазмерШрифтаКонтекстноеМеню" id="206"/>
+							<ExtendedTooltip name="РазделыРазмерШрифтаРасширеннаяПодсказка" id="207"/>
+						</InputField>
+						<InputField name="РазделыВыравнивание" id="208">
+							<DataPath>Объект.Разделы.Выравнивание</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>8</Width>
+							<ContextMenu name="РазделыВыравниваниеКонтекстноеМеню" id="209"/>
+							<ExtendedTooltip name="РазделыВыравниваниеРасширеннаяПодсказка" id="210"/>
+						</InputField>
 					</ChildItems>
 				</Table>
 				<Table name="Поля" id="138">
@@ -267,6 +315,60 @@
 							<ContextMenu name="ПоляСкрыватьЕслиПустоКонтекстноеМеню" id="173"/>
 							<ExtendedTooltip name="ПоляСкрыватьЕслиПустоРасширеннаяПодсказка" id="174"/>
 						</CheckBoxField>
+						<ColumnGroup name="ПоляГруппаОформление" id="211">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оформление</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Horizontal</Group>
+							<ExtendedTooltip name="ПоляГруппаОформлениеРасширеннаяПодсказка" id="212"/>
+							<ChildItems>
+								<CheckBoxField name="ПоляЖирный" id="213">
+									<DataPath>Объект.Поля.Жирный</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ж</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ПоляЖирныйКонтекстноеМеню" id="214"/>
+									<ExtendedTooltip name="ПоляЖирныйРасширеннаяПодсказка" id="215"/>
+								</CheckBoxField>
+								<CheckBoxField name="ПоляКурсив" id="216">
+									<DataPath>Объект.Поля.Курсив</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>К</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ПоляКурсивКонтекстноеМеню" id="217"/>
+									<ExtendedTooltip name="ПоляКурсивРасширеннаяПодсказка" id="218"/>
+								</CheckBoxField>
+								<InputField name="ПоляРазмерШрифта" id="219">
+									<DataPath>Объект.Поля.РазмерШрифта</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Размер</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>4</Width>
+									<ContextMenu name="ПоляРазмерШрифтаКонтекстноеМеню" id="220"/>
+									<ExtendedTooltip name="ПоляРазмерШрифтаРасширеннаяПодсказка" id="221"/>
+								</InputField>
+								<InputField name="ПоляВыравнивание" id="222">
+									<DataPath>Объект.Поля.Выравнивание</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>8</Width>
+									<ContextMenu name="ПоляВыравниваниеКонтекстноеМеню" id="223"/>
+									<ExtendedTooltip name="ПоляВыравниваниеРасширеннаяПодсказка" id="224"/>
+								</InputField>
+							</ChildItems>
+						</ColumnGroup>
 						<InputField name="ПоляПараметр" id="175">
 							<DataPath>Объект.Поля.Параметр</DataPath>
 							<EditMode>EnterOnInput</EditMode>
