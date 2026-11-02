@@ -19,6 +19,9 @@ html, body { margin: 0; padding: 0; background: #f4f6f9; color: #1f2733;
 .head { background: #fff; border-radius: 10px; padding: 14px 18px; margin-bottom: 14px; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
 .head h1 { font-size: 18px; margin: 0 0 6px; }
 .head img { max-height: 48px; float: right; }
+.head .org { font-weight: 600; color: #1f2733; }
+.head .orgline { font-size: 12px; color: #5b6575; }
+.head .org + .orgline, .head .orgline + h1, .head .org + h1 { margin-top: 2px; }
 .head .meta span { margin-right: 18px; color: #5b6575; }
 .head .meta b { color: #1f2733; font-weight: 600; }
 .section { background: #fff; border-radius: 10px; padding: 6px 18px 14px; margin-bottom: 14px; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
@@ -285,7 +288,9 @@ table.grid td.act { width: 28px; text-align: center; }
 
     var head = el('div', 'head');
     if (MODEL.logo) { var img = el('img'); img.src = MODEL.logo; head.appendChild(img); }
-    head.appendChild(el('h1', null, MODEL.title));
+    if (MODEL.org) { head.appendChild(el('div', 'org', MODEL.org)); }
+    for (var k = 0; MODEL.orgLines && k < MODEL.orgLines.length; k++) { head.appendChild(el('div', 'orgline', MODEL.orgLines[k])); }
+    if (MODEL.title) { head.appendChild(el('h1', null, MODEL.title)); }
     var meta = el('div', 'meta'), i, j;
     for (i = 0; i < MODEL.header.length; i++) {
       if (!MODEL.header[i].value) { continue; }
