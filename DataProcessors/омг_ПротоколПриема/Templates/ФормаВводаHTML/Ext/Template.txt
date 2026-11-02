@@ -1,0 +1,377 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Протокол</title>
+<style>
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: #f4f6f9; color: #1f2733;
+  font: 14px/1.45 "Segoe UI", Arial, sans-serif; }
+.layout { display: flex; align-items: flex-start; max-width: 1100px; margin: 0 auto; padding: 16px; }
+.main { flex: 1 1 auto; min-width: 0; }
+.nav { flex: 0 0 210px; position: sticky; top: 16px; margin-left: 20px; }
+.nav a { display: block; padding: 6px 10px; margin-bottom: 2px; color: #3c4656; text-decoration: none;
+  border-left: 3px solid transparent; border-radius: 0 6px 6px 0; }
+.nav a:hover { background: #e9eef6; }
+.nav a.active { color: #1a66d9; border-left-color: #1a66d9; background: #e9eef6; font-weight: 600; }
+.nav .badge { float: right; color: #8a94a6; font-weight: 400; font-size: 12px; }
+.head { background: #fff; border-radius: 10px; padding: 14px 18px; margin-bottom: 14px; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+.head h1 { font-size: 18px; margin: 0 0 6px; }
+.head img { max-height: 48px; float: right; }
+.head .meta span { margin-right: 18px; color: #5b6575; }
+.head .meta b { color: #1f2733; font-weight: 600; }
+.section { background: #fff; border-radius: 10px; padding: 6px 18px 14px; margin-bottom: 14px; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+.section > h2 { font-size: 16px; margin: 10px 0 6px; cursor: pointer; user-select: none; }
+.section > h2:before { content: "\25BE"; display: inline-block; width: 18px; color: #8a94a6; }
+.section.collapsed > h2:before { content: "\25B8"; }
+.section.collapsed .fields { display: none; }
+.field { display: flex; align-items: flex-start; padding: 7px 0; border-top: 1px solid #eef1f5; }
+.field:first-child { border-top: none; }
+.field > label.title { flex: 0 0 210px; padding: 6px 12px 0 0; color: #3c4656; font-weight: 600; }
+.field .ctl { flex: 1 1 auto; min-width: 0; }
+.field.note { color: #5b6575; font-style: italic; display: block; }
+.req { color: #d93025; margin-left: 2px; }
+.field.missing textarea, .field.missing input, .field.missing select { border-color: #d93025; background: #fff6f5; }
+textarea, input[type=text], input[type=date], select {
+  width: 100%; font: inherit; color: inherit; padding: 6px 8px; border: 1px solid #cfd6e0; border-radius: 6px; background: #fff; }
+textarea { resize: vertical; min-height: 34px; overflow: hidden; }
+textarea:focus, input:focus, select:focus { outline: none; border-color: #1a66d9; box-shadow: 0 0 0 2px rgba(26,102,217,.15); }
+input.num { width: 140px; }
+.unit { margin-left: 6px; padding-top: 7px; color: #5b6575; }
+.reset { margin-left: 6px; border: none; background: none; color: #8a94a6; cursor: pointer; font-size: 15px; padding: 2px 4px; }
+.reset:hover { color: #1a66d9; }
+.row { display: flex; align-items: flex-start; }
+.chips label { display: inline-block; margin: 0 6px 6px 0; padding: 4px 10px; border: 1px solid #cfd6e0; border-radius: 14px; cursor: pointer; }
+.chips label.on { background: #e3edfc; border-color: #1a66d9; color: #1a66d9; }
+.chips input { display: none; }
+table.grid { border-collapse: collapse; width: 100%; }
+table.grid th, table.grid td { border: 1px solid #dfe4eb; padding: 0; }
+table.grid th { background: #f4f6f9; font-weight: 600; padding: 5px 6px; text-align: left; }
+table.grid td input { border: none; border-radius: 0; }
+table.grid td.act { width: 28px; text-align: center; }
+.btn { margin-top: 6px; border: 1px dashed #b8c2d1; background: #fff; color: #3c4656; border-radius: 6px; padding: 4px 10px; cursor: pointer; font: inherit; }
+.btn:hover { border-color: #1a66d9; color: #1a66d9; }
+.del { border: none; background: none; color: #a3adbd; cursor: pointer; font-size: 16px; }
+.del:hover { color: #d93025; }
+.empty { color: #8a94a6; padding: 30px; text-align: center; }
+@media (max-width: 760px) {
+  .nav { display: none; }
+  .field { display: block; }
+  .field > label.title { display: block; padding: 0 0 4px; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <div class="main" id="main"></div>
+  <div class="nav" id="nav"></div>
+</div>
+<script>
+(function () {
+  var MODEL = /*OMG_MODEL*/null;
+  var dirty = false;
+  var controls = []; // {field, get: function () -> value, el}
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) { e.className = cls; }
+    if (text !== undefined && text !== null) { e.appendChild(document.createTextNode(text)); }
+    return e;
+  }
+  function on(e, name, fn) {
+    if (e.addEventListener) { e.addEventListener(name, fn, false); } else { e.attachEvent('on' + name, fn); }
+  }
+  function touch() { dirty = true; }
+  function autosize(t) {
+    t.style.height = 'auto';
+    t.style.height = (t.scrollHeight + 2) + 'px';
+  }
+  function hasClass(e, c) { return (' ' + e.className + ' ').indexOf(' ' + c + ' ') >= 0; }
+  function toggleClass(e, c, state) {
+    var has = hasClass(e, c);
+    if (state === undefined) { state = !has; }
+    if (state && !has) { e.className = (e.className + ' ' + c).replace(/^\s+/, ''); }
+    if (!state && has) { e.className = (' ' + e.className + ' ').replace(' ' + c + ' ', ' ').replace(/^\s+|\s+$/g, ''); }
+  }
+
+  function textControl(f, multi) {
+    var box = el('div', 'row');
+    var inp;
+    if (multi) {
+      inp = el('textarea');
+      inp.rows = 1;
+      on(inp, 'input', function () { autosize(inp); });
+    } else {
+      inp = el('input');
+      inp.type = 'text';
+    }
+    inp.value = f.value || '';
+    on(inp, 'input', touch);
+    on(inp, 'change', touch);
+    box.appendChild(inp);
+    if (f.def) {
+      var r = el('button', 'reset', '↺');
+      r.type = 'button';
+      r.title = 'Вернуть шаблон текста: ' + f.def;
+      on(r, 'click', function () { inp.value = f.def; if (multi) { autosize(inp); } touch(); });
+      box.appendChild(r);
+    }
+    if (multi) { setTimeout(function () { autosize(inp); }, 0); }
+    return { el: box, get: function () { return inp.value; } };
+  }
+
+  function numberControl(f) {
+    var box = el('div', 'row');
+    var inp = el('input', 'num');
+    inp.type = 'text';
+    inp.setAttribute('inputmode', 'decimal');
+    inp.value = f.value || '';
+    on(inp, 'input', touch);
+    box.appendChild(inp);
+    if (f.unit) { box.appendChild(el('span', 'unit', f.unit)); }
+    return { el: box, get: function () { return inp.value.replace(',', '.'); } };
+  }
+
+  function dateControl(f) {
+    var inp = el('input');
+    try { inp.type = 'date'; } catch (e) { inp.type = 'text'; }
+    inp.style.width = '180px';
+    inp.value = f.value || '';
+    on(inp, 'change', touch);
+    return { el: inp, get: function () { return inp.value; } };
+  }
+
+  function boolControl(f) {
+    var lab = el('label');
+    var inp = el('input');
+    inp.type = 'checkbox';
+    inp.checked = (f.value === 'Да' || f.value === 'true');
+    on(inp, 'click', touch);
+    lab.appendChild(inp);
+    lab.appendChild(document.createTextNode(' Да'));
+    return { el: lab, get: function () { return inp.checked ? 'Да' : 'Нет'; } };
+  }
+
+  function choiceControl(f) {
+    var sel = el('select');
+    var opts = [''].concat(f.options || []);
+    var found = false, i;
+    for (i = 0; i < opts.length; i++) {
+      var o = el('option', null, opts[i]);
+      o.value = opts[i];
+      if (opts[i] === f.value) { o.selected = true; found = true; }
+      sel.appendChild(o);
+    }
+    if (!found && f.value) {
+      var extra = el('option', null, f.value);
+      extra.value = f.value; extra.selected = true;
+      sel.appendChild(extra);
+    }
+    on(sel, 'change', touch);
+    return { el: sel, get: function () { return sel.value; } };
+  }
+
+  function multiControl(f) {
+    var box = el('div', 'chips');
+    var current = (f.value || '').split(';');
+    var picked = {}, i;
+    for (i = 0; i < current.length; i++) { picked[current[i].replace(/^\s+|\s+$/g, '')] = true; }
+    var inputs = [];
+    for (i = 0; i < (f.options || []).length; i++) {
+      (function (opt) {
+        var lab = el('label');
+        var inp = el('input');
+        inp.type = 'checkbox';
+        inp.checked = !!picked[opt];
+        toggleClass(lab, 'on', inp.checked);
+        on(inp, 'click', function () { toggleClass(lab, 'on', inp.checked); touch(); });
+        lab.appendChild(inp);
+        lab.appendChild(document.createTextNode(opt));
+        box.appendChild(lab);
+        inputs.push({ inp: inp, opt: opt });
+      })(f.options[i]);
+    }
+    return { el: box, get: function () {
+      var res = [], k;
+      for (k = 0; k < inputs.length; k++) { if (inputs[k].inp.checked) { res.push(inputs[k].opt); } }
+      return res.join('; ');
+    } };
+  }
+
+  function tableControl(f) {
+    var box = el('div');
+    var cols = (f.columns && f.columns.length) ? f.columns : ['Значение'];
+    var table = el('table', 'grid');
+    var thead = el('thead'), tr = el('tr'), i;
+    for (i = 0; i < cols.length; i++) { tr.appendChild(el('th', null, cols[i])); }
+    tr.appendChild(el('th'));
+    thead.appendChild(tr);
+    table.appendChild(thead);
+    var tbody = el('tbody');
+    table.appendChild(tbody);
+
+    function addRow(values) {
+      var row = el('tr'), c;
+      for (c = 0; c < cols.length; c++) {
+        var td = el('td');
+        var inp = el('input');
+        inp.type = 'text';
+        inp.value = (values && values[c]) ? values[c] : '';
+        on(inp, 'input', touch);
+        td.appendChild(inp);
+        row.appendChild(td);
+      }
+      var act = el('td', 'act');
+      var del = el('button', 'del', '×');
+      del.type = 'button';
+      del.title = 'Удалить строку';
+      on(del, 'click', function () { tbody.removeChild(row); touch(); });
+      act.appendChild(del);
+      row.appendChild(act);
+      tbody.appendChild(row);
+    }
+    var rows = f.rows || [];
+    for (i = 0; i < rows.length; i++) { addRow(rows[i]); }
+    if (!rows.length) { addRow(null); }
+
+    var add = el('button', 'btn', '+ Добавить строку');
+    add.type = 'button';
+    on(add, 'click', function () { addRow(null); touch(); });
+    box.appendChild(table);
+    box.appendChild(add);
+
+    return { el: box, get: function () {
+      var res = [], r, c, trs = tbody.getElementsByTagName('tr');
+      for (r = 0; r < trs.length; r++) {
+        var ins = trs[r].getElementsByTagName('input'), cells = [], any = false;
+        for (c = 0; c < ins.length; c++) { cells.push(ins[c].value); if (ins[c].value) { any = true; } }
+        if (any) { res.push(cells); }
+      }
+      return res;
+    } };
+  }
+
+  function buildField(f) {
+    if (f.type === 'Пояснение') {
+      return el('div', 'field note', f.value);
+    }
+    var row = el('div', 'field');
+    var lab = el('label', 'title', f.title);
+    if (f.required) { lab.appendChild(el('span', 'req', '*')); }
+    row.appendChild(lab);
+    var ctlBox = el('div', 'ctl');
+    var c;
+    switch (f.type) {
+      case 'Строка': c = textControl(f, false); break;
+      case 'Число': c = numberControl(f); break;
+      case 'Дата': c = dateControl(f); break;
+      case 'Флажок': c = boolControl(f); break;
+      case 'Выбор': c = choiceControl(f); break;
+      case 'ВыборНесколько': c = multiControl(f); break;
+      case 'Таблица': c = tableControl(f); break;
+      default: c = textControl(f, true);
+    }
+    ctlBox.appendChild(c.el);
+    row.appendChild(ctlBox);
+    controls.push({ field: f, get: c.get, row: row });
+    return row;
+  }
+
+  function build() {
+    var main = document.getElementById('main');
+    var nav = document.getElementById('nav');
+    if (!MODEL) { main.appendChild(el('div', 'empty', 'Выберите шаблон протокола')); return; }
+
+    var head = el('div', 'head');
+    if (MODEL.logo) { var img = el('img'); img.src = MODEL.logo; head.appendChild(img); }
+    head.appendChild(el('h1', null, MODEL.title));
+    var meta = el('div', 'meta'), i, j;
+    for (i = 0; i < MODEL.header.length; i++) {
+      if (!MODEL.header[i].value) { continue; }
+      var s = el('span', null, MODEL.header[i].label + ': ');
+      s.appendChild(el('b', null, MODEL.header[i].value));
+      meta.appendChild(s);
+    }
+    head.appendChild(meta);
+    main.appendChild(head);
+
+    for (i = 0; i < MODEL.sections.length; i++) {
+      (function (sec, idx) {
+        var box = el('div', 'section');
+        box.id = 'sec' + idx;
+        var h = el('h2', null, sec.title);
+        on(h, 'click', function () { toggleClass(box, 'collapsed'); });
+        box.appendChild(h);
+        var fields = el('div', 'fields');
+        for (j = 0; j < sec.fields.length; j++) { fields.appendChild(buildField(sec.fields[j])); }
+        box.appendChild(fields);
+        main.appendChild(box);
+
+        var a = el('a', null, sec.title);
+        a.href = '#sec' + idx;
+        a.appendChild(el('span', 'badge', String(sec.fields.length)));
+        on(a, 'click', function (e) {
+          if (e && e.preventDefault) { e.preventDefault(); }
+          toggleClass(box, 'collapsed', false);
+          if (box.scrollIntoView) { box.scrollIntoView(true); }
+          var links = nav.getElementsByTagName('a'), k;
+          for (k = 0; k < links.length; k++) { toggleClass(links[k], 'active', links[k] === a); }
+        });
+        nav.appendChild(a);
+      })(MODEL.sections[i], i);
+    }
+  }
+
+  function jsonString(s) {
+    return '"' + String(s).replace(/[\\"\u0000-\u001f\u2028\u2029]/g, function (ch) {
+      switch (ch) {
+        case '"': return '\\"';
+        case '\\': return '\\\\';
+        case '\n': return '\\n';
+        case '\r': return '\\r';
+        case '\t': return '\\t';
+        default: return '\\u' + ('0000' + ch.charCodeAt(0).toString(16)).slice(-4);
+      }
+    }) + '"';
+  }
+  function toJson(v) {
+    if (typeof JSON !== 'undefined' && JSON.stringify) { return JSON.stringify(v); }
+    var i, parts = [];
+    if (v instanceof Array) {
+      for (i = 0; i < v.length; i++) { parts.push(toJson(v[i])); }
+      return '[' + parts.join(',') + ']';
+    }
+    if (typeof v === 'object' && v !== null) {
+      for (i in v) { if (v.hasOwnProperty(i)) { parts.push(jsonString(i) + ':' + toJson(v[i])); } }
+      return '{' + parts.join(',') + '}';
+    }
+    return jsonString(v === undefined || v === null ? '' : v);
+  }
+
+  // ---- API для 1С ----
+  window.omgGetData = function () {
+    var data = {}, i;
+    for (i = 0; i < controls.length; i++) { data[controls[i].field.key] = controls[i].get(); }
+    return toJson(data);
+  };
+  window.omgMissingRequired = function () {
+    var res = [], i, first = null;
+    for (i = 0; i < controls.length; i++) {
+      var c = controls[i], v = c.get();
+      var empty = (v instanceof Array) ? v.length === 0 : !String(v).replace(/^\s+|\s+$/g, '') || (c.field.type === 'Флажок' && v === 'Нет');
+      var miss = c.field.required && empty;
+      toggleClass(c.row, 'missing', miss);
+      if (miss) { res.push(c.field.title); if (!first) { first = c.row; } }
+    }
+    if (first && first.scrollIntoView) { first.scrollIntoView(true); }
+    return res.join('\n');
+  };
+  window.omgIsDirty = function () { return dirty ? 'true' : 'false'; };
+  window.omgSetSaved = function () { dirty = false; };
+
+  build();
+})();
+</script>
+</body>
+</html>
