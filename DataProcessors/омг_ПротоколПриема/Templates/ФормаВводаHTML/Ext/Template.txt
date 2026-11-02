@@ -77,6 +77,7 @@ table.grid td.act { width: 28px; text-align: center; }
   var MODEL = /*OMG_MODEL*/null;
   var dirty = false;
   var controls = []; // {field, get: function () -> value, el}
+  var lastText = null; // последнее текстовое поле в фокусе - туда вставляются готовые фразы
 
   function el(tag, cls, text) {
     var e = document.createElement(tag);
@@ -363,7 +364,35 @@ table.grid td.act { width: 28px; text-align: center; }
     return jsonString(v === undefined || v === null ? '' : v);
   }
 
+  function trackFocus(e) {
+    var t = (e && (e.target || e.srcElement)) || null;
+    if (t && (t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && t.type === 'text'))) { lastText = t; }
+  }
+  if (document.addEventListener) { document.addEventListener('focus', trackFocus, true); }
+  else if (document.attachEvent) { document.attachEvent('onfocusin', trackFocus); }
+
   // ---- API для 1С ----
+  // Вставка готовой фразы в позицию курсора последнего текстового поля.
+  // mode: ',' - через запятую, ';' - с точкой с запятой, '.' - с точкой, иначе через пробел.
+  window.omgInsertText = function (text, mode) {
+    var t = lastText;
+    if (!t || !t.parentNode) { return 'nofield'; }
+    var v = t.value || '';
+    var s = typeof t.selectionStart === 'number' ? t.selectionStart : v.length;
+    var e = typeof t.selectionEnd === 'number' ? t.selectionEnd : s;
+    var before = v.substring(0, s);
+    var ins = String(text || '').replace(/^\s+|\s+$/g, '');
+    if (mode === ',') { ins = (before.replace(/\s+$/, '') ? ', ' : '') + ins; }
+    else if (mode === ';') { ins = ' ' + ins + ';'; }
+    else if (mode === '.') { ins = ' ' + ins + '.'; }
+    else if (before && !/\s$/.test(before)) { ins = ' ' + ins; }
+    if (!before) { ins = ins.replace(/^\s+/, ''); }
+    t.value = before + ins + v.substring(e);
+    try { t.selectionStart = t.selectionEnd = before.length + ins.length; } catch (x) { }
+    if (t.tagName === 'TEXTAREA') { autosize(t); }
+    touch();
+    return 'ok';
+  };
   window.omgGetData = function () {
     var data = {}, i;
     for (i = 0; i < controls.length; i++) { data[controls[i].field.key] = controls[i].get(); }
