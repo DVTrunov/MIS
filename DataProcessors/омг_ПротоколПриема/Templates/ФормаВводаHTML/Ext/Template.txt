@@ -306,6 +306,7 @@ table.grid td.act { width: 28px; text-align: center; }
     styleControls(ctlBox, f);
     row.appendChild(ctlBox);
     controls.push({ field: f, get: c.get, row: row });
+    row.setAttribute('data-param', f.param || '');
     return row;
   }
 
@@ -408,9 +409,21 @@ table.grid td.act { width: 28px; text-align: center; }
     return jsonString(v === undefined || v === null ? '' : v);
   }
 
+  // Параметр ПараметрыHTML поля, в котором стоит курсор: по нему 1С отбирает готовые фразы.
+  var lastParam = '';
+  function fieldParam(t) {
+    while (t && t.getAttribute) {
+      var p = t.getAttribute('data-param');
+      if (p !== null) { return p; }
+      t = t.parentNode;
+    }
+    return null;
+  }
   function trackFocus(e) {
     var t = (e && (e.target || e.srcElement)) || null;
     if (t && (t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && t.type === 'text'))) { lastText = t; }
+    var p = fieldParam(t);
+    if (p !== null) { lastParam = p; }
   }
   if (document.addEventListener) { document.addEventListener('focus', trackFocus, true); }
   else if (document.attachEvent) { document.attachEvent('onfocusin', trackFocus); }
@@ -454,6 +467,7 @@ table.grid td.act { width: 28px; text-align: center; }
     if (first) { scrollToBox(first); }
     return res.join('\n');
   };
+  window.omgCurrentParam = function () { return lastParam; };
   window.omgIsDirty = function () { return dirty ? 'true' : 'false'; };
   window.omgSetSaved = function () { dirty = false; };
 
