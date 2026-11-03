@@ -46,6 +46,24 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; background: 
 .phrase .inl input.txt { width: 180px; }
 .phrase .inl .chips label { margin: 0 4px 0 0; padding: 1px 8px; }
 .phrase .mirror { font-weight: 600; }
+/* Свободная вёрстка: лист с текстом шаблона, поля ввода на месте плашек. */
+.free { background: #fff; border-radius: 10px; padding: 24px 28px 30px 36px; margin-bottom: 14px; box-shadow: 0 1px 2px rgba(0,0,0,.06);
+  line-height: 1.5; }
+.free p { margin: 0 0 3px; }
+.free table { border-collapse: collapse; width: 100%; }
+.free td, .free th { vertical-align: top; padding: 2px 4px; }
+.free table.grid td, .free table.grid th { border: 1px solid #000; }
+.free hr { border: none; border-top: 1px solid #000; }
+.free img { max-width: 100%; }
+.free .inl { display: inline-block; vertical-align: baseline; margin: 0 2px; line-height: 1.3; max-width: 100%; }
+.free .inl input[type=text], .free .inl input[type=date], .free .inl select { width: auto; padding: 2px 6px; font-size: inherit; }
+.free .inl .row { display: inline-flex; }
+.free .inl input.num { width: 70px; }
+.free .inl input.txt { width: 200px; }
+.free .inl textarea { width: 100%; min-width: 260px; padding: 2px 6px; font-size: inherit; }
+.free .inl.wide { display: block; width: 100%; margin: 2px 0; }
+.free .mirror { font-weight: 600; }
+.free .inl.missing input, .free .inl.missing textarea, .free .inl.missing select { border-color: #d93025; background: #fff6f5; }
 .phrase.missing .inl input.phrase.missing .inl input, .phrase.missing .inl select { border-color: #d93025; background: #fff6f5; }
 .req { color: #d93025; margin-left: 2px; }
 .field.missing textarea, .field.missing input, .field.missing select { border-color: #d93025; background: #fff6f5; }
@@ -328,6 +346,51 @@ table.grid td.act { width: 28px; text-align: center; }
     return { el: box, get: c.get };
   }
 
+  // Свободная вёрстка: HTML шаблона, плашки <span class="omg-f" data-key> заменяются полями ввода.
+  // Повтор того же поля (например, в казахской строке) показывает его значение текстом.
+  function buildFree(main) {
+    var sheet = el('div', 'free'), byKey = {}, i, j, k;
+    if (MODEL.font) { sheet.style.fontFamily = '"' + MODEL.font + '", "Segoe UI", Arial, sans-serif'; }
+    if (MODEL.size) { sheet.style.fontSize = MODEL.size + 'pt'; }
+    for (i = 0; i < MODEL.sections.length; i++) {
+      for (j = 0; j < MODEL.sections[i].fields.length; j++) { byKey[MODEL.sections[i].fields[j].key] = MODEL.sections[i].fields[j]; }
+    }
+    sheet.innerHTML = MODEL.html;
+    var all = sheet.getElementsByTagName('*'), kill = [];
+    for (i = 0; i < all.length; i++) {
+      if (/^(SCRIPT|IFRAME|OBJECT|EMBED)$/.test(all[i].tagName)) { kill.push(all[i]); continue; }
+      for (k = all[i].attributes.length - 1; k >= 0; k--) {
+        if (/^on/i.test(all[i].attributes[k].name)) { all[i].removeAttribute(all[i].attributes[k].name); }
+      }
+    }
+    for (i = 0; i < kill.length; i++) { kill[i].parentNode.removeChild(kill[i]); }
+
+    var spans = sheet.getElementsByTagName('span'), chipsList = [];
+    for (i = 0; i < spans.length; i++) { if (hasClass(spans[i], 'omg-f')) { chipsList.push(spans[i]); } }
+    for (i = 0; i < chipsList.length; i++) {
+      var chip = chipsList[i], f = byKey[chip.getAttribute('data-key')], node;
+      if (!f) { node = document.createTextNode(''); }
+      else if (inPhrase[f.key]) {
+        node = el('span', 'mirror');
+        mirrors.push({ el: node, src: inPhrase[f.key] });
+      } else {
+        var c;
+        if (f.type === 'Таблица') { c = tableControl(f); }
+        else if (f.type === 'Текст') { c = textControl(f, true); }
+        else { c = inlineControl(f); }
+        node = el('span', 'inl' + (f.type === 'Таблица' || f.type === 'Текст' ? ' wide' : ''));
+        node.appendChild(c.el);
+        node.setAttribute('data-param', f.param || '');
+        node.title = f.title;
+        inPhrase[f.key] = c;
+        controls.push({ field: f, get: c.get, row: node });
+      }
+      chip.parentNode.replaceChild(node, chip);
+    }
+    main.appendChild(sheet);
+    refreshMirrors();
+  }
+
   function buildPhrase(f, byKey) {
     var row = el('div', 'field phrase'), i, p;
     applyStyle(row, f);
@@ -426,6 +489,8 @@ table.grid td.act { width: 28px; text-align: center; }
     setNav(showNav);
     head.appendChild(toggle);
     main.appendChild(head);
+
+    if (MODEL.html) { buildFree(main); toggleClass(layout, 'nonav', true); toggle.style.display = 'none'; return; }
 
     for (i = 0; i < MODEL.sections.length; i++) {
       (function (sec, idx) {
