@@ -36,6 +36,17 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; background: 
 .field > label.title { flex: 0 0 210px; padding: 6px 12px 0 0; color: #3c4656; font-weight: 600; }
 .field .ctl { flex: 1 1 auto; min-width: 0; }
 .field.note { color: #5b6575; font-style: italic; display: block; }
+.field.note { color: #5b6575; font-style: italic; display: block; }
+/* Фраза с полями внутри: «менархе в [__] лет, цикл [__] дн.» */
+.field.phrase { display: block; line-height: 2.1; }
+.phrase .inl { display: inline-block; vertical-align: baseline; margin: 0 3px; line-height: 1.3; }
+.phrase .inl input[type=text], .phrase .inl input[type=date], .phrase .inl select { width: auto; padding: 2px 6px; }
+.phrase .inl .row { display: inline-flex; }
+.phrase .inl input.num { width: 70px; }
+.phrase .inl input.txt { width: 180px; }
+.phrase .inl .chips label { margin: 0 4px 0 0; padding: 1px 8px; }
+.phrase .mirror { font-weight: 600; }
+.phrase.missing .inl input.phrase.missing .inl input, .phrase.missing .inl select { border-color: #d93025; background: #fff6f5; }
 .req { color: #d93025; margin-left: 2px; }
 .field.missing textarea, .field.missing input, .field.missing select { border-color: #d93025; background: #fff6f5; }
 textarea, input[type=text], input[type=date], select {
@@ -93,7 +104,7 @@ table.grid td.act { width: 28px; text-align: center; }
   function on(e, name, fn) {
     if (e.addEventListener) { e.addEventListener(name, fn, false); } else { e.attachEvent('on' + name, fn); }
   }
-  function touch() { dirty = true; }
+  function touch() { dirty = true; refreshMirrors(); }
   function autosize(t) {
     t.style.height = 'auto';
     t.style.height = (t.scrollHeight + 2) + 'px';
@@ -280,6 +291,67 @@ table.grid td.act { width: 28px; text-align: center; }
     }
   }
 
+  // Поле, которое уже введено в другой фразе (например, казахская строка под русской),
+  // показывается текстом и обновляется вместе с ним.
+  var inPhrase = {}, mirrors = [];
+  function refreshMirrors() {
+    for (var i = 0; i < mirrors.length; i++) {
+      var v = mirrors[i].src.get();
+      if (v instanceof Array) { v = v.length ? '…' : ''; }
+      v = String(v || '').replace(/^(\d{4})-(\d{2})-(\d{2})$/, '$3.$2.$1');
+      mirrors[i].el.innerHTML = '';
+      mirrors[i].el.appendChild(document.createTextNode(v || '___'));
+    }
+  }
+
+  // Поле внутри фразы: компактный элемент без подписи.
+  function inlineControl(f) {
+    var c, inp;
+    switch (f.type) {
+      case 'Число': c = numberControl({ value: f.value }); break;
+      case 'Дата': c = dateControl(f); c.el.style.width = 'auto'; break;
+      case 'Флажок': c = boolControl(f); break;
+      case 'Выбор': c = choiceControl(f); break;
+      case 'ВыборНесколько': c = multiControl(f); break;
+      default:
+        inp = el('input', 'txt');
+        inp.type = 'text';
+        inp.value = f.value || '';
+        if (f.def) { inp.title = 'Шаблон: ' + f.def; }
+        on(inp, 'input', touch);
+        c = { el: inp, get: function () { return inp.value; } };
+    }
+    var box = el('span', 'inl');
+    box.appendChild(c.el);
+    box.setAttribute('data-param', f.param || '');
+    if (f.title) { box.title = f.title; }
+    return { el: box, get: c.get };
+  }
+
+  function buildPhrase(f, byKey) {
+    var row = el('div', 'field phrase'), i, p;
+    applyStyle(row, f);
+    for (i = 0; i < (f.parts || []).length; i++) {
+      p = f.parts[i];
+      if (p.t) { row.appendChild(document.createTextNode(p.t)); }
+      if (p.k && byKey[p.k] && inPhrase[p.k]) {
+        var m = el('span', 'mirror');
+        row.appendChild(m);
+        mirrors.push({ el: m, src: inPhrase[p.k] });
+      } else if (p.k && byKey[p.k]) {
+        var sub = byKey[p.k];
+        var c = inlineControl(sub);
+        inPhrase[p.k] = c;
+        styleControls(c.el, f);
+        row.appendChild(c.el);
+        if (sub.required) { row.appendChild(el('span', 'req', '*')); }
+        controls.push({ field: sub, get: c.get, row: row });
+      }
+    }
+    refreshMirrors();
+    return row;
+  }
+
   function buildField(f) {
     if (f.type === 'Пояснение') {
       var note = el('div', 'field note', f.value);
@@ -363,14 +435,20 @@ table.grid td.act { width: 28px; text-align: center; }
         applyStyle(h, { size: sec.size, align: sec.align });
         on(h, 'click', function () { toggleClass(box, 'collapsed'); });
         box.appendChild(h);
-        var fields = el('div', 'fields');
-        for (j = 0; j < sec.fields.length; j++) { fields.appendChild(buildField(sec.fields[j])); }
+        var fields = el('div', 'fields'), byKey = {}, shown = 0;
+        for (j = 0; j < sec.fields.length; j++) { byKey[sec.fields[j].key] = sec.fields[j]; }
+        for (j = 0; j < sec.fields.length; j++) {
+          var sf = sec.fields[j];
+          if (sf.inPhrase) { continue; } // выводится внутри своей фразы
+          fields.appendChild(sf.type === 'Фраза' ? buildPhrase(sf, byKey) : buildField(sf));
+          shown++;
+        }
         box.appendChild(fields);
         main.appendChild(box);
 
         var a = el('a', null, sec.title);
         a.href = '#sec' + idx;
-        a.appendChild(el('span', 'badge', String(sec.fields.length)));
+        a.appendChild(el('span', 'badge', String(shown)));
         on(a, 'click', function (e) {
           if (e && e.preventDefault) { e.preventDefault(); }
           toggleClass(box, 'collapsed', false);
