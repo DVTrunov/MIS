@@ -59,7 +59,7 @@ html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; background: 
 .free .inl input[type=text], .free .inl input[type=date], .free .inl select { width: auto; padding: 2px 6px; font-size: inherit; }
 .free .inl .row { display: inline-flex; }
 .free .inl input.num { width: 70px; }
-.free .inl input.txt { width: 200px; }
+.free .inl input.txt { width: 200px; max-width: 100%; }
 .free .inl textarea { width: 100%; min-width: 260px; padding: 2px 6px; font-size: inherit; }
 .free .inl.wide { display: block; width: 100%; margin: 2px 0; }
 .free .mirror { font-weight: 600; }
@@ -346,6 +346,20 @@ table.grid td.act { width: 28px; text-align: center; }
     return { el: box, get: c.get };
   }
 
+  // Строка в тексте растёт по длине значения, как вписанный от руки текст.
+  function fitInputs(box) {
+    var list = box.getElementsByTagName('input'), i;
+    for (i = 0; i < list.length; i++) {
+      if (hasClass(list[i], 'txt')) {
+        (function (inp) {
+          var fit = function () { inp.style.width = Math.min(Math.max((inp.value || '').length + 2, 14), 100) + 'ch'; };
+          fit();
+          on(inp, 'input', fit);
+        })(list[i]);
+      }
+    }
+  }
+
   // Свободная вёрстка: HTML шаблона, плашки <span class="omg-f" data-key> заменяются полями ввода.
   // Повтор того же поля (например, в казахской строке) показывает его значение текстом.
   function buildFree(main) {
@@ -377,7 +391,7 @@ table.grid td.act { width: 28px; text-align: center; }
         var c;
         if (f.type === 'Таблица') { c = tableControl(f); }
         else if (f.type === 'Текст') { c = textControl(f, true); }
-        else { c = inlineControl(f); }
+        else { c = inlineControl(f); fitInputs(c.el); }
         node = el('span', 'inl' + (f.type === 'Таблица' || f.type === 'Текст' ? ' wide' : ''));
         node.appendChild(c.el);
         node.setAttribute('data-param', f.param || '');
