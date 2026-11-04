@@ -4632,7 +4632,6 @@
 
 	ИмяВложения = ?(Док.ВложениеMHT, "afchunk.mht", "afchunk.htm");
 	ТипыСодержимого = ЗаголовокXML
-	ТипыСодержимого = ЗаголовокXML
 		+ "<Types xmlns=""http://schemas.openxmlformats.org/package/2006/content-types"">"
 		+ "<Default Extension=""rels"" ContentType=""application/vnd.openxmlformats-package.relationships+xml""/>"
 		+ "<Default Extension=""xml"" ContentType=""application/xml""/>"
