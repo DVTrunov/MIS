@@ -325,6 +325,7 @@
 			<Subsystem>омг_Оператор_СофтФон</Subsystem>
 			<Subsystem>омг_Предоплата</Subsystem>
 			<Subsystem>УниверсальныеРабочиеМеста</Subsystem>
+			<Subsystem>омг_ВходящийТрафик</Subsystem>
 			<StyleItem>ВажнаяНадписьШрифт</StyleItem>
 			<StyleItem>ГиперссылкаЦвет</StyleItem>
 			<StyleItem>ГруппаВариантовОтчетовЦвет</StyleItem>
@@ -1164,6 +1165,8 @@
 			<Role>омг_ДобавлениеРедактированиеДоговоров</Role>
 			<Role>омг_РаботаСМедицинскимиЛицензиями</Role>
 			<Role>омг_УниверсальноеРабочееМесто</Role>
+			<Role>омг_РаботаСЛидами</Role>
+			<Role>омг_МаркетологЛиды</Role>
 			<CommonTemplate>DICOMDRIVER</CommonTemplate>
 			<CommonTemplate>mvscu</CommonTemplate>
 			<CommonTemplate>MWLSCP</CommonTemplate>
@@ -2026,6 +2029,7 @@
 			<CommonModule>омг_РабочиеМестаПостроение</CommonModule>
 			<CommonModule>омг_РабочиеМестаКлиент</CommonModule>
 			<CommonModule>омг_РабочиеМестаВызовСервера</CommonModule>
+			<CommonModule>омг_ЛидыСервер</CommonModule>
 			<CommonAttribute>Архив</CommonAttribute>
 			<CommonAttribute>ДвижениеКоррекции</CommonAttribute>
 			<CommonAttribute>OIDСправочникаИсточника</CommonAttribute>
@@ -2224,6 +2228,8 @@
 			<EventSubscription>омг_ПриПроведенииВводаЗПИСписковНоменклатуры</EventSubscription>
 			<EventSubscription>омг_ПриЗаписиСотрудника</EventSubscription>
 			<EventSubscription>омг_ПриЗаписиНоменклатурыПриЗаписи</EventSubscription>
+			<EventSubscription>омг_ЛидПриЗаписиЗаявки</EventSubscription>
+			<EventSubscription>омг_ЛидПриЗаписиОказанияУслуг</EventSubscription>
 			<ScheduledJob>ИсправлениеУстаревшихАдресов</ScheduledJob>
 			<ScheduledJob>АктуализацияДополнительныхПризнаковРасписания</ScheduledJob>
 			<ScheduledJob>доп_СинхронизацияНомеровСотрудников</ScheduledJob>
@@ -2281,6 +2287,7 @@
 			<ScheduledJob>омг_ОбновитьСтатусыПредоплат</ScheduledJob>
 			<ScheduledJob>омг_ПересчетАвтоСтатусовМаршрутов</ScheduledJob>
 			<ScheduledJob>ПроверкаОчередиЗаявокНаОтмену</ScheduledJob>
+			<ScheduledJob>омг_ПроверкаПропущенныхЛидов</ScheduledJob>
 			<SettingsStorage>ХранилищеВариантовОтчетов</SettingsStorage>
 			<FunctionalOption>ВестиСведенияДляМониторингаДвиженияЛекарственныхПрепаратов</FunctionalOption>
 			<FunctionalOption>ВестиУчетМестонахожденияМедкарт</FunctionalOption>
@@ -2678,6 +2685,8 @@
 			<Constant>омг_ДатаКонтроляУслугПоЗаявкам</Constant>
 			<Constant>омг_ВрачБезКонтроля</Constant>
 			<Constant>омг_ХешКаталогаДействий</Constant>
+			<Constant>омг_ЛидыМинутДоПропуска</Constant>
+			<Constant>омг_ЛидыПопытокДоУпущен</Constant>
 			<CommonForm>Вопрос</CommonForm>
 			<CommonForm>АРМВрачаСтационара</CommonForm>
 			<CommonForm>АРМПалатнойМедсестры</CommonForm>
@@ -3093,6 +3102,8 @@
 			<Catalog>омг_ВариантыРабочихМест</Catalog>
 			<Catalog>ПартнёрыИнтеграции</Catalog>
 			<Catalog>омг_ПриложенияКЛицензии</Catalog>
+			<Catalog>омг_ПричиныОтказаЛидов</Catalog>
+			<Catalog>омг_НаправленияЛидов</Catalog>
 			<Document>invЗаявкаНаИсследование</Document>
 			<Document>invРезультатыИсследования</Document>
 			<Document>АвансовыйОтчет</Document>
@@ -3223,6 +3234,7 @@
 			<Document>омг_СпискиУслугДляРасчетаЗарплаты</Document>
 			<Document>омг_ВедениеМаршрутаЛечения</Document>
 			<Document>омг_БланкРезультатовИсследованийЛИС</Document>
+			<Document>омг_Лид</Document>
 			<Sequence>ПартионныйУчет</Sequence>
 			<DocumentJournal>КассовыеДокументы</DocumentJournal>
 			<DocumentJournal>ПлатежныеДокументы</DocumentJournal>
@@ -3586,6 +3598,8 @@
 			<Enum>омг_ПоведенияГрупп</Enum>
 			<Enum>омг_ПоложенияЭлементов</Enum>
 			<Enum>омг_РежимыОткрытияФорм</Enum>
+			<Enum>омг_СтатусыЛидов</Enum>
+			<Enum>омг_НаправленияТрафика</Enum>
 			<Report>АнализИсточниковИнформацииКлиентов</Report>
 			<Report>АнализОбращений</Report>
 			<Report>АнализОпроса</Report>
@@ -3837,6 +3851,7 @@
 			<DataProcessor>омг_АРМ_Медперсонал</DataProcessor>
 			<DataProcessor>омг_АРМОператора</DataProcessor>
 			<DataProcessor>омг_УниверсальноеРабочееМесто</DataProcessor>
+			<DataProcessor>омг_ОкноВходящегоТрафика</DataProcessor>
 			<InformationRegister>DicomWorkLists</InformationRegister>
 			<InformationRegister>DICOMНастройкаСистемы</InformationRegister>
 			<InformationRegister>DICOMОборудованиеПоИнструментИсследованиям</InformationRegister>
@@ -4231,6 +4246,7 @@
 			<InformationRegister>ПараметрыСинхронизацииСВнешнимиСистемами</InformationRegister>
 			<InformationRegister>омг_НазначениеРабочихМест</InformationRegister>
 			<InformationRegister>омг_ВнешнийIdВрачаНашФормат</InformationRegister>
+			<InformationRegister>омг_ИсторияСтатусовЛидов</InformationRegister>
 			<AccumulationRegister>ВзаиморасчетыСКлиентами</AccumulationRegister>
 			<AccumulationRegister>ВзаиморасчетыСКонтрагентами</AccumulationRegister>
 			<AccumulationRegister>ВзаиморасчетыССотрудниками</AccumulationRegister>
