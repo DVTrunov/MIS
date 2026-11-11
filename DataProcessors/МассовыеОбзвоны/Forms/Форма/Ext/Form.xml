@@ -10,6 +10,7 @@
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаГоризонтальноеДелениеФормы" id="11">
@@ -390,6 +391,206 @@
 								<Event name="OnCurrentPageChange">ГруппаСтраницыПриСменеСтраницы</Event>
 							</Events>
 							<ChildItems>
+								<Page name="омг_ГруппаЛиды" id="1001">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Лиды</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Лиды входящего трафика</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Vertical</Group>
+									<TitleDataPath>омг_ЛидыКоличество</TitleDataPath>
+									<ScrollOnCompress>false</ScrollOnCompress>
+									<ExtendedTooltip name="омг_ГруппаЛидыРасширеннаяПодсказка" id="1002"/>
+									<ChildItems>
+										<UsualGroup name="омг_ГруппаЛидыСписок" id="1003">
+											<Group>Vertical</Group>
+											<Behavior>Usual</Behavior>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="омг_ГруппаЛидыСписокРасширеннаяПодсказка" id="1004"/>
+											<ChildItems>
+												<CommandBar name="омг_ЛидыКоманды" id="1005">
+													<CommandSource>Form</CommandSource>
+													<ExtendedTooltip name="омг_ЛидыКомандыРасширеннаяПодсказка" id="1006"/>
+													<ChildItems>
+														<Button name="омг_ЛидВзятьВРаботуКнопка" id="1007">
+															<Type>CommandBarButton</Type>
+															<CommandName>Form.Command.омг_ЛидВзятьВРаботу</CommandName>
+															<ExtendedTooltip name="омг_ЛидВзятьВРаботуКнопкаРасширеннаяПодсказка" id="1008"/>
+														</Button>
+														<Button name="омг_ЛидПозвонитьКнопка" id="1009">
+															<Type>CommandBarButton</Type>
+															<CommandName>Form.Command.омг_ЛидПозвонить</CommandName>
+															<ExtendedTooltip name="омг_ЛидПозвонитьКнопкаРасширеннаяПодсказка" id="1010"/>
+														</Button>
+														<Button name="омг_ЛидРезультатЗвонкаКнопка" id="1011">
+															<Type>CommandBarButton</Type>
+															<CommandName>Form.Command.омг_ЛидРезультатЗвонка</CommandName>
+															<ExtendedTooltip name="омг_ЛидРезультатЗвонкаКнопкаРасширеннаяПодсказка" id="1012"/>
+														</Button>
+														<Button name="омг_ЛидЗаписатьНаПриемКнопка" id="1013">
+															<Type>CommandBarButton</Type>
+															<CommandName>Form.Command.омг_ЛидЗаписатьНаПрием</CommandName>
+															<ExtendedTooltip name="омг_ЛидЗаписатьНаПриемКнопкаРасширеннаяПодсказка" id="1014"/>
+														</Button>
+														<Button name="омг_ЛидКарточкаПациентаКнопка" id="1015">
+															<Type>CommandBarButton</Type>
+															<CommandName>Form.Command.омг_ЛидКарточкаПациента</CommandName>
+															<ExtendedTooltip name="омг_ЛидКарточкаПациентаКнопкаРасширеннаяПодсказка" id="1016"/>
+														</Button>
+														<Button name="омг_ОткрытьОкноТрафикаКнопка" id="1017">
+															<Type>CommandBarButton</Type>
+															<CommandName>Form.Command.омг_ОткрытьОкноТрафика</CommandName>
+															<ExtendedTooltip name="омг_ОткрытьОкноТрафикаКнопкаРасширеннаяПодсказка" id="1018"/>
+														</Button>
+													</ChildItems>
+												</CommandBar>
+												<Table name="омг_Лиды" id="1019">
+													<Representation>List</Representation>
+													<CommandBarLocation>None</CommandBarLocation>
+													<ReadOnly>true</ReadOnly>
+													<EnableStartDrag>true</EnableStartDrag>
+													<DataPath>омг_Лиды</DataPath>
+													<RowPictureDataPath>омг_Лиды.DefaultPicture</RowPictureDataPath>
+													<AutoRefresh>false</AutoRefresh>
+													<AutoRefreshPeriod>60</AutoRefreshPeriod>
+													<Period>
+														<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+														<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+														<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+													</Period>
+													<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+													<RestoreCurrentRow>false</RestoreCurrentRow>
+													<TopLevelParent xsi:nil="true"/>
+													<ShowRoot>true</ShowRoot>
+													<AllowRootChoice>false</AllowRootChoice>
+													<UpdateOnDataChange>Auto</UpdateOnDataChange>
+													<AllowGettingCurrentRowURL>true</AllowGettingCurrentRowURL>
+													<ContextMenu name="омг_ЛидыКонтекстноеМеню" id="1020"/>
+													<AutoCommandBar name="омг_ЛидыКоманднаяПанель" id="1021">
+														<Autofill>false</Autofill>
+													</AutoCommandBar>
+													<ExtendedTooltip name="омг_ЛидыРасширеннаяПодсказка" id="1022"/>
+													<SearchStringAddition name="омг_ЛидыСтрокаПоиска" id="1023">
+														<AdditionSource>
+															<Item>омг_Лиды</Item>
+															<Type>SearchStringRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="омг_ЛидыСтрокаПоискаКонтекстноеМеню" id="1024"/>
+														<ExtendedTooltip name="омг_ЛидыСтрокаПоискаРасширеннаяПодсказка" id="1025"/>
+													</SearchStringAddition>
+													<ViewStatusAddition name="омг_ЛидыСостояниеПросмотра" id="1026">
+														<AdditionSource>
+															<Item>омг_Лиды</Item>
+															<Type>ViewStatusRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="омг_ЛидыСостояниеПросмотраКонтекстноеМеню" id="1027"/>
+														<ExtendedTooltip name="омг_ЛидыСостояниеПросмотраРасширеннаяПодсказка" id="1028"/>
+													</ViewStatusAddition>
+													<SearchControlAddition name="омг_ЛидыУправлениеПоиском" id="1029">
+														<AdditionSource>
+															<Item>омг_Лиды</Item>
+															<Type>SearchControl</Type>
+														</AdditionSource>
+														<ContextMenu name="омг_ЛидыУправлениеПоискомКонтекстноеМеню" id="1030"/>
+														<ExtendedTooltip name="омг_ЛидыУправлениеПоискомРасширеннаяПодсказка" id="1031"/>
+													</SearchControlAddition>
+													<Events>
+														<Event name="Selection">омг_ЛидыВыбор</Event>
+													</Events>
+													<ChildItems>
+														<LabelField name="омг_ЛидыДата" id="1032">
+															<DataPath>омг_Лиды.Дата</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Получен</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="омг_ЛидыДатаКонтекстноеМеню" id="1033"/>
+															<ExtendedTooltip name="омг_ЛидыДатаРасширеннаяПодсказка" id="1034"/>
+														</LabelField>
+														<LabelField name="омг_ЛидыСтатус" id="1035">
+															<DataPath>омг_Лиды.Статус</DataPath>
+															<ContextMenu name="омг_ЛидыСтатусКонтекстноеМеню" id="1036"/>
+															<ExtendedTooltip name="омг_ЛидыСтатусРасширеннаяПодсказка" id="1037"/>
+														</LabelField>
+														<LabelField name="омг_ЛидыИмя" id="1038">
+															<DataPath>омг_Лиды.Имя</DataPath>
+															<ContextMenu name="омг_ЛидыИмяКонтекстноеМеню" id="1039"/>
+															<ExtendedTooltip name="омг_ЛидыИмяРасширеннаяПодсказка" id="1040"/>
+														</LabelField>
+														<LabelField name="омг_ЛидыТелефон" id="1041">
+															<DataPath>омг_Лиды.Телефон</DataPath>
+															<ContextMenu name="омг_ЛидыТелефонКонтекстноеМеню" id="1042"/>
+															<ExtendedTooltip name="омг_ЛидыТелефонРасширеннаяПодсказка" id="1043"/>
+														</LabelField>
+														<LabelField name="омг_ЛидыНаправлениеЛида" id="1044">
+															<DataPath>омг_Лиды.НаправлениеЛида</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Направление</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="омг_ЛидыНаправлениеЛидаКонтекстноеМеню" id="1045"/>
+															<ExtendedTooltip name="омг_ЛидыНаправлениеЛидаРасширеннаяПодсказка" id="1046"/>
+														</LabelField>
+														<LabelField name="омг_ЛидыКанал" id="1047">
+															<DataPath>омг_Лиды.Канал</DataPath>
+															<ContextMenu name="омг_ЛидыКаналКонтекстноеМеню" id="1048"/>
+															<ExtendedTooltip name="омг_ЛидыКаналРасширеннаяПодсказка" id="1049"/>
+														</LabelField>
+														<LabelField name="омг_ЛидыОтветственный" id="1050">
+															<DataPath>омг_Лиды.Ответственный</DataPath>
+															<ContextMenu name="омг_ЛидыОтветственныйКонтекстноеМеню" id="1051"/>
+															<ExtendedTooltip name="омг_ЛидыОтветственныйРасширеннаяПодсказка" id="1052"/>
+														</LabelField>
+														<LabelField name="омг_ЛидыПерезвонитьВ" id="1053">
+															<DataPath>омг_Лиды.ПерезвонитьВ</DataPath>
+															<ContextMenu name="омг_ЛидыПерезвонитьВКонтекстноеМеню" id="1054"/>
+															<ExtendedTooltip name="омг_ЛидыПерезвонитьВРасширеннаяПодсказка" id="1055"/>
+														</LabelField>
+														<LabelField name="омг_ЛидыКоличествоПопыток" id="1056">
+															<DataPath>омг_Лиды.КоличествоПопыток</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Попыток</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="омг_ЛидыКоличествоПопытокКонтекстноеМеню" id="1057"/>
+															<ExtendedTooltip name="омг_ЛидыКоличествоПопытокРасширеннаяПодсказка" id="1058"/>
+														</LabelField>
+														<LabelField name="омг_ЛидыДатаПоследнегоЗвонка" id="1059">
+															<DataPath>омг_Лиды.ДатаПоследнегоЗвонка</DataPath>
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Последний звонок</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="омг_ЛидыДатаПоследнегоЗвонкаКонтекстноеМеню" id="1060"/>
+															<ExtendedTooltip name="омг_ЛидыДатаПоследнегоЗвонкаРасширеннаяПодсказка" id="1061"/>
+														</LabelField>
+														<LabelField name="омг_ЛидыКомментарий" id="1062">
+															<DataPath>омг_Лиды.Комментарий</DataPath>
+															<ContextMenu name="омг_ЛидыКомментарийКонтекстноеМеню" id="1063"/>
+															<ExtendedTooltip name="омг_ЛидыКомментарийРасширеннаяПодсказка" id="1064"/>
+														</LabelField>
+													</ChildItems>
+												</Table>
+											</ChildItems>
+										</UsualGroup>
+									</ChildItems>
+								</Page>
 								<Page name="ГруппаЗаявка" id="9">
 									<Title>
 										<v8:item>
@@ -1735,6 +1936,63 @@
 				<Field>ВерхнийПределЗаявок</Field>
 			</Save>
 		</Attribute>
+		<Attribute name="омг_Лиды" id="101">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Лиды</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>false</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<MainTable>Document.омг_Лид</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>2a9a11a1-6d9c-43bb-8697-696644e3c7ef</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>ab35a804-8e47-41f1-aaa6-b04cbd0d9687</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>fc8c69ab-76f1-4c76-b316-6f645bba04aa</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+					<dcsset:itemsViewMode>Normal</dcsset:itemsViewMode>
+					<dcsset:itemsUserSettingID>8d366257-7404-47db-b3ca-9dbda0213002</dcsset:itemsUserSettingID>
+				</ListSettings>
+			</Settings>
+		</Attribute>
+		<Attribute name="омг_ЛидыКоличество" id="102">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Лиды количество</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="омг_ИзвестныеЛиды" id="103">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="КарточкаКлиента" id="1">
@@ -1942,6 +2200,101 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>ИзменитьВерхнийПределЗаявок</Action>
+		</Command>
+		<Command name="омг_ЛидВзятьВРаботу" id="101">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Взять в работу</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Назначить лид на себя</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>омг_ЛидВзятьВРаботу</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="омг_ЛидПозвонить" id="102">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Позвонить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Позвонить по номеру лида через Битфон</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>омг_ЛидПозвонить</Action>
+		</Command>
+		<Command name="омг_ЛидРезультатЗвонка" id="103">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Результат звонка</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать результат звонка: недозвон, перезвонить, отказ, нецелевой</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>омг_ЛидРезультатЗвонка</Action>
+		</Command>
+		<Command name="омг_ЛидЗаписатьНаПрием" id="104">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать на приём</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть календарь и записать клиента по лиду</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>омг_ЛидЗаписатьНаПрием</Action>
+		</Command>
+		<Command name="омг_ЛидКарточкаПациента" id="105">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Карточка пациента</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Найти или создать карточку клиента по ИИН</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>омг_ЛидКарточкаПациента</Action>
+		</Command>
+		<Command name="омг_ОткрытьОкноТрафика" id="106">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Окно трафика</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть окно входящего трафика с отборами и всеми лидами</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>омг_ОткрытьОкноТрафика</Action>
 		</Command>
 	</Commands>
 </Form>
