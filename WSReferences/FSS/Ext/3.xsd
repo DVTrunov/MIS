@@ -5,10 +5,6 @@
 		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 		targetNamespace="http://www.fss.ru/integration/types/sedo/v01"
 		version="1.1">
-	<xsd:import namespace="http://www.fss.ru/integration/types/organization/v01"
-			schemaLocation="file://4.xsd"/>
-	<xsd:import namespace="http://www.fss.ru/integration/types/common/v01"
-			schemaLocation="file://5.xsd"/>
 	<!--<xsd:element name="getMessageStatusResponse">
         <xsd:complexType>
             <xsd:sequence>
@@ -16,6 +12,16 @@
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>-->
+	<xsd:import namespace="http://www.fss.ru/integration/types/organization/v01"
+			schemaLocation="file://4.xsd"/>
+	<!-- ========================================================== -->
+	<!-- Простые бизнесовые типы -->
+	<!-- ========================================================== -->
+	<xsd:import namespace="http://www.fss.ru/integration/types/common/v01"
+			schemaLocation="file://5.xsd"/>
+	<!-- ========================================================== -->
+	<!-- Типы запросов -->
+	<!-- ========================================================== -->
 	<xsd:element name="getMessageRequest"
 			type="tns:GetMessageRequest">
 		<xsd:annotation>
@@ -23,7 +29,7 @@
 		</xsd:annotation>
 	</xsd:element>
 	<!-- ========================================================== -->
-	<!-- Простые бизнесовые типы -->
+	<!-- Бизнесовые типы -->
 	<!-- ========================================================== -->
 	<xsd:element name="getCntMessageRequest"
 			type="tns:GetCntMessageRequest">
@@ -32,6 +38,9 @@
             </xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
+	<!-- ========================================================== -->
+	<!-- Типы ответов -->
+	<!-- ========================================================== -->
 	<xsd:element name="putMessageRequest"
 			type="tns:PutMessageRequest">
 		<xsd:annotation>
@@ -39,7 +48,7 @@
 		</xsd:annotation>
 	</xsd:element>
 	<!-- ========================================================== -->
-	<!-- Типы запросов -->
+	<!-- Сложные бизнесовые типы -->
 	<!-- ========================================================== -->
 	<xsd:element name="getCntMessageOperatorRequest"
 			type="tns:GetCntMessageOperatorRequest">
@@ -88,9 +97,6 @@
 			<xsd:maxLength value="50"/>
 		</xsd:restriction>
 	</xsd:simpleType>
-	<!-- ========================================================== -->
-	<!-- Бизнесовые типы -->
-	<!-- ========================================================== -->
 	<xsd:simpleType name="RecipientId">
 		<xsd:annotation>
 			<xsd:documentation>Идентификатор абонента. Для Страхователя - регномер, для МО - ОГРН</xsd:documentation>
@@ -103,9 +109,6 @@
 		</xsd:annotation>
 		<xsd:restriction base="xsd:string"/>
 	</xsd:simpleType>
-	<!-- ========================================================== -->
-	<!-- Типы ответов -->
-	<!-- ========================================================== -->
 	<xsd:complexType name="GetMessageRequest">
 		<xsd:annotation>
 			<xsd:documentation>Запрос на получение сообщений</xsd:documentation>
@@ -201,9 +204,6 @@
 			</xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
-	<!-- ========================================================== -->
-	<!-- Сложные бизнесовые типы -->
-	<!-- ========================================================== -->
 	<xsd:complexType name="MessageStatusList">
 		<xsd:annotation>
 			<xsd:documentation>Тип для определения списка</xsd:documentation>
