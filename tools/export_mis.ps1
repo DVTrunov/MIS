@@ -61,15 +61,15 @@ function Log([string]$msg) {
 }
 
 # git с выводом в лог; возвращает строки вывода, код в $script:GitRC
-function Git {
-    $out = & git -c core.quotepath=false -c core.autocrlf=false @args 2>&1 | ForEach-Object { "$_" }
+function RunGit {
+    $out = & $GitExe -c core.quotepath=false -c core.autocrlf=false @args 2>&1 | ForEach-Object { "$_" }
     $script:GitRC = $LASTEXITCODE
     return $out
 }
 
 function GitOrThrow([string]$What) {
     $rest = $args
-    $out = Git @rest
+    $out = RunGit @rest
     $out | ForEach-Object { Log $_ }
     if ($script:GitRC -ne 0) { throw "$What завершился с ошибкой (git $($rest -join ' '))" }
     return $out
@@ -111,7 +111,7 @@ function Get-DbCommit {
         $cands += [pscustomobject]@{ Commit = $Matches[1]; Time = $cf.LastWriteTime; Src = $cf.Name }
     }
     foreach ($c in ($cands | Sort-Object Time -Descending)) {
-        $null = Git cat-file -e "$($c.Commit)^{commit}"
+        $null = RunGit cat-file -e "$($c.Commit)^{commit}"
         if ($script:GitRC -eq 0) { return $c }
         Log "Коммит $($c.Commit) из $($c.Src) не найден в репозитории - пропускаю"
     }
@@ -126,7 +126,9 @@ try {
     Log "[$ts] Начало выгрузки"
     if (-not (Test-Path $V8)) { throw "Не найдена платформа 1С: $V8" }
     if (-not (Test-Path "$Repo\Configuration.xml")) { throw "В папке $Repo нет Configuration.xml - проверьте путь" }
-    if (-not (Get-Command git -ErrorAction SilentlyContinue)) { throw "Не найден git в PATH" }
+    $gitCmd = Get-Command git.exe -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
+    if (-not $gitCmd) { throw "Не найден git в PATH" }
+    $script:GitExe = $gitCmd.Source
     if (-not $Pass) {
         if ($NonInteractive) { throw "Не задан пароль: установите переменную окружения MIS_1C_PASS" }
         $sec  = Read-Host "Пароль пользователя 1С '$User'" -AsSecureString
@@ -136,13 +138,13 @@ try {
 
     # 1. Рабочее дерево должно быть чистым
     Log "=== Проверка рабочего дерева ==="
-    $dirty = Git status --porcelain
+    $dirty = RunGit status --porcelain
     if ($script:GitRC -ne 0) { throw "git status завершился с ошибкой" }
     if ($dirty) {
         $dirty | Select-Object -First 30 | ForEach-Object { Log $_ }
         throw "В клоне есть незакоммиченные изменения ($(@($dirty).Count) шт.). Закоммитьте или отмените их и запустите снова"
     }
-    $StartBranch = ((Git rev-parse --abbrev-ref HEAD) | Select-Object -First 1).Trim()
+    $StartBranch = ((RunGit rev-parse --abbrev-ref HEAD) | Select-Object -First 1).Trim()
     Log "Текущая ветка: $StartBranch"
 
     # 2. Свежая версия из Git
@@ -150,7 +152,7 @@ try {
     $null = GitOrThrow 'git fetch' fetch origin --prune
     if ($StartBranch -ne $MainBranch) { $null = GitOrThrow 'git checkout' checkout $MainBranch }
     $null = GitOrThrow 'git pull' pull --ff-only origin $MainBranch
-    $mainHead = ((Git rev-parse --short HEAD) | Select-Object -First 1).Trim()
+    $mainHead = ((RunGit rev-parse --short HEAD) | Select-Object -First 1).Trim()
     Log "$MainBranch = $mainHead"
 
     # 3. От какого коммита ветвиться: от того, который сейчас загружен в базу.
@@ -160,7 +162,7 @@ try {
     if ($db) {
         $base = $db.Commit
         Log "База соответствует коммиту $base (по $($db.Src) от $($db.Time))"
-        $behind = ((Git rev-list --count "$base..$MainBranch") | Select-Object -First 1).Trim()
+        $behind = ((RunGit rev-list --count "$base..$MainBranch") | Select-Object -First 1).Trim()
         if ($behind -ne '0') {
             Log "ВНИМАНИЕ: в $MainBranch есть $behind коммит(ов), которых нет в базе. Ветка выгрузки будет от $base, слияние с ними - в PR."
         }
@@ -195,7 +197,7 @@ try {
     Log "=== Изменения ==="
     $null = GitOrThrow 'git add' add -A
     # Файлы, попадающие под .gitignore (например *.bin макетов), но нужные конфигурации - добавляем принудительно
-    $ignored = Git ls-files --others --ignored --exclude-standard
+    $ignored = RunGit ls-files --others --ignored --exclude-standard
     if ($ignored) {
         Log "Принудительно добавляю $(@($ignored).Count) файл(ов), попадающих под .gitignore:"
         $ignored | ForEach-Object { Log "  $_" }
@@ -204,17 +206,17 @@ try {
         $null = GitOrThrow 'git add -f' add -f "--pathspec-from-file=$listFile"
     }
 
-    $changes = @(Git diff --cached --name-status -M)
+    $changes = @(RunGit diff --cached --name-status -M)
     if ($changes.Count -eq 0) {
         Log "[OK] Изменений нет - конфигурация в базе совпадает с коммитом $base"
-        Set-Content -Path $State -Value (Git rev-parse HEAD) -Encoding ASCII
-        $null = Git checkout $MainBranch
-        $null = Git branch -D $Branch
+        Set-Content -Path $State -Value (RunGit rev-parse HEAD) -Encoding ASCII
+        $null = RunGit checkout $MainBranch
+        $null = RunGit branch -D $Branch
         $BranchCreated = $false
         exit 0
     }
 
-    $stat = (Git diff --cached --shortstat) | Select-Object -Last 1
+    $stat = (RunGit diff --cached --shortstat) | Select-Object -Last 1
     Log "Изменено файлов: $($changes.Count) ($stat)"
     # Сводка по объектам метаданных: Тип/Объект
     $objects = $changes | ForEach-Object {
@@ -246,7 +248,7 @@ try {
     [IO.File]::WriteAllText($msgFile, $body, (New-Object Text.UTF8Encoding $false))
     $null = GitOrThrow 'git commit' commit -q -F $msgFile
     $Committed = $true
-    $newCommit = ((Git rev-parse HEAD) | Select-Object -First 1).Trim()
+    $newCommit = ((RunGit rev-parse HEAD) | Select-Object -First 1).Trim()
     Set-Content -Path $State -Value $newCommit -Encoding ASCII
     Log "Коммит: $newCommit"
 
@@ -255,24 +257,24 @@ try {
     $null = GitOrThrow 'git push' push -u origin $Branch
 
     # 11. Ссылка на PR
-    $remote = ((Git remote get-url origin) | Select-Object -First 1).Trim()
+    $remote = ((RunGit remote get-url origin) | Select-Object -First 1).Trim()
     $web = $remote -replace '^git@([^:]+):', 'https://$1/' -replace '\.git$', ''
     $prUrl = "$web/compare/$MainBranch...$($Branch)?expand=1"
     Log "[OK] Ветка $Branch отправлена. Создать PR: $prUrl"
     if ($OpenBrowser -and -not $NonInteractive) { Start-Process $prUrl }
 
     # Возвращаем клон на основную ветку, чтобы update_mis.ps1 работал как обычно
-    $null = Git checkout $MainBranch
+    $null = RunGit checkout $MainBranch
     exit 0
 }
 catch {
     Log "[ОШИБКА] $($_.Exception.Message)"
     if ($BranchCreated -and -not $Committed) {
         Log "Откатываю изменения в клоне и удаляю ветку $Branch"
-        $null = Git reset -q --hard
-        $null = Git clean -fdq
-        $null = Git checkout -q $MainBranch
-        $null = Git branch -D $Branch
+        $null = RunGit reset -q --hard
+        $null = RunGit clean -fdq
+        $null = RunGit checkout -q $MainBranch
+        $null = RunGit branch -D $Branch
     } elseif ($Committed) {
         Log "Коммит сделан локально в ветке $Branch, но не отправлен. Отправьте вручную: git push -u origin $Branch"
     }
